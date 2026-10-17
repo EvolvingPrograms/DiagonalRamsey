@@ -28,10 +28,11 @@ theorem Linked.of_piece {c : Cell} {pieces : List SupportingPiece}
 
 /-- Shared certificate-link proof: check containment in the kernel and supply
 membership witnesses for the old supporting pieces. -/
-macro "link_source " cell:ident " with " piece:term " using " hp:term ", " old:term : tactic =>
+macro "link_source " cell:ident " with " piece:term " using " hp:term ", " old:term : tactic => do
+  let cellTerm : Lean.TSyntax `term := ⟨cell.raw⟩
   `(tactic| {
     apply Linked.of_piece $piece $hp rfl (by decide +kernel) (by decide +kernel)
-    simp only [$cell, List.cons_subset, List.nil_subset, and_true]
+    simp only [$cellTerm:term, List.cons_subset, List.nil_subset, and_true]
     exact $old })
 
 theorem Linked.sound {c : Cell} {pieces : List SupportingPiece} {F D : ℝ → ℝ}
