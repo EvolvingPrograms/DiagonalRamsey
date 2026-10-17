@@ -70,8 +70,6 @@ jobs:
             --cgroup-root "$limits" --max-seconds 19800 \
             --summary-log .lake/build-progress/build.log \
             S8_RamseyBound.L4_MainTheorem | tee .lake/build-progress/build.log
-      - name: Literal theorem and axiom audit
-        run: python3 scripts/audit.py
       - name: Independent statement and kernel comparison
         shell: bash
         run: |

@@ -30,13 +30,13 @@ def main():
             raise RuntimeError('Unapproved proof syntax: '+str(path))
         if any(name.startswith('Comparison.') for name in parse_source(path)[1]):
             raise RuntimeError('Production imports Comparator specification')
-    policy=json.loads((ROOT/'verification/comparator.json').read_text())
+    policy=json.loads((ROOT/'challenges/comparator.json').read_text())
     for name,expected in policy['specification_sha256'].items():
         if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=expected:
             raise RuntimeError('Changed specification: '+name)
-    definitions=ROOT/'verification/Comparison/Definitions.lean'
+    definitions=ROOT/'challenges/Comparison/Definitions.lean'
     assert all(i.startswith('Mathlib.') for i in parse_source(definitions)[1])
-    challenge=code_only((ROOT/'verification/Comparison/Challenge.lean').read_text())
+    challenge=code_only((ROOT/'challenges/Comparison/Challenge.lean').read_text())
     assert len(re.findall(r'\bsorry\b',challenge))==1
     print(f'PASS: {len(closure())} production modules; independent specification; no production admissions.')
 

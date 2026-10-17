@@ -64,6 +64,6 @@ $e^{\gamma k}=(e^\gamma)^k\le(69827131/20000000)^k$.
 
 Lean: `eventually_ramsey` in
 [L4_MainTheorem.lean](L4_MainTheorem.lean). The equivalent explicit-threshold statement is `eventual_diagonal_bound`.
-The [literal audit](../../verification/Audit.lean) checks the exact
-decimal/rational base equality and permits only `propext`, `Classical.choice`,
-and `Quot.sound`.
+The [challenge solution](../../challenges/Comparison/Solution.lean) converts this
+bound into the independent finite-graph statement. Comparator permits only
+`propext`, `Classical.choice`, and `Quot.sound`.

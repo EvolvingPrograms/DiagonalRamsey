@@ -18,7 +18,7 @@ lean_lib Proof where
     .submodules `S7_ParameterChoice, .submodules `S8_RamseyBound, .submodules `Support]
 
 lean_lib Comparison where
-  srcDir := "../verification"
+  srcDir := "../challenges"
 
 @[default_target] target proof : Unit := do
   let some mod ← findModule? `S8_RamseyBound.L4_MainTheorem

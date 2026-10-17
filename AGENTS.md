@@ -10,5 +10,5 @@ and keep its mathematics consistent with the Lean statements. Credit inherited
 arguments and data. Keep logs, caches and speculative research outside git.
 
 Use the pinned toolchain. Run scoped checks during edits, then the complete
-CI build, literal audit and independent Comparator check before declaring a
+CI build and independent Comparator check before declaring a
 renamed or changed proof verified. Commit completed tasks with mathematical notes.

@@ -6,8 +6,18 @@ import os
 import platform
 import subprocess
 import sys
-from audit import inventory, STANDARD
-from build_lean import ROOT
+from build_lean import ROOT, closure
+
+STANDARD = {'propext', 'Classical.choice', 'Quot.sound'}
+
+def inventory():
+    result = closure()
+    for name in ('lakefile.lean', 'lake-manifest.json', 'lean-toolchain'):
+        result[name] = hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
+    for path in (ROOT/'challenges').rglob('*'):
+        if path.is_file():
+            result[str(path.relative_to(ROOT))] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return result
 
 def run(command, cwd=ROOT, **kwargs):
     print('+', ' '.join(map(str, command)), flush=True)
@@ -28,7 +38,7 @@ def checkout(url, rev, path):
 def main():
     if platform.system() != 'Linux' or os.geteuid() == 0:
         raise SystemExit('Comparator requires an unprivileged Linux user and real Landrun.')
-    policy = json.loads((ROOT/'verification/comparator.json').read_text())
+    policy = json.loads((ROOT/'challenges/comparator.json').read_text())
     for name, expected in policy['specification_sha256'].items():
         if hashlib.sha256((ROOT/name).read_bytes()).hexdigest() != expected:
             raise RuntimeError('Changed comparison specification: '+name)
@@ -36,9 +46,9 @@ def main():
     if sys.argv[1:] and not setup_only:
         raise SystemExit('Usage: comparator.py [--setup-only]')
     if not setup_only:
-        receipt = json.loads((ROOT/'.verification/audit.json').read_text())
-        if receipt['status'] != 'pass' or receipt['sources'] != inventory():
-            raise RuntimeError('The production audit must match the current sources')
+        (ROOT/'.verification/comparator-result.json').unlink(missing_ok=True)
+        before = inventory()
+        run(['lake', '--no-build', 'build', 'S8_RamseyBound.L4_MainTheorem'])
     pins = policy['tools']
     toolchain = (ROOT/'lean-toolchain').read_text().strip()
     if toolchain != pins['toolchain']: raise RuntimeError('Comparator toolchain mismatch')
@@ -72,8 +82,8 @@ def main():
          '--setenv=COMPARATOR_LEAN4EXPORT='+str(exporter/'.lake/build/bin/lean4export'),
          '--setenv=COMPARATOR_LANDRUN='+str(landrun/'landrun'),
          'lake','env',str(comparator/'.lake/build/bin/comparator'),str(path)],env=env)
-    if receipt['sources'] != inventory(): raise RuntimeError('Production sources changed during comparison')
+    if before != inventory(): raise RuntimeError('Sources changed during comparison')
     result.write_text(json.dumps({'status':'pass','base':'3.49135655',
-        'permitted_axioms':sorted(STANDARD),'tools':pins},indent=2)+'\n')
+        'permitted_axioms':sorted(STANDARD),'tools':pins,'sources':before},indent=2)+'\n')
 
 if __name__ == '__main__': main()

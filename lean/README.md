@@ -104,5 +104,6 @@ monochromatic $K_k$, whenever $k\ge k_0$.
 
    Thus $R(k,k)\le b^k$. $\square$
 
-The [literal theorem and axiom audit](../verification/Audit.lean) checks the
-stated bound with permitted axioms `propext`, `Classical.choice` and `Quot.sound`.
+The [independent challenge](../challenges/Comparison/Challenge.lean) states the
+bound directly for finite graphs. Comparator checks its proved solution with
+permitted axioms `propext`, `Classical.choice` and `Quot.sound`.
