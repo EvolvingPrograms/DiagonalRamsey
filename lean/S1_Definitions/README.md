@@ -94,10 +94,7 @@ Substitute `s = β * r` in `momentNorm`; for positive `β,r`, the nested real po
 
 [`potential`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L63)
 
-```lean
-noncomputable def potential (G : SimpleGraph V) (X Y : Finset V) (c w r s : ℝ) : ℝ :=
-  (X.card : ℝ) ^ w * (Y.card : ℝ) * (momentNorm G X Y c s) ^ r
-```
+Declaration shown above.
 
 </details>
 

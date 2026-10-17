@@ -157,7 +157,7 @@ lemma L1_pi (w r θ : ℝ) (hw : 0 < w) (hwr : w < r) (hs : 1 ≤ s) (hX : X.Non
 
 **Proof.** Double-counting gives $\sum_iV_i=N$. The row restriction
 bound gives $V_i\ge1-w/r$: apply the subset bound below to
-$X\setminus\{i\}$ and use
+$X\setminus\lbrace i\rbrace $ and use
 $(1-1/N)^{1-w/r}\le1-(1-w/r)/N$ (the singleton case follows from
 $\sum_iV_i=N$). Thus the negative and positive deviations have
 equal total mass, proving the first inequality. The inherited row-excess
@@ -191,7 +191,7 @@ lemma rho_bound (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (H 
 When $0<\beta<1$, column maximality supplies
 
 $$g_y-c\ge\theta H,\qquad \theta=(1-\beta)^{1/(\beta r)},\qquad
-\nu\{g_y-c>(1+\varepsilon)H\}\le(1+\varepsilon)^{\beta r-r}$$
+\nu\lbrace g_y-c>(1+\varepsilon)H\rbrace \le(1+\varepsilon)^{\beta r-r}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -234,13 +234,7 @@ Combine `rho_bound` with `crop` above to bound its tail sum; `m_point` gives the
 
 [`rho_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L198)
 
-```lean
-lemma rho_bound (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (H θ ε : ℝ)
-    (hθ0 : 0 < θ) (hθ1 : θ ≤ 1) (hε : 0 ≤ ε) (hH : 0 < H)
-    (hlow : ∀ y ∈ Y, θ * H ≤ uC G X c y) :
-    ∑ y ∈ Y, nuW G X Y c s y * |1 - H / uC G X c y| ≤
-      ε + (1 / θ - 1) + ∑ y ∈ Y.filter (fun y => (1 + ε) * H < uC G X c y), nuW G X Y c s y
-```
+Declaration shown above.
 
 [`m_point`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L230)
 
@@ -269,15 +263,22 @@ $$m_i-(c+H)=H(V_i-1)+
 
 This explanatory identity is proved inside `m_point` as the local equality `key`, using the auxiliary sums `A` and `C`. The declaration below records its triangle-inequality consequence; the linked proof contains the equality.
 
-[`m_point`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L230)
+[Auxiliary sums](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L246-L247):
 
 ```lean
-lemma m_point (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (H : ℝ) (hH : 0 ≤ H)
-    (i : V) :
-    |mr G X Y c s i - (c + H)| ≤
-      (1 + |c|) * ∑ y ∈ Y, nuW G X Y c s y * |1 - H / uC G X c y| +
-        H * |Vr G X Y c s i - 1|
+  set A := ∑ y ∈ Y, nuW G X Y c s y * hR G i y * (1 - H / uC G X c y)
+  set C := ∑ y ∈ Y, nuW G X Y c s y * (1 - H / uC G X c y)
 ```
+
+[The resulting equality](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L256):
+
+```lean
+  have key : mr G X Y c s i - (c + H) = A + H * (Vr G X Y c s i - 1) - c * C := by linarith
+```
+
+[`m_point`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L230)
+
+Declaration shown above.
 
 </details>
 

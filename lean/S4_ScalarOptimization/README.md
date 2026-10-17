@@ -76,15 +76,7 @@ Declaration excerpts; hypotheses and local notation are as in the linked source.
 
 [`convex_two_point_contraction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L2_ConvexAveraging.lean#L21)
 
-```lean
-theorem convex_two_point_contraction {S : Set ℝ} {φ : ℝ → ℝ}
-    (hφ : ConvexOn ℝ S φ) {x y p θ : ℝ}
-    (hx : x ∈ S) (hy : y ∈ S) (hp : 0 ≤ p) (hp' : p ≤ 1)
-    (hθ : 0 ≤ θ) (hθ' : θ ≤ 1) :
-    p * φ (θ * x + (1 - θ) * (p * x + (1 - p) * y)) +
-      (1 - p) * φ (θ * y + (1 - θ) * (p * x + (1 - p) * y)) ≤
-      p * φ x + (1 - p) * φ y
-```
+Declaration shown above.
 
 </details>
 
@@ -159,14 +151,7 @@ Declaration excerpts; hypotheses and local notation are as in the linked source.
 
 [`feasible_mass_transfer`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L3_DensityTransfer.lean#L21)
 
-```lean
-theorem feasible_mass_transfer {p d β t U V A₀ A₁ A C : ℝ}
-    (hp : 0 < p ∧ p < 1) (hpd : p ≤ d) (hd : d ≤ 1)
-    (hβ : 0 < β) (ht : 0 ≤ t) (hA₀ : A₀ ≤ A₁)
-    (h : Complement.Feasible d β t U V A₁ A C) :
-    ∃ C' : ℝ, Complement.Feasible p β t U V A₀ A C' ∧
-      d * A + (1 - d) * C ≤ p * A + (1 - p) * C'
-```
+Declaration shown above.
 
 </details>
 
@@ -220,6 +205,17 @@ $$e^{\beta J_p(A,C)}\le pe^{\beta A}+(1-p)e^{\beta C}\le U,$$
 <summary>Lean comparison</summary>
 
 The displayed Jensen chain occurs in this proof; taking logarithms yields the declared upper bound on the mean.
+
+[The Jensen and logarithm steps](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L4_NonbindingOptimum.lean#L20-L25):
+
+```lean
+  have hjensen := convexOn_exp.2 (Set.mem_univ (β * A))
+    (Set.mem_univ (β * C)) hp.1 (sub_nonneg.mpr hp.2) (by ring)
+  simp only [smul_eq_mul] at hjensen
+  have hlog := (Real.log_le_log_iff (Real.exp_pos _) hU).mpr (hjensen.trans hblue)
+  rw [Real.log_exp] at hlog
+  apply (le_div_iff₀ hβ).mpr
+```
 
 [`mean_le_blue`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L4_NonbindingOptimum.lean#L16)
 
@@ -418,8 +414,8 @@ the graph alternative.
 
 Let $S=F_p\ne\varnothing$, $H(q)=qM_p(q)$, and
 
-$$E(t)=\sup_{q\in S}\{H(q)+wq(1+\log t)\},\qquad
-\widetilde E(u)=\sup_{q\in S}\{H(q)+wq(1-u)\}.$$
+$$E(t)=\sup_{q\in S}\lbrace H(q)+wq(1+\log t)\rbrace ,\qquad
+\widetilde E(u)=\sup_{q\in S}\lbrace H(q)+wq(1-u)\rbrace .$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -460,11 +456,7 @@ Declaration excerpts; hypotheses and local notation are as in the linked source.
 
 [`original_integral_eq_transformed`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Controls/Substitution.lean#L49)
 
-```lean
-theorem original_integral_eq_transformed (S : Set ℝ) (H : ℝ → ℝ) (w : ℝ) :
-    (∫ t in Ioo 0 1, originalDegreeEnvelope S H w t) =
-      ∫ u in Ioi 0, degreeEnvelope S H w u*Real.exp (-u)
-```
+Declaration shown above.
 
 [`integral_bound_of_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L6_OptimalEnvelope.lean#L231)
 
@@ -488,7 +480,7 @@ Thus a negative sum supplies every hypothesis of `ComplementEnvelope`.
 Only feasible degrees need coverage, so a proved positive lower cutoff
 requires no artificial cells below it.
 
-Lean: [`complementEnvelope_of_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L6_OptimalEnvelope.lean#L390),
+Lean: [`complementEnvelope_of_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L6_OptimalEnvelope.lean#L379),
 with the regularity and integral lemmas immediately preceding it.
 
 ## Theorem 4.7. Entropy characterization of feasible degrees
@@ -610,7 +602,7 @@ with equality when $r\le0$.
 **Proof.** For $r\le0$, integrate $\log u-r$ from $e^r$ to $1$.
 For $r\ge0$, the hinge vanishes and $e^r\ge1+r$.
 
-Lean: [`integral_log_hinge_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L9_AffineEnvelope.lean#L54).
+Lean: [`integral_log_hinge_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L9_AffineEnvelope.lean#L56).
 For lines $a_i v+b_i$ with $a_0<\cdots<a_n$, put
 $\Delta_i=a_{i+1}-a_i$ and $r_i=(b_i-b_{i+1})/\Delta_i$. Then
 
@@ -632,6 +624,7 @@ theorem affineHingeMajorant_dominates (first : AffineLine) (rest : List AffineLi
 ```
 
 </details>
+
 $$\int_0^1H(\log u)\,du\le b_n-a_n+
 \sum_{i<n}\Delta_i e^{r_i}.$$
 
@@ -673,7 +666,7 @@ Lean: [`complementEnvelope_of_hinge`](https://github.com/EvolvingPrograms/Diagon
 If $S\subset(0,\infty)$ is convex, $g$ is convex and negative on $S$,
 and $\phi$ is concave and nonincreasing on $(-\infty,0)$, then
 
-$$q\longmapsto q\phi\!\left(\frac{g(q)}q\right)$$
+$$q\longmapsto q\phi\left(\frac{g(q)}q\right)$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -700,7 +693,7 @@ Lean: [`concave_antitone_perspective`](https://github.com/EvolvingPrograms/Diago
 ## Theorem 4.12. Clipped entropy
 
 For $0<p<1$, put $f(z)=pz+(1-p)\log(1-e^z)$ and
-$\bar f(z)=f(\max\{z,\log p\})$. Then $\bar f$ is concave and
+$\bar f(z)=f(\max\lbrace z,\log p\rbrace )$. Then $\bar f$ is concave and
 nonincreasing on $(-\infty,0)$, since
 
 $$f'(z)=\frac{p-e^z}{1-e^z},\qquad
@@ -734,7 +727,7 @@ Lean: [clipped entropy laws](https://github.com/EvolvingPrograms/DiagonalRamsey/
 
 Put $A=\operatorname{certA}(q)$, $B=\operatorname{certB}(q)$ and
 $g(q)=q\log p+\beta q(A-B)$. For positive $x,\mu,w,\beta$ and $0<p<1$,
-the domain $D=\{q\in(0,1):g(q)<0\}$ is convex, and
+the domain $D=\lbrace q\in(0,1):g(q)<0\rbrace $ is convex, and
 
 $$q\operatorname{certM}(q)+wq
 =qB+wq+\frac q\beta[\bar f(g(q)/q)-f(\log p)]$$
@@ -806,6 +799,7 @@ theorem clippedEntropy_support {p z z' : ℝ} (hp : 0 < p ∧ p < 1)
 ```
 
 </details>
+
 $$g'(m)=\log p+\beta\left[-\log(p/x)+w\log\frac m{\mu(1-m)}\right],$$
 
 <details>
@@ -823,6 +817,7 @@ theorem hasDerivAt_budgetGap {p μ w β x q : ℝ} (hμ : 0 < μ)
 ```
 
 </details>
+
 $$D_m=B(m)+\frac{\bar f(z)-f(\log p)+s(g'(m)-z)}{\beta}.$$
 
 <details>
@@ -832,14 +827,7 @@ Declaration excerpts; hypotheses and local notation are as in the linked source.
 
 [`certSupportSlope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L337)
 
-```lean
-noncomputable def certSupportSlope (p μ w β x m : ℝ) : ℝ :=
-  let z := budgetGap p μ w β x m / m
-  let c := max z (Real.log p)
-  let s := (p - Real.exp c) / (1 - Real.exp c)
-  certB μ w m + (clippedEntropy p z - entropyLog p (Real.log p) +
-    s * (Real.log p + β * (-Real.log (p / x) + w * Real.log (m / (μ * (1 - m)))) - z)) / β
-```
+Declaration shown above.
 
 </details>
 

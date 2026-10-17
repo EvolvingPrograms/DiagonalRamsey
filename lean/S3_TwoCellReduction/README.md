@@ -230,6 +230,15 @@ $$\left(1+\frac q{\beta(1-q)}\right)\log d
 
 This intermediate inequality is the local quantity `T ≤ log x` in the proof of `density_log_gap`; the declaration below states the consequence after replacing `q` by `μ`.
 
+[The intermediate quantity](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L4_DensityGap.lean#L60-L73) is defined and bounded inside that proof:
+
+```lean
+  let T := (1 + q / (β * (1 - q))) * Real.log d + w * Real.log (1 - q) +
+    w * q / (1 - q) * Real.log (q / μ)
+```
+
+The proof then establishes `hT : T ≤ Real.log x` before comparing the ratios `q` and `μ`.
+
 [`density_log_gap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L4_DensityGap.lean#L45)
 
 ```lean
@@ -282,26 +291,11 @@ The first two declarations supply the upper bound and its limit. `first_cell_lim
 
 [`scaled_mean_bounds`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L2_FiniteBounds.lean#L28)
 
-```lean
-theorem scaled_mean_bounds {m r s t U V a : ℝ}
-    (hm : 0 < m) (hr : 0 < r) (hs : 0 < s) (ht : 0 < t)
-    (hU : 0 ≤ U) (hV : 0 ≤ V)
-    (hblue : m * (max (1 + a / r) 0) ^ s ≤ U)
-    (hcomp : m * (max (1 - t * a / r) 0) ^ s ≤ V) :
-    -(r / t) * ((V / m) ^ (s⁻¹) - 1) ≤ a ∧
-      a ≤ r * ((U / m) ^ (s⁻¹) - 1)
-```
+Declaration shown above.
 
 [`tendsto_root_slack`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L3_PowerLimits.lean#L108)
 
-```lean
-theorem tendsto_root_slack {ι : Type*} {l : Filter ι}
-    {r W : ι → ℝ} {W₀ β : ℝ}
-    (hr : Tendsto r l atTop) (hW : Tendsto W l (𝓝 W₀))
-    (hW₀ : 0 < W₀) (_hβ : 0 < β) :
-    Tendsto (fun i => r i * (W i ^ (1 / (β * r i)) - 1)) l
-      (𝓝 (Real.log W₀ / β))
-```
+Declaration shown above.
 
 [`first_cell_limit`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L4_DensityGap.lean#L119)
 

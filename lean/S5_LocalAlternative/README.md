@@ -59,25 +59,10 @@ This is the positive-moment premise of `finite_row_approximation`.
 
 [`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
 
-```lean
-theorem finite_row_approximation {p μ w β x δ ε : ℝ}
-    (hp : 0 < p ∧ p < 1) (hμ : 0 < μ ∧ μ < 1) (hw : 0 ≤ w)
-    (hβ : 0 < β) (hx : 0 < x) (hgap : x < (1 - μ) ^ w)
-    (hδ : 0 < δ) (hε : 0 < ε) :
-    ∃ η > 0, ∃ R : ℝ, ∀ r ≥ R, ∀ q m π a b : ℝ,
-      δ ≤ q → q ≤ μ + η → p - η ≤ m → m ≤ 1 →
-      p - η ≤ π → π ≤ 1 → |m - π| ≤ η →
-      m * (max (1 + a / r) 0) ^ (β * r) +
-        (1 - m) * (max (1 + b / r) 0) ^ (β * r) ≤ certU μ w β q →
-      m * (max (1 - (q / (1 - q)) * a / r) 0) ^ (β * r) +
-        (1 - m) * (max (1 - (q / (1 - q)) * b / r) 0) ^ (β * r) ≤
-          (1 - q) ^ (-β * w) →
-      r * DiagRamsey.SE.LF w β x q m π r ≤ a →
-      ∃ q' ∈ complementDegrees p μ w β x, |q' - q| ≤ ε ∧
-        q * (m * a + (1 - m) * b) ≤ q' * certM p μ w β x q' + ε
-```
+Declaration shown above.
 
 </details>
+
 $$m(1-ta/r)_+^{\beta r}+(1-m)(1-tb/r)_+^{\beta r}\le V(q),
 \qquad t=\frac q{1-q}.$$
 
@@ -88,23 +73,7 @@ This is the complementary-moment premise of the same theorem, with `t = q / (1 -
 
 [`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
 
-```lean
-theorem finite_row_approximation {p μ w β x δ ε : ℝ}
-    (hp : 0 < p ∧ p < 1) (hμ : 0 < μ ∧ μ < 1) (hw : 0 ≤ w)
-    (hβ : 0 < β) (hx : 0 < x) (hgap : x < (1 - μ) ^ w)
-    (hδ : 0 < δ) (hε : 0 < ε) :
-    ∃ η > 0, ∃ R : ℝ, ∀ r ≥ R, ∀ q m π a b : ℝ,
-      δ ≤ q → q ≤ μ + η → p - η ≤ m → m ≤ 1 →
-      p - η ≤ π → π ≤ 1 → |m - π| ≤ η →
-      m * (max (1 + a / r) 0) ^ (β * r) +
-        (1 - m) * (max (1 + b / r) 0) ^ (β * r) ≤ certU μ w β q →
-      m * (max (1 - (q / (1 - q)) * a / r) 0) ^ (β * r) +
-        (1 - m) * (max (1 - (q / (1 - q)) * b / r) 0) ^ (β * r) ≤
-          (1 - q) ^ (-β * w) →
-      r * DiagRamsey.SE.LF w β x q m π r ≤ a →
-      ∃ q' ∈ complementDegrees p μ w β x, |q' - q| ≤ ε ∧
-        q * (m * a + (1 - m) * b) ≤ q' * certM p μ w β x q' + ε
-```
+Declaration shown above.
 
 </details>
 
@@ -146,23 +115,7 @@ Declaration excerpts; hypotheses and local notation are as in the linked source.
 
 [`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
 
-```lean
-theorem finite_row_approximation {p μ w β x δ ε : ℝ}
-    (hp : 0 < p ∧ p < 1) (hμ : 0 < μ ∧ μ < 1) (hw : 0 ≤ w)
-    (hβ : 0 < β) (hx : 0 < x) (hgap : x < (1 - μ) ^ w)
-    (hδ : 0 < δ) (hε : 0 < ε) :
-    ∃ η > 0, ∃ R : ℝ, ∀ r ≥ R, ∀ q m π a b : ℝ,
-      δ ≤ q → q ≤ μ + η → p - η ≤ m → m ≤ 1 →
-      p - η ≤ π → π ≤ 1 → |m - π| ≤ η →
-      m * (max (1 + a / r) 0) ^ (β * r) +
-        (1 - m) * (max (1 + b / r) 0) ^ (β * r) ≤ certU μ w β q →
-      m * (max (1 - (q / (1 - q)) * a / r) 0) ^ (β * r) +
-        (1 - m) * (max (1 - (q / (1 - q)) * b / r) 0) ^ (β * r) ≤
-          (1 - q) ^ (-β * w) →
-      r * DiagRamsey.SE.LF w β x q m π r ≤ a →
-      ∃ q' ∈ complementDegrees p μ w β x, |q' - q| ≤ ε ∧
-        q * (m * a + (1 - m) * b) ≤ q' * certM p μ w β x q' + ε
-```
+Declaration shown above.
 
 </details>
 
@@ -325,20 +278,7 @@ The displayed upper bound is assembled inside this proof by summing good-row and
 
 [`ordered_envelope_contradiction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L2_OrderedEnvelope.lean#L57)
 
-```lean
-theorem ordered_envelope_contradiction {p μ w β x : ℝ}
-    (hμ : μ < 1) (hw : 0 < w) (henv : ComplementEnvelope p μ w β x) :
-    ∃ ε > 0, ∃ φ > 0, ∃ R : ℝ,
-      ∀ r ≥ R, ∀ N : ℕ, 0 < N → ∀ qs Ps : ℕ → ℝ, ∀ Gd : Finset ℕ,
-      Gd ⊆ Finset.range N → (N : ℝ) - Gd.card ≤ φ * N →
-      (∀ k < N, 0 ≤ qs k ∧ qs k ≤ 1) →
-      (N : ℝ) * ∑ k ∈ Finset.range N, qs k *
-        (PhiK r (1 - w / r) (((k : ℝ) + 1) / N) -
-          PhiK r (1 - w / r) ((k : ℝ) / N)) ≤ r * ∑ k ∈ Finset.range N, Ps k →
-      (∀ k < N, r * Ps k ≤ w) →
-      (∀ k ∈ Gd, ∃ q' ∈ complementDegrees p μ w β x,
-        |q' - qs k| ≤ ε ∧ r * Ps k ≤ q' * certM p μ w β x q' + ε) → False
-```
+Declaration shown above.
 
 </details>
 

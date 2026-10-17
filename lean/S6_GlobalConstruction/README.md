@@ -43,7 +43,7 @@ $Ce^{A_\sigma k+B_\sigma\ell}$.
 A **complementary control** satisfies the parameter and envelope hypotheses
 of Section 5 and has terminal parameters
 
-$$0<\xi<\min\{x,e^{-A_\sigma}\},\qquad
+$$0<\xi<\min\lbrace x,e^{-A_\sigma}\rbrace ,\qquad
 0<y_0<e^{-B_\sigma},\qquad 0<\nu<\mu.$$
 
 <details>
@@ -131,25 +131,7 @@ The displayed potential bound is the initial-moment estimate inside this closure
 
 [`finite_host_closure`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S6_GlobalConstruction/L3_RouteComposition.lean#L30)
 
-```lean
-theorem finite_host_closure (p μ w β x ξ y₀ ν xhat yhat : ℝ)
-    (hp0 : 0 < p) (hp1 : p < 1) (hμ0 : 0 < μ) (hμ1 : μ < 1) (hw : 0 < w) (hβ0 : 0 < β) (hβ1 : β < 1)
-    (hx0 : 0 < x) (hxp : x < p) (hxμ : x < (1 - μ) ^ w)
-    (henv : ComplementEnvelope p μ w β x)
-    (hξ0 : 0 < ξ) (_hξ1 : ξ < 1) (hy0 : 0 < y₀) (_hy1 : y₀ < 1)
-    (hν0 : 0 < ν) (_hν1 : ν < 1)
-    (_hxh0 : 0 < xhat) (_hxh1 : xhat < 1) (hyh0 : 0 < yhat) (_hyh1 : yhat < 1)
-    (hξx : ξ < x) (hξxh : ξ < xhat) (hyy : y₀ < yhat) (hνμ : ν < μ) :
-    ∃ L₀ : ℕ, ∀ C : ℝ, 1 ≤ C → ∀ ℓ : ℕ, L₀ ≤ ℓ →
-      ∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V),
-        HostStopping G C xhat yhat ℓ →
-        ∀ k t : ℕ, 0 < k → 0 < t → ∀ X Y : Finset V,
-          X.Nonempty → Y.Nonempty → Disjoint X Y →
-          p ≤ redDensity G X Y →
-          C ^ (w + 1) * ξ ^ (-(k : ℝ)) * y₀ ^ (-(ℓ : ℝ)) * ν ^ (-(w * (t : ℝ))) ≤
-            (X.card : ℝ) ^ w * (Y.card : ℝ) →
-          HasRedClique G (X ∪ Y) k ∨ HasBlueClique G X t ∨ HasBlueClique G Y ℓ
-```
+Declaration shown above.
 
 </details>
 
@@ -243,8 +225,8 @@ def ComplementPieceValid {ι : Type} {m : ℕ} (A B : Fin m → ℝ) (prof : ι 
 The terminal density is strictly below the route's output density. The route
 value is
 
-$$V(t)=\max\left\{g(t),
-\frac{a_\gamma+t b_\gamma+w(\theta c_\gamma+g(t)-g_0)}{1+w}\right\}.$$
+$$V(t)=\max\left\lbrace g(t),
+\frac{a_\gamma+t b_\gamma+w(\theta c_\gamma+g(t)-g_0)}{1+w}\right\rbrace .$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -280,7 +262,7 @@ $Z\subseteq X$ disjoint from the nonempty $Y$, hence on a proper subhost.
 
 Complementary pieces combine profiles of densities $p_R+p_B\le1$ at
 reciprocal ratios, with cost
-$\max\{L_R(t),tL_B(1/t)\}$; their prescribed positive margin pays for
+$\max\lbrace L_R(t),tL_B(1/t)\rbrace $; their prescribed positive margin pays for
 passing to a proper subhost. Thus each raw piece gives a `PieceOK`
 implication from the joint proper-host premise.
 
@@ -319,7 +301,7 @@ def SourceCell.Valid {ι : Type} (prof : ι → BankProfile) (A B η lo hi : ℝ
 where $F$ is the symmetric baseline exponent, or a pair of profiles with
 admissible domains and $p_R+p_B\le1$ such that
 
-$$\max\{L_R(t),tL_B(1/t)\}\le A_h+B_ht-\eta_h(1+t).$$
+$$\max\lbrace L_R(t),tL_B(1/t)\rbrace \le A_h+B_ht-\eta_h(1+t).$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -328,15 +310,7 @@ The `.pair` branch is the displayed complementary-profile inequality. The induct
 
 [`SourceCell.Valid`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L124)
 
-```lean
-def SourceCell.Valid {ι : Type} (prof : ι → BankProfile) (A B η lo hi : ℝ) : SourceCell ι → Prop
-  | .grounded =>
-      ∀ t : ℝ, 0 < t → lo ≤ t → t ≤ hi → symmetricProfile luWangSource 1 t ≤ A + B * t - η * (1 + t)
-  | .pair PR PB =>
-      (prof PR).p + (prof PB).p ≤ 1 ∧ (prof PR).lo ≤ lo ∧ hi ≤ (prof PR).hi ∧
-        ∀ t : ℝ, lo ≤ t → t ≤ hi → (prof PB).lo ≤ 1 / t ∧ 1 / t ≤ (prof PB).hi ∧
-          max ((prof PR).L t) (t * (prof PB).L (1 / t)) ≤ A + B * t - η * (1 + t)
-```
+Declaration shown above.
 
 [`joint_profiles_of_pieces`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S6_GlobalConstruction/L2_JointInduction.lean#L24)
 

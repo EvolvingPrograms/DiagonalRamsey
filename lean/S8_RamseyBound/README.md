@@ -43,10 +43,9 @@ $$\lceil Ce^{zk}\rceil\le Ce^{zk}+1
 
 Exact excerpt of the ceiling and exponential comparison, in the context of the preceding theorem's hypotheses and its chosen threshold.
 
-[Proof excerpt, lines 28–36](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L1_AsymptoticAbsorption.lean#L28-L36)
+[Proof excerpt, lines 29–36](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L1_AsymptoticAbsorption.lean#L29-L36)
 
 ```lean
-    Real.one_le_exp_iff.mpr (mul_nonneg hz (Nat.cast_nonneg k))
   calc
     (⌈C * Real.exp (z * (k : ℝ))⌉₊ : ℝ) ≤
         C * Real.exp (z * (k : ℝ)) + 1 :=
