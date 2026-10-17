@@ -2,7 +2,7 @@ import Lake
 open Lake DSL
 
 package diagonalRamsey where
-  srcDir := "lean"
+  srcDir := "."
   weakLeanArgs := #["-j4"]
 
 require mathlib from git
@@ -18,7 +18,7 @@ lean_lib Proof where
     .submodules `S7_ParameterChoice, .submodules `S8_RamseyBound, .submodules `Support]
 
 lean_lib Comparison where
-  srcDir := "../challenges"
+  srcDir := "Challenges"
 
 @[default_target] target proof : Unit := do
   let some mod ← findModule? `S8_RamseyBound.L4_MainTheorem

@@ -26,7 +26,7 @@ $$\delta\le q\le\mu+\eta,\quad m,\pi\in[p-\eta,1],
 
 These are the degree and mass hypotheses of the uniform approximation theorem below; the full source states all positivity hypotheses as well.
 
-[`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
+[`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
 
 ```lean
 theorem finite_row_approximation {p μ w β x δ ε : ℝ}
@@ -57,7 +57,7 @@ $$m(1+a/r)_+^{\beta r}+(1-m)(1+b/r)_+^{\beta r}\le U(q),$$
 
 This is the positive-moment premise of `finite_row_approximation`.
 
-[`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
+[`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
 
 Declaration shown above.
 
@@ -71,7 +71,7 @@ $$m(1-ta/r)_+^{\beta r}+(1-m)(1-tb/r)_+^{\beta r}\le V(q),
 
 This is the complementary-moment premise of the same theorem, with `t = q / (1 - q)`.
 
-[`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
+[`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
 
 Declaration shown above.
 
@@ -87,14 +87,14 @@ $$\ell=-w\log(1-q)+\log x+
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`ellF`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_PRL.lean#L11)
+[`ellF`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_PRL.lean#L11)
 
 ```lean
 noncomputable def ellF (w β x q m π : ℝ) : ℝ :=
   -w * Real.log (1 - q) + Real.log x + ((1 - β) * Real.log π - Real.log m) / β
 ```
 
-[`LF`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_PRL.lean#L15)
+[`LF`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_PRL.lean#L15)
 
 ```lean
 noncomputable def LF (w β x q m π r : ℝ) : ℝ :=
@@ -113,7 +113,7 @@ q\bigl(ma+(1-m)b\bigr)\le q'M_p(q')+\varepsilon.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
+[`finite_row_approximation`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L1_FiniteApproximation.lean#L21)
 
 Declaration shown above.
 
@@ -146,7 +146,7 @@ qM_p(q)+wq(1+\log u)&\le E(u)
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`ComplementEnvelope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L1_FeasiblePairs.lean#L27)
+[`ComplementEnvelope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L1_FeasiblePairs.lean#L27)
 
 ```lean
 def ComplementEnvelope (p μ w β x : ℝ) : Prop :=
@@ -174,7 +174,7 @@ rP_i\le q'_iM_p(q'_i)+\varepsilon.$$
 
 The good-row approximation is the last premise of this contradiction theorem.
 
-[`ordered_envelope_contradiction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L2_OrderedEnvelope.lean#L57)
+[`ordered_envelope_contradiction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L2_OrderedEnvelope.lean#L57)
 
 ```lean
 theorem ordered_envelope_contradiction {p μ w β x : ℝ}
@@ -203,7 +203,7 @@ $$ (b-a)qM_p(q)+wq[b\log b-a\log a]\le\int_a^b E(u)\,du,$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`ordered_envelope_cell_lower`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L2_OrderedEnvelope.lean#L18)
+[`ordered_envelope_cell_lower`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L2_OrderedEnvelope.lean#L18)
 
 ```lean
 theorem ordered_envelope_cell_lower {p μ w β x q a b : ℝ} {E : ℝ → ℝ}
@@ -233,7 +233,7 @@ T&\ge-\frac{4w^2}{r}\qquad(r\ge2w).
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`lower_sum`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Assembly.lean#L43)
+[`lower_sum`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Assembly.lean#L43)
 
 ```lean
 lemma lower_sum {w r : ℝ} {N : ℕ} (hN : 0 < N) (hw : 0 < w) (hr : 2 * w ≤ r) (qs Ps : ℕ → ℝ)
@@ -261,7 +261,7 @@ $$\sum_{i\in S}\Delta J_i\le(2+a)|S|/N+e^{-a-1}.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`sum_dJ_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Assembly.lean#L19)
+[`sum_dJ_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Assembly.lean#L19)
 
 ```lean
 lemma sum_dJ_le {N : ℕ} (hN : 0 < N) (S : Finset ℕ) (hS : S ⊆ Finset.range N) (a : ℝ) :
@@ -281,7 +281,7 @@ $$T\le-C+\varepsilon(1+2w)
 
 The displayed upper bound is assembled inside this proof by summing good-row and exceptional-row costs. It is an intermediate estimate, not an additional theorem hypothesis.
 
-[`ordered_envelope_contradiction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L2_OrderedEnvelope.lean#L57)
+[`ordered_envelope_contradiction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L2_OrderedEnvelope.lean#L57)
 
 Declaration shown above.
 
@@ -298,7 +298,7 @@ then give a uniform positive lower cutoff for $q$; this is where $x<p$
 is used. Thus Lemma 5.1 applies away from its singular degree endpoint.
 
 The majorant premise is `ComplementEnvelope`, defined in section 4.
-Lean: [`ordered_envelope_assembly`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L2_OrderedEnvelope.lean#L187).
+Lean: [`ordered_envelope_assembly`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L2_OrderedEnvelope.lean#L187).
 The error estimates above are implemented in `ordered_envelope_contradiction`;
 `ordered_envelope_assembly` supplies its premises from finite row data.
 
@@ -318,7 +318,7 @@ $$|X\setminus X_g|\le\zeta|X|,\qquad q_i\le\mu+\tau\quad(i\in X_g),$$
 
 These are the exceptional-set and degree hypotheses in the graph alternative below.
 
-[`graph_alternative`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L3_GraphAlternative.lean#L279)
+[`graph_alternative`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L3_GraphAlternative.lean#L279)
 
 ```lean
 theorem graph_alternative (p μ w β x : ℝ)
@@ -362,7 +362,7 @@ $$q_i\bigl(m_i a_i+(1-m_i)b_i\bigr)=rP_i.$$
 Multiply the following decomposition by `q_i`, using
 `P_i = q_i * E_ν Z_i`.
 
-[`partition_scaled_mean`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L3_GraphAlternative.lean#L35)
+[`partition_scaled_mean`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L3_GraphAlternative.lean#L35)
 
 ```lean
 private theorem partition_scaled_mean {ι : Type*} (Y : Finset ι) (P : ι → Prop)
@@ -378,4 +378,4 @@ private theorem partition_scaled_mean {ι : Type*} (Y : Finset ι) (P : ι → P
 
 These are exactly the hypotheses of Lemma 5.2, a contradiction.
 
-Lean: [`graph_alternative`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L3_GraphAlternative.lean#L279).
+Lean: [`graph_alternative`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S5_LocalAlternative/L3_GraphAlternative.lean#L279).

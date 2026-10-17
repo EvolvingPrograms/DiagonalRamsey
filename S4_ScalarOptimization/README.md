@@ -27,7 +27,7 @@ pe^{-\beta tA}+(1-p)e^{-\beta tC}&\le V.
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`Feasible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S1_Definitions/L3_MomentConstraints.lean#L16)
+[`Feasible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S1_Definitions/L3_MomentConstraints.lean#L16)
 
 ```lean
 def Feasible (p β t U V A₀ A C : ℝ) : Prop :=
@@ -53,7 +53,7 @@ $$y=\frac{(d-p)a+(1-d)c}{1-p}.$$
 
 The displayed `y` is the weighted argument of `φ` in this contraction inequality.
 
-[`convex_two_point_contraction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L2_ConvexAveraging.lean#L21)
+[`convex_two_point_contraction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L2_ConvexAveraging.lean#L21)
 
 ```lean
 theorem convex_two_point_contraction {S : Set ℝ} {φ : ℝ → ℝ}
@@ -76,7 +76,7 @@ $$p\phi(a)+(1-p)\phi(y)\le d\phi(a)+(1-d)\phi(c).$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`convex_two_point_contraction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L2_ConvexAveraging.lean#L21)
+[`convex_two_point_contraction`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L2_ConvexAveraging.lean#L21)
 
 Declaration shown above.
 
@@ -95,7 +95,7 @@ $$p\phi(x_0)+(1-p)\phi(y_0)\le p\phi(x)+(1-p)\phi(y).$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`convex_two_point_boundary`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L2_ConvexAveraging.lean#L54)
+[`convex_two_point_boundary`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L2_ConvexAveraging.lean#L54)
 
 ```lean
 theorem convex_two_point_boundary {φ : ℝ → ℝ}
@@ -129,7 +129,7 @@ $$C'=\frac1\beta\log
 
 The displayed `C'` is the witness `Real.log y / β` constructed inside this proof, with `y` its weighted exponential mean.
 
-[`feasible_mass_transfer`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L3_DensityTransfer.lean#L21)
+[`feasible_mass_transfer`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L3_DensityTransfer.lean#L21)
 
 ```lean
 theorem feasible_mass_transfer {p d β t U V A₀ A₁ A C : ℝ}
@@ -151,7 +151,7 @@ $$J_d(A,C)\le J_p(A,C').$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`feasible_mass_transfer`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L3_DensityTransfer.lean#L21)
+[`feasible_mass_transfer`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L3_DensityTransfer.lean#L21)
 
 Declaration shown above.
 
@@ -170,14 +170,14 @@ $$A_d(q)=\frac{1-q}{q}\log\frac{d(1-q)^w}{x},\qquad 0<q<1,\ x>0,$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`certA`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L26)
+[`certA`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L26)
 
 ```lean
 noncomputable def certA (p w x q : ℝ) : ℝ :=
   (1 - q) / q * Real.log (p * (1 - q) ^ w / x)
 ```
 
-[`complementDegrees_antitone`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L3_DensityTransfer.lean#L67)
+[`complementDegrees_antitone`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L3_DensityTransfer.lean#L67)
 
 ```lean
 theorem complementDegrees_antitone {p d μ w β x : ℝ}
@@ -208,7 +208,7 @@ $$e^{\beta J_p(A,C)}\le pe^{\beta A}+(1-p)e^{\beta C}\le U,$$
 
 The displayed Jensen chain occurs in this proof; taking logarithms yields the declared upper bound on the mean.
 
-[The Jensen and logarithm steps](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L4_NonbindingOptimum.lean#L20-L25):
+[The Jensen and logarithm steps](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L4_NonbindingOptimum.lean#L20-L25):
 
 ```lean
   have hjensen := convexOn_exp.2 (Set.mem_univ (β * A))
@@ -219,7 +219,7 @@ The displayed Jensen chain occurs in this proof; taking logarithms yields the de
   apply (le_div_iff₀ hβ).mpr
 ```
 
-[`mean_le_blue`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L4_NonbindingOptimum.lean#L16)
+[`mean_le_blue`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L4_NonbindingOptimum.lean#L16)
 
 ```lean
 theorem mean_le_blue {p β U A C : ℝ}
@@ -246,7 +246,7 @@ $$C_0=\frac1\beta\log\frac{U-pe^{\beta A_0}}{1-p}.$$
 
 The displayed `C₀` is expanded on the right side of this objective inequality; it is not a separate global definition.
 
-[`objective_le_boundary`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L5_BindingOptimum.lean#L66)
+[`objective_le_boundary`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L5_BindingOptimum.lean#L66)
 
 ```lean
 theorem objective_le_boundary
@@ -270,7 +270,7 @@ $$pe^{-\beta tA_0}+(1-p)e^{-\beta tC_0}\le V.$$
 
 Substitute the definition of `C₀`; the source simplifies `-β * t * C₀` to `-t * log (…)`.
 
-[`feasible_iff_boundary`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L5_BindingOptimum.lean#L18)
+[`feasible_iff_boundary`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L5_BindingOptimum.lean#L18)
 
 ```lean
 theorem feasible_iff_boundary
@@ -312,21 +312,21 @@ U(q)&=e^{\beta B(q)},& V(q)&=(1-q)^{-\beta w}.
 
 `t` and `V` appear directly as arguments of `Complement.Feasible` in the degree-set definition.
 
-[`certB`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L30)
+[`certB`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L30)
 
 ```lean
 noncomputable def certB (μ w q : ℝ) : ℝ :=
   w * Real.log (μ / q)
 ```
 
-[`certU`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L34)
+[`certU`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L34)
 
 ```lean
 noncomputable def certU (μ w β q : ℝ) : ℝ :=
   Real.exp (β * certB μ w q)
 ```
 
-[`complementDegrees`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L1_FeasiblePairs.lean#L19)
+[`complementDegrees`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L1_FeasiblePairs.lean#L19)
 
 ```lean
 def complementDegrees (p μ w β x : ℝ) : Set ℝ :=
@@ -351,7 +351,7 @@ pA_p(q)+\dfrac{1-p}{\beta}
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`certM`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L38)
+[`certM`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L38)
 
 ```lean
 noncomputable def certM (p μ w β x q : ℝ) : ℝ :=
@@ -360,7 +360,7 @@ noncomputable def certM (p μ w β x q : ℝ) : ℝ :=
     (1 - p) / β * Real.log ((certU μ w β q - p * Real.exp (β * certA p w x q)) / (1 - p))
 ```
 
-[`optimal_envelope_attained`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L6_OptimalEnvelope.lean#L72)
+[`optimal_envelope_attained`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L6_OptimalEnvelope.lean#L72)
 
 ```lean
 theorem optimal_envelope_attained {p μ w β x q : ℝ}
@@ -393,7 +393,7 @@ $$qM_p(q)+wq(1+\log u),\qquad q\in F_p,\quad 0<u\le1.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`ComplementEnvelope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L1_FeasiblePairs.lean#L27)
+[`ComplementEnvelope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L1_FeasiblePairs.lean#L27)
 
 ```lean
 def ComplementEnvelope (p μ w β x : ℝ) : Prop :=
@@ -428,14 +428,14 @@ E(t)&=\sup_{q\in S}\lbrace H(q)+wq(1+\log t)\rbrace ,\\
 
 `degreeEnvelope` is the transformed supremum. The substitution identity below writes the original supremum explicitly.
 
-[`degreeEnvelope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Controls/Envelope.lean#L38)
+[`degreeEnvelope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Controls/Envelope.lean#L38)
 
 ```lean
 noncomputable def degreeEnvelope (S : Set ℝ) (H : ℝ → ℝ) (w u : ℝ) : ℝ :=
   sSup ((fun q => H q+w*q*(1-u)) '' S)
 ```
 
-[`original_integral_eq_transformed`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Controls/Substitution.lean#L49)
+[`original_integral_eq_transformed`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Controls/Substitution.lean#L49)
 
 ```lean
 theorem original_integral_eq_transformed (S : Set ℝ) (H : ℝ → ℝ) (w : ℝ) :
@@ -460,11 +460,11 @@ $$\int_0^1 E(t)\,dt
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`original_integral_eq_transformed`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Controls/Substitution.lean#L49)
+[`original_integral_eq_transformed`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Controls/Substitution.lean#L49)
 
 Declaration shown above.
 
-[`integral_bound_of_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L6_OptimalEnvelope.lean#L231)
+[`integral_bound_of_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L6_OptimalEnvelope.lean#L231)
 
 ```lean
 theorem integral_bound_of_cover (D : ParametricIntegral.Data) (h : CoverIntegralGeometry D)
@@ -486,7 +486,7 @@ Thus a negative sum supplies every hypothesis of `ComplementEnvelope`.
 Only feasible degrees need coverage, so a proved positive lower cutoff
 requires no artificial cells below it.
 
-Lean: [`complementEnvelope_of_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L6_OptimalEnvelope.lean#L379),
+Lean: [`complementEnvelope_of_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L6_OptimalEnvelope.lean#L379),
 with the regularity and integral lemmas immediately preceding it.
 
 ## Theorem 4.7. Entropy characterization of feasible degrees
@@ -506,14 +506,14 @@ H_\mu(q)&=(1-q)\log(1-q)+q\log(q/\mu),\\
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`entropyMass`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L71)
+[`entropyMass`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L71)
 
 ```lean
 noncomputable def entropyMass (p β x : ℝ) : ℝ :=
   p * Real.exp (β * Real.log (x / p))
 ```
 
-[`entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L76)
+[`entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L76)
 
 ```lean
 noncomputable def entropyGap (p μ w β x q : ℝ) : ℝ :=
@@ -524,7 +524,7 @@ noncomputable def entropyGap (p μ w β x q : ℝ) : ℝ :=
   q * Real.log partition + β * w * degreeEntropy
 ```
 
-[`complementDegrees_iff_entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L238)
+[`complementDegrees_iff_entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L238)
 
 ```lean
 theorem complementDegrees_iff_entropyGap {p μ w β x q : ℝ}
@@ -544,7 +544,7 @@ toward their mean until $X=\theta/p$. Convexity of $z\mapsto z^{-1/t}$
 shows this minimizes the blue moment. Substituting the boundary atoms,
 taking logarithms and multiplying by $q$ gives the displayed test.
 
-Lean: [`complementDegrees_iff_entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L238).
+Lean: [`complementDegrees_iff_entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L238).
 
 ## Theorem 4.8. A cutoff from two signs
 
@@ -558,7 +558,7 @@ $$\mu\in F_p\subset(a,\mu].$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`complementDegrees_cutoff`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L8_ConvexDegreeCutoff.lean#L168)
+[`complementDegrees_cutoff`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L8_ConvexDegreeCutoff.lean#L168)
 
 ```lean
 theorem complementDegrees_cutoff {p μ w β x a : ℝ}
@@ -578,7 +578,7 @@ If a feasible $q\le a$ existed, writing $a$ as a convex combination
 of $q$ and $\mu$ would give $\mathcal F(a)\le0$, a contradiction.
 The endpoint follows from Theorem 4.7.
 
-Lean: [`complementDegrees_cutoff`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L8_ConvexDegreeCutoff.lean#L168).
+Lean: [`complementDegrees_cutoff`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L8_ConvexDegreeCutoff.lean#L168).
 
 ## Theorem 4.9. Integrating a logarithmic hinge
 
@@ -591,14 +591,14 @@ $$\int_0^1(\log u-r)_+\,du\le e^r-r-1,$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`integral_log_hinge_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L9_AffineEnvelope.lean#L56)
+[`integral_log_hinge_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L9_AffineEnvelope.lean#L56)
 
 ```lean
 theorem integral_log_hinge_le (r : ℝ) :
     (∫ u in (0 : ℝ)..1, max (Real.log u - r) 0) ≤ Real.exp r - r - 1
 ```
 
-[`integral_log_hinge_of_nonpos`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L9_AffineEnvelope.lean#L28)
+[`integral_log_hinge_of_nonpos`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L9_AffineEnvelope.lean#L28)
 
 ```lean
 theorem integral_log_hinge_of_nonpos {r : ℝ} (hr : r ≤ 0) :
@@ -612,7 +612,7 @@ with equality when $r\le0$.
 **Proof.** For $r\le0$, integrate $\log u-r$ from $e^r$ to $1$.
 For $r\ge0$, the hinge vanishes and $e^r\ge1+r$.
 
-Lean: [`integral_log_hinge_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L9_AffineEnvelope.lean#L56).
+Lean: [`integral_log_hinge_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L9_AffineEnvelope.lean#L56).
 For lines $a_i v+b_i$ with $a_0<\cdots<a_n$, put
 $\Delta_i=a_{i+1}-a_i$ and $r_i=(b_i-b_{i+1})/\Delta_i$. Then
 
@@ -624,7 +624,7 @@ $$\max_i(a_i v+b_i)\le H(v):=a_0v+b_0+
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`affineHingeMajorant_dominates`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L9_AffineEnvelope.lean#L126)
+[`affineHingeMajorant_dominates`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L9_AffineEnvelope.lean#L126)
 
 ```lean
 theorem affineHingeMajorant_dominates (first : AffineLine) (rest : List AffineLine)
@@ -643,7 +643,7 @@ $$\int_0^1H(\log u)\,du\le b_n-a_n+
 
 The source uses the recursive `affineExponentialSum` for the telescoped right-hand side.
 
-[`integral_affineHingeMajorant_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L9_AffineEnvelope.lean#L179)
+[`integral_affineHingeMajorant_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L9_AffineEnvelope.lean#L179)
 
 ```lean
 theorem integral_affineHingeMajorant_le (first : AffineLine) (rest : List AffineLine)
@@ -659,8 +659,8 @@ theorem integral_affineHingeMajorant_le (first : AffineLine) (rest : List Affine
 integrate each hinge and telescope again for the second. The crossings
 $r_i$ need not be ordered.
 
-Lean: [domination](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L9_AffineEnvelope.lean#L126)
-and [integral bound](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L9_AffineEnvelope.lean#L179).
+Lean: [domination](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L9_AffineEnvelope.lean#L126)
+and [integral bound](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L9_AffineEnvelope.lean#L179).
 
 ## Theorem 4.10. The hinge certifies the control
 
@@ -669,7 +669,7 @@ $b_n-a_n+\sum_i\Delta_i e^{r_i}<0$, then $E(u)=H(\log u)$ supplies
 `ComplementEnvelope`: it is continuous and nondecreasing on $(0,1]$,
 integrable, and has negative integral. The feasible degree set must be nonempty.
 
-Lean: [`complementEnvelope_of_hinge`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L10_HingeControl.lean).
+Lean: [`complementEnvelope_of_hinge`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L10_HingeControl.lean).
 
 ## Theorem 4.11. Concave decreasing perspectives
 
@@ -683,7 +683,7 @@ $$q\longmapsto q\phi\left(\frac{g(q)}q\right)$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`concave_antitone_perspective`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L11_ConcavePerspective.lean#L18)
+[`concave_antitone_perspective`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L11_ConcavePerspective.lean#L18)
 
 ```lean
 theorem concave_antitone_perspective {S : Set ℝ} {g φ : ℝ → ℝ}
@@ -698,7 +698,7 @@ theorem concave_antitone_perspective {S : Set ℝ} {g φ : ℝ → ℝ}
 is concave on $S$. Normalize convex-combination weights by their
 positive weighted mean, then apply monotonicity and concavity of $\phi$.
 
-Lean: [`concave_antitone_perspective`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L11_ConcavePerspective.lean).
+Lean: [`concave_antitone_perspective`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L11_ConcavePerspective.lean).
 
 ## Theorem 4.12. Clipped entropy
 
@@ -714,14 +714,14 @@ f''(z)=-\frac{(1-p)e^z}{(1-e^z)^2}.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`deriv_entropyLog`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L12_ClippedEntropy.lean#L37)
+[`deriv_entropyLog`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L12_ClippedEntropy.lean#L37)
 
 ```lean
 theorem deriv_entropyLog (p : ℝ) {z : ℝ} (hz : z < 0) :
     deriv (entropyLog p) z = (p - Real.exp z) / (1 - Real.exp z)
 ```
 
-[`deriv2_entropyLog`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L12_ClippedEntropy.lean#L60)
+[`deriv2_entropyLog`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L12_ClippedEntropy.lean#L60)
 
 ```lean
 theorem deriv2_entropyLog (p : ℝ) {z : ℝ} (hz : z < 0) :
@@ -731,7 +731,7 @@ theorem deriv2_entropyLog (p : ℝ) {z : ℝ} (hz : z < 0) :
 
 </details>
 
-Lean: [clipped entropy laws](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L12_ClippedEntropy.lean).
+Lean: [clipped entropy laws](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L12_ClippedEntropy.lean).
 
 ## Theorem 4.13. Concavity of the degree objective
 
@@ -747,7 +747,7 @@ $$q\operatorname{certM}(q)+wq
 
 Add `w * q` to the identity to obtain the displayed expression. The second declaration proves concavity of that expression.
 
-[`certM_entropy_identity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L98)
+[`certM_entropy_identity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L98)
 
 ```lean
 theorem certM_entropy_identity {p μ w β x q : ℝ} (hp : 0 < p ∧ p < 1)
@@ -758,7 +758,7 @@ theorem certM_entropy_identity {p μ w β x q : ℝ} (hp : 0 < p ∧ p < 1)
         entropyLog p (Real.log p))
 ```
 
-[`concave_certM_intercept`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L145)
+[`concave_certM_intercept`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L145)
 
 ```lean
 theorem concave_certM_intercept {p μ w β x : ℝ} (hp : 0 < p ∧ p < 1)
@@ -773,7 +773,7 @@ is concave on $D$. Expand $g$ as an affine function plus $\beta w$ times
 binary entropy, then apply Theorems 4.11–4.12. The remaining term
 $qB=wq\log(\mu/q)$ is concave.
 
-Lean: [objective identity and concavity](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L13_EnvelopeConcavity.lean).
+Lean: [objective identity and concavity](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L13_EnvelopeConcavity.lean).
 
 ## Corollary 4.14. Explicit global support lines
 
@@ -789,7 +789,7 @@ s=\frac{p-e^c}{1-e^c}\le0,$$
 
 `z`, `c` and `s` are local definitions in `certSupportSlope`; `clippedEntropy_support` proves the nonpositive support slope.
 
-[`certSupportSlope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L337)
+[`certSupportSlope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L337)
 
 ```lean
 noncomputable def certSupportSlope (p μ w β x m : ℝ) : ℝ :=
@@ -800,7 +800,7 @@ noncomputable def certSupportSlope (p μ w β x m : ℝ) : ℝ :=
     s * (Real.log p + β * (-Real.log (p / x) + w * Real.log (m / (μ * (1 - m)))) - z)) / β
 ```
 
-[`clippedEntropy_support`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L12_ClippedEntropy.lean#L142)
+[`clippedEntropy_support`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L12_ClippedEntropy.lean#L142)
 
 ```lean
 theorem clippedEntropy_support {p z z' : ℝ} (hp : 0 < p ∧ p < 1)
@@ -819,7 +819,7 @@ $$g'(m)=\log p+\beta\left[-\log(p/x)+w\log\frac m{\mu(1-m)}\right],$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`hasDerivAt_budgetGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L224)
+[`hasDerivAt_budgetGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L224)
 
 ```lean
 theorem hasDerivAt_budgetGap {p μ w β x q : ℝ} (hμ : 0 < μ)
@@ -837,7 +837,7 @@ $$D_m=B(m)+\frac{\bar f(z)-f(\log p)+s(g'(m)-z)}{\beta}.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`certSupportSlope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L337)
+[`certSupportSlope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L337)
 
 Declaration shown above.
 
@@ -852,7 +852,7 @@ $$h(q)\le h(m)+D_m(q-m).$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`certM_intercept_le_explicit_support`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L347)
+[`certM_intercept_le_explicit_support`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S4_ScalarOptimization/L13_EnvelopeConcavity.lean#L347)
 
 ```lean
 theorem certM_intercept_le_explicit_support {p μ w β x m q : ℝ}

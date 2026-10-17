@@ -17,7 +17,7 @@ $$\exists K\;\forall k\ge K:\quad R(k,k)\le3.49135655^k.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`eventual_diagonal_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L4_MainTheorem.lean#L32)
+[`eventual_diagonal_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S8_RamseyBound/L4_MainTheorem.lean#L32)
 
 ```lean
 theorem eventual_diagonal_bound :
@@ -46,14 +46,14 @@ H&=\left(\frac1{|Y|}\sum_{y\in Y}(g_y-c)_+^s\right)^{1/s},\\
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`momentNorm`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L58)
+[`momentNorm`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L58)
 
 ```lean
 noncomputable def momentNorm (G : SimpleGraph V) (X Y : Finset V) (c s : ℝ) : ℝ :=
   ((∑ y ∈ Y, (max (colDensity G X y - c) 0) ^ s) / (Y.card : ℝ)) ^ (1 / s)
 ```
 
-[`potential`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L63)
+[`potential`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L63)
 
 ```lean
 noncomputable def potential (G : SimpleGraph V) (X Y : Finset V) (c w r s : ℝ) : ℝ :=
@@ -76,7 +76,7 @@ $$\begin{aligned}
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`RowColMaximal`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L68)
+[`RowColMaximal`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L68)
 
 ```lean
 def RowColMaximal (G : SimpleGraph V) (X Y : Finset V) (c w r s : ℝ) : Prop :=
@@ -96,7 +96,7 @@ $$\Phi_c(X,Y)=|X|^w|Y|
 
 Substitute `s = β * r` in `momentNorm`; for positive `β,r`, the nested real powers simplify to exponent `1 / β`. The source definition retains the nested form.
 
-[`potential`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L63)
+[`potential`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L63)
 
 Declaration shown above.
 
@@ -125,42 +125,42 @@ S&=\sum_{y\in Y}(g_y-c)_+^s.
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`graphNbhd`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L50)
+[`graphNbhd`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L50)
 
 ```lean
 noncomputable def graphNbhd (B : SimpleGraph V) (X : Finset V) (v : V) : Finset V :=
   X.filter (fun u => B.Adj v u)
 ```
 
-[`graphFrac`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L54)
+[`graphFrac`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L54)
 
 ```lean
 noncomputable def graphFrac (B : SimpleGraph V) (X : Finset V) (v : V) : ℝ :=
   ((graphNbhd B X v).card : ℝ) / (X.card : ℝ)
 ```
 
-[`colDensity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L32)
+[`colDensity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L32)
 
 ```lean
 noncomputable def colDensity (G : SimpleGraph V) (X : Finset V) (y : V) : ℝ :=
   ((X.filter (fun v => G.Adj v y)).card : ℝ) / (X.card : ℝ)
 ```
 
-[`redNbhd`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L45)
+[`redNbhd`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L45)
 
 ```lean
 noncomputable def redNbhd (G : SimpleGraph V) (S : Finset V) (v : V) : Finset V :=
   S.filter (fun u => G.Adj v u)
 ```
 
-[`rowDensity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L36)
+[`rowDensity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L36)
 
 ```lean
 noncomputable def rowDensity (G : SimpleGraph V) (v : V) (Y : Finset V) : ℝ :=
   ((Y.filter (fun y => G.Adj v y)).card : ℝ) / (Y.card : ℝ)
 ```
 
-[`colMomentSum`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L73)
+[`colMomentSum`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L73)
 
 ```lean
 noncomputable def colMomentSum (G : SimpleGraph V) (X Y : Finset V) (c s : ℝ) : ℝ :=
@@ -185,14 +185,14 @@ $$\begin{aligned}
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`SharpBlueFailure`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L79)
+[`SharpBlueFailure`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L79)
 
 ```lean
 def SharpBlueFailure (G B : SimpleGraph V) (X Y : Finset V) (c μ w β s : ℝ) (i : V) : Prop :=
   colMomentSum G (graphNbhd B X i) Y c s < (μ / graphFrac B X i) ^ (w * β) * colMomentSum G X Y c s
 ```
 
-[`SharpRedFailure`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L85)
+[`SharpRedFailure`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L85)
 
 ```lean
 def SharpRedFailure (G B : SimpleGraph V) (X Y : Finset V) (c w β s x : ℝ) (i : V) : Prop :=
@@ -220,7 +220,7 @@ R(k,\ell)\le C\exp(Ak+B\ell).$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`SourceAdmissible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S1_Definitions/L2_AdmissibleBounds.lean#L16)
+[`SourceAdmissible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S1_Definitions/L2_AdmissibleBounds.lean#L16)
 
 ```lean
 def SourceAdmissible (A B : ℝ) : Prop :=
@@ -228,7 +228,7 @@ def SourceAdmissible (A B : ℝ) : Prop :=
     (RamseyBasics.ramseyNumber k l : ℝ) ≤ C * Real.exp (A * k + B * l)
 ```
 
-[`DenseProfile`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S1_Definitions/L2_AdmissibleBounds.lean#L22)
+[`DenseProfile`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S1_Definitions/L2_AdmissibleBounds.lean#L22)
 
 ```lean
 def DenseProfile (z : ℝ) : Prop :=
@@ -258,7 +258,7 @@ $$d_R(G)=\frac{\sum_{v\in V(G)}\deg_G(v)}{N(N-1)}\qquad(N=|V(G)|).$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`redGraphDensity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Ramsey/Descent.lean#L33)
+[`redGraphDensity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Ramsey/Descent.lean#L33)
 
 ```lean
 noncomputable def redGraphDensity {V : Type u} [Fintype V] (G : SimpleGraph V)
@@ -287,7 +287,7 @@ pe^{-\beta tA}+(1-p)e^{-\beta tC}&\le V.
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`Feasible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S1_Definitions/L3_MomentConstraints.lean#L16)
+[`Feasible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S1_Definitions/L3_MomentConstraints.lean#L16)
 
 ```lean
 def Feasible (p β t U V A₀ A C : ℝ) : Prop :=

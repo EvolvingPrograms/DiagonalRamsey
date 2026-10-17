@@ -21,7 +21,7 @@ $$\left\lceil Ce^{zk}\right\rceil\le e^{\gamma k}.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`eventually_ceiling_exp_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L1_AsymptoticAbsorption.lean#L15)
+[`eventually_ceiling_exp_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S8_RamseyBound/L1_AsymptoticAbsorption.lean#L15)
 
 ```lean
 theorem eventually_ceiling_exp_le {C z γ : ℝ}
@@ -43,7 +43,7 @@ $$\lceil Ce^{zk}\rceil\le Ce^{zk}+1
 
 Exact excerpt of the ceiling and exponential comparison, in the context of the preceding theorem's hypotheses and its chosen threshold.
 
-[Proof excerpt, lines 29–36](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L1_AsymptoticAbsorption.lean#L29-L36)
+[Proof excerpt, lines 29–36](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S8_RamseyBound/L1_AsymptoticAbsorption.lean#L29-L36)
 
 ```lean
   calc
@@ -72,7 +72,7 @@ $$R(k,k)\le e^{\gamma k}.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`eventual_exponent_of_dense_profile`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L2_ComplementSymmetry.lean#L19)
+[`eventual_exponent_of_dense_profile`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S8_RamseyBound/L2_ComplementSymmetry.lean#L19)
 
 ```lean
 theorem eventual_exponent_of_dense_profile
@@ -109,19 +109,19 @@ e^\gamma&<\frac{69827131}{20000000}=3.49135655.
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`rawExponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L28)
+[`rawExponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L28)
 
 ```lean
 def rawExponent : ℚ := 625145177 / 500000000
 ```
 
-[`exponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L29)
+[`exponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L29)
 
 ```lean
 def exponent : ℚ := 250058071 / 200000000
 ```
 
-[`exponent_gap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L3_BaseComparison.lean#L16)
+[`exponent_gap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S8_RamseyBound/L3_BaseComparison.lean#L16)
 
 ```lean
 theorem exponent_gap : Real.exp (exponent : ℝ) < (base : ℝ)
@@ -140,14 +140,14 @@ $$e^u\le T:=\sum_{j=0}^{13}\frac{u^j}{j!}
 
 The proof applies `Real.exp_bound'` at `exponent / 2` with fourteen terms, evaluates the rational polynomial, and squares the bound. Here `exponent` is $\gamma$ and `base` is $b$:
 
-[Exact parameters](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L29-L30)
+[Exact parameters](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L29-L30)
 
 ```lean
 def exponent : ℚ := 250058071 / 200000000
 def base : ℚ := 69827131 / 20000000
 ```
 
-[Complete proof](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L3_BaseComparison.lean#L16-L26)
+[Complete proof](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S8_RamseyBound/L3_BaseComparison.lean#L16-L26)
 
 ```lean
 theorem exponent_gap : Real.exp (exponent : ℝ) < (base : ℝ) := by
@@ -182,7 +182,7 @@ $$\exists K\;\forall k\ge K:\quad R(k,k)\le3.49135655^k.$$
 
 The statement gives the explicit threshold form. The proof excerpt shows the exponential comparison in `eventually_ramsey`, whose eventual statement is converted to this threshold form.
 
-[`eventual_diagonal_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L4_MainTheorem.lean#L32)
+[`eventual_diagonal_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S8_RamseyBound/L4_MainTheorem.lean#L32)
 
 ```lean
 theorem eventual_diagonal_bound :
@@ -190,7 +190,7 @@ theorem eventual_diagonal_bound :
       (RamseyBasics.ramseyNumber k k : ℝ) ≤ (3.49135655 : ℝ) ^ k
 ```
 
-[Proof excerpt, lines 21–30](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L4_MainTheorem.lean#L21-L30)
+[Proof excerpt, lines 21–30](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S8_RamseyBound/L4_MainTheorem.lean#L21-L30)
 
 ```lean
   have h := eventual_exponent_of_dense_profile
@@ -212,6 +212,6 @@ $e^{\gamma k}=(e^\gamma)^k\le(69827131/20000000)^k$.
 
 Lean: `eventually_ramsey` in
 [L4_MainTheorem.lean](L4_MainTheorem.lean). The equivalent explicit-threshold statement is `eventual_diagonal_bound`.
-The [challenge solution](../../challenges/Comparison/Solution.lean) converts this
+The [challenge solution](../Challenges/Comparison/Solution.lean) converts this
 bound into the independent finite-graph statement. Comparator permits only
 `propext`, `Classical.choice`, and `Quot.sound`.

@@ -5,9 +5,9 @@
     "RamseySpecification.diagonal_bound"
   ],
   "specification_sha256": {
-    "challenges/Comparison/Challenge.lean": "e82aa361482e7e9e7e1c176f78854ba85a59bc1dc5fdaac5b0493de8042f1bb9",
-    "challenges/Comparison/Definitions.lean": "6075f9797271ade6e46fed09fd1c3408690d1d4cbc15ad197bc55c6d2c861bf4",
-    "challenges/Comparison/Solution.lean": "b37b41cd7513a86a73f6d78535236fc3758c89daabfb7342402bff177199782d"
+    "Challenges/Comparison/Challenge.lean": "e82aa361482e7e9e7e1c176f78854ba85a59bc1dc5fdaac5b0493de8042f1bb9",
+    "Challenges/Comparison/Definitions.lean": "6075f9797271ade6e46fed09fd1c3408690d1d4cbc15ad197bc55c6d2c861bf4",
+    "Challenges/Comparison/Solution.lean": "b37b41cd7513a86a73f6d78535236fc3758c89daabfb7342402bff177199782d"
   },
   "tools": {
     "comparator": "07bc4ea40f2266dcb861820a2ec1fa3244ed307f",

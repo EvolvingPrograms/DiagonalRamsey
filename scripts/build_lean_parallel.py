@@ -79,7 +79,7 @@ class ModuleProcesses:
                     return 130
                 command=['lake','--quiet','build',module]
                 group=self.isolation.create(module) if self.isolation else None
-                if group:command=[sys.executable,str(ROOT/'scripts/build_cgroups.py'),str(group),*command]
+                if group:command=[sys.executable,str(ROOT/'Scripts/build_cgroups.py'),str(group),*command]
                 p=subprocess.Popen(command,cwd=ROOT,
                     stdout=out,stderr=subprocess.STDOUT,start_new_session=True)
                 self.processes[module]=p
@@ -202,8 +202,7 @@ def main():
         proposed.update(re.findall(r'^OK \[\d+/\d+\] (.+)$',Path(filename).read_text(),re.M))
     # Compiled files are candidates only: Lake must validate their traces before
     # we skip them. Logs from another workflow may cover only a small subset.
-    for base in (ROOT/'.lake/build/lib/lean',
-                 ROOT/'resources/lu-wang-checkout/lean/.lake/build/lib/lean'):
+    for base in (ROOT/'.lake/build/lib/lean',):
         if base.is_dir():
             proposed.update('.'.join(p.relative_to(base).with_suffix('').parts)
                             for p in base.rglob('*.olean'))

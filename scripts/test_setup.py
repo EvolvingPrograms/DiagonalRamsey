@@ -4,7 +4,10 @@ from build_lean import ROOT, source, parse_source, closure
 
 class SetupTests(unittest.TestCase):
     def test_no_legacy_or_external_project_imports(self):
-        for path in (ROOT/'lean').rglob('*.lean'):
+        paths = [p for directory in [ROOT/'Support', *ROOT.glob('S[1-8]_*')]
+                 for p in directory.rglob('*.lean')]
+        self.assertGreater(len(paths), 0)
+        for path in paths:
             for name in parse_source(path)[1]:
                 self.assertFalse(name.startswith(('Ramsey2','RamseyCurrent','RamseyRefinement','RamseyLean','SharpEnvelope')))
                 if source(name) is None:

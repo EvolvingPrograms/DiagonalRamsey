@@ -8,6 +8,6 @@
   main theorem, without importing the challenge.
 
 [Comparator configuration](comparator.json) pins the tools, statement hashes,
-and theorem name. Run `python3 scripts/comparator.py` after building the proof
+and theorem name. Run `python3 Scripts/comparator.py` after building the proof
 on Linux. Comparator checks agreement with the independent statement and
 permits only `propext`, `Classical.choice`, and `Quot.sound`.

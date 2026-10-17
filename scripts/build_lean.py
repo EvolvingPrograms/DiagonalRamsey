@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def source(name):
     if name.startswith(('Mathlib.', 'Batteries.', 'Aesop.', 'Qq.', 'Lean.', 'Init.', 'Std.')):
         return None
-    root = 'challenges' if name.startswith('Comparison.') else 'lean'
+    root = 'Challenges' if name.startswith('Comparison.') else '.'
     path = ROOT / root / (name.replace('.', '/') + '.lean')
     if path.is_file():
         return path

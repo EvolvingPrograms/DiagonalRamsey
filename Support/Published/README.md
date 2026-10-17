@@ -13,8 +13,8 @@ arguments, finite-host closure and profile-bank framework. We reorganized
 imports for this repository and connect their machinery to our strengthened
 controls and final construction.
 
-See the [authors' MIT notice](../../../licenses/Zhao-Booth-Clibborn-Schwahn.txt)
-and [NOTICE](../../../NOTICE.md).
+See the [authors' MIT notice](../../NOTICE.md#inherited-license-notices)
+and [NOTICE](../../NOTICE.md).
 
 ## Contents
 

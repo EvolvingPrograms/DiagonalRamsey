@@ -27,7 +27,7 @@ $$m f(a/r)_+^s+(1-m)f(b/r)_+^s\le\mathbb E\left[f(Z)_+^s\right].$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`two_cell_moments`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L1_ConditionalJensen.lean#L61)
+[`two_cell_moments`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L1_ConditionalJensen.lean#L61)
 
 ```lean
 theorem two_cell_moments {ι : Type*} (Y : Finset ι) (P : ι → Prop)
@@ -67,7 +67,7 @@ a&>r\frac{1-q}{q}\left(1-e^{\ell/r}\right).
 
 The threshold is written using the inherited function `LF` in this declaration; `ellF` is the logarithmic expression expanded above. The source also records the first blue-cell inequality.
 
-[`graph_row_first_cell`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L1_ConditionalJensen.lean#L105)
+[`graph_row_first_cell`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L1_ConditionalJensen.lean#L105)
 
 ```lean
 theorem graph_row_first_cell
@@ -114,7 +114,7 @@ $$-\frac rt\left((V/m)^{1/s}-1\right)
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`scaled_mean_bounds`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L2_FiniteBounds.lean#L28)
+[`scaled_mean_bounds`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L2_FiniteBounds.lean#L28)
 
 ```lean
 theorem scaled_mean_bounds {m r s t U V a : ℝ}
@@ -146,7 +146,7 @@ r_n\left(W_n^{1/(\beta r_n)}-1\right)&\longrightarrow\frac{\log W}{\beta}.
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`tendsto_clipped_power`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L3_PowerLimits.lean#L83)
+[`tendsto_clipped_power`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L3_PowerLimits.lean#L83)
 
 ```lean
 theorem tendsto_clipped_power {ι : Type*} {l : Filter ι}
@@ -156,7 +156,7 @@ theorem tendsto_clipped_power {ι : Type*} {l : Filter ι}
       (𝓝 (Real.exp (β * A)))
 ```
 
-[`tendsto_root_slack`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L3_PowerLimits.lean#L108)
+[`tendsto_root_slack`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L3_PowerLimits.lean#L108)
 
 ```lean
 theorem tendsto_root_slack {ι : Type*} {l : Filter ι}
@@ -187,14 +187,14 @@ U(q)=(\mu/q)^{\beta w}.$$
 
 Use `p := d` in `certA`. The source writes the positive budget as `exp (β * certB μ w q)`, equivalent to the displayed real power under the stated positivity assumptions.
 
-[`certA`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L26)
+[`certA`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L26)
 
 ```lean
 noncomputable def certA (p w x q : ℝ) : ℝ :=
   (1 - q) / q * Real.log (p * (1 - q) ^ w / x)
 ```
 
-[`certU`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L34)
+[`certU`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_Cert.lean#L34)
 
 ```lean
 noncomputable def certU (μ w β q : ℝ) : ℝ :=
@@ -213,14 +213,14 @@ $$d\le\exp\left(
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`densityCap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L4_DensityGap.lean#L89)
+[`densityCap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L4_DensityGap.lean#L89)
 
 ```lean
 noncomputable def densityCap (μ w β x : ℝ) : ℝ :=
   Real.exp ((Real.log x - w * Real.log (1 - μ)) / (1 + μ / (β * (1 - μ))))
 ```
 
-[`density_le_cap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L4_DensityGap.lean#L103)
+[`density_le_cap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L4_DensityGap.lean#L103)
 
 ```lean
 theorem density_le_cap {d μ w β x q : ℝ}
@@ -244,7 +244,7 @@ $$\left(1+\frac q{\beta(1-q)}\right)\log d
 
 This intermediate inequality is the local quantity `T ≤ log x` in the proof of `density_log_gap`; the declaration below states the consequence after replacing `q` by `μ`.
 
-[The intermediate quantity](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L4_DensityGap.lean#L60-L73) is defined and bounded inside that proof:
+[The intermediate quantity](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L4_DensityGap.lean#L60-L73) is defined and bounded inside that proof:
 
 ```lean
   let T := (1 + q / (β * (1 - q))) * Real.log d + w * Real.log (1 - q) +
@@ -253,7 +253,7 @@ This intermediate inequality is the local quantity `T ≤ log x` in the proof of
 
 The proof then establishes `hT : T ≤ Real.log x` before comparing the ratios `q` and `μ`.
 
-[`density_log_gap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L4_DensityGap.lean#L45)
+[`density_log_gap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L4_DensityGap.lean#L45)
 
 ```lean
 theorem density_log_gap {d μ w β x q : ℝ}
@@ -276,7 +276,7 @@ $$\log(1-\mu)\le\log(1-q)+\frac q{1-q}\log\frac q\mu.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`bernoulli_log_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L4_DensityGap.lean#L21)
+[`bernoulli_log_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L4_DensityGap.lean#L21)
 
 ```lean
 private theorem bernoulli_log_bound {q μ : ℝ}
@@ -306,15 +306,15 @@ B_n\longrightarrow\frac{\log(U(q)/d)}{\beta}.
 
 The first two declarations supply the upper bound and its limit. `first_cell_limit` uses these to compare the limiting lower threshold without assuming convergence of the scaled means.
 
-[`scaled_mean_bounds`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L2_FiniteBounds.lean#L28)
+[`scaled_mean_bounds`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L2_FiniteBounds.lean#L28)
 
 Declaration shown above.
 
-[`tendsto_root_slack`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L3_PowerLimits.lean#L108)
+[`tendsto_root_slack`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L3_PowerLimits.lean#L108)
 
 Declaration shown above.
 
-[`first_cell_limit`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L4_DensityGap.lean#L119)
+[`first_cell_limit`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S3_TwoCellReduction/L4_DensityGap.lean#L119)
 
 ```lean
 theorem first_cell_limit {r m U a A₀ : ℕ → ℝ} {p U₀ A₀₀ β : ℝ}

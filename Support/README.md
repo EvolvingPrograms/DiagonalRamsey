@@ -11,4 +11,4 @@ theorem. This library combines inherited mathematics with our control certificat
 | Published | 52 | Zhao–Booth-Clibborn–Schwahn weighted-potential, closure and profile-bank lemmas |
 | Controls | 89 | Our certified control functions for the improved construction |
 
-See [source attribution and licenses](../../NOTICE.md).
+See [source attribution and licenses](../NOTICE.md).

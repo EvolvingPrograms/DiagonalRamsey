@@ -11,7 +11,7 @@ Developed in this project on top of the
 [analytic checking library](../Analysis/README.md).
 Our contribution here is the control constructions and their certified
 connections to those inherited interfaces, not the underlying Ramsey framework.
-See [NOTICE](../../../NOTICE.md) and the repository's [MIT license](../../../LICENSE).
+See [NOTICE](../../NOTICE.md) and the repository's [MIT license](../../LICENSE).
 
 ## Contents
 

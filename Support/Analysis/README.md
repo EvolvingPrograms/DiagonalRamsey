@@ -17,7 +17,7 @@ The analytic library is not original to this repository.
 origin in RamseyLean revision `90e87da214701dd6eb3d56a2c7121839d8269d14`;
 Lu–Wang adapted that backend to the dyadic scale $2^{224}$.
 See [RamseyLean attribution](../Ramsey/README.md), the
-[Lu–Wang license](../../../licenses/LuWang.txt), and [NOTICE](../../../NOTICE.md).
+[Lu–Wang license](../../NOTICE.md#inherited-license-notices), and [NOTICE](../../NOTICE.md).
 
 ## Contents
 

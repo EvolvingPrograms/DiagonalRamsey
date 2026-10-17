@@ -14,8 +14,8 @@ Their modules originally used the namespace `RamseyCurrent`.
 Our adaptation includes reorganized certificate checks, precision and proof
 maintenance changes, and interfaces needed by the improved construction.
 The retained-set framework and inherited source data are credited to Lu–Wang.
-See their [MIT notice](../../../licenses/LuWang.txt) and
-[NOTICE](../../../NOTICE.md).
+See their [MIT notice](../../NOTICE.md#inherited-license-notices) and
+[NOTICE](../../NOTICE.md).
 
 ## Contents
 

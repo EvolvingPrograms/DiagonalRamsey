@@ -25,7 +25,7 @@ $$d_R(G)\ge p,\quad \ell/k\in I,\quad
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`BankProfile.Assert`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L42)
+[`BankProfile.Assert`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L42)
 
 ```lean
 def BankProfile.Assert (P : BankProfile) (C : ℝ) : Prop :=
@@ -51,7 +51,7 @@ $$0<\xi<\min\lbrace x,e^{-A_\sigma}\rbrace ,\qquad
 
 The displayed terminal inequalities are the final conjuncts of this validity predicate. Earlier conjuncts record the parameter ranges and complementary envelope.
 
-[`ComplementControlValid`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S6_GlobalConstruction/L1_ProfileSupport.lean#L22)
+[`ComplementControlValid`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S6_GlobalConstruction/L1_ProfileSupport.lean#L22)
 
 ```lean
 def ComplementControlValid {m : ℕ} (A B : Fin m → ℝ) (γ : SharpControl m) : Prop :=
@@ -88,7 +88,7 @@ $$|X|^w|Y|\ge C^{w+1}\xi^{-k}y_0^{-\ell}\nu^{-wt}$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`finite_host_closure`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S6_GlobalConstruction/L3_RouteComposition.lean#L30)
+[`finite_host_closure`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S6_GlobalConstruction/L3_RouteComposition.lean#L30)
 
 ```lean
 theorem finite_host_closure (p μ w β x ξ y₀ ν xhat yhat : ℝ)
@@ -129,7 +129,7 @@ $$\Phi_{p-\delta/n}(X,Y)\ge
 
 The displayed potential bound is the initial-moment estimate inside this closure proof. The declaration gives its clique-forcing consequence; the linked proof constructs the intermediate parameters and applies closure induction.
 
-[`finite_host_closure`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S6_GlobalConstruction/L3_RouteComposition.lean#L30)
+[`finite_host_closure`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S6_GlobalConstruction/L3_RouteComposition.lean#L30)
 
 Declaration shown above.
 
@@ -159,7 +159,7 @@ $$L_\gamma(t)=\frac{a_\gamma+t(b_\gamma+wc_\gamma)}{1+w}.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`SharpControl.leafLine`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_SourceBank.lean#L48)
+[`SharpControl.leafLine`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_SourceBank.lean#L48)
 
 ```lean
 noncomputable def SharpControl.leafLine {m : ℕ} (γ : SharpControl m) (r : ℝ) : ℝ :=
@@ -183,7 +183,7 @@ $$g(t)=g_0+\sum_{j=0}^{M-1}d_j\bigl(\min(t,u_{j+1})-u_j\bigr)_+.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`RoutePiece.g`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L64)
+[`RoutePiece.g`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L64)
 
 ```lean
 noncomputable def RoutePiece.g {ι : Type} {m : ℕ} (R : RoutePiece ι m) (s : ℝ) : ℝ :=
@@ -205,7 +205,7 @@ L_j(t)&<g(t)\qquad(t\in[u_j,u_{j+1}]).
 
 These are the domain, slope and height conditions in the `.route` branch of `ComplementPieceValid`.
 
-[`ComplementPieceValid`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S6_GlobalConstruction/L1_ProfileSupport.lean#L96)
+[`ComplementPieceValid`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S6_GlobalConstruction/L1_ProfileSupport.lean#L96)
 
 ```lean
 def ComplementPieceValid {ι : Type} {m : ℕ} (A B : Fin m → ℝ) (prof : ι → BankProfile) (P : BankProfile)
@@ -236,7 +236,7 @@ $$V(t)=\max\left\lbrace g(t),
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`RoutePiece.value`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L68)
+[`RoutePiece.value`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L68)
 
 ```lean
 noncomputable def RoutePiece.value {ι : Type} {m : ℕ} (R : RoutePiece ι m) (r : ℝ) : ℝ :=
@@ -287,7 +287,7 @@ $$F(t)\le A_h+B_ht-\eta_h(1+t),$$
 
 The grounded branch is the displayed baseline support inequality; `symmetricProfile luWangSource 1 t` is `F(t)`.
 
-[`SourceCell.Valid`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L124)
+[`SourceCell.Valid`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L124)
 
 ```lean
 def SourceCell.Valid {ι : Type} (prof : ι → BankProfile) (A B η lo hi : ℝ) : SourceCell ι → Prop
@@ -311,11 +311,11 @@ $$\max\lbrace L_R(t),tL_B(1/t)\rbrace \le A_h+B_ht-\eta_h(1+t).$$
 
 The `.pair` branch is the displayed complementary-profile inequality. The induction theorem below uses pointwise source witnesses together with the covering pieces to close all sources and profiles simultaneously.
 
-[`SourceCell.Valid`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L124)
+[`SourceCell.Valid`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Definitions/Def_DiagRamsey_JointBank.lean#L124)
 
 Declaration shown above.
 
-[`joint_profiles_of_pieces`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S6_GlobalConstruction/L2_JointInduction.lean#L24)
+[`joint_profiles_of_pieces`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S6_GlobalConstruction/L2_JointInduction.lean#L24)
 
 ```lean
 theorem joint_profiles_of_pieces

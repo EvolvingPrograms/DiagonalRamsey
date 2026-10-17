@@ -14,7 +14,7 @@ def inventory():
     result = closure()
     for name in ('lakefile.lean', 'lake-manifest.json', 'lean-toolchain'):
         result[name] = hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
-    for path in (ROOT/'challenges').rglob('*'):
+    for path in (ROOT/'Challenges').rglob('*'):
         if path.is_file():
             result[str(path.relative_to(ROOT))] = hashlib.sha256(path.read_bytes()).hexdigest()
     return result
@@ -38,7 +38,7 @@ def checkout(url, rev, path):
 def main():
     if platform.system() != 'Linux' or os.geteuid() == 0:
         raise SystemExit('Comparator requires an unprivileged Linux user and real Landrun.')
-    policy = json.loads((ROOT/'challenges/comparator.json').read_text())
+    policy = json.loads((ROOT/'Challenges/comparator.json').read_text())
     for name, expected in policy['specification_sha256'].items():
         if hashlib.sha256((ROOT/name).read_bytes()).hexdigest() != expected:
             raise RuntimeError('Changed comparison specification: '+name)

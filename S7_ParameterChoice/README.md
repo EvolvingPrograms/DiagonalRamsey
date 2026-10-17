@@ -22,37 +22,37 @@ x&=\frac{337503}{10^6},& \xi&=x-\frac4{10^{11}}.
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`p`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L15)
+[`p`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L15)
 
 ```lean
 def p : ℚ := 499999999 / 1000000000
 ```
 
-[`μ`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L16)
+[`μ`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L16)
 
 ```lean
 def μ : ℚ := 405108059767 / 1000000000000
 ```
 
-[`w`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L17)
+[`w`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L17)
 
 ```lean
 def w : ℚ := 104160447497 / 250000000000
 ```
 
-[`β`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L18)
+[`β`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L18)
 
 ```lean
 def β : ℚ := 9999999 / 10000000
 ```
 
-[`x`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L19)
+[`x`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L19)
 
 ```lean
 def x : ℚ := 337503 / 1000000
 ```
 
-[`ξ`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L20)
+[`ξ`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L20)
 
 ```lean
 def ξ : ℚ := x - 4 / 100000000000
@@ -73,13 +73,13 @@ B_s&=\frac{11640399543290787172985714354555752537}
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`sourceA`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L23)
+[`sourceA`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L23)
 
 ```lean
 def sourceA : ℚ := 1086180879838687 / 1000000000000000
 ```
 
-[`sourceB`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L24)
+[`sourceB`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L24)
 
 ```lean
 def sourceB : ℚ :=
@@ -99,19 +99,19 @@ b&=\frac{69827131}{20000000}=3.49135655.
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`rawExponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L28)
+[`rawExponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L28)
 
 ```lean
 def rawExponent : ℚ := 625145177 / 500000000
 ```
 
-[`exponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L29)
+[`exponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L29)
 
 ```lean
 def exponent : ℚ := 250058071 / 200000000
 ```
 
-[`base`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L30)
+[`base`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L1_Parameters.lean#L30)
 
 ```lean
 def base : ℚ := 69827131 / 20000000
@@ -135,14 +135,14 @@ $$\mathcal F(a)>\frac{1769}{10^8}>0,\qquad
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`entropy_gap_at_cutoff`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L2_Control.lean#L96)
+[`entropy_gap_at_cutoff`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L2_Control.lean#L96)
 
 ```lean
 theorem entropy_gap_at_cutoff :
     (1769 : ℝ) / 100000000 < entropyGap p μ w β x degreeCutoff
 ```
 
-[`entropy_gap_at_endpoint`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L2_Control.lean#L108)
+[`entropy_gap_at_endpoint`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L2_Control.lean#L108)
 
 ```lean
 theorem entropy_gap_at_endpoint :
@@ -168,7 +168,7 @@ $$T_i(q_i)\le h_i,\qquad T_i(q_{i+1})\le h_{i+1}.$$
 
 The last two conjuncts are the endpoint inequalities. `tangent.eval` is identified with the explicit support line by the expression identities in `Control/Expressions.lean`.
 
-[`cell_inputs`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Control/Envelope.lean#L93)
+[`cell_inputs`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Control/Envelope.lean#L93)
 
 ```lean
 theorem cell_inputs (i : Fin cells) :
@@ -190,7 +190,7 @@ $$wqv+H(q)\le\max_{0\le i\le192}(wq_i v+h_i).$$
 
 The cell lemma bounds the objective by the two adjacent endpoint lines; `objective_coverage` selects a covering cell and places its lines below the hinge majorant. The displayed maximum over all knots is the intermediate finite-envelope formulation.
 
-[`cell_objective_le_max`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Control/Cell.lean#L50)
+[`cell_objective_le_max`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Control/Cell.lean#L50)
 
 ```lean
 theorem cell_objective_le_max {l r m hL hR : ℚ} (hlr : l < r)
@@ -204,7 +204,7 @@ theorem cell_objective_le_max {l r m hL hR : ℚ} (hlr : l < r)
       max ((w : ℝ) * l * v + hL) ((w : ℝ) * r * v + hR)
 ```
 
-[`objective_coverage`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Control/Envelope.lean#L114)
+[`objective_coverage`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Control/Envelope.lean#L114)
 
 ```lean
 theorem objective_coverage : ∀ u ∈ Set.Ioc (0 : ℝ) 1, ∀ q ∈ complementDegrees p μ w β x,
@@ -225,7 +225,7 @@ $$h_{192}-a_{192}+\sum_{i=0}^{191}(a_{i+1}-a_i)e^{r_i}
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`integral_sum_lt`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Control/Integral.lean#L98)
+[`integral_sum_lt`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Control/Integral.lean#L98)
 
 ```lean
 theorem integral_sum_lt :
@@ -257,13 +257,13 @@ R(k,\ell)\le C e^{A_s k+B_s\ell}.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`source_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L3_Source.lean#L10)
+[`source_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/L3_Source.lean#L10)
 
 ```lean
 theorem source_bound : SourceAdmissible (sourceA : ℝ) (sourceB : ℝ)
 ```
 
-[`SourceAdmissible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S1_Definitions/L2_AdmissibleBounds.lean#L16)
+[`SourceAdmissible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S1_Definitions/L2_AdmissibleBounds.lean#L16)
 
 ```lean
 def SourceAdmissible (A B : ℝ) : Prop :=
@@ -293,7 +293,7 @@ $$A_i+B_it-\eta_0(1+t),\qquad \eta_0=\frac1{2\cdot10^{12}}.$$
 
 The common reserve is `HullCells.reserve = 1 / 2000000000000`. The declaration records the baseline-or-profile witness for each source line.
 
-[`pointwise_source_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/JointFamily.lean#L416)
+[`pointwise_source_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Source/JointFamily.lean#L416)
 
 ```lean
 theorem pointwise_source_cover (i : SourceIndex) {t : ℝ} (ht : 0 < t) :
@@ -314,19 +314,19 @@ t\ge\frac{58673404100}{12245974793}.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`leftEnd`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Tails.lean#L19)
+[`leftEnd`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Source/Tails.lean#L19)
 
 ```lean
 def leftEnd : ℚ := 80 / 353
 ```
 
-[`rightStart`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Tails.lean#L20)
+[`rightStart`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Source/Tails.lean#L20)
 
 ```lean
 def rightStart : ℚ := 58673404100 / 12245974793
 ```
 
-[`left_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Tails.lean#L48)
+[`left_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Source/Tails.lean#L48)
 
 ```lean
 theorem left_bound {t : ℝ} (ht : 0 < t) (hle : t ≤ (leftEnd : ℝ)) :
@@ -334,7 +334,7 @@ theorem left_bound {t : ℝ} (ht : 0 < t) (hle : t ≤ (leftEnd : ℝ)) :
       (sourceA : ℝ) + (sourceB : ℝ) * t - (reserve : ℝ) * (1 + t)
 ```
 
-[`right_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Tails.lean#L64)
+[`right_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Source/Tails.lean#L64)
 
 ```lean
 theorem right_bound {t : ℝ} (ht : 0 < t) (hle : (rightStart : ℝ) ≤ t) :
@@ -357,14 +357,14 @@ L_{\sigma(t)}(t)&=\min_jL_j(t).
 
 Equality at the crossing and affine linearity give the displayed difference formula. `selected_le` states that the selected line is below every line, hence realizes the finite minimum.
 
-[`crossing_values`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Hull.lean#L440)
+[`crossing_values`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Source/Hull.lean#L440)
 
 ```lean
 theorem crossing_values (j : Fin 129) :
     line j.castSucc (crossing j) = line j.succ (crossing j)
 ```
 
-[`selected_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Hull.lean#L480)
+[`selected_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S7_ParameterChoice/Source/Hull.lean#L480)
 
 ```lean
 theorem selected_le (t : ℝ) : ∀ j : Fin 130, line (selector t) t ≤ line j t

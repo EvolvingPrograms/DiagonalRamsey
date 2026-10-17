@@ -45,6 +45,7 @@ jobs:
           key: diagonal-ramsey-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean') }}-${{ github.run_id }}
           restore-keys: |
             diagonal-ramsey-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean') }}-
+            diagonal-ramsey-${{ runner.os }}-${{ runner.arch }}-
       - name: Set up pinned Lean and Mathlib
         uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865
         with:
@@ -55,9 +56,9 @@ jobs:
           use-github-cache: false
           use-mathlib-cache: true
       - name: Check sources and specification
-        run: python3 scripts/check_sources.py
+        run: python3 Scripts/check_sources.py
       - name: Prepare pinned comparison tools
-        run: python3 -u scripts/comparator.py --setup-only
+        run: python3 -u Scripts/comparator.py --setup-only
       - name: Build proof with memory-aware parallelism
         shell: bash
         env:
@@ -65,8 +66,8 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p .lake/build-progress
-          limits=$(python3 scripts/prepare_cgroups.py)
-          python3 -u scripts/build_lean_parallel.py --jobs "$JOBS" --memory-aware \
+          limits=$(python3 Scripts/prepare_cgroups.py)
+          python3 -u Scripts/build_lean_parallel.py --jobs "$JOBS" --memory-aware \
             --cgroup-root "$limits" --max-seconds 19800 \
             --summary-log .lake/build-progress/build.log \
             S8_RamseyBound.L4_MainTheorem | tee .lake/build-progress/build.log
@@ -74,7 +75,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          python3 -u scripts/comparator.py 2>&1 | tee .verification/comparator.log
+          python3 -u Scripts/comparator.py 2>&1 | tee .verification/comparator.log
       - name: Upload logs and verification receipts
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a

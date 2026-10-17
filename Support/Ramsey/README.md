@@ -14,7 +14,7 @@ used by Lu–Wang.
 
 Our copy includes proof-maintenance edits and uses the namespace `RamseyBasics`.
 These inherited theorems are not original results of this repository.
-See [NOTICE](../../../NOTICE.md) for the source revision and attribution.
+See [NOTICE](../../NOTICE.md) for the source revision and attribution.
 
 ## Contents
 

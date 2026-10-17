@@ -17,7 +17,7 @@ $$\nu_y=\frac{(g_y-c)^s}{\sum_{z\in Y}(g_z-c)^s}.$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`nuW`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L15)
+[`nuW`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L15)
 
 ```lean
 noncomputable def nuW (G : SimpleGraph V) (X Y : Finset V) (c s : ℝ) (y : V) : ℝ :=
@@ -40,7 +40,7 @@ $$\mathbb E_\nu\left[(1+Z)_+^s\right]\le (\mu/q)^{\beta w}.$$
 
 The source proves the strict inequality; weakening `<` to `≤` gives the displayed statement. Section variables in this inherited lemma are supplied by its source context.
 
-[`blue_lt`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_GraphRows.lean#L110)
+[`blue_lt`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_GraphRows.lean#L110)
 
 ```lean
 lemma blue_lt {μ w β : ℝ} (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (hμ0 : 0 < μ)
@@ -72,7 +72,7 @@ $$\mathbb E_\nu\left[\left(1-\frac q{1-q}Z\right)_+^s\right]
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`complementary_row_moment`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S2_MaximalConfigurations/L2_ComplementaryMoment.lean#L47)
+[`complementary_row_moment`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/S2_MaximalConfigurations/L2_ComplementaryMoment.lean#L47)
 
 ```lean
 theorem complementary_row_moment
@@ -112,7 +112,7 @@ $$V_i=\frac{\sum_{y\in Y}(g_y-c)^{s-1}
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`Vr`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L22)
+[`Vr`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L22)
 
 ```lean
 noncomputable def Vr (G : SimpleGraph V) (X Y : Finset V) (c s : ℝ) (i : V) : ℝ :=
@@ -133,7 +133,7 @@ $$\begin{aligned}
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`L1_V`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L277)
+[`L1_V`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L277)
 
 ```lean
 lemma L1_V (w r : ℝ) (hX : X.Nonempty) (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y)
@@ -143,7 +143,7 @@ lemma L1_V (w r : ℝ) (hX : X.Nonempty) (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, 
     ∑ i ∈ X, |Vr G X Y c s i - 1| ≤ 2 * (w / r) * X.card
 ```
 
-[`L1_pi`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L297)
+[`L1_pi`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L297)
 
 ```lean
 lemma L1_pi (w r θ : ℝ) (hw : 0 < w) (hwr : w < r) (hs : 1 ≤ s) (hX : X.Nonempty)
@@ -178,7 +178,7 @@ $$\rho=\sum_{y\in Y}\nu_y\left|1-\frac{H}{g_y-c}\right|.$$
 
 The displayed `ρ` is an abbreviation for the sum on the left of `rho_bound`, rather than a separate global Lean definition.
 
-[`rho_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L198)
+[`rho_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L198)
 
 ```lean
 lemma rho_bound (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (H θ ε : ℝ)
@@ -204,7 +204,7 @@ g_y-c&\ge\theta H &&(y\in Y),\\
 
 Instantiate `s = β * r`; the column lower factor `(1 - s / r) ^ (1 / s)` then becomes the displayed `θ`. The second lemma is the upper-tail estimate.
 
-[`wgp_col_lower`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_closure_wgp.lean#L195)
+[`wgp_col_lower`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_closure_wgp.lean#L195)
 
 ```lean
 lemma wgp_col_lower (G : SimpleGraph V) (X Y : Finset V) (c w r s : ℝ) (hs : 0 < s) (hsr : s < r)
@@ -214,7 +214,7 @@ lemma wgp_col_lower (G : SimpleGraph V) (X Y : Finset V) (c w r s : ℝ) (hs : 0
     ∀ y ∈ Y, (1 - s / r) ^ (1 / s) * momentNorm G X Y c s ≤ colDensity G X y - c
 ```
 
-[`crop`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L125)
+[`crop`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L125)
 
 ```lean
 lemma crop (w r : ℝ) (hX : X.Nonempty) (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y)
@@ -240,11 +240,11 @@ $$\begin{aligned}
 
 Combine `rho_bound` with `crop` above to bound its tail sum; `m_point` gives the second inequality directly.
 
-[`rho_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L198)
+[`rho_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L198)
 
 Declaration shown above.
 
-[`m_point`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L230)
+[`m_point`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L230)
 
 ```lean
 lemma m_point (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (H : ℝ) (hH : 0 ≤ H)
@@ -271,20 +271,20 @@ $$m_i-(c+H)=H(V_i-1)+
 
 This explanatory identity is proved inside `m_point` as the local equality `key`, using the auxiliary sums `A` and `C`. The declaration below records its triangle-inequality consequence; the linked proof contains the equality.
 
-[Auxiliary sums](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L246-L247):
+[Auxiliary sums](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L246-L247):
 
 ```lean
   set A := ∑ y ∈ Y, nuW G X Y c s y * hR G i y * (1 - H / uC G X c y)
   set C := ∑ y ∈ Y, nuW G X Y c s y * (1 - H / uC G X c y)
 ```
 
-[The resulting equality](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L256):
+[The resulting equality](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L256):
 
 ```lean
   have key : mr G X Y c s i - (c + H) = A + H * (Vr G X Y c s i - 1) - c * C := by linarith
 ```
 
-[`m_point`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L230)
+[`m_point`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Conc.lean#L230)
 
 Declaration shown above.
 
@@ -315,7 +315,7 @@ $$N\sum_{j=0}^{N-1}q_j
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`drift`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Drift.lean#L69)
+[`drift`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Drift.lean#L69)
 
 ```lean
 theorem drift {V : Type*} (X : Finset V) (hX : X.Nonempty) (q Vf : V → ℝ) (r γ : ℝ)
@@ -343,7 +343,7 @@ $$\sum_{j=0}^{N-1}q_j(D_{j+1}-D_j)
 
 The displayed summation-by-parts identity explains the sign. Lean uses the equivalent Abel inequality below; its terminal term vanishes when `D_N = 0`.
 
-[`abel_drift`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Calc.lean#L172)
+[`abel_drift`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Calc.lean#L172)
 
 ```lean
 theorem abel_drift (q D : ℕ → ℝ) (n : ℕ) (hq : ∀ k < n, q k ≤ q (k + 1))
@@ -371,7 +371,7 @@ $$\begin{aligned}
 
 `sumV_sub` supplies the double-counting equality; `Sbin` proves the resulting subset bound. The intermediate Jensen and maximality inequalities occur within its proof.
 
-[`sumV_sub`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L74)
+[`sumV_sub`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L74)
 
 ```lean
 lemma sumV_sub (A : Finset V) (hA : A.Nonempty) :
@@ -379,7 +379,7 @@ lemma sumV_sub (A : Finset V) (hA : A.Nonempty) :
       uC G X c y ^ (s - 1) * (colDensity G A y - c) / colMomentSum G X Y c s
 ```
 
-[`Sbin`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L175)
+[`Sbin`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L175)
 
 ```lean
 theorem Sbin (w r : ℝ) (hX : X.Nonempty) (hY : Y.Nonempty)
@@ -401,7 +401,7 @@ $$\sum_iq_i\mathbb E_\nu Z_i=\sum_iq_i(V_i-1).$$
 
 Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
 
-[`stationarity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L262)
+[`stationarity`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/Support/Published/Lemmas/DiagRamsey_SE_Graph.lean#L262)
 
 ```lean
 theorem stationarity (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) :

@@ -24,19 +24,22 @@ def code_only(text):
     return ''.join(result)
 
 def main():
-    for path in (ROOT/'lean').rglob('*.lean'):
+    production_dirs = [ROOT / 'Support', *sorted(ROOT.glob('S[1-8]_*'))]
+    if len(production_dirs) != 9 or not all(path.is_dir() for path in production_dirs):
+        raise RuntimeError('Expected Support and all eight proof sections')
+    for path in (file for directory in production_dirs for file in directory.rglob('*.lean')):
         code=code_only(path.read_text())
         if re.search(r'\b(sorry|admit|axiom|native_decide|sorryAx)\b|\+\s*native\b',code):
             raise RuntimeError('Unapproved proof syntax: '+str(path))
         if any(name.startswith('Comparison.') for name in parse_source(path)[1]):
             raise RuntimeError('Production imports Comparator specification')
-    policy=json.loads((ROOT/'challenges/comparator.json').read_text())
+    policy=json.loads((ROOT/'Challenges/comparator.json').read_text())
     for name,expected in policy['specification_sha256'].items():
         if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=expected:
             raise RuntimeError('Changed specification: '+name)
-    definitions=ROOT/'challenges/Comparison/Definitions.lean'
+    definitions=ROOT/'Challenges/Comparison/Definitions.lean'
     assert all(i.startswith('Mathlib.') for i in parse_source(definitions)[1])
-    challenge=code_only((ROOT/'challenges/Comparison/Challenge.lean').read_text())
+    challenge=code_only((ROOT/'Challenges/Comparison/Challenge.lean').read_text())
     assert len(re.findall(r'\bsorry\b',challenge))==1
     print(f'PASS: {len(closure())} production modules; independent specification; no production admissions.')
 
