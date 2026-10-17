@@ -110,7 +110,7 @@ $$\operatorname{calls}(P,z;q)
   =\bigl[(P,z,[q_i,q_{i+1}])\bigr]_{i=0}^{n-1}.$$
 
 `CallF.adjacent` in [FastRoute.lean](Routes/FastRoute.lean) implements this equation.
-Concatenating uniform runs specifies the call lists in `Routes/Remaining/`,
+Concatenating uniform runs specifies the cached and remaining route call lists,
 including each donor, retained weight and breakpoint pair. Arithmetic
 progressions specify the route knots, and concatenated constant runs use
 `List.replicate` to specify density lists. The route checks apply to the
