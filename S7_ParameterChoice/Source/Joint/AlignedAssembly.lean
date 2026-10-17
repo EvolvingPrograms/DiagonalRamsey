@@ -1,25 +1,5 @@
 import S7_ParameterChoice.Source.Joint.AlignedRuns
-import S7_ParameterChoice.Source.Joint.AlignedChecks0
-import S7_ParameterChoice.Source.Joint.AlignedChecks1
-import S7_ParameterChoice.Source.Joint.AlignedChecks2
-import S7_ParameterChoice.Source.Joint.AlignedChecks3
-import S7_ParameterChoice.Source.Joint.AlignedChecks4
-import S7_ParameterChoice.Source.Joint.AlignedChecks5
-import S7_ParameterChoice.Source.Joint.AlignedChecks6
-import S7_ParameterChoice.Source.Joint.AlignedChecks7
-import S7_ParameterChoice.Source.Joint.AlignedChecks8
-import S7_ParameterChoice.Source.Joint.AlignedChecks9
-import S7_ParameterChoice.Source.Joint.AlignedChecks10
-import S7_ParameterChoice.Source.Joint.AlignedChecks11
-import S7_ParameterChoice.Source.Joint.AlignedChecks12
-import S7_ParameterChoice.Source.Joint.AlignedChecks13
-import S7_ParameterChoice.Source.Joint.AlignedChecks14
-import S7_ParameterChoice.Source.Joint.AlignedChecks15
-import S7_ParameterChoice.Source.Joint.AlignedChecks16
-import S7_ParameterChoice.Source.Joint.AlignedChecks17
-import S7_ParameterChoice.Source.Joint.AlignedChecks18
-import S7_ParameterChoice.Source.Joint.AlignedChecks19
-import S7_ParameterChoice.Source.Joint.AlignedChecks20
+import S7_ParameterChoice.Source.Joint.Checks.Aligned
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

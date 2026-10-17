@@ -46,9 +46,9 @@ used to stop a route is available on proper subgraphs without circularity.
 | `InheritedCertificates/` | Numerical validity of inherited controls |
 | `RemainingRoutes/` | Route constructions |
 | [CachedRouteChecks/](CachedRouteChecks/) | Prefix, cell, linear and zip route checks |
-| `LeafChecks*`, `LeafTerminals*` | Leaf geometry and terminal inequalities |
+| [Checks/Leaves.lean](Checks/Leaves.lean), [Checks/Terminals.lean](Checks/Terminals.lean) | Leaf geometry and terminal inequalities |
 | `RawCoverage/` | Coverage of raw-profile intervals |
-| `AlignedChecks*`, `LocalChecks*`, `ComplementaryBatch*` | Closed-profile transfer checks |
+| [Checks/Aligned.lean](Checks/Aligned.lean), [Checks/Local.lean](Checks/Local.lean), [Checks/Complementary.lean](Checks/Complementary.lean) | Closed-profile transfer checks |
 
 `Cached` names refer to reusing proved constructions; these are proof sources,
 not disposable compiler-cache files. Numbered modules split checking work into

@@ -1,24 +1,5 @@
 import S7_ParameterChoice.Source.Joint.ComplementaryChecks
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch0
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch1
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch2
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch3
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch4
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch5
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch6
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch7
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch8
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch9
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch10
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch11
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch12
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch13
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch14
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch15
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch16
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch17
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch18
-import S7_ParameterChoice.Source.Joint.ComplementaryBatch19
+import S7_ParameterChoice.Source.Joint.Checks.Complementary
 
 set_option autoImplicit false
 set_option maxRecDepth 100000
