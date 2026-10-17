@@ -132,6 +132,8 @@ constructs this sequence using exact rational arithmetic. On cell $j$,
 the integral is $P_j+d_j(x-u_j)$, as proved by `IntegralPrefixes.eval` in
 [FastIntegral.lean](Routes/FastIntegral.lean). Cached and remaining routes
 use this construction for their prefix values.
+The theorem `integralPrefixesCheck_generated` proves that these values pass
+the recurrence checker whenever there is one more knot than cell density.
 
 [Partitions.lean](Routes/Remaining/Partitions.lean) specifies knots, densities
 and donor calls. [Rows.lean](Routes/Remaining/Rows.lean) combines these with the

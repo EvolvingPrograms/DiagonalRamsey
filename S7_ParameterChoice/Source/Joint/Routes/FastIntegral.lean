@@ -1,4 +1,5 @@
 import S7_ParameterChoice.Source.Joint.Routes.FastRoute
+import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
 
 /-! Linear prefix certificates for the clamped piecewise linear integral. -/
 set_option autoImplicit false
@@ -13,6 +14,55 @@ inductive IntegralPrefixes : List ℚ → List ℚ → List ℚ → Prop
       (recurrence : q = p + d * (v - u))
       (tail : IntegralPrefixes (v :: us) ds (q :: ps)) :
       IntegralPrefixes (u :: v :: us) (d :: ds) (p :: q :: ps)
+
+@[simp] theorem FQ.toQ_normalized (p : ℚ) :
+    (⟨p.num, p.den - 1⟩ : FQ).toQ = p := by
+  simp only [FQ.toQ, Nat.sub_add_cancel (Nat.one_le_iff_ne_zero.mpr p.den_ne_zero)]
+  exact Rat.num_div_den p
+
+@[simp] theorem FQ.integralPrefixesFrom_head (p : ℚ) (us ds : List FQ) :
+    (integralPrefixesFrom p us ds).headD FQ.zero = ⟨p.num, p.den - 1⟩ := by
+  cases us with
+  | nil => rfl
+  | cons u us =>
+    cases us with
+    | nil => rfl
+    | cons v us => cases ds <;> rfl
+
+/-- Cumulative integration satisfies the prefix recurrence for every partition. -/
+theorem integralPrefixesFrom_valid (p : ℚ) (us ds : List FQ)
+    (hlen : us.length = ds.length + 1) :
+    IntegralPrefixes (mapQ us) (mapQ ds) (mapQ (FQ.integralPrefixesFrom p us ds)) := by
+  induction ds generalizing p us with
+  | nil =>
+    cases us with
+    | nil => simp at hlen
+    | cons u us =>
+      have hz : us = [] := by simpa using hlen
+      subst us
+      simpa [mapQ, FQ.integralPrefixesFrom] using IntegralPrefixes.last u.toQ p
+  | cons d ds ih =>
+    cases us with
+    | nil => simp at hlen
+    | cons u us =>
+      cases us with
+      | nil => simp at hlen
+      | cons v us =>
+        have ht := ih (p + d.toQ * (v.toQ - u.toQ)) (v :: us) (by simpa using hlen)
+        cases he : FQ.integralPrefixesFrom (p + d.toQ * (v.toQ - u.toQ)) (v :: us) ds with
+        | nil =>
+          have hz := FQ.integralPrefixesFrom_head (p + d.toQ * (v.toQ - u.toQ)) (v :: us) ds
+          -- The recursive output always contains its initial value.
+          cases us <;> cases ds <;> simp [FQ.integralPrefixesFrom] at he
+        | cons q ps =>
+          have hq := FQ.integralPrefixesFrom_head (p + d.toQ * (v.toQ - u.toQ)) (v :: us) ds
+          rw [he] at hq
+          simp only [List.headD_cons] at hq
+          simp only [he, mapQ, List.map_cons] at ht
+          simp only [FQ.integralPrefixesFrom, he, mapQ, List.map_cons, FQ.toQ_normalized]
+          apply IntegralPrefixes.step
+          · rw [hq, FQ.toQ_normalized]
+          · exact ht
 
 theorem IntegralPrefixes.lengths {us ds ps : List ℚ} (h : IntegralPrefixes us ds ps) :
     us.length = ds.length + 1 ∧ ps.length = us.length := by
@@ -87,6 +137,30 @@ def integralPrefixesCheck : List FQ → List FQ → List FQ → Bool
   | u :: v :: us, d :: ds, p :: q :: ps =>
       eq q (add p (mul d (sub v u))) && integralPrefixesCheck (v :: us) ds (q :: ps)
   | _, _, _ => false
+
+/-- The finite checker recognizes every mathematically valid prefix table. -/
+theorem integralPrefixesCheck_complete : ∀ us ds ps : List FQ,
+    IntegralPrefixes (mapQ us) (mapQ ds) (mapQ ps) → integralPrefixesCheck us ds ps = true
+  | [u], [], [p], _ => rfl
+  | u :: v :: us, d :: ds, p :: q :: ps, h => by
+      cases h with
+      | step _ _ _ _ _ _ _ _ hr ht =>
+        simp only [integralPrefixesCheck, Bool.and_eq_true, FQ.eq_eq,
+          decide_eq_true_eq, FQ.toQ_add, FQ.toQ_mul, FQ.toQ_sub]
+        exact ⟨hr, integralPrefixesCheck_complete _ _ _ ht⟩
+  | [], _, _, h => by cases h
+  | [_], _ :: _, _, h => by cases h
+  | [_], [], [], h => by cases h
+  | [_], [], _ :: _ :: _, h => by cases h
+  | _ :: _ :: _, [], _, h => by cases h
+  | _ :: _ :: _, _ :: _, [], h => by cases h
+  | _ :: _ :: _, _ :: _, [_], h => by cases h
+
+/-- Constructed prefixes need only the partition-length condition. -/
+theorem integralPrefixesCheck_generated (us ds : List FQ)
+    (hlen : us.length = ds.length + 1) :
+    integralPrefixesCheck us ds (FQ.integralPrefixes us ds) = true :=
+  integralPrefixesCheck_complete _ _ _ (integralPrefixesFrom_valid 0 us ds hlen)
 
 theorem integralPrefixesCheck_sound : ∀ us ds ps : List FQ,
     integralPrefixesCheck us ds ps = true → IntegralPrefixes (mapQ us) (mapQ ds) (mapQ ps)
