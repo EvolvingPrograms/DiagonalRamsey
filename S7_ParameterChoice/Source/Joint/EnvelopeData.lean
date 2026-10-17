@@ -31,6 +31,28 @@ and finish at `μ`. -/
 def degreeCells (μ : ℚ) (tangents : List Tangent) : List Cell :=
   degreeCellsFrom μ 0 tangents
 
+private theorem degreeCellsFrom_mem (μ lo : ℚ) (ts : List Tangent) (d : Cell)
+    (hd : d ∈ degreeCellsFrom μ lo ts) :
+    ∃ t ∈ ts, d.slope = t.m ∧ d.intercept = t.c := by
+  induction ts generalizing lo with
+  | nil => simp [degreeCellsFrom] at hd
+  | cons t ts ih =>
+    change d ∈ _ :: degreeCellsFrom μ _ ts at hd
+    rcases List.mem_cons.mp hd with rfl | hd
+    · exact ⟨t, List.mem_cons_self, rfl, rfl⟩
+    · obtain ⟨u, hu, hm, hc⟩ := ih _ hd
+      exact ⟨u, List.mem_cons_of_mem _ hu, hm, hc⟩
+
+/-- Every generated degree cell carries the coefficients of its source tangent. -/
+theorem degreeCells_matches (μ : ℚ) (ts : List Tangent) :
+    (degreeCells μ ts).all (fun d =>
+      ts.any (fun t => decide (d.slope = t.m ∧ d.intercept = t.c))) = true := by
+  apply List.all_eq_true.mpr
+  intro d hd
+  obtain ⟨t, ht, hm, hc⟩ := degreeCellsFrom_mem μ 0 ts d hd
+  apply List.any_eq_true.mpr
+  exact ⟨t, ht, by simp only [hm, hc, and_self, decide_true]⟩
+
 private def integralCellsFrom (w cutoff lo : ℚ) : List Cell → List Cell
   | [] => []
   | d :: ds =>
