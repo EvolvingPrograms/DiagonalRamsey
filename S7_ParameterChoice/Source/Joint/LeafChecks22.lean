@@ -1,3 +1,4 @@
+import S7_ParameterChoice.Source.Joint.ArithmeticData
 import S7_ParameterChoice.Source.Joint.LeafIndex
 
 set_option autoImplicit false
@@ -14,7 +15,7 @@ theorem run628_checked : Entry.check ⟨488, 549, ⟨1, 399999999⟩, ⟨0, 3, 3
 theorem run629_checked : Entry.check ⟨490, 550, ⟨1, 399999999⟩, ⟨0, 1, 3, ⟨21, 79⟩, ⟨23, 79⟩⟩, [⟨21, 79⟩, ⟨11, 39⟩, ⟨23, 79⟩]⟩ = true := by decide +kernel
 theorem run630_checked : Entry.check ⟨492, 551, ⟨1, 399999999⟩, ⟨0, 1, 3, ⟨1, 3⟩, ⟨11, 39⟩⟩, [⟨1, 3⟩, ⟨21, 79⟩, ⟨11, 39⟩]⟩ = true := by decide +kernel
 theorem run631_checked : Entry.check ⟨494, 552, ⟨1, 399999999⟩, ⟨0, 1, 3, ⟨19, 79⟩, ⟨21, 79⟩⟩, [⟨19, 79⟩, ⟨1, 3⟩, ⟨21, 79⟩]⟩ = true := by decide +kernel
-theorem run632_checked : Entry.check ⟨496, 553, ⟨1, 399999999⟩, ⟨0, 0, 4, ⟨1, 4⟩, ⟨19, 79⟩⟩, [⟨1, 4⟩, ⟨17, 79⟩, ⟨9, 39⟩, ⟨19, 79⟩]⟩ = true := by decide +kernel
+theorem run632_checked : Entry.check ⟨496, 553, ⟨1, 399999999⟩, ⟨0, 0, 4, ⟨1, 4⟩, ⟨19, 79⟩⟩, (FQ.progression (1 / 5) (1 / 80) 4)⟩ = true := by decide +kernel
 theorem run633_checked : Entry.check ⟨497, 554, ⟨1, 399999999⟩, ⟨0, 0, 2, ⟨3, 15⟩, ⟨1, 4⟩⟩, [⟨3, 15⟩, ⟨1, 4⟩]⟩ = true := by decide +kernel
 theorem run634_checked : Entry.check ⟨498, 555, ⟨1, 399999999⟩, ⟨0, 1, 2, ⟨7, 39⟩, ⟨3, 15⟩⟩, [⟨7, 39⟩, ⟨3, 15⟩]⟩ = true := by decide +kernel
 theorem run635_checked : Entry.check ⟨499, 556, ⟨1, 399999999⟩, ⟨0, 1, 2, ⟨13, 79⟩, ⟨7, 39⟩⟩, [⟨13, 79⟩, ⟨7, 39⟩]⟩ = true := by decide +kernel
@@ -22,17 +23,17 @@ theorem run636_checked : Entry.check ⟨501, 557, ⟨1, 399999999⟩, ⟨0, 0, 2
 theorem run637_checked : Entry.check ⟨501, 558, ⟨1, 399999999⟩, ⟨0, 1, 3, ⟨3, 19⟩, ⟨7, 39⟩⟩, [⟨3, 19⟩, ⟨13, 79⟩, ⟨7, 39⟩]⟩ = true := by decide +kernel
 theorem run638_checked : Entry.check ⟨502, 559, ⟨1, 399999999⟩, ⟨0, 0, 2, ⟨1, 7⟩, ⟨11, 79⟩⟩, [⟨1, 7⟩, ⟨11, 79⟩]⟩ = true := by decide +kernel
 theorem run639_checked : Entry.check ⟨505, 560, ⟨1, 399999999⟩, ⟨0, 3, 2, ⟨1, 19⟩, ⟨1, 15⟩⟩, [⟨1, 19⟩, ⟨1, 15⟩]⟩ = true := by decide +kernel
-theorem run640_checked : Entry.check ⟨528, 561, ⟨1, 399999999⟩, ⟨0, 0, 57, ⟨297, 79⟩, ⟨353, 79⟩⟩, [⟨297, 79⟩, ⟨149, 39⟩, ⟨299, 79⟩, ⟨15, 3⟩, ⟨301, 79⟩, ⟨151, 39⟩, ⟨303, 79⟩, ⟨19, 4⟩, ⟨61, 15⟩, ⟨153, 39⟩, ⟨307, 79⟩, ⟨77, 19⟩, ⟨309, 79⟩, ⟨31, 7⟩, ⟨311, 79⟩, ⟨39, 9⟩, ⟨313, 79⟩, ⟨157, 39⟩, ⟨63, 15⟩, ⟨79, 19⟩, ⟨317, 79⟩, ⟨159, 39⟩, ⟨319, 79⟩, ⟨4, 0⟩, ⟨321, 79⟩, ⟨161, 39⟩, ⟨323, 79⟩, ⟨81, 19⟩, ⟨65, 15⟩, ⟨163, 39⟩, ⟨327, 79⟩, ⟨41, 9⟩, ⟨329, 79⟩, ⟨33, 7⟩, ⟨331, 79⟩, ⟨83, 19⟩, ⟨333, 79⟩, ⟨167, 39⟩, ⟨67, 15⟩, ⟨21, 4⟩, ⟨337, 79⟩, ⟨169, 39⟩, ⟨339, 79⟩, ⟨17, 3⟩, ⟨341, 79⟩, ⟨171, 39⟩, ⟨343, 79⟩, ⟨43, 9⟩, ⟨69, 15⟩, ⟨173, 39⟩, ⟨347, 79⟩, ⟨87, 19⟩, ⟨349, 79⟩, ⟨35, 7⟩, ⟨351, 79⟩, ⟨22, 4⟩, ⟨353, 79⟩]⟩ = true := by decide +kernel
-theorem run641_checked : Entry.check ⟨531, 562, ⟨1, 399999999⟩, ⟨0, 0, 31, ⟨67, 19⟩, ⟨149, 39⟩⟩, [⟨67, 19⟩, ⟨269, 79⟩, ⟨27, 7⟩, ⟨271, 79⟩, ⟨17, 4⟩, ⟨273, 79⟩, ⟨137, 39⟩, ⟨55, 15⟩, ⟨69, 19⟩, ⟨277, 79⟩, ⟨139, 39⟩, ⟨279, 79⟩, ⟨7, 1⟩, ⟨281, 79⟩, ⟨141, 39⟩, ⟨283, 79⟩, ⟨71, 19⟩, ⟨57, 15⟩, ⟨143, 39⟩, ⟨287, 79⟩, ⟨18, 4⟩, ⟨289, 79⟩, ⟨29, 7⟩, ⟨291, 79⟩, ⟨73, 19⟩, ⟨293, 79⟩, ⟨147, 39⟩, ⟨59, 15⟩, ⟨37, 9⟩, ⟨297, 79⟩, ⟨149, 39⟩]⟩ = true := by decide +kernel
-theorem run642_checked : Entry.check ⟨540, 563, ⟨1, 399999999⟩, ⟨0, 36, 22, ⟨47, 15⟩, ⟨16, 4⟩⟩, [⟨47, 15⟩, ⟨59, 19⟩, ⟨237, 79⟩, ⟨119, 39⟩, ⟨239, 79⟩, ⟨3, 0⟩, ⟨241, 79⟩, ⟨121, 39⟩, ⟨243, 79⟩, ⟨61, 19⟩, ⟨49, 15⟩, ⟨123, 39⟩, ⟨247, 79⟩, ⟨31, 9⟩, ⟨249, 79⟩, ⟨25, 7⟩, ⟨251, 79⟩, ⟨63, 19⟩, ⟨253, 79⟩, ⟨127, 39⟩, ⟨51, 15⟩, ⟨16, 4⟩]⟩ = true := by decide +kernel
-theorem run643_checked : Entry.check ⟨543, 564, ⟨1, 399999999⟩, ⟨0, 8, 33, ⟨109, 39⟩, ⟨25, 7⟩⟩, [⟨109, 39⟩, ⟨219, 79⟩, ⟨11, 3⟩, ⟨221, 79⟩, ⟨111, 39⟩, ⟨223, 79⟩, ⟨14, 4⟩, ⟨45, 15⟩, ⟨113, 39⟩, ⟨227, 79⟩, ⟨57, 19⟩, ⟨229, 79⟩, ⟨23, 7⟩, ⟨231, 79⟩, ⟨29, 9⟩, ⟨233, 79⟩, ⟨117, 39⟩, ⟨47, 15⟩, ⟨59, 19⟩, ⟨237, 79⟩, ⟨119, 39⟩, ⟨239, 79⟩, ⟨3, 0⟩, ⟨241, 79⟩, ⟨121, 39⟩, ⟨243, 79⟩, ⟨61, 19⟩, ⟨49, 15⟩, ⟨123, 39⟩, ⟨247, 79⟩, ⟨31, 9⟩, ⟨249, 79⟩, ⟨25, 7⟩]⟩ = true := by decide +kernel
-theorem run644_checked : Entry.check ⟨545, 565, ⟨1, 399999999⟩, ⟨0, 45, 34, ⟨211, 79⟩, ⟨61, 19⟩⟩, [⟨211, 79⟩, ⟨53, 19⟩, ⟨213, 79⟩, ⟨107, 39⟩, ⟨43, 15⟩, ⟨27, 9⟩, ⟨217, 79⟩, ⟨109, 39⟩, ⟨219, 79⟩, ⟨11, 3⟩, ⟨221, 79⟩, ⟨111, 39⟩, ⟨223, 79⟩, ⟨14, 4⟩, ⟨45, 15⟩, ⟨113, 39⟩, ⟨227, 79⟩, ⟨57, 19⟩, ⟨229, 79⟩, ⟨23, 7⟩, ⟨231, 79⟩, ⟨29, 9⟩, ⟨233, 79⟩, ⟨117, 39⟩, ⟨47, 15⟩, ⟨59, 19⟩, ⟨237, 79⟩, ⟨119, 39⟩, ⟨239, 79⟩, ⟨3, 0⟩, ⟨241, 79⟩, ⟨121, 39⟩, ⟨243, 79⟩, ⟨61, 19⟩]⟩ = true := by decide +kernel
-theorem run645_checked : Entry.check ⟨548, 566, ⟨1, 399999999⟩, ⟨0, 14, 8, ⟨83, 39⟩, ⟨173, 79⟩⟩, [⟨83, 39⟩, ⟨167, 79⟩, ⟨21, 9⟩, ⟨169, 79⟩, ⟨17, 7⟩, ⟨171, 79⟩, ⟨43, 19⟩, ⟨173, 79⟩]⟩ = true := by decide +kernel
-theorem run646_checked : Entry.check ⟨548, 566, ⟨1, 399999999⟩, ⟨0, 22, 9, ⟨87, 39⟩, ⟨91, 39⟩⟩, [⟨87, 39⟩, ⟨35, 15⟩, ⟨11, 4⟩, ⟨177, 79⟩, ⟨89, 39⟩, ⟨179, 79⟩, ⟨9, 3⟩, ⟨181, 79⟩, ⟨91, 39⟩]⟩ = true := by decide +kernel
-theorem run647_checked : Entry.check ⟨548, 566, ⟨1, 399999999⟩, ⟨0, 32, 8, ⟨23, 9⟩, ⟨191, 79⟩⟩, [⟨23, 9⟩, ⟨37, 15⟩, ⟨93, 39⟩, ⟨187, 79⟩, ⟨47, 19⟩, ⟨189, 79⟩, ⟨19, 7⟩, ⟨191, 79⟩]⟩ = true := by decide +kernel
-theorem run648_checked : Entry.check ⟨548, 566, ⟨1, 399999999⟩, ⟨0, 40, 9, ⟨12, 4⟩, ⟨5, 1⟩⟩, [⟨12, 4⟩, ⟨193, 79⟩, ⟨97, 39⟩, ⟨39, 15⟩, ⟨49, 19⟩, ⟨197, 79⟩, ⟨99, 39⟩, ⟨199, 79⟩, ⟨5, 1⟩]⟩ = true := by decide +kernel
-theorem run649_checked : Entry.check ⟨548, 567, ⟨1, 399999999⟩, ⟨0, 50, 5, ⟨101, 39⟩, ⟨103, 39⟩⟩, [⟨101, 39⟩, ⟨203, 79⟩, ⟨51, 19⟩, ⟨41, 15⟩, ⟨103, 39⟩]⟩ = true := by decide +kernel
-theorem run650_checked : Entry.check ⟨548, 568, ⟨1, 399999999⟩, ⟨0, 54, 36, ⟨103, 39⟩, ⟨241, 79⟩⟩, [⟨103, 39⟩, ⟨207, 79⟩, ⟨13, 4⟩, ⟨209, 79⟩, ⟨21, 7⟩, ⟨211, 79⟩, ⟨53, 19⟩, ⟨213, 79⟩, ⟨107, 39⟩, ⟨43, 15⟩, ⟨27, 9⟩, ⟨217, 79⟩, ⟨109, 39⟩, ⟨219, 79⟩, ⟨11, 3⟩, ⟨221, 79⟩, ⟨111, 39⟩, ⟨223, 79⟩, ⟨14, 4⟩, ⟨45, 15⟩, ⟨113, 39⟩, ⟨227, 79⟩, ⟨57, 19⟩, ⟨229, 79⟩, ⟨23, 7⟩, ⟨231, 79⟩, ⟨29, 9⟩, ⟨233, 79⟩, ⟨117, 39⟩, ⟨47, 15⟩, ⟨59, 19⟩, ⟨237, 79⟩, ⟨119, 39⟩, ⟨239, 79⟩, ⟨3, 0⟩, ⟨241, 79⟩]⟩ = true := by decide +kernel
+theorem run640_checked : Entry.check ⟨528, 561, ⟨1, 399999999⟩, ⟨0, 0, 57, ⟨297, 79⟩, ⟨353, 79⟩⟩, (FQ.progression (297 / 80) (1 / 80) 57)⟩ = true := by decide +kernel
+theorem run641_checked : Entry.check ⟨531, 562, ⟨1, 399999999⟩, ⟨0, 0, 31, ⟨67, 19⟩, ⟨149, 39⟩⟩, (FQ.progression (67 / 20) (1 / 80) 31)⟩ = true := by decide +kernel
+theorem run642_checked : Entry.check ⟨540, 563, ⟨1, 399999999⟩, ⟨0, 36, 22, ⟨47, 15⟩, ⟨16, 4⟩⟩, (FQ.progression (47 / 16) (1 / 80) 22)⟩ = true := by decide +kernel
+theorem run643_checked : Entry.check ⟨543, 564, ⟨1, 399999999⟩, ⟨0, 8, 33, ⟨109, 39⟩, ⟨25, 7⟩⟩, (FQ.progression (109 / 40) (1 / 80) 33)⟩ = true := by decide +kernel
+theorem run644_checked : Entry.check ⟨545, 565, ⟨1, 399999999⟩, ⟨0, 45, 34, ⟨211, 79⟩, ⟨61, 19⟩⟩, (FQ.progression (211 / 80) (1 / 80) 34)⟩ = true := by decide +kernel
+theorem run645_checked : Entry.check ⟨548, 566, ⟨1, 399999999⟩, ⟨0, 14, 8, ⟨83, 39⟩, ⟨173, 79⟩⟩, (FQ.progression (83 / 40) (1 / 80) 8)⟩ = true := by decide +kernel
+theorem run646_checked : Entry.check ⟨548, 566, ⟨1, 399999999⟩, ⟨0, 22, 9, ⟨87, 39⟩, ⟨91, 39⟩⟩, (FQ.progression (87 / 40) (1 / 80) 9)⟩ = true := by decide +kernel
+theorem run647_checked : Entry.check ⟨548, 566, ⟨1, 399999999⟩, ⟨0, 32, 8, ⟨23, 9⟩, ⟨191, 79⟩⟩, (FQ.progression (23 / 10) (1 / 80) 8)⟩ = true := by decide +kernel
+theorem run648_checked : Entry.check ⟨548, 566, ⟨1, 399999999⟩, ⟨0, 40, 9, ⟨12, 4⟩, ⟨5, 1⟩⟩, (FQ.progression (12 / 5) (1 / 80) 9)⟩ = true := by decide +kernel
+theorem run649_checked : Entry.check ⟨548, 567, ⟨1, 399999999⟩, ⟨0, 50, 5, ⟨101, 39⟩, ⟨103, 39⟩⟩, (FQ.progression (101 / 40) (1 / 80) 5)⟩ = true := by decide +kernel
+theorem run650_checked : Entry.check ⟨548, 568, ⟨1, 399999999⟩, ⟨0, 54, 36, ⟨103, 39⟩, ⟨241, 79⟩⟩, (FQ.progression (103 / 40) (1 / 80) 36)⟩ = true := by decide +kernel
 theorem entries22_checked : entries22.all Entry.check = true := by
   simp only [entries22, List.all_cons, List.all_nil, run625_checked, run626_checked, run627_checked, run628_checked, run629_checked, run630_checked, run631_checked, run632_checked, run633_checked, run634_checked, run635_checked, run636_checked, run637_checked, run638_checked, run639_checked, run640_checked, run641_checked, run642_checked, run643_checked, run644_checked, run645_checked, run646_checked, run647_checked, run648_checked, run649_checked, run650_checked, Bool.and_true]
 

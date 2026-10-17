@@ -246,6 +246,13 @@ Lean: [cutoff](L2_Control.lean), [expression identities](Control/Expressions.lea
 
 ## Lemma 7.3. A complete joint family
 
+The [joint bank](Source/Joint/README.md) specifies uniform knots and profile
+heights by exact affine or rounded-affine equations. Its inherited control
+tables are generated from tangent lines $m_iq+c_i$: adjacent degree boundaries
+are $(c_{i+1}-c_i)/(m_i-m_{i+1})$, and integration changeovers are
+$(m_i+w)/w$. The same finite validity checks apply to these generated values;
+the tables carry no additional independent parameters.
+
 The family of 1,469 raw profiles, 947 closed profiles and 2,716 source lines
 satisfies the hypotheses of section 6. In particular,
 

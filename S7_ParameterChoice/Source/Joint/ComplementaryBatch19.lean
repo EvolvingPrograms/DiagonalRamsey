@@ -1,3 +1,4 @@
+import S7_ParameterChoice.Source.Joint.ArithmeticData
 import S7_ParameterChoice.Source.Joint.ComplementaryIndex
 
 /-! Bounded complementary checks: 14 donors,
@@ -21,7 +22,7 @@ theorem checked_C10_0_18_163 : entryCheck ⟨1370, 1358, 902, ⟨0, 163, 2, ⟨1
 theorem checked_C10_0_18_165 : entryCheck ⟨1370, 1358, 902, ⟨2, 165, 15, ⟨183, 79⟩, ⟨197, 79⟩⟩, [⟨183, 79⟩, ⟨23, 9⟩, ⟨37, 15⟩, ⟨93, 39⟩, ⟨187, 79⟩, ⟨47, 19⟩, ⟨40, 16⟩, ⟨189, 79⟩, ⟨19, 7⟩, ⟨191, 79⟩, ⟨12, 4⟩, ⟨193, 79⟩, ⟨80, 32⟩, ⟨97, 39⟩, ⟨39, 15⟩, ⟨49, 19⟩, ⟨197, 79⟩]⟩ = true := by
   decide +kernel
 
-theorem checked_C10_0_18_179 : entryCheck ⟨1368, 1403, 902, ⟨0, 179, 10, ⟨197, 79⟩, ⟨103, 39⟩⟩, [⟨197, 79⟩, ⟨99, 39⟩, ⟨199, 79⟩, ⟨5, 1⟩, ⟨201, 79⟩, ⟨101, 39⟩, ⟨203, 79⟩, ⟨51, 19⟩, ⟨41, 15⟩, ⟨103, 39⟩]⟩ = true := by
+theorem checked_C10_0_18_179 : entryCheck ⟨1368, 1403, 902, ⟨0, 179, 10, ⟨197, 79⟩, ⟨103, 39⟩⟩, (FQ.progression (197 / 80) (1 / 80) 10)⟩ = true := by
   decide +kernel
 
 theorem checked_C10_0_18_194 : entryCheck ⟨1447, 1335, 902, ⟨0, 194, 2, ⟨53, 19⟩, ⟨213, 79⟩⟩, [⟨53, 19⟩, ⟨213, 79⟩]⟩ = true := by
