@@ -8,6 +8,10 @@ open DiagRamsey DiagRamsey.V5 JointGeometry JointFamily FQ
 structure PrefixData where
   values : List FQ
 
+/-- Prefix data are determined by the route entries, in the same order. -/
+def routePrefixes (entries : List FastEntry) : List PrefixData :=
+  entries.map fun e => ⟨FQ.integralPrefixes e.recipe.us e.recipe.ds⟩
+
 def prefixPointCheck {ι : Type} {n m : ℕ} (r : RouteF ι n m) (j : ℕ) (x : FQ) : Bool :=
   decide (j < r.ds.length) && le (r.us.getD j zero) x && le x (r.us.getD (j+1) zero)
 

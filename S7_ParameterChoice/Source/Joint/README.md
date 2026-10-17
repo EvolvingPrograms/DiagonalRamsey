@@ -132,6 +132,9 @@ constructs this sequence using exact rational arithmetic. On cell $j$,
 the integral is $P_j+d_j(x-u_j)$, as proved by `IntegralPrefixes.eval` in
 [FastIntegral.lean](Routes/FastIntegral.lean). Cached and remaining routes
 use this construction for their prefix values.
+For a list of cached route entries, `routePrefixes` in
+[RoutePrefixAdapter.lean](Routes/RoutePrefixAdapter.lean) derives their prefix
+data in the same order.
 The theorem `integralPrefixesCheck_generated` proves that these values pass
 the recurrence checker whenever there is one more knot than cell density.
 Remaining routes use `RouteF.checkGenerated`: this theorem supplies prefix
