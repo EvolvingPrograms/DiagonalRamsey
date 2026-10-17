@@ -121,6 +121,9 @@ Concatenating uniform runs specifies 5,130 formerly explicit call lists in
 `RemainingRoutes/`; 193 constant density lists use `List.replicate`.
 The expansion preserves each original donor, weight and breakpoint pair,
 removing about 11.2 MB of repeated source without changing the route checks.
+The route partitions themselves use another 7,821 arithmetic progression
+expressions in place of 144,213 explicit knot entries. Every normalized fraction
+is preserved; this removes a further 1.71 MB.
 
 ## What would genuinely simplify this
 
