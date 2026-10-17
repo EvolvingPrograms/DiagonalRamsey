@@ -258,12 +258,29 @@ monochromatic $K_k$, whenever $k\ge k_0$.
    <details>
    <summary>Lean comparison</summary>
 
-   The Taylor-polynomial estimate is inside this proof: `Real.exp_bound'` is applied with `n := 14` at half the exponent, then the result is squared. The declaration states the resulting strict bound.
+   Here `exponent` is $\gamma$ and `base` is $b$. The definitions and complete short proof are:
+
+   [Exact parameters](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L29-L30)
+
+   ```lean
+   def exponent : ℚ := 250058071 / 200000000
+   def base : ℚ := 69827131 / 20000000
+   ```
 
    [`exponent_gap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L3_BaseComparison.lean#L16)
 
    ```lean
-   theorem exponent_gap : Real.exp (exponent : ℝ) < (base : ℝ)
+   theorem exponent_gap : Real.exp (exponent : ℝ) < (base : ℝ) := by
+     have h := Real.exp_bound' (x := (exponent : ℝ) / 2)
+       (by norm_num [exponent]) (by norm_num [exponent]) (n := 14) (by norm_num)
+     norm_num [exponent, Finset.sum_range_succ, Nat.factorial] at h
+     have hdouble : Real.exp (exponent : ℝ) = Real.exp ((exponent : ℝ) / 2) ^ 2 := by
+       rw [pow_two, ← Real.exp_add]
+       congr 1
+       ring
+     rw [hdouble]
+     norm_num [exponent, base]
+     nlinarith [Real.exp_pos (250058071 / 400000000 : ℝ)]
    ```
 
    </details>

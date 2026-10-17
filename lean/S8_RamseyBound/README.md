@@ -137,9 +137,16 @@ $$e^u\le T:=\sum_{j=0}^{13}\frac{u^j}{j!}
 <details>
 <summary>Lean comparison</summary>
 
-The proof applies `Real.exp_bound'` at `exponent / 2` with fourteen terms, evaluates the rational polynomial, and squares the bound. This is the exact source proof, not a separate approximation.
+The proof applies `Real.exp_bound'` at `exponent / 2` with fourteen terms, evaluates the rational polynomial, and squares the bound. Here `exponent` is $\gamma$ and `base` is $b$:
 
-[Proof excerpt, lines 16–29](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L3_BaseComparison.lean#L16-L29)
+[Exact parameters](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L29-L30)
+
+```lean
+def exponent : ℚ := 250058071 / 200000000
+def base : ℚ := 69827131 / 20000000
+```
+
+[Complete proof](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L3_BaseComparison.lean#L16-L26)
 
 ```lean
 theorem exponent_gap : Real.exp (exponent : ℝ) < (base : ℝ) := by
@@ -153,8 +160,6 @@ theorem exponent_gap : Real.exp (exponent : ℝ) < (base : ℝ) := by
   rw [hdouble]
   norm_num [exponent, base]
   nlinarith [Real.exp_pos (250058071 / 400000000 : ℝ)]
-
-#print axioms exponent_gap
 
 ```
 
@@ -184,7 +189,7 @@ theorem eventual_diagonal_bound :
       (RamseyBasics.ramseyNumber k k : ℝ) ≤ (3.49135655 : ℝ) ^ k
 ```
 
-[Proof excerpt, lines 21–29](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L4_MainTheorem.lean#L21-L29)
+[Proof excerpt, lines 21–30](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L4_MainTheorem.lean#L21-L30)
 
 ```lean
   have h := eventual_exponent_of_dense_profile
@@ -196,6 +201,7 @@ theorem eventual_diagonal_bound :
     (RamseyBasics.ramseyNumber k k : ℝ) ≤ Real.exp ((exponent : ℝ) * k) := hk
     _ = Real.exp (exponent : ℝ) ^ k := by rw [mul_comm, Real.exp_nat_mul]
     _ ≤ (base : ℝ) ^ k := pow_le_pow_left₀ (Real.exp_pos _).le exponent_gap.le k
+    _ = (3.49135655 : ℝ) ^ k := by norm_num [base]
 ```
 
 </details>

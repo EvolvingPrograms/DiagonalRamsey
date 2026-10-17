@@ -246,7 +246,7 @@ complement. The same $C,K$ work for every such graph.
 
 Lean: `SourceAdmissible`, `DenseProfile` in
 [L2_AdmissibleBounds.lean](L2_AdmissibleBounds.lean). The precise finite
-density convention is `RamseyLean.redGraphDensity`:
+density convention is `RamseyBasics.redGraphDensity`:
 
 $$d_R(G)=\frac{\sum_{v\in V(G)}\deg_G(v)}{N(N-1)}\qquad(N=|V(G)|).$$
 
