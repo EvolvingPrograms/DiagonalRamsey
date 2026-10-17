@@ -20,7 +20,7 @@ $b=r\mathbb E[Z\mid\text{complement}]$, taking $b=0$ if that cell has
 zero mass. If $r>0$ and $s\ge1$, then for either
 affine function $f(z)=1+z$ or $f(z)=1-tz$,
 
-$$m f(a/r)_+^s+(1-m)f(b/r)_+^s\le\mathbb E f(Z)_+^s.$$
+$$m f(a/r)_+^s+(1-m)f(b/r)_+^s\le\mathbb E\left[f(Z)_+^s\right].$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -37,7 +37,12 @@ theorem two_cell_moments {ι : Type*} (Y : Finset ι) (P : ι → Prop)
     (hr : r ≠ 0) (hs : 1 ≤ s)
     (hblue : ∑ y ∈ Y, ν y * (max (1 + Z y) 0) ^ s ≤ U)
     (hcomp : ∑ y ∈ Y, ν y * (max (1 - t * Z y) 0) ^ s ≤ V) :
-    let m
+    let m := ∑ y ∈ Y.filter P, ν y
+    let a := scaledCellMean (Y.filter P) ν Z r
+    let c := scaledCellMean (Y.filter (fun y => ¬ P y)) ν Z r
+    m * (max (1 + a / r) 0) ^ s + (1 - m) * (max (1 + c / r) 0) ^ s ≤ U ∧
+      m * (max (1 - t * a / r) 0) ^ s +
+        (1 - m) * (max (1 - t * c / r) 0) ^ s ≤ V
 ```
 
 </details>
@@ -51,9 +56,11 @@ For graph rows with $0<q<1$, $\mu,x,\beta>0$, $s=\beta r\ge1$,
 $m>0$ and ordinary red density $\pi>0$, the two failure predicates give
 the blue budget and the strict first-mean threshold
 
-$$a>r\frac{1-q}{q}\left(1-e^{\ell/r}\right),\qquad
-\ell=-w\log(1-q)+\log x+
-\frac{(1-\beta)\log\pi-\log m}{\beta}.$$
+$$\begin{aligned}
+\ell&=-w\log(1-q)+\log x+
+\frac{(1-\beta)\log\pi-\log m}{\beta},\\
+a&>r\frac{1-q}{q}\left(1-e^{\ell/r}\right).
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -73,7 +80,12 @@ theorem graph_row_first_cell
     (hm : 0 < mr G X Y c (β * r) i) (hπ : 0 < rowDensity G i Y)
     (hblue : SharpBlueFailure G B X Y c μ w β (β * r) i)
     (hred : SharpRedFailure G B X Y c w β (β * r) x i) :
-    let q
+    let q := graphFrac B X i
+    let m := mr G X Y c (β * r) i
+    let a := scaledCellMean (Y.filter (fun y => G.Adj i y))
+      (nuW G X Y c (β * r)) (ZR G B X c i) r
+    m * (max (1 + a / r) 0) ^ (β * r) ≤ certU μ w β q ∧
+      r * LF w β x q m (rowDensity G i Y) r < a
 ```
 
 </details>
@@ -124,8 +136,10 @@ Lean: `scaled_mean_bounds` in [L2_FiniteBounds.lean](L2_FiniteBounds.lean).
 
 If $r_n\to\infty$, $a_n\to A$, $W_n\to W>0$ and $\beta>0$, then
 
-$$\left(1+\frac{a_n}{r_n}\right)_+^{\beta r_n}\to e^{\beta A},
-\qquad r_n\left(W_n^{1/(\beta r_n)}-1\right)\to\frac{\log W}{\beta}.$$
+$$\begin{aligned}
+\left(1+\frac{a_n}{r_n}\right)_+^{\beta r_n}&\longrightarrow e^{\beta A},\\
+r_n\left(W_n^{1/(\beta r_n)}-1\right)&\longrightarrow\frac{\log W}{\beta}.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -281,8 +295,11 @@ To apply this before extracting both means, suppose $m_n,\pi_n\to d>0$
 and $q_n\to q\in(0,\mu]$. The finite threshold in Lemma 3.1 tends to
 $A_d(q)$ by Lemma 3.3. The first blue moment alone gives
 
-$$a_n\le r_n\left((U(q_n)/m_n)^{1/(\beta r_n)}-1\right)
-\longrightarrow\frac{\log(U(q)/d)}{\beta}.$$
+$$\begin{aligned}
+B_n&:=r_n\left((U(q_n)/m_n)^{1/(\beta r_n)}-1\right),\\
+a_n&\le B_n,\qquad
+B_n\longrightarrow\frac{\log(U(q)/d)}{\beta}.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -311,8 +328,7 @@ theorem first_cell_limit {r m U a A₀ : ℕ → ℝ} {p U₀ A₀₀ β : ℝ}
 
 </details>
 
-Here the limit applies to the upper-bound expression, not necessarily
-to $a_n$. Comparing it with the convergent lower threshold proves
+Comparing $B_n$ with the convergent lower threshold proves
 $de^{\beta A_d(q)}\le U(q)$ without assuming that $a_n$ converges.
 Lean: `density_log_gap`, `density_le_cap`, `density_cap_lt_one` in
 [L4_DensityGap.lean](L4_DensityGap.lean).

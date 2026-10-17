@@ -33,7 +33,7 @@ $b_y=|N_G(y)\cap A_i|/|A_i|$, and $Z_y=(b_y-g_y)/(g_y-c)$.
 
 For $\mu>0$ and $q>0$, blue failure implies
 
-$$\mathbb E_\nu(1+Z)_+^s\le (\mu/q)^{\beta w}.$$
+$$\mathbb E_\nu\left[(1+Z)_+^s\right]\le (\mu/q)^{\beta w}.$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -64,7 +64,7 @@ hypotheses.
 
 If the configuration is row/column maximal and $0<q<1$, then
 
-$$\mathbb E_\nu\left(1-\frac q{1-q}Z\right)_+^s
+$$\mathbb E_\nu\left[\left(1-\frac q{1-q}Z\right)_+^s\right]
 \le(1-q)^{-\beta w}.$$
 
 <details>
@@ -123,8 +123,10 @@ noncomputable def Vr (G : SimpleGraph V) (X Y : Finset V) (c s : ℝ) (i : V) : 
 
 Assume row maximality. Then
 
-$$\sum_i|V_i-1|\le\frac{2w}{r}N,\qquad
-\sum_i|\pi_i-(c+H)|\le NH\left(1-\theta+\frac{2w}{r}\right).$$
+$$\begin{aligned}
+\sum_{i\in X}|V_i-1|&\le\frac{2w}{r}N,\\
+\sum_{i\in X}|\pi_i-(c+H)|&\le NH\left(1-\theta+\frac{2w}{r}\right).
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -188,10 +190,14 @@ lemma rho_bound (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (H 
 
 </details>
 
-When $0<\beta<1$, column maximality supplies
+When $0<\beta<1$, put $\theta=(1-\beta)^{1/(\beta r)}$.
+Column maximality supplies
 
-$$g_y-c\ge\theta H,\qquad \theta=(1-\beta)^{1/(\beta r)},\qquad
-\nu\lbrace g_y-c>(1+\varepsilon)H\rbrace \le(1+\varepsilon)^{\beta r-r}$$
+$$\begin{aligned}
+g_y-c&\ge\theta H &&(y\in Y),\\
+\nu\lbrace g_y-c>(1+\varepsilon)H\rbrace
+&\le(1+\varepsilon)^{\beta r-r} &&(\varepsilon\ge0).
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -222,10 +228,12 @@ lemma crop (w r : ℝ) (hX : X.Nonempty) (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, 
 
 </details>
 
-for every $\varepsilon\ge0$. Consequently,
+Consequently,
 
-$$\rho\le\varepsilon+(\theta^{-1}-1)+(1+\varepsilon)^{\beta r-r},\qquad
-|m_i-(c+H)|\le(1+|c|)\rho+H|V_i-1|.$$
+$$\begin{aligned}
+\rho&\le\varepsilon+(\theta^{-1}-1)+(1+\varepsilon)^{\beta r-r},\\
+|m_i-(c+H)|&\le(1+|c|)\rho+H|V_i-1|.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -350,10 +358,13 @@ In the graph application $\gamma=1-w/r>0$. To obtain the subset bound,
 write $a=|A|/N$ and $b_A(y)=|N_G(y)\cap A|/|A|$. Weighted Jensen and
 row maximality give
 
-$$\frac1{|A|}\sum_{i\in A}V_i
-=\sum_y\nu_y\frac{b_A(y)-c}{g_y-c}
-\le\left(\frac{\sum_y(b_A(y)-c)_+^s}{\sum_y(g_y-c)^s}\right)^{1/s}
-\le a^{-w/r}.$$
+$$\begin{aligned}
+\frac1{|A|}\sum_{i\in A}V_i
+&=\sum_{y\in Y}\nu_y\frac{b_A(y)-c}{g_y-c}\\
+&\le\left(\frac{\sum_{y\in Y}(b_A(y)-c)_+^s}
+{\sum_{y\in Y}(g_y-c)^s}\right)^{1/s}
+\le a^{-w/r}.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>

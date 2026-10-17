@@ -75,9 +75,10 @@ noncomputable def entropyMass (p β x : ℝ) : ℝ :=
 blue moment combines with the degree entropy; feasibility is its nonpositivity. -/
 noncomputable def entropyGap (p μ w β x q : ℝ) : ℝ :=
   let θ := entropyMass p β x
-  q * Real.log (θ * Real.exp (Real.log (p / θ) / q) +
-    (1 - θ) * Real.exp (Real.log ((1 - p) / (1 - θ)) / q)) +
-    β * w * ((1 - q) * Real.log (1 - q) + q * Real.log (q / μ))
+  let partition := θ * Real.exp (Real.log (p / θ) / q) +
+    (1 - θ) * Real.exp (Real.log ((1 - p) / (1 - θ)) / q)
+  let degreeEntropy := (1 - q) * Real.log (1 - q) + q * Real.log (q / μ)
+  q * Real.log partition + β * w * degreeEntropy
 
 /-- **Interior mass.** A retention `0 < x < p` gives `0 < θ < p`. -/
 theorem entropyMass_pos_lt {p β x : ℝ}

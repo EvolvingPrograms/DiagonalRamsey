@@ -98,9 +98,11 @@ Lean: `eventual_exponent_of_dense_profile` in
 
 For the parameters of section 7,
 
-$$z=\frac{625145177}{500000000}
-<\gamma=\frac{250058071}{200000000},\qquad
-e^\gamma<\frac{69827131}{20000000}=3.49135655.$$
+$$\begin{aligned}
+z=\frac{625145177}{500000000}
+&<\gamma=\frac{250058071}{200000000},\\
+e^\gamma&<\frac{69827131}{20000000}=3.49135655.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>

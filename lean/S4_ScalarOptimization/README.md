@@ -16,9 +16,11 @@ degrees; wherever a degree survives, the blue optimizer remains optimal.
 Fix $0<p<1$, $\beta,t,U,V>0$ and $A_0\in\mathbb R$. A pair $(A,C)$ is
 feasible when
 
-$$A\ge A_0,\qquad
-pe^{\beta A}+(1-p)e^{\beta C}\le U,\qquad
-pe^{-\beta tA}+(1-p)e^{-\beta tC}\le V.$$
+$$\begin{aligned}
+A_0&\le A,\\
+pe^{\beta A}+(1-p)e^{\beta C}&\le U,\\
+pe^{-\beta tA}+(1-p)e^{-\beta tC}&\le V.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -300,8 +302,10 @@ Lean: `Complement.feasible_iff_boundary`, `Complement.objective_le_boundary`;
 
 Fix $0<\mu<1$, $w\ge0$, $\beta,x>0$. For $0<q\le\mu$, define
 
-$$t(q)=\frac q{1-q},\quad B(q)=w\log\frac\mu q,\quad
-U(q)=e^{\beta B(q)},\quad V(q)=(1-q)^{-\beta w},$$
+$$\begin{aligned}
+t(q)&=\frac q{1-q},& B(q)&=w\log\frac\mu q,\\
+U(q)&=e^{\beta B(q)},& V(q)&=(1-q)^{-\beta w}.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -333,7 +337,7 @@ def complementDegrees (p μ w β x : ℝ) : Set ℝ :=
 
 </details>
 
-and use the threshold $A_p(q)$ from Lemma 4.3. Let $F_p$ be the degrees
+Use the threshold $A_p(q)$ from Lemma 4.3. Let $F_p$ be the degrees
 admitting a feasible pair. For $q\in F_p$, the maximum objective equals
 
 $$M_p(q)=\begin{cases}
@@ -414,8 +418,10 @@ the graph alternative.
 
 Let $S=F_p\ne\varnothing$, $H(q)=qM_p(q)$, and
 
-$$E(t)=\sup_{q\in S}\lbrace H(q)+wq(1+\log t)\rbrace ,\qquad
-\widetilde E(u)=\sup_{q\in S}\lbrace H(q)+wq(1-u)\rbrace .$$
+$$\begin{aligned}
+E(t)&=\sup_{q\in S}\lbrace H(q)+wq(1+\log t)\rbrace ,\\
+\widetilde E(u)&=\sup_{q\in S}\lbrace H(q)+wq(1-u)\rbrace .
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -488,9 +494,12 @@ with the regularity and integral lemmas immediately preceding it.
 Assume $0<x<p<1$, $\beta,w>0$ and $0<q\le\mu<1$. Put
 $\theta=p(x/p)^\beta$ and
 
-$$\mathcal F(q)=q\log\left[\theta(p/\theta)^{1/q}
-+(1-\theta)((1-p)/(1-\theta))^{1/q}\right]
-+\beta w\left[(1-q)\log(1-q)+q\log(q/\mu)\right].$$
+$$\begin{aligned}
+Z_\theta(q)&=\theta(p/\theta)^{1/q}
++(1-\theta)((1-p)/(1-\theta))^{1/q},\\
+H_\mu(q)&=(1-q)\log(1-q)+q\log(q/\mu),\\
+\mathcal F(q)&=q\log Z_\theta(q)+\beta w H_\mu(q).
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -509,12 +518,13 @@ noncomputable def entropyMass (p β x : ℝ) : ℝ :=
 ```lean
 noncomputable def entropyGap (p μ w β x q : ℝ) : ℝ :=
   let θ := entropyMass p β x
-  q * Real.log (θ * Real.exp (Real.log (p / θ) / q) +
-    (1 - θ) * Real.exp (Real.log ((1 - p) / (1 - θ)) / q)) +
-    β * w * ((1 - q) * Real.log (1 - q) + q * Real.log (q / μ))
+  let partition := θ * Real.exp (Real.log (p / θ) / q) +
+    (1 - θ) * Real.exp (Real.log ((1 - p) / (1 - θ)) / q)
+  let degreeEntropy := (1 - q) * Real.log (1 - q) + q * Real.log (q / μ)
+  q * Real.log partition + β * w * degreeEntropy
 ```
 
-[`complementDegrees_iff_entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L237)
+[`complementDegrees_iff_entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L238)
 
 ```lean
 theorem complementDegrees_iff_entropyGap {p μ w β x q : ℝ}
@@ -534,7 +544,7 @@ toward their mean until $X=\theta/p$. Convexity of $z\mapsto z^{-1/t}$
 shows this minimizes the blue moment. Substituting the boundary atoms,
 taking logarithms and multiplying by $q$ gives the displayed test.
 
-Lean: [`complementDegrees_iff_entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L237).
+Lean: [`complementDegrees_iff_entropyGap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L7_EntropyFeasibility.lean#L238).
 
 ## Theorem 4.8. A cutoff from two signs
 
@@ -795,7 +805,9 @@ noncomputable def certSupportSlope (p μ w β x m : ℝ) : ℝ :=
 ```lean
 theorem clippedEntropy_support {p z z' : ℝ} (hp : 0 < p ∧ p < 1)
     (hz : z < 0) (hz' : z' < 0) :
-    let c
+    let c := max z (Real.log p)
+    let s := (p - Real.exp c) / (1 - Real.exp c)
+    clippedEntropy p z' ≤ clippedEntropy p z + s * (z' - z) ∧ s ≤ 0
 ```
 
 </details>

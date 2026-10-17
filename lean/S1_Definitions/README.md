@@ -36,8 +36,10 @@ Let $G$ be a finite simple graph, with disjoint nonempty vertex sets $X,Y$.
 For $y\in Y$, write $g_y=|N_G(y)\cap X|/|X|$. For a shift $c\in\mathbb R$
 and positive parameters $r,s$, define
 
-$$H=\left(\frac1{|Y|}\sum_{y\in Y}(g_y-c)_+^s\right)^{1/s},\qquad
-\Phi_c(X,Y)=|X|^w|Y|H^r,$$
+$$\begin{aligned}
+H&=\left(\frac1{|Y|}\sum_{y\in Y}(g_y-c)_+^s\right)^{1/s},\\
+\Phi_c(X,Y)&=|X|^w|Y|H^r.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -60,12 +62,14 @@ noncomputable def potential (G : SimpleGraph V) (X Y : Finset V) (c w r s : ℝ)
 
 </details>
 
-where $a_+=\max(a,0)$. A configuration is **row/column maximal** if no
+Here $a_+=\max(a,0)$. A configuration is **row/column maximal** if no
 nonempty restriction of $X$ with $Y$ fixed, or of $Y$ with $X$ fixed,
 increases $\Phi_c$. Explicitly,
 
-$$\Phi_c(X',Y)\le\Phi_c(X,Y)\quad(\varnothing\ne X'\subseteq X),\qquad
-\Phi_c(X,Y')\le\Phi_c(X,Y)\quad(\varnothing\ne Y'\subseteq Y).$$
+$$\begin{aligned}
+\Phi_c(X',Y)&\le\Phi_c(X,Y) &&(\varnothing\ne X'\subseteq X),\\
+\Phi_c(X,Y')&\le\Phi_c(X,Y) &&(\varnothing\ne Y'\subseteq Y).
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -109,10 +113,12 @@ part of the predicates themselves.
 For the local move inequalities, let $B$ be an auxiliary graph on the rows.
 For $i\in X$, put
 
-$$X_i=N_B(i)\cap X,\quad q_i=\frac{|X_i|}{|X|},\quad
-b_i(y)=\frac{|N_G(y)\cap X_i|}{|X_i|},\quad
-Y_i=N_G(i)\cap Y,\quad \pi_i=\frac{|Y_i|}{|Y|},\quad
-S=\sum_{y\in Y}(g_y-c)_+^s.$$
+$$\begin{aligned}
+X_i&=N_B(i)\cap X,& q_i&=\frac{|X_i|}{|X|},\\
+Y_i&=N_G(i)\cap Y,& \pi_i&=\frac{|Y_i|}{|Y|},\\
+b_i(y)&=\frac{|N_G(y)\cap X_i|}{|X_i|},&
+S&=\sum_{y\in Y}(g_y-c)_+^s.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -270,9 +276,11 @@ Section 8 uses $d_R(G)+d_R(G^c)=1$ for $N\ge2$.
 
 Given $p,\beta,t,U,V,A_0$, a pair $(A,C)$ satisfies the two-cell constraints if
 
-$$A_0\le A,\qquad
-pe^{\beta A}+(1-p)e^{\beta C}\le U,\qquad
-pe^{-\beta tA}+(1-p)e^{-\beta tC}\le V.$$
+$$\begin{aligned}
+A_0&\le A,\\
+pe^{\beta A}+(1-p)e^{\beta C}&\le U,\\
+pe^{-\beta tA}+(1-p)e^{-\beta tC}&\le V.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>

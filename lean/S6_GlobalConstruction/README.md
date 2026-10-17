@@ -176,7 +176,7 @@ margin in the desired profile absorbs the factor $3$ for large $k$.
 
 For a route, let $\theta=u_0<\cdots<u_M=\omega$, $g_0>0$, and
 
-$$g(t)=g_0+\sum_{j<M}d_j\bigl(\min(t,u_{j+1})-u_j\bigr)_+.$$
+$$g(t)=g_0+\sum_{j=0}^{M-1}d_j\bigl(\min(t,u_{j+1})-u_j\bigr)_+.$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -194,8 +194,11 @@ noncomputable def RoutePiece.g {ι : Type} {m : ℕ} (R : RoutePiece ι m) (s : 
 
 Each cell calls a child profile $P_j$ and satisfies
 
-$$[u_j,u_{j+1}]\subseteq I_j,\qquad
-d_j>-\log(1-p_j),\qquad L_j(t)<g(t)\quad(t\in[u_j,u_{j+1}]).$$
+$$\begin{aligned}
+[u_j,u_{j+1}]&\subseteq I_j,\\
+d_j&>-\log(1-p_j),\\
+L_j(t)&<g(t)\qquad(t\in[u_j,u_{j+1}]).
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>

@@ -18,7 +18,7 @@ Fix $0<p,\mu<1$, $w\ge0$, $\beta,x>0$, $x<(1-\mu)^w$, and
 $\delta,\varepsilon>0$. There exist $\eta>0$ and $R$ such that the following
 holds for $r\ge R$. Suppose
 
-$$\delta\le q\le\mu+\eta,\quad p-\eta\le m,\pi\le1,
+$$\delta\le q\le\mu+\eta,\quad m,\pi\in[p-\eta,1],
 \quad |m-\pi|\le\eta,$$
 
 <details>
@@ -135,8 +135,11 @@ Lean: `finite_row_approximation` in
 Assume $F_p$ is nonempty and there is a function $E:(0,1]\to\mathbb R$
 which is continuous, nondecreasing and integrable, satisfies
 
-$$qM_p(q)+wq(1+\log u)\le E(u)
-\quad(q\in F_p,\ 0<u\le1),\qquad \int_0^1E(u)\,du<0.$$
+$$\begin{aligned}
+qM_p(q)+wq(1+\log u)&\le E(u)
+&& (q\in F_p,\ 0<u\le1),\\
+\int_0^1E(u)\,du&<0.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -220,8 +223,10 @@ with $0\log0=0$. Sum these cell inequalities in the order from Lemma 2.4.
 For $L(u)=u\log u$ and $J(u)=2u-u\log u$, let $\Delta L_i$ and
 $\Delta J_i$ be their increments on $[i/N,(i+1)/N]$. The drift estimate gives
 
-$$-\frac{4w^2}{r}\le T:=\sum_i\left(\frac{rP_i}{N}+wq_i\Delta L_i\right)
-\qquad(r\ge2w).$$
+$$\begin{aligned}
+T&:=\sum_{i=0}^{N-1}\left(\frac{rP_i}{N}+wq_i\Delta L_i\right),\\
+T&\ge-\frac{4w^2}{r}\qquad(r\ge2w).
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -354,24 +359,19 @@ $$q_i\bigl(m_i a_i+(1-m_i)b_i\bigr)=rP_i.$$
 <details>
 <summary>Lean comparison</summary>
 
-The weighted-mean decomposition in this lemma is multiplied by `q_i` in the graph-alternative proof, where `P_i = q_i * E_ν Z_i`.
+Multiply the following decomposition by `q_i`, using
+`P_i = q_i * E_ν Z_i`.
 
-[`graph_row_cell_moments`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S3_TwoCellReduction/L1_ConditionalJensen.lean#L161)
+[`partition_scaled_mean`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S5_LocalAlternative/L3_GraphAlternative.lean#L35)
 
 ```lean
-theorem graph_row_cell_moments
-    {V : Type*} [Fintype V] [DecidableEq V]
-    (G B : SimpleGraph V) (X Y : Finset V) (c w r β μ x : ℝ)
-    (hX : X.Nonempty) (hY : Y.Nonempty) (hr : 0 < r) (hβ : 0 < β)
-    (hs : 1 ≤ β * r) (hμ : 0 < μ) (hx : 0 < x)
-    (hpos : ∀ y ∈ Y, c < colDensity G X y)
-    (hmax : RowColMaximal G X Y c w r (β * r))
-    (i : V) (hq : 0 < graphFrac B X i ∧ graphFrac B X i < 1)
-    (hm : 0 < mr G X Y c (β * r) i ∧ mr G X Y c (β * r) i ≤ 1)
-    (hπ : 0 < rowDensity G i Y)
-    (hblue : SharpBlueFailure G B X Y c μ w β (β * r) i)
-    (hred : SharpRedFailure G B X Y c w β (β * r) x i) :
-    let q
+private theorem partition_scaled_mean {ι : Type*} (Y : Finset ι) (P : ι → Prop)
+    [DecidablePred P] (ν Z : ι → ℝ) (r : ℝ)
+    (hν : ∀ y ∈ Y, 0 ≤ ν y) (hsum : ∑ y ∈ Y, ν y = 1) :
+    (∑ y ∈ Y.filter P, ν y) * scaledCellMean (Y.filter P) ν Z r +
+      (1 - ∑ y ∈ Y.filter P, ν y) *
+        scaledCellMean (Y.filter (fun y => ¬ P y)) ν Z r =
+      r * ∑ y ∈ Y, ν y * Z y
 ```
 
 </details>

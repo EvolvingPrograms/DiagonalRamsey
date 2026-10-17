@@ -11,11 +11,11 @@ envelope and the four children and root specified here.
 
 ## Definition 7.1. Parameters
 
-$$p=\frac{499999999}{10^9},\quad
-\mu=\frac{405108059767}{10^{12}},\quad
-w=\frac{104160447497}{250000000000},\quad
-\beta=\frac{9999999}{10^7},\quad
-x=\frac{337503}{10^6},\quad \xi=x-\frac4{10^{11}}.$$
+$$\begin{aligned}
+p&=\frac{499999999}{10^9},& \mu&=\frac{405108059767}{10^{12}},\\
+w&=\frac{104160447497}{250000000000},& \beta&=\frac{9999999}{10^7},\\
+x&=\frac{337503}{10^6},& \xi&=x-\frac4{10^{11}}.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -62,9 +62,11 @@ def ξ : ℚ := x - 4 / 100000000000
 
 The chosen source coefficients and final exponents are
 
-$$A_s=\frac{1086180879838687}{10^{15}},\qquad
-B_s=\frac{11640399543290787172985714354555752537}
-{36367644171000000000000000000000000000},$$
+$$\begin{aligned}
+A_s&=\frac{1086180879838687}{10^{15}},\\
+B_s&=\frac{11640399543290787172985714354555752537}
+{36367644171000000000000000000000000000}.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -86,9 +88,11 @@ def sourceB : ℚ :=
 
 </details>
 
-$$z=\frac{625145177}{500000000},\qquad
-\gamma=\frac{250058071}{200000000}=z+10^{-9},\qquad
-b=\frac{69827131}{20000000}=3.49135655.$$
+$$\begin{aligned}
+z&=\frac{625145177}{500000000},\\
+\gamma&=\frac{250058071}{200000000}=z+10^{-9},\\
+b&=\frac{69827131}{20000000}=3.49135655.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -302,7 +306,7 @@ theorem pointwise_source_cover (i : SourceIndex) {t : ℝ} (ht : 0 < t) :
 For the chosen source, 81 profile-pair runs and two baseline tails give
 the stronger reserve $10^{-9}$. The tails are
 
-$$0<t\le\frac{80}{353},\qquad
+$$0<t\le\frac{80}{353}\qquad\text{or}\qquad
 t\ge\frac{58673404100}{12245974793}.$$
 
 <details>
@@ -343,8 +347,10 @@ theorem right_bound {t : ℝ} (ht : 0 < t) (hle : (rightStart : ℝ) ≤ t) :
 For inherited sources, use 130 hull lines $L_j(t)=a_j+b_jt$.
 Decreasing slopes and increasing adjacent crossings $s_j$ imply
 
-$$L_j(t)-L_{j+1}(t)=(b_j-b_{j+1})(t-s_j),\qquad
-L_{\sigma(t)}(t)=\min_jL_j(t).$$
+$$\begin{aligned}
+L_j(t)-L_{j+1}(t)&=(b_j-b_{j+1})(t-s_j),\\
+L_{\sigma(t)}(t)&=\min_jL_j(t).
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
