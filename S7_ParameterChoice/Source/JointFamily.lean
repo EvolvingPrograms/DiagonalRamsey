@@ -1,5 +1,5 @@
-import S7_ParameterChoice.Source.Joint.Validity
-import S7_ParameterChoice.Source.Joint.Append
+import S7_ParameterChoice.Source.Joint.Profiles.Validity
+import S7_ParameterChoice.Source.Joint.Profiles.Append
 import S7_ParameterChoice.Source.AdditionalSources
 
 /-! The joint family contains inherited recipes and their exact support

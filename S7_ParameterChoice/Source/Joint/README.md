@@ -16,17 +16,17 @@ to the complementary-moment construction. The baseline is
 
 1. **Raw profiles.** Under the induction hypothesis on proper subgraphs,
    every leaf or route gives its asserted profile on its assigned interval.
-   [RawAssembly.lean](RawAssembly.lean) assembles the statement
-   `JointRawAssembly.all_pieces`. [RawSelector.lean](RawSelector.lean) explains
-   the choices and [RawCoverage/Assembly.lean](RawCoverage/Assembly.lean)
+   [RawAssembly.lean](Assembly/RawAssembly.lean) assembles the statement
+   `JointRawAssembly.all_pieces`. [RawSelector.lean](Assembly/RawSelector.lean) explains
+   the choices and [RawCoverage/Assembly.lean](Assembly/RawCoverage/Assembly.lean)
    checks that their intervals cover every raw profile.
 2. **Closed profiles.** Density transfer and complementary pairing turn
    raw profiles into closed profiles on the same host.
-   [ClosedSelector.lean](ClosedSelector.lean) gives the three reusable rules;
-   [ClosedCoverage.lean](ClosedCoverage.lean) checks the interval covers.
+   [ClosedSelector.lean](Assembly/ClosedSelector.lean) gives the three reusable rules;
+   [ClosedCoverage.lean](Assembly/ClosedCoverage.lean) checks the interval covers.
 3. **Sources and simultaneous induction.** The source covers outside this
    directory combine the resulting profiles with the baseline.
-   [BaselineInputs.lean](BaselineInputs.lean), theorem `joint_assertions`,
+   [BaselineInputs.lean](Assembly/BaselineInputs.lean), theorem `joint_assertions`,
    invokes Section 6's induction and gives one common constant:
 
 $$\exists C\ge1:\quad
@@ -43,31 +43,30 @@ used to stop a route is available on proper subgraphs without circularity.
 
 | Family | Purpose |
 |---|---|
-| [Profiles/Raw.lean](Profiles/Raw.lean), [Profiles/Closed.lean](Profiles/Closed.lean) | Inherited raw and closed profile data |
-| `InheritedCertificates/` | Numerical validity of inherited controls |
-| `RemainingRoutes/` | Route constructions |
-| [CachedRouteChecks/](CachedRouteChecks/) | Prefix, cell, linear and zip route checks |
-| [Checks/Leaves.lean](Checks/Leaves.lean), [Checks/Terminals.lean](Checks/Terminals.lean) | Leaf geometry and terminal inequalities |
-| `RawCoverage/` | Coverage of raw-profile intervals |
-| [Checks/Aligned.lean](Checks/Aligned.lean), [Checks/Local.lean](Checks/Local.lean), [Checks/Complementary.lean](Checks/Complementary.lean) | Closed-profile transfer checks |
+| [Foundations/](Foundations/) | Exact fractions, profile geometry and arithmetic sequences |
+| [Profiles/](Profiles/) | Raw and closed profiles, indexing and geometric validity |
+| [Controls/](Controls/) | Envelope laws, precision bounds and inherited controls |
+| [Leaves/](Leaves/) | Leaf constructions, terminal inequalities and soundness |
+| [Routes/](Routes/) | Route laws, inherited constructions, shared checks and remaining routes |
+| [Transfers/](Transfers/) | Aligned, local and complementary closed-profile transfers |
+| [Assembly/](Assembly/) | Recipes, interval coverage and the simultaneous source induction |
 
 `Cached` names refer to reusing proved constructions; these are proof sources,
-not disposable compiler-cache files. Numbered modules split checking work into
-independently compilable units.
+not disposable compiler-cache files.
 
 Inherited controls are organized by their weight $w$ in
-`InheritedCertificates/Weight*.lean`. They share $\beta=999/1000$; each
+`Controls/Inherited/Certificates/Weight*.lean`. They share $\beta=999/1000$; each
 parameter family supplies its tangent data and the local inequalities required
 by the common envelope soundness theorem.
 
 ## Equations specifying the data
 
-[ArithmeticData.lean](ArithmeticData.lean) specifies uniform samples by
-$q_i=a+ih$. [RoundedData.lean](RoundedData.lean) specifies fixed-precision
+[ArithmeticData.lean](Foundations/ArithmeticData.lean) specifies uniform samples by
+$q_i=a+ih$. [RoundedData.lean](Foundations/RoundedData.lean) specifies fixed-precision
 heights by $y_i=\lfloor(ai+b)/d\rfloor/s$. Rational normalization gives
 exact fraction encodings.
 
-[EnvelopeData.lean](EnvelopeData.lean) generates both control partitions from
+[EnvelopeData.lean](Controls/EnvelopeData.lean) generates both control partitions from
 the tangent lines $m_iq+c_i$. Their intersections give degree boundaries
 
 $$q_i=\frac{c_{i+1}-c_i}{m_i-m_{i+1}}.$$
@@ -84,7 +83,7 @@ tables of all 825 inherited controls.
 
 ### Local slopes imply global support
 
-[EnvelopeGeometry.lean](EnvelopeGeometry.lean) proves the common concavity
+[EnvelopeGeometry.lean](Controls/EnvelopeGeometry.lean) proves the common concavity
 argument. Write the polygon vertices as $(q_i,h_i)$, with ordered abscissae
 and nonincreasing segment slopes $m_i$. For a tilt $t$,
 
@@ -96,7 +95,7 @@ these increments are nonnegative before $k$ and nonpositive afterward. Hence
 
 $$ h_j+tq_j\le h_k+tq_k\qquad\text{for every }j. $$
 
-[EnvelopeCheck.lean](EnvelopeCheck.lean) applies this law at both endpoints of
+[EnvelopeCheck.lean](Controls/EnvelopeCheck.lean) applies this law at both endpoints of
 each integration cell. For all 825 controls, ordering, continuity and adjacent
 slope brackets imply the corner inequalities. Pivot selection searches the
 finite vertex list, and the theorem supplies the global comparisons required
@@ -110,14 +109,14 @@ $q_0,\ldots,q_n$ are
 $$\operatorname{calls}(P,z;q)
   =\bigl[(P,z,[q_i,q_{i+1}])\bigr]_{i=0}^{n-1}.$$
 
-`CallF.adjacent` in [FastRoute.lean](FastRoute.lean) implements this equation.
-Concatenating uniform runs specifies the call lists in `RemainingRoutes/`,
+`CallF.adjacent` in [FastRoute.lean](Routes/FastRoute.lean) implements this equation.
+Concatenating uniform runs specifies the call lists in `Routes/Remaining/`,
 including each donor, retained weight and breakpoint pair. Arithmetic
 progressions specify the route knots, and concatenated constant runs use
 `List.replicate` to specify density lists. The route checks apply to the
 expanded sequences.
 
-[Partitions.lean](RemainingRoutes/Partitions.lean) specifies knots, densities
-and donor calls. [Rows.lean](RemainingRoutes/Rows.lean) combines these with the
-terminal controls and margins. [Certificates.lean](RemainingRoutes/Certificates.lean)
+[Partitions.lean](Routes/Remaining/Partitions.lean) specifies knots, densities
+and donor calls. [Rows.lean](Routes/Remaining/Rows.lean) combines these with the
+terminal controls and margins. [Certificates.lean](Routes/Remaining/Certificates.lean)
 checks the rows and packages them as valid runs for the source induction.

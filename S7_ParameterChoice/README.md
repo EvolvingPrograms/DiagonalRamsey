@@ -289,7 +289,7 @@ $C\exp(F_{\mathrm{LW}}(k,\ell)+\varepsilon(k+\ell))$.
 The bridge identifies the functions at normalized ratio
 $\min(k,\ell)/\max(k,\ell)\in[0,1]$ and handles integer ceilings.
 See [Baseline.lean](Source/Baseline.lean) and
-[BaselineInputs.lean](Source/Joint/BaselineInputs.lean).
+[BaselineInputs.lean](Source/Joint/Assembly/BaselineInputs.lean).
 
 **Source covers.** For every source $A_i+B_it$ and every $t>0$, a baseline
 or complementary-profile witness has cost at most
@@ -393,10 +393,10 @@ and [joint family](Source/JointFamily.lean).
 profile extend over each common knot interval by affine interpolation.
 Contiguous windows use the same law; complementary pairs supply the remaining
 intervals by section 6. Checked integer partitions cover every original interval.
-See [whole donors](Source/Joint/AlignedAssembly.lean),
-[windows](Source/Joint/LocalAssembly.lean),
-[complementary pairs](Source/Joint/ComplementaryAssembly.lean), and
-[complete coverage](Source/Joint/ClosedCoverage.lean).
+See [whole donors](Source/Joint/Transfers/Aligned/AlignedAssembly.lean),
+[windows](Source/Joint/Transfers/Local/LocalAssembly.lean),
+[complementary pairs](Source/Joint/Transfers/Complementary/ComplementaryAssembly.lean), and
+[complete coverage](Source/Joint/Assembly/ClosedCoverage.lean).
 
 **Raw profiles.** For each raw profile $P$ and each interval $I$ in its domain
 partition, leaf or route composition supplies a threshold $K$ satisfying
@@ -405,12 +405,12 @@ Leaf runs share a terminal inequality; interval geometry supplies the remaining
 input. Routes use checked controls, source indices and child profiles.
 Five custom profiles have their own constructions. Checked consecutive runs
 cover every raw interval.
-See [leaf law](Source/Joint/FastLeaf.lean),
-[leaf controls](Source/Joint/LeafControlsSound.lean),
-[inherited controls](Source/Joint/InheritedControlsSound.lean),
-[custom constructions](Source/Joint/CustomRecipes.lean),
-[coverage law](Source/Joint/RawSelector.lean), and
-[complete assembly](Source/Joint/RawAssembly.lean).
+See [leaf law](Source/Joint/Leaves/FastLeaf.lean),
+[leaf controls](Source/Joint/Leaves/LeafControlsSound.lean),
+[inherited controls](Source/Joint/Controls/Inherited/InheritedControlsSound.lean),
+[custom constructions](Source/Joint/Assembly/CustomRecipes.lean),
+[coverage law](Source/Joint/Assembly/RawSelector.lean), and
+[complete assembly](Source/Joint/Assembly/RawAssembly.lean).
 
 Joint induction proves the profile assertions and source bounds simultaneously
 with one prefactor. Source slot 2715 gives the assertion above.

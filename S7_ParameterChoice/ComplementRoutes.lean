@@ -1,4 +1,4 @@
-import S7_ParameterChoice.Source.Joint.Recipes
+import S7_ParameterChoice.Source.Joint.Assembly.Recipes
 import S6_GlobalConstruction.L3_RouteComposition
 
 /-! Numerical route geometry with a complementary envelope. These proofs reuse

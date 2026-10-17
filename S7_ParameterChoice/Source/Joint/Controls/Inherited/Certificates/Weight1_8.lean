@@ -1,0 +1,10487 @@
+import S7_ParameterChoice.Source.Joint.Controls.ControlPrecision
+import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
+import S7_ParameterChoice.Source.Joint.Controls.EnvelopeCheck
+import S7_ParameterChoice.Source.Joint.Controls.EnvelopeData
+import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
+import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControls
+
+set_option Elab.async false
+set_option autoImplicit false
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+
+namespace DiagonalRamsey.JointInheritedCertificate11
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(237876722107/1000000000000 : ℚ), (8256750846113/10000000000 : ℚ), (-98695875364843/500000000000 : ℚ), 10⟩,
+    ⟨(2995242423/12500000000 : ℚ), (886302959719/10000000000 : ℚ), (-109149224939/5000000000 : ℚ), 6⟩,
+    ⟨(121543977213/500000000000 : ℚ), (75755718661/2500000000 : ℚ), (-7785574431311/1000000000000 : ℚ), 5⟩,
+    ⟨(248248999729/1000000000000 : ℚ), (145184058477/10000000000 : ℚ), (-3917046691101/1000000000000 : ℚ), 4⟩,
+    ⟨(255052826061/1000000000000 : ℚ), (81810870641/10000000000 : ℚ), (-1162943780191/500000000000 : ℚ), 3⟩,
+    ⟨(263433908857/1000000000000 : ℚ), (50703560599/10000000000 : ℚ), (-1521222256921/1000000000000 : ℚ), 3⟩,
+    ⟨(273311533707/1000000000000 : ℚ), (33448255111/10000000000 : ℚ), (-529554386233/500000000000 : ℚ), 3⟩,
+    ⟨(71147643421/250000000000 : ℚ), (23054717793/10000000000 : ℚ), (-769756363539/1000000000000 : ℚ), 2⟩,
+    ⟨(297162405467/1000000000000 : ℚ), (8205166147/5000000000 : ℚ), (-288423836267/500000000000 : ℚ), 2⟩,
+    ⟨(77726488861/250000000000 : ℚ), (14957037/12500000 : ℚ), (-441948417563/1000000000000 : ℚ), 2⟩,
+    ⟨(81422216429/250000000000 : ℚ), (4441593953/5000000000 : ℚ), (-335930151/976562500 : ℚ), 2⟩,
+    ⟨(13654750751/40000000000 : ℚ), (267241337/400000000 : ℚ), (-270652027187/1000000000000 : ℚ), 2⟩,
+    ⟨(357794658583/1000000000000 : ℚ), (2533847111/5000000000 : ℚ), (-42865526411/200000000000 : ℚ), 2⟩,
+    ⟨(374808344843/1000000000000 : ℚ), (3859737267/10000000000 : ℚ), (-170132831453/1000000000000 : ℚ), 1⟩,
+    ⟨(78449195291/200000000000 : ℚ), (1468939137/5000000000 : ℚ), (-26962922531/200000000000 : ℚ), 1⟩,
+    ⟨(204969809747/500000000000 : ℚ), (277798837/1250000000 : ℚ), (-53071906059/500000000000 : ℚ), 1⟩,
+    ⟨(213859437253/500000000000 : ℚ), (829363451/5000000000 : ℚ), (-20638810127/250000000000 : ℚ), 1⟩,
+    ⟨(89082503509/200000000000 : ℚ), (604401737/5000000000 : ℚ), (-62927021523/1000000000000 : ℚ), 1⟩,
+    ⟨(462850149157/1000000000000 : ℚ), (422777999/5000000000 : ℚ), (-9288159589/200000000000 : ℚ), 1⟩,
+    ⟨(479863835417/1000000000000 : ℚ), (549446687/10000000000 : ℚ), (-1299624897/40000000000 : ℚ), 1⟩,
+    ⟨(248144862613/500000000000 : ℚ), (306173249/10000000000 : ℚ), (-322220117/15625000000 : ℚ), 1⟩,
+    ⟨(102393925657/200000000000 : ℚ), (105135859/10000000000 : ℚ), (-2622691321/250000000000 : ℚ), 1⟩,
+    ⟨(526752538557/1000000000000 : ℚ), (-12321309/2000000000 : ℚ), (-916642631/500000000000 : ℚ), 1⟩,
+    ⟨(270248044267/500000000000 : ℚ), (-50014437/2500000000 : ℚ), (5553131589/1000000000000 : ℚ), 1⟩,
+    ⟨(553067920317/1000000000000 : ℚ), (-157394843/5000000000 : ℚ), (2956340723/250000000000 : ℚ), 1⟩,
+    ⟨(282173480147/500000000000 : ℚ), (-409300573/10000000000 : ℚ), (17105056221/1000000000000 : ℚ), 1⟩,
+    ⟨(574224585143/1000000000000 : ℚ), (-243135493/5000000000 : ℚ), (10743225779/500000000000 : ℚ), 1⟩,
+    ⟨(582605667939/1000000000000 : ℚ), (-547748163/10000000000 : ℚ), (5008430087/200000000000 : ℚ), 1⟩,
+    ⟨(2302380837/3906250000 : ℚ), (-297639453/5000000000 : ℚ), (13913685927/500000000000 : ℚ), 1⟩,
+    ⟨(23782821583/40000000000 : ℚ), (-7875063/125000000 : ℚ), (14941538263/500000000000 : ℚ), 1⟩,
+    ⟨(467218047/781250000 : ℚ), (-326365431/5000000000 : ℚ), (488097099/15625000000 : ℚ), 1⟩,
+    ⟨(299890885947/500000000000 : ℚ), (-663969023/10000000000 : ℚ), (15955638907/500000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-665368011/10000000000 : ℚ), (6399040367/200000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def data : ControlCertificate.Data where
+  p := (237499/1000000 : ℚ)
+  x := (141392496627/1000000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control11.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control11.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate11
+
+namespace DiagonalRamsey.JointInheritedCertificate12
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(151784566889/500000000000 : ℚ), (38730807013599/10000000000 : ℚ), (-58867137333733/50000000000 : ℚ), 12⟩,
+    ⟨(152023290099/500000000000 : ℚ), (4261639436953/10000000000 : ℚ), (-130662472854143/1000000000000 : ℚ), 9⟩,
+    ⟨(152500161413/500000000000 : ℚ), (1510541700527/10000000000 : ℚ), (-46928302192383/1000000000000 : ℚ), 7⟩,
+    ⟨(153214032007/500000000000 : ℚ), (94443486669/1250000000 : ℚ), (-23858999156031/1000000000000 : ℚ), 6⟩,
+    ⟨(19270397763/62500000000 : ℚ), (22327195411/500000000 : ℚ), (-14365807718533/1000000000000 : ℚ), 5⟩,
+    ⟨(310690650237/1000000000000 : ℚ), (291216125121/10000000000 : ℚ), (-9560735097071/1000000000000 : ℚ), 5⟩,
+    ⟨(39189403291/125000000000 : ℚ), (101317322493/5000000000 : ℚ), (-106210595619/15625000000 : ℚ), 4⟩,
+    ⟨(31679328783/100000000000 : ℚ), (147608101377/10000000000 : ℚ), (-5064158653337/1000000000000 : ℚ), 4⟩,
+    ⟨(160258468803/500000000000 : ℚ), (111248682627/10000000000 : ℚ), (-976529269201/250000000000 : ℚ), 4⟩,
+    ⟨(162338602529/500000000000 : ℚ), (5379802341/625000000 : ℚ), (-3094473592751/1000000000000 : ℚ), 3⟩,
+    ⟨(329264067737/1000000000000 : ℚ), (68003680579/10000000000 : ℚ), (-2503815086581/1000000000000 : ℚ), 3⟩,
+    ⟨(10445827359/31250000000 : ℚ), (54642610041/10000000000 : ℚ), (-515186855311/250000000000 : ℚ), 3⟩,
+    ⟨(169836188537/500000000000 : ℚ), (22262892861/5000000000 : ℚ), (-1719996473063/1000000000000 : ℚ), 3⟩,
+    ⟨(86367187301/250000000000 : ℚ), (9177746179/2500000000 : ℚ), (-1452403256039/1000000000000 : ℚ), 3⟩,
+    ⟨(351641627909/1000000000000 : ℚ), (30571455369/10000000000 : ℚ), (-309624827881/250000000000 : ℚ), 2⟩,
+    ⟨(71635228437/200000000000 : ℚ), (641938839/250000000 : ℚ), (-42595335697/40000000000 : ℚ), 2⟩,
+    ⟨(182528274907/500000000000 : ℚ), (2715883887/1250000000 : ℚ), (-92208573637/100000000000 : ℚ), 2⟩,
+    ⟨(93066568823/250000000000 : ℚ), (9251325987/5000000000 : ℚ), (-803260767903/1000000000000 : ℚ), 2⟩,
+    ⟨(379787949757/1000000000000 : ℚ), (7922451841/5000000000 : ℚ), (-703360339257/1000000000000 : ℚ), 2⟩,
+    ⟨(387603452839/1000000000000 : ℚ), (6817464503/5000000000 : ℚ), (-618595739707/1000000000000 : ℚ), 2⟩,
+    ⟨(24730872269/62500000000 : ℚ), (11782689809/10000000000 : ℚ), (-273039347747/500000000000 : ℚ), 2⟩,
+    ⟨(404039969423/1000000000000 : ℚ), (10219081173/10000000000 : ℚ), (-48357638967/100000000000 : ℚ), 2⟩,
+    ⟨(412621385917/1000000000000 : ℚ), (8890424299/10000000000 : ℚ), (-429340910213/1000000000000 : ℚ), 2⟩,
+    ⟨(105354383101/250000000000 : ℚ), (1938642729/2500000000 : ℚ), (-381988352601/1000000000000 : ℚ), 2⟩,
+    ⟨(86081443639/200000000000 : ℚ), (3389051359/5000000000 : ℚ), (-340411709543/1000000000000 : ℚ), 2⟩,
+    ⟨(439568786351/1000000000000 : ℚ), (5934288271/10000000000 : ℚ), (-151858583069/500000000000 : ℚ), 2⟩,
+    ⟨(448880165851/1000000000000 : ℚ), (1300393117/2500000000 : ℚ), (-271176873949/1000000000000 : ℚ), 1⟩,
+    ⟨(229159462383/500000000000 : ℚ), (456244601/1000000000 : ℚ), (-242193502511/1000000000000 : ℚ), 1⟩,
+    ⟨(467862324299/1000000000000 : ℚ), (4002589793/10000000000 : ℚ), (-21627332363/100000000000 : ℚ), 1⟩,
+    ⟨(238743686783/500000000000 : ℚ), (27423599/78125000 : ℚ), (-96502778301/500000000000 : ℚ), 1⟩,
+    ⟨(243585442489/500000000000 : ℚ), (1537793233/5000000000 : ℚ), (-172046362289/1000000000000 : ℚ), 1⟩,
+    ⟨(49688953011/100000000000 : ℚ), (672643187/2500000000 : ℚ), (-153106325817/1000000000000 : ℚ), 1⟩,
+    ⟨(253309947947/500000000000 : ℚ), (11741971/50000000 : ℚ), (-27188116747/200000000000 : ℚ), 1⟩,
+    ⟨(258169270513/500000000000 : ℚ), (2043350541/10000000000 : ℚ), (-4813639033/40000000000 : ℚ), 1⟩,
+    ⟨(526022052439/1000000000000 : ℚ), (1770632183/10000000000 : ℚ), (-106129760333/1000000000000 : ℚ), 1⟩,
+    ⟨(107129420341/200000000000 : ℚ), (763082241/5000000000 : ℚ), (-18630909129/200000000000 : ℚ), 1⟩,
+    ⟨(545190501239/1000000000000 : ℚ), (653241089/5000000000 : ℚ), (-81284177181/1000000000000 : ℚ), 1⟩,
+    ⟨(277314630077/500000000000 : ℚ), (1108627609/10000000000 : ℚ), (-8800672423/125000000000 : ℚ), 1⟩,
+    ⟨(563940639653/1000000000000 : ℚ), (11625847/125000000 : ℚ), (-15104999407/250000000000 : ℚ), 1⟩,
+    ⟨(573102207809/1000000000000 : ℚ), (384313173/5000000000 : ℚ), (-6405340307/125000000000 : ℚ), 1⟩,
+    ⟨(727614867/1250000000 : ℚ), (31121397/500000000 : ℚ), (-42799201043/1000000000000 : ℚ), 1⟩,
+    ⟨(590888040087/1000000000000 : ℚ), (24492591/500000000 : ℚ), (-35024463471/1000000000000 : ℚ), 1⟩,
+    ⟨(599469456581/1000000000000 : ℚ), (92373423/2500000000 : ℚ), (-13930802781/500000000000 : ℚ), 1⟩,
+    ⟨(6078154697/10000000000 : ℚ), (65033457/2500000000 : ℚ), (-10630341093/500000000000 : ℚ), 1⟩,
+    ⟨(123181194633/200000000000 : ℚ), (10044403/625000000 : ℚ), (-7588886721/500000000000 : ℚ), 1⟩,
+    ⟨(623721476247/1000000000000 : ℚ), (35148707/5000000000 : ℚ), (-9574194371/1000000000000 : ℚ), 1⟩,
+    ⟨(631243150713/1000000000000 : ℚ), (-2382903/2000000000 : ℚ), (-4415824473/1000000000000 : ℚ), 1⟩,
+    ⟨(63845287619/100000000000 : ℚ), (-21658371/2500000000 : ℚ), (81865867/250000000000 : ℚ), 1⟩,
+    ⟨(645333283819/1000000000000 : ℚ), (-154479889/10000000000 : ℚ), (4682290497/1000000000000 : ℚ), 1⟩,
+    ⟨(130373559619/200000000000 : ℚ), (-53999419/2500000000 : ℚ), (8672187869/1000000000000 : ℚ), 1⟩,
+    ⟨(658040676801/1000000000000 : ℚ), (-33957991/1250000000 : ℚ), (6158977079/500000000000 : ℚ), 1⟩,
+    ⟨(66383704893/100000000000 : ℚ), (-160948501/5000000000 : ℚ), (3909490169/250000000000 : ℚ), 1⟩,
+    ⟨(167310737629/250000000000 : ℚ), (-367063449/10000000000 : ℚ), (18648413839/1000000000000 : ℚ), 1⟩,
+    ⟨(168561339567/250000000000 : ℚ), (-203741949/5000000000 : ℚ), (267044751/12500000000 : ℚ), 1⟩,
+    ⟨(339416110473/500000000000 : ℚ), (-221719031/5000000000 : ℚ), (23795979141/1000000000000 : ℚ), 1⟩,
+    ⟨(341496244199/500000000000 : ℚ), (-237584489/5000000000 : ℚ), (3244568499/125000000000 : ℚ), 1⟩,
+    ⟨(343358069087/500000000000 : ℚ), (-502886611/10000000000 : ℚ), (13927391191/500000000000 : ℚ), 1⟩,
+    ⟨(172498549919/250000000000 : ℚ), (-105354177/2000000000 : ℚ), (14749427857/500000000000 : ℚ), 1⟩,
+    ⟨(692818775767/1000000000000 : ℚ), (-546974229/10000000000 : ℚ), (15447859973/500000000000 : ℚ), 1⟩,
+    ⟨(173795765449/250000000000 : ℚ), (-563623687/10000000000 : ℚ), (32051189169/1000000000000 : ℚ), 1⟩,
+    ⟨(69708136199/100000000000 : ℚ), (-288411327/5000000000 : ℚ), (8242502369/250000000000 : ℚ), 1⟩,
+    ⟨(349254551589/500000000000 : ℚ), (-293326127/5000000000 : ℚ), (33655913283/1000000000000 : ℚ), 1⟩,
+    ⟨(699462845807/1000000000000 : ℚ), (-296586211/5000000000 : ℚ), (17055831773/500000000000 : ℚ), 1⟩,
+    ⟨(349970146113/500000000000 : ℚ), (-18638209/312500000 : ℚ), (8584771287/250000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-18650891/312500000 : ℚ), (34367491601/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def data : ControlCertificate.Data where
+  p := (237499/1000000 : ℚ)
+  x := (4634226051/40000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 32
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control12.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control12.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate12
+
+namespace DiagonalRamsey.JointInheritedCertificate15
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(9554515731/40000000000 : ℚ), (1635550631899/2000000000 : ℚ), (-196308158260333/1000000000000 : ℚ), 10⟩,
+    ⟨(120300409593/500000000000 : ℚ), (878038148471/10000000000 : ℚ), (-21711845897209/1000000000000 : ℚ), 6⟩,
+    ⟨(30507491729/125000000000 : ℚ), (300310755887/10000000000 : ℚ), (-3872377562529/500000000000 : ℚ), 5⟩,
+    ⟨(249206924049/1000000000000 : ℚ), (14395283943/1000000000 : ℚ), (-974352481909/250000000000 : ℚ), 4⟩,
+    ⟨(51198444301/200000000000 : ℚ), (634071629/78125000 : ℚ), (-144680246617/62500000000 : ℚ), 4⟩,
+    ⟨(264350480079/1000000000000 : ℚ), (3145656831/625000000 : ℚ), (-151450838263/100000000000 : ℚ), 3⟩,
+    ⟨(274201205169/1000000000000 : ℚ), (33222412109/10000000000 : ℚ), (-527394511571/500000000000 : ℚ), 3⟩,
+    ⟨(28544952891/100000000000 : ℚ), (5728244947/2500000000 : ℚ), (-191718671407/250000000000 : ℚ), 2⟩,
+    ⟨(59597424759/200000000000 : ℚ), (4079747917/2500000000 : ℚ), (-57487274823/100000000000 : ℚ), 2⟩,
+    ⟨(31169324593/100000000000 : ℚ), (2976377343/2500000000 : ℚ), (-88112878659/200000000000 : ℚ), 2⟩,
+    ⟨(81608974467/250000000000 : ℚ), (552680023/625000000 : ℚ), (-171501232041/500000000000 : ℚ), 2⟩,
+    ⟨(34207309981/100000000000 : ℚ), (6653530819/10000000000 : ℚ), (-269929127489/1000000000000 : ℚ), 2⟩,
+    ⟨(71690851391/200000000000 : ℚ), (5048588897/10000000000 : ℚ), (-213788109187/1000000000000 : ℚ), 2⟩,
+    ⟨(375421609803/1000000000000 : ℚ), (3846207569/10000000000 : ℚ), (-169720536711/1000000000000 : ℚ), 1⟩,
+    ⟨(95901307/244140625 : ℚ), (2928093253/10000000000 : ℚ), (-67245743229/500000000000 : ℚ), 1⟩,
+    ⟨(102614302843/250000000000 : ℚ), (276893687/1250000000 : ℚ), (-13235484849/125000000000 : ℚ), 1⟩,
+    ⟨(428188048097/1000000000000 : ℚ), (330646991/2000000000 : ℚ), (-41170349851/500000000000 : ℚ), 1⟩,
+    ⟨(445833505997/1000000000000 : ℚ), (301132739/2500000000 : ℚ), (-7843205819/125000000000 : ℚ), 1⟩,
+    ⟨(231611824833/500000000000 : ℚ), (84214699/1000000000 : ℚ), (-370273403/8000000000 : ℚ), 1⟩,
+    ⟨(96038200503/200000000000 : ℚ), (273330097/5000000000 : ℚ), (-6470589183/200000000000 : ℚ), 1⟩,
+    ⟨(496572159659/1000000000000 : ℚ), (60768909/2000000000 : ℚ), (-10249661879/500000000000 : ℚ), 1⟩,
+    ⟨(256104680801/500000000000 : ℚ), (25787743/2500000000 : ℚ), (-5190037443/500000000000 : ℚ), 1⟩,
+    ⟨(526952013539/1000000000000 : ℚ), (-63327769/10000000000 : ℚ), (-1732619693/1000000000000 : ℚ), 1⟩,
+    ⟨(21626325427/40000000000 : ℚ), (-40314587/2000000000 : ℚ), (1129061947/200000000000 : ℚ), 1⟩,
+    ⟨(553195730559/1000000000000 : ℚ), (-12645659/400000000 : ℚ), (5955136181/500000000000 : ℚ), 1⟩,
+    ⟨(5644440543/10000000000 : ℚ), (-410521659/10000000000 : ℚ), (8591863811/500000000000 : ℚ), 1⟩,
+    ⟨(574294779391/1000000000000 : ℚ), (-243693749/5000000000 : ℚ), (1077990727/50000000000 : ℚ), 1⟩,
+    ⟨(145663259491/250000000000 : ℚ), (-137195477/2500000000 : ℚ), (25111087837/1000000000000 : ℚ), 1⟩,
+    ⟨(589438335421/1000000000000 : ℚ), (-596248883/10000000000 : ℚ), (5578550769/200000000000 : ℚ), 1⟩,
+    ⟨(594585325637/1000000000000 : ℚ), (-157732109/2500000000 : ℚ), (3743222101/125000000000 : ℚ), 1⟩,
+    ⟨(598044440283/1000000000000 : ℚ), (-326811869/5000000000 : ℚ), (7824779389/250000000000 : ℚ), 1⟩,
+    ⟨(119956473239/200000000000 : ℚ), (-664846789/10000000000 : ℚ), (6394255889/200000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-333121947/5000000000 : ℚ), (32055090491/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def data : ControlCertificate.Data where
+  p := (249999/1000000 : ℚ)
+  x := (150849743033/1000000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control15.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control15.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate15
+
+namespace DiagonalRamsey.JointInheritedCertificate16
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(304728427053/1000000000000 : ℚ), (4794252195999/1250000000 : ℚ), (-1170332318929469/1000000000000 : ℚ), 12⟩,
+    ⟨(305204477263/1000000000000 : ℚ), (4220468294663/10000000000 : ℚ), (-25977425014191/200000000000 : ℚ), 9⟩,
+    ⟨(76538857709/250000000000 : ℚ), (1496114002747/10000000000 : ℚ), (-5831467150043/125000000000 : ℚ), 7⟩,
+    ⟨(307578996843/1000000000000 : ℚ), (374219564111/5000000000 : ℚ), (-474396508347/20000000000 : ℚ), 6⟩,
+    ⟨(77367936447/250000000000 : ℚ), (442418629997/10000000000 : ℚ), (-14283142054797/1000000000000 : ℚ), 5⟩,
+    ⟨(19489319867/62500000000 : ℚ), (28858253553/1000000000 : ℚ), (-2376660172303/250000000000 : ℚ), 5⟩,
+    ⟨(314645433981/1000000000000 : ℚ), (200845935083/10000000000 : ℚ), (-54078262731/8000000000 : ℚ), 4⟩,
+    ⟨(317913909361/1000000000000 : ℚ), (36584947203/2500000000 : ℚ), (-5036718894033/1000000000000 : ℚ), 4⟩,
+    ⟨(32162666997/100000000000 : ℚ), (110320706871/10000000000 : ℚ), (-485687307017/125000000000 : ℚ), 4⟩,
+    ⟨(325774771441/1000000000000 : ℚ), (85381608691/10000000000 : ℚ), (-3078606042667/1000000000000 : ℚ), 3⟩,
+    ⟨(82587055159/250000000000 : ℚ), (67473176749/10000000000 : ℚ), (-2491376531737/1000000000000 : ℚ), 3⟩,
+    ⟨(167667999857/500000000000 : ℚ), (1084637467/200000000 : ℚ), (-1025426957247/500000000000 : ℚ), 3⟩,
+    ⟨(170363046339/500000000000 : ℚ), (5525503001/1250000000 : ℚ), (-1712034680221/1000000000000 : ℚ), 3⟩,
+    ⟨(86626378581/250000000000 : ℚ), (9114121391/2500000000 : ℚ), (-722967217507/500000000000 : ℚ), 3⟩,
+    ⟨(352660341517/1000000000000 : ℚ), (3796067059/1250000000 : ℚ), (-1233201551421/1000000000000 : ℚ), 2⟩,
+    ⟨(359175746739/1000000000000 : ℚ), (5102931773/2000000000 : ℚ), (-16570553489/15625000000 : ℚ), 2⟩,
+    ⟨(36603603381/100000000000 : ℚ), (21595540759/10000000000 : ℚ), (-229615863147/250000000000 : ℚ), 2⟩,
+    ⟨(373224675697/1000000000000 : ℚ), (4598975947/2500000000 : ℚ), (-160048306629/200000000000 : ℚ), 2⟩,
+    ⟨(380724354331/1000000000000 : ℚ), (7878937049/5000000000 : ℚ), (-175208052811/250000000000 : ℚ), 2⟩,
+    ⟨(38851700233/100000000000 : ℚ), (2712736543/2000000000 : ℚ), (-308234949267/500000000000 : ℚ), 2⟩,
+    ⟨(198291923261/500000000000 : ℚ), (293103539/250000000 : ℚ), (-544284009887/1000000000000 : ℚ), 2⟩,
+    ⟨(404905453173/1000000000000 : ℚ), (2542698511/2500000000 : ℚ), (-482055443967/1000000000000 : ℚ), 2⟩,
+    ⟨(103365443701/250000000000 : ℚ), (885046111/1000000000 : ℚ), (-428047050377/1000000000000 : ℚ), 2⟩,
+    ⟨(422232198487/1000000000000 : ℚ), (1544276651/2000000000 : ℚ), (-47610431939/125000000000 : ℚ), 2⟩,
+    ⟨(215597797751/500000000000 : ℚ), (1350089409/2000000000 : ℚ), (-169732238181/500000000000 : ℚ), 2⟩,
+    ⟨(220165186121/500000000000 : ℚ), (2955580897/5000000000 : ℚ), (-302901799631/1000000000000 : ℚ), 2⟩,
+    ⟨(112403630557/250000000000 : ℚ), (259108183/500000000 : ℚ), (-33809005273/125000000000 : ℚ), 2⟩,
+    ⟨(459025679131/1000000000000 : ℚ), (4546096101/10000000000 : ℚ), (-48316303823/200000000000 : ℚ), 1⟩,
+    ⟨(58567646331/125000000000 : ℚ), (3988762573/10000000000 : ℚ), (-215739493029/1000000000000 : ℚ), 1⟩,
+    ⟨(59767259141/125000000000 : ℚ), (3498478659/10000000000 : ℚ), (-192537647509/1000000000000 : ℚ), 1⟩,
+    ⟨(60974158349/125000000000 : ℚ), (1532785993/5000000000 : ℚ), (-171634181159/1000000000000 : ℚ), 1⟩,
+    ⟨(497483491433/1000000000000 : ℚ), (2681992833/10000000000 : ℚ), (-30548273733/200000000000 : ℚ), 1⟩,
+    ⟨(507185402451/1000000000000 : ℚ), (585252121/2500000000 : ℚ), (-13561575103/100000000000 : ℚ), 1⟩,
+    ⟨(516875627091/1000000000000 : ℚ), (1018480759/5000000000 : ℚ), (-60025168843/500000000000 : ℚ), 1⟩,
+    ⟨(105306164151/200000000000 : ℚ), (1765077333/10000000000 : ℚ), (-105868361733/1000000000000 : ℚ), 1⟩,
+    ⟨(134031930809/250000000000 : ℚ), (190163737/1250000000 : ℚ), (-11614780667/125000000000 : ℚ), 1⟩,
+    ⟨(545643214753/1000000000000 : ℚ), (651108687/5000000000 : ℚ), (-81069513089/1000000000000 : ℚ), 1⟩,
+    ⟨(69381796457/125000000000 : ℚ), (276215327/2500000000 : ℚ), (-70209456079/1000000000000 : ℚ), 1⟩,
+    ⟨(282169260821/500000000000 : ℚ), (23168111/250000000 : ℚ), (-60240392431/1000000000000 : ℚ), 1⟩,
+    ⟨(573473298381/1000000000000 : ℚ), (765643419/10000000000 : ℚ), (-51077406187/1000000000000 : ℚ), 1⟩,
+    ⟨(582436695397/1000000000000 : ℚ), (309876721/5000000000 : ℚ), (-5330808983/125000000000 : ℚ), 1⟩,
+    ⟨(591207119079/1000000000000 : ℚ), (243721257/5000000000 : ℚ), (-34882891077/1000000000000 : ℚ), 1⟩,
+    ⟨(59976344071/100000000000 : ℚ), (367313507/10000000000 : ℚ), (-13864991973/500000000000 : ℚ), 1⟩,
+    ⟨(304042523681/500000000000 : ℚ), (129076289/5000000000 : ℚ), (-5284497567/250000000000 : ℚ), 1⟩,
+    ⟨(308075945777/500000000000 : ℚ), (158902773/10000000000 : ℚ), (-15063141359/1000000000000 : ℚ), 1⟩,
+    ⟨(623944539553/1000000000000 : ℚ), (8580239/1250000000 : ℚ), (-2366718929/250000000000 : ℚ), 1⟩,
+    ⟨(631444218187/1000000000000 : ℚ), (-6718003/5000000000 : ℚ), (-4315172621/1000000000000 : ℚ), 1⟩,
+    ⟨(638632860073/1000000000000 : ℚ), (-88036477/10000000000 : ℚ), (105503771/250000000000 : ℚ), 1⟩,
+    ⟨(80686643393/125000000000 : ℚ), (-77888867/5000000000 : ℚ), (74550699/15625000000 : ℚ), 1⟩,
+    ⟨(652008552367/1000000000000 : ℚ), (-43440393/2000000000 : ℚ), (273624941/31250000000 : ℚ), 1⟩,
+    ⟨(16454084489/25000000000 : ℚ), (-272784821/10000000000 : ℚ), (1239703509/100000000000 : ℚ), 1⟩,
+    ⟨(132788560241/200000000000 : ℚ), (-322943501/10000000000 : ℚ), (7856348981/500000000000 : ℚ), 1⟩,
+    ⟨(66933289417/100000000000 : ℚ), (-184021811/5000000000 : ℚ), (18719171877/1000000000000 : ℚ), 1⟩,
+    ⟨(21072521039/31250000000 : ℚ), (-20420253/500000000 : ℚ), (21430707897/1000000000000 : ℚ), 1⟩,
+    ⟨(678894122443/1000000000000 : ℚ), (-444306923/10000000000 : ℚ), (23859815059/1000000000000 : ℚ), 1⟩,
+    ⟨(341521111957/500000000000 : ℚ), (-59498971/1250000000 : ℚ), (26017423827/1000000000000 : ℚ), 1⟩,
+    ⟨(686754984523/1000000000000 : ℚ), (-503669179/10000000000 : ℚ), (2791302627/100000000000 : ℚ), 1⟩,
+    ⟨(690023459903/1000000000000 : ℚ), (-527518779/10000000000 : ℚ), (14777397051/500000000000 : ℚ), 1⟩,
+    ⟨(173209944003/250000000000 : ℚ), (-547692761/10000000000 : ℚ), (3868709869/125000000000 : ℚ), 1⟩,
+    ⟨(10862455439/15625000000 : ℚ), (-564317989/10000000000 : ℚ), (6420699173/200000000000 : ℚ), 1⟩,
+    ⟨(8713623713/12500000000 : ℚ), (-577497717/10000000000 : ℚ), (16510495861/500000000000 : ℚ), 1⟩,
+    ⟨(698513463047/1000000000000 : ℚ), (-587312971/10000000000 : ℚ), (33705900843/1000000000000 : ℚ), 1⟩,
+    ⟨(699464416621/1000000000000 : ℚ), (-148455903/2500000000 : ℚ), (6832197419/200000000000 : ℚ), 1⟩,
+    ⟨(699940466831/1000000000000 : ℚ), (-298534563/5000000000 : ℚ), (17194038253/500000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-597474357/10000000000 : ℚ), (8604110373/250000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def data : ControlCertificate.Data where
+  p := (249999/1000000 : ℚ)
+  x := (124268085333/1000000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 32
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control16.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control16.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate16
+
+namespace DiagonalRamsey.JointInheritedCertificate21
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(239712541661/1000000000000 : ℚ), (8135136759737/2500000000 : ℚ), (-78124300030513/100000000000 : ℚ), 12⟩,
+    ⟨(3001830729/12500000000 : ℚ), (55882316903/156250000 : ℚ), (-86706524508469/1000000000000 : ℚ), 9⟩,
+    ⟨(120506623147/500000000000 : ℚ), (1265561305131/10000000000 : ℚ), (-7785937556299/250000000000 : ℚ), 7⟩,
+    ⟨(30288852177/125000000000 : ℚ), (126348141161/2000000000 : ℚ), (-1583581892549/100000000000 : ℚ), 6⟩,
+    ⟨(244036045723/1000000000000 : ℚ), (14901569323/400000000 : ℚ), (-9536456637487/1000000000000 : ℚ), 5⟩,
+    ⟨(246184774989/1000000000000 : ℚ), (48475553469/2000000000 : ℚ), (-3173967684913/500000000000 : ℚ), 5⟩,
+    ⟨(971686831/3906250000 : ℚ), (16823778099/1000000000 : ℚ), (-902854083819/200000000000 : ℚ), 4⟩,
+    ⟨(62932755677/250000000000 : ℚ), (30561435803/2500000000 : ℚ), (-3364018185389/1000000000000 : ℚ), 4⟩,
+    ⟨(51023035953/200000000000 : ℚ), (18380498469/2000000000 : ℚ), (-129774185123/50000000000 : ℚ), 4⟩,
+    ⟨(258896147177/1000000000000 : ℚ), (70930522397/10000000000 : ℚ), (-1028395399959/500000000000 : ℚ), 3⟩,
+    ⟨(263064816261/1000000000000 : ℚ), (27949680041/5000000000 : ℚ), (-1664719873417/1000000000000 : ℚ), 3⟩,
+    ⟨(26761114433/100000000000 : ℚ), (22403789799/5000000000 : ℚ), (-685284601609/500000000000 : ℚ), 3⟩,
+    ⟨(851638059/3125000000 : ℚ), (9106215407/2500000000 : ℚ), (-572148273333/500000000000 : ℚ), 3⟩,
+    ⟨(13889604199/50000000000 : ℚ), (14980957239/5000000000 : ℚ), (-966553176759/1000000000000 : ℚ), 3⟩,
+    ⟨(283402168787/1000000000000 : ℚ), (24894069413/10000000000 : ℚ), (-41221038257/50000000000 : ℚ), 2⟩,
+    ⟨(144670459057/500000000000 : ℚ), (4172388029/2000000000 : ℚ), (-354503543563/500000000000 : ℚ), 2⟩,
+    ⟨(147797012497/500000000000 : ℚ), (17612960329/10000000000 : ℚ), (-15350720747/25000000000 : ℚ), 2⟩,
+    ⟨(60429285029/200000000000 : ℚ), (7482829199/5000000000 : ℚ), (-1044812713/1953125000 : ℚ), 2⟩,
+    ⟨(15449116663/50000000000 : ℚ), (6393552307/5000000000 : ℚ), (-468403849473/1000000000000 : ℚ), 2⟩,
+    ⟨(3951066013/12500000000 : ℚ), (10978263123/10000000000 : ℚ), (-82378956107/200000000000 : ℚ), 2⟩,
+    ⟨(323438156859/1000000000000 : ℚ), (9464236971/10000000000 : ℚ), (-363501200753/1000000000000 : ℚ), 2⟩,
+    ⟨(331023246997/1000000000000 : ℚ), (4093812803/5000000000 : ℚ), (-321742402919/1000000000000 : ℚ), 2⟩,
+    ⟨(169411139153/500000000000 : ℚ), (1420782209/2000000000 : ℚ), (-285459486901/1000000000000 : ℚ), 2⟩,
+    ⟨(173408231119/500000000000 : ℚ), (1544548861/2500000000 : ℚ), (-63433780727/250000000000 : ℚ), 2⟩,
+    ⟨(354986540103/1000000000000 : ℚ), (5382856797/10000000000 : ℚ), (-112917868183/500000000000 : ℚ), 2⟩,
+    ⟨(363312829467/1000000000000 : ℚ), (2347919809/5000000000 : ℚ), (-201169225277/1000000000000 : ℚ), 2⟩,
+    ⟨(371775271571/1000000000000 : ℚ), (4099391963/10000000000 : ℚ), (-89626807077/500000000000 : ℚ), 2⟩,
+    ⟨(7607069593/20000000000 : ℚ), (3579120877/10000000000 : ℚ), (-159693524247/1000000000000 : ℚ), 2⟩,
+    ⟨(7780535761/20000000000 : ℚ), (780819533/2500000000 : ℚ), (-28432461727/200000000000 : ℚ), 1⟩,
+    ⟨(39777430201/100000000000 : ℚ), (2722214579/10000000000 : ℚ), (-7899271387/62500000000 : ℚ), 1⟩,
+    ⟨(101643737001/250000000000 : ℚ), (2367959417/10000000000 : ℚ), (-56072199049/500000000000 : ℚ), 1⟩,
+    ⟨(83081504901/200000000000 : ℚ), (256736621/1250000000 : ℚ), (-99239339583/1000000000000 : ℚ), 1⟩,
+    ⟨(424250753061/1000000000000 : ℚ), (887245081/5000000000 : ℚ), (-87511568619/1000000000000 : ℚ), 1⟩,
+    ⟨(216541664781/500000000000 : ℚ), (381279489/2500000000 : ℚ), (-76823817797/1000000000000 : ℚ), 1⟩,
+    ⟨(110470993889/250000000000 : ℚ), (260374851/2000000000 : ℚ), (-13411795921/200000000000 : ℚ), 1⟩,
+    ⟨(112657872379/250000000000 : ℚ), (550729517/5000000000 : ℚ), (-58116745049/1000000000000 : ℚ), 1⟩,
+    ⟨(114826199479/250000000000 : ℚ), (230267647/2500000000 : ℚ), (-49910874401/1000000000000 : ℚ), 1⟩,
+    ⟨(93576601199/200000000000 : ℚ), (189580393/2500000000 : ℚ), (-21183485077/500000000000 : ℚ), 1⟩,
+    ⟨(476345448099/1000000000000 : ℚ), (152792673/2500000000 : ℚ), (-17710324049/500000000000 : ℚ), 1⟩,
+    ⟨(484671737463/1000000000000 : ℚ), (477866867/10000000000 : ℚ), (-29016028009/1000000000000 : ℚ), 1⟩,
+    ⟨(15401306729/31250000000 : ℚ), (2855227/80000000 : ℚ), (-11552240777/500000000000 : ℚ), 1⟩,
+    ⟨(25041799963/50000000000 : ℚ), (123490017/5000000000 : ℚ), (-17643588327/1000000000000 : ℚ), 1⟩,
+    ⟨(508635030569/1000000000000 : ℚ), (1469719/100000000 : ℚ), (-12596263229/1000000000000 : ℚ), 1⟩,
+    ⟨(516220120707/1000000000000 : ℚ), (55903237/10000000000 : ℚ), (-7930021347/1000000000000 : ℚ), 1⟩,
+    ⟨(523572996527/1000000000000 : ℚ), (-27074177/10000000000 : ℚ), (-3616359417/1000000000000 : ℚ), 1⟩,
+    ⟨(265337972153/500000000000 : ℚ), (-102699213/10000000000 : ℚ), (369769049/1000000000000 : ℚ), 1⟩,
+    ⟨(268755926211/500000000000 : ℚ), (-171616631/10000000000 : ℚ), (126574973/31250000000 : ℚ), 1⟩,
+    ⟨(136016063143/250000000000 : ℚ), (-234389907/10000000000 : ℚ), (7444933971/1000000000000 : ℚ), 1⟩,
+    ⟨(137579339863/250000000000 : ℚ), (-145756029/5000000000 : ℚ), (10570469/1000000000 : ℚ), 1⟩,
+    ⟨(556256108779/1000000000000 : ℚ), (-343414791/10000000000 : ℚ), (13442068941/1000000000000 : ℚ), 1⟩,
+    ⟨(280933096793/500000000000 : ℚ), (-195238133/5000000000 : ℚ), (4018251633/250000000000 : ℚ), 1⟩,
+    ⟨(283567049343/500000000000 : ℚ), (-17321107/400000000 : ℚ), (9237483271/500000000000 : ℚ), 1⟩,
+    ⟨(143011783309/250000000000 : ℚ), (-29459927/625000000 : ℚ), (1032911059/50000000000 : ℚ), 1⟩,
+    ⟨(115318692261/200000000000 : ℚ), (-252861467/5000000000 : ℚ), (4526356401/200000000000 : ℚ), 1⟩,
+    ⟨(580762130389/1000000000000 : ℚ), (-536340597/10000000000 : ℚ), (3050441153/125000000000 : ℚ), 1⟩,
+    ⟨(584543097801/1000000000000 : ℚ), (-563403287/10000000000 : ℚ), (25980323159/1000000000000 : ℚ), 1⟩,
+    ⟨(293963627429/500000000000 : ℚ), (-587076229/10000000000 : ℚ), (342101249/12500000000 : ℚ), 1⟩,
+    ⟨(59090644883/100000000000 : ℚ), (-303750429/5000000000 : ℚ), (28571952467/1000000000000 : ℚ), 1⟩,
+    ⟨(296736751289/500000000000 : ℚ), (-624796877/10000000000 : ℚ), (2959619947/100000000000 : ℚ), 1⟩,
+    ⟨(595622231843/1000000000000 : ℚ), (-127812793/2000000000 : ℚ), (30444442731/1000000000000 : ℚ), 1⟩,
+    ⟨(11946949203/20000000000 : ℚ), (-32519159/500000000 : ℚ), (6223922999/200000000000 : ℚ), 1⟩,
+    ⟨(74830628909/125000000000 : ℚ), (-329409041/5000000000 : ℚ), (31624018263/1000000000000 : ℚ), 1⟩,
+    ⟨(299755909623/500000000000 : ℚ), (-664415601/10000000000 : ℚ), (31959353353/1000000000000 : ℚ), 1⟩,
+    ⟨(119989147181/200000000000 : ℚ), (-667206677/10000000000 : ℚ), (3212674219/100000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-333777601/5000000000 : ℚ), (8036913181/250000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (262499/1000000 : ℚ)
+  x := (40106752639/250000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control21.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control21.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate21
+
+namespace DiagonalRamsey.JointInheritedCertificate24
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(120418637783/500000000000 : ℚ), (4030034228361/1250000000 : ℚ), (-777657551480851/1000000000000 : ℚ), 12⟩,
+    ⟨(120634918819/500000000000 : ℚ), (708751106901/2000000000 : ℚ), (-86310090705219/1000000000000 : ℚ), 9⟩,
+    ⟨(242133919701/1000000000000 : ℚ), (1254147663117/10000000000 : ℚ), (-7750605853519/250000000000 : ℚ), 7⟩,
+    ⟨(243427440107/1000000000000 : ℚ), (125229267503/2000000000 : ℚ), (-7882379285961/500000000000 : ℚ), 6⟩,
+    ⟨(245147282651/1000000000000 : ℚ), (369311555221/10000000000 : ℚ), (-949429252421/100000000000 : ℚ), 5⟩,
+    ⟨(123644652041/500000000000 : ℚ), (7510310087/312500000 : ℚ), (-1264075523389/200000000000 : ℚ), 5⟩,
+    ⟨(249848344083/1000000000000 : ℚ), (2607122313/156250000 : ℚ), (-4495092386313/1000000000000 : ℚ), 4⟩,
+    ⟨(126409118851/500000000000 : ℚ), (6063613277/500000000 : ℚ), (-1675038385269/500000000000 : ℚ), 4⟩,
+    ⟨(128095915103/500000000000 : ℚ), (91194924903/10000000000 : ℚ), (-2585021652199/1000000000000 : ℚ), 4⟩,
+    ⟨(129980497157/500000000000 : ℚ), (70403880157/10000000000 : ℚ), (-2048748835703/1000000000000 : ℚ), 3⟩,
+    ⟨(13205832489/50000000000 : ℚ), (27750031013/5000000000 : ℚ), (-1658421462961/1000000000000 : ℚ), 3⟩,
+    ⟨(134324392633/500000000000 : ℚ), (8900065417/2000000000 : ℚ), (-1365562069219/1000000000000 : ℚ), 3⟩,
+    ⟨(136773241231/500000000000 : ℚ), (36185567831/10000000000 : ℚ), (-142533372073/125000000000 : ℚ), 3⟩,
+    ⟨(17424871399/62500000000 : ℚ), (2977366623/1000000000 : ℚ), (-120409612293/125000000000 : ℚ), 3⟩,
+    ⟨(284390513807/1000000000000 : ℚ), (12372353849/5000000000 : ℚ), (-821733386009/1000000000000 : ℚ), 3⟩,
+    ⟨(58062144747/200000000000 : ℚ), (10371275503/5000000000 : ℚ), (-176696391889/250000000000 : ℚ), 2⟩,
+    ⟨(59308861973/200000000000 : ℚ), (1751690087/1000000000 : ℚ), (-612179456303/1000000000000 : ℚ), 2⟩,
+    ⟨(151538127471/500000000000 : ℚ), (465247169/312500000 : ℚ), (-533394448823/1000000000000 : ℚ), 2⟩,
+    ⟨(154945411469/500000000000 : ℚ), (1590478643/1250000000 : ℚ), (-233548611127/500000000000 : ℚ), 2⟩,
+    ⟨(316971596961/1000000000000 : ℚ), (10926498721/10000000000 : ℚ), (-205393184567/500000000000 : ℚ), 2⟩,
+    ⟨(324301518807/1000000000000 : ℚ), (1177709609/1250000000 : ℚ), (-362555257511/1000000000000 : ℚ), 2⟩,
+    ⟨(82965732513/250000000000 : ℚ), (1019057559/1250000000 : ℚ), (-320930204989/1000000000000 : ℚ), 2⟩,
+    ⟨(169818807297/500000000000 : ℚ), (7074712749/10000000000 : ℚ), (-284757813987/1000000000000 : ℚ), 2⟩,
+    ⟨(347606842537/1000000000000 : ℚ), (6153830591/10000000000 : ℚ), (-253125107327/1000000000000 : ℚ), 2⟩,
+    ⟨(177875707657/500000000000 : ℚ), (1340605403/2500000000 : ℚ), (-11265099129/50000000000 : ℚ), 2⟩,
+    ⟨(364051711933/1000000000000 : ℚ), (584826301/1250000000 : ℚ), (-40139825419/200000000000 : ℚ), 2⟩,
+    ⟨(74497547251/200000000000 : ℚ), (255299193/625000000 : ℚ), (-89418410031/500000000000 : ℚ), 2⟩,
+    ⟨(190519582579/500000000000 : ℚ), (1783335663/5000000000 : ℚ), (-79660757573/500000000000 : ℚ), 2⟩,
+    ⟨(389685397499/1000000000000 : ℚ), (622520917/2000000000 : ℚ), (-70914030263/500000000000 : ℚ), 2⟩,
+    ⟨(398405603749/1000000000000 : ℚ), (2713009421/10000000000 : ℚ), (-126086055487/1000000000000 : ℚ), 1⟩,
+    ⟨(407178776167/1000000000000 : ℚ), (2359972553/10000000000 : ℚ), (-111869278501/1000000000000 : ℚ), 1⟩,
+    ⟨(103995944853/250000000000 : ℚ), (2046920591/10000000000 : ℚ), (-98987420769/1000000000000 : ℚ), 1⟩,
+    ⟨(424799401459/1000000000000 : ℚ), (353673161/2000000000 : ℚ), (-43639783193/500000000000 : ℚ), 1⟩,
+    ⟨(13550137647/31250000000 : ℚ), (1519705347/10000000000 : ℚ), (-76609010713/1000000000000 : ℚ), 1⟩,
+    ⟨(221188788561/500000000000 : ℚ), (259412319/2000000000 : ℚ), (-6685911129/100000000000 : ℚ), 1⟩,
+    ⟨(112774445843/250000000000 : ℚ), (219430877/2000000000 : ℚ), (-57929942271/1000000000000 : ℚ), 1⟩,
+    ⟨(229872007857/500000000000 : ℚ), (917198167/10000000000 : ℚ), (-49735580539/1000000000000 : ℚ), 1⟩,
+    ⟨(58536930577/125000000000 : ℚ), (150963749/2000000000 : ℚ), (-21100944423/500000000000 : ℚ), 1⟩,
+    ⟨(238365734469/500000000000 : ℚ), (151996387/2500000000 : ℚ), (-17632348661/500000000000 : ℚ), 1⟩,
+    ⟨(242515882779/500000000000 : ℚ), (237478121/5000000000 : ℚ), (-28868301101/1000000000000 : ℚ), 1⟩,
+    ⟨(246588169167/500000000000 : ℚ), (354231249/10000000000 : ℚ), (-5741053777/250000000000 : ℚ), 1⟩,
+    ⟨(501145566277/1000000000000 : ℚ), (122258113/5000000000 : ℚ), (-8755067739/500000000000 : ℚ), 1⟩,
+    ⟨(508920250819/1000000000000 : ℚ), (144691001/10000000000 : ℚ), (-12469071069/1000000000000 : ℚ), 1⟩,
+    ⟨(32280103879/62500000000 : ℚ), (26891873/5000000000 : ℚ), (-7808612903/1000000000000 : ℚ), 1⟩,
+    ⟨(52381158391/100000000000 : ℚ), (-29050569/10000000000 : ℚ), (-875079391/250000000000 : ℚ), 1⟩,
+    ⟨(265446178967/500000000000 : ℚ), (-104548201/10000000000 : ℚ), (480814087/1000000000000 : ℚ), 1⟩,
+    ⟨(537706925929/1000000000000 : ℚ), (-173351771/10000000000 : ℚ), (4156780347/1000000000000 : ℚ), 1⟩,
+    ⟨(272119435503/500000000000 : ℚ), (-59005751/2500000000 : ℚ), (7546956133/1000000000000 : ℚ), 1⟩,
+    ⟨(34404528571/62500000000 : ℚ), (-293053487/10000000000 : ℚ), (133355201/12500000000 : ℚ), 1⟩,
+    ⟨(111278533413/200000000000 : ℚ), (-86218439/2500000000 : ℚ), (270724193/20000000000 : ℚ), 1⟩,
+    ⟨(561985238487/1000000000000 : ℚ), (-195930507/5000000000 : ℚ), (505112469/31250000000 : ℚ), 1⟩,
+    ⟨(56723669841/100000000000 : ℚ), (-43434567/1000000000 : ℚ), (9281130953/500000000000 : ℚ), 1⟩,
+    ⟨(114426879121/200000000000 : ℚ), (-236308451/5000000000 : ℚ), (4148493369/200000000000 : ℚ), 1⟩,
+    ⟨(576666531091/1000000000000 : ℚ), (-101385477/2000000000 : ℚ), (2839152933/125000000000 : ℚ), 1⟩,
+    ⟨(290411093279/500000000000 : ℚ), (-537497311/10000000000 : ℚ), (24482411877/1000000000000 : ℚ), 1⟩,
+    ⟨(292295675333/500000000000 : ℚ), (-2822589/50000000 : ℚ), (26056893343/1000000000000 : ℚ), 1⟩,
+    ⟨(587964943169/1000000000000 : ℚ), (-588153799/10000000000 : ℚ), (1372130301/50000000000 : ℚ), 1⟩,
+    ⟨(147733709197/250000000000 : ℚ), (-152136629/2500000000 : ℚ), (28644645037/1000000000000 : ℚ), 1⟩,
+    ⟨(593493876789/1000000000000 : ℚ), (-625815473/10000000000 : ℚ), (3708416447/125000000000 : ℚ), 1⟩,
+    ⟨(29781794911/50000000000 : ℚ), (-320030103/5000000000 : ℚ), (30514270003/1000000000000 : ℚ), 1⟩,
+    ⟨(149338935191/250000000000 : ℚ), (-651361661/10000000000 : ℚ), (15594197677/500000000000 : ℚ), 1⟩,
+    ⟨(59864926117/100000000000 : ℚ), (-41236457/625000000 : ℚ), (31692011459/1000000000000 : ℚ), 1⟩,
+    ⟨(599513343233/1000000000000 : ℚ), (-66537203/1000000000 : ℚ), (32026820917/1000000000000 : ℚ), 1⟩,
+    ⟨(119989181061/200000000000 : ℚ), (-133631743/2000000000 : ℚ), (16096973323/500000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-167126673/2500000000 : ℚ), (3221482433/100000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (274999/1000000 : ℚ)
+  x := (42521143497/250000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control24.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control24.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate24
+
+namespace DiagonalRamsey.JointInheritedCertificate25
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(12289035261/40000000000 : ℚ), (18809051259979/5000000000 : ℚ), (-1157264656830429/1000000000000 : ℚ), 12⟩,
+    ⟨(61539784779/200000000000 : ℚ), (1035015947443/2500000000 : ℚ), (-16055167014997/125000000000 : ℚ), 9⟩,
+    ⟨(154321934517/500000000000 : ℚ), (1467938576723/10000000000 : ℚ), (-46135658789341/1000000000000 : ℚ), 7⟩,
+    ⟨(310058440487/1000000000000 : ℚ), (73455529523/1000000000 : ℚ), (-5864960587399/250000000000 : ℚ), 6⟩,
+    ⟨(77984807607/250000000000 : ℚ), (54294945641/1250000000 : ℚ), (-1412849333581/100000000000 : ℚ), 6⟩,
+    ⟨(78570426967/250000000000 : ℚ), (283435168299/10000000000 : ℚ), (-9405254770751/1000000000000 : ℚ), 5⟩,
+    ⟨(158540114787/500000000000 : ℚ), (49336851811/2500000000 : ℚ), (-836121592133/125000000000 : ℚ), 5⟩,
+    ⟨(320328053663/1000000000000 : ℚ), (28771336589/2000000000 : ℚ), (-2492517187453/500000000000 : ℚ), 4⟩,
+    ⟨(162008677921/500000000000 : ℚ), (108501608247/10000000000 : ℚ), (-480817382841/125000000000 : ℚ), 4⟩,
+    ⟨(164069624129/500000000000 : ℚ), (84016594661/10000000000 : ℚ), (-762128552581/250000000000 : ℚ), 4⟩,
+    ⟨(20792737557/62500000000 : ℚ), (33214782657/5000000000 : ℚ), (-1233844398451/500000000000 : ℚ), 3⟩,
+    ⟨(168820032789/500000000000 : ℚ), (26710998923/5000000000 : ℚ), (-406384667941/200000000000 : ℚ), 3⟩,
+    ⟨(17149805109/50000000000 : ℚ), (5445982343/1250000000 : ℚ), (-848359306219/500000000000 : ℚ), 3⟩,
+    ⟨(174369503779/500000000000 : ℚ), (3595171683/1000000000 : ℚ), (-1433415532917/1000000000000 : ℚ), 3⟩,
+    ⟨(7097098931/20000000000 : ℚ), (7491152397/2500000000 : ℚ), (-1222880123591/1000000000000 : ℚ), 3⟩,
+    ⟨(361329185321/1000000000000 : ℚ), (12594531267/5000000000 : ℚ), (-1051941979151/1000000000000 : ℚ), 2⟩,
+    ⟨(73629225373/200000000000 : ℚ), (21331406999/10000000000 : ℚ), (-911294950947/1000000000000 : ℚ), 2⟩,
+    ⟨(93822337143/250000000000 : ℚ), (9090205589/5000000000 : ℚ), (-794212135343/1000000000000 : ℚ), 2⟩,
+    ⟨(76548328359/200000000000 : ℚ), (3895289451/2500000000 : ℚ), (-695733207019/1000000000000 : ℚ), 2⟩,
+    ⟨(390485053307/1000000000000 : ℚ), (13418073497/10000000000 : ℚ), (-24485424069/40000000000 : ℚ), 2⟩,
+    ⟨(49812616069/125000000000 : ℚ), (5801811903/5000000000 : ℚ), (-270290819829/500000000000 : ℚ), 2⟩,
+    ⟨(406769956583/1000000000000 : ℚ), (5035306481/5000000000 : ℚ), (-957755459/2000000000 : ℚ), 2⟩,
+    ⟨(415272216589/1000000000000 : ℚ), (4383416771/5000000000 : ℚ), (-106326683163/250000000000 : ℚ), 2⟩,
+    ⟨(10599680647/25000000000 : ℚ), (1530256367/2000000000 : ℚ), (-378509139173/1000000000000 : ℚ), 2⟩,
+    ⟨(86578797847/200000000000 : ℚ), (6691437093/10000000000 : ℚ), (-337397455209/1000000000000 : ℚ), 2⟩,
+    ⟨(441971049481/1000000000000 : ℚ), (5861276723/10000000000 : ℚ), (-301093598251/1000000000000 : ℚ), 2⟩,
+    ⟨(90239307837/200000000000 : ℚ), (2569904439/5000000000 : ℚ), (-134441245457/500000000000 : ℚ), 2⟩,
+    ⟨(92109646667/200000000000 : ℚ), (563746781/1250000000 : ℚ), (-240177230819/1000000000000 : ℚ), 2⟩,
+    ⟨(1468761259/3125000000 : ℚ), (3957814921/10000000000 : ℚ), (-26811580991/125000000000 : ℚ), 2⟩,
+    ⟨(239769934503/500000000000 : ℚ), (694367773/2000000000 : ℚ), (-191425015281/1000000000000 : ℚ), 1⟩,
+    ⟨(489134058013/1000000000000 : ℚ), (1521264691/5000000000 : ℚ), (-170636329149/1000000000000 : ℚ), 1⟩,
+    ⟨(24938152833/50000000000 : ℚ), (1330981561/5000000000 : ℚ), (-151842015511/1000000000000 : ℚ), 1⟩,
+    ⟨(101680733569/200000000000 : ℚ), (9294041/40000000 : ℚ), (-6740061877/50000000000 : ℚ), 1⟩,
+    ⟨(129508166623/250000000000 : ℚ), (1010798653/5000000000 : ℚ), (-59654595071/500000000000 : ℚ), 1⟩,
+    ⟨(1055253711/2000000000 : ℚ), (875759181/5000000000 : ℚ), (-10519093099/100000000000 : ℚ), 1⟩,
+    ⟨(268581560813/500000000000 : ℚ), (1509283661/10000000000 : ℚ), (-92296406807/1000000000000 : ℚ), 1⟩,
+    ⟨(546618491171/1000000000000 : ℚ), (1291497561/10000000000 : ℚ), (-40248208249/500000000000 : ℚ), 1⟩,
+    ⟨(13899254633/25000000000 : ℚ), (68453723/625000000 : ℚ), (-13935863209/200000000000 : ℚ), 1⟩,
+    ⟨(22607827001/40000000000 : ℚ), (918083671/10000000000 : ℚ), (-59748313811/1000000000000 : ℚ), 1⟩,
+    ⟨(574272735271/1000000000000 : ℚ), (378916127/5000000000 : ℚ), (-5061923631/100000000000 : ℚ), 1⟩,
+    ⟨(291589749313/500000000000 : ℚ), (612661731/10000000000 : ℚ), (-10554669263/250000000000 : ℚ), 1⟩,
+    ⟨(591894507917/1000000000000 : ℚ), (120244401/2500000000 : ℚ), (-34482451971/1000000000000 : ℚ), 1⟩,
+    ⟨(300198383961/500000000000 : ℚ), (72279437/2000000000 : ℚ), (-27354308069/1000000000000 : ℚ), 1⟩,
+    ⟨(304332897977/500000000000 : ℚ), (126359271/5000000000 : ℚ), (-2598104651/125000000000 : ℚ), 1⟩,
+    ⟨(308340835599/500000000000 : ℚ), (19236819/1250000000 : ℚ), (-2946112133/200000000000 : ℚ), 1⟩,
+    ⟨(62442508271/100000000000 : ℚ), (12802229/2000000000 : ℚ), (-9153154243/1000000000000 : ℚ), 1⟩,
+    ⟨(315938687967/500000000000 : ℚ), (-8865497/5000000000 : ℚ), (-12558719/3125000000 : ℚ), 1⟩,
+    ⟨(15975514941/25000000000 : ℚ), (-23007963/2500000000 : ℚ), (14048467/20000000000 : ℚ), 1⟩,
+    ⟨(40364846199/62500000000 : ℚ), (-159505127/10000000000 : ℚ), (125922973/25000000000 : ℚ), 1⟩,
+    ⟨(163077944489/250000000000 : ℚ), (-220689277/10000000000 : ℚ), (4504039911/500000000000 : ℚ), 1⟩,
+    ⟨(658427716947/1000000000000 : ℚ), (-69014223/2500000000 : ℚ), (1263658923/100000000000 : ℚ), 1⟩,
+    ⟨(26566824893/40000000000 : ℚ), (-163011329/5000000000 : ℚ), (7970365021/500000000000 : ℚ), 1⟩,
+    ⟨(41845416183/62500000000 : ℚ), (-74190027/2000000000 : ℚ), (18936642571/1000000000000 : ℚ), 1⟩,
+    ⟨(337241461797/500000000000 : ℚ), (-411157523/10000000000 : ℚ), (10819272701/500000000000 : ℚ), 1⟩,
+    ⟨(84878434531/125000000000 : ℚ), (-1396633/31250000 : ℚ), (1503682737/62500000000 : ℚ), 1⟩,
+    ⟨(85393671083/125000000000 : ℚ), (-95697339/2000000000 : ℚ), (6552173127/250000000000 : ℚ), 1⟩,
+    ⟨(343419335421/500000000000 : ℚ), (-506058611/10000000000 : ℚ), (14048666439/500000000000 : ℚ), 1⟩,
+    ⟨(690086494931/1000000000000 : ℚ), (-52981721/1000000000 : ℚ), (1189320429/40000000000 : ℚ), 1⟩,
+    ⟨(346442508319/500000000000 : ℚ), (-137478527/2500000000 : ℚ), (15561337299/500000000000 : ℚ), 1⟩,
+    ⟨(347613747039/500000000000 : ℚ), (-113295143/2000000000 : ℚ), (8068034683/250000000000 : ℚ), 1⟩,
+    ⟨(348554142009/500000000000 : ℚ), (-144901233/2500000000 : ℚ), (16593075143/500000000000 : ℚ), 1⟩,
+    ⟨(43657678467/62500000000 : ℚ), (-589382521/10000000000 : ℚ), (16934222373/500000000000 : ℚ), 1⟩,
+    ⟨(699467800611/1000000000000 : ℚ), (-595868153/10000000000 : ℚ), (2145111691/62500000000 : ℚ), 1⟩,
+    ⟨(699940842981/1000000000000 : ℚ), (-74887649/1250000000 : ℚ), (34548004183/1000000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-119900973/2000000000 : ℚ), (34576260119/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (274999/1000000 : ℚ)
+  x := (141502632487/1000000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control25.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control25.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate25
+
+namespace DiagonalRamsey.JointInheritedCertificate28
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(30252276221/125000000000 : ℚ), (15972668979337/5000000000 : ℚ), (-154862654425417/200000000000 : ℚ), 12⟩,
+    ⟨(242449349567/1000000000000 : ℚ), (3511629663403/10000000000 : ℚ), (-10742532007333/125000000000 : ℚ), 9⟩,
+    ⟨(243310590511/1000000000000 : ℚ), (310735226583/2500000000 : ℚ), (-30870531129559/1000000000000 : ℚ), 7⟩,
+    ⟨(61149964449/250000000000 : ℚ), (31032711827/500000000 : ℚ), (-15698405337229/1000000000000 : ℚ), 6⟩,
+    ⟨(30789255683/125000000000 : ℚ), (366143172039/10000000000 : ℚ), (-9454891875831/1000000000000 : ℚ), 6⟩,
+    ⟨(49689804777/200000000000 : ℚ), (238319703083/10000000000 : ℚ), (-629460132083/100000000000 : ℚ), 5⟩,
+    ⟨(15687478107/62500000000 : ℚ), (165499119211/10000000000 : ℚ), (-279820806063/62500000000 : ℚ), 5⟩,
+    ⟨(253959778261/1000000000000 : ℚ), (120316344859/10000000000 : ℚ), (-3337002594323/1000000000000 : ℚ), 4⟩,
+    ⟨(128661139163/500000000000 : ℚ), (90499854243/10000000000 : ℚ), (-2575193885229/1000000000000 : ℚ), 4⟩,
+    ⟨(261079049347/1000000000000 : ℚ), (2183945609/312500000 : ℚ), (-408235914679/200000000000 : ℚ), 4⟩,
+    ⟨(53044208187/200000000000 : ℚ), (2204292921/400000000 : ℚ), (-413119945229/250000000000 : ℚ), 3⟩,
+    ⟨(26973827467/100000000000 : ℚ), (44197847709/10000000000 : ℚ), (-272165239221/200000000000 : ℚ), 3⟩,
+    ⟨(274619868139/1000000000000 : ℚ), (7189945917/2000000000 : ℚ), (-1136444370391/1000000000000 : ℚ), 3⟩,
+    ⟨(69963515289/250000000000 : ℚ), (5917577873/2000000000 : ℚ), (-960158426809/1000000000000 : ℚ), 3⟩,
+    ⟨(71357061023/250000000000 : ℚ), (983883039/400000000 : ℚ), (-409582878277/500000000000 : ℚ), 3⟩,
+    ⟨(291328988253/1000000000000 : ℚ), (824973217/400000000 : ℚ), (-140930809379/200000000000 : ℚ), 2⟩,
+    ⟨(297542078227/1000000000000 : ℚ), (2177697979/1250000000 : ℚ), (-152599163751/250000000000 : ℚ), 2⟩,
+    ⟨(152026273069/500000000000 : ℚ), (14810579533/10000000000 : ℚ), (-265946408747/500000000000 : ℚ), 2⟩,
+    ⟨(310844707699/1000000000000 : ℚ), (2532145659/2000000000 : ℚ), (-465823896319/1000000000000 : ℚ), 2⟩,
+    ⟨(79475549999/250000000000 : ℚ), (10874725221/10000000000 : ℚ), (-3277596341/8000000000 : ℚ), 2⟩,
+    ⟨(20325501307/62500000000 : ℚ), (9378971017/10000000000 : ℚ), (-14464863129/40000000000 : ℚ), 2⟩,
+    ⟨(332744570087/1000000000000 : ℚ), (162340989/200000000 : ℚ), (-320122867889/1000000000000 : ℚ), 2⟩,
+    ⟨(340493691311/1000000000000 : ℚ), (1761299203/2500000000 : ℚ), (-284055142689/1000000000000 : ℚ), 2⟩,
+    ⟨(174218358137/500000000000 : ℚ), (6129098377/10000000000 : ℚ), (-63127370517/250000000000 : ℚ), 2⟩,
+    ⟨(89138627383/250000000000 : ℚ), (5341586413/10000000000 : ℚ), (-56189754853/250000000000 : ℚ), 2⟩,
+    ⟨(364827514611/1000000000000 : ℚ), (2330480851/5000000000 : ℚ), (-100108520909/500000000000 : ℚ), 2⟩,
+    ⟨(93308950279/250000000000 : ℚ), (2034876671/5000000000 : ℚ), (-178405929981/1000000000000 : ℚ), 2⟩,
+    ⟨(1527036451/4000000000 : ℚ), (3553791221/10000000000 : ℚ), (-4966682671/31250000000 : ℚ), 2⟩,
+    ⟨(390376916107/1000000000000 : ℚ), (3101504587/10000000000 : ℚ), (-141477029727/1000000000000 : ℚ), 2⟩,
+    ⟨(79813690029/200000000000 : ℚ), (2703386203/10000000000 : ℚ), (-1006129787/8000000000 : ℚ), 2⟩,
+    ⟨(407812776197/1000000000000 : ℚ), (2351579133/10000000000 : ℚ), (-5578807117/50000000000 : ℚ), 1⟩,
+    ⟨(1627300111/3906250000 : ℚ), (127472209/625000000 : ℚ), (-49358624531/500000000000 : ℚ), 1⟩,
+    ⟨(212687732261/500000000000 : ℚ), (880931861/5000000000 : ℚ), (-87029263423/1000000000000 : ℚ), 1⟩,
+    ⟨(21707575837/50000000000 : ℚ), (1513931053/10000000000 : ℚ), (-9547000701/125000000000 : ℚ), 1⟩,
+    ⟨(55361980349/125000000000 : ℚ), (645951873/5000000000 : ℚ), (-520634891/7812500000 : ℚ), 1⟩,
+    ⟨(45158737683/100000000000 : ℚ), (546260583/5000000000 : ℚ), (-28862738139/500000000000 : ℚ), 1⟩,
+    ⟨(115051295047/250000000000 : ℚ), (913013657/10000000000 : ℚ), (-49543007593/1000000000000 : ℚ), 1⟩,
+    ⟨(468728491821/1000000000000 : ℚ), (751019983/10000000000 : ℚ), (-1680798617/40000000000 : ℚ), 1⟩,
+    ⟨(477136778327/1000000000000 : ℚ), (12090403/200000000 : ℚ), (-35092379017/1000000000000 : ℚ), 1⟩,
+    ⟨(242704891703/500000000000 : ℚ), (471780467/10000000000 : ℚ), (-5740941291/200000000000 : ℚ), 1⟩,
+    ⟨(61690947083/125000000000 : ℚ), (87827107/2500000000 : ℚ), (-4561719153/200000000000 : ℚ), 1⟩,
+    ⟨(501470601627/1000000000000 : ℚ), (120907741/5000000000 : ℚ), (-17361851327/1000000000000 : ℚ), 1⟩,
+    ⟨(509219722851/1000000000000 : ℚ), (142186201/10000000000 : ℚ), (-12327569167/1000000000000 : ℚ), 1⟩,
+    ⟨(20670250881/40000000000 : ℚ), (10290529/2000000000 : ℚ), (-767340997/100000000000 : ℚ), 1⟩,
+    ⟨(262031046471/500000000000 : ℚ), (-1249081/400000000 : ℚ), (-16854929/5000000000 : ℚ), 1⟩,
+    ⟨(531119585239/1000000000000 : ℚ), (-53293223/5000000000 : ℚ), (120931757/200000000000 : ℚ), 1⟩,
+    ⟨(537911746799/1000000000000 : ℚ), (-17526609/1000000000 : ℚ), (4275488457/1000000000000 : ℚ), 1⟩,
+    ⟨(54442221471/100000000000 : ℚ), (-118912959/5000000000 : ℚ), (3830426331/500000000000 : ℚ), 1⟩,
+    ⟨(110127060937/200000000000 : ℚ), (-58951213/2000000000 : ℚ), (431112271/40000000000 : ℚ), 1⟩,
+    ⟨(111307209769/200000000000 : ℚ), (-346485879/10000000000 : ℚ), (13641386939/1000000000000 : ℚ), 1⟩,
+    ⟨(281055115891/500000000000 : ℚ), (-196695791/5000000000 : ℚ), (1016552853/62500000000 : ℚ), 1⟩,
+    ⟨(567344424799/1000000000000 : ℚ), (-217901391/5000000000 : ℚ), (4664963753/250000000000 : ℚ), 1⟩,
+    ⟨(143056504567/250000000000 : ℚ), (-118501999/2500000000 : ℚ), (10418340059/500000000000 : ℚ), 1⟩,
+    ⟨(576743252003/1000000000000 : ℚ), (-127064839/2500000000 : ℚ), (4560865839/200000000000 : ℚ), 1⟩,
+    ⟨(580885243591/1000000000000 : ℚ), (-53877661/1000000000 : ℚ), (24570682631/1000000000000 : ℚ), 1⟩,
+    ⟨(146160503653/250000000000 : ℚ), (-141437629/2500000000 : ℚ), (6535650799/250000000000 : ℚ), 1⟩,
+    ⟨(147001128669/250000000000 : ℚ), (-589345721/10000000000 : ℚ), (5505206141/200000000000 : ℚ), 1⟩,
+    ⟨(295482321613/500000000000 : ℚ), (-609703193/10000000000 : ℚ), (14363031433/500000000000 : ℚ), 1⟩,
+    ⟨(148378817263/250000000000 : ℚ), (-626942259/10000000000 : ℚ), (3718377927/125000000000 : ℚ), 1⟩,
+    ⟨(297825123737/500000000000 : ℚ), (-641162297/10000000000 : ℚ), (611850379/20000000000 : ℚ), 1⟩,
+    ⟨(298682217571/500000000000 : ℚ), (-652444133/10000000000 : ℚ), (7816371763/250000000000 : ℚ), 1⟩,
+    ⟨(299326851213/500000000000 : ℚ), (-660851147/10000000000 : ℚ), (3176823339/100000000000 : ℚ), 1⟩,
+    ⟨(599514943371/1000000000000 : ℚ), (-666430143/10000000000 : ℚ), (6420492421/200000000000 : ℚ), 1⟩,
+    ⟨(599946083169/1000000000000 : ℚ), (-334605989/5000000000 : ℚ), (2016831077/62500000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-669559349/10000000000 : ℚ), (8072534637/250000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (287499/1000000 : ℚ)
+  x := (179839580241/1000000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control28.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control28.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate28
+
+namespace DiagonalRamsey.JointInheritedCertificate31
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(214858977857/1000000000000 : ℚ), (7396830674077/10000000000 : ℚ), (-159742098533857/1000000000000 : ℚ), 10⟩,
+    ⟨(216471800953/1000000000000 : ℚ), (793715166933/10000000000 : ℚ), (-552264897221/31250000000 : ℚ), 7⟩,
+    ⟨(27460239347/125000000000 : ℚ), (135643653611/5000000000 : ℚ), (-3153615666351/500000000000 : ℚ), 5⟩,
+    ⟨(8978336167/40000000000 : ℚ), (519853551/40000000 : ℚ), (-794092553793/250000000000 : ℚ), 4⟩,
+    ⟨(230755268947/1000000000000 : ℚ), (36620210583/5000000000 : ℚ), (-377665399313/200000000000 : ℚ), 4⟩,
+    ⟨(238511866841/1000000000000 : ℚ), (45404151829/10000000000 : ℚ), (-1236661696327/1000000000000 : ℚ), 3⟩,
+    ⟨(12382674879/50000000000 : ℚ), (749098873/250000000 : ℚ), (-862141960013/1000000000000 : ℚ), 3⟩,
+    ⟨(129046061131/500000000000 : ℚ), (20661518391/10000000000 : ℚ), (-156846442167/250000000000 : ℚ), 3⟩,
+    ⟨(134863605613/500000000000 : ℚ), (14711243189/10000000000 : ℚ), (-470650905493/1000000000000 : ℚ), 2⟩,
+    ⟨(70611678051/250000000000 : ℚ), (2145425609/2000000000 : ℚ), (-18042453861/50000000000 : ℚ), 2⟩,
+    ⟨(37016016181/125000000000 : ℚ), (3980251661/5000000000 : ℚ), (-140472183367/500000000000 : ℚ), 2⟩,
+    ⟨(310639703431/1000000000000 : ℚ), (373794107/625000000 : ℚ), (-6905303463/31250000000 : ℚ), 2⟩,
+    ⟨(81460419941/250000000000 : ℚ), (4527412919/10000000000 : ℚ), (-174782153397/1000000000000 : ℚ), 2⟩,
+    ⟨(5337307111/15625000000 : ℚ), (137473971/400000000 : ℚ), (-69216131191/500000000000 : ℚ), 2⟩,
+    ⟨(3577259871/10000000000 : ℚ), (162658121/625000000 : ℚ), (-21858181397/200000000000 : ℚ), 2⟩,
+    ⟨(374101254793/1000000000000 : ℚ), (1953280199/10000000000 : ℚ), (-85556319763/1000000000000 : ℚ), 1⟩,
+    ⟨(78111151081/200000000000 : ℚ), (288078339/2000000000 : ℚ), (-6596320151/100000000000 : ℚ), 1⟩,
+    ⟨(406931023099/1000000000000 : ℚ), (51492161/500000000 : ℚ), (-4960442783/100000000000 : ℚ), 1⟩,
+    ⟨(84613871019/200000000000 : ℚ), (34872149/500000000 : ℚ), (-8954534801/250000000000 : ℚ), 1⟩,
+    ⟨(219407665217/500000000000 : ℚ), (85142893/2000000000 : ℚ), (-12057087323/500000000000 : ℚ), 1⟩,
+    ⟨(454017306767/1000000000000 : ℚ), (100927053/5000000000 : ℚ), (-14124929341/1000000000000 : ℚ), 1⟩,
+    ⟨(468528880751/1000000000000 : ℚ), (16364901/10000000000 : ℚ), (-5571800697/1000000000000 : ℚ), 1⟩,
+    ⟨(96442059599/200000000000 : ℚ), (-137873901/10000000000 : ℚ), (879085249/500000000000 : ℚ), 1⟩,
+    ⟨(123732449743/250000000000 : ℚ), (-266250073/10000000000 : ℚ), (4014419457/500000000000 : ℚ), 1⟩,
+    ⟨(3957538187/7812500000 : ℚ), (-372869269/10000000000 : ℚ), (13366838749/1000000000000 : ℚ), 1⟩,
+    ⟨(258501756309/500000000000 : ℚ), (-460874703/10000000000 : ℚ), (8935114471/500000000000 : ℚ), 1⟩,
+    ⟨(526145143357/1000000000000 : ℚ), (-266337979/5000000000 : ℚ), (21614844021/1000000000000 : ℚ), 1⟩,
+    ⟨(133475435313/250000000000 : ℚ), (-23604553/400000000 : ℚ), (3082373561/125000000000 : ℚ), 1⟩,
+    ⟨(540198606023/1000000000000 : ℚ), (-634579343/10000000000 : ℚ), (6761728031/250000000000 : ℚ), 1⟩,
+    ⟨(544975095423/1000000000000 : ℚ), (-166774849/2500000000 : ℚ), (28811367137/1000000000000 : ℚ), 1⟩,
+    ⟨(274092604623/500000000000 : ℚ), (-137679461/2000000000 : ℚ), (7493864209/250000000000 : ℚ), 1⟩,
+    ⟨(549798032341/1000000000000 : ℚ), (-349467041/5000000000 : ℚ), (1527695783/50000000000 : ℚ), 1⟩,
+    ⟨(11/20 : ℚ), (-700245979/10000000000 : ℚ), (30626056711/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (299999/1000000 : ℚ)
+  x := (202758919979/1000000000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control31.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control31.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate31
+
+namespace DiagonalRamsey.JointInheritedCertificate32
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(38754058987/125000000000 : ℚ), (36917585893711/10000000000 : ℚ), (-1146067484044907/1000000000000 : ℚ), 12⟩,
+    ⟨(62100426823/200000000000 : ℚ), (4063562678589/10000000000 : ℚ), (-63601113892847/500000000000 : ℚ), 9⟩,
+    ⟨(311440327093/1000000000000 : ℚ), (720573615687/5000000000 : ℚ), (-22846582230341/500000000000 : ℚ), 7⟩,
+    ⟨(78211197661/250000000000 : ℚ), (721361748721/10000000000 : ℚ), (-23236782313783/1000000000000 : ℚ), 6⟩,
+    ⟨(31471214129/100000000000 : ℚ), (426705608501/10000000000 : ℚ), (-699784507287/50000000000 : ℚ), 6⟩,
+    ⟨(317037880421/1000000000000 : ℚ), (139274449327/5000000000 : ℚ), (-9318091956987/1000000000000 : ℚ), 5⟩,
+    ⟨(39977050641/125000000000 : ℚ), (194027497641/10000000000 : ℚ), (-6628011669221/1000000000000 : ℚ), 5⟩,
+    ⟨(3230410217/10000000000 : ℚ), (141500789619/10000000000 : ℚ), (-4940464497339/1000000000000 : ℚ), 4⟩,
+    ⟨(65340792351/200000000000 : ℚ), (21355139627/2000000000 : ℚ), (-762575325501/200000000000 : ℚ), 4⟩,
+    ⟨(82699100237/250000000000 : ℚ), (20680307047/2500000000 : ℚ), (-60449085781/20000000000 : ℚ), 4⟩,
+    ⟨(83827120059/250000000000 : ℚ), (65438758123/10000000000 : ℚ), (-244712094519/100000000000 : ℚ), 3⟩,
+    ⟨(42528666203/125000000000 : ℚ), (52652560939/10000000000 : ℚ), (-125964794239/62500000000 : ℚ), 3⟩,
+    ⟨(172773547177/500000000000 : ℚ), (21481435347/5000000000 : ℚ), (-1683334403551/1000000000000 : ℚ), 3⟩,
+    ⟨(351248963467/1000000000000 : ℚ), (8867770089/2500000000 : ℚ), (-177804206523/125000000000 : ℚ), 3⟩,
+    ⟨(357321200659/1000000000000 : ℚ), (14789695523/5000000000 : ℚ), (-1213786931491/1000000000000 : ℚ), 3⟩,
+    ⟨(18187458869/50000000000 : ℚ), (24877959771/10000000000 : ℚ), (-104435249901/100000000000 : ℚ), 3⟩,
+    ⟨(370517408071/1000000000000 : ℚ), (21078468623/10000000000 : ℚ), (-904915383693/1000000000000 : ℚ), 2⟩,
+    ⟨(37760958747/100000000000 : ℚ), (17973519821/10000000000 : ℚ), (-788814802173/1000000000000 : ℚ), 2⟩,
+    ⟨(192504314949/500000000000 : ℚ), (15410995277/10000000000 : ℚ), (-345569675773/500000000000 : ℚ), 2⟩,
+    ⟨(392696710411/1000000000000 : ℚ), (13277398701/10000000000 : ℚ), (-304101653707/500000000000 : ℚ), 2⟩,
+    ⟨(50081913469/125000000000 : ℚ), (5743379407/5000000000 : ℚ), (-268598581647/500000000000 : ℚ), 2⟩,
+    ⟨(408865248961/1000000000000 : ℚ), (997307079/1000000000 : ℚ), (-29746822883/62500000000 : ℚ), 2⟩,
+    ⟨(104326688893/250000000000 : ℚ), (1737008869/2000000000 : ℚ), (-422759308237/1000000000000 : ℚ), 2⟩,
+    ⟨(85191898251/200000000000 : ℚ), (1895597173/2500000000 : ℚ), (-94070414391/250000000000 : ℚ), 2⟩,
+    ⟨(434802610813/1000000000000 : ℚ), (6633141829/10000000000 : ℚ), (-335439580687/1000000000000 : ℚ), 2⟩,
+    ⟨(110953702599/250000000000 : ℚ), (581172223/1000000000 : ℚ), (-149681875441/500000000000 : ℚ), 2⟩,
+    ⟨(226487189413/500000000000 : ℚ), (5097488419/10000000000 : ℚ), (-53469239613/200000000000 : ℚ), 2⟩,
+    ⟨(4622592499/10000000000 : ℚ), (4473660959/10000000000 : ℚ), (-23880582361/100000000000 : ℚ), 2⟩,
+    ⟨(9432941111/20000000000 : ℚ), (3926506589/10000000000 : ℚ), (-53315555189/250000000000 : ℚ), 2⟩,
+    ⟨(48111517973/100000000000 : ℚ), (172235719/500000000 : ℚ), (-190315588957/1000000000000 : ℚ), 2⟩,
+    ⟨(4906408129/10000000000 : ℚ), (150945709/500000000 : ℚ), (-169631172133/1000000000000 : ℚ), 2⟩,
+    ⟨(3907820367/7812500000 : ℚ), (2641301629/10000000000 : ℚ), (-30185418313/200000000000 : ℚ), 1⟩,
+    ⟨(127443182653/250000000000 : ℚ), (288167973/1250000000 : ℚ), (-26792950283/200000000000 : ℚ), 1⟩,
+    ⟨(519332924687/1000000000000 : ℚ), (2005546297/10000000000 : ℚ), (-118541214117/1000000000000 : ℚ), 1⟩,
+    ⟨(528858557857/1000000000000 : ℚ), (108579249/625000000 : ℚ), (-104483095627/1000000000000 : ℚ), 1⟩,
+    ⟨(269163341019/500000000000 : ℚ), (748286087/5000000000 : ℚ), (-45820821499/500000000000 : ℚ), 1⟩,
+    ⟨(68464310961/125000000000 : ℚ), (1280106839/10000000000 : ℚ), (-39944370807/500000000000 : ℚ), 1⟩,
+    ⟨(278499679381/500000000000 : ℚ), (108500737/1000000000 : ℚ), (-8639206837/125000000000 : ℚ), 1⟩,
+    ⟨(566158927191/1000000000000 : ℚ), (227204329/2500000000 : ℚ), (-29610173453/500000000000 : ℚ), 1⟩,
+    ⟨(287585563387/500000000000 : ℚ), (149884689/2000000000 : ℚ), (-25062637617/500000000000 : ℚ), 1⟩,
+    ⟨(146003561583/250000000000 : ℚ), (605002299/10000000000 : ℚ), (-20877778539/500000000000 : ℚ), 1⟩,
+    ⟨(118533396403/200000000000 : ℚ), (118494003/2500000000 : ℚ), (-8511860793/250000000000 : ℚ), 1⟩,
+    ⟨(300554244313/500000000000 : ℚ), (8874391/250000000 : ℚ), (-13472519641/500000000000 : ℚ), 1⟩,
+    ⟨(152329607459/250000000000 : ℚ), (246810621/10000000000 : ℚ), (-20399233111/1000000000000 : ℚ), 1⟩,
+    ⟨(77159628397/125000000000 : ℚ), (29688647/2000000000 : ℚ), (-1795848503/125000000000 : ℚ), 1⟩,
+    ⟨(62496510769/100000000000 : ℚ), (58967187/10000000000 : ℚ), (-8809576487/1000000000000 : ℚ), 1⟩,
+    ⟨(632364150117/1000000000000 : ℚ), (-5602601/2500000000 : ℚ), (-461741249/125000000000 : ℚ), 1⟩,
+    ⟨(639456329517/1000000000000 : ℚ), (-6024013/625000000 : ℚ), (1009915733/1000000000000 : ℚ), 1⟩,
+    ⟨(646224560207/1000000000000 : ℚ), (-20445441/1250000000 : ℚ), (5328292657/1000000000000 : ℚ), 1⟩,
+    ⟨(20395391779/31250000000 : ℚ), (-28060399/1250000000 : ℚ), (4642252529/500000000000 : ℚ), 1⟩,
+    ⟨(16468119353/25000000000 : ℚ), (-279612793/10000000000 : ℚ), (12899175217/1000000000000 : ℚ), 1⟩,
+    ⟨(664426643233/1000000000000 : ℚ), (-82341137/2500000000 : ℚ), (4047635087/250000000000 : ℚ), 1⟩,
+    ⟨(167436101991/250000000000 : ℚ), (-74819997/2000000000 : ℚ), (19174707337/1000000000000 : ℚ), 1⟩,
+    ⟨(84333157169/125000000000 : ℚ), (-414135627/10000000000 : ℚ), (21865870169/1000000000000 : ℚ), 1⟩,
+    ⟨(679177336639/1000000000000 : ℚ), (-449747843/10000000000 : ℚ), (12138249149/500000000000 : ℚ), 1⟩,
+    ⟨(683269775833/1000000000000 : ℚ), (-120294239/2500000000 : ℚ), (5283499163/200000000000 : ℚ), 1⟩,
+    ⟨(686932715887/1000000000000 : ℚ), (-254315367/5000000000 : ℚ), (5659667681/200000000000 : ℚ), 1⟩,
+    ⟨(34507866623/50000000000 : ℚ), (-266143667/5000000000 : ℚ), (5985437827/200000000000 : ℚ), 1⟩,
+    ⟨(346467928583/500000000000 : ℚ), (-22091911/400000000 : ℚ), (7827749127/250000000000 : ℚ), 1⟩,
+    ⟨(695261596297/1000000000000 : ℚ), (-142196997/2500000000 : ℚ), (32455575551/1000000000000 : ℚ), 1⟩,
+    ⟨(2723159949/3906250000 : ℚ), (-72732563/1250000000 : ℚ), (6673135129/200000000000 : ℚ), 1⟩,
+    ⟨(349266705247/500000000000 : ℚ), (-591595799/10000000000 : ℚ), (8511258467/250000000000 : ℚ), 1⟩,
+    ⟨(699471603473/1000000000000 : ℚ), (-299026673/5000000000 : ℚ), (34496417767/1000000000000 : ℚ), 1⟩,
+    ⟨(699941265691/1000000000000 : ℚ), (-300636187/5000000000 : ℚ), (3472165521/100000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-601674297/10000000000 : ℚ), (34749788651/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (299999/1000000 : ℚ)
+  x := (39804236067/250000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control32.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control32.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate32
+
+namespace DiagonalRamsey.JointInheritedCertificate35
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(43213415347/200000000000 : ℚ), (458280935533/625000000 : ℚ), (-15923659320077/100000000000 : ℚ), 10⟩,
+    ⟨(21767408601/100000000000 : ℚ), (393518419407/5000000000 : ℚ), (-3523488270699/200000000000 : ℚ), 7⟩,
+    ⟨(110436314091/500000000000 : ℚ), (67279247089/2500000000 : ℚ), (-6288196486497/1000000000000 : ℚ), 5⟩,
+    ⟨(112815949771/500000000000 : ℚ), (100771687/7812500 : ℚ), (-25337676447/8000000000 : ℚ), 4⟩,
+    ⟨(28988258213/125000000000 : ℚ), (36365083669/5000000000 : ℚ), (-1883184346527/1000000000000 : ℚ), 4⟩,
+    ⟨(239634703019/1000000000000 : ℚ), (9022659153/2000000000 : ℚ), (-1233509885693/1000000000000 : ℚ), 3⟩,
+    ⟨(62185845121/250000000000 : ℚ), (5957748951/2000000000 : ℚ), (-430048229797/500000000000 : ℚ), 3⟩,
+    ⟨(64786094139/250000000000 : ℚ), (20551775591/10000000000 : ℚ), (-313000485209/500000000000 : ℚ), 3⟩,
+    ⟨(135368761979/500000000000 : ℚ), (2928080437/2000000000 : ℚ), (-469679816001/1000000000000 : ℚ), 2⟩,
+    ⟨(141705587171/500000000000 : ℚ), (10680217017/10000000000 : ℚ), (-72029109891/200000000000 : ℚ), 2⟩,
+    ⟨(297043273527/1000000000000 : ℚ), (3964350057/5000000000 : ℚ), (-140208975961/500000000000 : ℚ), 2⟩,
+    ⟨(62300507389/200000000000 : ℚ), (372415001/625000000 : ℚ), (-220562694691/1000000000000 : ℚ), 2⟩,
+    ⟨(163324856993/500000000000 : ℚ), (563966889/1250000000 : ℚ), (-6978278311/40000000000 : ℚ), 2⟩,
+    ⟨(68467785811/200000000000 : ℚ), (3345147/9765625 : ℚ), (-138164108613/1000000000000 : ℚ), 2⟩,
+    ⟨(179209543217/500000000000 : ℚ), (324249603/1250000000 : ℚ), (-218126679/2000000000 : ℚ), 2⟩,
+    ⟨(46841915677/125000000000 : ℚ), (973367697/5000000000 : ℚ), (-85358374657/1000000000000 : ℚ), 2⟩,
+    ⟨(195565255851/500000000000 : ℚ), (358810561/2500000000 : ℚ), (-1315751321/20000000000 : ℚ), 1⟩,
+    ⟨(81489350137/200000000000 : ℚ), (20513859/200000000 : ℚ), (-49446219469/1000000000000 : ℚ), 1⟩,
+    ⟨(13235215877/31250000000 : ℚ), (694024073/10000000000 : ℚ), (-17837042313/500000000000 : ℚ), 1⟩,
+    ⟨(439216123133/1000000000000 : ℚ), (422843411/10000000000 : ℚ), (-23982051829/1000000000000 : ℚ), 1⟩,
+    ⟨(227181650087/500000000000 : ℚ), (199403087/10000000000 : ℚ), (-7001593933/500000000000 : ℚ), 1⟩,
+    ⟨(58602820449/125000000000 : ℚ), (1780381/1250000000 : ℚ), (-2729651333/500000000000 : ℚ), 1⟩,
+    ⟨(482454662777/1000000000000 : ℚ), (-2794657/200000000 : ℚ), (465581291/250000000000 : ℚ), 1⟩,
+    ⟨(495128313161/1000000000000 : ℚ), (-33486993/1250000000 : ℚ), (8125429133/1000000000000 : ℚ), 1⟩,
+    ⟨(506721460563/1000000000000 : ℚ), (-2994727/80000000 : ℚ), (6728298777/500000000000 : ℚ), 1⟩,
+    ⟨(103424491327/200000000000 : ℚ), (-462203459/10000000000 : ℚ), (8976945209/500000000000 : ℚ), 1⟩,
+    ⟨(5262311341/10000000000 : ℚ), (-533888291/10000000000 : ℚ), (21693169567/1000000000000 : ℚ), 1⟩,
+    ⟨(106791954283/200000000000 : ℚ), (-73904099/1250000000 : ℚ), (6183194841/250000000000 : ℚ), 1⟩,
+    ⟨(540233937577/1000000000000 : ℚ), (-317812863/5000000000 : ℚ), (13558506297/500000000000 : ℚ), 1⟩,
+    ⟨(544993208937/1000000000000 : ℚ), (-334046227/5000000000 : ℚ), (14439330623/500000000000 : ℚ), 1⟩,
+    ⟨(548191751109/1000000000000 : ℚ), (-86169413/1250000000 : ℚ), (30040860951/1000000000000 : ℚ), 1⟩,
+    ⟨(8590605631/15625000000 : ℚ), (-699874691/10000000000 : ℚ), (15309184431/500000000000 : ℚ), 1⟩,
+    ⟨(11/20 : ℚ), (-350592211/5000000000 : ℚ), (767259773/25000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (312499/1000000 : ℚ)
+  x := (213042814983/1000000000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control35.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control35.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate35
+
+namespace DiagonalRamsey.JointInheritedCertificate36
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(244597035229/1000000000000 : ℚ), (31380052896987/10000000000 : ℚ), (-768697752635273/1000000000000 : ℚ), 12⟩,
+    ⟨(245025069187/1000000000000 : ℚ), (862522993003/2500000000 : ℚ), (-17063855962801/200000000000 : ℚ), 9⟩,
+    ⟨(245880105933/1000000000000 : ℚ), (244298353533/2000000000 : ℚ), (-15324547344497/500000000000 : ℚ), 7⟩,
+    ⟨(30895010701/125000000000 : ℚ), (610152553321/10000000000 : ℚ), (-7793508707497/500000000000 : ℚ), 6⟩,
+    ⟨(62215481157/250000000000 : ℚ), (180045423261/5000000000 : ℚ), (-2347189913543/250000000000 : ℚ), 6⟩,
+    ⟨(50196304623/200000000000 : ℚ), (117241830807/5000000000 : ℚ), (-6251344331519/1000000000000 : ℚ), 5⟩,
+    ⟨(253513774769/1000000000000 : ℚ), (81456392167/5000000000 : ℚ), (-4446999080439/1000000000000 : ℚ), 5⟩,
+    ⟨(32056572397/125000000000 : ℚ), (59247922617/5000000000 : ℚ), (-3315069242749/1000000000000 : ℚ), 4⟩,
+    ⟨(129895428249/500000000000 : ℚ), (44588689367/5000000000 : ℚ), (-2558708790077/1000000000000 : ℚ), 4⟩,
+    ⟨(263520564531/1000000000000 : ℚ), (34451140961/5000000000 : ℚ), (-2028483695361/1000000000000 : ℚ), 4⟩,
+    ⟨(66908179521/250000000000 : ℚ), (27180675887/5000000000 : ℚ), (-82125677589/50000000000 : ℚ), 3⟩,
+    ⟨(136058705309/500000000000 : ℚ), (10905935541/2500000000 : ℚ), (-338220323491/250000000000 : ℚ), 3⟩,
+    ⟨(55392767623/200000000000 : ℚ), (35502402769/10000000000 : ℚ), (-1130029513987/1000000000000 : ℚ), 3⟩,
+    ⟨(70540081277/250000000000 : ℚ), (29235715721/10000000000 : ℚ), (-238730609137/250000000000 : ℚ), 3⟩,
+    ⟨(71923588201/250000000000 : ℚ), (4863468817/2000000000 : ℚ), (-203712814333/250000000000 : ℚ), 3⟩,
+    ⟨(58710517849/200000000000 : ℚ), (4080081603/2000000000 : ℚ), (-350534224223/500000000000 : ℚ), 3⟩,
+    ⟨(299720921427/1000000000000 : ℚ), (8620544509/5000000000 : ℚ), (-607393315733/1000000000000 : ℚ), 2⟩,
+    ⟨(153092244649/500000000000 : ℚ), (1833020759/1250000000 : ℚ), (-132339610203/250000000000 : ℚ), 2⟩,
+    ⟨(78231930389/250000000000 : ℚ), (12541257923/10000000000 : ℚ), (-231834935089/500000000000 : ℚ), 2⟩,
+    ⟨(79983593291/250000000000 : ℚ), (5388345541/5000000000 : ℚ), (-407855846363/1000000000000 : ℚ), 2⟩,
+    ⟨(65437512897/200000000000 : ℚ), (9298088123/10000000000 : ℚ), (-90008101167/250000000000 : ℚ), 2⟩,
+    ⟨(66933964389/200000000000 : ℚ), (8049958771/10000000000 : ℚ), (-159371709371/500000000000 : ℚ), 2⟩,
+    ⟨(85590780033/250000000000 : ℚ), (1747312053/2500000000 : ℚ), (-282849242083/1000000000000 : ℚ), 2⟩,
+    ⟨(70049785043/200000000000 : ℚ), (6082189271/10000000000 : ℚ), (-31430971677/125000000000 : ℚ), 2⟩,
+    ⟨(358308239599/1000000000000 : ℚ), (5302040417/10000000000 : ℚ), (-111908791879/500000000000 : ℚ), 2⟩,
+    ⟨(366521647691/1000000000000 : ℚ), (185097457/400000000 : ℚ), (-99688163649/500000000000 : ℚ), 2⟩,
+    ⟨(37486936267/100000000000 : ℚ), (1010292417/2500000000 : ℚ), (-177649912387/1000000000000 : ℚ), 2⟩,
+    ⟨(383331274161/1000000000000 : ℚ), (44115983/125000000 : ℚ), (-15824936439/100000000000 : ℚ), 2⟩,
+    ⟨(391886996677/1000000000000 : ℚ), (385044829/1250000000 : ℚ), (-140853259231/1000000000000 : ℚ), 2⟩,
+    ⟨(200257959367/500000000000 : ℚ), (26850351/100000000 : ℚ), (-125194246607/1000000000000 : ℚ), 2⟩,
+    ⟨(409197252501/1000000000000 : ℚ), (29194469/125000000 : ℚ), (-11104860703/100000000000 : ℚ), 2⟩,
+    ⟨(417910083887/1000000000000 : ℚ), (202548347/1000000000 : ℚ), (-98228088261/1000000000000 : ℚ), 2⟩,
+    ⟨(426633422917/1000000000000 : ℚ), (109339431/625000000 : ℚ), (-676355207/7812500000 : ℚ), 1⟩,
+    ⟨(217673127151/500000000000 : ℚ), (1502882431/10000000000 : ℚ), (-15189886101/200000000000 : ℚ), 1⟩,
+    ⟨(44402758807/100000000000 : ℚ), (641014873/5000000000 : ℚ), (-66240484911/1000000000000 : ℚ), 1⟩,
+    ⟨(226328255063/500000000000 : ℚ), (3386403/31250000 : ℚ), (-57347647903/1000000000000 : ℚ), 1⟩,
+    ⟨(230606116321/500000000000 : ℚ), (905000311/10000000000 : ℚ), (-9837154321/200000000000 : ℚ), 1⟩,
+    ⟨(469674144133/1000000000000 : ℚ), (743746913/10000000000 : ℚ), (-651271163/15625000000 : ℚ), 1⟩,
+    ⟨(478021859113/1000000000000 : ℚ), (298944317/5000000000 : ℚ), (-34770745867/1000000000000 : ℚ), 1⟩,
+    ⟨(97247053441/200000000000 : ℚ), (58213501/1250000000 : ℚ), (-28398664351/1000000000000 : ℚ), 1⟩,
+    ⟨(494294581589/1000000000000 : ℚ), (345725783/10000000000 : ℚ), (-2814620867/125000000000 : ℚ), 1⟩,
+    ⟨(31386274167/62500000000 : ℚ), (236664257/10000000000 : ℚ), (-17083625949/1000000000000 : ℚ), 1⟩,
+    ⟨(254936842429/500000000000 : ℚ), (68708441/5000000000 : ℚ), (-12061870397/1000000000000 : ℚ), 1⟩,
+    ⟨(517355942319/1000000000000 : ℚ), (2938937/625000000 : ℚ), (-7419465157/1000000000000 : ℚ), 1⟩,
+    ⟨(524609133639/1000000000000 : ℚ), (-35353287/10000000000 : ℚ), (-1564051547/500000000000 : ℚ), 1⟩,
+    ⟨(16612993289/31250000000 : ℚ), (-22088141/2000000000 : ℚ), (837110479/1000000000000 : ℚ), 1⟩,
+    ⟨(269179508753/500000000000 : ℚ), (-44718931/2500000000 : ℚ), (4498095299/1000000000000 : ℚ), 1⟩,
+    ⟨(17025705793/31250000000 : ℚ), (-60303753/2500000000 : ℚ), (1968542143/250000000000 : ℚ), 1⟩,
+    ⟨(550990917559/1000000000000 : ℚ), (-74486501/2500000000 : ℚ), (2196472857/200000000000 : ℚ), 1⟩,
+    ⟨(278424577/500000000 : ℚ), (-349495829/10000000000 : ℚ), (6918852633/500000000000 : ℚ), 1⟩,
+    ⟨(4393618607/7812500000 : ℚ), (-396238891/10000000000 : ℚ), (8226718883/500000000000 : ℚ), 1⟩,
+    ⟨(567579668689/1000000000000 : ℚ), (-4385033/100000000 : ℚ), (9420616041/500000000000 : ℚ), 1⟩,
+    ⟨(286213048093/500000000000 : ℚ), (-95315269/2000000000 : ℚ), (4202271119/200000000000 : ℚ), 1⟩,
+    ⟨(576910788719/1000000000000 : ℚ), (-15959661/312500000 : ℚ), (5743205457/250000000000 : ℚ), 1⟩,
+    ⟨(9078483473/15625000000 : ℚ), (-541120639/10000000000 : ℚ), (24733517739/1000000000000 : ℚ), 1⟩,
+    ⟨(292376325153/500000000000 : ℚ), (-568000887/10000000000 : ℚ), (3287539277/125000000000 : ℚ), 1⟩,
+    ⟨(588090927627/1000000000000 : ℚ), (-59151399/1000000000 : ℚ), (27679159751/1000000000000 : ℚ), 1⟩,
+    ⟨(295514866017/500000000000 : ℚ), (-611800463/10000000000 : ℚ), (14437580203/500000000000 : ℚ), 1⟩,
+    ⟨(593561983689/1000000000000 : ℚ), (-157244817/2500000000 : ℚ), (14946324051/500000000000 : ℚ), 1⟩,
+    ⟨(18615049443/31250000000 : ℚ), (-321574747/5000000000 : ℚ), (30735237289/1000000000000 : ℚ), 1⟩,
+    ⟨(149345855299/250000000000 : ℚ), (-130878347/2000000000 : ℚ), (6281174361/200000000000 : ℚ), 1⟩,
+    ⟨(598663400871/1000000000000 : ℚ), (-331384599/5000000000 : ℚ), (1276274519/40000000000 : ℚ), 1⟩,
+    ⟨(37469902351/62500000000 : ℚ), (-668328561/10000000000 : ℚ), (8059979791/250000000000 : ℚ), 1⟩,
+    ⟨(23997858863/40000000000 : ℚ), (-671100599/10000000000 : ℚ), (32406167231/1000000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-671446747/10000000000 : ℚ), (16213467607/500000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (312499/1000000 : ℚ)
+  x := (199604306309/1000000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control36.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control36.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate36
+
+namespace DiagonalRamsey.JointInheritedCertificate37
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(155783088677/500000000000 : ℚ), (36582142497877/10000000000 : ℚ), (-1141260119108647/1000000000000 : ℚ), 12⟩,
+    ⟨(62406798487/200000000000 : ℚ), (4026948550741/10000000000 : ℚ), (-63335109887541/500000000000 : ℚ), 9⟩,
+    ⟨(31296849559/100000000000 : ℚ), (1428333742049/10000000000 : ℚ), (-11375792559463/250000000000 : ℚ), 7⟩,
+    ⟨(157183717759/500000000000 : ℚ), (357528401107/5000000000 : ℚ), (-23140998606731/1000000000000 : ℚ), 6⟩,
+    ⟨(6324548841/20000000000 : ℚ), (423051073867/10000000000 : ℚ), (-13938656452769/1000000000000 : ℚ), 6⟩,
+    ⟨(318544034269/1000000000000 : ℚ), (276217885809/10000000000 : ℚ), (-1856130557731/200000000000 : ℚ), 5⟩,
+    ⟨(3213116313/10000000000 : ℚ), (192445081433/10000000000 : ℚ), (-1650455317957/250000000000 : ℚ), 5⟩,
+    ⟨(1014136143/3125000000 : ℚ), (140378792363/10000000000 : ℚ), (-2460655396619/500000000000 : ℚ), 4⟩,
+    ⟨(328172099817/1000000000000 : ℚ), (26488592343/2500000000 : ℚ), (-237400325193/62500000000 : ℚ), 4⟩,
+    ⟨(166124221917/500000000000 : ℚ), (82105228673/10000000000 : ℚ), (-1505623092553/500000000000 : ℚ), 4⟩,
+    ⟨(16837138877/50000000000 : ℚ), (32483946743/5000000000 : ℚ), (-2438270049897/1000000000000 : ℚ), 3⟩,
+    ⟨(85411068423/250000000000 : ℚ), (10457421353/2000000000 : ℚ), (-10041686411/5000000000 : ℚ), 3⟩,
+    ⟨(86735281039/250000000000 : ℚ), (42675662847/10000000000 : ℚ), (-838783108427/500000000000 : ℚ), 3⟩,
+    ⟨(88155142089/250000000000 : ℚ), (1101343637/312500000 : ℚ), (-88606008903/62500000000 : ℚ), 3⟩,
+    ⟨(358668924013/1000000000000 : ℚ), (14698321097/5000000000 : ℚ), (-151232449989/125000000000 : ℚ), 3⟩,
+    ⟨(365071620109/1000000000000 : ℚ), (24730401603/10000000000 : ℚ), (-104107009707/100000000000 : ℚ), 3⟩,
+    ⟨(371813231987/1000000000000 : ℚ), (20958510477/10000000000 : ℚ), (-112768977363/125000000000 : ℚ), 2⟩,
+    ⟨(75775503703/200000000000 : ℚ), (17875399799/10000000000 : ℚ), (-393236189147/500000000000 : ℚ), 2⟩,
+    ⟨(386247461207/1000000000000 : ℚ), (1916285723/1250000000 : ℚ), (-344570692209/500000000000 : ℚ), 2⟩,
+    ⟨(196952652613/500000000000 : ℚ), (206416587/156250000 : ℚ), (-303244468303/500000000000 : ℚ), 2⟩,
+    ⟨(80366520431/200000000000 : ℚ), (2286259993/2000000000 : ℚ), (-535717629727/1000000000000 : ℚ), 2⟩,
+    ⟨(410010254441/1000000000000 : ℚ), (9926762651/10000000000 : ℚ), (-237332545783/500000000000 : ℚ), 2⟩,
+    ⟨(418418561403/1000000000000 : ℚ), (2161548821/2500000000 : ℚ), (-21081933641/50000000000 : ℚ), 2⟩,
+    ⟨(85407453339/200000000000 : ℚ), (3774822853/5000000000 : ℚ), (-93824568337/250000000000 : ℚ), 2⟩,
+    ⟨(435845607099/1000000000000 : ℚ), (3302708563/5000000000 : ℚ), (-167285962071/500000000000 : ℚ), 2⟩,
+    ⟨(55602795319/125000000000 : ℚ), (2894068613/5000000000 : ℚ), (-298594058141/1000000000000 : ℚ), 2⟩,
+    ⟨(7092904801/15625000000 : ℚ), (507733061/1000000000 : ℚ), (-133329878243/500000000000 : ℚ), 2⟩,
+    ⟨(57899282727/125000000000 : ℚ), (278521901/625000000 : ℚ), (-29773801363/125000000000 : ℚ), 2⟩,
+    ⟨(472545146113/1000000000000 : ℚ), (3911569737/10000000000 : ℚ), (-212707657869/1000000000000 : ℚ), 2⟩,
+    ⟨(15061751033/31250000000 : ℚ), (3431763329/10000000000 : ℚ), (-23726672471/125000000000 : ℚ), 2⟩,
+    ⟨(49146420281/100000000000 : ℚ), (1503815169/5000000000 : ℚ), (-16917421159/100000000000 : ℚ), 2⟩,
+    ⟨(100197359509/200000000000 : ℚ), (2631422637/10000000000 : ℚ), (-9406839217/62500000000 : ℚ), 2⟩,
+    ⟨(31907554781/62500000000 : ℚ), (2296653053/10000000000 : ℚ), (-66790694667/500000000000 : ℚ), 1⟩,
+    ⟨(520043471231/1000000000000 : ℚ), (124866537/625000000 : ℚ), (-5909397837/50000000000 : ℚ), 1⟩,
+    ⟨(264765820493/500000000000 : ℚ), (865223309/5000000000 : ℚ), (-52078204341/500000000000 : ℚ), 1⟩,
+    ⟨(67370315991/125000000000 : ℚ), (93155469/625000000 : ℚ), (-2854329539/31250000000 : ℚ), 1⟩,
+    ⟨(21932536489/40000000000 : ℚ), (1274655783/10000000000 : ℚ), (-79606712099/1000000000000 : ℚ), 1⟩,
+    ⟨(278780883389/500000000000 : ℚ), (270025939/2500000000 : ℚ), (-8606319453/125000000000 : ℚ), 1⟩,
+    ⟨(56668531149/100000000000 : ℚ), (904388897/10000000000 : ℚ), (-14743589727/250000000000 : ℚ), 1⟩,
+    ⟨(575662066943/1000000000000 : ℚ), (372704727/5000000000 : ℚ), (-3118427689/62500000000 : ℚ), 1⟩,
+    ⟨(584470407347/1000000000000 : ℚ), (601351443/10000000000 : ℚ), (-20769671941/500000000000 : ℚ), 1⟩,
+    ⟨(296544556319/500000000000 : ℚ), (23532241/500000000 : ℚ), (-6768858413/200000000000 : ℚ), 1⟩,
+    ⟨(601497419601/1000000000000 : ℚ), (351927107/10000000000 : ℚ), (-26753941243/1000000000000 : ℚ), 1⟩,
+    ⟨(609675071887/1000000000000 : ℚ), (61003271/2500000000 : ℚ), (-5054824853/250000000000 : ℚ), 1⟩,
+    ⟨(38600148051/62500000000 : ℚ), (18233681/1250000000 : ℚ), (-443663357/31250000000 : ℚ), 1⟩,
+    ⟨(125052042567/200000000000 : ℚ), (56593559/10000000000 : ℚ), (-540604777/62500000000 : ℚ), 1⟩,
+    ⟨(632630155527/1000000000000 : ℚ), (-12302223/5000000000 : ℚ), (-1384/390625 : ℚ), 1⟩,
+    ⟨(127938888411/200000000000 : ℚ), (-4920837/500000000 : ℚ), (288099277/250000000000 : ℚ), 1⟩,
+    ⟨(646436053933/1000000000000 : ℚ), (-165450563/10000000000 : ℚ), (1092585797/200000000000 : ℚ), 1⟩,
+    ⟨(652838750029/1000000000000 : ℚ), (-706997/31250000 : ℚ), (9411831317/1000000000000 : ℚ), 1⟩,
+    ⟨(329443552843/500000000000 : ℚ), (-140625179/5000000000 : ℚ), (1627463153/125000000000 : ℚ), 1⟩,
+    ⟨(332283274943/500000000000 : ℚ), (-165447787/5000000000 : ℚ), (2038096597/125000000000 : ℚ), 1⟩,
+    ⟨(13397268007/20000000000 : ℚ), (-375535261/10000000000 : ℚ), (301298917/15625000000 : ℚ), 1⟩,
+    ⟨(337382448251/500000000000 : ℚ), (-415485157/10000000000 : ℚ), (5492241677/250000000000 : ℚ), 1⟩,
+    ⟨(165834773/244140625 : ℚ), (-56377623/1250000000 : ℚ), (24374746679/1000000000000 : ℚ), 1⟩,
+    ⟨(42708473389/62500000000 : ℚ), (-60297817/1250000000 : ℚ), (26511373491/1000000000000 : ℚ), 1⟩,
+    ⟨(343492054141/500000000000 : ℚ), (-509777151/10000000000 : ℚ), (7097080873/250000000000 : ℚ), 1⟩,
+    ⟨(345098021371/500000000000 : ℚ), (-533382633/10000000000 : ℚ), (30013760937/1000000000000 : ℚ), 1⟩,
+    ⟨(692963639773/1000000000000 : ℚ), (-276674859/5000000000 : ℚ), (15697318217/500000000000 : ℚ), 1⟩,
+    ⟨(695280231991/1000000000000 : ℚ), (-35612757/625000000 : ℚ), (813419187/25000000000 : ℚ), 1⟩,
+    ⟨(174285059631/250000000000 : ℚ), (-582848169/10000000000 : ℚ), (2090306611/62500000000 : ℚ), 1⟩,
+    ⟨(174634794613/250000000000 : ℚ), (-592562233/10000000000 : ℚ), (853069771/25000000000 : ℚ), 1⟩,
+    ⟨(349736840803/500000000000 : ℚ), (-149751419/2500000000 : ℚ), (34573191341/1000000000000 : ℚ), 1⟩,
+    ⟨(699941496687/1000000000000 : ℚ), (-602217667/10000000000 : ℚ), (34797936721/1000000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-602618711/10000000000 : ℚ), (278608069/8000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (312499/1000000 : ℚ)
+  x := (33646911237/200000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control37.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control37.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate37
+
+namespace DiagonalRamsey.JointInheritedCertificate40
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(7693010853/31250000000 : ℚ), (7744795241167/10000000000 : ℚ), (-191566776103393/1000000000000 : ℚ), 10⟩,
+    ⟨(4957581563/20000000000 : ℚ), (832863638071/10000000000 : ℚ), (-5298750573621/250000000000 : ℚ), 7⟩,
+    ⟨(251268141629/1000000000000 : ℚ), (285528413093/10000000000 : ℚ), (-7565579321303/1000000000000 : ℚ), 5⟩,
+    ⟨(256310899199/1000000000000 : ℚ), (34314084021/2500000000 : ℚ), (-762182135697/200000000000 : ℚ), 4⟩,
+    ⟨(65739696587/250000000000 : ℚ), (77630790697/10000000000 : ℚ), (-2266157697899/1000000000000 : ℚ), 4⟩,
+    ⟨(4236684067/15625000000 : ℚ), (24151074287/5000000000 : ℚ), (-1484553647449/1000000000000 : ℚ), 3⟩,
+    ⟨(70199754133/250000000000 : ℚ), (7997845737/2500000000 : ℚ), (-207062769367/200000000000 : ℚ), 3⟩,
+    ⟨(291819548399/1000000000000 : ℚ), (5534190541/2500000000 : ℚ), (-753697985807/1000000000000 : ℚ), 3⟩,
+    ⟨(304103242141/1000000000000 : ℚ), (247111911/156250000 : ℚ), (-35354491523/62500000000 : ℚ), 2⟩,
+    ⟨(158765899537/500000000000 : ℚ), (2314111343/2000000000 : ℚ), (-433959458509/1000000000000 : ℚ), 2⟩,
+    ⟨(165987947427/500000000000 : ℚ), (1723070997/2000000000 : ℚ), (-67626834553/200000000000 : ℚ), 2⟩,
+    ⟨(173648212471/500000000000 : ℚ), (6495731477/10000000000 : ℚ), (-133122184867/500000000000 : ℚ), 2⟩,
+    ⟨(181672922129/500000000000 : ℚ), (4936809609/10000000000 : ℚ), (-52730648397/250000000000 : ℚ), 2⟩,
+    ⟨(9499239703/25000000000 : ℚ), (3765259989/10000000000 : ℚ), (-167430545541/1000000000000 : ℚ), 2⟩,
+    ⟨(397007560789/1000000000000 : ℚ), (2868101163/10000000000 : ℚ), (-66306132977/500000000000 : ℚ), 2⟩,
+    ⟨(414295677273/1000000000000 : ℚ), (2169612237/10000000000 : ℚ), (-13037913269/125000000000 : ℚ), 2⟩,
+    ⟨(10791686089/25000000000 : ℚ), (808914061/5000000000 : ℚ), (-80982128967/1000000000000 : ℚ), 2⟩,
+    ⟨(112238890011/250000000000 : ℚ), (1176349129/10000000000 : ℚ), (-6155648571/100000000000 : ℚ), 1⟩,
+    ⟨(465993532713/1000000000000 : ℚ), (819218183/10000000000 : ℚ), (-44168119/976562500 : ℚ), 1⟩,
+    ⟨(15081789893/31250000000 : ℚ), (105526137/2000000000 : ℚ), (-6280963569/200000000000 : ℚ), 1⟩,
+    ⟨(124666673973/250000000000 : ℚ), (35971537/1250000000 : ℚ), (-9820607009/500000000000 : ℚ), 1⟩,
+    ⟨(513987225979/1000000000000 : ℚ), (89369151/10000000000 : ℚ), (-1199868651/125000000000 : ℚ), 1⟩,
+    ⟨(528431321759/1000000000000 : ℚ), (-75301509/10000000000 : ℚ), (-203707057/200000000000 : ℚ), 1⟩,
+    ⟨(135464969673/250000000000 : ℚ), (-42419407/2000000000 : ℚ), (78755061/12500000000 : ℚ), 1⟩,
+    ⟨(110828714487/200000000000 : ℚ), (-325491067/10000000000 : ℚ), (12513353377/1000000000000 : ℚ), 1⟩,
+    ⟨(565164104301/1000000000000 : ℚ), (-26182239/625000000 : ℚ), (4435307587/250000000000 : ℚ), 1⟩,
+    ⟨(114963068109/200000000000 : ℚ), (-61875951/1250000000 : ℚ), (11038988871/500000000000 : ℚ), 1⟩,
+    ⟨(116600866897/200000000000 : ℚ), (-555783989/10000000000 : ℚ), (6399039021/250000000000 : ℚ), 1⟩,
+    ⟨(294826110817/500000000000 : ℚ), (-602771989/10000000000 : ℚ), (28351083161/1000000000000 : ℚ), 1⟩,
+    ⟨(148673744801/250000000000 : ℚ), (-127420077/2000000000 : ℚ), (30383873943/1000000000000 : ℚ), 1⟩,
+    ⟨(598084042683/1000000000000 : ℚ), (-659565119/10000000000 : ℚ), (31723633647/1000000000000 : ℚ), 1⟩,
+    ⟨(599786773537/1000000000000 : ℚ), (-20958559/312500000 : ℚ), (3238897547/100000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-336028377/5000000000 : ℚ), (6494386533/200000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (324999/1000000 : ℚ)
+  x := (52399107301/250000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control40.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control40.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate40
+
+namespace DiagonalRamsey.JointInheritedCertificate41
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(313175989917/1000000000000 : ℚ), (18126703376439/5000000000 : ℚ), (-568417924370617/500000000000 : ℚ), 12⟩,
+    ⟨(1568209331/5000000000 : ℚ), (3991074488611/10000000000 : ℚ), (-31545142046259/250000000000 : ℚ), 9⟩,
+    ⟨(31457249643/100000000000 : ℚ), (1415782957389/10000000000 : ℚ), (-22664137344249/500000000000 : ℚ), 7⟩,
+    ⟨(315965638637/1000000000000 : ℚ), (708883093559/10000000000 : ℚ), (-11526402618931/500000000000 : ℚ), 6⟩,
+    ⟨(158908968309/500000000000 : ℚ), (52434216869/1250000000 : ℚ), (-13886124960587/1000000000000 : ℚ), 6⟩,
+    ⟨(320124928027/1000000000000 : ℚ), (10957470961/400000000 : ℚ), (-577884649747/62500000000 : ℚ), 5⟩,
+    ⟨(322881055119/1000000000000 : ℚ), (1491382261/78125000 : ℚ), (-263107016453/40000000000 : ℚ), 5⟩,
+    ⟨(326079678141/1000000000000 : ℚ), (34820327309/2500000000 : ℚ), (-612955141111/125000000000 : ℚ), 4⟩,
+    ⟨(82428272833/250000000000 : ℚ), (105151097169/10000000000 : ℚ), (-1892522502517/500000000000 : ℚ), 4⟩,
+    ⟨(333772541481/1000000000000 : ℚ), (81502813657/10000000000 : ℚ), (-150044481203/50000000000 : ℚ), 4⟩,
+    ⟨(42281031127/125000000000 : ℚ), (1612685241/250000000 : ℚ), (-2430083268239/1000000000000 : ℚ), 4⟩,
+    ⟨(68625886313/200000000000 : ℚ), (25964838769/5000000000 : ℚ), (-2001762855223/1000000000000 : ℚ), 3⟩,
+    ⟨(174202164967/500000000000 : ℚ), (21197355931/5000000000 : ℚ), (-33444348821/20000000000 : ℚ), 3⟩,
+    ⟨(354060236429/1000000000000 : ℚ), (35019820867/10000000000 : ℚ), (-88331027799/62500000000 : ℚ), 3⟩,
+    ⟨(360083525477/1000000000000 : ℚ), (14608880189/5000000000 : ℚ), (-603103043897/500000000000 : ℚ), 3⟩,
+    ⟨(183229843223/500000000000 : ℚ), (6146474531/2500000000 : ℚ), (-1038010723987/1000000000000 : ℚ), 3⟩,
+    ⟨(186586679303/500000000000 : ℚ), (10420484207/5000000000 : ℚ), (-44978528581/50000000000 : ℚ), 3⟩,
+    ⟨(190104184067/500000000000 : ℚ), (1111199427/625000000 : ℚ), (-156855875257/200000000000 : ℚ), 2⟩,
+    ⟨(193773883537/500000000000 : ℚ), (7625543077/5000000000 : ℚ), (-137453216639/200000000000 : ℚ), 2⟩,
+    ⟨(98793468543/250000000000 : ℚ), (13145114563/10000000000 : ℚ), (-604875353243/1000000000000 : ℚ), 2⟩,
+    ⟨(100767079367/250000000000 : ℚ), (2275355177/2000000000 : ℚ), (-66790114633/125000000000 : ℚ), 2⟩,
+    ⟨(411212078557/1000000000000 : ℚ), (2470296277/2500000000 : ℚ), (-47344903469/100000000000 : ℚ), 2⟩,
+    ⟨(104896384601/250000000000 : ℚ), (8607913541/10000000000 : ℚ), (-420573827631/1000000000000 : ℚ), 2⟩,
+    ⟨(107042131153/250000000000 : ℚ), (1879334891/2500000000 : ℚ), (-374360562279/1000000000000 : ℚ), 2⟩,
+    ⟨(87388072003/200000000000 : ℚ), (3289012589/5000000000 : ℚ), (-333741560727/1000000000000 : ℚ), 2⟩,
+    ⟨(445879912493/1000000000000 : ℚ), (5764802163/10000000000 : ℚ), (-148927357517/500000000000 : ℚ), 2⟩,
+    ⟨(227482822941/500000000000 : ℚ), (1011471421/2000000000 : ℚ), (-132998956401/500000000000 : ℚ), 2⟩,
+    ⟨(464175671853/1000000000000 : ℚ), (1109793107/2500000000 : ℚ), (-59398709191/250000000000 : ℚ), 2⟩,
+    ⟨(59185975331/125000000000 : ℚ), (3896724917/10000000000 : ℚ), (-8486760073/40000000000 : ℚ), 2⟩,
+    ⟨(30179975283/62500000000 : ℚ), (3418872861/10000000000 : ℚ), (-47330959353/250000000000 : ℚ), 2⟩,
+    ⟨(492328451819/1000000000000 : ℚ), (37454787/125000000 : ℚ), (-33745451403/200000000000 : ℚ), 2⟩,
+    ⟨(25090579071/50000000000 : ℚ), (163847619/625000000 : ℚ), (-150099593977/1000000000000 : ℚ), 2⟩,
+    ⟨(511306147643/1000000000000 : ℚ), (457593427/2000000000 : ℚ), (-26640817881/200000000000 : ℚ), 2⟩,
+    ⟨(104157855449/200000000000 : ℚ), (497544517/2500000000 : ℚ), (-58919666813/500000000000 : ℚ), 2⟩,
+    ⟨(66279765567/125000000000 : ℚ), (344722771/2000000000 : ℚ), (-103833214171/1000000000000 : ℚ), 1⟩,
+    ⟨(107925985283/200000000000 : ℚ), (296877457/2000000000 : ℚ), (-18207607451/200000000000 : ℚ), 1⟩,
+    ⟨(54894205721/100000000000 : ℚ), (1269186941/10000000000 : ℚ), (-39663284687/500000000000 : ℚ), 1⟩,
+    ⟨(279076041591/500000000000 : ℚ), (1075181619/10000000000 : ℚ), (-68588806957/1000000000000 : ℚ), 1⟩,
+    ⟨(56723781657/100000000000 : ℚ), (899942379/10000000000 : ℚ), (-7341165421/125000000000 : ℚ), 1⟩,
+    ⟨(72022171131/125000000000 : ℚ), (370689337/5000000000 : ℚ), (-49665080033/1000000000000 : ℚ), 1⟩,
+    ⟨(146237301113/250000000000 : ℚ), (597685767/10000000000 : ℚ), (-10330902701/250000000000 : ℚ), 1⟩,
+    ⟨(29676609533/50000000000 : ℚ), (467301257/10000000000 : ℚ), (-33641509323/1000000000000 : ℚ), 1⟩,
+    ⟨(601905650507/1000000000000 : ℚ), (348868981/10000000000 : ℚ), (-26563162103/1000000000000 : ℚ), 1⟩,
+    ⟨(152512352899/250000000000 : ℚ), (241208943/10000000000 : ℚ), (-20039685147/1000000000000 : ℚ), 1⟩,
+    ⟨(154485963723/250000000000 : ℚ), (28658433/2000000000 : ℚ), (-14028026727/1000000000000 : ℚ), 1⟩,
+    ⟨(62556996199/100000000000 : ℚ), (2710979/500000000 : ℚ), (-8490207003/1000000000000 : ℚ), 1⟩,
+    ⟨(63290936093/100000000000 : ℚ), (-13397857/5000000000 : ℚ), (-424084313/125000000000 : ℚ), 1⟩,
+    ⟨(639944370457/1000000000000 : ℚ), (-100443441/10000000000 : ℚ), (51769737/40000000000 : ℚ), 1⟩,
+    ⟨(646658042617/1000000000000 : ℚ), (-10458051/625000000 : ℚ), (5596808539/1000000000000 : ℚ), 1⟩,
+    ⟨(653034203587/1000000000000 : ℚ), (-227983289/10000000000 : ℚ), (953827243/100000000000 : ℚ), 1⟩,
+    ⟨(329528746317/500000000000 : ℚ), (-282873661/10000000000 : ℚ), (1642402337/125000000000 : ℚ), 1⟩,
+    ⟨(664713399129/1000000000000 : ℚ), (-332409847/10000000000 : ℚ), (8208928887/500000000000 : ℚ), 1⟩,
+    ⟨(334994148749/500000000000 : ℚ), (-188475737/5000000000 : ℚ), (1211892411/62500000000 : ℚ), 1⟩,
+    ⟨(42179342503/62500000000 : ℚ), (-416813503/10000000000 : ℚ), (11035332441/500000000000 : ℚ), 1⟩,
+    ⟨(679345187583/1000000000000 : ℚ), (-226135507/5000000000 : ℚ), (4894296157/200000000000 : ℚ), 1⟩,
+    ⟨(683404637731/1000000000000 : ℚ), (-120890819/2500000000 : ℚ), (13301814831/500000000000 : ℚ), 1⟩,
+    ⟨(343519025461/500000000000 : ℚ), (-510897193/10000000000 : ℚ), (14238294527/500000000000 : ℚ), 1⟩,
+    ⟨(138047334789/200000000000 : ℚ), (-26722511/500000000 : ℚ), (15049262977/500000000000 : ℚ), 1⟩,
+    ⟨(173248200259/250000000000 : ℚ), (-69296601/1250000000 : ℚ), (7869098427/250000000000 : ℚ), 1⟩,
+    ⟨(139059958489/200000000000 : ℚ), (-142697609/2500000000 : ℚ), (32616012803/1000000000000 : ℚ), 1⟩,
+    ⟨(697152090427/1000000000000 : ℚ), (-583805279/10000000000 : ℚ), (16761068831/500000000000 : ℚ), 1⟩,
+    ⟨(349272616317/500000000000 : ℚ), (-74187193/1250000000 : ℚ), (34198510101/1000000000000 : ℚ), 1⟩,
+    ⟨(699475862863/1000000000000 : ℚ), (-599926509/10000000000 : ℚ), (34647901309/1000000000000 : ℚ), 1⟩,
+    ⟨(699941739147/1000000000000 : ℚ), (-150782819/2500000000 : ℚ), (34872141607/1000000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-301765709/5000000000 : ℚ), (17450075199/500000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (324999/1000000 : ℚ)
+  x := (11084865401/62500000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control41.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control41.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate41
+
+namespace DiagonalRamsey.JointInheritedCertificate45
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(123694496409/500000000000 : ℚ), (15413710613323/5000000000 : ℚ), (-47735025927991/62500000000 : ℚ), 12⟩,
+    ⟨(247813664247/1000000000000 : ℚ), (847485848621/2500000000 : ℚ), (-1324579343241/15625000000 : ℚ), 9⟩,
+    ⟨(248661984037/1000000000000 : ℚ), (600265394683/5000000000 : ℚ), (-1522708222071/50000000000 : ℚ), 7⟩,
+    ⟨(62482977127/250000000000 : ℚ), (299945506941/5000000000 : ℚ), (-15488842069581/1000000000000 : ℚ), 6⟩,
+    ⟨(251620378303/1000000000000 : ℚ), (44272102979/1250000000 : ℚ), (-9330374619069/1000000000000 : ℚ), 6⟩,
+    ⟨(253723325749/1000000000000 : ℚ), (230734602579/10000000000 : ℚ), (-3106536719651/500000000000 : ℚ), 5⟩,
+    ⟨(256235684663/1000000000000 : ℚ), (8019207273/500000000 : ℚ), (-2210134432871/500000000000 : ℚ), 5⟩,
+    ⟨(259151402551/1000000000000 : ℚ), (3647340367/312500000 : ℚ), (-3295552120329/1000000000000 : ℚ), 4⟩,
+    ⟨(262463455193/1000000000000 : ℚ), (87882534381/10000000000 : ℚ), (-2543985411013/1000000000000 : ℚ), 4⟩,
+    ⟨(53232772713/200000000000 : ℚ), (1698444587/250000000 : ℚ), (-2017095772837/1000000000000 : ℚ), 4⟩,
+    ⟨(270243713059/1000000000000 : ℚ), (13407278051/2500000000 : ℚ), (-816764903467/500000000000 : ℚ), 3⟩,
+    ⟨(3433664687/12500000000 : ℚ), (43059227213/10000000000 : ℚ), (-1345679219241/1000000000000 : ℚ), 3⟩,
+    ⟨(69875382531/250000000000 : ℚ), (35061636751/10000000000 : ℚ), (-1124177382413/1000000000000 : ℚ), 3⟩,
+    ⟨(284657194803/1000000000000 : ℚ), (28887863417/10000000000 : ℚ), (-950111659609/1000000000000 : ℚ), 3⟩,
+    ⟨(290147748549/1000000000000 : ℚ), (2404026853/1000000000 : ℚ), (-405427841561/500000000000 : ℚ), 3⟩,
+    ⟨(295959964137/1000000000000 : ℚ), (20177901649/10000000000 : ℚ), (-139543770251/200000000000 : ℚ), 3⟩,
+    ⟨(302079839431/1000000000000 : ℚ), (17061088097/10000000000 : ℚ), (-302280418931/500000000000 : ℚ), 3⟩,
+    ⟨(61698526223/200000000000 : ℚ), (14517565007/10000000000 : ℚ), (-263471757567/500000000000 : ℚ), 2⟩,
+    ⟨(78795722553/250000000000 : ℚ), (12421101763/10000000000 : ℚ), (-230797304567/500000000000 : ℚ), 2⟩,
+    ⟨(161067249651/500000000000 : ℚ), (10677613237/10000000000 : ℚ), (-406058687973/1000000000000 : ℚ), 2⟩,
+    ⟨(6586614227/20000000000 : ℚ), (460795559/500000000 : ℚ), (-179232133271/500000000000 : ℚ), 2⟩,
+    ⟨(6735083801/20000000000 : ℚ), (997675777/1250000000 : ℚ), (-158682441427/500000000000 : ℚ), 2⟩,
+    ⟨(344387051593/1000000000000 : ℚ), (6931733089/10000000000 : ℚ), (-281628459227/1000000000000 : ℚ), 2⟩,
+    ⟨(176105453873/500000000000 : ℚ), (241346287/400000000 : ℚ), (-250358880021/1000000000000 : ℚ), 2⟩,
+    ⟨(72041382031/200000000000 : ℚ), (5260851467/10000000000 : ℚ), (-222839488857/1000000000000 : ℚ), 2⟩,
+    ⟨(368355795749/1000000000000 : ℚ), (4592275621/10000000000 : ℚ), (-19849177261/100000000000 : ℚ), 2⟩,
+    ⟨(376637933149/1000000000000 : ℚ), (1002744543/2500000000 : ℚ), (-176844735689/1000000000000 : ℚ), 2⟩,
+    ⟨(385033369961/1000000000000 : ℚ), (700640133/2000000000 : ℚ), (-157511916493/1000000000000 : ℚ), 2⟩,
+    ⟨(393521880841/1000000000000 : ℚ), (1528850053/5000000000 : ℚ), (-17521742447/125000000000 : ℚ), 2⟩,
+    ⟨(16083320649/40000000000 : ℚ), (106609251/400000000 : ℚ), (-62282564663/500000000000 : ℚ), 2⟩,
+    ⟨(410696151587/1000000000000 : ℚ), (2318147459/10000000000 : ℚ), (-22092627851/200000000000 : ℚ), 2⟩,
+    ⟨(419340537129/1000000000000 : ℚ), (1005044917/5000000000 : ℚ), (-48840421893/500000000000 : ℚ), 2⟩,
+    ⟨(42799534777/100000000000 : ℚ), (1735743873/10000000000 : ℚ), (-86059945301/1000000000000 : ℚ), 2⟩,
+    ⟨(6822495833/15625000000 : ℚ), (745323447/5000000000 : ℚ), (-75465893609/1000000000000 : ℚ), 2⟩,
+    ⟨(445252868673/1000000000000 : ℚ), (635517479/5000000000 : ℚ), (-65783818311/1000000000000 : ℚ), 2⟩,
+    ⟨(453814004057/1000000000000 : ℚ), (536860149/5000000000 : ℚ), (-14228812649/250000000000 : ℚ), 1⟩,
+    ⟨(231151257469/500000000000 : ℚ), (111999073/1250000000 : ℚ), (-12193865549/250000000000 : ℚ), 1⟩,
+    ⟨(1882791807/4000000000 : ℚ), (367769483/5000000000 : ℚ), (-41291294567/1000000000000 : ℚ), 1⟩,
+    ⟨(9579601783/20000000000 : ℚ), (118075793/2000000000 : ℚ), (-17199687879/500000000000 : ℚ), 1⟩,
+    ⟨(60891121843/125000000000 : ℚ), (57351401/1250000000 : ℚ), (-1121785973/40000000000 : ℚ), 1⟩,
+    ⟨(967040971/1953125000 : ℚ), (84842411/2500000000 : ℚ), (-22179153689/1000000000000 : ℚ), 1⟩,
+    ⟨(100589766661/200000000000 : ℚ), (115393703/5000000000 : ℚ), (-8380502699/500000000000 : ℚ), 1⟩,
+    ⟨(3988919491/7812500000 : ℚ), (2639337/200000000 : ℚ), (-1469193381/125000000000 : ℚ), 1⟩,
+    ⟨(518005173549/1000000000000 : ℚ), (41954639/10000000000 : ℚ), (-1424926451/200000000000 : ℚ), 1⟩,
+    ⟨(525201385597/1000000000000 : ℚ), (-20039533/5000000000 : ℚ), (-355752711/125000000000 : ℚ), 1⟩,
+    ⟨(532152994687/1000000000000 : ℚ), (-57429021/5000000000 : ℚ), (276782213/250000000000 : ℚ), 1⟩,
+    ⟨(67355406723/125000000000 : ℚ), (-45753661/2500000000 : ℚ), (47567021/10000000000 : ℚ), 1⟩,
+    ⟨(545256045467/1000000000000 : ℚ), (-122551077/5000000000 : ℚ), (324879611/40000000000 : ℚ), 1⟩,
+    ⟨(551375920761/1000000000000 : ℚ), (-150802601/5000000000 : ℚ), (5610005339/500000000000 : ℚ), 1⟩,
+    ⟨(557188136349/1000000000000 : ℚ), (-352948601/10000000000 : ℚ), (1406577723/100000000000 : ℚ), 1⟩,
+    ⟨(112535738019/200000000000 : ℚ), (-199752417/5000000000 : ℚ), (1667253247/100000000000 : ℚ), 1⟩,
+    ⟨(22713374191/40000000000 : ℚ), (-22080021/500000000 : ℚ), (9525973691/500000000000 : ℚ), 1⟩,
+    ⟨(572642709939/1000000000000 : ℚ), (-479521331/10000000000 : ℚ), (21214293463/1000000000000 : ℚ), 1⟩,
+    ⟨(1803413037/3125000000 : ℚ), (-128379399/2500000000 : ℚ), (2316858999/100000000000 : ℚ), 1⟩,
+    ⟨(581172021333/1000000000000 : ℚ), (-135951807/2500000000 : ℚ), (24922731739/1000000000000 : ℚ), 1⟩,
+    ⟨(116974485941/200000000000 : ℚ), (-285289777/5000000000 : ℚ), (13241798839/500000000000 : ℚ), 1⟩,
+    ⟨(147046120587/250000000000 : ℚ), (-18562439/312500000 : ℚ), (27857145091/1000000000000 : ℚ), 1⟩,
+    ⟨(147775050059/250000000000 : ℚ), (-614202713/10000000000 : ℚ), (1161939539/40000000000 : ℚ), 1⟩,
+    ⟨(593612559149/1000000000000 : ℚ), (-631312093/10000000000 : ℚ), (3006196777/100000000000 : ℚ), 1⟩,
+    ⟨(148928876649/250000000000 : ℚ), (-645424939/10000000000 : ℚ), (15450602327/500000000000 : ℚ), 1⟩,
+    ⟨(59740397639/100000000000 : ℚ), (-656621579/10000000000 : ℚ), (15784574737/500000000000 : ℚ), 1⟩,
+    ⟨(299336950431/500000000000 : ℚ), (-664965013/10000000000 : ℚ), (4008514823/125000000000 : ℚ), 1⟩,
+    ⟨(599522220651/1000000000000 : ℚ), (-670501771/10000000000 : ℚ), (6479964899/200000000000 : ℚ), 1⟩,
+    ⟨(599946892081/1000000000000 : ℚ), (-673262531/10000000000 : ℚ), (8141349201/250000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-67360727/1000000000 : ℚ), (32586080241/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (337499/1000000 : ℚ)
+  x := (6866213709/31250000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control45.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control45.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate45
+
+namespace DiagonalRamsey.JointInheritedCertificate46
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(78697743509/250000000000 : ℚ), (35916042507643/10000000000 : ℚ), (-1132052336895311/1000000000000 : ℚ), 12⟩,
+    ⟨(157627452647/500000000000 : ℚ), (988559833731/2500000000 : ℚ), (-62825421878631/500000000000 : ℚ), 9⟩,
+    ⟨(316181650157/1000000000000 : ℚ), (1402884553231/10000000000 : ℚ), (-45138842399187/1000000000000 : ℚ), 7⟩,
+    ⟨(317568976017/1000000000000 : ℚ), (702530820907/10000000000 : ℚ), (-22957111921591/1000000000000 : ℚ), 7⟩,
+    ⟨(79853385171/250000000000 : ℚ), (25986715233/625000000 : ℚ), (-3457247701979/250000000000 : ℚ), 6⟩,
+    ⟨(8042772511/25000000000 : ℚ), (67895497637/2500000000 : ℚ), (-9208521515263/1000000000000 : ℚ), 5⟩,
+    ⟨(64891104149/200000000000 : ℚ), (189295440327/10000000000 : ℚ), (-3275620534709/500000000000 : ℚ), 5⟩,
+    ⟨(327640789567/1000000000000 : ℚ), (69071644521/5000000000 : ℚ), (-488421535307/100000000000 : ℚ), 4⟩,
+    ⟨(66251806663/200000000000 : ℚ), (104315882387/10000000000 : ℚ), (-1885143016783/500000000000 : ℚ), 4⟩,
+    ⟨(335301535323/1000000000000 : ℚ), (80874519981/10000000000 : ℚ), (-93418323197/31250000000 : ℚ), 4⟩,
+    ⟨(6795171137/20000000000 : ℚ), (8003187183/1250000000 : ℚ), (-484186945507/200000000000 : ℚ), 4⟩,
+    ⟨(17230968027/50000000000 : ℚ), (51554192661/10000000000 : ℚ), (-997183434937/500000000000 : ℚ), 3⟩,
+    ⟨(87468059073/250000000000 : ℚ), (42098330297/10000000000 : ℚ), (-1666156303007/1000000000000 : ℚ), 3⟩,
+    ⟨(355504529467/1000000000000 : ℚ), (3478330431/1000000000 : ℚ), (-56330856739/40000000000 : ℚ), 3⟩,
+    ⟨(180751335689/500000000000 : ℚ), (3628404099/1250000000 : ℚ), (-1201998008779/1000000000000 : ℚ), 3⟩,
+    ⟨(45981526497/125000000000 : ℚ), (4886229367/2000000000 : ℚ), (-1034455315767/1000000000000 : ℚ), 3⟩,
+    ⟨(374537854661/1000000000000 : ℚ), (20714347541/10000000000 : ℚ), (-896542438813/1000000000000 : ℚ), 3⟩,
+    ⟨(76308698627/200000000000 : ℚ), (17674892381/10000000000 : ℚ), (-781681306127/1000000000000 : ℚ), 2⟩,
+    ⟨(388852250201/1000000000000 : ℚ), (15164642989/10000000000 : ℚ), (-68502170561/100000000000 : ℚ), 2⟩,
+    ⟨(396446518423/1000000000000 : ℚ), (6536526913/5000000000 : ℚ), (-602923986161/1000000000000 : ℚ), 2⟩,
+    ⟨(404308002543/1000000000000 : ℚ), (1131637251/1000000000 : ℚ), (-532613869763/1000000000000 : ℚ), 2⟩,
+    ⟨(206208881779/500000000000 : ℚ), (4915141727/5000000000 : ℚ), (-471946908473/1000000000000 : ℚ), 2⟩,
+    ⟨(420756264343/1000000000000 : ℚ), (4282398147/5000000000 : ℚ), (-419244510047/1000000000000 : ℚ), 2⟩,
+    ⟨(429303416719/1000000000000 : ℚ), (1496126011/2000000000 : ℚ), (-186588857477/500000000000 : ℚ), 2⟩,
+    ⟨(54754828731/125000000000 : ℚ), (65466137/100000000 : ℚ), (-166341731753/500000000000 : ℚ), 2⟩,
+    ⟨(446940859837/1000000000000 : ℚ), (2868894887/5000000000 : ℚ), (-296903370741/1000000000000 : ℚ), 2⟩,
+    ⟨(28499291277/62500000000 : ℚ), (125850309/250000000 : ℚ), (-132569173777/500000000000 : ℚ), 2⟩,
+    ⟨(465160234691/1000000000000 : ℚ), (2209448879/5000000000 : ℚ), (-236814545781/1000000000000 : ℚ), 2⟩,
+    ⟨(474433487487/1000000000000 : ℚ), (969757579/2500000000 : ℚ), (-211457508247/1000000000000 : ℚ), 2⟩,
+    ⟨(241893039371/500000000000 : ℚ), (3403355137/10000000000 : ℚ), (-94336168457/500000000000 : ℚ), 2⟩,
+    ⟨(246597738623/500000000000 : ℚ), (745677319/2500000000 : ℚ), (-168128329961/1000000000000 : ℚ), 2⟩,
+    ⟨(502639014931/1000000000000 : ℚ), (52189133/200000000 : ℚ), (-74773485439/500000000000 : ℚ), 2⟩,
+    ⟨(51209394149/100000000000 : ℚ), (1138600701/5000000000 : ℚ), (-132692458463/1000000000000 : ℚ), 2⟩,
+    ⟨(65192184897/125000000000 : ℚ), (198056117/1000000000 : ℚ), (-117364181959/1000000000000 : ℚ), 2⟩,
+    ⟨(530946877679/1000000000000 : ℚ), (214373309/1250000000 : ℚ), (-2067813923/20000000000 : ℚ), 2⟩,
+    ⟨(270149734467/500000000000 : ℚ), (14766159/100000000 : ℚ), (-22656216329/250000000000 : ℚ), 1⟩,
+    ⟨(54957272173/100000000000 : ℚ), (78884957/625000000 : ℚ), (-78939923179/1000000000000 : ℚ), 1⟩,
+    ⟨(558744295989/1000000000000 : ℚ), (1043753/9765625 : ℚ), (-213207051/3125000000 : ℚ), 1⟩,
+    ⟨(113558419317/200000000000 : ℚ), (894132779/10000000000 : ℚ), (-3649297781/62500000000 : ℚ), 1⟩,
+    ⟨(576694326573/1000000000000 : ℚ), (147213987/2000000000 : ℚ), (-4934468157/100000000000 : ℚ), 1⟩,
+    ⟨(292714769851/500000000000 : ℚ), (148204951/2500000000 : ℚ), (-41021768571/1000000000000 : ℚ), 1⟩,
+    ⟨(296988346039/500000000000 : ℚ), (115707073/2500000000 : ℚ), (-208480047/6250000000 : ℚ), 1⟩,
+    ⟨(602315192863/1000000000000 : ℚ), (43093269/1250000000 : ℚ), (-5258868343/200000000000 : ℚ), 1⟩,
+    ⟨(305212476939/500000000000 : ℚ), (29674893/1250000000 : ℚ), (-2473202021/125000000000 : ℚ), 1⟩,
+    ⟨(618286437999/1000000000000 : ℚ), (139763087/10000000000 : ℚ), (-6893842543/500000000000 : ℚ), 1⟩,
+    ⟨(31294035311/50000000000 : ℚ), (50942919/10000000000 : ℚ), (-826265567/100000000000 : ℚ), 1⟩,
+    ⟨(316594731643/500000000000 : ℚ), (-14922461/5000000000 : ℚ), (-794261683/250000000000 : ℚ), 1⟩,
+    ⟨(2000609693/3125000000 : ℚ), (-12910921/1250000000 : ℚ), (749378719/500000000000 : ℚ), 1⟩,
+    ⟨(129376148889/200000000000 : ℚ), (-169987303/10000000000 : ℚ), (361935837/62500000000 : ℚ), 1⟩,
+    ⟨(653230285043/1000000000000 : ℚ), (-9218969/400000000 : ℚ), (2430704139/250000000000 : ℚ), 1⟩,
+    ⟨(329614213477/500000000000 : ℚ), (-285213307/10000000000 : ℚ), (1664355357/125000000000 : ℚ), 1⟩,
+    ⟨(66486072013/100000000000 : ℚ), (-167306549/5000000000 : ℚ), (2073155107/125000000000 : ℚ), 1⟩,
+    ⟨(670113595881/1000000000000 : ℚ), (-75806417/2000000000 : ℚ), (9775041607/500000000000 : ℚ), 1⟩,
+    ⟨(674974399571/1000000000000 : ℚ), (-16751371/400000000 : ℚ), (277794269/12500000000 : ℚ), 1⟩,
+    ⟨(339715710549/500000000000 : ℚ), (-227071977/5000000000 : ℚ), (2461807141/100000000000 : ℚ), 1⟩,
+    ⟨(341736961553/500000000000 : ℚ), (-19413989/400000000 : ℚ), (2674456981/100000000000 : ℚ), 1⟩,
+    ⟨(343546083427/500000000000 : ℚ), (-512607943/10000000000 : ℚ), (357656381/12500000000 : ℚ), 1⟩,
+    ⟨(690277435677/1000000000000 : ℚ), (-268047803/5000000000 : ℚ), (30230057653/1000000000000 : ℚ), 1⟩,
+    ⟨(693022055981/1000000000000 : ℚ), (-555962793/10000000000 : ℚ), (31604163423/1000000000000 : ℚ), 1⟩,
+    ⟨(695319415737/1000000000000 : ℚ), (-572334679/10000000000 : ℚ), (32740647359/1000000000000 : ℚ), 1⟩,
+    ⟨(174290995101/250000000000 : ℚ), (-1463283/25000000 : ℚ), (16822131911/500000000000 : ℚ), 1⟩,
+    ⟨(87318913283/125000000000 : ℚ), (-29748919/500000000 : ℚ), (4289844363/125000000000 : ℚ), 1⟩,
+    ⟨(87434756391/125000000000 : ℚ), (-601389359/10000000000 : ℚ), (8691722859/250000000000 : ℚ), 1⟩,
+    ⟨(139988396477/200000000000 : ℚ), (-151146289/2500000000 : ℚ), (17495252271/500000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-604984177/10000000000 : ℚ), (17509217413/500000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (337499/1000000 : ℚ)
+  x := (18661658301/100000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control46.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control46.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate46
+
+namespace DiagonalRamsey.JointInheritedCertificate49
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(109985065573/500000000000 : ℚ), (1785667146631/2500000000 : ℚ), (-31579121460639/200000000000 : ℚ), 10⟩,
+    ⟨(221558357473/1000000000000 : ℚ), (383667146501/5000000000 : ℚ), (-17471160415137/1000000000000 : ℚ), 7⟩,
+    ⟨(2808993933/12500000000 : ℚ), (262711459189/10000000000 : ℚ), (-6237398746779/1000000000000 : ℚ), 5⟩,
+    ⟨(114711579487/500000000000 : ℚ), (126104754223/10000000000 : ℚ), (-628521420553/200000000000 : ℚ), 5⟩,
+    ⟨(235623991811/1000000000000 : ℚ), (71218946241/10000000000 : ℚ), (-46731195577/25000000000 : ℚ), 4⟩,
+    ⟨(243262295739/1000000000000 : ℚ), (44248845693/10000000000 : ℚ), (-76554032097/62500000000 : ℚ), 3⟩,
+    ⟨(63066127429/250000000000 : ℚ), (14632715709/5000000000 : ℚ), (-854397456167/1000000000000 : ℚ), 3⟩,
+    ⟨(262543937501/1000000000000 : ℚ), (20221852259/10000000000 : ℚ), (-311033617203/500000000000 : ℚ), 3⟩,
+    ⟨(54800316517/200000000000 : ℚ), (14425664549/10000000000 : ℚ), (-466856664409/1000000000000 : ℚ), 2⟩,
+    ⟨(143263550791/500000000000 : ℚ), (5268289857/5000000000 : ℚ), (-179022746603/500000000000 : ℚ), 2⟩,
+    ⟨(299999866897/1000000000000 : ℚ), (3915081689/5000000000 : ℚ), (-139400512331/500000000000 : ℚ), 2⟩,
+    ⟨(62858025687/200000000000 : ℚ), (5889351443/10000000000 : ℚ), (-54818901959/250000000000 : ℚ), 2⟩,
+    ⟨(164630131583/500000000000 : ℚ), (2230891219/5000000000 : ℚ), (-173399732157/1000000000000 : ℚ), 2⟩,
+    ⟨(344766100509/1000000000000 : ℚ), (3388492089/10000000000 : ℚ), (-6863532431/50000000000 : ℚ), 2⟩,
+    ⟨(180329155387/500000000000 : ℚ), (2565975279/10000000000 : ℚ), (-27072395111/250000000000 : ℚ), 2⟩,
+    ⟨(47097980411/125000000000 : ℚ), (240617231/1250000000 : ℚ), (-16934956827/200000000000 : ℚ), 2⟩,
+    ⟨(196493700179/500000000000 : ℚ), (1417875991/10000000000 : ℚ), (-65174267201/1000000000000 : ℚ), 2⟩,
+    ⟨(51139116609/125000000000 : ℚ), (252887311/2500000000 : ℚ), (-24444877209/500000000000 : ℚ), 2⟩,
+    ⟨(425005143137/1000000000000 : ℚ), (341138351/5000000000 : ℚ), (-35165234911/1000000000000 : ℚ), 2⟩,
+    ⟨(688298407/1562500000 : ℚ), (412918787/10000000000 : ℚ), (-11757179281/500000000000 : ℚ), 1⟩,
+    ⟨(455481115211/1000000000000 : ℚ), (190895591/10000000000 : ℚ), (-13571942263/1000000000000 : ℚ), 1⟩,
+    ⟨(1879085507/4000000000 : ℚ), (685941/1000000000 : ℚ), (-1265214841/250000000000 : ℚ), 1⟩,
+    ⟨(96648828413/200000000000 : ℚ), (-146210347/10000000000 : ℚ), (6971911/3125000000 : ℚ), 1⟩,
+    ⟨(247884830531/500000000000 : ℚ), (-273633939/10000000000 : ℚ), (846711077/100000000000 : ℚ), 1⟩,
+    ⟨(253613653073/500000000000 : ℚ), (-189735647/5000000000 : ℚ), (1377393141/100000000000 : ℚ), 1⟩,
+    ⟨(517506733931/1000000000000 : ℚ), (-933669/20000000 : ℚ), (18249558431/1000000000000 : ℚ), 1⟩,
+    ⟨(131627236977/250000000000 : ℚ), (-538111841/10000000000 : ℚ), (21969945327/1000000000000 : ℚ), 1⟩,
+    ⟨(133536812959/250000000000 : ℚ), (-595129477/10000000000 : ℚ), (3124194753/125000000000 : ℚ), 1⟩,
+    ⟨(8442938823/15625000000 : ℚ), (-127853677/2000000000 : ℚ), (27364814891/1000000000000 : ℚ), 1⟩,
+    ⟨(272525864503/500000000000 : ℚ), (-335774297/5000000000 : ℚ), (14558311063/500000000000 : ℚ), 1⟩,
+    ⟨(548212886173/1000000000000 : ℚ), (-692688887/10000000000 : ℚ), (15136103673/500000000000 : ℚ), 1⟩,
+    ⟨(43984089/80000000 : ℚ), (-703147511/10000000000 : ℚ), (30846391727/1000000000000 : ℚ), 1⟩,
+    ⟨(11/20 : ℚ), (-704449669/10000000000 : ℚ), (30917997433/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (349999/1000000 : ℚ)
+  x := (244350754039/1000000000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control49.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control49.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate49
+
+namespace DiagonalRamsey.JointInheritedCertificate50
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(24886757403/100000000000 : ℚ), (7638811558311/2500000000 : ℚ), (-380765701967707/500000000000 : ℚ), 12⟩,
+    ⟨(31161308089/125000000000 : ℚ), (672064791513/2000000000 : ℚ), (-84526419136151/1000000000000 : ℚ), 9⟩,
+    ⟨(7816725853/31250000000 : ℚ), (297552588133/2500000000 : ℚ), (-7591521515307/250000000000 : ℚ), 7⟩,
+    ⟨(10055993067/40000000000 : ℚ), (594839138053/10000000000 : ℚ), (-7722221846543/500000000000 : ℚ), 6⟩,
+    ⟨(253081216317/1000000000000 : ℚ), (43908172249/1250000000 : ℚ), (-145374062221/15625000000 : ℚ), 6⟩,
+    ⟨(31896918201/125000000000 : ℚ), (7152776233/312500000 : ℚ), (-6195719941641/1000000000000 : ℚ), 5⟩,
+    ⟨(32209646201/125000000000 : ℚ), (159139002057/10000000000 : ℚ), (-4408126173543/1000000000000 : ℚ), 5⟩,
+    ⟨(130290330601/500000000000 : ℚ), (115837643683/10000000000 : ℚ), (-3286666674499/1000000000000 : ℚ), 4⟩,
+    ⟨(131939412813/500000000000 : ℚ), (21811108217/2500000000 : ℚ), (-2537265108509/1000000000000 : ℚ), 4⟩,
+    ⟨(4180683083/15625000000 : ℚ), (67462177561/10000000000 : ℚ), (-201188236867/100000000000 : ℚ), 4⟩,
+    ⟨(271626459033/1000000000000 : ℚ), (53267744683/10000000000 : ℚ), (-407350740367/250000000000 : ℚ), 4⟩,
+    ⟨(276057263289/1000000000000 : ℚ), (42780356241/10000000000 : ℚ), (-1342357976011/1000000000000 : ℚ), 3⟩,
+    ⟨(56169091177/200000000000 : ℚ), (34843637909/10000000000 : ℚ), (-560733451181/500000000000 : ℚ), 3⟩,
+    ⟨(57195900329/200000000000 : ℚ), (7178894407/2500000000 : ℚ), (-947872684731/1000000000000 : ℚ), 3⟩,
+    ⟨(291447032203/1000000000000 : ℚ), (597570383/250000000 : ℚ), (-808986162421/1000000000000 : ℚ), 3⟩,
+    ⟨(148617437899/500000000000 : ℚ), (5016829087/2500000000 : ℚ), (-696142424701/1000000000000 : ℚ), 3⟩,
+    ⟨(30332908901/100000000000 : ℚ), (4242860789/2500000000 : ℚ), (-603219362097/1000000000000 : ℚ), 3⟩,
+    ⟨(38714373793/125000000000 : ℚ), (577775467/400000000 : ℚ), (-131448015929/250000000000 : ℚ), 2⟩,
+    ⟨(63275439121/200000000000 : ℚ), (123609729/100000000 : ℚ), (-115149509207/250000000000 : ℚ), 2⟩,
+    ⟨(323299654957/1000000000000 : ℚ), (10627896843/10000000000 : ℚ), (-405189214763/1000000000000 : ℚ), 2⟩,
+    ⟨(82616422897/250000000000 : ℚ), (9174554177/10000000000 : ℚ), (-357699741827/1000000000000 : ℚ), 2⟩,
+    ⟨(33785804189/100000000000 : ℚ), (3973398899/5000000000 : ℚ), (-316687515221/1000000000000 : ℚ), 2⟩,
+    ⟨(172729448521/500000000000 : ℚ), (1725650229/2500000000 : ℚ), (-281023871119/1000000000000 : ℚ), 2⟩,
+    ⟨(353249945919/1000000000000 : ℚ), (6008990277/10000000000 : ℚ), (-249815393177/1000000000000 : ℚ), 2⟩,
+    ⟨(361212419201/1000000000000 : ℚ), (2619921157/5000000000 : ℚ), (-111173788641/500000000000 : ℚ), 2⟩,
+    ⟨(184663567297/500000000000 : ℚ), (457427613/1000000000 : ℚ), (-198043637979/1000000000000 : ℚ), 2⟩,
+    ⟨(94393635759/250000000000 : ℚ), (998866501/2500000000 : ℚ), (-176433975687/1000000000000 : ℚ), 2⟩,
+    ⟨(385934775799/1000000000000 : ℚ), (139590127/400000000 : ℚ), (-6285330463/40000000000 : ℚ), 2⟩,
+    ⟨(394387692349/1000000000000 : ℚ), (3045974069/10000000000 : ℚ), (-27964608599/200000000000 : ℚ), 2⟩,
+    ⟨(402912928871/1000000000000 : ℚ), (265494701/1000000000 : ℚ), (-124238398927/1000000000000 : ℚ), 2⟩,
+    ⟨(205744973661/500000000000 : ℚ), (577269079/2500000000 : ℚ), (-3442425029/31250000000 : ℚ), 2⟩,
+    ⟨(84019616983/200000000000 : ℚ), (500511071/2500000000 : ℚ), (-4869701517/50000000000 : ℚ), 2⟩,
+    ⟨(428716603891/1000000000000 : ℚ), (1728569627/10000000000 : ℚ), (-5361862871/62500000000 : ℚ), 2⟩,
+    ⟨(437324741483/1000000000000 : ℚ), (1484216603/10000000000 : ℚ), (-75210719221/1000000000000 : ℚ), 2⟩,
+    ⟨(222950879967/500000000000 : ℚ), (632621583/5000000000 : ℚ), (-65542180437/1000000000000 : ℚ), 2⟩,
+    ⟨(56803374557/125000000000 : ℚ), (534239687/5000000000 : ℚ), (-28342975101/500000000000 : ℚ), 2⟩,
+    ⟨(231439956503/500000000000 : ℚ), (891229447/10000000000 : ℚ), (-48557488109/1000000000000 : ℚ), 2⟩,
+    ⟨(471240145769/1000000000000 : ℚ), (731192429/10000000000 : ℚ), (-41083788377/1000000000000 : ℚ), 1⟩,
+    ⟨(119871888553/250000000000 : ℚ), (586397581/10000000000 : ℚ), (-8550400687/250000000000 : ℚ), 1⟩,
+    ⟨(121900567401/250000000000 : ℚ), (455151523/10000000000 : ℚ), (-217624803/7812500000 : ℚ), 1⟩,
+    ⟨(495564742887/1000000000000 : ℚ), (20999673/625000000 : ℚ), (-10999511319/500000000000 : ℚ), 1⟩,
+    ⟨(503355791763/1000000000000 : ℚ), (227665849/10000000000 : ℚ), (-259201969/15625000000 : ℚ), 1⟩,
+    ⟨(102191329383/200000000000 : ℚ), (129071571/10000000000 : ℚ), (-1448634629/125000000000 : ℚ), 1⟩,
+    ⟨(518348997217/1000000000000 : ℚ), (39262267/10000000000 : ℚ), (-3483683761/500000000000 : ℚ), 1⟩,
+    ⟨(65689379231/125000000000 : ℚ), (-42588873/10000000000 : ℚ), (-2695586827/1000000000000 : ℚ), 1⟩,
+    ⟨(1331093733/2500000000 : ℚ), (-117203119/10000000000 : ℚ), (250217583/200000000000 : ℚ), 1⟩,
+    ⟨(539099698461/1000000000000 : ℚ), (-37042151/2000000000 : ℚ), (978904971/200000000000 : ℚ), 1⟩,
+    ⟨(109097119959/200000000000 : ℚ), (-247163341/10000000000 : ℚ), (8254005961/1000000000000 : ℚ), 1⟩,
+    ⟨(551579813007/1000000000000 : ℚ), (-151772041/5000000000 : ℚ), (2269308561/200000000000 : ℚ), 1⟩,
+    ⟨(557367656603/1000000000000 : ℚ), (-177388303/5000000000 : ℚ), (7093573291/500000000000 : ℚ), 1⟩,
+    ⟨(14070879679/25000000000 : ℚ), (-40123241/1000000000 : ℚ), (8394529753/500000000000 : ℚ), 1⟩,
+    ⟨(14199230823/25000000000 : ℚ), (-55404649/1250000000 : ℚ), (19163954069/1000000000000 : ℚ), 1⟩,
+    ⟨(143189356379/250000000000 : ℚ), (-240538119/5000000000 : ℚ), (21322104397/1000000000000 : ℚ), 1⟩,
+    ⟨(144297057443/250000000000 : ℚ), (-16093719/312500000 : ℚ), (4654506739/200000000000 : ℚ), 1⟩,
+    ⟨(290625485747/500000000000 : ℚ), (-545223037/10000000000 : ℚ), (12511570383/500000000000 : ℚ), 1⟩,
+    ⟨(29246793159/50000000000 : ℚ), (-285968629/5000000000 : ℚ), (1329040471/50000000000 : ℚ), 1⟩,
+    ⟨(588234027603/1000000000000 : ℚ), (-148826203/2500000000 : ℚ), (5590300223/200000000000 : ℚ), 1⟩,
+    ⟨(591137519197/1000000000000 : ℚ), (-615465431/10000000000 : ℚ), (29140334979/1000000000000 : ℚ), 1⟩,
+    ⟨(593639343197/1000000000000 : ℚ), (-126507487/2000000000 : ℚ), (30151655081/1000000000000 : ℚ), 1⟩,
+    ⟨(74466684061/125000000000 : ℚ), (-646619391/10000000000 : ℚ), (30989086549/1000000000000 : ℚ), 1⟩,
+    ⟨(59741486213/100000000000 : ℚ), (-164447871/2500000000 : ℚ), (3956947891/125000000000 : ℚ), 1⟩,
+    ⟨(598679461509/1000000000000 : ℚ), (-333058301/5000000000 : ℚ), (32153463739/1000000000000 : ℚ), 1⟩,
+    ⟨(599524224093/1000000000000 : ℚ), (-671641193/10000000000 : ℚ), (8121110701/250000000000 : ℚ), 1⟩,
+    ⟨(23997884591/40000000000 : ℚ), (-337197941/5000000000 : ℚ), (16324825639/500000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-674739863/10000000000 : ℚ), (32670289251/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (349999/1000000 : ℚ)
+  x := (229899444369/1000000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control50.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control50.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate50
+
+namespace DiagonalRamsey.JointInheritedCertificate51
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(316500916341/1000000000000 : ℚ), (889708639741/250000000 : ℚ), (-563901910807761/500000000000 : ℚ), 12⟩,
+    ⟨(19810174263/62500000000 : ℚ), (156738941761/400000000 : ℚ), (-125180381790071/1000000000000 : ℚ), 9⟩,
+    ⟨(79471354813/250000000000 : ℚ), (1390367649429/10000000000 : ℚ), (-5621326613671/125000000000 : ℚ), 8⟩,
+    ⟨(12770663471/40000000000 : ℚ), (348185291391/5000000000 : ℚ), (-2287213690191/100000000000 : ℚ), 7⟩,
+    ⟨(160551481711/500000000000 : ℚ), (82443053697/2000000000 : ℚ), (-1377826177131/100000000000 : ℚ), 6⟩,
+    ⟨(323390125201/1000000000000 : ℚ), (269301933329/10000000000 : ℚ), (-9175111911341/1000000000000 : ℚ), 5⟩,
+    ⟨(16306128107/50000000000 : ℚ), (187746075581/10000000000 : ℚ), (-815972079999/125000000000 : ℚ), 5⟩,
+    ⟨(329293691559/1000000000000 : ℚ), (137043264747/10000000000 : ℚ), (-4866974631821/1000000000000 : ℚ), 4⟩,
+    ⟨(332895873929/1000000000000 : ℚ), (25877317957/2500000000 : ℚ), (-3757189072019/1000000000000 : ℚ), 4⟩,
+    ⟨(84230107819/250000000000 : ℚ), (16053658731/2000000000 : ℚ), (-595835954007/200000000000 : ℚ), 4⟩,
+    ⟨(341357668091/1000000000000 : ℚ), (63560938571/10000000000 : ℚ), (-603204574611/250000000000 : ℚ), 4⟩,
+    ⟨(346196894681/1000000000000 : ℚ), (51192565187/10000000000 : ℚ), (-1987805703251/1000000000000 : ℚ), 3⟩,
+    ⟨(87856613231/250000000000 : ℚ), (5226644363/1250000000 : ℚ), (-1660779380337/1000000000000 : ℚ), 3⟩,
+    ⟨(178516872179/500000000000 : ℚ), (34555946287/10000000000 : ℚ), (-1403813404099/1000000000000 : ℚ), 3⟩,
+    ⟨(181502630263/500000000000 : ℚ), (14422129183/5000000000 : ℚ), (-599132127031/500000000000 : ℚ), 3⟩,
+    ⟨(369326615523/1000000000000 : ℚ), (6070668563/2500000000 : ℚ), (-128912492037/125000000000 : ℚ), 3⟩,
+    ⟨(7519651613/20000000000 : ℚ), (20592982933/10000000000 : ℚ), (-893854096231/1000000000000 : ℚ), 3⟩,
+    ⟨(76591424221/200000000000 : ℚ), (17575022571/10000000000 : ℚ), (-77937370529/100000000000 : ℚ), 2⟩,
+    ⟨(390233434609/1000000000000 : ℚ), (120655627/80000000 : ℚ), (-683027074117/1000000000000 : ℚ), 2⟩,
+    ⟨(79558798377/200000000000 : ℚ), (13004192283/10000000000 : ℚ), (-601188494167/1000000000000 : ℚ), 2⟩,
+    ⟨(50702572361/125000000000 : ℚ), (2251742089/2000000000 : ℚ), (-531094346417/1000000000000 : ℚ), 2⟩,
+    ⟨(206847170343/500000000000 : ℚ), (9781742937/10000000000 : ℚ), (-470608442133/1000000000000 : ℚ), 2⟩,
+    ⟨(210997913439/500000000000 : ℚ), (8523723059/10000000000 : ℚ), (-209029332993/500000000000 : ℚ), 2⟩,
+    ⟨(215252519229/500000000000 : ℚ), (930712363/1250000000 : ℚ), (-372121190913/1000000000000 : ℚ), 2⟩,
+    ⟨(109800368997/250000000000 : ℚ), (6516757177/10000000000 : ℚ), (-331737061611/1000000000000 : ℚ), 2⟩,
+    ⟨(448064188991/1000000000000 : ℚ), (2856071897/5000000000 : ℚ), (-296051201579/1000000000000 : ℚ), 2⟩,
+    ⟨(457071826413/1000000000000 : ℚ), (2505937179/5000000000 : ℚ), (-66091801761/250000000000 : ℚ), 2⟩,
+    ⟨(233101344033/500000000000 : ℚ), (879938839/2000000000 : ℚ), (-236113422571/1000000000000 : ℚ), 2⟩,
+    ⟨(475434776907/1000000000000 : ℚ), (965572813/2500000000 : ℚ), (-105408595323/500000000000 : ℚ), 2⟩,
+    ⟨(60593231503/125000000000 : ℚ), (3388694193/10000000000 : ℚ), (-23510637041/125000000000 : ℚ), 2⟩,
+    ⟨(24705674111/50000000000 : ℚ), (2969807751/10000000000 : ℚ), (-167587664943/1000000000000 : ℚ), 2⟩,
+    ⟨(62939387507/125000000000 : ℚ), (51961017/200000000 : ℚ), (-74523698761/500000000000 : ℚ), 2⟩,
+    ⟨(51292805621/100000000000 : ℚ), (141692031/625000000 : ℚ), (-6611466977/50000000000 : ℚ), 2⟩,
+    ⟨(104465934809/200000000000 : ℚ), (394305403/2000000000 : ℚ), (-58466792447/500000000000 : ℚ), 2⟩,
+    ⟨(265848652121/500000000000 : ℚ), (1706895013/10000000000 : ℚ), (-102989276259/1000000000000 : ℚ), 2⟩,
+    ⟨(541008379359/1000000000000 : ℚ), (367334953/2500000000 : ℚ), (-90249768191/1000000000000 : ℚ), 2⟩,
+    ⟨(550240468199/1000000000000 : ℚ), (1255591639/10000000000 : ℚ), (-153493561/1953125000 : ℚ), 2⟩,
+    ⟨(559371329853/1000000000000 : ℚ), (1062853671/10000000000 : ℚ), (-67896809147/1000000000000 : ℚ), 1⟩,
+    ⟨(22735158691/40000000000 : ℚ), (888725403/10000000000 : ℚ), (-14519817343/250000000000 : ℚ), 1⟩,
+    ⟨(577241680277/1000000000000 : ℚ), (365569923/5000000000 : ℚ), (-12263388499/250000000000 : ℚ), 1⟩,
+    ⟨(36621132363/62500000000 : ℚ), (588311803/10000000000 : ℚ), (-40747619483/1000000000000 : ℚ), 1⟩,
+    ⟨(148611832347/250000000000 : ℚ), (229347549/5000000000 : ℚ), (-33098409271/1000000000000 : ℚ), 1⟩,
+    ⟨(30137440779/50000000000 : ℚ), (170473533/5000000000 : ℚ), (-26050599739/1000000000000 : ℚ), 1⟩,
+    ⟨(610822577377/1000000000000 : ℚ), (11694947/500000000 : ℚ), (-19555544593/1000000000000 : ℚ), 1⟩,
+    ⟨(618649164381/1000000000000 : ℚ), (136531097/10000000000 : ℚ), (-13570386687/1000000000000 : ℚ), 1⟩,
+    ⟨(626209721657/1000000000000 : ℚ), (4795227/1000000000 : ℚ), (-4028652249/500000000000 : ℚ), 1⟩,
+    ⟨(633486035161/1000000000000 : ℚ), (-2038621/625000000 : ℚ), (-29828743/10000000000 : ℚ), 1⟩,
+    ⟨(5003598247/7812500000 : ℚ), (-13232977/1250000000 : ℚ), (841237373/500000000000 : ℚ), 1⟩,
+    ⟨(647116540743/1000000000000 : ℚ), (-172386047/10000000000 : ℚ), (2982461653/500000000000 : ℚ), 1⟩,
+    ⟨(32671894787/50000000000 : ℚ), (-23271229/1000000000 : ℚ), (9887659933/1000000000000 : ℚ), 1⟩,
+    ⟨(164852352977/250000000000 : ℚ), (-287306181/10000000000 : ℚ), (13471219939/1000000000000 : ℚ), 1⟩,
+    ⟨(332508351671/500000000000 : ℚ), (-67314997/2000000000 : ℚ), (16733776707/1000000000000 : ℚ), 1⟩,
+    ⟨(134049252317/200000000000 : ℚ), (-190438059/5000000000 : ℚ), (19691392287/1000000000000 : ℚ), 1⟩,
+    ⟨(27003419527/40000000000 : ℚ), (-420522693/10000000000 : ℚ), (11179115561/500000000000 : ℚ), 1⟩,
+    ⟨(67952272499/100000000000 : ℚ), (-56973531/1250000000 : ℚ), (24746744041/1000000000000 : ℚ), 1⟩,
+    ⟨(683547282337/1000000000000 : ℚ), (-243455383/5000000000 : ℚ), (26867825617/1000000000000 : ℚ), 1⟩,
+    ⟨(687149464707/1000000000000 : ℚ), (-128524021/2500000000 : ℚ), (3591368531/125000000000 : ℚ), 1⟩,
+    ⟨(5522564753/8000000000 : ℚ), (-537520777/10000000000 : ℚ), (30344276573/1000000000000 : ℚ), 1⟩,
+    ⟨(86631628883/125000000000 : ℚ), (-139333643/2500000000 : ℚ), (6342952589/200000000000 : ℚ), 1⟩,
+    ⟨(173835048211/250000000000 : ℚ), (-573662363/10000000000 : ℚ), (32848228191/1000000000000 : ℚ), 1⟩,
+    ⟨(697176569491/1000000000000 : ℚ), (-586605863/10000000000 : ℚ), (33749428029/1000000000000 : ℚ), 1⟩,
+    ⟨(349278868507/500000000000 : ℚ), (-14906123/250000000 : ℚ), (34422105181/1000000000000 : ℚ), 1⟩,
+    ⟨(349740184029/500000000000 : ℚ), (-602638553/10000000000 : ℚ), (6973806409/200000000000 : ℚ), 1⟩,
+    ⟨(27997689597/40000000000 : ℚ), (-605825697/10000000000 : ℚ), (8773010029/250000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-606223637/10000000000 : ℚ), (17559947359/500000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (349999/1000000 : ℚ)
+  x := (97983224863/500000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control51.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control51.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate51
+
+namespace DiagonalRamsey.JointInheritedCertificate52
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(25261298321/62500000000 : ℚ), (10967027966191/10000000000 : ℚ), (-222377969550301/500000000000 : ℚ), 10⟩,
+    ⟨(203042801147/500000000000 : ℚ), (148645900423/1250000000 : ℚ), (-24605507141943/500000000000 : ℚ), 7⟩,
+    ⟨(204938458031/500000000000 : ℚ), (82476156941/2000000000 : ℚ), (-8784053174627/500000000000 : ℚ), 6⟩,
+    ⟨(415518202017/1000000000000 : ℚ), (200837867567/10000000000 : ℚ), (-4425502486269/500000000000 : ℚ), 5⟩,
+    ⟨(422955131491/1000000000000 : ℚ), (57582713947/5000000000 : ℚ), (-5264620781323/1000000000000 : ℚ), 4⟩,
+    ⟨(432116082789/1000000000000 : ℚ), (36331517667/5000000000 : ℚ), (-1725050367167/500000000000 : ℚ), 4⟩,
+    ⟨(442912830941/1000000000000 : ℚ), (24398305191/5000000000 : ℚ), (-601838051383/250000000000 : ℚ), 3⟩,
+    ⟨(5690517467/12500000000 : ℚ), (3422728887/1000000000 : ℚ), (-1753940142967/1000000000000 : ℚ), 3⟩,
+    ⟨(117245762803/250000000000 : ℚ), (4956405903/2000000000 : ℚ), (-659004376111/500000000000 : ℚ), 3⟩,
+    ⟨(484005452859/1000000000000 : ℚ), (28709461/15625000 : ℚ), (-1013031537067/1000000000000 : ℚ), 2⟩,
+    ⟨(500163928361/1000000000000 : ℚ), (13869038999/10000000000 : ℚ), (-197897510123/250000000000 : ℚ), 2⟩,
+    ⟨(103460572553/200000000000 : ℚ), (1326180211/1250000000 : ℚ), (-625932192071/1000000000000 : ℚ), 2⟩,
+    ⟨(107051439753/200000000000 : ℚ), (8194181233/10000000000 : ℚ), (-249470398301/500000000000 : ℚ), 2⟩,
+    ⟨(553854026289/1000000000000 : ℚ), (1592075349/2500000000 : ℚ), (-49949544229/125000000000 : ℚ), 2⟩,
+    ⟨(572914247723/1000000000000 : ℚ), (2482062299/5000000000 : ℚ), (-320548352911/1000000000000 : ℚ), 2⟩,
+    ⟨(118450860543/200000000000 : ℚ), (1934093649/5000000000 : ℚ), (-8023281313/31250000000 : ℚ), 2⟩,
+    ⟨(305843967981/500000000000 : ℚ), (3001832361/10000000000 : ℚ), (-204625062367/1000000000000 : ℚ), 2⟩,
+    ⟨(315513995477/500000000000 : ℚ), (9237549/40000000 : ℚ), (-161622778769/1000000000000 : ℚ), 2⟩,
+    ⟨(162522053097/250000000000 : ℚ), (1750730543/10000000000 : ℚ), (-62927250309/500000000000 : ℚ), 1⟩,
+    ⟨(83585629989/125000000000 : ℚ), (648243931/5000000000 : ℚ), (-95914564893/1000000000000 : ℚ), 1⟩,
+    ⟨(85829921989/125000000000 : ℚ), (115606547/1250000000 : ℚ), (-70738982723/1000000000000 : ℚ), 1⟩,
+    ⟨(175944577579/250000000000 : ℚ), (619436471/10000000000 : ℚ), (-24756196819/500000000000 : ℚ), 1⟩,
+    ⟨(359968392909/500000000000 : ℚ), (36779379/1000000000 : ℚ), (-15801667929/500000000000 : ℚ), 1⟩,
+    ⟨(146991837493/200000000000 : ℚ), (32077311/2000000000 : ℚ), (-8259240923/500000000000 : ℚ), 1⟩,
+    ⟨(748700841317/1000000000000 : ℚ), (-10145507/10000000000 : ℚ), (-386985163/100000000000 : ℚ), 1⟩,
+    ⟨(761029407737/1000000000000 : ℚ), (-149508227/10000000000 : ℚ), (1662228033/250000000000 : ℚ), 1⟩,
+    ⟨(48239134743/62500000000 : ℚ), (-262130111/10000000000 : ℚ), (15279816951/1000000000000 : ℚ), 1⟩,
+    ⟨(390493553593/500000000000 : ℚ), (-87858843/2500000000 : ℚ), (22213118231/1000000000000 : ℚ), 1⟩,
+    ⟨(39421201833/50000000000 : ℚ), (-105010371/2500000000 : ℚ), (1724779369/62500000000 : ℚ), 1⟩,
+    ⟨(158813064523/200000000000 : ℚ), (-46990107/1000000000 : ℚ), (31541497213/1000000000000 : ℚ), 1⟩,
+    ⟨(797856636383/1000000000000 : ℚ), (-251200957/5000000000 : ℚ), (8532103117/250000000000 : ℚ), 1⟩,
+    ⟨(799761465541/1000000000000 : ℚ), (-103686933/2000000000 : ℚ), (4426140009/125000000000 : ℚ), 1⟩,
+    ⟨(4/5 : ℚ), (-10408573/200000000 : ℚ), (35568615013/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (4/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (349999/1000000 : ℚ)
+  x := (151896403239/1000000000000 : ℚ)
+  μ := (4/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (4/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control52.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control52.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate52
+
+namespace DiagonalRamsey.JointInheritedCertificate57
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(1383798103/6250000000 : ℚ), (1416488468241/2000000000 : ℚ), (-157579972895457/1000000000000 : ℚ), 10⟩,
+    ⟨(222989004709/1000000000000 : ℚ), (190274550553/2500000000 : ℚ), (-17436790305949/1000000000000 : ℚ), 7⟩,
+    ⟨(14133524519/62500000000 : ℚ), (1042762187/40000000 : ℚ), (-97273499207/15625000000 : ℚ), 6⟩,
+    ⟨(115409774101/500000000000 : ℚ), (7824905851/625000000 : ℚ), (-784218407699/250000000000 : ℚ), 5⟩,
+    ⟨(59248342763/250000000000 : ℚ), (70745759197/10000000000 : ℚ), (-933009163561/500000000000 : ℚ), 4⟩,
+    ⟨(61149600891/250000000000 : ℚ), (21989643757/5000000000 : ℚ), (-38214773133/31250000000 : ℚ), 3⟩,
+    ⟨(126780702559/500000000000 : ℚ), (29102951013/10000000000 : ℚ), (-853090931027/1000000000000 : ℚ), 3⟩,
+    ⟨(263796057111/1000000000000 : ℚ), (20119876649/10000000000 : ℚ), (-621167848589/1000000000000 : ℚ), 3⟩,
+    ⟨(275203794247/1000000000000 : ℚ), (14359602819/10000000000 : ℚ), (-116552647197/250000000000 : ℚ), 3⟩,
+    ⟨(143837376891/500000000000 : ℚ), (2623151759/2500000000 : ℚ), (-89390519523/250000000000 : ℚ), 2⟩,
+    ⟨(7527220839/25000000000 : ℚ), (487509389/625000000 : ℚ), (-139212275373/500000000000 : ℚ), 2⟩,
+    ⟨(315316848657/1000000000000 : ℚ), (5868356593/10000000000 : ℚ), (-6842840291/31250000000 : ℚ), 2⟩,
+    ⟨(330221775513/1000000000000 : ℚ), (4446726539/10000000000 : ℚ), (-21643024651/125000000000 : ℚ), 2⟩,
+    ⟨(86415017883/250000000000 : ℚ), (3377418303/10000000000 : ℚ), (-34262428317/250000000000 : ℚ), 2⟩,
+    ⟨(72296611497/200000000000 : ℚ), (1278810109/5000000000 : ℚ), (-5404690829/50000000000 : ℚ), 2⟩,
+    ⟨(377538349367/1000000000000 : ℚ), (38369493/200000000 : ℚ), (-84498123067/1000000000000 : ℚ), 2⟩,
+    ⟨(393671325941/1000000000000 : ℚ), (70637833/500000000 : ℚ), (-65012830177/1000000000000 : ℚ), 2⟩,
+    ⟨(409726617823/1000000000000 : ℚ), (100740601/1000000000 : ℚ), (-48741076643/1000000000000 : ℚ), 2⟩,
+    ⟨(6649212559/15625000000 : ℚ), (678859359/10000000000 : ℚ), (-875693633/25000000000 : ℚ), 2⟩,
+    ⟨(88197579959/200000000000 : ℚ), (410054393/10000000000 : ℚ), (-23387029047/1000000000000 : ℚ), 2⟩,
+    ⟨(9117856533/20000000000 : ℚ), (47115573/2500000000 : ℚ), (-840878209/62500000000 : ℚ), 1⟩,
+    ⟨(117530210437/250000000000 : ℚ), (149041/312500000 : ℚ), (-990367053/200000000000 : ℚ), 1⟩,
+    ⟨(19341396861/40000000000 : ℚ), (-29604493/2000000000 : ℚ), (291461743/125000000000 : ℚ), 1⟩,
+    ⟨(496005881061/1000000000000 : ℚ), (-275218089/10000000000 : ℚ), (8559994273/1000000000000 : ℚ), 1⟩,
+    ⟨(507413618197/1000000000000 : ℚ), (-190433619/5000000000 : ℚ), (554384561/40000000000 : ℚ), 1⟩,
+    ⟨(517648270189/1000000000000 : ℚ), (-234037527/5000000000 : ℚ), (18328712369/1000000000000 : ℚ), 1⟩,
+    ⟨(8228301121/15625000000 : ℚ), (-53922509/1000000000 : ℚ), (5510830867/250000000000 : ℚ), 1⟩,
+    ⟨(4173564877/7812500000 : ℚ), (-298070131/5000000000 : ℚ), (12530995537/500000000000 : ℚ), 1⟩,
+    ⟨(270195063553/500000000000 : ℚ), (-16004983/250000000 : ℚ), (13714601659/500000000000 : ℚ), 1⟩,
+    ⟨(136268320751/250000000000 : ℚ), (-26896831/400000000 : ℚ), (29177924631/1000000000000 : ℚ), 1⟩,
+    ⟨(548220670599/1000000000000 : ℚ), (-346761203/5000000000 : ℚ), (30331427507/1000000000000 : ℚ), 1⟩,
+    ⟨(549801978827/1000000000000 : ℚ), (-175990461/2500000000 : ℚ), (15452281529/500000000000 : ℚ), 1⟩,
+    ⟨(11/20 : ℚ), (-705261611/10000000000 : ℚ), (30976037367/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (362499/1000000 : ℚ)
+  x := (254911234767/1000000000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control57.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control57.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate57
+
+namespace DiagonalRamsey.JointInheritedCertificate58
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(250617969321/1000000000000 : ℚ), (1885654100863/2500000000 : ℚ), (-94953978827941/500000000000 : ℚ), 10⟩,
+    ⟨(12319303/48828125 : ℚ), (81180572083/1000000000 : ℚ), (-21013684755883/1000000000000 : ℚ), 7⟩,
+    ⟨(255645845299/1000000000000 : ℚ), (13932355659/500000000 : ℚ), (-1500472927523/200000000000 : ℚ), 6⟩,
+    ⟨(260625300083/1000000000000 : ℚ), (67069833197/5000000000 : ℚ), (-945029507323/250000000000 : ℚ), 5⟩,
+    ⟨(267189734919/1000000000000 : ℚ), (75985250527/10000000000 : ℚ), (-2248587550679/1000000000000 : ℚ), 4⟩,
+    ⟨(275275930713/1000000000000 : ℚ), (47353339957/10000000000 : ℚ), (-1473562552001/1000000000000 : ℚ), 3⟩,
+    ⟨(142403006489/500000000000 : ℚ), (7853023377/2500000000 : ℚ), (-205600709619/200000000000 : ℚ), 3⟩,
+    ⟨(73922050453/250000000000 : ℚ), (21768312701/10000000000 : ℚ), (-374303810307/500000000000 : ℚ), 3⟩,
+    ⟨(76954423947/250000000000 : ℚ), (15573216091/10000000000 : ℚ), (-140497558187/250000000000 : ℚ), 3⟩,
+    ⟨(10033677539/31250000000 : ℚ), (2851832253/2500000000 : ℚ), (-431204846163/1000000000000 : ℚ), 2⟩,
+    ⟨(83835114321/250000000000 : ℚ), (850249377/1000000000 : ℚ), (-84001682763/250000000000 : ℚ), 2⟩,
+    ⟨(175234332783/500000000000 : ℚ), (1283166109/2000000000 : ℚ), (-52910236663/200000000000 : ℚ), 2⟩,
+    ⟨(366316613177/1000000000000 : ℚ), (243945083/500000000 : ℚ), (-209536654437/1000000000000 : ℚ), 2⟩,
+    ⟨(9568291893/25000000000 : ℚ), (3722292537/10000000000 : ℚ), (-83133447879/500000000000 : ℚ), 2⟩,
+    ⟨(3121529431/7812500000 : ℚ), (141773157/500000000 : ℚ), (-65806722377/500000000000 : ℚ), 2⟩,
+    ⟨(16665074493/40000000000 : ℚ), (2144245561/10000000000 : ℚ), (-51715065707/500000000000 : ℚ), 2⟩,
+    ⟨(43378055721/100000000000 : ℚ), (798839063/5000000000 : ℚ), (-80207685621/1000000000000 : ℚ), 2⟩,
+    ⟨(225425826183/500000000000 : ℚ), (1160017637/10000000000 : ℚ), (-7607764783/125000000000 : ℚ), 2⟩,
+    ⟨(233837871907/500000000000 : ℚ), (805740907/10000000000 : ℚ), (-22300375277/500000000000 : ℚ), 2⟩,
+    ⟨(484090806357/1000000000000 : ℚ), (103266503/2000000000 : ℚ), (-7708737997/250000000000 : ℚ), 2⟩,
+    ⟨(499938753969/1000000000000 : ℚ), (278172191/10000000000 : ℚ), (-9560931161/500000000000 : ℚ), 1⟩,
+    ⟨(515066962251/1000000000000 : ℚ), (10139637/1250000000 : ℚ), (-4562304759/500000000000 : ℚ), 1⟩,
+    ⟨(529329738287/1000000000000 : ℚ), (-82466607/10000000000 : ℚ), (-292310419/500000000000 : ℚ), 1⟩,
+    ⟨(542589723747/1000000000000 : ℚ), (-218375621/10000000000 : ℚ), (6697974689/1000000000000 : ℚ), 1⟩,
+    ⟨(554719217723/1000000000000 : ℚ), (-331042027/10000000000 : ℚ), (6439211973/500000000000 : ℚ), 1⟩,
+    ⟨(565601406557/1000000000000 : ℚ), (-105967357/2500000000 : ℚ), (4519395983/250000000000 : ℚ), 1⟩,
+    ⟨(287565744411/500000000000 : ℚ), (-499474329/10000000000 : ℚ), (1399339703/62500000000 : ℚ), 1⟩,
+    ⟨(116643536923/200000000000 : ℚ), (-559860563/10000000000 : ℚ), (202239301/7812500000 : ℚ), 1⟩,
+    ⟨(147445529863/250000000000 : ℚ), (-303272809/5000000000 : ℚ), (1789037397/62500000000 : ℚ), 1⟩,
+    ⟨(118952314847/200000000000 : ℚ), (-25626069/400000000 : ℚ), (3064456169/100000000000 : ℚ), 1⟩,
+    ⟨(299054047047/500000000000 : ℚ), (-165742617/2500000000 : ℚ), (31975716057/1000000000000 : ℚ), 1⟩,
+    ⟨(599789450213/1000000000000 : ℚ), (-1078411/16000000 : ℚ), (32636738621/1000000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-337690363/5000000000 : ℚ), (16359577631/500000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (362499/1000000 : ℚ)
+  x := (6003278241/25000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control58.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control58.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate58
+
+namespace DiagonalRamsey.JointInheritedCertificate59
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(318314885963/1000000000000 : ℚ), (3527142810481/1000000000 : ℚ), (-1124153340497223/1000000000000 : ℚ), 12⟩,
+    ⟨(318774573153/1000000000000 : ℚ), (3883900775839/10000000000 : ℚ), (-124776194159929/1000000000000 : ℚ), 9⟩,
+    ⟨(319692840107/1000000000000 : ℚ), (1378276922339/10000000000 : ℚ), (-44826118942409/1000000000000 : ℚ), 8⟩,
+    ⟨(321067474639/1000000000000 : ℚ), (34521264531/500000000 : ℚ), (-11399589362217/500000000000 : ℚ), 7⟩,
+    ⟨(161447582567/500000000000 : ℚ), (204385579729/5000000000 : ℚ), (-13734728367943/1000000000000 : ℚ), 6⟩,
+    ⟨(13006860341/40000000000 : ℚ), (33388251581/1250000000 : ℚ), (-4573229410389/500000000000 : ℚ), 5⟩,
+    ⟨(163945510451/500000000000 : ℚ), (37251126073/2000000000 : ℚ), (-650766726177/100000000000 : ℚ), 5⟩,
+    ⟨(165523575361/500000000000 : ℚ), (67993193493/5000000000 : ℚ), (-194088442549/40000000000 : ℚ), 5⟩,
+    ⟨(334632294591/1000000000000 : ℚ), (25683828337/2500000000 : ℚ), (-936495979693/250000000000 : ℚ), 4⟩,
+    ⟨(338637815583/1000000000000 : ℚ), (79687405777/10000000000 : ℚ), (-118818236197/40000000000 : ℚ), 4⟩,
+    ⟨(343054064049/1000000000000 : ℚ), (63116435209/10000000000 : ℚ), (-1202943986821/500000000000 : ℚ), 4⟩,
+    ⟨(347870400857/1000000000000 : ℚ), (50847067359/10000000000 : ℚ), (-991104608853/500000000000 : ℚ), 3⟩,
+    ⟨(44134402879/125000000000 : ℚ), (10385281049/2500000000 : ℚ), (-165619786141/100000000000 : ℚ), 3⟩,
+    ⟨(3586559917/10000000000 : ℚ), (34339420507/10000000000 : ℚ), (-1400018817059/1000000000000 : ℚ), 3⟩,
+    ⟨(364599262301/1000000000000 : ℚ), (28670296697/10000000000 : ℚ), (-597544665129/500000000000 : ℚ), 3⟩,
+    ⟨(23180669811/62500000000 : ℚ), (3017720503/1250000000 : ℚ), (-128577416779/125000000000 : ℚ), 3⟩,
+    ⟨(18875759953/50000000000 : ℚ), (10239005811/5000000000 : ℚ), (-445786091129/500000000000 : ℚ), 3⟩,
+    ⟨(384456749593/1000000000000 : ℚ), (17480594779/10000000000 : ℚ), (-777416386709/1000000000000 : ℚ), 3⟩,
+    ⟨(15667945831/40000000000 : ℚ), (150039253/100000000 : ℚ), (-85167024191/125000000000 : ℚ), 2⟩,
+    ⟨(399223441241/1000000000000 : ℚ), (12939347289/10000000000 : ℚ), (-299858945981/500000000000 : ℚ), 2⟩,
+    ⟨(407013008101/1000000000000 : ℚ), (11204528479/10000000000 : ℚ), (-529807036639/1000000000000 : ℚ), 2⟩,
+    ⟨(415048580607/1000000000000 : ℚ), (4868116887/5000000000 : ℚ), (-9389490961/20000000000 : ℚ), 2⟩,
+    ⟨(423310800359/1000000000000 : ℚ), (1697060769/2000000000 : ℚ), (-13032933957/31250000000 : ℚ), 2⟩,
+    ⟨(431779762947/1000000000000 : ℚ), (296524119/400000000 : ℚ), (-37122564289/100000000000 : ℚ), 2⟩,
+    ⟨(220217532949/500000000000 : ℚ), (6488965349/10000000000 : ℚ), (-330934394183/1000000000000 : ℚ), 2⟩,
+    ⟨(44925585783/100000000000 : ℚ), (711041501/1250000000 : ℚ), (-295327910601/1000000000000 : ℚ), 2⟩,
+    ⟨(229110444341/500000000000 : ℚ), (4991373401/10000000000 : ℚ), (-65928024391/250000000000 : ℚ), 2⟩,
+    ⟨(467308560909/1000000000000 : ℚ), (4381958449/10000000000 : ℚ), (-117758592179/500000000000 : ℚ), 2⟩,
+    ⟨(476496981513/1000000000000 : ℚ), (961718561/2500000000 : ℚ), (-210272058121/1000000000000 : ℚ), 2⟩,
+    ⟨(485764014783/1000000000000 : ℚ), (3375229351/10000000000 : ℚ), (-187584576049/1000000000000 : ℚ), 2⟩,
+    ⟨(495087335627/1000000000000 : ℚ), (2957993149/10000000000 : ℚ), (-83563156953/500000000000 : ℚ), 2⟩,
+    ⟨(100888896669/200000000000 : ℚ), (40431829/156250000 : ℚ), (-148620642587/1000000000000 : ℚ), 2⟩,
+    ⟨(513812915751/1000000000000 : ℚ), (1128926419/5000000000 : ℚ), (-131833328949/1000000000000 : ℚ), 2⟩,
+    ⟨(523170063469/1000000000000 : ℚ), (490832439/2500000000 : ℚ), (-116565066343/1000000000000 : ℚ), 2⟩,
+    ⟨(66561673039/125000000000 : ℚ), (424894257/2500000000 : ℚ), (-51322747751/500000000000 : ℚ), 2⟩,
+    ⟨(541760417583/1000000000000 : ℚ), (1462781461/10000000000 : ℚ), (-89928384511/1000000000000 : ℚ), 2⟩,
+    ⟨(550948838187/1000000000000 : ℚ), (312423151/2500000000 : ℚ), (-78287719727/1000000000000 : ℚ), 2⟩,
+    ⟨(280018255207/500000000000 : ℚ), (1057529553/10000000000 : ℚ), (-67614513493/1000000000000 : ℚ), 2⟩,
+    ⟨(284500770633/500000000000 : ℚ), (441952473/5000000000 : ℚ), (-11562837017/200000000000 : ℚ), 2⟩,
+    ⟨(288911166599/500000000000 : ℚ), (181690663/2500000000 : ℚ), (-48804398343/1000000000000 : ℚ), 1⟩,
+    ⟨(586477636149/1000000000000 : ℚ), (116865293/2000000000 : ℚ), (-2025663473/50000000000 : ℚ), 1⟩,
+    ⟨(594946598737/1000000000000 : ℚ), (227528829/5000000000 : ℚ), (-32877872363/1000000000000 : ℚ), 1⟩,
+    ⟨(603208818489/1000000000000 : ℚ), (337619739/10000000000 : ℚ), (-12921494393/500000000000 : ℚ), 1⟩,
+    ⟨(122248878199/200000000000 : ℚ), (230849071/10000000000 : ℚ), (-19360058117/1000000000000 : ℚ), 1⟩,
+    ⟨(123806791571/200000000000 : ℚ), (66865143/5000000000 : ℚ), (-2677258159/200000000000 : ℚ), 1⟩,
+    ⟨(626558753321/1000000000000 : ℚ), (45375657/10000000000 : ℚ), (-7883919021/1000000000000 : ℚ), 1⟩,
+    ⟨(633800649503/1000000000000 : ℚ), (-34992269/10000000000 : ℚ), (-2819560559/1000000000000 : ℚ), 1⟩,
+    ⟨(160185550009/250000000000 : ℚ), (-108055337/10000000000 : ℚ), (73452941/40000000000 : ℚ), 1⟩,
+    ⟨(16184167053/25000000000 : ℚ), (-174412191/10000000000 : ℚ), (3054945499/500000000000 : ℚ), 1⟩,
+    ⟨(326829068397/500000000000 : ℚ), (-29323599/1250000000 : ℚ), (10024313073/1000000000000 : ℚ), 1⟩,
+    ⟨(164900351849/250000000000 : ℚ), (-72261841/2500000000 : ℚ), (2720022731/200000000000 : ℚ), 1⟩,
+    ⟨(10393471501/15625000000 : ℚ), (-338193999/10000000000 : ℚ), (8427729693/500000000000 : ℚ), 1⟩,
+    ⟨(670386998239/1000000000000 : ℚ), (-382385129/10000000000 : ℚ), (1237900491/62500000000 : ℚ), 1⟩,
+    ⟨(675203335047/1000000000000 : ℚ), (-210966527/5000000000 : ℚ), (22467122529/1000000000000 : ℚ), 1⟩,
+    ⟨(679619583513/1000000000000 : ℚ), (-457110633/10000000000 : ℚ), (24850054689/1000000000000 : ℚ), 1⟩,
+    ⟨(136725020901/200000000000 : ℚ), (-97631057/2000000000 : ℚ), (26966100667/1000000000000 : ℚ), 1⟩,
+    ⟨(343605124187/500000000000 : ℚ), (-8051131/156250000 : ℚ), (28824736043/1000000000000 : ℚ), 1⟩,
+    ⟨(345183189097/500000000000 : ℚ), (-538638117/10000000000 : ℚ), (118883313/3906250000 : ℚ), 1⟩,
+    ⟨(693085890571/1000000000000 : ℚ), (-558401899/10000000000 : ℚ), (3975154117/125000000000 : ℚ), 1⟩,
+    ⟨(347681116981/500000000000 : ℚ), (-574688371/10000000000 : ℚ), (8232968669/250000000000 : ℚ), 1⟩,
+    ⟨(697189924457/1000000000000 : ℚ), (-587599041/10000000000 : ℚ), (8457702877/250000000000 : ℚ), 1⟩,
+    ⟨(698564558989/1000000000000 : ℚ), (-298606803/5000000000 : ℚ), (8625447293/250000000000 : ℚ), 1⟩,
+    ⟨(699482825943/1000000000000 : ℚ), (-603590971/10000000000 : ℚ), (34947581799/1000000000000 : ℚ), 1⟩,
+    ⟨(699942513133/1000000000000 : ℚ), (-606769999/10000000000 : ℚ), (1373829/39062500 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-303583463/5000000000 : ℚ), (549965721/15625000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (362499/1000000 : ℚ)
+  x := (5134987213/25000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control59.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control59.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate59
+
+namespace DiagonalRamsey.JointInheritedCertificate60
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(40593036339/100000000000 : ℚ), (43578968473921/10000000000 : ℚ), (-442707555219441/250000000000 : ℚ), 12⟩,
+    ⟨(203202483017/500000000000 : ℚ), (150168757193/312500000 : ℚ), (-196554806349767/1000000000000 : ℚ), 9⟩,
+    ⟨(407353027961/1000000000000 : ℚ), (341779486207/2000000000 : ℚ), (-35306468040619/500000000000 : ℚ), 8⟩,
+    ⟨(51096533151/125000000000 : ℚ), (858258067341/10000000000 : ℚ), (-8978717522119/250000000000 : ℚ), 7⟩,
+    ⟨(410659258707/1000000000000 : ℚ), (50961918889/1000000000 : ℚ), (-2163605819517/100000000000 : ℚ), 6⟩,
+    ⟨(413009462527/1000000000000 : ℚ), (334052934541/10000000000 : ℚ), (-14408387567951/1000000000000 : ℚ), 5⟩,
+    ⟨(415817214821/1000000000000 : ℚ), (233711068799/10000000000 : ℚ), (-5125827211603/500000000000 : ℚ), 5⟩,
+    ⟨(209537875733/500000000000 : ℚ), (273951181/16000000 : ℚ), (-3821968904609/500000000000 : ℚ), 5⟩,
+    ⟨(105694305591/250000000000 : ℚ), (25961365599/2000000000 : ℚ), (-590141056799/100000000000 : ℚ), 4⟩,
+    ⟨(213456355173/500000000000 : ℚ), (101042929371/10000000000 : ℚ), (-4679833698097/1000000000000 : ℚ), 4⟩,
+    ⟨(431472252659/1000000000000 : ℚ), (80316528039/10000000000 : ℚ), (-1895294573477/500000000000 : ℚ), 4⟩,
+    ⟨(436444864967/1000000000000 : ℚ), (16233581729/2500000000 : ℚ), (-3123298849989/1000000000000 : ℚ), 4⟩,
+    ⟨(110454641953/250000000000 : ℚ), (53238611407/10000000000 : ℚ), (-521975778443/200000000000 : ℚ), 3⟩,
+    ⟨(27973775967/62500000000 : ℚ), (2208218611/500000000 : ℚ), (-2206483175347/1000000000000 : ℚ), 3⟩,
+    ⟨(453716527151/1000000000000 : ℚ), (9250625653/2500000000 : ℚ), (-1883840205453/1000000000000 : ℚ), 3⟩,
+    ⟨(23010606021/50000000000 : ℚ), (7816593979/2500000000 : ℚ), (-405450809761/250000000000 : ℚ), 3⟩,
+    ⟨(18682061873/40000000000 : ℚ), (33266603/12500000 : ℚ), (-175767237469/125000000000 : ℚ), 3⟩,
+    ⟨(118554582397/250000000000 : ℚ), (4559278673/2000000000 : ℚ), (-306638959557/250000000000 : ℚ), 3⟩,
+    ⟨(481695203303/1000000000000 : ℚ), (1227151149/625000000 : ℚ), (-107547118661/100000000000 : ℚ), 2⟩,
+    ⟨(244732077763/500000000000 : ℚ), (2123985709/1250000000 : ℚ), (-947191368877/1000000000000 : ℚ), 2⟩,
+    ⟨(497506470169/1000000000000 : ℚ), (3691500261/2500000000 : ℚ), (-418688574533/500000000000 : ℚ), 2⟩,
+    ⟨(252901386297/500000000000 : ℚ), (1287769361/1000000000 : ℚ), (-742674194173/1000000000000 : ℚ), 2⟩,
+    ⟨(514333076281/1000000000000 : ℚ), (2253078327/2000000000 : ℚ), (-330228299127/500000000000 : ℚ), 2⟩,
+    ⟨(26153841549/50000000000 : ℚ), (1976123587/2000000000 : ℚ), (-588645101721/1000000000000 : ℚ), 2⟩,
+    ⟨(266006486111/500000000000 : ℚ), (1736964403/2000000000 : ℚ), (-3284850863/6250000000 : ℚ), 2⟩,
+    ⟨(270559986029/500000000000 : ℚ), (1911766979/2500000000 : ℚ), (-93981217529/200000000000 : ℚ), 2⟩,
+    ⟨(550375890929/1000000000000 : ℚ), (6742323831/10000000000 : ℚ), (-420540320151/1000000000000 : ℚ), 2⟩,
+    ⟨(139939607629/250000000000 : ℚ), (5950181213/10000000000 : ℚ), (-94144987243/250000000000 : ℚ), 2⟩,
+    ⟨(569244987459/1000000000000 : ℚ), (5253884659/10000000000 : ℚ), (-337281419337/1000000000000 : ℚ), 2⟩,
+    ⟨(57881270781/100000000000 : ℚ), (4639589473/10000000000 : ℚ), (-302025509011/1000000000000 : ℚ), 2⟩,
+    ⟨(117687708419/200000000000 : ℚ), (819157601/2000000000 : ℚ), (-270293316867/1000000000000 : ℚ), 2⟩,
+    ⟨(299049650417/500000000000 : ℚ), (3612862433/10000000000 : ℚ), (-241647492701/1000000000000 : ℚ), 2⟩,
+    ⟨(121554342083/200000000000 : ℚ), (1591366621/5000000000 : ℚ), (-43143488121/200000000000 : ℚ), 2⟩,
+    ⟨(308716234577/500000000000 : ℚ), (2798580801/10000000000 : ℚ), (-24023445277/125000000000 : ℚ), 2⟩,
+    ⟨(627058303439/1000000000000 : ℚ), (153413953/625000000 : ℚ), (-85393922113/500000000000 : ℚ), 2⟩,
+    ⟨(636626023791/1000000000000 : ℚ), (1072969069/5000000000 : ℚ), (-151286273469/1000000000000 : ℚ), 2⟩,
+    ⟨(646112580733/1000000000000 : ℚ), (1868318317/10000000000 : ℚ), (-66741340733/500000000000 : ℚ), 2⟩,
+    ⟨(2048422251/3125000000 : ℚ), (1618154803/10000000000 : ℚ), (-58601861/500000000 : ℚ), 2⟩,
+    ⟨(664751039191/1000000000000 : ℚ), (1392341077/10000000000 : ℚ), (-51149373359/500000000000 : ℚ), 1⟩,
+    ⟨(168464509757/250000000000 : ℚ), (297048623/2500000000 : ℚ), (-88636402663/1000000000000 : ℚ), 1⟩,
+    ⟨(682794180269/1000000000000 : ℚ), (1003391423/10000000000 : ℚ), (-15220361957/200000000000 : ℚ), 1⟩,
+    ⟨(86442241871/125000000000 : ℚ), (835913519/10000000000 : ℚ), (-64594208611/1000000000000 : ℚ), 1⟩,
+    ⟨(140013647731/200000000000 : ℚ), (85500373/1250000000 : ℚ), (-13506248203/250000000000 : ℚ), 1⟩,
+    ⟨(17709113527/25000000000 : ℚ), (273062609/5000000000 : ℚ), (-22158027811/500000000000 : ℚ), 1⟩,
+    ⟨(179101713931/250000000000 : ℚ), (420937503/10000000000 : ℚ), (-35398395911/1000000000000 : ℚ), 1⟩,
+    ⟨(362087903973/500000000000 : ℚ), (38407833/1250000000 : ℚ), (-5442187639/200000000000 : ℚ), 1⟩,
+    ⟨(731652681661/1000000000000 : ℚ), (102033433/5000000000 : ℚ), (-19699533333/1000000000000 : ℚ), 1⟩,
+    ⟨(29552778577/40000000000 : ℚ), (110440829/10000000000 : ℚ), (-100125837/7812500000 : ℚ), 1⟩,
+    ⟨(745658890829/1000000000000 : ℚ), (5116783/2000000000 : ℚ), (-3258967999/500000000000 : ℚ), 1⟩,
+    ⟨(376077242049/500000000000 : ℚ), (-5120939/1000000000 : ℚ), (-3068111/4000000000 : ℚ), 1⟩,
+    ⟨(758290595777/1000000000000 : ℚ), (-120560957/10000000000 : ℚ), (4470405077/1000000000000 : ℚ), 1⟩,
+    ⟨(764052443437/1000000000000 : ℚ), (-36603761/2000000000 : ℚ), (9224398211/1000000000000 : ℚ), 1⟩,
+    ⟨(384713073141/500000000000 : ℚ), (-239065419/10000000000 : ℚ), (1352161951/100000000000 : ℚ), 1⟩,
+    ⟨(77439875859/100000000000 : ℚ), (-18070303/625000000 : ℚ), (17385698989/1000000000000 : ℚ), 1⟩,
+    ⟨(97369787613/125000000000 : ℚ), (-83392183/2500000000 : ℚ), (10418754107/500000000000 : ℚ), 1⟩,
+    ⟨(156618757777/200000000000 : ℚ), (-372721423/10000000000 : ℚ), (23895398167/1000000000000 : ℚ), 1⟩,
+    ⟨(786795259783/1000000000000 : ℚ), (-406864319/10000000000 : ℚ), (830481259/31250000000 : ℚ), 1⟩,
+    ⟨(197513449107/250000000000 : ℚ), (-218119759/5000000000 : ℚ), (14445697967/500000000000 : ℚ), 1⟩,
+    ⟨(396430774361/500000000000 : ℚ), (-461052873/10000000000 : ℚ), (30855257311/1000000000000 : ℚ), 1⟩,
+    ⟨(397605876271/500000000000 : ℚ), (-19259061/400000000 : ℚ), (1623848203/50000000000 : ℚ), 1⟩,
+    ⟨(797098746041/1000000000000 : ℚ), (-124412743/2500000000 : ℚ), (33764698051/1000000000000 : ℚ), 1⟩,
+    ⟨(99814747911/125000000000 : ℚ), (-20387469/400000000 : ℚ), (34724919153/1000000000000 : ℚ), 1⟩,
+    ⟨(159893209043/200000000000 : ℚ), (-129416397/2500000000 : ℚ), (35362423571/1000000000000 : ℚ), 1⟩,
+    ⟨(799940647859/1000000000000 : ℚ), (-130410397/2500000000 : ℚ), (35680385589/1000000000000 : ℚ), 1⟩,
+    ⟨(4/5 : ℚ), (-522137959/10000000000 : ℚ), (35720093729/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (4/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (362499/1000000 : ℚ)
+  x := (32029627473/200000000000 : ℚ)
+  μ := (4/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (4/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control60.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control60.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate60
+
+namespace DiagonalRamsey.JointInheritedCertificate64
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(206411428921/1000000000000 : ℚ), (6782025660853/10000000000 : ℚ), (-8793134626421/62500000000 : ℚ), 10⟩,
+    ⟨(41584106723/200000000000 : ℚ), (364199372249/5000000000 : ℚ), (-15568442135001/1000000000000 : ℚ), 7⟩,
+    ⟨(105462104751/500000000000 : ℚ), (124650474281/5000000000 : ℚ), (-5558824715619/1000000000000 : ℚ), 6⟩,
+    ⟨(215393529539/1000000000000 : ℚ), (11962903313/1000000000 : ℚ), (-1400603641053/500000000000 : ℚ), 5⟩,
+    ⟨(55321362933/250000000000 : ℚ), (33770614311/5000000000 : ℚ), (-416627251953/250000000000 : ℚ), 4⟩,
+    ⟨(228543233649/1000000000000 : ℚ), (20975871461/5000000000 : ℚ), (-136528096539/125000000000 : ℚ), 3⟩,
+    ⟨(118548489441/500000000000 : ℚ), (13868981377/5000000000 : ℚ), (-190497749819/250000000000 : ℚ), 3⟩,
+    ⟨(24686431019/100000000000 : ℚ), (19159875417/10000000000 : ℚ), (-138707076499/250000000000 : ℚ), 3⟩,
+    ⟨(16109447677/62500000000 : ℚ), (13662090911/10000000000 : ℚ), (-416372107661/1000000000000 : ℚ), 3⟩,
+    ⟨(269652690467/1000000000000 : ℚ), (2493203847/2500000000 : ℚ), (-159626398919/500000000000 : ℚ), 2⟩,
+    ⟨(70613568719/250000000000 : ℚ), (3702403999/5000000000 : ℚ), (-248474526021/1000000000000 : ℚ), 2⟩,
+    ⟨(74008157451/250000000000 : ℚ), (1112505201/2000000000 : ℚ), (-97632440361/500000000000 : ℚ), 2⟩,
+    ⟨(31025698827/100000000000 : ℚ), (4206698191/10000000000 : ℚ), (-38554372449/250000000000 : ℚ), 2⟩,
+    ⟨(324990361927/1000000000000 : ℚ), (3186647623/10000000000 : ℚ), (-30464074443/250000000000 : ℚ), 2⟩,
+    ⟨(85022715083/250000000000 : ℚ), (601072603/2500000000 : ℚ), (-1917337277/20000000000 : ℚ), 2⟩,
+    ⟨(355413057431/1000000000000 : ℚ), (448494179/2500000000 : ℚ), (-74662552453/1000000000000 : ℚ), 2⟩,
+    ⟨(370809392089/1000000000000 : ℚ), (1310709817/10000000000 : ℚ), (-5712861633/100000000000 : ℚ), 2⟩,
+    ⟨(96532897297/250000000000 : ℚ), (461504353/5000000000 : ℚ), (-42465394827/1000000000000 : ℚ), 2⟩,
+    ⟨(401232087593/1000000000000 : ℚ), (152112253/2500000000 : ℚ), (-30089045039/1000000000000 : ℚ), 2⟩,
+    ⟨(415965461249/1000000000000 : ℚ), (21925159/625000000 : ℚ), (-9783438591/500000000000 : ℚ), 2⟩,
+    ⟨(107547454929/250000000000 : ℚ), (34539921/2500000000 : ℚ), (-10574163873/1000000000000 : ℚ), 2⟩,
+    ⟨(110942043661/250000000000 : ℚ), (-38328137/10000000000 : ℚ), (-716161593/250000000000 : ℚ), 1⟩,
+    ⟨(456569759053/1000000000000 : ℚ), (-46326427/2500000000 : ℚ), (117187583/31250000000 : ℚ), 1⟩,
+    ⟨(468471286687/1000000000000 : ℚ), (-6156153/200000000 : ℚ), (9414728699/1000000000000 : ℚ), 1⟩,
+    ⟨(47935813933/100000000000 : ℚ), (-409675123/10000000000 : ℚ), (7120779647/500000000000 : ℚ), 1⟩,
+    ⟨(244562735319/500000000000 : ℚ), (-493851793/10000000000 : ℚ), (18317225639/1000000000000 : ℚ), 1⟩,
+    ⟨(497679215871/1000000000000 : ℚ), (-112519211/2000000000 : ℚ), (4341754183/200000000000 : ℚ), 1⟩,
+    ⟨(126234249447/250000000000 : ℚ), (-61763421/1000000000 : ℚ), (6116926013/250000000000 : ℚ), 1⟩,
+    ⟨(510828919981/1000000000000 : ℚ), (-82533913/1250000000 : ℚ), (2663308293/100000000000 : ℚ), 1⟩,
+    ⟨(257649120009/500000000000 : ℚ), (-34573549/500000000 : ℚ), (14116894513/500000000000 : ℚ), 1⟩,
+    ⟨(103660383181/200000000000 : ℚ), (-711912103/10000000000 : ℚ), (7322544021/250000000000 : ℚ), 1⟩,
+    ⟨(519811020599/1000000000000 : ℚ), (-180506843/2500000000 : ℚ), (7453803589/250000000000 : ℚ), 1⟩,
+    ⟨(13/25 : ℚ), (-7232869/100000000 : ℚ), (7470174471/250000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (374999/1000000 : ℚ)
+  x := (68487472787/250000000000 : ℚ)
+  μ := (13/25 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control64.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control64.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate64
+
+namespace DiagonalRamsey.JointInheritedCertificate65
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(222830483171/1000000000000 : ℚ), (7019066223687/10000000000 : ℚ), (-157166117057833/1000000000000 : ℚ), 10⟩,
+    ⟨(112202472211/500000000000 : ℚ), (754512435669/10000000000 : ℚ), (-8695720074147/500000000000 : ℚ), 7⟩,
+    ⟨(227538704001/1000000000000 : ℚ), (258544026117/10000000000 : ℚ), (-97025164359/15625000000 : ℚ), 6⟩,
+    ⟨(23220158209/100000000000 : ℚ), (124228417399/10000000000 : ℚ), (-782266882237/250000000000 : ℚ), 5⟩,
+    ⟨(1906789381/8000000000 : ℚ), (3511712019/500000000 : ℚ), (-1861511396997/1000000000000 : ℚ), 4⟩,
+    ⟨(122960387881/500000000000 : ℚ), (2730271357/625000000 : ℚ), (-305002127557/250000000000 : ℚ), 4⟩,
+    ⟨(254844968011/1000000000000 : ℚ), (5784511883/2000000000 : ℚ), (-425573528679/500000000000 : ℚ), 3⟩,
+    ⟨(6625882613/25000000000 : ℚ), (20004699931/10000000000 : ℚ), (-619780493891/1000000000000 : ℚ), 3⟩,
+    ⟨(138196823389/500000000000 : ℚ), (14283496543/10000000000 : ℚ), (-232588961353/500000000000 : ℚ), 3⟩,
+    ⟨(144405303871/500000000000 : ℚ), (5220401839/5000000000 : ℚ), (-178382197901/500000000000 : ℚ), 2⟩,
+    ⟨(37770825661/125000000000 : ℚ), (7763913183/10000000000 : ℚ), (-277787436297/1000000000000 : ℚ), 2⟩,
+    ⟨(316333013859/1000000000000 : ℚ), (2921167569/5000000000 : ℚ), (-109223258033/500000000000 : ℚ), 2⟩,
+    ⟨(331173403197/1000000000000 : ℚ), (4427554779/10000000000 : ℚ), (-17270109201/100000000000 : ℚ), 2⟩,
+    ⟨(346544852239/1000000000000 : ℚ), (3362932977/10000000000 : ℚ), (-34166701933/250000000000 : ℚ), 2⟩,
+    ⟨(45287415691/125000000000 : ℚ), (1273202851/5000000000 : ℚ), (-21551364549/200000000000 : ℚ), 2⟩,
+    ⟨(3026280791/8000000000 : ℚ), (190958963/1000000000 : ℚ), (-84197241263/1000000000000 : ℚ), 2⟩,
+    ⟨(3080845473/7812500000 : ℚ), (14055657/100000000 : ℚ), (-404632863/6250000000 : ℚ), 2⟩,
+    ⟨(410333993891/1000000000000 : ℚ), (250368403/2500000000 : ℚ), (-48494018169/1000000000000 : ℚ), 2⟩,
+    ⟨(426088467181/1000000000000 : ℚ), (67388221/1000000000 : ℚ), (-543777207/15625000000 : ℚ), 2⟩,
+    ⟨(441459916223/1000000000000 : ℚ), (202908723/5000000000 : ℚ), (-11589750609/500000000000 : ℚ), 2⟩,
+    ⟨(11407507639/25000000000 : ℚ), (46202491/2500000000 : ℚ), (-13262990241/1000000000000 : ℚ), 2⟩,
+    ⟨(117616678533/250000000000 : ℚ), (396603/2500000000 : ℚ), (-2387793011/500000000000 : ℚ), 1⟩,
+    ⟨(241911355839/500000000000 : ℚ), (-18852933/1250000000 : ℚ), (2494576349/1000000000000 : ℚ), 1⟩,
+    ⟨(496239672641/1000000000000 : ℚ), (-17356601/625000000 : ℚ), (4355421159/500000000000 : ℚ), 1⟩,
+    ⟨(5075980149/10000000000 : ℚ), (-15323857/400000000 : ℚ), (6999855401/500000000000 : ℚ), 1⟩,
+    ⟨(517788351409/1000000000000 : ℚ), (-94018339/2000000000 : ℚ), (9229665407/500000000000 : ℚ), 1⟩,
+    ⟨(526712543657/1000000000000 : ℚ), (-541068369/10000000000 : ℚ), (22165748993/1000000000000 : ℚ), 1⟩,
+    ⟨(106856929359/200000000000 : ℚ), (-597844657/10000000000 : ℚ), (12588766371/500000000000 : ℚ), 1⟩,
+    ⟨(540431737329/1000000000000 : ℚ), (-320897979/5000000000 : ℚ), (13769598707/500000000000 : ℚ), 1⟩,
+    ⟨(545094615419/1000000000000 : ℚ), (-336969211/5000000000 : ℚ), (2928373309/100000000000 : ℚ), 1⟩,
+    ⟨(548228374997/1000000000000 : ℚ), (-694988219/10000000000 : ℚ), (30434433093/1000000000000 : ℚ), 1⟩,
+    ⟨(68725354531/125000000000 : ℚ), (-705401981/10000000000 : ℚ), (6201232699/200000000000 : ℚ), 1⟩,
+    ⟨(11/20 : ℚ), (-14133971/200000000 : ℚ), (31077462027/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (374999/1000000 : ℚ)
+  x := (66392642863/250000000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control65.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control65.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate65
+
+namespace DiagonalRamsey.JointInheritedCertificate66
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(252024517089/1000000000000 : ℚ), (30023848755987/10000000000 : ℚ), (-757757970182279/1000000000000 : ℚ), 12⟩,
+    ⟨(63110901417/250000000000 : ℚ), (660502941907/2000000000 : ℚ), (-8410883887329/100000000000 : ℚ), 9⟩,
+    ⟨(63320193301/250000000000 : ℚ), (36564915911/312500000 : ℚ), (-30216959416687/1000000000000 : ℚ), 8⟩,
+    ⟨(254534002889/1000000000000 : ℚ), (116997872807/2000000000 : ℚ), (-15369260348561/1000000000000 : ℚ), 7⟩,
+    ⟨(256200275581/1000000000000 : ℚ), (345592117971/10000000000 : ℚ), (-2314791428543/250000000000 : ℚ), 6⟩,
+    ⟨(64568894271/250000000000 : ℚ), (225294250241/10000000000 : ℚ), (-6166317577053/1000000000000 : ℚ), 5⟩,
+    ⟨(52150981563/200000000000 : ℚ), (156715469921/10000000000 : ℚ), (-4387543608391/1000000000000 : ℚ), 5⟩,
+    ⟨(263632294849/1000000000000 : ℚ), (22291228/1953125 : ℚ), (-408949581939/125000000000 : ℚ), 5⟩,
+    ⟨(66725201577/250000000000 : ℚ), (86003712147/10000000000 : ℚ), (-2525858733913/1000000000000 : ℚ), 4⟩,
+    ⟨(270552568063/1000000000000 : ℚ), (66537823343/10000000000 : ℚ), (-1001512612459/500000000000 : ℚ), 4⟩,
+    ⟨(137289391349/500000000000 : ℚ), (52565690077/10000000000 : ℚ), (-1622383405079/1000000000000 : ℚ), 4⟩,
+    ⟨(34871218839/125000000000 : ℚ), (21119376311/5000000000 : ℚ), (-1336700350271/1000000000000 : ℚ), 3⟩,
+    ⟨(70928723469/250000000000 : ℚ), (688407379/200000000 : ℚ), (-279210341201/250000000000 : ℚ), 3⟩,
+    ⟨(11552111229/40000000000 : ℚ), (3547641611/1250000000 : ℚ), (-94404351223/100000000000 : ℚ), 3⟩,
+    ⟨(58844230819/200000000000 : ℚ), (23636023873/10000000000 : ℚ), (-5036129033/6250000000 : ℚ), 3⟩,
+    ⟨(299956960649/1000000000000 : ℚ), (19852688417/10000000000 : ℚ), (-86678921177/125000000000 : ℚ), 3⟩,
+    ⟨(305996382327/1000000000000 : ℚ), (3359491297/2000000000 : ℚ), (-600904436663/1000000000000 : ℚ), 3⟩,
+    ⟨(312324869633/1000000000000 : ℚ), (7151174597/5000000000 : ℚ), (-261898665089/500000000000 : ℚ), 3⟩,
+    ⟨(19932948543/62500000000 : ℚ), (12244248569/10000000000 : ℚ), (-229432066709/500000000000 : ℚ), 2⟩,
+    ⟨(162893698977/500000000000 : ℚ), (10531366953/10000000000 : ℚ), (-403669262839/1000000000000 : ℚ), 2⟩,
+    ⟨(166444503279/500000000000 : ℚ), (2273558793/2500000000 : ℚ), (-356356404687/1000000000000 : ℚ), 2⟩,
+    ⟨(170107447051/500000000000 : ℚ), (1575913099/2000000000 : ℚ), (-78872711257/250000000000 : ℚ), 2⟩,
+    ⟨(347747411883/1000000000000 : ℚ), (6845988489/10000000000 : ℚ), (-139974852977/500000000000 : ℚ), 2⟩,
+    ⟨(71093682681/200000000000 : ℚ), (5961038291/10000000000 : ℚ), (-62211036169/250000000000 : ℚ), 2⟩,
+    ⟨(363359298099/1000000000000 : ℚ), (5198986093/10000000000 : ℚ), (-1771706419/8000000000 : ℚ), 2⟩,
+    ⟨(371401056133/1000000000000 : ℚ), (4539260271/10000000000 : ℚ), (-98616659323/500000000000 : ℚ), 2⟩,
+    ⟨(189787157103/500000000000 : ℚ), (3965278891/10000000000 : ℚ), (-8784347699/50000000000 : ℚ), 2⟩,
+    ⟨(193929691113/500000000000 : ℚ), (3463576411/10000000000 : ℚ), (-7822039659/50000000000 : ℚ), 2⟩,
+    ⟨(6191192199/15625000000 : ℚ), (755785783/2500000000 : ℚ), (-139177940499/1000000000000 : ℚ), 2⟩,
+    ⟨(404684889007/1000000000000 : ℚ), (1317460221/5000000000 : ℚ), (-7727171539/62500000000 : ℚ), 2⟩,
+    ⟨(413184793649/1000000000000 : ℚ), (2291411463/10000000000 : ℚ), (-109590514999/1000000000000 : ℚ), 2⟩,
+    ⟨(26357221103/62500000000 : ℚ), (1986378087/10000000000 : ℚ), (-1937189637/20000000000 : ℚ), 2⟩,
+    ⟨(215128284847/500000000000 : ℚ), (107162709/625000000 : ℚ), (-21321114563/250000000000 : ℚ), 2⟩,
+    ⟨(438787313693/1000000000000 : ℚ), (1471703611/10000000000 : ℚ), (-14946360697/200000000000 : ℚ), 2⟩,
+    ⟨(89457443667/200000000000 : ℚ), (1253979177/10000000000 : ℚ), (-16271847691/250000000000 : ℚ), 2⟩,
+    ⟨(227867903303/500000000000 : ℚ), (1058294569/10000000000 : ℚ), (-28126678761/500000000000 : ℚ), 2⟩,
+    ⟨(116028181279/250000000000 : ℚ), (55123883/625000000 : ℚ), (-3009091793/62500000000 : ℚ), 2⟩,
+    ⟨(94479558627/200000000000 : ℚ), (722763883/10000000000 : ℚ), (-813819291/20000000000 : ℚ), 2⟩,
+    ⟨(480571051209/1000000000000 : ℚ), (7233599/125000000 : ℚ), (-54122871/1600000000 : ℚ), 2⟩,
+    ⟨(488612809243/1000000000000 : ℚ), (448076291/10000000000 : ℚ), (-2749815777/100000000000 : ℚ), 2⟩,
+    ⟨(31031480871/62500000000 : ℚ), (32948219/1000000000 : ℚ), (-21657295939/1000000000000 : ℚ), 2⟩,
+    ⟨(252112347729/500000000000 : ℚ), (8866183/400000000 : ℚ), (-16262483161/1000000000000 : ℚ), 2⟩,
+    ⟨(511757213239/1000000000000 : ℚ), (61754421/5000000000 : ℚ), (-5638591863/500000000000 : ℚ), 1⟩,
+    ⟨(32442693799/62500000000 : ℚ), (34102407/10000000000 : ℚ), (-1667335631/250000000000 : ℚ), 1⟩,
+    ⟨(131546177347/250000000000 : ℚ), (-47385693/10000000000 : ℚ), (-1205393171/500000000000 : ℚ), 1⟩,
+    ⟨(266522465327/500000000000 : ℚ), (-121671891/10000000000 : ℚ), (1523282413/1000000000000 : ℚ), 1⟩,
+    ⟨(134911809427/250000000000 : ℚ), (-189382467/10000000000 : ℚ), (5154716731/1000000000000 : ℚ), 1⟩,
+    ⟨(109195145003/200000000000 : ℚ), (-251065663/10000000000 : ℚ), (1700558309/200000000000 : ℚ), 1⟩,
+    ⟨(552015146693/1000000000000 : ℚ), (-307201929/10000000000 : ℚ), (5792258761/500000000000 : ℚ), 1⟩,
+    ⟨(557750953247/1000000000000 : ℚ), (-179106301/5000000000 : ℚ), (14414909599/1000000000000 : ℚ), 1⟩,
+    ⟨(563169326617/1000000000000 : ℚ), (-404467273/10000000000 : ℚ), (17007217383/1000000000000 : ℚ), 1⟩,
+    ⟨(284128606733/500000000000 : ℚ), (-446290051/10000000000 : ℚ), (2421640399/125000000000 : ℚ), 1⟩,
+    ⟨(57300235663/100000000000 : ℚ), (-15123903/312500000 : ℚ), (21522912587/1000000000000 : ℚ), 1⟩,
+    ⟨(577393324643/1000000000000 : ℚ), (-258870081/5000000000 : ℚ), (5866405319/250000000000 : ℚ), 1⟩,
+    ⟨(581419539279/1000000000000 : ℚ), (-27391623/500000000 : ℚ), (1575572553/62500000000 : ℚ), 1⟩,
+    ⟨(585071301033/1000000000000 : ℚ), (-11488599/200000000 : ℚ), (2676042753/100000000000 : ℚ), 1⟩,
+    ⟨(588339812493/1000000000000 : ℚ), (-149423783/2500000000 : ℚ), (2812539503/100000000000 : ℚ), 1⟩,
+    ⟨(591217199527/1000000000000 : ℚ), (-123553441/2000000000 : ℚ), (1831824607/62500000000 : ℚ), 1⟩,
+    ⟨(593696530257/1000000000000 : ℚ), (-12695281/200000000 : ℚ), (6063235561/200000000000 : ℚ), 1⟩,
+    ⟨(595771831761/1000000000000 : ℚ), (-648783881/10000000000 : ℚ), (15574990929/500000000000 : ℚ), 1⟩,
+    ⟨(597438104453/1000000000000 : ℚ), (-164976649/2500000000 : ℚ), (31813566941/1000000000000 : ℚ), 1⟩,
+    ⟨(598691334137/1000000000000 : ℚ), (-133638973/2000000000 : ℚ), (32309258343/1000000000000 : ℚ), 1⟩,
+    ⟨(299764250837/500000000000 : ℚ), (-673694977/10000000000 : ℚ), (8159693827/250000000000 : ℚ), 1⟩,
+    ⟨(599947590253/1000000000000 : ℚ), (-676437453/10000000000 : ℚ), (1640162601/50000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-169194977/2500000000 : ℚ), (2051487401/62500000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (374999/1000000 : ℚ)
+  x := (62620042539/250000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control66.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control66.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate66
+
+namespace DiagonalRamsey.JointInheritedCertificate67
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(160079067563/500000000000 : ℚ), (17474718318663/5000000000 : ℚ), (-35010235023363/31250000000 : ℚ), 12⟩,
+    ⟨(40076950297/125000000000 : ℚ), (3848762441377/10000000000 : ℚ), (-62176201181847/500000000000 : ℚ), 9⟩,
+    ⟨(160764717399/500000000000 : ℚ), (682990650871/5000000000 : ℚ), (-4467447964723/100000000000 : ℚ), 8⟩,
+    ⟨(322897430889/1000000000000 : ℚ), (136874900187/2000000000 : ℚ), (-2840313593301/125000000000 : ℚ), 7⟩,
+    ⟨(324716295027/1000000000000 : ℚ), (405262487697/10000000000 : ℚ), (-547555891393/40000000000 : ℚ), 6⟩,
+    ⟨(326981645409/1000000000000 : ℚ), (264866282391/10000000000 : ℚ), (-9116225074123/1000000000000 : ℚ), 5⟩,
+    ⟨(329688024607/1000000000000 : ℚ), (184733343751/10000000000 : ℚ), (-3243195420209/500000000000 : ℚ), 5⟩,
+    ⟨(166414456359/500000000000 : ℚ), (134905207971/10000000000 : ℚ), (-302283823001/62500000000 : ℚ), 5⟩,
+    ⟨(67279348613/200000000000 : ℚ), (101942122681/10000000000 : ℚ), (-1867023932623/500000000000 : ℚ), 4⟩,
+    ⟨(170191460217/500000000000 : ℚ), (19772717041/2500000000 : ℚ), (-1480562647101/500000000000 : ℚ), 4⟩,
+    ⟨(172388920887/500000000000 : ℚ), (62658916813/10000000000 : ℚ), (-1199221203603/500000000000 : ℚ), 4⟩,
+    ⟨(174785459667/500000000000 : ℚ), (50490556271/10000000000 : ℚ), (-98808361229/50000000000 : ℚ), 4⟩,
+    ⟨(354750606171/1000000000000 : ℚ), (4125964289/1000000000 : ℚ), (-1651225498573/1000000000000 : ℚ), 3⟩,
+    ⟨(180152211983/500000000000 : ℚ), (17057346073/5000000000 : ℚ), (-697938640411/500000000000 : ℚ), 3⟩,
+    ⟨(73243798617/200000000000 : ℚ), (28489148673/10000000000 : ℚ), (-1191603444999/1000000000000 : ℚ), 3⟩,
+    ⟨(372480064813/1000000000000 : ℚ), (11997254357/5000000000 : ℚ), (-1025657812791/1000000000000 : ℚ), 3⟩,
+    ⟨(2369203473/6250000000 : ℚ), (20357401583/10000000000 : ℚ), (-111129353063/125000000000 : ℚ), 3⟩,
+    ⟨(192990291899/500000000000 : ℚ), (17381128541/10000000000 : ℚ), (-155045104801/200000000000 : ℚ), 3⟩,
+    ⟨(196593753561/500000000000 : ℚ), (14921374227/10000000000 : ℚ), (-42464426197/62500000000 : ℚ), 2⟩,
+    ⟨(200337981771/500000000000 : ℚ), (160880323/125000000 : ℚ), (-299024769713/500000000000 : ℚ), 2⟩,
+    ⟨(408427912711/1000000000000 : ℚ), (5573329923/5000000000 : ℚ), (-264168411727/500000000000 : ℚ), 2⟩,
+    ⟨(208212339753/500000000000 : ℚ), (9687380409/10000000000 : ℚ), (-234085508831/500000000000 : ℚ), 2⟩,
+    ⟨(424646999013/1000000000000 : ℚ), (8443842989/10000000000 : ℚ), (-415891404343/1000000000000 : ℚ), 2⟩,
+    ⟨(86615012589/200000000000 : ℚ), (922216749/1250000000 : ℚ), (-370183187201/1000000000000 : ℚ), 2⟩,
+    ⟨(220844283679/500000000000 : ℚ), (1614659969/2500000000 : ℚ), (-6599892639/20000000000 : ℚ), 2⟩,
+    ⟨(90093352313/200000000000 : ℚ), (5662200733/10000000000 : ℚ), (-147238240767/500000000000 : ℚ), 2⟩,
+    ⟨(459388498127/1000000000000 : ℚ), (1242186279/2500000000 : ℚ), (-262937054773/1000000000000 : ℚ), 2⟩,
+    ⟨(468432283801/1000000000000 : ℚ), (136320883/312500000 : ℚ), (-11740427539/50000000000 : ℚ), 2⟩,
+    ⟨(477576331313/1000000000000 : ℚ), (382965869/1000000000 : ℚ), (-209621473433/1000000000000 : ℚ), 2⟩,
+    ⟨(486798611853/1000000000000 : ℚ), (3360106841/10000000000 : ℚ), (-186985012869/1000000000000 : ℚ), 2⟩,
+    ⟨(248038454069/500000000000 : ℚ), (2944648409/10000000000 : ℚ), (-166571846709/1000000000000 : ℚ), 2⟩,
+    ⟨(505388867941/1000000000000 : ℚ), (515161751/2000000000 : ℚ), (-74053130181/500000000000 : ℚ), 2⟩,
+    ⟨(102942411587/200000000000 : ℚ), (449464733/2000000000 : ℚ), (-65677390477/500000000000 : ℚ), 2⟩,
+    ⟨(262012008869/500000000000 : ℚ), (1953918429/10000000000 : ℚ), (-116118734607/1000000000000 : ℚ), 2⟩,
+    ⟨(66662789253/125000000000 : ℚ), (845565919/5000000000 : ℚ), (-51114144823/500000000000 : ℚ), 2⟩,
+    ⟨(542524594563/1000000000000 : ℚ), (727587517/5000000000 : ℚ), (-44768827171/500000000000 : ℚ), 2⟩,
+    ⟨(137917160519/250000000000 : ℚ), (1242817633/10000000000 : ℚ), (-77921181909/1000000000000 : ℚ), 2⟩,
+    ⟨(560712427749/1000000000000 : ℚ), (65705957/625000000 : ℚ), (-67270190133/1000000000000 : ℚ), 2⟩,
+    ⟨(71204270539/125000000000 : ℚ), (439117219/5000000000 : ℚ), (-7186294079/125000000000 : ℚ), 2⟩,
+    ⟨(578412358519/1000000000000 : ℚ), (144318053/2000000000 : ℚ), (-2424977219/50000000000 : ℚ), 2⟩,
+    ⟨(146756465733/250000000000 : ℚ), (289798021/5000000000 : ℚ), (-40226056259/1000000000000 : ℚ), 2⟩,
+    ⟨(37215870429/62500000000 : ℚ), (225360453/5000000000 : ℚ), (-16303553159/500000000000 : ℚ), 1⟩,
+    ⟨(603676246371/1000000000000 : ℚ), (166817457/5000000000 : ℚ), (-799612333/31250000000 : ℚ), 1⟩,
+    ⟨(122334602633/200000000000 : ℚ), (227179889/10000000000 : ℚ), (-597470541/31250000000 : ℚ), 1⟩,
+    ⟨(309712481167/500000000000 : ℚ), (6517251/500000000 : ℚ), (-6579391561/500000000000 : ℚ), 1⟩,
+    ⟨(125382683751/200000000000 : ℚ), (42246389/10000000000 : ℚ), (-958633453/125000000000 : ℚ), 1⟩,
+    ⟨(634120342079/1000000000000 : ℚ), (-1515611/400000000 : ℚ), (-2616578653/1000000000000 : ℚ), 1⟩,
+    ⟨(160257092549/250000000000 : ℚ), (-13843019/1250000000 : ℚ), (1014091519/500000000000 : ℚ), 1⟩,
+    ⟨(647620861063/1000000000000 : ℚ), (-176911651/10000000000 : ℚ), (6291344011/1000000000000 : ℚ), 1⟩,
+    ⟨(653881932791/1000000000000 : ℚ), (-1850913/78125000 : ℚ), (2039210441/200000000000 : ℚ), 1⟩,
+    ⟨(65979650191/100000000000 : ℚ), (-145610223/5000000000 : ℚ), (688140699/50000000000 : ℚ), 1⟩,
+    ⟨(133070063941/200000000000 : ℚ), (-10632099/312500000 : ℚ), (1700978263/100000000000 : ℚ), 1⟩,
+    ⟨(335265003271/500000000000 : ℚ), (-9607309/250000000 : ℚ), (19953007251/1000000000000 : ℚ), 1⟩,
+    ⟨(675323084103/1000000000000 : ℚ), (-423727391/10000000000 : ℚ), (4521328981/200000000000 : ℚ), 1⟩,
+    ⟨(679718005443/1000000000000 : ℚ), (-458804343/10000000000 : ℚ), (12491571691/500000000000 : ℚ), 1⟩,
+    ⟨(683704182811/1000000000000 : ℚ), (-30609999/625000000 : ℚ), (27093397177/1000000000000 : ℚ), 1⟩,
+    ⟨(687272013159/1000000000000 : ℚ), (-516799141/10000000000 : ℚ), (14473440393/500000000000 : ℚ), 1⟩,
+    ⟨(690412901269/1000000000000 : ℚ), (-540097551/10000000000 : ℚ), (15275880987/500000000000 : ℚ), 1⟩,
+    ⟨(693119280467/1000000000000 : ℚ), (-17493883/312500000 : ℚ), (31914997399/1000000000000 : ℚ), 1⟩,
+    ⟨(695384630849/1000000000000 : ℚ), (-288021797/5000000000 : ℚ), (16521206143/500000000000 : ℚ), 1⟩,
+    ⟨(697203494987/1000000000000 : ℚ), (-18403651/312500000 : ℚ), (1060586437/31250000000 : ℚ), 1⟩,
+    ⟨(698571491079/1000000000000 : ℚ), (-14962587/250000000 : ℚ), (17303902599/500000000000 : ℚ), 1⟩,
+    ⟨(1398970647/2000000000 : ℚ), (-151215577/2500000000 : ℚ), (35052305067/1000000000000 : ℚ), 1⟩,
+    ⟨(699942790751/1000000000000 : ℚ), (-608032089/10000000000 : ℚ), (7054819813/200000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-304213931/5000000000 : ℚ), (2206362631/62500000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (374999/1000000 : ℚ)
+  x := (107474974673/500000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control67.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control67.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate67
+
+namespace DiagonalRamsey.JointInheritedCertificate74
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(2597914201/12500000000 : ℚ), (3361570985763/5000000000 : ℚ), (-70211074746853/500000000000 : ℚ), 10⟩,
+    ⟨(13083462437/62500000000 : ℚ), (180576051621/2500000000 : ℚ), (-15539138385661/1000000000000 : ℚ), 7⟩,
+    ⟨(212325457203/1000000000000 : ℚ), (24732577177/1000000000 : ℚ), (-138714928509/25000000000 : ℚ), 6⟩,
+    ⟨(216774514817/1000000000000 : ℚ), (118742419473/10000000000 : ℚ), (-1398105827751/500000000000 : ℚ), 5⟩,
+    ⟨(111319862489/500000000000 : ℚ), (16769316543/2500000000 : ℚ), (-1663642279403/1000000000000 : ℚ), 4⟩,
+    ⟨(45972920501/200000000000 : ℚ), (8337285237/2000000000 : ℚ), (-545206501887/500000000000 : ℚ), 4⟩,
+    ⟨(238379567879/1000000000000 : ℚ), (27577115877/10000000000 : ℚ), (-760765865007/1000000000000 : ℚ), 3⟩,
+    ⟨(15506413583/62500000000 : ℚ), (19058115271/10000000000 : ℚ), (-553954175407/1000000000000 : ℚ), 3⟩,
+    ⟨(258940112571/1000000000000 : ℚ), (1699434369/1250000000 : ℚ), (-12991208723/31250000000 : ℚ), 3⟩,
+    ⟨(67696920651/250000000000 : ℚ), (992788983/1000000000 : ℚ), (-318743259597/1000000000000 : ℚ), 2⟩,
+    ⟨(283531228851/1000000000000 : ℚ), (7373660621/10000000000 : ℚ), (-124030800051/500000000000 : ℚ), 2⟩,
+    ⟨(74262005999/250000000000 : ℚ), (221613723/400000000 : ℚ), (-48729656167/250000000000 : ℚ), 2⟩,
+    ⟨(38900986739/125000000000 : ℚ), (4190473641/10000000000 : ℚ), (-7695929751/50000000000 : ℚ), 2⟩,
+    ⟨(20367154457/62500000000 : ℚ), (793616161/2500000000 : ℚ), (-60796089999/500000000000 : ℚ), 2⟩,
+    ⟨(170453254519/500000000000 : ℚ), (2394905177/10000000000 : ℚ), (-23907318653/250000000000 : ℚ), 2⟩,
+    ⟨(89039810087/250000000000 : ℚ), (446642359/2500000000 : ℚ), (-37223033117/500000000000 : ℚ), 2⟩,
+    ⟨(185742886551/500000000000 : ℚ), (1304732119/10000000000 : ℚ), (-11385929393/200000000000 : ℚ), 2⟩,
+    ⟨(96684626103/250000000000 : ℚ), (183617639/2000000000 : ℚ), (-21140772219/500000000000 : ℚ), 2⟩,
+    ⟨(200885271069/500000000000 : ℚ), (302164313/5000000000 : ℚ), (-29918667703/1000000000000 : ℚ), 2⟩,
+    ⟨(208218559769/500000000000 : ℚ), (347301517/10000000000 : ℚ), (-9704392733/500000000000 : ℚ), 2⟩,
+    ⟨(215298494727/500000000000 : ℚ), (135148139/10000000000 : ℚ), (-10427431147/1000000000000 : ℚ), 2⟩,
+    ⟨(444113784599/1000000000000 : ℚ), (-5118233/1250000000 : ℚ), (-2728475817/1000000000000 : ℚ), 2⟩,
+    ⟨(228428665423/500000000000 : ℚ), (-37520421/2000000000 : ℚ), (155054551/40000000000 : ℚ), 2⟩,
+    ⟨(468704900879/1000000000000 : ℚ), (-309839371/10000000000 : ℚ), (4766020949/500000000000 : ℚ), 1⟩,
+    ⟨(239771198061/500000000000 : ℚ), (-411487919/10000000000 : ℚ), (14350626661/1000000000000 : ℚ), 1⟩,
+    ⟨(489265445571/1000000000000 : ℚ), (-49548383/1000000000 : ℚ), (9209452527/500000000000 : ℚ), 1⟩,
+    ⟨(99556082189/200000000000 : ℚ), (-282040089/5000000000 : ℚ), (5450995353/250000000000 : ℚ), 1⟩,
+    ⟨(63125661059/125000000000 : ℚ), (-618999503/10000000000 : ℚ), (12278712017/500000000000 : ℚ), 1⟩,
+    ⟨(510870498633/1000000000000 : ℚ), (-132308837/2000000000 : ℚ), (1669896483/62500000000 : ℚ), 1⟩,
+    ⟨(515319556247/1000000000000 : ℚ), (-692675997/10000000000 : ℚ), (28315666153/1000000000000 : ℚ), 1⟩,
+    ⟨(259154807229/500000000000 : ℚ), (-71307253/1000000000 : ℚ), (29369778423/1000000000000 : ℚ), 1⟩,
+    ⟨(51981187737/100000000000 : ℚ), (-144633139/2000000000 : ℚ), (29893673737/1000000000000 : ℚ), 1⟩,
+    ⟨(13/25 : ℚ), (-724422469/10000000000 : ℚ), (7489753539/250000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (387499/1000000 : ℚ)
+  x := (284819456047/1000000000000 : ℚ)
+  μ := (13/25 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control74.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control74.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate74
+
+namespace DiagonalRamsey.JointInheritedCertificate75
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(224380643701/1000000000000 : ℚ), (6960027245843/10000000000 : ℚ), (-78460216586511/500000000000 : ℚ), 10⟩,
+    ⟨(225947645003/1000000000000 : ℚ), (46775220901/625000000 : ℚ), (-17364678598549/1000000000000 : ℚ), 7⟩,
+    ⟨(229066556529/1000000000000 : ℚ), (256565681941/10000000000 : ℚ), (-6200341132773/1000000000000 : ℚ), 6⟩,
+    ⟨(116853670727/500000000000 : ℚ), (61670815353/5000000000 : ℚ), (-3124591688489/1000000000000 : ℚ), 5⟩,
+    ⟨(47965061297/200000000000 : ℚ), (34885620709/5000000000 : ℚ), (-58093185871/31250000000 : ℚ), 4⟩,
+    ⟨(15460095767/62500000000 : ℚ), (43420469549/10000000000 : ℚ), (-9747516741/8000000000 : ℚ), 4⟩,
+    ⟨(128121720421/500000000000 : ℚ), (5752669151/2000000000 : ℚ), (-850108567277/1000000000000 : ℚ), 3⟩,
+    ⟨(1664909341/6250000000 : ℚ), (19904612511/10000000000 : ℚ), (-77382006709/125000000000 : ℚ), 3⟩,
+    ⟨(55538003981/200000000000 : ℚ), (14218511741/10000000000 : ℚ), (-46464803751/100000000000 : ℚ), 3⟩,
+    ⟨(290048148117/1000000000000 : ℚ), (1299677941/1250000000 : ℚ), (-356358866001/1000000000000 : ℚ), 2⟩,
+    ⟨(151670431833/500000000000 : ℚ), (1546840627/2000000000 : ℚ), (-138731667619/500000000000 : ℚ), 2⟩,
+    ⟨(79360037609/250000000000 : ℚ), (2910736359/5000000000 : ℚ), (-109088475757/500000000000 : ℚ), 2⟩,
+    ⟨(166105112293/500000000000 : ℚ), (551566717/1250000000 : ℚ), (-1077931321/6250000000 : ℚ), 2⟩,
+    ⟨(34750884223/100000000000 : ℚ), (3351841609/10000000000 : ℚ), (-68230685593/500000000000 : ℚ), 2⟩,
+    ⟨(72637733863/200000000000 : ℚ), (1269004183/5000000000 : ℚ), (-107571177467/1000000000000 : ℚ), 2⟩,
+    ⟨(47387337567/125000000000 : ℚ), (118942269/625000000 : ℚ), (-3361084291/40000000000 : ℚ), 2⟩,
+    ⟨(197542856797/500000000000 : ℚ), (28007967/200000000 : ℚ), (-32292002849/500000000000 : ℚ), 2⟩,
+    ⟨(82199148963/200000000000 : ℚ), (498645047/5000000000 : ℚ), (-48348056697/1000000000000 : ℚ), 2⟩,
+    ⟨(4266755719/10000000000 : ℚ), (41902201/625000000 : ℚ), (-17333054927/500000000000 : ℚ), 2⟩,
+    ⟨(441974189543/1000000000000 : ℚ), (201467611/5000000000 : ℚ), (-1440849621/62500000000 : ℚ), 2⟩,
+    ⟨(228372131847/500000000000 : ℚ), (36474159/2000000000 : ℚ), (-6573186753/500000000000 : ℚ), 2⟩,
+    ⟨(470843550463/1000000000000 : ℚ), (-249047/5000000000 : ℚ), (-2333939303/500000000000 : ℚ), 2⟩,
+    ⟨(484136266013/1000000000000 : ℚ), (-1192339/78125000 : ℚ), (2593779327/1000000000000 : ℚ), 2⟩,
+    ⟨(19859775769/40000000000 : ℚ), (-69816009/2500000000 : ℚ), (8802014217/1000000000000 : ℚ), 1⟩,
+    ⟨(507798919569/1000000000000 : ℚ), (-192229123/5000000000 : ℚ), (7041708691/500000000000 : ℚ), 1⟩,
+    ⟨(517940973287/1000000000000 : ℚ), (-471290903/10000000000 : ℚ), (18536238929/1000000000000 : ℚ), 1⟩,
+    ⟨(526822881857/1000000000000 : ℚ), (-542134199/10000000000 : ℚ), (22236625109/1000000000000 : ℚ), 1⟩,
+    ⟨(106871821529/200000000000 : ℚ), (-299401531/5000000000 : ℚ), (6310808701/250000000000 : ℚ), 1⟩,
+    ⟨(21619082907/40000000000 : ℚ), (-642670619/10000000000 : ℚ), (3450082849/125000000000 : ℚ), 1⟩,
+    ⟨(545117857601/1000000000000 : ℚ), (-134950291/2000000000 : ℚ), (1173678549/40000000000 : ℚ), 1⟩,
+    ⟨(548236769127/1000000000000 : ℚ), (-347880349/5000000000 : ℚ), (7622620033/250000000000 : ℚ), 1⟩,
+    ⟨(549803770429/1000000000000 : ℚ), (-141230867/2000000000 : ℚ), (31061110453/1000000000000 : ℚ), 1⟩,
+    ⟨(11/20 : ℚ), (-176862099/2500000000 : ℚ), (31132271157/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (387499/1000000 : ℚ)
+  x := (276259438549/1000000000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control75.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control75.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate75
+
+namespace DiagonalRamsey.JointInheritedCertificate76
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(253871249353/1000000000000 : ℚ), (741089411213/1000000000 : ℚ), (-37799277007287/200000000000 : ℚ), 10⟩,
+    ⟨(6388423737/25000000000 : ℚ), (798093804169/10000000000 : ℚ), (-20913879049883/1000000000000 : ℚ), 7⟩,
+    ⟨(258852308131/1000000000000 : ℚ), (274167843419/10000000000 : ℚ), (-1866862133937/250000000000 : ℚ), 6⟩,
+    ⟨(263785396589/1000000000000 : ℚ), (66055291397/5000000000 : ℚ), (-235188608601/62500000000 : ℚ), 5⟩,
+    ⟨(270288706517/1000000000000 : ℚ), (74913019097/10000000000 : ℚ), (-1119377615529/500000000000 : ℚ), 4⟩,
+    ⟨(69574901871/250000000000 : ℚ), (11683514951/2500000000 : ℚ), (-733674415049/500000000000 : ℚ), 4⟩,
+    ⟨(57548190027/200000000000 : ℚ), (31033010973/10000000000 : ℚ), (-1023816651259/1000000000000 : ℚ), 3⟩,
+    ⟨(14926090459/50000000000 : ℚ), (21526335407/10000000000 : ℚ), (-372822718659/500000000000 : ℚ), 3⟩,
+    ⟨(77634589763/250000000000 : ℚ), (15413587167/10000000000 : ℚ), (-111961506301/200000000000 : ℚ), 3⟩,
+    ⟨(161837436903/500000000000 : ℚ), (11299035221/10000000000 : ℚ), (-429537374063/1000000000000 : ℚ), 2⟩,
+    ⟨(2702438733/8000000000 : ℚ), (2106783383/2500000000 : ℚ), (-8367252897/25000000000 : ℚ), 2⟩,
+    ⟨(70558436639/200000000000 : ℚ), (3181050203/5000000000 : ℚ), (-131739883449/500000000000 : ℚ), 2⟩,
+    ⟨(368492562223/1000000000000 : ℚ), (37809933/78125000 : ℚ), (-26080118877/125000000000 : ℚ), 2⟩,
+    ⟨(96188693869/250000000000 : ℚ), (3692968863/10000000000 : ℚ), (-165500479289/1000000000000 : ℚ), 2⟩,
+    ⟨(401422208951/1000000000000 : ℚ), (1406517571/5000000000 : ℚ), (-130944946171/1000000000000 : ℚ), 2⟩,
+    ⟨(418334346153/1000000000000 : ℚ), (1063354827/5000000000 : ℚ), (-102838165177/1000000000000 : ℚ), 2⟩,
+    ⟨(217664156977/500000000000 : ℚ), (197960293/1250000000 : ℚ), (-79677540187/1000000000000 : ℚ), 2⟩,
+    ⟨(90448090231/200000000000 : ℚ), (229727411/2000000000 : ℚ), (-60383546861/1000000000000 : ℚ), 2⟩,
+    ⟨(468907884631/1000000000000 : ℚ), (796333481/10000000000 : ℚ), (-44166475587/1000000000000 : ℚ), 2⟩,
+    ⟨(121292524471/250000000000 : ℚ), (25422263/500000000 : ℚ), (-30439640247/1000000000000 : ℚ), 2⟩,
+    ⟨(31304404807/62500000000 : ℚ), (271479453/10000000000 : ℚ), (-3752284291/200000000000 : ℚ), 2⟩,
+    ⟨(515857818481/1000000000000 : ℚ), (37689777/5000000000 : ℚ), (-549731533/62500000000 : ℚ), 2⟩,
+    ⟨(5299877863/10000000000 : ℚ), (-87429367/10000000000 : ℚ), (-284345949/1000000000000 : ℚ), 1⟩,
+    ⟨(108624860211/200000000000 : ℚ), (-44540717/2000000000 : ℚ), (697231637/100000000000 : ℚ), 1⟩,
+    ⟨(555140850927/1000000000000 : ℚ), (-334847257/10000000000 : ℚ), (13129461951/1000000000000 : ℚ), 1⟩,
+    ⟨(565921709971/1000000000000 : ℚ), (-21362229/500000000 : ℚ), (18307967499/1000000000000 : ℚ), 1⟩,
+    ⟨(287681526311/500000000000 : ℚ), (-50249849/1000000000 : ℚ), (11300940717/500000000000 : ℚ), 1⟩,
+    ⟨(58337395359/100000000000 : ℚ), (-562603287/10000000000 : ℚ), (5216789023/200000000000 : ℚ), 1⟩,
+    ⟨(589877263517/1000000000000 : ℚ), (-304534881/5000000000 : ℚ), (14404839409/500000000000 : ℚ), 1⟩,
+    ⟨(74351293997/125000000000 : ℚ), (-643015487/10000000000 : ℚ), (30820388073/1000000000000 : ℚ), 1⟩,
+    ⟨(299062855313/500000000000 : ℚ), (-665228909/10000000000 : ℚ), (401816683/12500000000 : ℚ), 1⟩,
+    ⟨(599791410753/1000000000000 : ℚ), (-676213119/10000000000 : ℚ), (6560648333/200000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-338790233/5000000000 : ℚ), (3288526823/100000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (387499/1000000 : ℚ)
+  x := (65217691819/250000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control76.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control76.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate76
+
+namespace DiagonalRamsey.JointInheritedCertificate77
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(161040338091/500000000000 : ℚ), (6926400999889/2000000000 : ℚ), (-558402214677347/500000000000 : ℚ), 12⟩,
+    ⟨(322535827997/1000000000000 : ℚ), (381412762647/1000000000 : ℚ), (-123962109495247/1000000000000 : ℚ), 9⟩,
+    ⟨(80861258781/250000000000 : ℚ), (270772955971/2000000000 : ℚ), (-22267401795137/500000000000 : ℚ), 8⟩,
+    ⟨(162403053603/500000000000 : ℚ), (135682691847/2000000000 : ℚ), (-22651869652033/1000000000000 : ℚ), 7⟩,
+    ⟨(3266157653/10000000000 : ℚ), (401806828901/10000000000 : ℚ), (-170583210979/12500000000 : ℚ), 6⟩,
+    ⟨(328869649781/1000000000000 : ℚ), (131330502911/5000000000 : ℚ), (-4544173955933/500000000000 : ℚ), 5⟩,
+    ⟨(66312466169/200000000000 : ℚ), (45808718119/2500000000 : ℚ), (-1616690592577/250000000000 : ℚ), 5⟩,
+    ⟨(167343660793/500000000000 : ℚ), (66920602583/5000000000 : ℚ), (-4822075774143/1000000000000 : ℚ), 5⟩,
+    ⟨(84559273407/250000000000 : ℚ), (101161705389/10000000000 : ℚ), (-3723021080207/1000000000000 : ℚ), 4⟩,
+    ⟨(342203095259/1000000000000 : ℚ), (78504049379/10000000000 : ℚ), (-1476249020123/500000000000 : ℚ), 4⟩,
+    ⟨(69315154407/200000000000 : ℚ), (31104461903/5000000000 : ℚ), (-2391551321323/1000000000000 : ℚ), 4⟩,
+    ⟨(175672294897/500000000000 : ℚ), (25069976343/5000000000 : ℚ), (-1970568965613/1000000000000 : ℚ), 4⟩,
+    ⟨(71299612007/200000000000 : ℚ), (10245712547/2500000000 : ℚ), (-329322515847/200000000000 : ℚ), 3⟩,
+    ⟨(362023767599/1000000000000 : ℚ), (33893718431/10000000000 : ℚ), (-1392029825171/1000000000000 : ℚ), 3⟩,
+    ⟨(36790840057/100000000000 : ℚ), (7077757467/2500000000 : ℚ), (-1188360170403/1000000000000 : ℚ), 3⟩,
+    ⟨(187068891177/500000000000 : ℚ), (23849712927/10000000000 : ℚ), (-102289785251/100000000000 : ℚ), 3⟩,
+    ⟨(11896778307/31250000000 : ℚ), (10119399821/5000000000 : ℚ), (-177333187777/200000000000 : ℚ), 3⟩,
+    ⟨(387569969477/1000000000000 : ℚ), (1728331007/1000000000 : ℚ), (-386588111231/500000000000 : ℚ), 3⟩,
+    ⟨(789480831/2000000000 : ℚ), (14840181577/10000000000 : ℚ), (-42352809683/62500000000 : ℚ), 3⟩,
+    ⟨(20109548483/50000000000 : ℚ), (6401314663/5000000000 : ℚ), (-596482513077/1000000000000 : ℚ), 2⟩,
+    ⟨(204951841461/500000000000 : ℚ), (11089726979/10000000000 : ℚ), (-131738215367/250000000000 : ℚ), 2⟩,
+    ⟨(208929987341/500000000000 : ℚ), (2409827261/2500000000 : ℚ), (-233470592137/500000000000 : ℚ), 2⟩,
+    ⟨(13313771173/31250000000 : ℚ), (262594963/312500000 : ℚ), (-414792124851/1000000000000 : ℚ), 2⟩,
+    ⟨(3393953777/7812500000 : ℚ), (7342919341/10000000000 : ℚ), (-46149391737/125000000000 : ℚ), 2⟩,
+    ⟨(13843624727/31250000000 : ℚ), (3214392503/5000000000 : ℚ), (-329101873089/1000000000000 : ℚ), 2⟩,
+    ⟨(4517297553/10000000000 : ℚ), (5636471483/10000000000 : ℚ), (-73416455499/250000000000 : ℚ), 2⟩,
+    ⟨(115151583791/250000000000 : ℚ), (4946462637/10000000000 : ℚ), (-131098760103/500000000000 : ℚ), 2⟩,
+    ⟨(117401086599/250000000000 : ℚ), (4342877759/10000000000 : ℚ), (-234130979243/1000000000000 : ℚ), 2⟩,
+    ⟨(478702111999/1000000000000 : ℚ), (3812705011/10000000000 : ℚ), (-2612477381/12500000000 : ℚ), 2⟩,
+    ⟨(243938857329/500000000000 : ℚ), (1672607593/5000000000 : ℚ), (-186409568991/1000000000000 : ℚ), 2⟩,
+    ⟨(62138631193/125000000000 : ℚ), (1465754549/5000000000 : ℚ), (-83019402621/500000000000 : ℚ), 2⟩,
+    ⟨(506373877563/1000000000000 : ℚ), (2564165059/10000000000 : ℚ), (-147611024159/1000000000000 : ℚ), 2⟩,
+    ⟨(515649878931/1000000000000 : ℚ), (1118481031/5000000000 : ℚ), (-130893450297/1000000000000 : ℚ), 2⟩,
+    ⟨(524914706949/1000000000000 : ℚ), (972330381/5000000000 : ℚ), (-115687990137/1000000000000 : ℚ), 2⟩,
+    ⟨(106829208367/200000000000 : ℚ), (1682828973/10000000000 : ℚ), (-101825294919/1000000000000 : ℚ), 2⟩,
+    ⟨(108664328899/200000000000 : ℚ), (1447701719/10000000000 : ℚ), (-11144996917/125000000000 : ℚ), 2⟩,
+    ⟨(276209705049/500000000000 : ℚ), (247213661/2000000000 : ℚ), (-7756671889/100000000000 : ℚ), 2⟩,
+    ⟨(56141742133/100000000000 : ℚ), (261295171/2500000000 : ℚ), (-33468561029/500000000000 : ℚ), 2⟩,
+    ⟨(570294001193/1000000000000 : ℚ), (872678693/10000000000 : ℚ), (-57177089143/1000000000000 : ℚ), 2⟩,
+    ⟨(57902776523/100000000000 : ℚ), (716528761/10000000000 : ℚ), (-48204686633/1000000000000 : ℚ), 2⟩,
+    ⟨(587597673037/1000000000000 : ℚ), (287486707/5000000000 : ℚ), (-39948362789/1000000000000 : ℚ), 2⟩,
+    ⟨(595983078957/1000000000000 : ℚ), (111622377/2500000000 : ℚ), (-6469093059/200000000000 : ℚ), 2⟩,
+    ⟨(151040945453/250000000000 : ℚ), (32975353/1000000000 : ℚ), (-25341000343/1000000000000 : ℚ), 2⟩,
+    ⟨(153030018393/250000000000 : ℚ), (223612659/10000000000 : ℚ), (-30218543/1600000000 : ℚ), 1⟩,
+    ⟨(619832786833/1000000000000 : ℚ), (63530281/5000000000 : ℚ), (-6469795457/500000000000 : ℚ), 1⟩,
+    ⟨(313641670497/500000000000 : ℚ), (39217059/10000000000 : ℚ), (-3731177793/500000000000 : ℚ), 1⟩,
+    ⟨(634453787017/1000000000000 : ℚ), (-8137799/2000000000 : ℚ), (-242159457/100000000000 : ℚ), 1⟩,
+    ⟨(641326850669/1000000000000 : ℚ), (-56667079/5000000000 : ℚ), (2212157059/1000000000000 : ℚ), 1⟩,
+    ⟨(647885974139/1000000000000 : ℚ), (-179312647/10000000000 : ℚ), (404062519/62500000000 : ℚ), 1⟩,
+    ⟨(654115355923/1000000000000 : ℚ), (-239146713/10000000000 : ℚ), (2072012739/200000000000 : ℚ), 1⟩,
+    ⟨(131999997779/200000000000 : ℚ), (-58659093/2000000000 : ℚ), (1739729923/125000000000 : ℚ), 1⟩,
+    ⟨(332762848229/500000000000 : ℚ), (-342162377/10000000000 : ℚ), (4289117731/250000000000 : ℚ), 1⟩,
+    ⟨(6706791667/10000000000 : ℚ), (-38610169/1000000000 : ℚ), (200920011/10000000000 : ℚ), 1⟩,
+    ⟨(337723992229/500000000000 : ℚ), (-425423857/10000000000 : ℚ), (4547716619/200000000000 : ℚ), 1⟩,
+    ⟨(339910330617/500000000000 : ℚ), (-46040019/1000000000 : ℚ), (12554331327/500000000000 : ℚ), 1⟩,
+    ⟨(341893331433/500000000000 : ℚ), (-491266813/10000000000 : ℚ), (27213133891/1000000000000 : ℚ), 1⟩,
+    ⟨(171834108727/250000000000 : ℚ), (-103645603/2000000000 : ℚ), (29061471947/1000000000000 : ℚ), 1⟩,
+    ⟨(690461425649/1000000000000 : ℚ), (-108291817/2000000000 : ℚ), (1226473831/40000000000 : ℚ), 1⟩,
+    ⟨(86644263339/125000000000 : ℚ), (-112221739/2000000000 : ℚ), (16010606761/500000000000 : ℚ), 1⟩,
+    ⟨(695407991193/1000000000000 : ℚ), (-288650441/5000000000 : ℚ), (8286350521/250000000000 : ℚ), 1⟩,
+    ⟨(697217649287/1000000000000 : ℚ), (-590136673/10000000000 : ℚ), (6807834493/200000000000 : ℚ), 1⟩,
+    ⟨(698578721369/1000000000000 : ℚ), (-599695393/10000000000 : ℚ), (34706272887/1000000000000 : ℚ), 1⟩,
+    ⟨(699487928497/1000000000000 : ℚ), (-151508919/2500000000 : ℚ), (878736989/25000000000 : ℚ), 1⟩,
+    ⟨(699943080311/1000000000000 : ℚ), (-304598103/5000000000 : ℚ), (35370626701/1000000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-609590823/10000000000 : ℚ), (17699124387/500000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (387499/1000000 : ℚ)
+  x := (224591506939/1000000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control77.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control77.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate77
+
+namespace DiagonalRamsey.JointInheritedCertificate78
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(82029021279/200000000000 : ℚ), (42763264847773/10000000000 : ℚ), (-1755691450935503/1000000000000 : ℚ), 12⟩,
+    ⟨(160396341/390625000 : ℚ), (4716102164549/10000000000 : ℚ), (-3044953689869/15625000000 : ℚ), 9⟩,
+    ⟨(5144406937/12500000000 : ℚ), (1677500506593/10000000000 : ℚ), (-4375751271813/62500000000 : ℚ), 8⟩,
+    ⟨(412956612859/1000000000000 : ℚ), (52669755311/625000000 : ℚ), (-35610609322109/1000000000000 : ℚ), 7⟩,
+    ⟨(414823424157/1000000000000 : ℚ), (125136505823/2500000000 : ℚ), (-2145384499559/100000000000 : ℚ), 6⟩,
+    ⟨(52143561443/125000000000 : ℚ), (328218195519/10000000000 : ℚ), (-14287920301581/1000000000000 : ℚ), 6⟩,
+    ⟨(13122694179/31250000000 : ℚ), (229713791463/10000000000 : ℚ), (-5083332583333/500000000000 : ℚ), 5⟩,
+    ⟨(423149898933/1000000000000 : ℚ), (168356655203/10000000000 : ℚ), (-236911645793/31250000000 : ℚ), 5⟩,
+    ⟨(426811781019/1000000000000 : ℚ), (127688188261/10000000000 : ℚ), (-292673177429/50000000000 : ℚ), 4⟩,
+    ⟨(430903038191/1000000000000 : ℚ), (19887038773/2000000000 : ℚ), (-580280387487/125000000000 : ℚ), 4⟩,
+    ⟨(435413814253/1000000000000 : ℚ), (39536055551/5000000000 : ℚ), (-235031684041/62500000000 : ℚ), 4⟩,
+    ⟨(440333242349/1000000000000 : ℚ), (15988899739/2500000000 : ℚ), (-1549410862179/500000000000 : ℚ), 4⟩,
+    ⟨(111412367787/250000000000 : ℚ), (13114655519/2500000000 : ℚ), (-2589686598893/1000000000000 : ℚ), 3⟩,
+    ⟨(451349693387/1000000000000 : ℚ), (21767916353/5000000000 : ℚ), (-437926258579/200000000000 : ℚ), 3⟩,
+    ⟨(114355044183/250000000000 : ℚ), (3649117953/1000000000 : ℚ), (-1869635495067/1000000000000 : ℚ), 3⟩,
+    ⟨(231923148429/500000000000 : ℚ), (15423484069/5000000000 : ℚ), (-201215698993/125000000000 : ℚ), 3⟩,
+    ⟨(470612572677/1000000000000 : ℚ), (131333791/50000000 : ℚ), (-279157948419/200000000000 : ℚ), 3⟩,
+    ⟨(477702703639/1000000000000 : ℚ), (5627054837/2500000000 : ℚ), (-1217628341273/1000000000000 : ℚ), 3⟩,
+    ⟨(242549804499/500000000000 : ℚ), (19393351009/10000000000 : ℚ), (-8341571119/7812500000 : ℚ), 3⟩,
+    ⟨(3079909181/6250000000 : ℚ), (16789127931/10000000000 : ℚ), (-470212392489/500000000000 : ℚ), 2⟩,
+    ⟨(100148353523/200000000000 : ℚ), (7297301079/5000000000 : ℚ), (-831437848303/1000000000000 : ℚ), 2⟩,
+    ⟨(508949337543/1000000000000 : ℚ), (2546422823/2000000000 : ℚ), (-147487034393/200000000000 : ℚ), 2⟩,
+    ⟨(51738840599/100000000000 : ℚ), (11141183289/10000000000 : ℚ), (-655813768967/1000000000000 : ℚ), 2⟩,
+    ⟨(210415457/400000000 : ℚ), (9774184781/10000000000 : ℚ), (-292256280263/500000000000 : ℚ), 2⟩,
+    ⟨(66859900987/125000000000 : ℚ), (8593239757/10000000000 : ℚ), (-521882545173/1000000000000 : ℚ), 2⟩,
+    ⟨(543888804481/1000000000000 : ℚ), (472996613/625000000 : ℚ), (-116647968463/250000000000 : ℚ), 2⟩,
+    ⟨(138261431837/250000000000 : ℚ), (6673697979/10000000000 : ℚ), (-417555501977/1000000000000 : ℚ), 2⟩,
+    ⟨(140581979167/250000000000 : ℚ), (2945215693/5000000000 : ℚ), (-373882403409/1000000000000 : ℚ), 2⟩,
+    ⟨(285856505417/500000000000 : ℚ), (65020861/125000000 : ℚ), (-83708877/250000000 : ℚ), 2⟩,
+    ⟨(145294600083/250000000000 : ℚ), (1148448049/2500000000 : ℚ), (-149900485371/500000000000 : ℚ), 2⟩,
+    ⟨(590701282209/1000000000000 : ℚ), (2027739391/5000000000 : ℚ), (-67066092573/250000000000 : ℚ), 2⟩,
+    ⟨(60025871501/100000000000 : ℚ), (3577262741/10000000000 : ℚ), (-59948025851/250000000000 : ℚ), 2⟩,
+    ⟨(15245691851/25000000000 : ℚ), (787797427/2500000000 : ℚ), (-107008359223/500000000000 : ℚ), 2⟩,
+    ⟨(15484627671/25000000000 : ℚ), (2770543481/10000000000 : ℚ), (-190625262789/1000000000000 : ℚ), 2⟩,
+    ⟨(314453994359/500000000000 : ℚ), (2429627931/10000000000 : ℚ), (-33869991011/200000000000 : ℚ), 2⟩,
+    ⟨(79796672277/125000000000 : ℚ), (424718371/2000000000 : ℚ), (-2999213339/20000000000 : ℚ), 2⟩,
+    ⟨(647758472381/1000000000000 : ℚ), (1848287447/10000000000 : ℚ), (-132258825077/1000000000000 : ℚ), 2⟩,
+    ⟨(328520330851/500000000000 : ℚ), (1600155259/10000000000 : ℚ), (-116072432833/1000000000000 : ℚ), 2⟩,
+    ⟨(666197584569/1000000000000 : ℚ), (688065099/5000000000 : ℚ), (-50625992553/500000000000 : ℚ), 2⟩,
+    ⟨(337603590577/500000000000 : ℚ), (586782157/5000000000 : ℚ), (-43833548273/500000000000 : ℚ), 2⟩,
+    ⟨(13680954931/20000000000 : ℚ), (495081541/5000000000 : ℚ), (-75203705203/1000000000000 : ℚ), 2⟩,
+    ⟨(34634899153/50000000000 : ℚ), (823932591/10000000000 : ℚ), (-63761743149/1000000000000 : ℚ), 2⟩,
+    ⟨(350568525753/500000000000 : ℚ), (673135589/10000000000 : ℚ), (-6656648397/125000000000 : ℚ), 1⟩,
+    ⟨(141868924287/200000000000 : ℚ), (536254757/10000000000 : ℚ), (-5450052593/125000000000 : ℚ), 1⟩,
+    ⟨(71730092009/100000000000 : ℚ), (102990481/2500000000 : ℚ), (-34734853859/1000000000000 : ℚ), 1⟩,
+    ⟨(181246695013/250000000000 : ℚ), (299092169/10000000000 : ℚ), (-13297877533/500000000000 : ℚ), 1⟩,
+    ⟨(73238368541/100000000000 : ℚ), (196621977/10000000000 : ℚ), (-1912926107/100000000000 : ℚ), 1⟩,
+    ⟨(184868454093/250000000000 : ℚ), (25912691/2500000000 : ℚ), (-1228753459/100000000000 : ℚ), 1⟩,
+    ⟨(23320002881/31250000000 : ℚ), (151447/78125000 : ℚ), (-602804677/100000000000 : ℚ), 1⟩,
+    ⟨(752666212317/1000000000000 : ℚ), (-28437003/5000000000 : ℚ), (-312965713/1000000000000 : ℚ), 1⟩,
+    ⟨(758736695663/1000000000000 : ℚ), (-62871791/5000000000 : ℚ), (4891367071/1000000000000 : ℚ), 1⟩,
+    ⟨(382218458951/500000000000 : ℚ), (-46941789/2500000000 : ℚ), (9614882293/1000000000000 : ℚ), 1⟩,
+    ⟨(7697531467/10000000000 : ℚ), (-12171177/500000000 : ℚ), (13884164679/1000000000000 : ℚ), 1⟩,
+    ⟨(774672574797/1000000000000 : ℚ), (-58626739/2000000000 : ℚ), (3544555571/200000000000 : ℚ), 1⟩,
+    ⟨(779183350859/1000000000000 : ℚ), (-21079167/625000000 : ℚ), (5287885313/250000000000 : ℚ), 1⟩,
+    ⟨(783274608031/1000000000000 : ℚ), (-376144661/10000000000 : ℚ), (24188765819/1000000000000 : ℚ), 1⟩,
+    ⟨(786936490117/1000000000000 : ℚ), (-410047259/10000000000 : ℚ), (13425226149/500000000000 : ℚ), 1⟩,
+    ⟨(395080087661/500000000000 : ℚ), (-439215069/10000000000 : ℚ), (29150458293/1000000000000 : ℚ), 1⟩,
+    ⟨(396468948753/500000000000 : ℚ), (-231926359/5000000000 : ℚ), (3110063853/100000000000 : ℚ), 1⟩,
+    ⟨(198815741223/250000000000 : ℚ), (-484131353/10000000000 : ℚ), (32710959793/1000000000000 : ℚ), 1⟩,
+    ⟨(797129776191/1000000000000 : ℚ), (-500190683/10000000000 : ℚ), (16994797407/500000000000 : ℚ), 1⟩,
+    ⟨(79853383409/100000000000 : ℚ), (-512140609/10000000000 : ℚ), (6988599313/200000000000 : ℚ), 1⟩,
+    ⟨(79947175609/100000000000 : ℚ), (-260031247/5000000000 : ℚ), (35575957029/1000000000000 : ℚ), 1⟩,
+    ⟨(159988256531/200000000000 : ℚ), (-131002519/2500000000 : ℚ), (35891647687/1000000000000 : ℚ), 1⟩,
+    ⟨(4/5 : ℚ), (-524502899/10000000000 : ℚ), (17965536043/500000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (4/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (387499/1000000 : ℚ)
+  x := (176968129623/1000000000000 : ℚ)
+  μ := (4/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (4/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control78.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control78.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate78
+
+namespace DiagonalRamsey.JointInheritedCertificate84
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(198622761933/1000000000000 : ℚ), (6519011407699/10000000000 : ℚ), (-130130459203243/1000000000000 : ℚ), 10⟩,
+    ⟨(100036550579/500000000000 : ℚ), (700206685671/10000000000 : ℚ), (-144006185881/10000000000 : ℚ), 7⟩,
+    ⟨(101479906023/500000000000 : ℚ), (59921250099/2500000000 : ℚ), (-1285574990913/250000000000 : ℚ), 6⟩,
+    ⟨(41451018799/200000000000 : ℚ), (28758916203/2500000000 : ℚ), (-2591611792301/1000000000000 : ℚ), 5⟩,
+    ⟨(53229395273/250000000000 : ℚ), (2030042451/312500000 : ℚ), (-1542006349157/1000000000000 : ℚ), 4⟩,
+    ⟨(21989274049/100000000000 : ℚ), (5044717537/1250000000 : ℚ), (-1010735402311/1000000000000 : ℚ), 4⟩,
+    ⟨(228113397591/1000000000000 : ℚ), (26688779527/10000000000 : ℚ), (-7051854609/10000000000 : ℚ), 3⟩,
+    ⟨(237500382973/1000000000000 : ℚ), (3687430947/2000000000 : ℚ), (-25673058277/50000000000 : ℚ), 3⟩,
+    ⟨(247963294837/1000000000000 : ℚ), (410832817/312500000 : ℚ), (-192640705947/500000000000 : ℚ), 3⟩,
+    ⟨(12970068481/50000000000 : ℚ), (9594848231/10000000000 : ℚ), (-147666686383/500000000000 : ℚ), 2⟩,
+    ⟨(27170445241/100000000000 : ℚ), (3560597097/5000000000 : ℚ), (-28718592333/125000000000 : ℚ), 2⟩,
+    ⟨(56950811559/200000000000 : ℚ), (2672749937/5000000000 : ℚ), (-180415071963/1000000000000 : ℚ), 2⟩,
+    ⟨(14921225547/50000000000 : ℚ), (504721603/1250000000 : ℚ), (-71166469621/500000000000 : ℚ), 2⟩,
+    ⟨(31258415791/100000000000 : ℚ), (610633599/2000000000 : ℚ), (-112288022467/1000000000000 : ℚ), 2⟩,
+    ⟨(163548316781/500000000000 : ℚ), (2297386739/10000000000 : ℚ), (-88140188239/1000000000000 : ℚ), 2⟩,
+    ⟨(42727771853/125000000000 : ℚ), (1707302961/10000000000 : ℚ), (-8552788419/125000000000 : ℚ), 2⟩,
+    ⟨(356618966683/1000000000000 : ℚ), (154955199/1250000000 : ℚ), (-52103604619/1000000000000 : ℚ), 2⟩,
+    ⟨(74268901589/200000000000 : ℚ), (864119713/10000000000 : ℚ), (-19222336863/500000000000 : ℚ), 2⟩,
+    ⟨(192928491799/500000000000 : ℚ), (559161509/10000000000 : ℚ), (-13452847767/500000000000 : ℚ), 2⟩,
+    ⟨(400016630567/1000000000000 : ℚ), (9660917/312500000 : ℚ), (-17086652621/1000000000000 : ℚ), 2⟩,
+    ⟨(413687083713/1000000000000 : ℚ), (51309613/5000000000 : ℚ), (-4343698761/500000000000 : ℚ), 2⟩,
+    ⟨(426736689097/1000000000000 : ℚ), (-34473967/5000000000 : ℚ), (-1480381951/1000000000000 : ℚ), 2⟩,
+    ⟨(27439985743/62500000000 : ℚ), (-105975239/5000000000 : ℚ), (4708335627/1000000000000 : ℚ), 2⟩,
+    ⟨(450477846671/1000000000000 : ℚ), (-331236809/10000000000 : ℚ), (10012548683/1000000000000 : ℚ), 2⟩,
+    ⟨(230470379267/500000000000 : ℚ), (-430506211/10000000000 : ℚ), (363389679/25000000000 : ℚ), 2⟩,
+    ⟨(470327743917/1000000000000 : ℚ), (-256296809/5000000000 : ℚ), (3671474999/200000000000 : ℚ), 1⟩,
+    ⟨(239274200509/500000000000 : ℚ), (-18114809/312500000 : ℚ), (1346226739/62500000000 : ℚ), 1⟩,
+    ⟨(15172611263/31250000000 : ℚ), (-79176163/1250000000 : ℚ), (4825941263/200000000000 : ℚ), 1⟩,
+    ⟨(61398255939/125000000000 : ℚ), (-168764089/2500000000 : ℚ), (26163479789/1000000000000 : ℚ), 1⟩,
+    ⟨(495481329461/1000000000000 : ℚ), (-705542697/10000000000 : ℚ), (345843007/12500000000 : ℚ), 1⟩,
+    ⟨(9967360807/20000000000 : ℚ), (-2902087/40000000 : ℚ), (1791264963/62500000000 : ℚ), 1⟩,
+    ⟨(249909189787/500000000000 : ℚ), (-14708199/200000000 : ℚ), (14576875781/500000000000 : ℚ), 1⟩,
+    ⟨(1/2 : ℚ), (-368320639/5000000000 : ℚ), (14607653371/500000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (1/2 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (399999/1000000 : ℚ)
+  x := (75327659237/250000000000 : ℚ)
+  μ := (1/2 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control84.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control84.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate84
+
+namespace DiagonalRamsey.JointInheritedCertificate85
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(52329772767/250000000000 : ℚ), (6665256897369/10000000000 : ℚ), (-140201135009727/1000000000000 : ℚ), 10⟩,
+    ⟨(210814203013/1000000000000 : ℚ), (358159169029/5000000000 : ℚ), (-7757493850899/500000000000 : ℚ), 7⟩,
+    ⟨(53447507039/250000000000 : ℚ), (61347037667/2500000000 : ℚ), (-1385044341447/250000000000 : ℚ), 6⟩,
+    ⟨(54554476919/250000000000 : ℚ), (29468466971/2500000000 : ℚ), (-2792104276247/1000000000000 : ℚ), 5⟩,
+    ⟨(224055198671/1000000000000 : ℚ), (8327930287/1250000000 : ℚ), (-66451502007/40000000000 : ℚ), 4⟩,
+    ⟨(231245684839/1000000000000 : ℚ), (20713663577/5000000000 : ℚ), (-43556994093/40000000000 : ℚ), 4⟩,
+    ⟨(239720117867/1000000000000 : ℚ), (3427538649/1250000000 : ℚ), (-759757890277/1000000000000 : ℚ), 3⟩,
+    ⟨(249396884333/1000000000000 : ℚ), (473977329/250000000 : ℚ), (-276616037597/500000000000 : ℚ), 3⟩,
+    ⟨(52036558337/200000000000 : ℚ), (6765388961/5000000000 : ℚ), (-103793794859/250000000000 : ℚ), 3⟩,
+    ⟨(271973965739/1000000000000 : ℚ), (9884348697/10000000000 : ℚ), (-63663065359/200000000000 : ℚ), 2⟩,
+    ⟨(71164212761/250000000000 : ℚ), (7343538929/10000000000 : ℚ), (-247710646993/1000000000000 : ℚ), 2⟩,
+    ⟨(298109304481/1000000000000 : ℚ), (5518939529/10000000000 : ℚ), (-97310207751/500000000000 : ℚ), 2⟩,
+    ⟨(31220177157/100000000000 : ℚ), (1043714027/2500000000 : ℚ), (-4801802741/31250000000 : ℚ), 2⟩,
+    ⟨(81699633537/250000000000 : ℚ), (1581383019/5000000000 : ℚ), (-30339669121/250000000000 : ℚ), 2⟩,
+    ⟨(341759017413/1000000000000 : ℚ), (1192957879/5000000000 : ℚ), (-47708415537/500000000000 : ℚ), 2⟩,
+    ⟨(356939143733/1000000000000 : ℚ), (1779493179/10000000000 : ℚ), (-18562657651/250000000000 : ℚ), 2⟩,
+    ⟨(372192720193/1000000000000 : ℚ), (51961499/400000000 : ℚ), (-56748638027/1000000000000 : ℚ), 2⟩,
+    ⟨(387372846513/1000000000000 : ℚ), (913414843/10000000000 : ℚ), (-42113308403/1000000000000 : ℚ), 2⟩,
+    ⟨(201166664889/500000000000 : ℚ), (15010707/250000000 : ℚ), (-1860132209/62500000000 : ℚ), 2⟩,
+    ⟨(104232523089/250000000000 : ℚ), (343999859/10000000000 : ℚ), (-9631574489/500000000000 : ℚ), 2⟩,
+    ⟨(86204511889/200000000000 : ℚ), (26464017/2000000000 : ℚ), (-10292102871/1000000000000 : ℚ), 2⟩,
+    ⟨(222237506441/500000000000 : ℚ), (-2169619/500000000 : ℚ), (-650725673/250000000000 : ℚ), 2⟩,
+    ⟨(457157898187/1000000000000 : ℚ), (-4743421/250000000 : ℚ), (3992747023/1000000000000 : ℚ), 2⟩,
+    ⟨(234474536121/500000000000 : ℚ), (-77929223/2500000000 : ℚ), (9639852769/1000000000000 : ℚ), 2⟩,
+    ⟨(239867489797/500000000000 : ℚ), (-82630471/2000000000 : ℚ), (7225277661/500000000000 : ℚ), 2⟩,
+    ⟨(489411746059/1000000000000 : ℚ), (-248486039/5000000000 : ℚ), (9255861433/500000000000 : ℚ), 1⟩,
+    ⟨(497886179087/1000000000000 : ℚ), (-56542407/1000000000 : ℚ), (87562159/4000000000 : ℚ), 1⟩,
+    ⟨(101015333051/200000000000 : ℚ), (-620227299/10000000000 : ℚ), (6159661999/250000000000 : ℚ), 1⟩,
+    ⟨(81746233/160000000 : ℚ), (-41417601/625000000 : ℚ), (26795222027/1000000000000 : ℚ), 1⟩,
+    ⟨(51534183577/100000000000 : ℚ), (-346873511/5000000000 : ℚ), (2838923953/100000000000 : ℚ), 1⟩,
+    ⟨(518317660913/1000000000000 : ℚ), (-11157811/156250000 : ℚ), (29441126789/1000000000000 : ℚ), 1⟩,
+    ⟨(259906386429/500000000000 : ℚ), (-724171423/10000000000 : ℚ), (5992780607/200000000000 : ℚ), 1⟩,
+    ⟨(13/25 : ℚ), (-1450851/20000000 : ℚ), (1876818957/62500000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (399999/1000000 : ℚ)
+  x := (14787067097/50000000000 : ℚ)
+  μ := (13/25 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control85.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control85.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate85
+
+namespace DiagonalRamsey.JointInheritedCertificate86
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(112961687439/500000000000 : ℚ), (1724510366207/2500000000 : ℚ), (-15658442401291/100000000000 : ℚ), 10⟩,
+    ⟨(45496590397/200000000000 : ℚ), (741967775981/10000000000 : ℚ), (-693112989077/40000000000 : ℚ), 7⟩,
+    ⟨(230587086619/1000000000000 : ℚ), (254470117143/10000000000 : ℚ), (-6187399941237/1000000000000 : ℚ), 6⟩,
+    ⟨(117602942133/500000000000 : ℚ), (30598855409/2500000000 : ℚ), (-1559107555219/500000000000 : ℚ), 5⟩,
+    ⟨(12064743169/50000000000 : ℚ), (69272642359/10000000000 : ℚ), (-1855282791267/1000000000000 : ℚ), 4⟩,
+    ⟨(62198845941/250000000000 : ℚ), (10783271161/2500000000 : ℚ), (-608036541017/500000000000 : ℚ), 4⟩,
+    ⟨(128817605653/500000000000 : ℚ), (28587590133/10000000000 : ℚ), (-53030522003/62500000000 : ℚ), 3⟩,
+    ⟨(133864606817/500000000000 : ℚ), (19792366041/10000000000 : ℚ), (-617886907217/1000000000000 : ℚ), 3⟩,
+    ⟨(278980179989/1000000000000 : ℚ), (14144298577/10000000000 : ℚ), (-92753265347/200000000000 : ℚ), 3⟩,
+    ⟨(145639878707/500000000000 : ℚ), (80834887/78125000 : ℚ), (-5557307601/15625000000 : ℚ), 2⟩,
+    ⟨(152254747127/500000000000 : ℚ), (1924699977/2500000000 : ℚ), (-276902589087/1000000000000 : ℚ), 2⟩,
+    ⟨(19908873807/62500000000 : ℚ), (1449005211/2500000000 : ℚ), (-217708148117/1000000000000 : ℚ), 2⟩,
+    ⟨(333242076871/1000000000000 : ℚ), (219688051/500000000 : ℚ), (-86033470313/500000000000 : ℚ), 2⟩,
+    ⟨(34846821217/100000000000 : ℚ), (3337645211/10000000000 : ℚ), (-136109258489/1000000000000 : ℚ), 2⟩,
+    ⟨(182036875401/500000000000 : ℚ), (2527012007/10000000000 : ℚ), (-26814432013/250000000000 : ℚ), 2⟩,
+    ⟨(379908402901/1000000000000 : ℚ), (1894364467/10000000000 : ℚ), (-83744635709/1000000000000 : ℚ), 2⟩,
+    ⟨(39581967211/100000000000 : ℚ), (348338143/2500000000 : ℚ), (-64327217321/1000000000000 : ℚ), 2⟩,
+    ⟨(25728395263/62500000000 : ℚ), (991486047/10000000000 : ℚ), (-12028309457/250000000000 : ℚ), 2⟩,
+    ⟨(427259862841/1000000000000 : ℚ), (41598557/625000000 : ℚ), (-4306322717/125000000000 : ℚ), 2⟩,
+    ⟨(22124299907/50000000000 : ℚ), (398812373/10000000000 : ℚ), (-5713835471/250000000000 : ℚ), 2⟩,
+    ⟨(228593047049/500000000000 : ℚ), (3576617/200000000 : ℚ), (-12963793411/1000000000000 : ℚ), 2⟩,
+    ⟨(117804645189/250000000000 : ℚ), (-892113/2500000000 : ℚ), (-899921153/200000000000 : ℚ), 2⟩,
+    ⟨(484448317597/1000000000000 : ℚ), (-38826649/2500000000 : ℚ), (1374492363/500000000000 : ℚ), 2⟩,
+    ⟨(496747895021/1000000000000 : ℚ), (-281635947/10000000000 : ℚ), (44726713/5000000000 : ℚ), 2⟩,
+    ⟨(7937482209/15625000000 : ℚ), (-15462791/400000000 : ℚ), (7108028163/500000000000 : ℚ), 2⟩,
+    ⟨(103618572741/200000000000 : ℚ), (-473187851/10000000000 : ℚ), (18659400451/1000000000000 : ℚ), 1⟩,
+    ⟨(526932691247/1000000000000 : ℚ), (-543855903/10000000000 : ℚ), (22351559279/1000000000000 : ℚ), 1⟩,
+    ⟨(534433211631/1000000000000 : ℚ), (-150096061/2500000000 : ℚ), (25351234203/1000000000000 : ℚ), 1⟩,
+    ⟨(108104438149/200000000000 : ℚ), (-644142699/10000000000 : ℚ), (6925765091/250000000000 : ℚ), 1⟩,
+    ⟨(68142623549/125000000000 : ℚ), (-676143521/10000000000 : ℚ), (14720063827/500000000000 : ℚ), 1⟩,
+    ⟨(274122561513/500000000000 : ℚ), (-697100243/10000000000 : ℚ), (30585805873/1000000000000 : ℚ), 1⟩,
+    ⟨(137451175033/250000000000 : ℚ), (-35373393/500000000 : ℚ), (31155012499/1000000000000 : ℚ), 1⟩,
+    ⟨(11/20 : ℚ), (-708758679/10000000000 : ℚ), (31225994959/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (399999/1000000 : ℚ)
+  x := (57408395769/200000000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control86.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control86.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate86
+
+namespace DiagonalRamsey.JointInheritedCertificate87
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(31923260151/125000000000 : ℚ), (29493446179049/10000000000 : ℚ), (-94284692949073/125000000000 : ℚ), 12⟩,
+    ⟨(51160224249/200000000000 : ℚ), (3244807889571/10000000000 : ℚ), (-104654316617/1250000000 : ℚ), 9⟩,
+    ⟨(256630201453/1000000000000 : ℚ), (229995074323/2000000000 : ℚ), (-3759895565251/125000000000 : ℚ), 8⟩,
+    ⟨(257871324503/1000000000000 : ℚ), (143787789833/2500000000 : ℚ), (-15299663890999/1000000000000 : ℚ), 7⟩,
+    ⟨(259521500421/1000000000000 : ℚ), (33992250789/1000000000 : ℚ), (-9217617508203/1000000000000 : ℚ), 6⟩,
+    ⟨(261576753791/1000000000000 : ℚ), (221699426299/10000000000 : ℚ), (-1227789939073/200000000000 : ℚ), 5⟩,
+    ⟨(10561285333/40000000000 : ℚ), (154289592409/10000000000 : ℚ), (-1092078425813/250000000000 : ℚ), 5⟩,
+    ⟨(1334408619/5000000000 : ℚ), (56210490731/5000000000 : ℚ), (-3257454995799/1000000000000 : ℚ), 5⟩,
+    ⟨(135059330151/500000000000 : ℚ), (84758751469/10000000000 : ℚ), (-157193784231/62500000000 : ℚ), 4⟩,
+    ⟨(273735144769/1000000000000 : ℚ), (65608852479/10000000000 : ℚ), (-1994623093449/1000000000000 : ℚ), 4⟩,
+    ⟨(69430616193/250000000000 : ℚ), (2592942199/500000000 : ℚ), (-1615681323643/1000000000000 : ℚ), 4⟩,
+    ⟨(70517753627/250000000000 : ℚ), (20846158631/5000000000 : ℚ), (-1040046803/781250000 : ℚ), 4⟩,
+    ⟨(286770317939/1000000000000 : ℚ), (33992319629/10000000000 : ℚ), (-556179290383/500000000000 : ℚ), 3⟩,
+    ⟨(291809054033/1000000000000 : ℚ), (28042021993/10000000000 : ℚ), (-940301161853/1000000000000 : ℚ), 3⟩,
+    ⟨(297175084033/1000000000000 : ℚ), (934588929/400000000 : ℚ), (-8026195739/10000000000 : ℚ), 3⟩,
+    ⟨(151427740351/500000000000 : ℚ), (4908434143/2500000000 : ℚ), (-690732514583/1000000000000 : ℚ), 3⟩,
+    ⟨(77209139867/250000000000 : ℚ), (16619348949/10000000000 : ℚ), (-2338192033/3906250000 : ℚ), 3⟩,
+    ⟨(315103911387/1000000000000 : ℚ), (7078201907/5000000000 : ℚ), (-521771614221/1000000000000 : ℚ), 3⟩,
+    ⟨(16082121893/50000000000 : ℚ), (6061916681/5000000000 : ℚ), (-457085217257/1000000000000 : ℚ), 3⟩,
+    ⟨(82109096751/250000000000 : ℚ), (10431362891/10000000000 : ℚ), (-201046936259/500000000000 : ℚ), 2⟩,
+    ⟨(838673479/2500000000 : ℚ), (563165947/625000000 : ℚ), (-14198001787/40000000000 : ℚ), 2⟩,
+    ⟨(13708980341/40000000000 : ℚ), (1561855887/2000000000 : ℚ), (-314225815627/1000000000000 : ℚ), 2⟩,
+    ⟨(175092129783/500000000000 : ℚ), (6786521999/10000000000 : ℚ), (-278803628013/1000000000000 : ℚ), 2⟩,
+    ⟨(357830673529/1000000000000 : ℚ), (5910423247/10000000000 : ℚ), (-123899422319/500000000000 : ℚ), 2⟩,
+    ⟨(182822664767/500000000000 : ℚ), (2577824211/5000000000 : ℚ), (-27562994811/125000000000 : ℚ), 2⟩,
+    ⟨(37360940139/100000000000 : ℚ), (1125483697/2500000000 : ℚ), (-196347798667/1000000000000 : ℚ), 2⟩,
+    ⟨(7634074059/20000000000 : ℚ), (393294407/1000000000 : ℚ), (-174865296653/1000000000000 : ℚ), 2⟩,
+    ⟨(97477183583/250000000000 : ℚ), (1717701997/5000000000 : ℚ), (-155674796889/1000000000000 : ℚ), 2⟩,
+    ⟨(199102364449/500000000000 : ℚ), (2998458933/10000000000 : ℚ), (-17307604537/125000000000 : ℚ), 2⟩,
+    ⟨(406571700869/1000000000000 : ℚ), (653293409/2500000000 : ℚ), (-3842529131/31250000000 : ℚ), 2⟩,
+    ⟨(207494746739/500000000000 : ℚ), (1136075197/5000000000 : ℚ), (-54477674717/500000000000 : ℚ), 2⟩,
+    ⟨(16937513101/40000000000 : ℚ), (492307777/2500000000 : ℚ), (-48129550123/500000000000 : ℚ), 2⟩,
+    ⟨(53987043779/125000000000 : ℚ), (849631783/5000000000 : ℚ), (-84715637583/1000000000000 : ℚ), 2⟩,
+    ⟨(440344684279/1000000000000 : ℚ), (1457916709/10000000000 : ℚ), (-14838368681/200000000000 : ℚ), 2⟩,
+    ⟨(56095309611/125000000000 : ℚ), (620766809/5000000000 : ℚ), (-64574018251/1000000000000 : ℚ), 2⟩,
+    ⟨(457129448859/1000000000000 : ℚ), (1047013733/10000000000 : ℚ), (-27882323471/500000000000 : ℚ), 2⟩,
+    ⟨(18617017737/40000000000 : ℚ), (17434359/200000000 : ℚ), (-47679776259/1000000000000 : ℚ), 2⟩,
+    ⟨(473630474807/1000000000000 : ℚ), (356695849/5000000000 : ℚ), (-10061718377/250000000000 : ℚ), 2⟩,
+    ⟨(481724776367/1000000000000 : ℚ), (14252557/250000000 : ℚ), (-16701534953/500000000000 : ℚ), 2⟩,
+    ⟨(489688848223/1000000000000 : ℚ), (220093779/5000000000 : ℚ), (-13546854737/500000000000 : ℚ), 2⟩,
+    ⟨(124375876057/250000000000 : ℚ), (80553439/2500000000 : ℚ), (-4254229343/200000000000 : ℚ), 2⟩,
+    ⟨(505149918191/1000000000000 : ℚ), (214940589/10000000000 : ℚ), (-3973435863/250000000000 : ℚ), 2⟩,
+    ⟨(32038104327/62500000000 : ℚ), (117292349/10000000000 : ℚ), (-10925030363/1000000000000 : ℚ), 2⟩,
+    ⟨(519864786157/1000000000000 : ℚ), (1416691/500000000 : ℚ), (-6333001233/1000000000000 : ℚ), 2⟩,
+    ⟨(526897790753/1000000000000 : ℚ), (-52749847/10000000000 : ℚ), (-2089517629/1000000000000 : ℚ), 2⟩,
+    ⟨(533691739897/1000000000000 : ℚ), (-31667501/2500000000 : ℚ), (366038959/200000000000 : ℚ), 2⟩,
+    ⟨(54023026637/100000000000 : ℚ), (-97024351/5000000000 : ℚ), (544797513/100000000000 : ℚ), 2⟩,
+    ⟨(546497618289/1000000000000 : ℚ), (-249444/9765625 : ℚ), (8783091679/1000000000000 : ℚ), 2⟩,
+    ⟨(110495739411/200000000000 : ℚ), (-311293369/10000000000 : ℚ), (11852554107/1000000000000 : ℚ), 1⟩,
+    ⟨(139539773431/250000000000 : ℚ), (-11314241/312500000 : ℚ), (1833922591/125000000000 : ℚ), 1⟩,
+    ⟨(140881280931/250000000000 : ℚ), (-408085209/10000000000 : ℚ), (2156603469/125000000000 : ℚ), 1⟩,
+    ⟨(284281929909/500000000000 : ℚ), (-224852117/5000000000 : ℚ), (3921717281/200000000000 : ℚ), 1⟩,
+    ⟨(573263163249/1000000000000 : ℚ), (-487195289/10000000000 : ℚ), (5437238171/250000000000 : ℚ), 1⟩,
+    ⟨(115522342597/200000000000 : ℚ), (-260402749/5000000000 : ℚ), (23682973149/1000000000000 : ℚ), 1⟩,
+    ⟨(145399758247/250000000000 : ℚ), (-550750439/10000000000 : ℚ), (25418570823/1000000000000 : ℚ), 1⟩,
+    ⟨(117043103491/200000000000 : ℚ), (-115443481/2000000000 : ℚ), (842582919/31250000000 : ℚ), 1⟩,
+    ⟨(588452453957/1000000000000 : ℚ), (-600368167/10000000000 : ℚ), (2832120537/100000000000 : ℚ), 1⟩,
+    ⟨(36956377777/62500000000 : ℚ), (-310170657/5000000000 : ℚ), (1843710433/62500000000 : ℚ), 1⟩,
+    ⟨(296878711983/500000000000 : ℚ), (-25490169/400000000 : ℚ), (30501501639/1000000000000 : ℚ), 1⟩,
+    ⟨(119162535467/200000000000 : ℚ), (-651204701/10000000000 : ℚ), (15665625971/500000000000 : ℚ), 1⟩,
+    ⟨(298731426627/500000000000 : ℚ), (-662272309/10000000000 : ℚ), (3199158559/100000000000 : ℚ), 1⟩,
+    ⟨(37418998519/62500000000 : ℚ), (-335259733/5000000000 : ℚ), (3248483371/100000000000 : ℚ), 1⟩,
+    ⟨(1170963001/1953125000 : ℚ), (-675992271/10000000000 : ℚ), (16406359687/500000000000 : ℚ), 1⟩,
+    ⟨(599948096549/1000000000000 : ℚ), (-169680281/2500000000 : ℚ), (16488189877/500000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-679061877/10000000000 : ℚ), (32996824011/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (399999/1000000 : ℚ)
+  x := (424020373/1562500000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control87.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control87.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate87
+
+namespace DiagonalRamsey.JointInheritedCertificate88
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(81010170771/250000000000 : ℚ), (34310215770213/10000000000 : ℚ), (-1113146402711257/1000000000000 : ℚ), 12⟩,
+    ⟨(16224673717/50000000000 : ℚ), (236187955271/625000000 : ℚ), (-123556720972411/1000000000000 : ℚ), 9⟩,
+    ⟨(325397966037/1000000000000 : ℚ), (1341572458657/10000000000 : ℚ), (-44389617961189/1000000000000 : ℚ), 8⟩,
+    ⟨(326751979177/1000000000000 : ℚ), (168090493997/2500000000 : ℚ), (-22578362982389/1000000000000 : ℚ), 7⟩,
+    ⟨(164276125911/500000000000 : ℚ), (199147940027/5000000000 : ℚ), (-1700329638031/125000000000 : ℚ), 6⟩,
+    ⟨(330794446959/1000000000000 : ℚ), (260418258469/10000000000 : ℚ), (-362369729689/40000000000 : ℚ), 6⟩,
+    ⟨(333473162943/1000000000000 : ℚ), (2271365061/125000000 : ℚ), (-1611556206621/250000000000 : ℚ), 5⟩,
+    ⟨(21036371657/62500000000 : ℚ), (66378238653/5000000000 : ℚ), (-24034510591/5000000000 : ℚ), 5⟩,
+    ⟨(170056654167/500000000000 : ℚ), (50182455919/5000000000 : ℚ), (-742284248767/200000000000 : ℚ), 4⟩,
+    ⟨(344058741051/1000000000000 : ℚ), (77903926149/10000000000 : ℚ), (-2943393514891/1000000000000 : ℚ), 4⟩,
+    ⟨(43551092471/125000000000 : ℚ), (61747884037/10000000000 : ℚ), (-9313490779/3906250000 : ℚ), 4⟩,
+    ⟨(353152824957/1000000000000 : ℚ), (49780016329/10000000000 : ℚ), (-245577256461/125000000000 : ℚ), 4⟩,
+    ⟨(358279567703/1000000000000 : ℚ), (40698061491/10000000000 : ℚ), (-1641689362719/1000000000000 : ℚ), 3⟩,
+    ⟨(22736038577/62500000000 : ℚ), (16832907629/5000000000 : ℚ), (-138790615519/100000000000 : ℚ), 3⟩,
+    ⟨(369630730671/1000000000000 : ℚ), (28126849099/10000000000 : ℚ), (-37027146529/31250000000 : ℚ), 3⟩,
+    ⟨(375827804947/1000000000000 : ℚ), (23699572487/10000000000 : ℚ), (-509956562047/500000000000 : ℚ), 3⟩,
+    ⟨(382352910767/1000000000000 : ℚ), (5028863649/2500000000 : ℚ), (-17681844289/20000000000 : ℚ), 3⟩,
+    ⟨(194595164289/500000000000 : ℚ), (17181259091/10000000000 : ℚ), (-770939262481/1000000000000 : ℚ), 3⟩,
+    ⟨(396323586443/1000000000000 : ℚ), (3688798581/2500000000 : ℚ), (-675686420501/1000000000000 : ℚ), 3⟩,
+    ⟨(201867749859/500000000000 : ℚ), (101851337/80000000 : ℚ), (-297378014261/500000000000 : ℚ), 2⟩,
+    ⟨(205704106227/500000000000 : ℚ), (11029708807/10000000000 : ℚ), (-52542119181/100000000000 : ℚ), 2⟩,
+    ⟨(13103851263/31250000000 : ℚ), (383537693/400000000 : ℚ), (-465574174009/1000000000000 : ℚ), 2⟩,
+    ⟨(427461515607/1000000000000 : ℚ), (8359695191/10000000000 : ℚ), (-16542606731/40000000000 : ℚ), 2⟩,
+    ⟨(435803432209/1000000000000 : ℚ), (3652896093/5000000000 : ℚ), (-184044010781/500000000000 : ℚ), 2⟩,
+    ⟨(88865778763/200000000000 : ℚ), (3198409871/5000000000 : ℚ), (-164048955301/500000000000 : ℚ), 2⟩,
+    ⟨(453017361841/1000000000000 : ℚ), (5608812481/10000000000 : ℚ), (-292751148227/1000000000000 : ℚ), 2⟩,
+    ⟨(230923952503/500000000000 : ℚ), (984482473/2000000000 : ℚ), (-261360573569/1000000000000 : ℚ), 2⟩,
+    ⟨(470799249759/1000000000000 : ℚ), (108046627/250000000 : ℚ), (-116681038379/500000000000 : ℚ), 2⟩,
+    ⟨(239924915763/500000000000 : ℚ), (3794260373/10000000000 : ℚ), (-52072297743/250000000000 : ℚ), 2⟩,
+    ⟨(488977846663/1000000000000 : ℚ), (3328951077/10000000000 : ℚ), (-185753602559/1000000000000 : ℚ), 2⟩,
+    ⟨(498161304981/1000000000000 : ℚ), (1458552277/5000000000 : ℚ), (-20678756847/125000000000 : ℚ), 2⟩,
+    ⟨(253689041363/500000000000 : ℚ), (2551353301/10000000000 : ℚ), (-9190284139/62500000000 : ℚ), 2⟩,
+    ⟨(8071968373/15625000000 : ℚ), (1112760293/5000000000 : ℚ), (-130365028291/1000000000000 : ℚ), 2⟩,
+    ⟨(525822753617/1000000000000 : ℚ), (12090021/62500000 : ℚ), (-23038802709/200000000000 : ℚ), 2⟩,
+    ⟨(107001242387/200000000000 : ℚ), (1673599279/10000000000 : ℚ), (-25340664821/250000000000 : ℚ), 2⟩,
+    ⟨(4251048649/7812500000 : ℚ), (719683981/5000000000 : ℚ), (-88725998297/1000000000000 : ℚ), 2⟩,
+    ⟨(553184808839/1000000000000 : ℚ), (614259521/5000000000 : ℚ), (-77159071167/1000000000000 : ℚ), 2⟩,
+    ⟨(70267019199/125000000000 : ℚ), (129790163/1250000000 : ℚ), (-2079805273/31250000000 : ℚ), 2⟩,
+    ⟨(570966696757/1000000000000 : ℚ), (433214277/5000000000 : ℚ), (-28408120417/500000000000 : ℚ), 2⟩,
+    ⟨(579655164783/1000000000000 : ℚ), (355409417/5000000000 : ℚ), (-5983094767/125000000000 : ℚ), 2⟩,
+    ⟨(588180626389/1000000000000 : ℚ), (284872171/5000000000 : ℚ), (-4953492299/125000000000 : ℚ), 2⟩,
+    ⟨(37282658937/62500000000 : ℚ), (88338001/2000000000 : ℚ), (-16021634923/500000000000 : ℚ), 2⟩,
+    ⟨(302330409091/500000000000 : ℚ), (6506781/200000000 : ℚ), (-25055874133/1000000000000 : ℚ), 2⟩,
+    ⟨(2392874399/3906250000 : ℚ), (219544301/10000000000 : ℚ), (-18617468147/1000000000000 : ℚ), 2⟩,
+    ⟨(620248558881/1000000000000 : ℚ), (30826037/2500000000 : ℚ), (-2537097487/200000000000 : ℚ), 2⟩,
+    ⟨(125532094431/200000000000 : ℚ), (35742377/10000000000 : ℚ), (-902793191/125000000000 : ℚ), 2⟩,
+    ⟨(31739686501/50000000000 : ℚ), (-5488603/1250000000 : ℚ), (-2194804421/1000000000000 : ℚ), 1⟩,
+    ⟨(641631147831/1000000000000 : ℚ), (-23264643/2000000000 : ℚ), (2426560959/1000000000000 : ℚ), 1⟩,
+    ⟨(648156253651/1000000000000 : ℚ), (-45523163/2500000000 : ℚ), (1333563903/200000000000 : ℚ), 1⟩,
+    ⟨(81794165991/125000000000 : ℚ), (-241737399/10000000000 : ℚ), (2638018787/250000000000 : ℚ), 1⟩,
+    ⟨(330103720683/500000000000 : ℚ), (-147857443/5000000000 : ℚ), (7049900377/500000000000 : ℚ), 1⟩,
+    ⟨(41606530681/62500000000 : ℚ), (-344427173/10000000000 : ℚ), (693165033/40000000000 : ℚ), 1⟩,
+    ⟨(670831233641/1000000000000 : ℚ), (-388227303/10000000000 : ℚ), (2025608231/100000000000 : ℚ), 1⟩,
+    ⟨(675575318831/1000000000000 : ℚ), (-427424717/10000000000 : ℚ), (22894815559/1000000000000 : ℚ), 1⟩,
+    ⟨(169981329387/250000000000 : ℚ), (-115572469/2500000000 : ℚ), (12628883151/500000000000 : ℚ), 1⟩,
+    ⟨(85483843783/125000000000 : ℚ), (-61632273/1250000000 : ℚ), (27355824991/1000000000000 : ℚ), 1⟩,
+    ⟨(687402112087/1000000000000 : ℚ), (-20797333/400000000 : ℚ), (5839692889/200000000000 : ℚ), 1⟩,
+    ⟨(86313861957/125000000000 : ℚ), (-543090083/10000000000 : ℚ), (3079385237/100000000000 : ℚ), 1⟩,
+    ⟨(693189611639/1000000000000 : ℚ), (-562676711/10000000000 : ℚ), (3214894627/100000000000 : ℚ), 1⟩,
+    ⟨(86928975847/125000000000 : ℚ), (-578816903/10000000000 : ℚ), (8317393201/250000000000 : ℚ), 1⟩,
+    ⟨(348616039711/500000000000 : ℚ), (-147902853/2500000000 : ℚ), (34160493119/1000000000000 : ℚ), 1⟩,
+    ⟨(698586092561/1000000000000 : ℚ), (-601139351/10000000000 : ℚ), (34825455733/1000000000000 : ℚ), 1⟩,
+    ⟨(699490584259/1000000000000 : ℚ), (-303729599/5000000000 : ℚ), (8816809257/250000000000 : ℚ), 1⟩,
+    ⟨(349971687757/500000000000 : ℚ), (-122121907/2000000000 : ℚ), (35487671399/1000000000000 : ℚ), 1⟩,
+    ⟨(7/10 : ℚ), (-611002879/10000000000 : ℚ), (7103040873/200000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (399999/1000000 : ℚ)
+  x := (117172050453/500000000000 : ℚ)
+  μ := (7/10 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control88.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control88.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate88
+
+namespace DiagonalRamsey.JointInheritedCertificate94
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(100053001999/500000000000 : ℚ), (51705501793/80000000 : ℚ), (-8123275865253/62500000000 : ℚ), 10⟩,
+    ⟨(20154920531/100000000000 : ℚ), (69444525423/1000000000 : ℚ), (-7191683809551/500000000000 : ℚ), 7⟩,
+    ⟨(204421709117/1000000000000 : ℚ), (237824994843/10000000000 : ℚ), (-642037103491/125000000000 : ℚ), 6⟩,
+    ⟨(208695851637/1000000000000 : ℚ), (57102220413/5000000000 : ℚ), (-2588688945031/1000000000000 : ℚ), 5⟩,
+    ⟨(214330470541/1000000000000 : ℚ), (64528449111/10000000000 : ℚ), (-1540332251627/1000000000000 : ℚ), 4⟩,
+    ⟨(27658912671/125000000000 : ℚ), (2506962799/625000000 : ℚ), (-504837917981/500000000000 : ℚ), 4⟩,
+    ⟨(229451500123/1000000000000 : ℚ), (13270094643/5000000000 : ℚ), (-140892777233/200000000000 : ℚ), 3⟩,
+    ⟨(119396143511/500000000000 : ℚ), (18343617703/10000000000 : ℚ), (-512938716641/1000000000000 : ℚ), 3⟩,
+    ⟨(249203705179/1000000000000 : ℚ), (6542857117/5000000000 : ℚ), (-76976340079/200000000000 : ℚ), 3⟩,
+    ⟨(130292743473/500000000000 : ℚ), (149280343/156250000 : ℚ), (-73752956807/250000000000 : ℚ), 3⟩,
+    ⟨(272828019543/1000000000000 : ℚ), (1418590599/2000000000 : ℚ), (-229478389121/1000000000000 : ℚ), 2⟩,
+    ⟨(28581340069/100000000000 : ℚ), (1331365491/2500000000 : ℚ), (-180179276441/1000000000000 : ℚ), 2⟩,
+    ⟨(59883314813/200000000000 : ℚ), (4023164249/10000000000 : ℚ), (-35530340881/250000000000 : ℚ), 2⟩,
+    ⟨(12540261347/40000000000 : ℚ), (380278517/1250000000 : ℚ), (-28023570163/250000000000 : ℚ), 2⟩,
+    ⟨(65589517101/200000000000 : ℚ), (2288978569/10000000000 : ℚ), (-43980196659/500000000000 : ℚ), 2⟩,
+    ⟨(85650163583/250000000000 : ℚ), (1700680693/10000000000 : ℚ), (-34127074911/500000000000 : ℚ), 2⟩,
+    ⟨(357324623093/1000000000000 : ℚ), (617154361/5000000000 : ℚ), (-51945754047/1000000000000 : ℚ), 2⟩,
+    ⟨(4649721149/12500000000 : ℚ), (26866893/312500000 : ℚ), (-19148192163/500000000000 : ℚ), 2⟩,
+    ⟨(386418743751/1000000000000 : ℚ), (555505299/10000000000 : ℚ), (-26766544373/1000000000000 : ℚ), 2⟩,
+    ⟨(625794849/1562500000 : ℚ), (153027121/5000000000 : ℚ), (-2119545959/125000000000 : ℚ), 2⟩,
+    ⟨(3235249037/7812500000 : ℚ), (49984579/5000000000 : ℚ), (-856574507/100000000000 : ℚ), 2⟩,
+    ⟨(213548628941/500000000000 : ℚ), (-71238469/10000000000 : ℚ), (-1367096529/1000000000000 : ℚ), 2⟩,
+    ⟨(439339790479/1000000000000 : ℚ), (-213946391/10000000000 : ℚ), (601699113/125000000000 : ℚ), 2⟩,
+    ⟨(450721572247/1000000000000 : ℚ), (-41623629/1250000000 : ℚ), (1011021219/100000000000 : ℚ), 2⟩,
+    ⟨(115283247601/250000000000 : ℚ), (-432056093/10000000000 : ℚ), (14626194531/1000000000000 : ℚ), 2⟩,
+    ⟨(235236888651/500000000000 : ℚ), (-513975873/10000000000 : ℚ), (18441565917/1000000000000 : ℚ), 2⟩,
+    ⟨(239326988029/500000000000 : ℚ), (-145229647/2500000000 : ℚ), (21618136773/1000000000000 : ℚ), 2⟩,
+    ⟨(97118961377/200000000000 : ℚ), (-634543243/10000000000 : ℚ), (24203351409/1000000000000 : ℚ), 2⟩,
+    ⟨(122807356447/250000000000 : ℚ), (-676104003/10000000000 : ℚ), (26233149461/1000000000000 : ℚ), 2⟩,
+    ⟨(123875892077/250000000000 : ℚ), (-706526891/10000000000 : ℚ), (6933519993/250000000000 : ℚ), 2⟩,
+    ⟨(99675214423/200000000000 : ℚ), (-363232107/5000000000 : ℚ), (28724835353/1000000000000 : ℚ), 2⟩,
+    ⟨(499819273427/1000000000000 : ℚ), (-184082929/2500000000 : ℚ), (5843463777/200000000000 : ℚ), 1⟩,
+    ⟨(1/2 : ℚ), (-147512093/2000000000 : ℚ), (1463937261/50000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (1/2 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (412499/1000000 : ℚ)
+  x := (12495215451/40000000000 : ℚ)
+  μ := (1/2 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control94.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control94.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate94
+
+namespace DiagonalRamsey.JointInheritedCertificate95
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(2635069949/12500000000 : ℚ), (3302420473407/5000000000 : ℚ), (-6995482936053/50000000000 : ℚ), 10⟩,
+    ⟨(212293554251/1000000000000 : ℚ), (177512948879/2500000000 : ℚ), (-15482958790593/1000000000000 : ℚ), 7⟩,
+    ⟨(215255141061/1000000000000 : ℚ), (48669980881/2000000000 : ℚ), (-5528887605061/1000000000000 : ℚ), 6⟩,
+    ⟨(219661834649/1000000000000 : ℚ), (187126931/16000000 : ℚ), (-1393254287391/500000000000 : ℚ), 5⟩,
+    ⟨(56367799037/250000000000 : ℚ), (33069546703/5000000000 : ℚ), (-1658014957909/1000000000000 : ℚ), 4⟩,
+    ⟨(23262727823/100000000000 : ℚ), (20574041599/5000000000 : ℚ), (-135851170837/125000000000 : ℚ), 4⟩,
+    ⟨(120530581957/500000000000 : ℚ), (5449868507/2000000000 : ℚ), (-47393203177/62500000000 : ℚ), 3⟩,
+    ⟨(250691630269/1000000000000 : ℚ), (471241819/250000000 : ℚ), (-276079240093/500000000000 : ℚ), 3⟩,
+    ⟨(261425930641/1000000000000 : ℚ), (13458196503/10000000000 : ℚ), (-207176460497/500000000000 : ℚ), 3⟩,
+    ⟨(34145085981/125000000000 : ℚ), (4917340391/5000000000 : ℚ), (-3176605293/10000000000 : ℚ), 3⟩,
+    ⟨(71445722441/250000000000 : ℚ), (7308561897/10000000000 : ℚ), (-123585656713/500000000000 : ℚ), 2⟩,
+    ⟨(74792744421/250000000000 : ℚ), (2746812453/5000000000 : ℚ), (-194163245213/1000000000000 : ℚ), 2⟩,
+    ⟨(313196017003/1000000000000 : ℚ), (415604347/1000000000 : ℚ), (-153260856259/1000000000000 : ℚ), 2⟩,
+    ⟨(163861469463/500000000000 : ℚ), (78710609/250000000 : ℚ), (-60503819069/500000000000 : ℚ), 2⟩,
+    ⟨(342611841253/1000000000000 : ℚ), (2374714787/10000000000 : ℚ), (-95101758931/1000000000000 : ℚ), 2⟩,
+    ⟨(71543867143/200000000000 : ℚ), (1770546593/10000000000 : ℚ), (-73964799449/1000000000000 : ℚ), 2⟩,
+    ⟨(372899928883/1000000000000 : ℚ), (645872479/5000000000 : ℚ), (-28243685903/500000000000 : ℚ), 2⟩,
+    ⟨(77601484669/200000000000 : ℚ), (907362969/10000000000 : ℚ), (-20936641251/500000000000 : ℚ), 2⟩,
+    ⟨(50362040709/125000000000 : ℚ), (595327239/10000000000 : ℚ), (-14770443469/500000000000 : ℚ), 2⟩,
+    ⟨(83484649519/200000000000 : ℚ), (339642497/10000000000 : ℚ), (-19058838741/1000000000000 : ℚ), 2⟩,
+    ⟨(215724143457/500000000000 : ℚ), (12855507/1000000000 : ℚ), (-10103178609/1000000000000 : ℚ), 2⟩,
+    ⟨(222418187417/500000000000 : ℚ), (-23339157/5000000000 : ℚ), (-303504169/125000000000 : ℚ), 2⟩,
+    ⟨(1829834307/4000000000 : ℚ), (-48157687/2500000000 : ℚ), (4154788479/1000000000000 : ℚ), 2⟩,
+    ⟨(469193333957/1000000000000 : ℚ), (-157143801/5000000000 : ℚ), (9790252583/1000000000000 : ℚ), 2⟩,
+    ⟨(479927634329/1000000000000 : ℚ), (-83091177/2000000000 : ℚ), (291809957/20000000000 : ℚ), 2⟩,
+    ⟨(122389525171/250000000000 : ℚ), (-499055351/10000000000 : ℚ), (932120659/50000000000 : ℚ), 2⟩,
+    ⟨(7781124787/15625000000 : ℚ), (-567327489/10000000000 : ℚ), (2751651833/125000000000 : ℚ), 2⟩,
+    ⟨(10102961369/20000000000 : ℚ), (-310993279/5000000000 : ℚ), (6188644767/250000000000 : ℚ), 2⟩,
+    ⟨(510957429949/1000000000000 : ℚ), (-166082253/2500000000 : ℚ), (13452857183/500000000000 : ℚ), 2⟩,
+    ⟨(515364123537/1000000000000 : ℚ), (-86914053/1250000000 : ℚ), (712390667/25000000000 : ℚ), 1⟩,
+    ⟨(518325710347/1000000000000 : ℚ), (-715611511/10000000000 : ℚ), (29544764519/1000000000000 : ℚ), 1⟩,
+    ⟨(519813668677/1000000000000 : ℚ), (-145131277/2000000000 : ℚ), (30066162183/1000000000000 : ℚ), 1⟩,
+    ⟨(13/25 : ℚ), (-726907143/10000000000 : ℚ), (30131189951/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (412499/1000000 : ℚ)
+  x := (306746010383/1000000000000 : ℚ)
+  μ := (13/25 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control95.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control95.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate95
+
+namespace DiagonalRamsey.JointInheritedCertificate96
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(227531156959/1000000000000 : ℚ), (6836821811159/10000000000 : ℚ), (-156291181771643/1000000000000 : ℚ), 10⟩,
+    ⟨(229082996821/1000000000000 : ℚ), (735615172329/10000000000 : ℚ), (-17295653776741/1000000000000 : ℚ), 7⟩,
+    ⟨(232171731479/1000000000000 : ℚ), (252403141323/10000000000 : ℚ), (-193003020497/31250000000 : ℚ), 6⟩,
+    ⟨(236767614731/1000000000000 : ℚ), (6073142733/500000000 : ℚ), (-1556319802171/500000000000 : ℚ), 5⟩,
+    ⟨(121413192853/500000000000 : ℚ), (68781620673/10000000000 : ℚ), (-463010625139/250000000000 : ℚ), 4⟩,
+    ⟨(25028969513/100000000000 : ℚ), (42850286039/10000000000 : ℚ), (-242798859031/200000000000 : ℚ), 4⟩,
+    ⟨(259085667253/1000000000000 : ℚ), (28414768561/10000000000 : ℚ), (-211764832981/250000000000 : ℚ), 3⟩,
+    ⟨(134564796027/500000000000 : ℚ), (19682073217/10000000000 : ℚ), (-154212518629/250000000000 : ℚ), 3⟩,
+    ⟨(35040592631/125000000000 : ℚ), (14071428741/10000000000 : ℚ), (-231489512289/500000000000 : ℚ), 3⟩,
+    ⟨(292563298829/1000000000000 : ℚ), (2574314463/2500000000 : ℚ), (-177522778209/500000000000 : ℚ), 3⟩,
+    ⟨(76431850349/250000000000 : ℚ), (766408743/1000000000 : ℚ), (-17274589941/62500000000 : ℚ), 2⟩,
+    ⟨(63938054249/200000000000 : ℚ), (5771084877/10000000000 : ℚ), (-108639334957/500000000000 : ℚ), 2⟩,
+    ⟨(167158719153/500000000000 : ℚ), (4375384503/10000000000 : ℚ), (-171695425599/1000000000000 : ℚ), 2⟩,
+    ⟨(69893606993/200000000000 : ℚ), (664752383/2000000000 : ℚ), (-8486334709/62500000000 : ℚ), 2⟩,
+    ⟨(364996152693/1000000000000 : ℚ), (314533797/1250000000 : ℚ), (-106963851793/1000000000000 : ℚ), 2⟩,
+    ⟨(380752247229/1000000000000 : ℚ), (1885865917/10000000000 : ℚ), (-8347832559/100000000000 : ℚ), 2⟩,
+    ⟨(24786536173/62500000000 : ℚ), (346622597/2500000000 : ℚ), (-32042033617/500000000000 : ℚ), 2⟩,
+    ⟨(51542584163/125000000000 : ℚ), (985844147/10000000000 : ℚ), (-5986273207/125000000000 : ℚ), 2⟩,
+    ⟨(53483598879/125000000000 : ℚ), (660865153/10000000000 : ℚ), (-33442803/976562500 : ℚ), 2⟩,
+    ⟨(443019387691/1000000000000 : ℚ), (394824643/10000000000 : ℚ), (-4533286839/200000000000 : ℚ), 2⟩,
+    ⟨(3575363709/7812500000 : ℚ), (175417609/10000000000 : ℚ), (-12789792777/1000000000000 : ℚ), 2⟩,
+    ⟨(471609424601/1000000000000 : ℚ), (-101849/156250000 : ℚ), (-867869553/200000000000 : ℚ), 2⟩,
+    ⟨(3787293181/7812500000 : ℚ), (-157877967/10000000000 : ℚ), (579318087/200000000000 : ℚ), 2⟩,
+    ⟨(497012084949/1000000000000 : ℚ), (-35486937/1250000000 : ℚ), (4540687129/500000000000 : ℚ), 2⟩,
+    ⟨(508207233943/1000000000000 : ℚ), (-388571549/10000000000 : ℚ), (2868323583/200000000000 : ℚ), 2⟩,
+    ⟨(64781394843/125000000000 : ℚ), (-474977009/10000000000 : ℚ), (9387821077/500000000000 : ℚ), 2⟩,
+    ⟨(263523565433/500000000000 : ℚ), (-109094259/2000000000 : ℚ), (22459685277/1000000000000 : ℚ), 2⟩,
+    ⟨(53451044029/100000000000 : ℚ), (-120372043/2000000000 : ℚ), (6363125769/250000000000 : ℚ), 2⟩,
+    ⟨(270284605633/500000000000 : ℚ), (-5164083/80000000 : ℚ), (3474847559/125000000000 : ℚ), 1⟩,
+    ⟨(545165094517/1000000000000 : ℚ), (-169357937/2500000000 : ℚ), (14765824413/500000000000 : ℚ), 1⟩,
+    ⟨(68531728647/125000000000 : ℚ), (-69833631/1000000000 : ℚ), (7668627479/250000000000 : ℚ), 1⟩,
+    ⟨(274902834519/500000000000 : ℚ), (-708678081/10000000000 : ℚ), (7810575637/250000000000 : ℚ), 1⟩,
+    ⟨(11/20 : ℚ), (-709965679/10000000000 : ℚ), (31313107889/1000000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (412499/1000000 : ℚ)
+  x := (148941152833/500000000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control96.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control96.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate96
+
+namespace DiagonalRamsey.JointInheritedCertificate97
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(32139636507/125000000000 : ℚ), (14611060051849/5000000000 : ℚ), (-752392635613513/1000000000000 : ℚ), 12⟩,
+    ⟨(25753004733/100000000000 : ℚ), (3215272514107/10000000000 : ℚ), (-5219660761299/62500000000 : ℚ), 9⟩,
+    ⟨(25835496303/100000000000 : ℚ), (569838961883/5000000000 : ℚ), (-15002180497561/500000000000 : ℚ), 8⟩,
+    ⟨(51917970373/200000000000 : ℚ), (570105584163/10000000000 : ℚ), (-15261793326039/1000000000000 : ℚ), 7⟩,
+    ⟨(130615869439/500000000000 : ℚ), (337010646947/10000000000 : ℚ), (-1838987659133/200000000000 : ℚ), 6⟩,
+    ⟨(263276668619/1000000000000 : ℚ), (109925002751/5000000000 : ℚ), (-3061976307443/500000000000 : ℚ), 6⟩,
+    ⟨(132859857337/500000000000 : ℚ), (76519541131/5000000000 : ℚ), (-4357727208479/1000000000000 : ℚ), 5⟩,
+    ⟨(268554991531/1000000000000 : ℚ), (111537445847/10000000000 : ℚ), (-3249628062423/1000000000000 : ℚ), 5⟩,
+    ⟨(271775668759/1000000000000 : ℚ), (21028472857/2500000000 : ℚ), (-2509110421267/1000000000000 : ℚ), 4⟩,
+    ⟨(55074797493/200000000000 : ℚ), (16281573337/2500000000 : ℚ), (-397982752563/200000000000 : ℚ), 4⟩,
+    ⟨(55868255797/200000000000 : ℚ), (51490507027/10000000000 : ℚ), (-100743615409/62500000000 : ℚ), 4⟩,
+    ⟨(70916996441/250000000000 : ℚ), (41406579581/10000000000 : ℚ), (-1328165113919/1000000000000 : ℚ), 4⟩,
+    ⟨(72085921097/250000000000 : ℚ), (16883818581/5000000000 : ℚ), (-1109788038019/1000000000000 : ℚ), 3⟩,
+    ⟨(29335711069/100000000000 : ℚ), (27863289737/10000000000 : ℚ), (-938137362289/1000000000000 : ℚ), 3⟩,
+    ⟨(59739237377/200000000000 : ℚ), (23221096157/10000000000 : ℚ), (-800776402929/1000000000000 : ℚ), 3⟩,
+    ⟨(19021753167/62500000000 : ℚ), (9758635949/5000000000 : ℚ), (-86143189923/125000000000 : ℚ), 3⟩,
+    ⟨(38787385777/125000000000 : ℚ), (16524130923/10000000000 : ℚ), (-298598618101/500000000000 : ℚ), 3⟩,
+    ⟨(39566869619/125000000000 : ℚ), (2815592587/2000000000 : ℚ), (-520560782423/1000000000000 : ℚ), 3⟩,
+    ⟨(323040640119/1000000000000 : ℚ), (12058751081/10000000000 : ℚ), (-91202745417/200000000000 : ℚ), 3⟩,
+    ⟨(164900231479/500000000000 : ℚ), (10376996581/10000000000 : ℚ), (-401138163637/1000000000000 : ℚ), 2⟩,
+    ⟨(21049883779/62500000000 : ℚ), (8964943017/10000000000 : ℚ), (-177045642533/500000000000 : ℚ), 2⟩,
+    ⟨(344016814617/1000000000000 : ℚ), (1942649937/2500000000 : ℚ), (-313448832729/1000000000000 : ℚ), 2⟩,
+    ⟨(351439095001/1000000000000 : ℚ), (6753589993/10000000000 : ℚ), (-278096113887/1000000000000 : ℚ), 2⟩,
+    ⟨(89761775173/250000000000 : ℚ), (2941107289/5000000000 : ℚ), (-123575378203/500000000000 : ℚ), 2⟩,
+    ⟨(45852812917/125000000000 : ℚ), (2565670833/5000000000 : ℚ), (-219907058849/1000000000000 : ℚ), 2⟩,
+    ⟨(374746571309/1000000000000 : ℚ), (1120216949/2500000000 : ℚ), (-48948825263/250000000000 : ℚ), 2⟩,
+    ⟨(382800214837/1000000000000 : ℚ), (391458051/1000000000 : ℚ), (-174351586353/1000000000000 : ℚ), 2⟩,
+    ⟨(195482015993/500000000000 : ℚ), (1709653753/5000000000 : ℚ), (-155195211769/1000000000000 : ℚ), 2⟩,
+    ⟨(399218355407/1000000000000 : ℚ), (298427299/1000000000 : ℚ), (-138011490463/1000000000000 : ℚ), 2⟩,
+    ⟨(40754329971/100000000000 : ℚ), (650151443/2500000000 : ℚ), (-61269287893/500000000000 : ℚ), 2⟩,
+    ⟨(415918809377/1000000000000 : ℚ), (452191951/2000000000 : ℚ), (-10855725417/100000000000 : ℚ), 2⟩,
+    ⟨(424324707071/1000000000000 : ℚ), (979609291/5000000000 : ℚ), (-23970741601/250000000000 : ℚ), 2⟩,
+    ⟨(54092592781/125000000000 : ℚ), (21128299/125000000 : ℚ), (-42179759071/500000000000 : ℚ), 2⟩,
+    ⟨(441146639941/1000000000000 : ℚ), (724896149/5000000000 : ℚ), (-7385408197/100000000000 : ℚ), 2⟩,
+    ⟨(56190268701/125000000000 : ℚ), (617084659/5000000000 : ℚ), (-16063299177/250000000000 : ℚ), 2⟩,
+    ⟨(57230886739/125000000000 : ℚ), (1040312867/10000000000 : ℚ), (-55459543511/1000000000000 : ℚ), 2⟩,
+    ⟨(466101417333/1000000000000 : ℚ), (432799491/5000000000 : ℚ), (-11847332447/250000000000 : ℚ), 2⟩,
+    ⟨(237132617241/500000000000 : ℚ), (353892777/5000000000 : ℚ), (-39970154329/1000000000000 : ℚ), 2⟩,
+    ⟨(48231887801/100000000000 : ℚ), (564950161/10000000000 : ℚ), (-8284813739/250000000000 : ℚ), 2⟩,
+    ⟨(490242945983/1000000000000 : ℚ), (217719581/5000000000 : ℚ), (-671051559/25000000000 : ℚ), 2⟩,
+    ⟨(498018348627/1000000000000 : ℚ), (317825817/10000000000 : ℚ), (-10515500231/500000000000 : ℚ), 2⟩,
+    ⟨(252813177159/500000000000 : ℚ), (52718921/2500000000 : ℚ), (-15664486723/1000000000000 : ℚ), 2⟩,
+    ⟨(513048634701/1000000000000 : ℚ), (14189739/1250000000 : ℚ), (-10706095409/1000000000000 : ℚ), 2⟩,
+    ⟨(104053461771/200000000000 : ℚ), (3102667/1250000000 : ℚ), (-6123854579/1000000000000 : ℚ), 2⟩,
+    ⟨(527264986361/1000000000000 : ℚ), (-7003189/1250000000 : ℚ), (-1889651841/1000000000000 : ℚ), 2⟩,
+    ⟨(1335062023/2500000000 : ℚ), (-25946231/2000000000 : ℚ), (2021267681/1000000000000 : ℚ), 2⟩,
+    ⟨(540530492367/1000000000000 : ℚ), (-49228817/2500000000 : ℚ), (2815364241/500000000000 : ℚ), 2⟩,
+    ⟨(273383181551/500000000000 : ℚ), (-258120573/10000000000 : ℚ), (8957989019/1000000000000 : ℚ), 2⟩,
+    ⟨(276358699323/500000000000 : ℚ), (-156911447/5000000000 : ℚ), (6010026211/500000000000 : ℚ), 2⟩,
+    ⟨(279184631217/500000000000 : ℚ), (-91109921/2500000000 : ℚ), (1483193301/100000000000 : ℚ), 2⟩,
+    ⟨(563708338629/1000000000000 : ℚ), (-410337271/10000000000 : ℚ), (1740688541/100000000000 : ℚ), 2⟩,
+    ⟨(56872176493/100000000000 : ℚ), (-451837013/10000000000 : ℚ), (1234787527/62500000000 : ℚ), 2⟩,
+    ⟨(114679492711/200000000000 : ℚ), (-61152569/1250000000 : ℚ), (21891374999/1000000000000 : ℚ), 2⟩,
+    ⟨(288862085167/500000000000 : ℚ), (-130683571/2500000000 : ℚ), (2977532201/125000000000 : ℚ), 2⟩,
+    ⟨(581691461853/1000000000000 : ℚ), (-552593167/10000000000 : ℚ), (2555117343/100000000000 : ℚ), 1⟩,
+    ⟨(7316122257/12500000000 : ℚ), (-578983969/10000000000 : ℚ), (27091032661/1000000000000 : ℚ), 1⟩,
+    ⟨(147127614447/250000000000 : ℚ), (-602068017/10000000000 : ℚ), (14222911163/500000000000 : ℚ), 1⟩,
+    ⟨(118269146929/200000000000 : ℚ), (-62198353/1000000000 : ℚ), (29620685553/1000000000000 : ℚ), 1⟩,
+    ⟨(5937887807/10000000000 : ℚ), (-25553903/400000000 : ℚ), (30619988169/1000000000000 : ℚ), 1⟩,
+    ⟨(595833710441/1000000000000 : ℚ), (-10199339/156250000 : ℚ), (6289474923/200000000000 : ℚ), 1⟩,
+    ⟨(298737798727/500000000000 : ℚ), (-331896629/5000000000 : ℚ), (32105814963/1000000000000 : ℚ), 1⟩,
+    ⟨(37419405393/62500000000 : ℚ), (-168004129/2500000000 : ℚ), (32597641647/1000000000000 : ℚ), 1⟩,
+    ⟨(599535401989/1000000000000 : ℚ), (-169368363/2500000000 : ℚ), (32924578969/1000000000000 : ℚ), 1⟩,
+    ⟨(299974178631/500000000000 : ℚ), (-68019439/1000000000 : ℚ), (1323510601/40000000000 : ℚ), 1⟩,
+    ⟨(3/5 : ℚ), (-136106831/2000000000 : ℚ), (827703751/25000000000 : ℚ), 1⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (412499/1000000 : ℚ)
+  x := (281947559001/1000000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control97.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control97.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate97
+
+namespace DiagonalRamsey.JointInheritedCertificate106
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(746627101/3906250000 : ℚ), (3136273108061/5000000000 : ℚ), (-60244578634611/500000000000 : ℚ), 10⟩,
+    ⟨(96263328071/500000000000 : ℚ), (134765894409/2000000000 : ℚ), (-833384635699/62500000000 : ℚ), 7⟩,
+    ⟨(97646752557/500000000000 : ℚ), (230705740007/10000000000 : ℚ), (-4761782609309/1000000000000 : ℚ), 6⟩,
+    ⟨(39882087701/200000000000 : ℚ), (55377545289/5000000000 : ℚ), (-240003205611/100000000000 : ℚ), 5⟩,
+    ⟨(51209451999/250000000000 : ℚ), (6256171423/1000000000 : ℚ), (-57125182089/40000000000 : ℚ), 4⟩,
+    ⟨(211523345051/1000000000000 : ℚ), (9719386623/2500000000 : ℚ), (-936144898437/1000000000000 : ℚ), 4⟩,
+    ⟨(109701332147/500000000000 : ℚ), (1607239429/625000000 : ℚ), (-130629614191/200000000000 : ℚ), 3⟩,
+    ⟨(114199941787/500000000000 : ℚ), (17767642039/10000000000 : ℚ), (-118884246199/250000000000 : ℚ), 3⟩,
+    ⟨(238428354749/1000000000000 : ℚ), (791843427/625000000 : ℚ), (-356758320911/1000000000000 : ℚ), 3⟩,
+    ⟨(124695749081/500000000000 : ℚ), (1155636463/1250000000 : ℚ), (-273376702513/1000000000000 : ℚ), 3⟩,
+    ⟨(261183732747/1000000000000 : ℚ), (6858773167/10000000000 : ℚ), (-106276467493/500000000000 : ℚ), 2⟩,
+    ⟨(273691492839/1000000000000 : ℚ), (128616387/250000000 : ℚ), (-166776869723/1000000000000 : ℚ), 2⟩,
+    ⟨(17924645117/62500000000 : ℚ), (970344413/2500000000 : ℚ), (-131420400541/1000000000000 : ℚ), 2⟩,
+    ⟨(150183016219/500000000000 : ℚ), (585902317/2000000000 : ℚ), (-103508020149/1000000000000 : ℚ), 2⟩,
+    ⟨(157137960773/500000000000 : ℚ), (2198269467/10000000000 : ℚ), (-81058625851/1000000000000 : ℚ), 2⟩,
+    ⟨(328390029361/1000000000000 : ℚ), (81343141/500000000 : ℚ), (-62714119173/1000000000000 : ℚ), 2⟩,
+    ⟨(342572429307/1000000000000 : ℚ), (1173609313/10000000000 : ℚ), (-9504067751/200000000000 : ℚ), 2⟩,
+    ⟨(356686537121/1000000000000 : ℚ), (1580729/19531250 : ℚ), (-34792856281/1000000000000 : ℚ), 2⟩,
+    ⟨(37059642623/100000000000 : ℚ), (102648467/2000000000 : ℚ), (-12016012321/500000000000 : ℚ), 2⟩,
+    ⟨(96042034199/250000000000 : ℚ), (270282331/10000000000 : ℚ), (-14867642549/1000000000000 : ℚ), 2⟩,
+    ⟨(99317741457/250000000000 : ℚ), (3470013/500000000 : ℚ), (-7021994749/1000000000000 : ℚ), 2⟩,
+    ⟨(409778725921/1000000000000 : ℚ), (-6101197/625000000 : ℚ), (-71152201/250000000000 : ℚ), 2⟩,
+    ⟨(210785480253/500000000000 : ℚ), (-47389403/2000000000 : ℚ), (2752664429/500000000000 : ℚ), 2⟩,
+    ⟨(216267051959/500000000000 : ℚ), (-353260029/10000000000 : ℚ), (2094287491/200000000000 : ℚ), 2⟩,
+    ⟨(221281287547/500000000000 : ℚ), (-56265829/1250000000 : ℚ), (1470911401/100000000000 : ℚ), 2⟩,
+    ⟨(451559794373/1000000000000 : ℚ), (-530281459/10000000000 : ℚ), (9146038529/500000000000 : ℚ), 2⟩,
+    ⟨(28714944601/62500000000 : ℚ), (-595822287/10000000000 : ℚ), (21277188539/1000000000000 : ℚ), 2⟩,
+    ⟨(466124650671/1000000000000 : ℚ), (-129670463/2000000000 : ℚ), (23708032791/1000000000000 : ℚ), 2⟩,
+    ⟨(235776010081/500000000000 : ℚ), (-689083207/10000000000 : ℚ), (25617578581/1000000000000 : ℚ), 2⟩,
+    ⟨(475668953553/1000000000000 : ℚ), (-71890939/1000000000 : ℚ), (5406029429/200000000000 : ℚ), 2⟩,
+    ⟨(239217901263/500000000000 : ℚ), (-738460791/10000000000 : ℚ), (27962842403/1000000000000 : ℚ), 2⟩,
+    ⟨(119956480203/250000000000 : ℚ), (-187034707/2500000000 : ℚ), (28426545933/1000000000000 : ℚ), 2⟩,
+    ⟨(12/25 : ℚ), (-93668007/1250000000 : ℚ), (3560548297/125000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (12/25 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (424999/1000000 : ℚ)
+  x := (82264349689/250000000000 : ℚ)
+  μ := (12/25 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (12/25 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control106.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control106.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate106
+
+namespace DiagonalRamsey.JointInheritedCertificate107
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(201594672037/1000000000000 : ℚ), (3202513942077/5000000000 : ℚ), (-129753943244099/1000000000000 : ℚ), 10⟩,
+    ⟨(101515354663/500000000000 : ℚ), (344212435971/5000000000 : ℚ), (-897459955427/62500000000 : ℚ), 7⟩,
+    ⟨(205888954079/1000000000000 : ℚ), (29484030419/1250000000 : ℚ), (-5127831170787/1000000000000 : ℚ), 6⟩,
+    ⟨(105070939919/500000000000 : ℚ), (56663144723/5000000000 : ℚ), (-1292244229397/500000000000 : ℚ), 5⟩,
+    ⟨(215748528601/1000000000000 : ℚ), (32033745659/5000000000 : ℚ), (-1537869762137/1000000000000 : ℚ), 4⟩,
+    ⟨(222654905277/1000000000000 : ℚ), (3984659403/1000000000 : ℚ), (-1008077075757/1000000000000 : ℚ), 4⟩,
+    ⟨(230794497683/1000000000000 : ℚ), (26378639017/10000000000 : ℚ), (-140669563361/200000000000 : ℚ), 3⟩,
+    ⟨(48017783419/200000000000 : ℚ), (18240583157/10000000000 : ℚ), (-64014216487/125000000000 : ℚ), 3⟩,
+    ⟨(62612163293/250000000000 : ℚ), (6508795747/5000000000 : ℚ), (-384241879909/1000000000000 : ℚ), 3⟩,
+    ⟨(261773935993/1000000000000 : ℚ), (950746171/1000000000 : ℚ), (-294494722601/1000000000000 : ℚ), 3⟩,
+    ⟨(136977848447/500000000000 : ℚ), (3530151233/5000000000 : ℚ), (-114522763189/500000000000 : ℚ), 2⟩,
+    ⟨(286876618857/1000000000000 : ℚ), (2650939019/5000000000 : ℚ), (-89903118001/500000000000 : ℚ), 2⟩,
+    ⟨(300412266341/1000000000000 : ℚ), (4005663021/10000000000 : ℚ), (-141792334681/1000000000000 : ℚ), 2⟩,
+    ⟨(157216141831/500000000000 : ℚ), (3028898459/10000000000 : ℚ), (-111798888621/1000000000000 : ℚ), 2⟩,
+    ⟨(82200412597/250000000000 : ℚ), (1139286481/5000000000 : ℚ), (-87691761593/1000000000000 : ℚ), 2⟩,
+    ⟨(343381981663/1000000000000 : ℚ), (338474153/2000000000 : ℚ), (-68007674433/1000000000000 : ℚ), 2⟩,
+    ⟨(14321314437/40000000000 : ℚ), (613767591/5000000000 : ℚ), (-51718306469/1000000000000 : ℚ), 2⟩,
+    ⟨(1863065961/5000000000 : ℚ), (2669123/31250000 : ℚ), (-38085784291/1000000000000 : ℚ), 2⟩,
+    ⟨(193491279463/500000000000 : ℚ), (137691957/2500000000 : ℚ), (-26571206987/1000000000000 : ℚ), 2⟩,
+    ⟨(401002576247/1000000000000 : ℚ), (30200887/1000000000 : ℚ), (-524220811/31250000000 : ℚ), 2⟩,
+    ⟨(414538223731/1000000000000 : ℚ), (96476009/10000000000 : ℚ), (-4198725577/500000000000 : ℚ), 2⟩,
+    ⟨(213729572847/500000000000 : ℚ), (-37142047/5000000000 : ℚ), (-60543821/50000000000 : ℚ), 2⟩,
+    ⟨(87928181319/200000000000 : ℚ), (-216625049/10000000000 : ℚ), (619830883/125000000000 : ℚ), 2⟩,
+    ⟨(56370773677/125000000000 : ℚ), (-335364541/10000000000 : ℚ), (10245024119/1000000000000 : ℚ), 2⟩,
+    ⟨(461325925493/1000000000000 : ℚ), (-108545133/2500000000 : ℚ), (3687931767/250000000000 : ℚ), 2⟩,
+    ⟨(94124068981/200000000000 : ℚ), (-515893001/10000000000 : ℚ), (4639708129/250000000000 : ℚ), 2⟩,
+    ⟨(478759937311/1000000000000 : ℚ), (-582666201/10000000000 : ℚ), (21728204007/1000000000000 : ℚ), 2⟩,
+    ⟨(485666313987/1000000000000 : ℚ), (-127230967/2000000000 : ℚ), (12153668283/500000000000 : ℚ), 2⟩,
+    ⟨(491272962751/1000000000000 : ℚ), (-135521991/2000000000 : ℚ), (6583053519/250000000000 : ℚ), 2⟩,
+    ⟨(495525888509/1000000000000 : ℚ), (-4424721/62500000 : ℚ), (27829421967/1000000000000 : ℚ), 2⟩,
+    ⟨(249192066631/500000000000 : ℚ), (-363920913/5000000000 : ℚ), (7204420087/250000000000 : ℚ), 2⟩,
+    ⟨(499820170551/1000000000000 : ℚ), (-737684133/10000000000 : ℚ), (3663613857/125000000000 : ℚ), 2⟩,
+    ⟨(1/2 : ℚ), (-738909743/10000000000 : ℚ), (29370180309/1000000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (1/2 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (424999/1000000 : ℚ)
+  x := (323525843123/1000000000000 : ℚ)
+  μ := (1/2 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control107.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control107.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate107
+
+namespace DiagonalRamsey.JointInheritedCertificate108
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(10618053407/50000000000 : ℚ), (1636360487949/2500000000 : ℚ), (-27933393465711/200000000000 : ℚ), 10⟩,
+    ⟨(1336509631/6250000000 : ℚ), (87987037617/1250000000 : ℚ), (-3091258174483/200000000000 : ℚ), 7⟩,
+    ⟨(216788228839/1000000000000 : ℚ), (241350300347/10000000000 : ℚ), (-1379871592847/250000000000 : ℚ), 6⟩,
+    ⟨(221172753561/1000000000000 : ℚ), (29013392709/2500000000 : ℚ), (-278184650107/100000000000 : ℚ), 5⟩,
+    ⟨(56738222439/250000000000 : ℚ), (65665424891/10000000000 : ℚ), (-331056978823/200000000000 : ℚ), 4⟩,
+    ⟨(234072971553/1000000000000 : ℚ), (8175099307/2000000000 : ℚ), (-1085040221949/1000000000000 : ℚ), 4⟩,
+    ⟨(242464428671/1000000000000 : ℚ), (27082783717/10000000000 : ℚ), (-378529874417/500000000000 : ℚ), 3⟩,
+    ⟨(31505805849/125000000000 : ℚ), (1171456397/625000000 : ℚ), (-13781292397/25000000000 : ℚ), 3⟩,
+    ⟨(65681686461/250000000000 : ℚ), (13387800629/10000000000 : ℚ), (-206826526187/500000000000 : ℚ), 3⟩,
+    ⟨(274402468707/1000000000000 : ℚ), (1223328261/1250000000 : ℚ), (-63419605047/200000000000 : ℚ), 3⟩,
+    ⟨(71740292947/250000000000 : ℚ), (7274807471/10000000000 : ℚ), (-246703233957/1000000000000 : ℚ), 2⟩,
+    ⟨(30028190791/100000000000 : ℚ), (1093851927/2000000000 : ℚ), (-38752451587/200000000000 : ℚ), 2⟩,
+    ⟨(62847278221/200000000000 : ℚ), (413798503/1000000000 : ℚ), (-76454600021/500000000000 : ℚ), 2⟩,
+    ⟨(328690232069/1000000000000 : ℚ), (1567347491/5000000000 : ℚ), (-7543350377/62500000000 : ℚ), 2⟩,
+    ⟨(343504232413/1000000000000 : ℚ), (2364021319/10000000000 : ℚ), (-18963510349/200000000000 : ℚ), 2⟩,
+    ⟨(71707145043/200000000000 : ℚ), (220253629/1250000000 : ℚ), (-73705165961/1000000000000 : ℚ), 2⟩,
+    ⟨(46704993623/125000000000 : ℚ), (160602747/1250000000 : ℚ), (-14062181171/250000000000 : ℚ), 2⟩,
+    ⟨(194335720893/500000000000 : ℚ), (5635219/62500000 : ℚ), (-2082655579/50000000000 : ℚ), 2⟩,
+    ⟨(40348544213/100000000000 : ℚ), (590514867/10000000000 : ℚ), (-29337365651/1000000000000 : ℚ), 2⟩,
+    ⟨(208969641547/500000000000 : ℚ), (335546277/10000000000 : ℚ), (-18870558717/1000000000000 : ℚ), 2⟩,
+    ⟨(26993360393/62500000000 : ℚ), (125029559/10000000000 : ℚ), (-9928970621/1000000000000 : ℚ), 2⟩,
+    ⟨(445214502411/1000000000000 : ℚ), (-1554433/312500000 : ℚ), (-2266848313/1000000000000 : ℚ), 2⟩,
+    ⟨(114443301373/250000000000 : ℚ), (-97657931/5000000000 : ℚ), (860791459/200000000000 : ℚ), 2⟩,
+    ⟨(93889785671/200000000000 : ℚ), (-63332071/2000000000 : ℚ), (9928417967/1000000000000 : ℚ), 2⟩,
+    ⟨(240064613703/500000000000 : ℚ), (-417570103/10000000000 : ℚ), (14718707073/1000000000000 : ℚ), 2⟩,
+    ⟨(61213905691/125000000000 : ℚ), (-50095619/1000000000 : ℚ), (18761761881/1000000000000 : ℚ), 2⟩,
+    ⟨(249051351323/500000000000 : ℚ), (-35565869/625000000 : ℚ), (2765606427/125000000000 : ℚ), 2⟩,
+    ⟨(505222784443/1000000000000 : ℚ), (-7794663/125000000 : ℚ), (24859704019/1000000000000 : ℚ), 2⟩,
+    ⟨(255501460319/500000000000 : ℚ), (-332903413/5000000000 : ℚ), (6751393213/250000000000 : ℚ), 2⟩,
+    ⟨(6442343067/12500000000 : ℚ), (-696710539/10000000000 : ℚ), (3573937737/125000000000 : ℚ), 2⟩,
+    ⟨(518334133239/1000000000000 : ℚ), (-143391463/2000000000 : ℚ), (14818984133/500000000000 : ℚ), 2⟩,
+    ⟨(519814606059/1000000000000 : ℚ), (-363488137/5000000000 : ℚ), (30158025493/1000000000000 : ℚ), 2⟩,
+    ⟨(13/25 : ℚ), (-182055951/2500000000 : ℚ), (3777860689/125000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (424999/1000000 : ℚ)
+  x := (317799647457/1000000000000 : ℚ)
+  μ := (13/25 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control108.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control108.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate108
+
+namespace DiagonalRamsey.JointInheritedCertificate109
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(9168276233/40000000000 : ℚ), (847045600903/1250000000 : ℚ), (-3120835506897/20000000000 : ℚ), 10⟩,
+    ⟨(230750681361/1000000000000 : ℚ), (729345538249/10000000000 : ℚ), (-17268289192261/1000000000000 : ℚ), 7⟩,
+    ⟨(233823365031/1000000000000 : ℚ), (250364826567/10000000000 : ℚ), (-770809874641/125000000000 : ℚ), 6⟩,
+    ⟨(59598841303/250000000000 : ℚ), (120544063551/10000000000 : ℚ), (-1553945937901/500000000000 : ℚ), 5⟩,
+    ⟨(244422651041/1000000000000 : ℚ), (68298326249/10000000000 : ℚ), (-1849278974787/1000000000000 : ℚ), 4⟩,
+    ⟨(251847176463/1000000000000 : ℚ), (42572223339/10000000000 : ℚ), (-12122165233/10000000000 : ℚ), 4⟩,
+    ⟨(260597439239/1000000000000 : ℚ), (14122511607/5000000000 : ℚ), (-169166402691/200000000000 : ℚ), 3⟩,
+    ⟨(135294584777/500000000000 : ℚ), (19573865561/10000000000 : ℚ), (-123190839511/200000000000 : ℚ), 3⟩,
+    ⟨(281726141583/1000000000000 : ℚ), (109375171/78125000 : ℚ), (-462293428581/1000000000000 : ℚ), 3⟩,
+    ⟨(293901100199/1000000000000 : ℚ), (2562177039/2500000000 : ℚ), (-14179949993/40000000000 : ℚ), 3⟩,
+    ⟨(306996793893/1000000000000 : ℚ), (7630161933/10000000000 : ℚ), (-275941349369/1000000000000 : ℚ), 2⟩,
+    ⟨(160443551989/500000000000 : ℚ), (2873375229/5000000000 : ℚ), (-216893322311/1000000000000 : ℚ), 2⟩,
+    ⟨(335438259173/1000000000000 : ℚ), (871496051/2000000000 : ℚ), (-171358725929/1000000000000 : ℚ), 2⟩,
+    ⟨(350510123899/1000000000000 : ℚ), (3310259277/10000000000 : ℚ), (-135481463071/1000000000000 : ℚ), 2⟩,
+    ⟨(18297877393/50000000000 : ℚ), (1252921769/5000000000 : ℚ), (-53346480559/500000000000 : ℚ), 2⟩,
+    ⟨(4770397049/12500000000 : ℚ), (1877634187/10000000000 : ℚ), (-83231257493/1000000000000 : ℚ), 2⟩,
+    ⟨(49672727601/125000000000 : ℚ), (1379859677/10000000000 : ℚ), (-997771127/15625000000 : ℚ), 2⟩,
+    ⟨(413056036867/1000000000000 : ℚ), (245101849/2500000000 : ℚ), (-47681452699/1000000000000 : ℚ), 2⟩,
+    ⟨(107125865207/250000000000 : ℚ), (328169377/5000000000 : ℚ), (-8513249497/250000000000 : ℚ), 2⟩,
+    ⟨(88715065111/200000000000 : ℚ), (78201453/2000000000 : ℚ), (-11244516399/500000000000 : ℚ), 2⟩,
+    ⟨(1832505923/4000000000 : ℚ), (172163251/10000000000 : ℚ), (-12626378413/1000000000000 : ℚ), 2⟩,
+    ⟨(236008395417/500000000000 : ℚ), (-9318167/10000000000 : ℚ), (-2094488971/500000000000 : ℚ), 2⟩,
+    ⟨(30319530283/62500000000 : ℚ), (-160306123/10000000000 : ℚ), (3034836793/1000000000000 : ℚ), 2⟩,
+    ⟨(62160930393/125000000000 : ℚ), (-286017153/10000000000 : ℚ), (9208446381/1000000000000 : ℚ), 2⟩,
+    ⟨(254212207587/500000000000 : ℚ), (-39043959/1000000000 : ℚ), (7229260711/500000000000 : ℚ), 2⟩,
+    ⟨(518416145489/1000000000000 : ℚ), (-476635679/10000000000 : ℚ), (9441725661/500000000000 : ℚ), 2⟩,
+    ⟨(65895801033/125000000000 : ℚ), (-21878349/400000000 : ℚ), (11279773329/500000000000 : ℚ), 2⟩,
+    ⟨(267295466843/500000000000 : ℚ), (-301605083/5000000000 : ℚ), (25545630631/1000000000000 : ℚ), 2⟩,
+    ⟨(135154554879/250000000000 : ℚ), (-323376743/5000000000 : ℚ), (13943223799/500000000000 : ℚ), 2⟩,
+    ⟨(34074388731/62500000000 : ℚ), (-21206139/312500000 : ℚ), (29615177589/1000000000000 : ℚ), 2⟩,
+    ⟨(274131451683/500000000000 : ℚ), (-699449517/10000000000 : ℚ), (30755259223/1000000000000 : ℚ), 2⟩,
+    ⟨(549806678903/1000000000000 : ℚ), (-709765769/10000000000 : ℚ), (1957603499/62500000000 : ℚ), 2⟩,
+    ⟨(11/20 : ℚ), (-177762547/2500000000 : ℚ), (6278457319/200000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (424999/1000000 : ℚ)
+  x := (19298640563/62500000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control109.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control109.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate109
+
+namespace DiagonalRamsey.JointInheritedCertificate110
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(64785467019/250000000000 : ℚ), (721292120107/1000000000 : ℚ), (-18773940280883/100000000000 : ℚ), 10⟩,
+    ⟨(260782204027/1000000000000 : ℚ), (388735221343/5000000000 : ℚ), (-10387916361611/500000000000 : ℚ), 7⟩,
+    ⟨(132023539299/500000000000 : ℚ), (53484141137/2000000000 : ℚ), (-3709427499651/500000000000 : ℚ), 6⟩,
+    ⟨(134452524631/500000000000 : ℚ), (129046859459/10000000000 : ℚ), (-934748797761/250000000000 : ℚ), 5⟩,
+    ⟨(137654665553/500000000000 : ℚ), (73288543779/10000000000 : ℚ), (-444953629951/200000000000 : ℚ), 4⟩,
+    ⟨(141599123697/500000000000 : ℚ), (2289579301/500000000 : ℚ), (-729184832667/500000000000 : ℚ), 4⟩,
+    ⟨(5849916471/20000000000 : ℚ), (1903299833/625000000 : ℚ), (-1017653229733/1000000000000 : ℚ), 3⟩,
+    ⟨(303112518833/1000000000000 : ℚ), (21153404877/10000000000 : ℚ), (-46324581173/62500000000 : ℚ), 3⟩,
+    ⟨(62989217733/200000000000 : ℚ), (15165572897/10000000000 : ℚ), (-69556685653/125000000000 : ℚ), 3⟩,
+    ⟨(327882569297/1000000000000 : ℚ), (695577077/625000000 : ℚ), (-426917158993/1000000000000 : ℚ), 3⟩,
+    ⟨(42724671919/125000000000 : ℚ), (1661556579/2000000000 : ℚ), (-41572092373/125000000000 : ℚ), 2⟩,
+    ⟨(178278249819/500000000000 : ℚ), (3138052627/5000000000 : ℚ), (-261726873031/1000000000000 : ℚ), 2⟩,
+    ⟨(186008901861/500000000000 : ℚ), (298513193/625000000 : ℚ), (-103575922633/500000000000 : ℚ), 2⟩,
+    ⟨(388032386793/1000000000000 : ℚ), (28476893/78125000 : ℚ), (-164210126771/1000000000000 : ℚ), 2⟩,
+    ⟨(404446019661/1000000000000 : ℚ), (694007153/2500000000 : ℚ), (-129808994479/1000000000000 : ℚ), 2⟩,
+    ⟨(42110063007/100000000000 : ℚ), (131095817/625000000 : ℚ), (-12728248699/125000000000 : ℚ), 2⟩,
+    ⟨(437835825017/1000000000000 : ℚ), (390058657/2500000000 : ℚ), (-39383851681/500000000000 : ℚ), 2⟩,
+    ⟨(227245217713/500000000000 : ℚ), (1129468017/10000000000 : ℚ), (-59560769059/1000000000000 : ℚ), 2⟩,
+    ⟨(235452034147/500000000000 : ℚ), (156085257/2000000000 : ℚ), (-8683915759/200000000000 : ℚ), 2⟩,
+    ⟨(97383730273/200000000000 : ℚ), (495074459/10000000000 : ℚ), (-29760139439/1000000000000 : ℚ), 2⟩,
+    ⟨(502379955449/1000000000000 : ℚ), (1040469/40000000 : ℚ), (-18142554889/1000000000000 : ℚ), 2⟩,
+    ⟨(64642384967/125000000000 : ℚ), (65633291/10000000000 : ℚ), (-514485457/62500000000 : ℚ), 2⟩,
+    ⟨(53105388579/100000000000 : ℚ), (-95859249/10000000000 : ℚ), (22976417/100000000000 : ℚ), 2⟩,
+    ⟨(543990366423/1000000000000 : ℚ), (-46010403/2000000000 : ℚ), (930175197/125000000000 : ℚ), 2⟩,
+    ⟨(277911968127/500000000000 : ℚ), (-170651977/5000000000 : ℚ), (6779110241/500000000000 : ℚ), 2⟩,
+    ⟨(566440631537/1000000000000 : ℚ), (-108241847/2500000000 : ℚ), (584409791/31250000000 : ℚ), 2⟩,
+    ⟨(287869103847/500000000000 : ℚ), (-507622613/10000000000 : ℚ), (22964210053/1000000000000 : ℚ), 2⟩,
+    ⟨(291813561991/500000000000 : ℚ), (-113449553/2000000000 : ℚ), (6605090681/250000000000 : ℚ), 2⟩,
+    ⟨(23601256233/40000000000 : ℚ), (-122668419/2000000000 : ℚ), (14562603327/500000000000 : ℚ), 2⟩,
+    ⟨(594889376489/1000000000000 : ℚ), (-323507513/5000000000 : ℚ), (3112015071/100000000000 : ℚ), 2⟩,
+    ⟨(29907712553/50000000000 : ℚ), (-13380989/200000000 : ℚ), (6486907881/200000000000 : ℚ), 2⟩,
+    ⟨(149948646753/250000000000 : ℚ), (-339972497/5000000000 : ℚ), (16543576511/500000000000 : ℚ), 2⟩,
+    ⟨(3/5 : ℚ), (-42581331/625000000 : ℚ), (4146064651/125000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (424999/1000000 : ℚ)
+  x := (292552673833/1000000000000 : ℚ)
+  μ := (3/5 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control110.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control110.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate110
+
+namespace DiagonalRamsey.JointInheritedCertificate121
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(88707985601/500000000000 : ℚ), (6035256479571/10000000000 : ℚ), (-53808502169051/500000000000 : ℚ), 10⟩,
+    ⟨(178727746807/1000000000000 : ℚ), (129614845699/2000000000 : ℚ), (-11909885286369/1000000000000 : ℚ), 7⟩,
+    ⟨(181338664901/1000000000000 : ℚ), (221767028799/10000000000 : ℚ), (-425332036029/100000000000 : ℚ), 6⟩,
+    ⟨(37044716183/200000000000 : ℚ), (53200063603/5000000000 : ℚ), (-1071927444419/500000000000 : ℚ), 5⟩,
+    ⟨(38069016197/200000000000 : ℚ), (12012905473/2000000000 : ℚ), (-255148668693/200000000000 : ℚ), 4⟩,
+    ⟨(39330768453/200000000000 : ℚ), (37302241403/10000000000 : ℚ), (-836268568467/1000000000000 : ℚ), 4⟩,
+    ⟨(40817821587/200000000000 : ℚ), (24657872763/10000000000 : ℚ), (-29172307853/50000000000 : ℚ), 3⟩,
+    ⟨(212579272323/1000000000000 : ℚ), (17024936069/10000000000 : ℚ), (-424743233241/1000000000000 : ℚ), 3⟩,
+    ⟨(222042570503/1000000000000 : ℚ), (12130516131/10000000000 : ℚ), (-159290453487/500000000000 : ℚ), 3⟩,
+    ⟨(232387865743/1000000000000 : ℚ), (4421837547/5000000000 : ℚ), (-122014209071/500000000000 : ℚ), 3⟩,
+    ⟨(30439440899/125000000000 : ℚ), (3276726181/5000000000 : ℚ), (-11851194949/62500000000 : ℚ), 2⟩,
+    ⟨(63829597347/250000000000 : ℚ), (4908306393/10000000000 : ℚ), (-148646045271/1000000000000 : ℚ), 2⟩,
+    ⟨(66920696079/250000000000 : ℚ), (1847819157/5000000000 : ℚ), (-58488168063/500000000000 : ℚ), 2⟩,
+    ⟨(140244818047/500000000000 : ℚ), (1390798413/5000000000 : ℚ), (-22988286749/250000000000 : ℚ), 2⟩,
+    ⟨(293615607739/1000000000000 : ℚ), (415812973/2000000000 : ℚ), (-71807780901/1000000000000 : ℚ), 2⟩,
+    ⟨(38366786121/125000000000 : ℚ), (76486941/500000000 : ℚ), (-55327977777/1000000000000 : ℚ), 2⟩,
+    ⟨(400396767/1250000000 : ℚ), (1093658903/10000000000 : ℚ), (-41662259533/1000000000000 : ℚ), 2⟩,
+    ⟨(83409023707/250000000000 : ℚ), (742868159/10000000000 : ℚ), (-3775008821/125000000000 : ℚ), 2⟩,
+    ⟨(346762066473/1000000000000 : ℚ), (228726033/5000000000 : ℚ), (-20495904901/1000000000000 : ℚ), 2⟩,
+    ⟨(359568918251/1000000000000 : ℚ), (222998551/10000000000 : ℚ), (-3054971003/250000000000 : ℚ), 2⟩,
+    ⟨(18596665659/50000000000 : ℚ), (28930973/10000000000 : ℚ), (-1281185469/250000000000 : ℚ), 2⟩,
+    ⟨(23983510961/62500000000 : ℚ), (-66304141/5000000000 : ℚ), (97672593/100000000000 : ℚ), 2⟩,
+    ⟨(15794553473/40000000000 : ℚ), (-267518931/10000000000 : ℚ), (778422029/125000000000 : ℚ), 2⟩,
+    ⟨(12662785377/31250000000 : ℚ), (-380269913/10000000000 : ℚ), (10736860411/1000000000000 : ℚ), 2⟩,
+    ⟨(103668107561/250000000000 : ℚ), (-94853909/2000000000 : ℚ), (7294825083/500000000000 : ℚ), 2⟩,
+    ⟨(52895324329/125000000000 : ℚ), (-69016067/1250000000 : ℚ), (278920219/15625000000 : ℚ), 2⟩,
+    ⟨(215298930151/500000000000 : ℚ), (-615848687/10000000000 : ℚ), (20570737167/1000000000000 : ℚ), 2⟩,
+    ⟨(218453310791/500000000000 : ℚ), (-666959183/10000000000 : ℚ), (569688259/25000000000 : ℚ), 2⟩,
+    ⟨(110507030413/250000000000 : ℚ), (-141323057/2000000000 : ℚ), (6132554781/250000000000 : ℚ), 2⟩,
+    ⟨(222956518833/500000000000 : ℚ), (-147133897/2000000000 : ℚ), (12910056143/500000000000 : ℚ), 2⟩,
+    ⟨(5606549447/12500000000 : ℚ), (-754722001/10000000000 : ℚ), (26672167941/1000000000000 : ℚ), 2⟩,
+    ⟨(89967146273/200000000000 : ℚ), (-382077617/5000000000 : ℚ), (13547944379/500000000000 : ℚ), 2⟩,
+    ⟨(9/20 : ℚ), (-765330077/10000000000 : ℚ), (6787186761/250000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (9/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (437499/1000000 : ℚ)
+  x := (69677767621/200000000000 : ℚ)
+  μ := (9/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (9/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control121.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control121.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate121
+
+namespace DiagonalRamsey.JointInheritedCertificate122
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(93745009339/500000000000 : ℚ), (6154613625707/10000000000 : ℚ), (-57983370960603/500000000000 : ℚ), 10⟩,
+    ⟨(188849561653/1000000000000 : ℚ), (661222061671/10000000000 : ℚ), (-12833841937637/1000000000000 : ℚ), 7⟩,
+    ⟨(191555554463/1000000000000 : ℚ), (113209995089/5000000000 : ℚ), (-2291611066243/500000000000 : ℚ), 6⟩,
+    ⟨(195581936917/1000000000000 : ℚ), (21742991233/2000000000 : ℚ), (-1155048902163/500000000000 : ℚ), 5⟩,
+    ⟨(803559731/4000000000 : ℚ), (61419591651/10000000000 : ℚ), (-687323422127/500000000000 : ℚ), 4⟩,
+    ⟨(207428423061/1000000000000 : ℚ), (38173881419/10000000000 : ℚ), (-225273704849/250000000000 : ℚ), 4⟩,
+    ⟨(43026887723/200000000000 : ℚ), (25253757563/10000000000 : ℚ), (-628682352963/1000000000000 : ℚ), 3⟩,
+    ⟨(223933766269/1000000000000 : ℚ), (4362478609/2500000000 : ℚ), (-57212153073/125000000000 : ℚ), 3⟩,
+    ⟨(233741663687/1000000000000 : ℚ), (12443168441/10000000000 : ℚ), (-343334511479/1000000000000 : ℚ), 3⟩,
+    ⟨(3819744929/15625000000 : ℚ), (4539619589/5000000000 : ℚ), (-263039337049/1000000000000 : ℚ), 3⟩,
+    ⟨(255996542741/1000000000000 : ℚ), (3367170697/5000000000 : ℚ), (-204455110417/1000000000000 : ℚ), 2⟩,
+    ⟨(10729167909/40000000000 : ℚ), (2524703669/5000000000 : ℚ), (-32070820551/200000000000 : ℚ), 2⟩,
+    ⟨(56208766651/200000000000 : ℚ), (951796137/2500000000 : ℚ), (-31570578419/250000000000 : ℚ), 2⟩,
+    ⟨(36789629673/125000000000 : ℚ), (1435410309/5000000000 : ℚ), (-99376201629/1000000000000 : ℚ), 2⟩,
+    ⟨(153960490951/500000000000 : ℚ), (43023907/200000000 : ℚ), (-4858076371/62500000000 : ℚ), 2⟩,
+    ⟨(160862326693/500000000000 : ℚ), (397157383/2500000000 : ℚ), (-60034392893/1000000000000 : ℚ), 2⟩,
+    ⟨(335595114933/1000000000000 : ℚ), (571097981/5000000000 : ℚ), (-5671684057/125000000000 : ℚ), 2⟩,
+    ⟨(21837424151/62500000000 : ℚ), (783243481/10000000000 : ℚ), (-6617561799/200000000000 : ℚ), 2⟩,
+    ⟨(181501365467/500000000000 : ℚ), (122837687/2500000000 : ℚ), (-22696590667/1000000000000 : ℚ), 2⟩,
+    ⟨(376275935063/1000000000000 : ℚ), (2013841/80000000 : ℚ), (-3460899237/250000000000 : ℚ), 2⟩,
+    ⟨(389090570593/1000000000000 : ℚ), (2676153/500000000 : ℚ), (-3130815299/500000000000 : ℚ), 2⟩,
+    ⟨(401323225577/1000000000000 : ℚ), (-111342039/10000000000 : ℚ), (62943709/250000000000 : ℚ), 2⟩,
+    ⟨(206428046431/500000000000 : ℚ), (-248928827/10000000000 : ℚ), (22856557/3906250000 : ℚ), 2⟩,
+    ⟨(423578104631/1000000000000 : ℚ), (-363832809/10000000000 : ℚ), (5327865739/500000000000 : ℚ), 2⟩,
+    ⟨(433386002049/1000000000000 : ℚ), (-14361267/312500000 : ℚ), (14756813917/1000000000000 : ℚ), 2⟩,
+    ⟨(442185329703/1000000000000 : ℚ), (-269399613/5000000000 : ℚ), (4556334587/250000000000 : ℚ), 2⟩,
+    ⟨(449891345257/1000000000000 : ℚ), (-150902543/2500000000 : ℚ), (21115895371/1000000000000 : ℚ), 2⟩,
+    ⟨(28526864723/62500000000 : ℚ), (-163892157/2500000000 : ℚ), (23470303159/1000000000000 : ℚ), 2⟩,
+    ⟨(461737831401/1000000000000 : ℚ), (-695865047/10000000000 : ℚ), (395627731/15625000000 : ℚ), 2⟩,
+    ⟨(93152842771/200000000000 : ℚ), (-145075627/2000000000 : ℚ), (13344408843/500000000000 : ℚ), 2⟩,
+    ⟨(93694041333/200000000000 : ℚ), (-7447267/100000000 : ℚ), (13796306917/500000000000 : ℚ), 2⟩,
+    ⟨(469829749641/1000000000000 : ℚ), (-754305051/10000000000 : ℚ), (1402099053/50000000000 : ℚ), 2⟩,
+    ⟨(47/100 : ℚ), (-755497899/10000000000 : ℚ), (28098034763/1000000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (47/100 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (437499/1000000 : ℚ)
+  x := (68611974499/200000000000 : ℚ)
+  μ := (47/100 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (47/100 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control122.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control122.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate122
+
+namespace DiagonalRamsey.JointInheritedCertificate123
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(96318755577/500000000000 : ℚ), (6217191792929/10000000000 : ℚ), (-60178351887531/500000000000 : ℚ), 10⟩,
+    ⟨(97010203099/500000000000 : ℚ), (167029034179/2500000000 : ℚ), (-1331962389623/100000000000 : ℚ), 7⟩,
+    ⟨(196772878253/1000000000000 : ℚ), (228860293119/10000000000 : ℚ), (-951334779087/200000000000 : ℚ), 6⟩,
+    ⟨(100434209753/500000000000 : ℚ), (27482341867/2500000000 : ℚ), (-1198752279873/500000000000 : ℚ), 5⟩,
+    ⟨(25783448457/125000000000 : ℚ), (31065380203/5000000000 : ℚ), (-1426649636393/1000000000000 : ℚ), 4⟩,
+    ⟨(53229596441/250000000000 : ℚ), (38631539091/10000000000 : ℚ), (-467590851087/500000000000 : ℚ), 4⟩,
+    ⟨(220756763007/1000000000000 : ℚ), (5113355547/2000000000 : ℚ), (-130494052117/200000000000 : ℚ), 3⟩,
+    ⟨(229707231529/1000000000000 : ℚ), (17673266009/10000000000 : ℚ), (-475028486523/1000000000000 : ℚ), 3⟩,
+    ⟨(239683593423/1000000000000 : ℚ), (12607564619/10000000000 : ℚ), (-71271068377/200000000000 : ℚ), 3⟩,
+    ⟨(250589770871/1000000000000 : ℚ), (4601578357/5000000000 : ℚ), (-273042054033/1000000000000 : ℚ), 3⟩,
+    ⟨(8197522857/31250000000 : ℚ), (6829534491/10000000000 : ℚ), (-106132065101/500000000000 : ℚ), 2⟩,
+    ⟨(274763499517/1000000000000 : ℚ), (1280921281/2500000000 : ℚ), (-6660801439/40000000000 : ℚ), 2⟩,
+    ⟨(71949561123/250000000000 : ℚ), (1932958387/5000000000 : ℚ), (-131186915293/1000000000000 : ℚ), 2⟩,
+    ⟨(30129943463/100000000000 : ℚ), (2917803757/10000000000 : ℚ), (-51646269209/500000000000 : ℚ), 2⟩,
+    ⟨(39392130761/125000000000 : ℚ), (437835123/2000000000 : ℚ), (-3234314727/40000000000 : ℚ), 2⟩,
+    ⟨(65835563021/200000000000 : ℚ), (323926349/2000000000 : ℚ), (-62526102459/1000000000000 : ℚ), 2⟩,
+    ⟨(343286521399/1000000000000 : ℚ), (1167737481/10000000000 : ℚ), (-23671938393/500000000000 : ℚ), 2⟩,
+    ⟨(22332955651/62500000000 : ℚ), (201119349/2500000000 : ℚ), (-34627230913/1000000000000 : ℚ), 2⟩,
+    ⟨(185582450937/500000000000 : ℚ), (101832821/2000000000 : ℚ), (-23876768019/1000000000000 : ℚ), 2⟩,
+    ⟨(96166523003/250000000000 : ℚ), (33351593/1250000000 : ℚ), (-7361197579/500000000000 : ℚ), 2⟩,
+    ⟨(397700836987/1000000000000 : ℚ), (33208323/5000000000 : ℚ), (-6886412749/1000000000000 : ℚ), 2⟩,
+    ⟨(10253590127/25000000000 : ℚ), (-5010413/500000000 : ℚ), (-158306983/1000000000000 : ℚ), 2⟩,
+    ⟨(421874565633/1000000000000 : ℚ), (-14950741/625000000 : ℚ), (2811404977/500000000000 : ℚ), 2⟩,
+    ⟨(432780743081/1000000000000 : ℚ), (-88814063/2500000000 : ℚ), (10580647903/1000000000000 : ℚ), 2⟩,
+    ⟨(27672319061/62500000000 : ℚ), (-225949873/5000000000 : ℚ), (7405349743/500000000000 : ℚ), 2⟩,
+    ⟨(451707573497/1000000000000 : ℚ), (-531869839/10000000000 : ℚ), (2298346983/125000000000 : ℚ), 2⟩,
+    ⟨(22977297537/50000000000 : ℚ), (-597259231/10000000000 : ℚ), (10682911923/500000000000 : ℚ), 2⟩,
+    ⟨(29137296803/62500000000 : ℚ), (-649667479/10000000000 : ℚ), (23791502367/1000000000000 : ℚ), 2⟩,
+    ⟨(471595916999/1000000000000 : ℚ), (-690303619/10000000000 : ℚ), (1606052627/62500000000 : ℚ), 2⟩,
+    ⟨(118922864563/250000000000 : ℚ), (-720060207/10000000000 : ℚ), (27106213497/1000000000000 : ℚ), 2⟩,
+    ⟨(239221965153/500000000000 : ℚ), (-739565883/10000000000 : ℚ), (28036757409/1000000000000 : ℚ), 2⟩,
+    ⟨(9596536507/20000000000 : ℚ), (-749221253/10000000000 : ℚ), (14249689633/500000000000 : ℚ), 2⟩,
+    ⟨(12/25 : ℚ), (-750423657/10000000000 : ℚ), (28557084251/1000000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (12/25 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (437499/1000000 : ℚ)
+  x := (340325588023/1000000000000 : ℚ)
+  μ := (12/25 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (12/25 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control123.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control123.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate123
+
+namespace DiagonalRamsey.JointInheritedCertificate124
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(8126174557/40000000000 : ℚ), (6347955610649/10000000000 : ℚ), (-25917069829707/200000000000 : ℚ), 10⟩,
+    ⟨(51145723849/250000000000 : ℚ), (136504706893/2000000000 : ℚ), (-358521010041/25000000000 : ℚ), 7⟩,
+    ⟨(207426200801/1000000000000 : ℚ), (116980557243/5000000000 : ℚ), (-2560652625849/500000000000 : ℚ), 6⟩,
+    ⟨(105828448777/500000000000 : ℚ), (112468503937/10000000000 : ℚ), (-516250264209/200000000000 : ℚ), 5⟩,
+    ⟨(217234241731/1000000000000 : ℚ), (63618225271/10000000000 : ℚ), (-61438818249/40000000000 : ℚ), 4⟩,
+    ⟨(224104520461/1000000000000 : ℚ), (39589151537/10000000000 : ℚ), (-1006840509811/1000000000000 : ℚ), 4⟩,
+    ⟨(116100784601/500000000000 : ℚ), (6555507169/2500000000 : ℚ), (-140495956253/200000000000 : ℚ), 3⟩,
+    ⟨(241447408949/1000000000000 : ℚ), (18141013453/10000000000 : ℚ), (-511466426859/1000000000000 : ℚ), 3⟩,
+    ⟨(62938249303/250000000000 : ℚ), (12951986859/10000000000 : ℚ), (-383733815967/1000000000000 : ℚ), 3⟩,
+    ⟨(263019085541/1000000000000 : ℚ), (4731433289/5000000000 : ℚ), (-7351952533/25000000000 : ℚ), 3⟩,
+    ⟨(68784293837/250000000000 : ℚ), (7029100113/10000000000 : ℚ), (-5717278761/25000000000 : ℚ), 2⟩,
+    ⟨(287990562803/1000000000000 : ℚ), (5279432779/10000000000 : ℚ), (-179495812021/1000000000000 : ℚ), 2⟩,
+    ⟨(150727731379/500000000000 : ℚ), (498634553/1250000000 : ℚ), (-141514235599/1000000000000 : ℚ), 2⟩,
+    ⟨(315402200867/1000000000000 : ℚ), (188519889/625000000 : ℚ), (-27886418759/250000000000 : ℚ), 2⟩,
+    ⟨(329696462417/1000000000000 : ℚ), (1134396521/5000000000 : ℚ), (-8745866373/100000000000 : ℚ), 2⟩,
+    ⟨(68840117171/200000000000 : ℚ), (1684592513/10000000000 : ℚ), (-16947907257/250000000000 : ℚ), 2⟩,
+    ⟨(71754977709/200000000000 : ℚ), (244244207/2000000000 : ℚ), (-25758665301/500000000000 : ℚ), 2⟩,
+    ⟨(373279011983/1000000000000 : ℚ), (212225343/2500000000 : ℚ), (-37898561527/1000000000000 : ℚ), 2⟩,
+    ⟨(387573273533/1000000000000 : ℚ), (68298693/1250000000 : ℚ), (-26396811901/1000000000000 : ℚ), 2⟩,
+    ⟨(200760005821/500000000000 : ℚ), (298287879/10000000000 : ℚ), (-16612780421/1000000000000 : ℚ), 2⟩,
+    ⟨(414984911597/1000000000000 : ℚ), (1457493/156250000 : ℚ), (-257707617/31250000000 : ℚ), 2⟩,
+    ⟨(106959574763/250000000000 : ℚ), (-77055171/10000000000 : ℚ), (-535462287/500000000000 : ℚ), 2⟩,
+    ⟨(439956388859/1000000000000 : ℚ), (-27380867/1250000000 : ℚ), (1017680921/200000000000 : ℚ), 2⟩,
+    ⟨(112805619297/250000000000 : ℚ), (-337497577/10000000000 : ℚ), (5182657081/500000000000 : ℚ), 2⟩,
+    ⟨(461528065451/1000000000000 : ℚ), (-87214799/2000000000 : ℚ), (2972670863/200000000000 : ℚ), 2⟩,
+    ⟨(235386952599/500000000000 : ℚ), (-129397091/2500000000 : ℚ), (2332835277/125000000000 : ℚ), 2⟩,
+    ⟨(478870953939/1000000000000 : ℚ), (-292099683/5000000000 : ℚ), (4365047543/200000000000 : ℚ), 2⟩,
+    ⟨(485741232669/1000000000000 : ℚ), (-127511539/2000000000 : ℚ), (24398584033/1000000000000 : ℚ), 2⟩,
+    ⟨(245659288423/500000000000 : ℚ), (-135782303/2000000000 : ℚ), (26418763161/1000000000000 : ℚ), 2⟩,
+    ⟨(495549273599/1000000000000 : ℚ), (-177295641/2500000000 : ℚ), (5582481409/200000000000 : ℚ), 2⟩,
+    ⟨(498392579003/1000000000000 : ℚ), (-729020197/10000000000 : ℚ), (14449135137/500000000000 : ℚ), 2⟩,
+    ⟨(19992844419/40000000000 : ℚ), (-738838303/10000000000 : ℚ), (29388297511/1000000000000 : ℚ), 2⟩,
+    ⟨(1/2 : ℚ), (-370030449/5000000000 : ℚ), (5889883261/200000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (1/2 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (437499/1000000 : ℚ)
+  x := (41839337923/125000000000 : ℚ)
+  μ := (1/2 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control124.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control124.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate124
+
+namespace DiagonalRamsey.JointInheritedCertificate125
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(42797516627/200000000000 : ℚ), (1621750576609/2500000000 : ℚ), (-34868103256683/250000000000 : ℚ), 10⟩,
+    ⟨(215460228561/1000000000000 : ℚ), (139569135871/2000000000 : ℚ), (-7717457974447/500000000000 : ℚ), 7⟩,
+    ⟨(218391337033/1000000000000 : ℚ), (47877455099/2000000000 : ℚ), (-1102390412483/200000000000 : ℚ), 6⟩,
+    ⟨(111376340187/500000000000 : ℚ), (57585322609/5000000000 : ℚ), (-111124364359/40000000000 : ℚ), 5⟩,
+    ⟨(14281391029/62500000000 : ℚ), (65201949911/10000000000 : ℚ), (-1653093488067/1000000000000 : ℚ), 4⟩,
+    ⟨(235584693741/1000000000000 : ℚ), (10152325167/2500000000 : ℚ), (-1083615990991/1000000000000 : ℚ), 4⟩,
+    ⟨(243931784463/1000000000000 : ℚ), (26920485263/10000000000 : ℚ), (-756063248357/1000000000000 : ℚ), 3⟩,
+    ⟨(15841446349/62500000000 : ℚ), (18639902713/10000000000 : ℚ), (-550512297361/1000000000000 : ℚ), 3⟩,
+    ⟨(264086972923/1000000000000 : ℚ), (13319551503/10000000000 : ℚ), (-413076540197/1000000000000 : ℚ), 3⟩,
+    ⟨(137850482589/500000000000 : ℚ), (60876063/62500000 : ℚ), (-316628986269/1000000000000 : ℚ), 3⟩,
+    ⟨(144096634627/500000000000 : ℚ), (7242275647/10000000000 : ℚ), (-246307673703/1000000000000 : ℚ), 2⟩,
+    ⟨(150721788717/500000000000 : ℚ), (5445852253/10000000000 : ℚ), (-193418744579/1000000000000 : ℚ), 2⟩,
+    ⟨(315324282007/1000000000000 : ℚ), (412069413/1000000000 : ℚ), (-2384437411/15625000000 : ℚ), 2⟩,
+    ⟨(1648508521/5000000000 : ℚ), (390199217/1250000000 : ℚ), (-60208908343/500000000000 : ℚ), 2⟩,
+    ⟨(172218690789/500000000000 : ℚ), (2353852237/10000000000 : ℚ), (-94565394241/1000000000000 : ℚ), 2⟩,
+    ⟨(44923675189/125000000000 : ℚ), (43848939/250000000 : ℚ), (-36736428677/500000000000 : ℚ), 2⟩,
+    ⟨(374413767877/1000000000000 : ℚ), (63914263/500000000 : ℚ), (-56033764661/1000000000000 : ℚ), 2⟩,
+    ⟨(389365787811/1000000000000 : ℚ), (448123587/5000000000 : ℚ), (-20726902921/500000000000 : ℚ), 2⟩,
+    ⟨(101025366297/250000000000 : ℚ), (586006537/10000000000 : ℚ), (-5830501437/200000000000 : ℚ), 2⟩,
+    ⟨(418478887381/1000000000000 : ℚ), (331725783/10000000000 : ℚ), (-18699214077/1000000000000 : ℚ), 2⟩,
+    ⟨(216179795977/500000000000 : ℚ), (121757361/10000000000 : ℚ), (-977033823/100000000000 : ℚ), 2⟩,
+    ⟨(89121980027/200000000000 : ℚ), (-52569929/10000000000 : ℚ), (-2120165559/1000000000000 : ℚ), 2⟩,
+    ⟨(458102204211/1000000000000 : ℚ), (-197779773/10000000000 : ℚ), (1109868011/250000000000 : ℚ), 2⟩,
+    ⟨(234858098233/500000000000 : ℚ), (-15941167/500000000 : ℚ), (10053599667/1000000000000 : ℚ), 2⟩,
+    ⟨(96068005561/200000000000 : ℚ), (-419483719/10000000000 : ℚ), (7417230661/500000000000 : ℚ), 2⟩,
+    ⟨(244935692463/500000000000 : ℚ), (-62832969/1250000000 : ℚ), (3773814159/200000000000 : ℚ), 2⟩,
+    ⟨(3892331841/7812500000 : ℚ), (-11411857/200000000 : ℚ), (22224771751/1000000000000 : ℚ), 2⟩,
+    ⟨(20212036517/40000000000 : ℚ), (-312488291/5000000000 : ℚ), (24953360139/1000000000000 : ℚ), 2⟩,
+    ⟨(255525244507/500000000000 : ℚ), (-667105137/10000000000 : ℚ), (13547073731/500000000000 : ℚ), 2⟩,
+    ⟨(103082366471/200000000000 : ℚ), (-5583453/80000000 : ℚ), (28676224549/1000000000000 : ℚ), 2⟩,
+    ⟨(129585735207/250000000000 : ℚ), (-718127691/10000000000 : ℚ), (14860051743/500000000000 : ℚ), 2⟩,
+    ⟨(259907793127/500000000000 : ℚ), (-364060761/5000000000 : ℚ), (3023886133/100000000000 : ℚ), 2⟩,
+    ⟨(13/25 : ℚ), (-4558537/62500000 : ℚ), (30303558507/1000000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (437499/1000000 : ℚ)
+  x := (10278147397/31250000000 : ℚ)
+  μ := (13/25 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control125.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control125.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate125
+
+namespace DiagonalRamsey.JointInheritedCertificate126
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(23073813783/100000000000 : ℚ), (26964159285307/10000000000 : ℚ), (-623058541851251/1000000000000 : ℚ), 12⟩,
+    ⟨(57780661201/250000000000 : ℚ), (46343463241/156250000 : ℚ), (-432245744401/6250000000 : ℚ), 9⟩,
+    ⟨(115945366221/500000000000 : ℚ), (525434303523/5000000000 : ℚ), (-6211848987701/250000000000 : ℚ), 8⟩,
+    ⟨(233040550353/1000000000000 : ℚ), (52541218297/1000000000 : ℚ), (-1579878374307/125000000000 : ℚ), 7⟩,
+    ⟨(9382773141/40000000000 : ℚ), (310415003483/10000000000 : ℚ), (-3807512959267/500000000000 : ℚ), 6⟩,
+    ⟨(236473383997/1000000000000 : ℚ), (202378188437/10000000000 : ℚ), (-5071903618493/1000000000000 : ℚ), 6⟩,
+    ⟨(238748129733/1000000000000 : ℚ), (140788520363/10000000000 : ℚ), (-1804624771453/500000000000 : ℚ), 5⟩,
+    ⟨(30173510709/125000000000 : ℚ), (12817894137/1250000000 : ℚ), (-2691584987447/1000000000000 : ℚ), 5⟩,
+    ⟨(30548361491/125000000000 : ℚ), (77280650131/10000000000 : ℚ), (-2078309477007/1000000000000 : ℚ), 4⟩,
+    ⟨(123868662057/500000000000 : ℚ), (59796253321/10000000000 : ℚ), (-824152305313/500000000000 : ℚ), 4⟩,
+    ⟨(125715655373/500000000000 : ℚ), (23622586253/5000000000 : ℚ), (-1335206338819/1000000000000 : ℚ), 4⟩,
+    ⟨(127729976343/500000000000 : ℚ), (7593467041/2000000000 : ℚ), (-137522369647/125000000000 : ℚ), 4⟩,
+    ⟨(259813544583/1000000000000 : ℚ), (30942022369/10000000000 : ℚ), (-91926779193/100000000000 : ℚ), 3⟩,
+    ⟨(264481598253/1000000000000 : ℚ), (25514239019/10000000000 : ℚ), (-777046196309/1000000000000 : ℚ), 3⟩,
+    ⟨(134726433973/500000000000 : ℚ), (21248461467/10000000000 : ℚ), (-165803902891/250000000000 : ℚ), 3⟩,
+    ⟨(274715377437/1000000000000 : ℚ), (2230783343/1250000000 : ℚ), (-570688070077/1000000000000 : ℚ), 3⟩,
+    ⟨(280256448881/1000000000000 : ℚ), (15097851113/10000000000 : ℚ), (-98891186827/200000000000 : ℚ), 3⟩,
+    ⟨(5721254667/20000000000 : ℚ), (642620029/500000000 : ℚ), (-107725011897/250000000000 : ℚ), 3⟩,
+    ⟨(292120242997/1000000000000 : ℚ), (1099938397/1000000000 : ℚ), (-377352194101/1000000000000 : ℚ), 3⟩,
+    ⟨(298414384751/1000000000000 : ℚ), (591025109/625000000 : ℚ), (-82952595391/250000000000 : ℚ), 3⟩,
+    ⟨(19058124717/62500000000 : ℚ), (8161093071/10000000000 : ℚ), (-292748853599/1000000000000 : ℚ), 2⟩,
+    ⟨(62330275697/200000000000 : ℚ), (7065624717/10000000000 : ℚ), (-16186778033/62500000000 : ℚ), 2⟩,
+    ⟨(79640585347/250000000000 : ℚ), (613286287/1000000000 : ℚ), (-57401587647/250000000000 : ℚ), 2⟩,
+    ⟨(325646235067/1000000000000 : ℚ), (5333666133/10000000000 : ℚ), (-203872122333/1000000000000 : ℚ), 2⟩,
+    ⟨(1664429969/5000000000 : ℚ), (4644940277/10000000000 : ℚ), (-181201621591/1000000000000 : ℚ), 2⟩,
+    ⟨(42533022047/125000000000 : ℚ), (4048219823/10000000000 : ℚ), (-16112330609/100000000000 : ℚ), 2⟩,
+    ⟨(347763008107/1000000000000 : ℚ), (70572399/200000000 : ℚ), (-143253261079/1000000000000 : ℚ), 2⟩,
+    ⟨(355364423649/1000000000000 : ℚ), (3074052569/10000000000 : ℚ), (-63638229569/500000000000 : ℚ), 2⟩,
+    ⟨(181525055263/500000000000 : ℚ), (334329181/1250000000 : ℚ), (-112932537271/1000000000000 : ℚ), 2⟩,
+    ⟨(370801553247/1000000000000 : ℚ), (464445839/2000000000 : ℚ), (-100004885393/1000000000000 : ℚ), 2⟩,
+    ⟨(378600077907/1000000000000 : ℚ), (2010107861/10000000000 : ℚ), (-88312195473/1000000000000 : ℚ), 2⟩,
+    ⟨(48303362147/125000000000 : ℚ), (1732667087/10000000000 : ℚ), (-3108074187/40000000000 : ℚ), 2⟩,
+    ⟨(394263155561/1000000000000 : ℚ), (1485220893/10000000000 : ℚ), (-2721789509/40000000000 : ℚ), 2⟩,
+    ⟨(40208997483/100000000000 : ℚ), (631915597/5000000000 : ℚ), (-59231068427/1000000000000 : ℚ), 2⟩,
+    ⟨(40988849949/100000000000 : ℚ), (1065173749/10000000000 : ℚ), (-10233421577/200000000000 : ℚ), 2⟩,
+    ⟨(41763994221/100000000000 : ℚ), (886430801/10000000000 : ℚ), (-8754496923/200000000000 : ℚ), 2⟩,
+    ⟨(13291425909/31250000000 : ℚ), (725204581/10000000000 : ℚ), (-9244507199/250000000000 : ℚ), 2⟩,
+    ⟨(43292704463/100000000000 : ℚ), (289723613/5000000000 : ℚ), (-30724004567/1000000000000 : ℚ), 2⟩,
+    ⟨(440425876361/1000000000000 : ℚ), (223701847/5000000000 : ℚ), (-3119832343/125000000000 : ℚ), 2⟩,
+    ⟨(447804058937/1000000000000 : ℚ), (163782523/5000000000 : ℚ), (-392740479/20000000000 : ℚ), 2⟩,
+    ⟨(45504381767/100000000000 : ℚ), (21863001/1000000000 : ℚ), (-14719924119/1000000000000 : ℚ), 2⟩,
+    ⟨(462127711349/1000000000000 : ℚ), (59736627/5000000000 : ℚ), (-2543286881/250000000000 : ℚ), 2⟩,
+    ⟨(117259668563/250000000000 : ℚ), (14559529/5000000000 : ℚ), (-745844107/125000000000 : ℚ), 2⟩,
+    ⟨(29735003579/62500000000 : ℚ), (-53280601/10000000000 : ℚ), (-32413847/15625000000 : ℚ), 2⟩,
+    ⟨(241137833993/500000000000 : ℚ), (-128464351/10000000000 : ℚ), (1526710147/1000000000000 : ℚ), 2⟩,
+    ⟨(24428490487/50000000000 : ℚ), (-197076783/10000000000 : ℚ), (1214278847/250000000000 : ℚ), 2⟩,
+    ⟨(494627319387/1000000000000 : ℚ), (-3246017/125000000 : ℚ), (7934584481/1000000000000 : ℚ), 2⟩,
+    ⟨(31277100241/62500000000 : ℚ), (-316771301/10000000000 : ℚ), (2693712491/250000000000 : ℚ), 2⟩,
+    ⟨(5059746753/10000000000 : ℚ), (-46097349/1250000000 : ℚ), (13391780781/1000000000000 : ℚ), 2⟩,
+    ⟨(511237184791/1000000000000 : ℚ), (-416082791/10000000000 : ℚ), (3159520793/200000000000 : ℚ), 2⟩,
+    ⟨(129052113621/250000000000 : ℚ), (-459015653/10000000000 : ℚ), (18003094677/1000000000000 : ℚ), 2⟩,
+    ⟨(260438254077/500000000000 : ℚ), (-124467193/2500000000 : ℚ), (20017740423/1000000000000 : ℚ), 2⟩,
+    ⟨(525230100051/1000000000000 : ℚ), (-266448693/5000000000 : ℚ), (4369976507/200000000000 : ℚ), 2⟩,
+    ⟨(529258741991/1000000000000 : ℚ), (-564324661/10000000000 : ℚ), (23506836971/1000000000000 : ℚ), 2⟩,
+    ⟨(532952728623/1000000000000 : ℚ), (-592345189/10000000000 : ℚ), (4999000077/200000000000 : ℚ), 2⟩,
+    ⟨(536303160809/1000000000000 : ℚ), (-617127947/10000000000 : ℚ), (26319939423/1000000000000 : ℚ), 2⟩,
+    ⟨(107860393413/200000000000 : ℚ), (-25552753/400000000 : ℚ), (5497293803/200000000000 : ℚ), 2⟩,
+    ⟨(541941923003/1000000000000 : ℚ), (-131508551/2000000000 : ℚ), (3562339783/125000000000 : ℚ), 2⟩,
+    ⟨(27210833437/50000000000 : ℚ), (-336702751/5000000000 : ℚ), (2936018649/100000000000 : ℚ), 2⟩,
+    ⟨(136530181053/250000000000 : ℚ), (-686495163/10000000000 : ℚ), (15036895577/500000000000 : ℚ), 2⟩,
+    ⟨(34228093899/62500000000 : ℚ), (-348441693/5000000000 : ℚ), (1225676249/40000000000 : ℚ), 2⟩,
+    ⟨(109759864059/200000000000 : ℚ), (-17615659/250000000 : ℚ), (15533197197/500000000000 : ℚ), 2⟩,
+    ⟨(137391851983/250000000000 : ℚ), (-709765577/10000000000 : ℚ), (1959289469/62500000000 : ℚ), 2⟩,
+    ⟨(549951914907/1000000000000 : ℚ), (-712328391/10000000000 : ℚ), (31489524619/1000000000000 : ℚ), 2⟩,
+    ⟨(11/20 : ℚ), (-356324213/5000000000 : ℚ), (15753562907/500000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (437499/1000000 : ℚ)
+  x := (319763887131/1000000000000 : ℚ)
+  μ := (11/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem row33 : JointControlDomain.rowCheck data (data.tangents.get ⟨33, by decide⟩) = true := by decide +kernel
+theorem row34 : JointControlDomain.rowCheck data (data.tangents.get ⟨34, by decide⟩) = true := by decide +kernel
+theorem row35 : JointControlDomain.rowCheck data (data.tangents.get ⟨35, by decide⟩) = true := by decide +kernel
+theorem row36 : JointControlDomain.rowCheck data (data.tangents.get ⟨36, by decide⟩) = true := by decide +kernel
+theorem row37 : JointControlDomain.rowCheck data (data.tangents.get ⟨37, by decide⟩) = true := by decide +kernel
+theorem row38 : JointControlDomain.rowCheck data (data.tangents.get ⟨38, by decide⟩) = true := by decide +kernel
+theorem row39 : JointControlDomain.rowCheck data (data.tangents.get ⟨39, by decide⟩) = true := by decide +kernel
+theorem row40 : JointControlDomain.rowCheck data (data.tangents.get ⟨40, by decide⟩) = true := by decide +kernel
+theorem row41 : JointControlDomain.rowCheck data (data.tangents.get ⟨41, by decide⟩) = true := by decide +kernel
+theorem row42 : JointControlDomain.rowCheck data (data.tangents.get ⟨42, by decide⟩) = true := by decide +kernel
+theorem row43 : JointControlDomain.rowCheck data (data.tangents.get ⟨43, by decide⟩) = true := by decide +kernel
+theorem row44 : JointControlDomain.rowCheck data (data.tangents.get ⟨44, by decide⟩) = true := by decide +kernel
+theorem row45 : JointControlDomain.rowCheck data (data.tangents.get ⟨45, by decide⟩) = true := by decide +kernel
+theorem row46 : JointControlDomain.rowCheck data (data.tangents.get ⟨46, by decide⟩) = true := by decide +kernel
+theorem row47 : JointControlDomain.rowCheck data (data.tangents.get ⟨47, by decide⟩) = true := by decide +kernel
+theorem row48 : JointControlDomain.rowCheck data (data.tangents.get ⟨48, by decide⟩) = true := by decide +kernel
+theorem row49 : JointControlDomain.rowCheck data (data.tangents.get ⟨49, by decide⟩) = true := by decide +kernel
+theorem row50 : JointControlDomain.rowCheck data (data.tangents.get ⟨50, by decide⟩) = true := by decide +kernel
+theorem row51 : JointControlDomain.rowCheck data (data.tangents.get ⟨51, by decide⟩) = true := by decide +kernel
+theorem row52 : JointControlDomain.rowCheck data (data.tangents.get ⟨52, by decide⟩) = true := by decide +kernel
+theorem row53 : JointControlDomain.rowCheck data (data.tangents.get ⟨53, by decide⟩) = true := by decide +kernel
+theorem row54 : JointControlDomain.rowCheck data (data.tangents.get ⟨54, by decide⟩) = true := by decide +kernel
+theorem row55 : JointControlDomain.rowCheck data (data.tangents.get ⟨55, by decide⟩) = true := by decide +kernel
+theorem row56 : JointControlDomain.rowCheck data (data.tangents.get ⟨56, by decide⟩) = true := by decide +kernel
+theorem row57 : JointControlDomain.rowCheck data (data.tangents.get ⟨57, by decide⟩) = true := by decide +kernel
+theorem row58 : JointControlDomain.rowCheck data (data.tangents.get ⟨58, by decide⟩) = true := by decide +kernel
+theorem row59 : JointControlDomain.rowCheck data (data.tangents.get ⟨59, by decide⟩) = true := by decide +kernel
+theorem row60 : JointControlDomain.rowCheck data (data.tangents.get ⟨60, by decide⟩) = true := by decide +kernel
+theorem row61 : JointControlDomain.rowCheck data (data.tangents.get ⟨61, by decide⟩) = true := by decide +kernel
+theorem row62 : JointControlDomain.rowCheck data (data.tangents.get ⟨62, by decide⟩) = true := by decide +kernel
+theorem row63 : JointControlDomain.rowCheck data (data.tangents.get ⟨63, by decide⟩) = true := by decide +kernel
+theorem row64 : JointControlDomain.rowCheck data (data.tangents.get ⟨64, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+  · exact row33
+  · exact row34
+  · exact row35
+  · exact row36
+  · exact row37
+  · exact row38
+  · exact row39
+  · exact row40
+  · exact row41
+  · exact row42
+  · exact row43
+  · exact row44
+  · exact row45
+  · exact row46
+  · exact row47
+  · exact row48
+  · exact row49
+  · exact row50
+  · exact row51
+  · exact row52
+  · exact row53
+  · exact row54
+  · exact row55
+  · exact row56
+  · exact row57
+  · exact row58
+  · exact row59
+  · exact row60
+  · exact row61
+  · exact row62
+  · exact row63
+  · exact row64
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control126.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control126.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate126
+
+namespace DiagonalRamsey.JointInheritedCertificate139
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(178852806863/1000000000000 : ℚ), (5980968792143/10000000000 : ℚ), (-3359568480951/31250000000 : ℚ), 10⟩,
+    ⟨(180157667881/1000000000000 : ℚ), (321237790757/5000000000 : ℚ), (-11897689453993/1000000000000 : ℚ), 7⟩,
+    ⟨(182754823393/1000000000000 : ℚ), (109980114451/5000000000 : ℚ), (-2124501853329/500000000000 : ℚ), 6⟩,
+    ⟨(18661926137/100000000000 : ℚ), (21118448849/2000000000 : ℚ), (-2141696992069/1000000000000 : ℚ), 5⟩,
+    ⟨(191713765163/1000000000000 : ℚ), (14910749379/2500000000 : ℚ), (-637230868983/500000000000 : ℚ), 4⟩,
+    ⟨(39597854383/200000000000 : ℚ), (37061535571/10000000000 : ℚ), (-167083885239/200000000000 : ℚ), 4⟩,
+    ⟨(102692672533/500000000000 : ℚ), (24511873257/10000000000 : ℚ), (-291418082253/500000000000 : ℚ), 3⟩,
+    ⟨(213830756387/1000000000000 : ℚ), (1693230869/1000000000 : ℚ), (-212137741357/500000000000 : ℚ), 3⟩,
+    ⟨(223244171953/1000000000000 : ℚ), (12069549727/10000000000 : ℚ), (-63640443547/200000000000 : ℚ), 3⟩,
+    ⟨(233534935423/1000000000000 : ℚ), (4401111931/5000000000 : ℚ), (-121853926931/500000000000 : ℚ), 3⟩,
+    ⟨(122301970561/500000000000 : ℚ), (3262201541/5000000000 : ℚ), (-189338026001/1000000000000 : ℚ), 2⟩,
+    ⟨(32043073559/125000000000 : ℚ), (4887346881/10000000000 : ℚ), (-18549119309/125000000000 : ℚ), 2⟩,
+    ⟨(134321904311/500000000000 : ℚ), (3680082819/10000000000 : ℚ), (-116744147321/1000000000000 : ℚ), 2⟩,
+    ⟨(281383153359/1000000000000 : ℚ), (1384867573/5000000000 : ℚ), (-91737475629/1000000000000 : ℚ), 2⟩,
+    ⟨(294439935829/1000000000000 : ℚ), (2069786971/10000000000 : ℚ), (-35802972301/500000000000 : ℚ), 2⟩,
+    ⟨(153844206039/500000000000 : ℚ), (304462291/2000000000 : ℚ), (-55138353027/1000000000000 : ℚ), 2⟩,
+    ⟨(160500496019/500000000000 : ℚ), (543794641/5000000000 : ℚ), (-20741932551/500000000000 : ℚ), 2⟩,
+    ⟨(334249468287/1000000000000 : ℚ), (368909561/5000000000 : ℚ), (-30032294063/1000000000000 : ℚ), 2⟩,
+    ⟨(347306250757/1000000000000 : ℚ), (226594197/5000000000 : ℚ), (-10169161521/500000000000 : ℚ), 2⟩,
+    ⟨(180022797747/500000000000 : ℚ), (27419067/1250000000 : ℚ), (-12072145373/1000000000000 : ℚ), 2⟩,
+    ⟨(93086203911/250000000000 : ℚ), (25780087/10000000000 : ℚ), (-2493246147/500000000000 : ℚ), 2⟩,
+    ⟨(192042731497/500000000000 : ℚ), (-6767801/500000000 : ℚ), (552944649/500000000000 : ℚ), 2⟩,
+    ⟨(395154468693/1000000000000 : ℚ), (-269934617/10000000000 : ℚ), (99186407/15625000000 : ℚ), 2⟩,
+    ⟨(405445232163/1000000000000 : ℚ), (-191205101/5000000000 : ℚ), (10849367133/1000000000000 : ℚ), 2⟩,
+    ⟨(25928665483/62500000000 : ℚ), (-29761311/625000000 : ℚ), (14694760047/1000000000000 : ℚ), 2⟩,
+    ⟨(8466081181/20000000000 : ℚ), (-69231309/1250000000 : ℚ), (112183383/6250000000 : ℚ), 2⟩,
+    ⟨(430700132201/1000000000000 : ℚ), (-77176917/1250000000 : ℚ), (413266641/20000000000 : ℚ), 2⟩,
+    ⟨(436975638953/1000000000000 : ℚ), (-668401017/10000000000 : ℚ), (22875149073/1000000000000 : ℚ), 2⟩,
+    ⟨(221035071373/500000000000 : ℚ), (-35398003/500000000 : ℚ), (24613792507/1000000000000 : ℚ), 2⟩,
+    ⟨(445934580723/1000000000000 : ℚ), (-73694301/1000000000 : ℚ), (25900614747/1000000000000 : ℚ), 2⟩,
+    ⟨(224265868117/500000000000 : ℚ), (-755948731/10000000000 : ℚ), (6687651387/250000000000 : ℚ), 2⟩,
+    ⟨(449836597253/1000000000000 : ℚ), (-765358773/10000000000 : ℚ), (27173288733/1000000000000 : ℚ), 2⟩,
+    ⟨(9/20 : ℚ), (-766530727/10000000000 : ℚ), (272260171/10000000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (9/20 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (449999/1000000 : ℚ)
+  x := (89956267459/250000000000 : ℚ)
+  μ := (9/20 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (9/20 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control139.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control139.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate139
+
+namespace DiagonalRamsey.JointInheritedCertificate141
+open RamseyAnalytic ControlGeometry
+def tangents : List ControlCertificate.Tangent := [
+    ⟨(194210375231/1000000000000 : ℚ), (3081461316597/5000000000 : ℚ), (-120273026513309/1000000000000 : ℚ), 10⟩,
+    ⟨(195585701069/1000000000000 : ℚ), (82815223289/1250000000 : ℚ), (-3327616801017/250000000000 : ℚ), 7⟩,
+    ⟨(198323107607/1000000000000 : ℚ), (227056586227/10000000000 : ℚ), (-118836693839/25000000000 : ℚ), 6⟩,
+    ⟨(202396232121/1000000000000 : ℚ), (109124167621/10000000000 : ℚ), (-2395924736521/1000000000000 : ℚ), 5⟩,
+    ⟨(103882924099/500000000000 : ℚ), (30855831743/5000000000 : ℚ), (-712862938951/500000000000 : ℚ), 4⟩,
+    ⟨(107190121749/500000000000 : ℚ), (9598265241/2500000000 : ℚ), (-116822233071/125000000000 : ℚ), 4⟩,
+    ⟨(222175717779/1000000000000 : ℚ), (25422816057/10000000000 : ℚ), (-326019943101/500000000000 : ℚ), 3⟩,
+    ⟨(115538598181/500000000000 : ℚ), (549452951/312500000 : ℚ), (-237349160641/500000000000 : ℚ), 3⟩,
+    ⟨(240998953143/1000000000000 : ℚ), (6274139673/5000000000 : ℚ), (-356085477199/1000000000000 : ℚ), 3⟩,
+    ⟨(12592271809/50000000000 : ℚ), (9163220951/10000000000 : ℚ), (-27280963013/100000000000 : ℚ), 3⟩,
+    ⟨(32939023489/125000000000 : ℚ), (3400922999/5000000000 : ℚ), (-106027870801/500000000000 : ℚ), 2⟩,
+    ⟨(137943425571/500000000000 : ℚ), (637993031/1250000000 : ℚ), (-166327815449/1000000000000 : ℚ), 2⟩,
+    ⟨(288850251099/1000000000000 : ℚ), (770290243/2000000000 : ℚ), (-131006349659/1000000000000 : ℚ), 2⟩,
+    ⟨(151138771577/500000000000 : ℚ), (581383409/2000000000 : ℚ), (-5156058657/50000000000 : ℚ), 2⟩,
+    ⟨(63207883029/200000000000 : ℚ), (1090385597/5000000000 : ℚ), (-20173626149/250000000000 : ℚ), 2⟩,
+    ⟨(330003332721/1000000000000 : ℚ), (806494593/5000000000 : ℚ), (-62370285429/1000000000000 : ℚ), 2⟩,
+    ⟨(344034815723/1000000000000 : ℚ), (145296989/1250000000 : ℚ), (-47195560781/1000000000000 : ℚ), 2⟩,
+    ⟨(357998733299/1000000000000 : ℚ), (800070507/10000000000 : ℚ), (-34486561801/1000000000000 : ℚ), 2⟩,
+    ⟨(37176060529/100000000000 : ℚ), (63185801/1250000000 : ℚ), (-370999087/15625000000 : ℚ), 2⟩,
+    ⟨(77037579469/200000000000 : ℚ), (263705143/10000000000 : ℚ), (-14597566389/1000000000000 : ℚ), 2⟩,
+    ⟨(199075648651/500000000000 : ℚ), (12752831/2000000000 : ℚ), (-6769641337/1000000000000 : ℚ), 2⟩,
+    ⟨(102631490133/250000000000 : ℚ), (-102491071/10000000000 : ℚ), (-49526827/1000000000000 : ℚ), 2⟩,
+    ⟨(52774089033/125000000000 : ℚ), (-241190433/10000000000 : ℚ), (5723803869/1000000000000 : ℚ), 2⟩,
+    ⟨(433039195301/1000000000000 : ℚ), (-178491199/5000000000 : ℚ), (1067420117/100000000000 : ℚ), 2⟩,
+    ⟨(221480476041/500000000000 : ℚ), (-453415849/10000000000 : ℚ), (1862161517/125000000000 : ℚ), 2⟩,
+    ⟨(90372486133/200000000000 : ℚ), (-533211707/10000000000 : ℚ), (4616752651/250000000000 : ℚ), 2⟩,
+    ⟨(229828952473/500000000000 : ℚ), (-299229013/5000000000 : ℚ), (10720206119/500000000000 : ℚ), 2⟩,
+    ⟨(233136150123/500000000000 : ℚ), (-650751041/10000000000 : ℚ), (11930624163/500000000000 : ℚ), 2⟩,
+    ⟨(471641916323/1000000000000 : ℚ), (-5400761/78125000 : ℚ), (12881312769/500000000000 : ℚ), 2⟩,
+    ⟨(475715040837/1000000000000 : ℚ), (-90123499/1250000000 : ℚ), (27168974323/1000000000000 : ℚ), 2⟩,
+    ⟨(3827619579/8000000000 : ℚ), (-740450269/10000000000 : ℚ), (28097479109/1000000000000 : ℚ), 2⟩,
+    ⟨(479827773213/1000000000000 : ℚ), (-150016823/2000000000 : ℚ), (14279537101/500000000000 : ℚ), 2⟩,
+    ⟨(12/25 : ℚ), (-751283837/10000000000 : ℚ), (1788540659/62500000000 : ℚ), 2⟩]
+
+def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (12/25 : ℚ) tangents
+def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def witness : ControlCertificate.Data where
+  p := (449999/1000000 : ℚ)
+  x := (87908138197/250000000000 : ℚ)
+  μ := (12/25 : ℚ)
+  β := (999/1000 : ℚ)
+  w := (1/8 : ℚ)
+  cutoff := 32
+  margin := (1/10000000000 : ℚ)
+  precision := 16
+  tangents := tangents
+  degrees := degrees
+  cells := cells
+
+select_control_data data from witness
+theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
+theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
+theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
+theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
+theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
+theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
+theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
+theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
+theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
+theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
+theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
+theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
+theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
+theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
+theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
+theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
+theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
+theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
+theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
+theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
+theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
+theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
+theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
+theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
+theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
+theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
+theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
+theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
+theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
+theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
+theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
+theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
+theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
+theorem check0 : ControlCertificate.parameters data := by decide +kernel
+theorem check1 : 0 < data.tangents.length := by decide +kernel
+theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
+  apply List.all_eq_true.mpr
+  rw [List.forall_mem_iff_get]
+  intro i
+  fin_cases i
+  · exact row0
+  · exact row1
+  · exact row2
+  · exact row3
+  · exact row4
+  · exact row5
+  · exact row6
+  · exact row7
+  · exact row8
+  · exact row9
+  · exact row10
+  · exact row11
+  · exact row12
+  · exact row13
+  · exact row14
+  · exact row15
+  · exact row16
+  · exact row17
+  · exact row18
+  · exact row19
+  · exact row20
+  · exact row21
+  · exact row22
+  · exact row23
+  · exact row24
+  · exact row25
+  · exact row26
+  · exact row27
+  · exact row28
+  · exact row29
+  · exact row30
+  · exact row31
+  · exact row32
+#print axioms check2
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
+#print axioms check3
+theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
+  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (12/25 : ℚ) tangents
+#print axioms check4
+theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
+#print axioms check5
+theorem check6 : ControlPower.check data.μ data.w data.x = true := by decide +kernel
+#print axioms check6
+theorem checked : JointControlDomain.Checks data := ⟨check0,check1,check2,check3,check4,check5,check6⟩
+theorem sound : ControlCertificate.Sound data := JointControlDomain.sound data checked
+#print axioms sound
+theorem certOK : JointInheritedControls.control141.toD.CertOK := by
+  apply JointGeometry.certOK_of_sound JointInheritedControls.control141.toD data sound
+  all_goals decide +kernel
+#print axioms certOK
+end DiagonalRamsey.JointInheritedCertificate141

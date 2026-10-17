@@ -1,4 +1,4 @@
-import S7_ParameterChoice.Source.Joint.BaselineInputs
+import S7_ParameterChoice.Source.Joint.Assembly.BaselineInputs
 
 /-! The inherited joint construction can include further raw profiles. Source
 cover witnesses and closed recipes use their original profiles through an exact
