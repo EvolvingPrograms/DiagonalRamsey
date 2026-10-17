@@ -1,13 +1,5 @@
 import S7_ParameterChoice.Source.Joint.CachedRouteExps
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks0
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks1
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks2
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks3
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks4
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks5
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks6
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks7
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks8
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.ExponentialChecks
 
 set_option autoImplicit false
 set_option maxRecDepth 100000
