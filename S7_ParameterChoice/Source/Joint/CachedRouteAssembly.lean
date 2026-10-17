@@ -172,168 +172,44 @@ set_option maxHeartbeats 0
 namespace DiagonalRamsey.JointCachedRoutes
 open DiagRamsey.V5 JointFamily JointGeometry
 
-private theorem append_checked {α : Type} (f : α → Bool) (xs ys : List α)
-    (hx : xs.all f = true) (hy : ys.all f = true) : (xs ++ ys).all f = true := by
-  rw [List.all_append, hx, hy]
-  rfl
-
-theorem expTable_checked : expTable.all ExpPair.check = true :=
-  (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5 ++ expBlock6 ++ expBlock7 ++ expBlock8 ++ expBlock9 ++ expBlock10 ++ expBlock11 ++ expBlock12 ++ expBlock13 ++ expBlock14) expBlock15 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5 ++ expBlock6 ++ expBlock7 ++ expBlock8 ++ expBlock9 ++ expBlock10 ++ expBlock11 ++ expBlock12 ++ expBlock13) expBlock14 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5 ++ expBlock6 ++ expBlock7 ++ expBlock8 ++ expBlock9 ++ expBlock10 ++ expBlock11 ++ expBlock12) expBlock13 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5 ++ expBlock6 ++ expBlock7 ++ expBlock8 ++ expBlock9 ++ expBlock10 ++ expBlock11) expBlock12 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5 ++ expBlock6 ++ expBlock7 ++ expBlock8 ++ expBlock9 ++ expBlock10) expBlock11 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5 ++ expBlock6 ++ expBlock7 ++ expBlock8 ++ expBlock9) expBlock10 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5 ++ expBlock6 ++ expBlock7 ++ expBlock8) expBlock9 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5 ++ expBlock6 ++ expBlock7) expBlock8 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5 ++ expBlock6) expBlock7 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4 ++ expBlock5) expBlock6 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3 ++ expBlock4) expBlock5 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2 ++ expBlock3) expBlock4 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1 ++ expBlock2) expBlock3 (append_checked (ExpPair.check) (expBlock0 ++ expBlock1) expBlock2 (append_checked (ExpPair.check) (expBlock0) expBlock1 expChecked0 expChecked1) expChecked2) expChecked3) expChecked4) expChecked5) expChecked6) expChecked7) expChecked8) expChecked9) expChecked10) expChecked11) expChecked12) expChecked13) expChecked14) expChecked15)
+theorem expTable_checked : expTable.all ExpPair.check = true := by
+  simp only [expTable, List.all_append,
+    expChecked0, expChecked1, expChecked2, expChecked3, expChecked4, expChecked5,
+    expChecked6, expChecked7, expChecked8, expChecked9, expChecked10, expChecked11,
+    expChecked12, expChecked13, expChecked14, expChecked15,
+    Bool.and_self]
 
 #print axioms expTable_checked
 
 theorem all_fast_checked : entries.all (FastEntry.check expTable) = true := by
-  apply List.all_eq_true.mpr
-  intro e he
-  simp only [entries, List.mem_append] at he
-  rcases he with ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((h0 | h1) | h2) | h3) | h4) | h5) | h6) | h7) | h8) | h9) | h10) | h11) | h12) | h13) | h14) | h15) | h16) | h17) | h18) | h19) | h20) | h21) | h22) | h23) | h24) | h25) | h26) | h27) | h28) | h29) | h30) | h31) | h32) | h33) | h34) | h35) | h36) | h37) | h38) | h39) | h40) | h41) | h42) | h43) | h44) | h45) | h46) | h47) | h48) | h49) | h50) | h51) | h52) | h53) | h54) | h55) | h56) | h57) | h58) | h59) | h60) | h61) | h62) | h63) | h64) | h65) | h66) | h67) | h68) | h69) | h70) | h71) | h72) | h73) | h74) | h75) | h76) | h77) | h78) | h79) | h80) | h81) | h82) | h83) | h84) | h85) | h86) | h87) | h88) | h89) | h90) | h91) | h92) | h93) | h94) | h95) | h96) | h97) | h98) | h99) | h100) | h101) | h102) | h103) | h104) | h105) | h106) | h107) | h108) | h109) | h110) | h111) | h112) | h113) | h114) | h115) | h116) | h117) | h118) | h119) | h120) | h121) | h122) | h123) | h124) | h125) | h126) | h127) | h128) | h129) | h130) | h131) | h132) | h133) | h134) | h135) | h136) | h137) | h138) | h139) | h140) | h141) | h142) | h143) | h144) | h145) | h146)
-  · exact List.all_eq_true.mp fastChecked0 e h0
-  · exact List.all_eq_true.mp fastChecked1 e h1
-  · exact List.all_eq_true.mp fastChecked2 e h2
-  · exact List.all_eq_true.mp fastChecked3 e h3
-  · exact List.all_eq_true.mp fastChecked4 e h4
-  · exact List.all_eq_true.mp fastChecked5 e h5
-  · exact List.all_eq_true.mp fastChecked6 e h6
-  · exact List.all_eq_true.mp fastChecked7 e h7
-  · exact List.all_eq_true.mp fastChecked8 e h8
-  · exact List.all_eq_true.mp fastChecked9 e h9
-  · exact List.all_eq_true.mp fastChecked10 e h10
-  · exact List.all_eq_true.mp fastChecked11 e h11
-  · exact List.all_eq_true.mp fastChecked12 e h12
-  · exact List.all_eq_true.mp fastChecked13 e h13
-  · exact List.all_eq_true.mp fastChecked14 e h14
-  · exact List.all_eq_true.mp fastChecked15 e h15
-  · exact List.all_eq_true.mp fastChecked16 e h16
-  · exact List.all_eq_true.mp fastChecked17 e h17
-  · exact List.all_eq_true.mp fastChecked18 e h18
-  · exact List.all_eq_true.mp fastChecked19 e h19
-  · exact List.all_eq_true.mp fastChecked20 e h20
-  · exact List.all_eq_true.mp fastChecked21 e h21
-  · exact List.all_eq_true.mp fastChecked22 e h22
-  · exact List.all_eq_true.mp fastChecked23 e h23
-  · exact List.all_eq_true.mp fastChecked24 e h24
-  · exact List.all_eq_true.mp fastChecked25 e h25
-  · exact List.all_eq_true.mp fastChecked26 e h26
-  · exact List.all_eq_true.mp fastChecked27 e h27
-  · exact List.all_eq_true.mp fastChecked28 e h28
-  · exact List.all_eq_true.mp fastChecked29 e h29
-  · exact List.all_eq_true.mp fastChecked30 e h30
-  · exact List.all_eq_true.mp fastChecked31 e h31
-  · exact List.all_eq_true.mp fastChecked32 e h32
-  · exact List.all_eq_true.mp fastChecked33 e h33
-  · exact List.all_eq_true.mp fastChecked34 e h34
-  · exact List.all_eq_true.mp fastChecked35 e h35
-  · exact List.all_eq_true.mp fastChecked36 e h36
-  · exact List.all_eq_true.mp fastChecked37 e h37
-  · exact List.all_eq_true.mp fastChecked38 e h38
-  · exact List.all_eq_true.mp fastChecked39 e h39
-  · exact List.all_eq_true.mp fastChecked40 e h40
-  · exact List.all_eq_true.mp fastChecked41 e h41
-  · exact List.all_eq_true.mp fastChecked42 e h42
-  · exact List.all_eq_true.mp fastChecked43 e h43
-  · exact List.all_eq_true.mp fastChecked44 e h44
-  · exact List.all_eq_true.mp fastChecked45 e h45
-  · exact List.all_eq_true.mp fastChecked46 e h46
-  · exact List.all_eq_true.mp fastChecked47 e h47
-  · exact List.all_eq_true.mp fastChecked48 e h48
-  · exact List.all_eq_true.mp fastChecked49 e h49
-  · exact List.all_eq_true.mp fastChecked50 e h50
-  · exact List.all_eq_true.mp fastChecked51 e h51
-  · exact List.all_eq_true.mp fastChecked52 e h52
-  · exact List.all_eq_true.mp fastChecked53 e h53
-  · exact List.all_eq_true.mp fastChecked54 e h54
-  · exact List.all_eq_true.mp fastChecked55 e h55
-  · exact List.all_eq_true.mp fastChecked56 e h56
-  · exact List.all_eq_true.mp fastChecked57 e h57
-  · exact List.all_eq_true.mp fastChecked58 e h58
-  · exact List.all_eq_true.mp fastChecked59 e h59
-  · exact List.all_eq_true.mp fastChecked60 e h60
-  · exact List.all_eq_true.mp fastChecked61 e h61
-  · exact List.all_eq_true.mp fastChecked62 e h62
-  · exact List.all_eq_true.mp fastChecked63 e h63
-  · exact List.all_eq_true.mp fastChecked64 e h64
-  · exact List.all_eq_true.mp fastChecked65 e h65
-  · exact List.all_eq_true.mp fastChecked66 e h66
-  · exact List.all_eq_true.mp fastChecked67 e h67
-  · exact List.all_eq_true.mp fastChecked68 e h68
-  · exact List.all_eq_true.mp fastChecked69 e h69
-  · exact List.all_eq_true.mp fastChecked70 e h70
-  · exact List.all_eq_true.mp fastChecked71 e h71
-  · exact List.all_eq_true.mp fastChecked72 e h72
-  · exact List.all_eq_true.mp fastChecked73 e h73
-  · exact List.all_eq_true.mp fastChecked74 e h74
-  · exact List.all_eq_true.mp fastChecked75 e h75
-  · exact List.all_eq_true.mp fastChecked76 e h76
-  · exact List.all_eq_true.mp fastChecked77 e h77
-  · exact List.all_eq_true.mp fastChecked78 e h78
-  · exact List.all_eq_true.mp fastChecked79 e h79
-  · exact List.all_eq_true.mp fastChecked80 e h80
-  · exact List.all_eq_true.mp fastChecked81 e h81
-  · exact List.all_eq_true.mp fastChecked82 e h82
-  · exact List.all_eq_true.mp fastChecked83 e h83
-  · exact List.all_eq_true.mp fastChecked84 e h84
-  · exact List.all_eq_true.mp fastChecked85 e h85
-  · exact List.all_eq_true.mp fastChecked86 e h86
-  · exact List.all_eq_true.mp fastChecked87 e h87
-  · exact List.all_eq_true.mp fastChecked88 e h88
-  · exact List.all_eq_true.mp fastChecked89 e h89
-  · exact List.all_eq_true.mp fastChecked90 e h90
-  · exact List.all_eq_true.mp fastChecked91 e h91
-  · exact List.all_eq_true.mp fastChecked92 e h92
-  · exact List.all_eq_true.mp fastChecked93 e h93
-  · exact List.all_eq_true.mp fastChecked94 e h94
-  · exact List.all_eq_true.mp fastChecked95 e h95
-  · exact List.all_eq_true.mp fastChecked96 e h96
-  · exact List.all_eq_true.mp fastChecked97 e h97
-  · exact List.all_eq_true.mp fastChecked98 e h98
-  · exact List.all_eq_true.mp fastChecked99 e h99
-  · exact List.all_eq_true.mp fastChecked100 e h100
-  · exact List.all_eq_true.mp fastChecked101 e h101
-  · exact List.all_eq_true.mp fastChecked102 e h102
-  · exact List.all_eq_true.mp fastChecked103 e h103
-  · exact List.all_eq_true.mp fastChecked104 e h104
-  · exact List.all_eq_true.mp fastChecked105 e h105
-  · exact List.all_eq_true.mp fastChecked106 e h106
-  · exact List.all_eq_true.mp fastChecked107 e h107
-  · exact List.all_eq_true.mp fastChecked108 e h108
-  · exact List.all_eq_true.mp fastChecked109 e h109
-  · exact List.all_eq_true.mp fastChecked110 e h110
-  · exact List.all_eq_true.mp fastChecked111 e h111
-  · exact List.all_eq_true.mp fastChecked112 e h112
-  · exact List.all_eq_true.mp fastChecked113 e h113
-  · exact List.all_eq_true.mp fastChecked114 e h114
-  · exact List.all_eq_true.mp fastChecked115 e h115
-  · exact List.all_eq_true.mp fastChecked116 e h116
-  · exact List.all_eq_true.mp fastChecked117 e h117
-  · exact List.all_eq_true.mp fastChecked118 e h118
-  · exact List.all_eq_true.mp fastChecked119 e h119
-  · exact List.all_eq_true.mp fastChecked120 e h120
-  · exact List.all_eq_true.mp fastChecked121 e h121
-  · exact List.all_eq_true.mp fastChecked122 e h122
-  · exact List.all_eq_true.mp fastChecked123 e h123
-  · exact List.all_eq_true.mp fastChecked124 e h124
-  · exact List.all_eq_true.mp fastChecked125 e h125
-  · exact List.all_eq_true.mp fastChecked126 e h126
-  · exact List.all_eq_true.mp fastChecked127 e h127
-  · exact List.all_eq_true.mp fastChecked128 e h128
-  · exact List.all_eq_true.mp fastChecked129 e h129
-  · exact List.all_eq_true.mp fastChecked130 e h130
-  · exact List.all_eq_true.mp fastChecked131 e h131
-  · exact List.all_eq_true.mp fastChecked132 e h132
-  · exact List.all_eq_true.mp fastChecked133 e h133
-  · exact List.all_eq_true.mp fastChecked134 e h134
-  · exact List.all_eq_true.mp fastChecked135 e h135
-  · exact List.all_eq_true.mp fastChecked136 e h136
-  · exact List.all_eq_true.mp fastChecked137 e h137
-  · exact List.all_eq_true.mp fastChecked138 e h138
-  · exact List.all_eq_true.mp fastChecked139 e h139
-  · exact List.all_eq_true.mp fastChecked140 e h140
-  · exact List.all_eq_true.mp fastChecked141 e h141
-  · exact List.all_eq_true.mp fastChecked142 e h142
-  · exact List.all_eq_true.mp fastChecked143 e h143
-  · exact List.all_eq_true.mp fastChecked144 e h144
-  · exact List.all_eq_true.mp fastChecked145 e h145
-  · exact List.all_eq_true.mp fastChecked146 e h146
+  simp only [entries, List.all_append,
+    fastChecked0, fastChecked1, fastChecked2, fastChecked3, fastChecked4, fastChecked5,
+    fastChecked6, fastChecked7, fastChecked8, fastChecked9, fastChecked10, fastChecked11,
+    fastChecked12, fastChecked13, fastChecked14, fastChecked15, fastChecked16, fastChecked17,
+    fastChecked18, fastChecked19, fastChecked20, fastChecked21, fastChecked22, fastChecked23,
+    fastChecked24, fastChecked25, fastChecked26, fastChecked27, fastChecked28, fastChecked29,
+    fastChecked30, fastChecked31, fastChecked32, fastChecked33, fastChecked34, fastChecked35,
+    fastChecked36, fastChecked37, fastChecked38, fastChecked39, fastChecked40, fastChecked41,
+    fastChecked42, fastChecked43, fastChecked44, fastChecked45, fastChecked46, fastChecked47,
+    fastChecked48, fastChecked49, fastChecked50, fastChecked51, fastChecked52, fastChecked53,
+    fastChecked54, fastChecked55, fastChecked56, fastChecked57, fastChecked58, fastChecked59,
+    fastChecked60, fastChecked61, fastChecked62, fastChecked63, fastChecked64, fastChecked65,
+    fastChecked66, fastChecked67, fastChecked68, fastChecked69, fastChecked70, fastChecked71,
+    fastChecked72, fastChecked73, fastChecked74, fastChecked75, fastChecked76, fastChecked77,
+    fastChecked78, fastChecked79, fastChecked80, fastChecked81, fastChecked82, fastChecked83,
+    fastChecked84, fastChecked85, fastChecked86, fastChecked87, fastChecked88, fastChecked89,
+    fastChecked90, fastChecked91, fastChecked92, fastChecked93, fastChecked94, fastChecked95,
+    fastChecked96, fastChecked97, fastChecked98, fastChecked99, fastChecked100, fastChecked101,
+    fastChecked102, fastChecked103, fastChecked104, fastChecked105, fastChecked106, fastChecked107,
+    fastChecked108, fastChecked109, fastChecked110, fastChecked111, fastChecked112, fastChecked113,
+    fastChecked114, fastChecked115, fastChecked116, fastChecked117, fastChecked118, fastChecked119,
+    fastChecked120, fastChecked121, fastChecked122, fastChecked123, fastChecked124, fastChecked125,
+    fastChecked126, fastChecked127, fastChecked128, fastChecked129, fastChecked130, fastChecked131,
+    fastChecked132, fastChecked133, fastChecked134, fastChecked135, fastChecked136, fastChecked137,
+    fastChecked138, fastChecked139, fastChecked140, fastChecked141, fastChecked142, fastChecked143,
+    fastChecked144, fastChecked145, fastChecked146,
+    Bool.and_self]
+
 
 #print axioms all_fast_checked
 
