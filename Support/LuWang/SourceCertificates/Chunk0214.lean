@@ -7,106 +7,88 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0214
 open SourceCertificate CurrentSourceData
 
-noncomputable def cell_10700 : Cell := {
+noncomputable private def cellDefaults : Cell := {
   domain := ⟨(204949999999999989 / 400000000000000000 : ℚ), (12812499999999999 / 25000000000000000 : ℚ)⟩
   branch := .left
-  r := (3814596843169 / 6250000000000 : ℚ)
-  w := (7283287026757 / 5000000000000 : ℚ)
+  r := (60965986431421 / 100000000000000 : ℚ)
+  w := (14558197430993 / 10000000000000 : ℚ)
   center := (409949999999999973 / 800000000000000000 : ℚ)
   supportValue := (20596075168116007 / 50000000000000000 : ℚ)
   supportSlope := (-9593895079814523 / 5000000000000000 : ℚ)
   oldCenter := (20596075168116007 / 50000000000000000 : ℚ)
-  newCoefficients := coefficients_1215
-  oldLo := (41150000000000003 / 100000000000000000 : ℚ)
-  oldHi := (41250000000000003 / 100000000000000000 : ℚ)
-  oldPieces := [piece_996, piece_997]
+  newCoefficients := coefficients_1216
+  oldLo := (40750000000000003 / 100000000000000000 : ℚ)
+  oldHi := (41050000000000003 / 100000000000000000 : ℚ)
+  oldPieces := [piece_987]
   ne := 20
   nl := 24
   nq := 32
   centered := true
 }
 
-noncomputable def cell_10701 : Cell := {
+def cell_10700 : Cell := { cellDefaults with
+  r := (3814596843169 / 6250000000000 : ℚ)
+  w := (7283287026757 / 5000000000000 : ℚ)
+  newCoefficients := coefficients_1215
+  oldLo := (41150000000000003 / 100000000000000000 : ℚ)
+  oldHi := (41250000000000003 / 100000000000000000 : ℚ)
+  oldPieces := [piece_996, piece_997]
+}
+
+noncomputable def cell_10701 : Cell := { cellDefaults with
   domain := ⟨(12812499999999999 / 25000000000000000 : ℚ), (205049999999999989 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (60999747324899 / 100000000000000 : ℚ)
   w := (455074415841 / 312500000000 : ℚ)
   center := (410049999999999973 / 800000000000000000 : ℚ)
   supportValue := (824367218279563 / 2000000000000000 : ℚ)
   supportSlope := (-4797591719447123 / 2500000000000000 : ℚ)
   oldCenter := (824367218279563 / 2000000000000000 : ℚ)
-  newCoefficients := coefficients_1216
   oldLo := (41200000000000003 / 100000000000000000 : ℚ)
   oldHi := (41250000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_997]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10702 : Cell := {
+noncomputable def cell_10702 : Cell := { cellDefaults with
   domain := ⟨(205049999999999989 / 400000000000000000 : ℚ), (102549999999999997 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (60999747324899 / 100000000000000 : ℚ)
   w := (455074415841 / 312500000000 : ℚ)
   center := (410149999999999983 / 800000000000000000 : ℚ)
   supportValue := (2059719132494837 / 5000000000000000 : ℚ)
   supportSlope := (-19177756099731127 / 10000000000000000 : ℚ)
   oldCenter := (2059719132494837 / 5000000000000000 : ℚ)
-  newCoefficients := coefficients_1216
   oldLo := (41150000000000003 / 100000000000000000 : ℚ)
   oldHi := (41250000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_996, piece_997]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10703 : Cell := {
+noncomputable def cell_10703 : Cell := { cellDefaults with
   domain := ⟨(102549999999999997 / 200000000000000000 : ℚ), (205149999999999999 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (60999747324899 / 100000000000000 : ℚ)
   w := (455074415841 / 312500000000 : ℚ)
   center := (410249999999999993 / 800000000000000000 : ℚ)
   supportValue := (4117041978413751 / 10000000000000000 : ℚ)
   supportSlope := (-4789963478272839 / 2500000000000000 : ℚ)
   oldCenter := (4117041978413751 / 10000000000000000 : ℚ)
-  newCoefficients := coefficients_1216
   oldLo := (41150000000000003 / 100000000000000000 : ℚ)
   oldHi := (41200000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_996]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10704 : Cell := {
+noncomputable def cell_10704 : Cell := { cellDefaults with
   domain := ⟨(205149999999999999 / 400000000000000000 : ℚ), (51300000000000001 / 100000000000000000 : ℚ)⟩
-  branch := .left
   r := (60999747324899 / 100000000000000 : ℚ)
   w := (455074415841 / 312500000000 : ℚ)
   center := (410350000000000003 / 800000000000000000 : ℚ)
   supportValue := (205732404316347 / 500000000000000 : ℚ)
   supportSlope := (-19146314775946611 / 10000000000000000 : ℚ)
   oldCenter := (205732404316347 / 500000000000000 : ℚ)
-  newCoefficients := coefficients_1216
   oldLo := (41100000000000003 / 100000000000000000 : ℚ)
   oldHi := (41200000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_995, piece_996]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10705 : Cell := {
+noncomputable def cell_10705 : Cell := { cellDefaults with
   domain := ⟨(51300000000000001 / 100000000000000000 : ℚ), (205249999999999999 / 400000000000000000 : ℚ)⟩
-  branch := .left
-  r := (60965986431421 / 100000000000000 : ℚ)
-  w := (14558197430993 / 10000000000000 : ℚ)
   center := (410450000000000003 / 800000000000000000 : ℚ)
   supportValue := (257328966669433 / 625000000000000 : ℚ)
   supportSlope := (-9575431087479449 / 5000000000000000 : ℚ)
@@ -115,17 +97,10 @@ noncomputable def cell_10705 : Cell := {
   oldLo := (41150000000000003 / 100000000000000000 : ℚ)
   oldHi := (41200000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_996]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10706 : Cell := {
+noncomputable def cell_10706 : Cell := { cellDefaults with
   domain := ⟨(205249999999999999 / 400000000000000000 : ℚ), (102649999999999997 / 200000000000000000 : ℚ)⟩
-  branch := .left
-  r := (60965986431421 / 100000000000000 : ℚ)
-  w := (14558197430993 / 10000000000000 : ℚ)
   center := (410549999999999993 / 800000000000000000 : ℚ)
   supportValue := (4114870827685587 / 10000000000000000 : ℚ)
   supportSlope := (-19136302568842603 / 10000000000000000 : ℚ)
@@ -134,17 +109,10 @@ noncomputable def cell_10706 : Cell := {
   oldLo := (41100000000000003 / 100000000000000000 : ℚ)
   oldHi := (41200000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_995, piece_996]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10707 : Cell := {
+noncomputable def cell_10707 : Cell := { cellDefaults with
   domain := ⟨(102649999999999997 / 200000000000000000 : ℚ), (5132960893854749 / 10000000000000000 : ℚ)⟩
-  branch := .left
-  r := (60965986431421 / 100000000000000 : ℚ)
-  w := (14558197430993 / 10000000000000 : ℚ)
   center := (205309217877094977 / 400000000000000000 : ℚ)
   supportValue := (205661514915549 / 500000000000000 : ℚ)
   supportSlope := (-956351627793051 / 500000000000000 : ℚ)
@@ -153,17 +121,10 @@ noncomputable def cell_10707 : Cell := {
   oldLo := (41100000000000003 / 100000000000000000 : ℚ)
   oldHi := (41150000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_995]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10708 : Cell := {
+noncomputable def cell_10708 : Cell := { cellDefaults with
   domain := ⟨(5132960893854749 / 10000000000000000 : ℚ), (51339804469273743 / 100000000000000000 : ℚ)⟩
-  branch := .left
-  r := (60965986431421 / 100000000000000 : ℚ)
-  w := (14558197430993 / 10000000000000 : ℚ)
   center := (102669413407821233 / 200000000000000000 : ℚ)
   supportValue := (513976968584257 / 1250000000000000 : ℚ)
   supportSlope := (-9557359405484369 / 5000000000000000 : ℚ)
@@ -172,17 +133,10 @@ noncomputable def cell_10708 : Cell := {
   oldLo := (41100000000000003 / 100000000000000000 : ℚ)
   oldHi := (41150000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_995]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10709 : Cell := {
+noncomputable def cell_10709 : Cell := { cellDefaults with
   domain := ⟨(51339804469273743 / 100000000000000000 : ℚ), (12837499999999999 / 25000000000000000 : ℚ)⟩
-  branch := .left
-  r := (60965986431421 / 100000000000000 : ℚ)
-  w := (14558197430993 / 10000000000000 : ℚ)
   center := (102689804469273739 / 200000000000000000 : ℚ)
   supportValue := (8219741125309059 / 20000000000000000 : ℚ)
   supportSlope := (-19104178298877577 / 10000000000000000 : ℚ)
@@ -191,15 +145,10 @@ noncomputable def cell_10709 : Cell := {
   oldLo := (41050000000000003 / 100000000000000000 : ℚ)
   oldHi := (41150000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_994, piece_995]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10710 : Cell := {
+noncomputable def cell_10710 : Cell := { cellDefaults with
   domain := ⟨(12837499999999999 / 25000000000000000 : ℚ), (205449999999999989 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (15233066812413 / 25000000000000 : ℚ)
   w := (7277011263459 / 5000000000000 : ℚ)
   center := (410849999999999973 / 800000000000000000 : ℚ)
@@ -210,15 +159,10 @@ noncomputable def cell_10710 : Cell := {
   oldLo := (41100000000000003 / 100000000000000000 : ℚ)
   oldHi := (41150000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_995]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10711 : Cell := {
+noncomputable def cell_10711 : Cell := { cellDefaults with
   domain := ⟨(205449999999999989 / 400000000000000000 : ℚ), (102749999999999997 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (15233066812413 / 25000000000000 : ℚ)
   w := (7277011263459 / 5000000000000 : ℚ)
   center := (410949999999999983 / 800000000000000000 : ℚ)
@@ -229,15 +173,10 @@ noncomputable def cell_10711 : Cell := {
   oldLo := (41050000000000003 / 100000000000000000 : ℚ)
   oldHi := (41150000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_994, piece_995]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10712 : Cell := {
+noncomputable def cell_10712 : Cell := { cellDefaults with
   domain := ⟨(102749999999999997 / 200000000000000000 : ℚ), (205549999999999999 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (15233066812413 / 25000000000000 : ℚ)
   w := (7277011263459 / 5000000000000 : ℚ)
   center := (411049999999999993 / 800000000000000000 : ℚ)
@@ -248,15 +187,10 @@ noncomputable def cell_10712 : Cell := {
   oldLo := (41050000000000003 / 100000000000000000 : ℚ)
   oldHi := (41100000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_994]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10713 : Cell := {
+noncomputable def cell_10713 : Cell := { cellDefaults with
   domain := ⟨(205549999999999999 / 400000000000000000 : ℚ), (51400000000000001 / 100000000000000000 : ℚ)⟩
-  branch := .left
   r := (15233066812413 / 25000000000000 : ℚ)
   w := (7277011263459 / 5000000000000 : ℚ)
   center := (411150000000000003 / 800000000000000000 : ℚ)
@@ -267,15 +201,10 @@ noncomputable def cell_10713 : Cell := {
   oldLo := (41000000000000003 / 100000000000000000 : ℚ)
   oldHi := (41100000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_993, piece_994]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10714 : Cell := {
+noncomputable def cell_10714 : Cell := { cellDefaults with
   domain := ⟨(51400000000000001 / 100000000000000000 : ℚ), (205649999999999999 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (15224647212093 / 25000000000000 : ℚ)
   w := (3637463836353 / 2500000000000 : ℚ)
   center := (411250000000000003 / 800000000000000000 : ℚ)
@@ -286,15 +215,10 @@ noncomputable def cell_10714 : Cell := {
   oldLo := (41050000000000003 / 100000000000000000 : ℚ)
   oldHi := (41100000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_994]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10715 : Cell := {
+noncomputable def cell_10715 : Cell := { cellDefaults with
   domain := ⟨(205649999999999999 / 400000000000000000 : ℚ), (102849999999999997 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (15224647212093 / 25000000000000 : ℚ)
   w := (3637463836353 / 2500000000000 : ℚ)
   center := (411349999999999993 / 800000000000000000 : ℚ)
@@ -305,15 +229,10 @@ noncomputable def cell_10715 : Cell := {
   oldLo := (41000000000000003 / 100000000000000000 : ℚ)
   oldHi := (41100000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_993, piece_994]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10716 : Cell := {
+noncomputable def cell_10716 : Cell := { cellDefaults with
   domain := ⟨(102849999999999997 / 200000000000000000 : ℚ), (205749999999999989 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (15224647212093 / 25000000000000 : ℚ)
   w := (3637463836353 / 2500000000000 : ℚ)
   center := (411449999999999983 / 800000000000000000 : ℚ)
@@ -322,17 +241,11 @@ noncomputable def cell_10716 : Cell := {
   oldCenter := (1025845842356319 / 2500000000000000 : ℚ)
   newCoefficients := coefficients_1220
   oldLo := (41000000000000003 / 100000000000000000 : ℚ)
-  oldHi := (41050000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_993]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10717 : Cell := {
+noncomputable def cell_10717 : Cell := { cellDefaults with
   domain := ⟨(205749999999999989 / 400000000000000000 : ℚ), (12862499999999999 / 25000000000000000 : ℚ)⟩
-  branch := .left
   r := (15224647212093 / 25000000000000 : ℚ)
   w := (3637463836353 / 2500000000000 : ℚ)
   center := (411549999999999973 / 800000000000000000 : ℚ)
@@ -341,17 +254,11 @@ noncomputable def cell_10717 : Cell := {
   oldCenter := (4101004394798413 / 10000000000000000 : ℚ)
   newCoefficients := coefficients_1220
   oldLo := (40950000000000003 / 100000000000000000 : ℚ)
-  oldHi := (41050000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_992, piece_993]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10718 : Cell := {
+noncomputable def cell_10718 : Cell := { cellDefaults with
   domain := ⟨(12862499999999999 / 25000000000000000 : ℚ), (205849999999999989 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (60864953001701 / 100000000000000 : ℚ)
   w := (7272848443077 / 5000000000000 : ℚ)
   center := (411649999999999973 / 800000000000000000 : ℚ)
@@ -360,17 +267,11 @@ noncomputable def cell_10718 : Cell := {
   oldCenter := (41036035043188973 / 100000000000000000 : ℚ)
   newCoefficients := coefficients_1221
   oldLo := (41000000000000003 / 100000000000000000 : ℚ)
-  oldHi := (41050000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_993]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10719 : Cell := {
+noncomputable def cell_10719 : Cell := { cellDefaults with
   domain := ⟨(205849999999999989 / 400000000000000000 : ℚ), (102949999999999997 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (60864953001701 / 100000000000000 : ℚ)
   w := (7272848443077 / 5000000000000 : ℚ)
   center := (411749999999999983 / 800000000000000000 : ℚ)
@@ -379,17 +280,11 @@ noncomputable def cell_10719 : Cell := {
   oldCenter := (410122564201539 / 1000000000000000 : ℚ)
   newCoefficients := coefficients_1221
   oldLo := (41000000000000003 / 100000000000000000 : ℚ)
-  oldHi := (41050000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_993]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10720 : Cell := {
+noncomputable def cell_10720 : Cell := { cellDefaults with
   domain := ⟨(102949999999999997 / 200000000000000000 : ℚ), (205949999999999999 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (60864953001701 / 100000000000000 : ℚ)
   w := (7272848443077 / 5000000000000 : ℚ)
   center := (411849999999999993 / 800000000000000000 : ℚ)
@@ -398,17 +293,11 @@ noncomputable def cell_10720 : Cell := {
   oldCenter := (4098849674933921 / 10000000000000000 : ℚ)
   newCoefficients := coefficients_1221
   oldLo := (40950000000000003 / 100000000000000000 : ℚ)
-  oldHi := (41050000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_992, piece_993]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10721 : Cell := {
+noncomputable def cell_10721 : Cell := { cellDefaults with
   domain := ⟨(205949999999999999 / 400000000000000000 : ℚ), (51500000000000001 / 100000000000000000 : ℚ)⟩
-  branch := .left
   r := (60864953001701 / 100000000000000 : ℚ)
   w := (7272848443077 / 5000000000000 : ℚ)
   center := (411950000000000003 / 800000000000000000 : ℚ)
@@ -419,15 +308,10 @@ noncomputable def cell_10721 : Cell := {
   oldLo := (40950000000000003 / 100000000000000000 : ℚ)
   oldHi := (41000000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_992]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10722 : Cell := {
+noncomputable def cell_10722 : Cell := { cellDefaults with
   domain := ⟨(51500000000000001 / 100000000000000000 : ℚ), (206049999999999999 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (30415678924777 / 50000000000000 : ℚ)
   w := (7270773227323 / 5000000000000 : ℚ)
   center := (412050000000000003 / 800000000000000000 : ℚ)
@@ -436,17 +320,11 @@ noncomputable def cell_10722 : Cell := {
   oldCenter := (40990695663732957 / 100000000000000000 : ℚ)
   newCoefficients := coefficients_1222
   oldLo := (40950000000000003 / 100000000000000000 : ℚ)
-  oldHi := (41050000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_992, piece_993]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10723 : Cell := {
+noncomputable def cell_10723 : Cell := { cellDefaults with
   domain := ⟨(206049999999999999 / 400000000000000000 : ℚ), (103049999999999997 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (30415678924777 / 50000000000000 : ℚ)
   w := (7270773227323 / 5000000000000 : ℚ)
   center := (412149999999999993 / 800000000000000000 : ℚ)
@@ -457,15 +335,10 @@ noncomputable def cell_10723 : Cell := {
   oldLo := (40950000000000003 / 100000000000000000 : ℚ)
   oldHi := (41000000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_992]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10724 : Cell := {
+noncomputable def cell_10724 : Cell := { cellDefaults with
   domain := ⟨(103049999999999997 / 200000000000000000 : ℚ), (206149999999999989 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (30415678924777 / 50000000000000 : ℚ)
   w := (7270773227323 / 5000000000000 : ℚ)
   center := (412249999999999983 / 800000000000000000 : ℚ)
@@ -476,15 +349,10 @@ noncomputable def cell_10724 : Cell := {
   oldLo := (40900000000000003 / 100000000000000000 : ℚ)
   oldHi := (41000000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_991, piece_992]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10725 : Cell := {
+noncomputable def cell_10725 : Cell := { cellDefaults with
   domain := ⟨(206149999999999989 / 400000000000000000 : ℚ), (12887499999999999 / 25000000000000000 : ℚ)⟩
-  branch := .left
   r := (30415678924777 / 50000000000000 : ℚ)
   w := (7270773227323 / 5000000000000 : ℚ)
   center := (412349999999999973 / 800000000000000000 : ℚ)
@@ -495,15 +363,10 @@ noncomputable def cell_10725 : Cell := {
   oldLo := (40900000000000003 / 100000000000000000 : ℚ)
   oldHi := (40950000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_991]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10726 : Cell := {
+noncomputable def cell_10726 : Cell := { cellDefaults with
   domain := ⟨(12887499999999999 / 25000000000000000 : ℚ), (206249999999999989 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (7599725411413 / 12500000000000 : ℚ)
   w := (7268702279491 / 5000000000000 : ℚ)
   center := (412449999999999973 / 800000000000000000 : ℚ)
@@ -514,15 +377,10 @@ noncomputable def cell_10726 : Cell := {
   oldLo := (40900000000000003 / 100000000000000000 : ℚ)
   oldHi := (41000000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_991, piece_992]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10727 : Cell := {
+noncomputable def cell_10727 : Cell := { cellDefaults with
   domain := ⟨(206249999999999989 / 400000000000000000 : ℚ), (103149999999999997 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (7599725411413 / 12500000000000 : ℚ)
   w := (7268702279491 / 5000000000000 : ℚ)
   center := (412549999999999983 / 800000000000000000 : ℚ)
@@ -533,15 +391,10 @@ noncomputable def cell_10727 : Cell := {
   oldLo := (40900000000000003 / 100000000000000000 : ℚ)
   oldHi := (40950000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_991]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10728 : Cell := {
+noncomputable def cell_10728 : Cell := { cellDefaults with
   domain := ⟨(103149999999999997 / 200000000000000000 : ℚ), (206349999999999999 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (7599725411413 / 12500000000000 : ℚ)
   w := (7268702279491 / 5000000000000 : ℚ)
   center := (412649999999999993 / 800000000000000000 : ℚ)
@@ -552,15 +405,10 @@ noncomputable def cell_10728 : Cell := {
   oldLo := (40850000000000003 / 100000000000000000 : ℚ)
   oldHi := (40950000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_990, piece_991]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10729 : Cell := {
+noncomputable def cell_10729 : Cell := { cellDefaults with
   domain := ⟨(206349999999999999 / 400000000000000000 : ℚ), (51600000000000001 / 100000000000000000 : ℚ)⟩
-  branch := .left
   r := (7599725411413 / 12500000000000 : ℚ)
   w := (7268702279491 / 5000000000000 : ℚ)
   center := (412750000000000003 / 800000000000000000 : ℚ)
@@ -571,15 +419,10 @@ noncomputable def cell_10729 : Cell := {
   oldLo := (40850000000000003 / 100000000000000000 : ℚ)
   oldHi := (40900000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_990]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10730 : Cell := {
+noncomputable def cell_10730 : Cell := { cellDefaults with
   domain := ⟨(51600000000000001 / 100000000000000000 : ℚ), (206449999999999999 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (30382145598411 / 50000000000000 : ℚ)
   w := (290665431193 / 200000000000 : ℚ)
   center := (412850000000000003 / 800000000000000000 : ℚ)
@@ -590,15 +433,10 @@ noncomputable def cell_10730 : Cell := {
   oldLo := (40850000000000003 / 100000000000000000 : ℚ)
   oldHi := (40950000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_990, piece_991]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10731 : Cell := {
+noncomputable def cell_10731 : Cell := { cellDefaults with
   domain := ⟨(206449999999999999 / 400000000000000000 : ℚ), (103249999999999997 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (30382145598411 / 50000000000000 : ℚ)
   w := (290665431193 / 200000000000 : ℚ)
   center := (412949999999999993 / 800000000000000000 : ℚ)
@@ -609,15 +447,10 @@ noncomputable def cell_10731 : Cell := {
   oldLo := (40850000000000003 / 100000000000000000 : ℚ)
   oldHi := (40900000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_990]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10732 : Cell := {
+noncomputable def cell_10732 : Cell := { cellDefaults with
   domain := ⟨(103249999999999997 / 200000000000000000 : ℚ), (206549999999999989 / 400000000000000000 : ℚ)⟩
-  branch := .left
   r := (30382145598411 / 50000000000000 : ℚ)
   w := (290665431193 / 200000000000 : ℚ)
   center := (413049999999999983 / 800000000000000000 : ℚ)
@@ -628,15 +461,10 @@ noncomputable def cell_10732 : Cell := {
   oldLo := (4082122905027933 / 10000000000000000 : ℚ)
   oldHi := (40900000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_989, piece_990]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10733 : Cell := {
+noncomputable def cell_10733 : Cell := { cellDefaults with
   domain := ⟨(206549999999999989 / 400000000000000000 : ℚ), (12912499999999999 / 25000000000000000 : ℚ)⟩
-  branch := .left
   r := (30382145598411 / 50000000000000 : ℚ)
   w := (290665431193 / 200000000000 : ℚ)
   center := (413149999999999973 / 800000000000000000 : ℚ)
@@ -647,15 +475,10 @@ noncomputable def cell_10733 : Cell := {
   oldLo := (40800000000000003 / 100000000000000000 : ℚ)
   oldHi := (40850000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_988, piece_989]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10734 : Cell := {
+noncomputable def cell_10734 : Cell := { cellDefaults with
   domain := ⟨(12912499999999999 / 25000000000000000 : ℚ), (20664999999999999 / 40000000000000000 : ℚ)⟩
-  branch := .left
   r := (60730819816697 / 100000000000000 : ℚ)
   w := (1816143327361 / 1250000000000 : ℚ)
   center := (206624999999999987 / 400000000000000000 : ℚ)
@@ -666,15 +489,10 @@ noncomputable def cell_10734 : Cell := {
   oldLo := (4082122905027933 / 10000000000000000 : ℚ)
   oldHi := (40900000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_989, piece_990]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10735 : Cell := {
+noncomputable def cell_10735 : Cell := { cellDefaults with
   domain := ⟨(20664999999999999 / 40000000000000000 : ℚ), (51674999999999999 / 100000000000000000 : ℚ)⟩
-  branch := .left
   r := (60730819816697 / 100000000000000 : ℚ)
   w := (1816143327361 / 1250000000000 : ℚ)
   center := (206674999999999993 / 400000000000000000 : ℚ)
@@ -685,15 +503,10 @@ noncomputable def cell_10735 : Cell := {
   oldLo := (40800000000000003 / 100000000000000000 : ℚ)
   oldHi := (40850000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_988, piece_989]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10736 : Cell := {
+noncomputable def cell_10736 : Cell := { cellDefaults with
   domain := ⟨(51674999999999999 / 100000000000000000 : ℚ), (103375000000000001 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (60730819816697 / 100000000000000 : ℚ)
   w := (1816143327361 / 1250000000000 : ℚ)
   center := (206724999999999999 / 400000000000000000 : ℚ)
@@ -701,18 +514,12 @@ noncomputable def cell_10736 : Cell := {
   supportSlope := (-4709793273919839 / 2500000000000000 : ℚ)
   oldCenter := (4080810305678169 / 10000000000000000 : ℚ)
   newCoefficients := coefficients_1225
-  oldLo := (40750000000000003 / 100000000000000000 : ℚ)
   oldHi := (4082122905027933 / 10000000000000000 : ℚ)
   oldPieces := [piece_987, piece_988]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10737 : Cell := {
+noncomputable def cell_10737 : Cell := { cellDefaults with
   domain := ⟨(103375000000000001 / 200000000000000000 : ℚ), (25850000000000001 / 50000000000000000 : ℚ)⟩
-  branch := .left
   r := (60730819816697 / 100000000000000 : ℚ)
   w := (1816143327361 / 1250000000000 : ℚ)
   center := (41355000000000001 / 80000000000000000 : ℚ)
@@ -720,18 +527,12 @@ noncomputable def cell_10737 : Cell := {
   supportSlope := (-18828326549724623 / 10000000000000000 : ℚ)
   oldCenter := (40784559707630313 / 100000000000000000 : ℚ)
   newCoefficients := coefficients_1225
-  oldLo := (40750000000000003 / 100000000000000000 : ℚ)
   oldHi := (40800000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_987]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10738 : Cell := {
+noncomputable def cell_10738 : Cell := { cellDefaults with
   domain := ⟨(25850000000000001 / 50000000000000000 : ℚ), (103425000000000001 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (30348694991969 / 50000000000000 : ℚ)
   w := (453907200203 / 312500000000 : ℚ)
   center := (41365000000000001 / 80000000000000000 : ℚ)
@@ -739,18 +540,12 @@ noncomputable def cell_10738 : Cell := {
   supportSlope := (-1882933301642579 / 1000000000000000 : ℚ)
   oldCenter := (8162056175254293 / 20000000000000000 : ℚ)
   newCoefficients := coefficients_1226
-  oldLo := (40750000000000003 / 100000000000000000 : ℚ)
   oldHi := (40850000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_987, piece_988, piece_989]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10739 : Cell := {
+noncomputable def cell_10739 : Cell := { cellDefaults with
   domain := ⟨(103425000000000001 / 200000000000000000 : ℚ), (51724999999999999 / 100000000000000000 : ℚ)⟩
-  branch := .left
   r := (30348694991969 / 50000000000000 : ℚ)
   w := (453907200203 / 312500000000 : ℚ)
   center := (206874999999999999 / 400000000000000000 : ℚ)
@@ -758,18 +553,12 @@ noncomputable def cell_10739 : Cell := {
   supportSlope := (-752782976166079 / 400000000000000 : ℚ)
   oldCenter := (40786749812639983 / 100000000000000000 : ℚ)
   newCoefficients := coefficients_1226
-  oldLo := (40750000000000003 / 100000000000000000 : ℚ)
   oldHi := (40800000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_987]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10740 : Cell := {
+noncomputable def cell_10740 : Cell := { cellDefaults with
   domain := ⟨(51724999999999999 / 100000000000000000 : ℚ), (20694999999999999 / 40000000000000000 : ℚ)⟩
-  branch := .left
   r := (30348694991969 / 50000000000000 : ℚ)
   w := (453907200203 / 312500000000 : ℚ)
   center := (206924999999999993 / 400000000000000000 : ℚ)
@@ -777,18 +566,12 @@ noncomputable def cell_10740 : Cell := {
   supportSlope := (-18799093142949397 / 10000000000000000 : ℚ)
   oldCenter := (40763238132100993 / 100000000000000000 : ℚ)
   newCoefficients := coefficients_1226
-  oldLo := (40750000000000003 / 100000000000000000 : ℚ)
   oldHi := (40800000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_987]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10741 : Cell := {
+noncomputable def cell_10741 : Cell := { cellDefaults with
   domain := ⟨(20694999999999999 / 40000000000000000 : ℚ), (12937499999999999 / 25000000000000000 : ℚ)⟩
-  branch := .left
   r := (30348694991969 / 50000000000000 : ℚ)
   w := (453907200203 / 312500000000 : ℚ)
   center := (206974999999999987 / 400000000000000000 : ℚ)
@@ -799,15 +582,10 @@ noncomputable def cell_10741 : Cell := {
   oldLo := (40700000000000003 / 100000000000000000 : ℚ)
   oldHi := (40800000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_986, piece_987]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10742 : Cell := {
+noncomputable def cell_10742 : Cell := { cellDefaults with
   domain := ⟨(12937499999999999 / 25000000000000000 : ℚ), (20704999999999999 / 40000000000000000 : ℚ)⟩
-  branch := .left
   r := (30332000235529 / 50000000000000 : ℚ)
   w := (14520922357901 / 10000000000000 : ℚ)
   center := (207024999999999987 / 400000000000000000 : ℚ)
@@ -815,18 +593,12 @@ noncomputable def cell_10742 : Cell := {
   supportSlope := (-18790344836074857 / 10000000000000000 : ℚ)
   oldCenter := (5095676611395817 / 12500000000000000 : ℚ)
   newCoefficients := coefficients_1227
-  oldLo := (40750000000000003 / 100000000000000000 : ℚ)
   oldHi := (40800000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_987]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10743 : Cell := {
+noncomputable def cell_10743 : Cell := { cellDefaults with
   domain := ⟨(20704999999999999 / 40000000000000000 : ℚ), (51774999999999999 / 100000000000000000 : ℚ)⟩
-  branch := .left
   r := (30332000235529 / 50000000000000 : ℚ)
   w := (14520922357901 / 10000000000000 : ℚ)
   center := (207074999999999993 / 400000000000000000 : ℚ)
@@ -837,15 +609,10 @@ noncomputable def cell_10743 : Cell := {
   oldLo := (40700000000000003 / 100000000000000000 : ℚ)
   oldHi := (40800000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_986, piece_987]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10744 : Cell := {
+noncomputable def cell_10744 : Cell := { cellDefaults with
   domain := ⟨(51774999999999999 / 100000000000000000 : ℚ), (103575000000000001 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (30332000235529 / 50000000000000 : ℚ)
   w := (14520922357901 / 10000000000000 : ℚ)
   center := (207124999999999999 / 400000000000000000 : ℚ)
@@ -856,15 +623,10 @@ noncomputable def cell_10744 : Cell := {
   oldLo := (40700000000000003 / 100000000000000000 : ℚ)
   oldHi := (40750000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_986]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10745 : Cell := {
+noncomputable def cell_10745 : Cell := { cellDefaults with
   domain := ⟨(103575000000000001 / 200000000000000000 : ℚ), (25900000000000001 / 50000000000000000 : ℚ)⟩
-  branch := .left
   r := (30332000235529 / 50000000000000 : ℚ)
   w := (14520922357901 / 10000000000000 : ℚ)
   center := (41435000000000001 / 80000000000000000 : ℚ)
@@ -875,15 +637,10 @@ noncomputable def cell_10745 : Cell := {
   oldLo := (40650000000000003 / 100000000000000000 : ℚ)
   oldHi := (40750000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_985, piece_986]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10746 : Cell := {
+noncomputable def cell_10746 : Cell := { cellDefaults with
   domain := ⟨(25900000000000001 / 50000000000000000 : ℚ), (103625000000000001 / 200000000000000000 : ℚ)⟩
-  branch := .left
   r := (60630653055421 / 100000000000000 : ℚ)
   w := (907301459703 / 625000000000 : ℚ)
   center := (41445000000000001 / 80000000000000000 : ℚ)
@@ -894,15 +651,10 @@ noncomputable def cell_10746 : Cell := {
   oldLo := (40700000000000003 / 100000000000000000 : ℚ)
   oldHi := (40750000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_986]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10747 : Cell := {
+noncomputable def cell_10747 : Cell := { cellDefaults with
   domain := ⟨(103625000000000001 / 200000000000000000 : ℚ), (51824999999999999 / 100000000000000000 : ℚ)⟩
-  branch := .left
   r := (60630653055421 / 100000000000000 : ℚ)
   w := (907301459703 / 625000000000 : ℚ)
   center := (207274999999999999 / 400000000000000000 : ℚ)
@@ -913,15 +665,10 @@ noncomputable def cell_10747 : Cell := {
   oldLo := (40650000000000003 / 100000000000000000 : ℚ)
   oldHi := (40750000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_985, piece_986]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10748 : Cell := {
+noncomputable def cell_10748 : Cell := { cellDefaults with
   domain := ⟨(51824999999999999 / 100000000000000000 : ℚ), (20734999999999999 / 40000000000000000 : ℚ)⟩
-  branch := .left
   r := (60630653055421 / 100000000000000 : ℚ)
   w := (907301459703 / 625000000000 : ℚ)
   center := (207324999999999993 / 400000000000000000 : ℚ)
@@ -932,15 +679,10 @@ noncomputable def cell_10748 : Cell := {
   oldLo := (40650000000000003 / 100000000000000000 : ℚ)
   oldHi := (40700000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_985]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
-noncomputable def cell_10749 : Cell := {
+noncomputable def cell_10749 : Cell := { cellDefaults with
   domain := ⟨(20734999999999999 / 40000000000000000 : ℚ), (12962499999999999 / 25000000000000000 : ℚ)⟩
-  branch := .left
   r := (60630653055421 / 100000000000000 : ℚ)
   w := (907301459703 / 625000000000 : ℚ)
   center := (207374999999999987 / 400000000000000000 : ℚ)
@@ -951,10 +693,6 @@ noncomputable def cell_10749 : Cell := {
   oldLo := (40600000000000003 / 100000000000000000 : ℚ)
   oldHi := (40700000000000003 / 100000000000000000 : ℚ)
   oldPieces := [piece_984, piece_985]
-  ne := 20
-  nl := 24
-  nq := 32
-  centered := true
 }
 
 theorem check_10700 : cell_10700.check = true := by

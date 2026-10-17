@@ -8,28 +8,36 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0074
 open SourceCertificate CurrentSourceData
 
-def cell_3700 : Cell := {
+private def cellDefaults : Cell := {
   domain := ⟨(3527 / 32000 : ℚ), (441 / 4000 : ℚ)⟩
   branch := .right
-  r := (10825149665347 / 10000000000000 : ℚ)
-  w := (24294948797743 / 25000000000000 : ℚ)
+  r := (10811935707349 / 10000000000000 : ℚ)
+  w := (48620153547261 / 50000000000000 : ℚ)
   center := (1411 / 12800 : ℚ)
   supportValue := (3719735734672603 / 10000000000000000 : ℚ)
   supportSlope := (1062290814747513 / 250000000000000 : ℚ)
   oldCenter := (3719735734672603 / 10000000000000000 : ℚ)
-  newCoefficients := coefficients_339
-  oldLo := (7430000000000001 / 20000000000000000 : ℚ)
-  oldHi := (149 / 400 : ℚ)
-  oldPieces := [piece_909, piece_910]
+  newCoefficients := coefficients_340
+  oldLo := (749 / 2000 : ℚ)
+  oldHi := (747 / 2000 : ℚ)
+  oldPieces := [piece_915]
   ne := 20
   nl := 16
   nq := 32
   centered := true
 }
 
-def cell_3701 : Cell := {
+def cell_3700 : Cell := { cellDefaults with
+  r := (10825149665347 / 10000000000000 : ℚ)
+  w := (24294948797743 / 25000000000000 : ℚ)
+  newCoefficients := coefficients_339
+  oldLo := (7430000000000001 / 20000000000000000 : ℚ)
+  oldHi := (149 / 400 : ℚ)
+  oldPieces := [piece_909, piece_910]
+}
+
+def cell_3701 : Cell := { cellDefaults with
   domain := ⟨(441 / 4000 : ℚ), (3529 / 32000 : ℚ)⟩
-  branch := .right
   r := (10825149665347 / 10000000000000 : ℚ)
   w := (24294948797743 / 25000000000000 : ℚ)
   center := (7057 / 64000 : ℚ)
@@ -40,15 +48,10 @@ def cell_3701 : Cell := {
   oldLo := (93 / 250 : ℚ)
   oldHi := (149 / 400 : ℚ)
   oldPieces := [piece_910]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3702 : Cell := {
+def cell_3702 : Cell := { cellDefaults with
   domain := ⟨(3529 / 32000 : ℚ), (353 / 3200 : ℚ)⟩
-  branch := .right
   r := (10825149665347 / 10000000000000 : ℚ)
   w := (24294948797743 / 25000000000000 : ℚ)
   center := (7059 / 64000 : ℚ)
@@ -59,15 +62,10 @@ def cell_3702 : Cell := {
   oldLo := (93 / 250 : ℚ)
   oldHi := (149 / 400 : ℚ)
   oldPieces := [piece_910]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3703 : Cell := {
+def cell_3703 : Cell := { cellDefaults with
   domain := ⟨(353 / 3200 : ℚ), (3531 / 32000 : ℚ)⟩
-  branch := .right
   r := (10825149665347 / 10000000000000 : ℚ)
   w := (24294948797743 / 25000000000000 : ℚ)
   center := (7061 / 64000 : ℚ)
@@ -78,15 +76,10 @@ def cell_3703 : Cell := {
   oldLo := (93 / 250 : ℚ)
   oldHi := (149 / 400 : ℚ)
   oldPieces := [piece_910]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3704 : Cell := {
+def cell_3704 : Cell := { cellDefaults with
   domain := ⟨(3531 / 32000 : ℚ), (883 / 8000 : ℚ)⟩
-  branch := .right
   r := (10825149665347 / 10000000000000 : ℚ)
   w := (24294948797743 / 25000000000000 : ℚ)
   center := (7063 / 64000 : ℚ)
@@ -97,15 +90,10 @@ def cell_3704 : Cell := {
   oldLo := (93 / 250 : ℚ)
   oldHi := (373 / 1000 : ℚ)
   oldPieces := [piece_910, piece_911]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3705 : Cell := {
+def cell_3705 : Cell := { cellDefaults with
   domain := ⟨(883 / 8000 : ℚ), (3533 / 32000 : ℚ)⟩
-  branch := .right
   r := (10825149665347 / 10000000000000 : ℚ)
   w := (24294948797743 / 25000000000000 : ℚ)
   center := (1413 / 12800 : ℚ)
@@ -116,15 +104,10 @@ def cell_3705 : Cell := {
   oldLo := (149 / 400 : ℚ)
   oldHi := (373 / 1000 : ℚ)
   oldPieces := [piece_911]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3706 : Cell := {
+def cell_3706 : Cell := { cellDefaults with
   domain := ⟨(3533 / 32000 : ℚ), (1767 / 16000 : ℚ)⟩
-  branch := .right
   r := (10825149665347 / 10000000000000 : ℚ)
   w := (24294948797743 / 25000000000000 : ℚ)
   center := (7067 / 64000 : ℚ)
@@ -135,15 +118,10 @@ def cell_3706 : Cell := {
   oldLo := (149 / 400 : ℚ)
   oldHi := (373 / 1000 : ℚ)
   oldPieces := [piece_911]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3707 : Cell := {
+def cell_3707 : Cell := { cellDefaults with
   domain := ⟨(1767 / 16000 : ℚ), (707 / 6400 : ℚ)⟩
-  branch := .right
   r := (10825149665347 / 10000000000000 : ℚ)
   w := (24294948797743 / 25000000000000 : ℚ)
   center := (7069 / 64000 : ℚ)
@@ -154,15 +132,10 @@ def cell_3707 : Cell := {
   oldLo := (149 / 400 : ℚ)
   oldHi := (373 / 1000 : ℚ)
   oldPieces := [piece_911]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3708 : Cell := {
+def cell_3708 : Cell := { cellDefaults with
   domain := ⟨(707 / 6400 : ℚ), (221 / 2000 : ℚ)⟩
-  branch := .right
   r := (10825149665347 / 10000000000000 : ℚ)
   w := (24294948797743 / 25000000000000 : ℚ)
   center := (7071 / 64000 : ℚ)
@@ -171,340 +144,190 @@ def cell_3708 : Cell := {
   oldCenter := (1865183101427493 / 5000000000000000 : ℚ)
   newCoefficients := coefficients_339
   oldLo := (149 / 400 : ℚ)
-  oldHi := (747 / 2000 : ℚ)
   oldPieces := [piece_911, piece_912]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3709 : Cell := {
+def cell_3709 : Cell := { cellDefaults with
   domain := ⟨(221 / 2000 : ℚ), (3537 / 32000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7073 / 64000 : ℚ)
   supportValue := (3729851896829731 / 10000000000000000 : ℚ)
   supportSlope := (4255022648433027 / 1000000000000000 : ℚ)
   oldCenter := (3729851896829731 / 10000000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (149 / 400 : ℚ)
-  oldHi := (747 / 2000 : ℚ)
   oldPieces := [piece_911, piece_912]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3710 : Cell := {
+def cell_3710 : Cell := { cellDefaults with
   domain := ⟨(3537 / 32000 : ℚ), (1769 / 16000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (283 / 2560 : ℚ)
   supportValue := (1865591017067777 / 5000000000000000 : ℚ)
   supportSlope := (2127293919188311 / 500000000000000 : ℚ)
   oldCenter := (1865591017067777 / 5000000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (373 / 1000 : ℚ)
-  oldHi := (747 / 2000 : ℚ)
   oldPieces := [piece_912]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3711 : Cell := {
+def cell_3711 : Cell := { cellDefaults with
   domain := ⟨(1769 / 16000 : ℚ), (3539 / 32000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7077 / 64000 : ℚ)
   supportValue := (186625594696791 / 500000000000000 : ℚ)
   supportSlope := (4256516922177767 / 1000000000000000 : ℚ)
   oldCenter := (186625594696791 / 500000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (373 / 1000 : ℚ)
-  oldHi := (747 / 2000 : ℚ)
   oldPieces := [piece_912]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3712 : Cell := {
+def cell_3712 : Cell := { cellDefaults with
   domain := ⟨(3539 / 32000 : ℚ), (177 / 1600 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7079 / 64000 : ℚ)
   supportValue := (7467684714635393 / 20000000000000000 : ℚ)
   supportSlope := (8516901530462917 / 2000000000000000 : ℚ)
   oldCenter := (7467684714635393 / 20000000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (373 / 1000 : ℚ)
-  oldHi := (747 / 2000 : ℚ)
   oldPieces := [piece_912]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3713 : Cell := {
+def cell_3713 : Cell := { cellDefaults with
   domain := ⟨(177 / 1600 : ℚ), (3541 / 32000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7081 / 64000 : ℚ)
   supportValue := (37351725214713627 / 100000000000000000 : ℚ)
   supportSlope := (4257954671622599 / 1000000000000000 : ℚ)
   oldCenter := (37351725214713627 / 100000000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (373 / 1000 : ℚ)
   oldHi := (187 / 500 : ℚ)
   oldPieces := [piece_912, piece_913]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3714 : Cell := {
+def cell_3714 : Cell := { cellDefaults with
   domain := ⟨(3541 / 32000 : ℚ), (1771 / 16000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7083 / 64000 : ℚ)
   supportValue := (3736503734384089 / 10000000000000000 : ℚ)
   supportSlope := (532306359764867 / 125000000000000 : ℚ)
   oldCenter := (3736503734384089 / 10000000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (747 / 2000 : ℚ)
   oldHi := (187 / 500 : ℚ)
   oldPieces := [piece_913]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3715 : Cell := {
+def cell_3715 : Cell := { cellDefaults with
   domain := ⟨(1771 / 16000 : ℚ), (3543 / 32000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (1417 / 12800 : ℚ)
   supportValue := (934458700101649 / 2500000000000000 : ℚ)
   supportSlope := (426037369692267 / 100000000000000 : ℚ)
   oldCenter := (934458700101649 / 2500000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (747 / 2000 : ℚ)
   oldHi := (187 / 500 : ℚ)
   oldPieces := [piece_913]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3716 : Cell := {
+def cell_3716 : Cell := { cellDefaults with
   domain := ⟨(3543 / 32000 : ℚ), (443 / 4000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7087 / 64000 : ℚ)
   supportValue := (3739166468047499 / 10000000000000000 : ℚ)
   supportSlope := (133196913761513 / 31250000000000 : ℚ)
   oldCenter := (3739166468047499 / 10000000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (747 / 2000 : ℚ)
   oldHi := (187 / 500 : ℚ)
   oldPieces := [piece_913]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3717 : Cell := {
+def cell_3717 : Cell := { cellDefaults with
   domain := ⟨(443 / 4000 : ℚ), (7089 / 64000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (14177 / 128000 : ℚ)
   supportValue := (935041366297697 / 2500000000000000 : ℚ)
   supportSlope := (426087480593651 / 100000000000000 : ℚ)
   oldCenter := (935041366297697 / 2500000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (747 / 2000 : ℚ)
   oldHi := (749 / 2000 : ℚ)
   oldPieces := [piece_913, piece_914]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3718 : Cell := {
+def cell_3718 : Cell := { cellDefaults with
   domain := ⟨(7089 / 64000 : ℚ), (709 / 6400 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (14179 / 128000 : ℚ)
   supportValue := (233801946952529 / 625000000000000 : ℚ)
   supportSlope := (2130434453537333 / 500000000000000 : ℚ)
   oldCenter := (233801946952529 / 625000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (187 / 500 : ℚ)
   oldHi := (749 / 2000 : ℚ)
   oldPieces := [piece_914]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3719 : Cell := {
+def cell_3719 : Cell := { cellDefaults with
   domain := ⟨(709 / 6400 : ℚ), (1773 / 16000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7091 / 64000 : ℚ)
   supportValue := (9354574900991769 / 25000000000000000 : ℚ)
   supportSlope := (1065576023339787 / 250000000000000 : ℚ)
   oldCenter := (9354574900991769 / 25000000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (187 / 500 : ℚ)
   oldHi := (749 / 2000 : ℚ)
   oldPieces := [piece_914]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3720 : Cell := {
+def cell_3720 : Cell := { cellDefaults with
   domain := ⟨(1773 / 16000 : ℚ), (3547 / 32000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7093 / 64000 : ℚ)
   supportValue := (748632445943223 / 2000000000000000 : ℚ)
   supportSlope := (2132110787518293 / 500000000000000 : ℚ)
   oldCenter := (748632445943223 / 2000000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (187 / 500 : ℚ)
   oldHi := (749 / 2000 : ℚ)
   oldPieces := [piece_914]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3721 : Cell := {
+def cell_3721 : Cell := { cellDefaults with
   domain := ⟨(3547 / 32000 : ℚ), (887 / 8000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (1419 / 12800 : ℚ)
   supportValue := (468061793760279 / 1250000000000000 : ℚ)
   supportSlope := (8531359364823743 / 2000000000000000 : ℚ)
   oldCenter := (468061793760279 / 1250000000000000 : ℚ)
-  newCoefficients := coefficients_340
   oldLo := (187 / 500 : ℚ)
   oldHi := (3 / 8 : ℚ)
   oldPieces := [piece_914, piece_915]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3722 : Cell := {
+def cell_3722 : Cell := { cellDefaults with
   domain := ⟨(887 / 8000 : ℚ), (3549 / 32000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7097 / 64000 : ℚ)
   supportValue := (3745827827161489 / 10000000000000000 : ℚ)
   supportSlope := (4264240947874143 / 1000000000000000 : ℚ)
   oldCenter := (3745827827161489 / 10000000000000000 : ℚ)
-  newCoefficients := coefficients_340
-  oldLo := (749 / 2000 : ℚ)
   oldHi := (3 / 8 : ℚ)
   oldPieces := [piece_915]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3723 : Cell := {
+def cell_3723 : Cell := { cellDefaults with
   domain := ⟨(3549 / 32000 : ℚ), (71 / 640 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7099 / 64000 : ℚ)
   supportValue := (3747160700310509 / 10000000000000000 : ℚ)
   supportSlope := (4266149219683157 / 1000000000000000 : ℚ)
   oldCenter := (3747160700310509 / 10000000000000000 : ℚ)
-  newCoefficients := coefficients_340
-  oldLo := (749 / 2000 : ℚ)
   oldHi := (3 / 8 : ℚ)
   oldPieces := [piece_915]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3724 : Cell := {
+def cell_3724 : Cell := { cellDefaults with
   domain := ⟨(71 / 640 : ℚ), (3551 / 32000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7101 / 64000 : ℚ)
   supportValue := (1874247085260263 / 5000000000000000 : ℚ)
   supportSlope := (1067015535660687 / 250000000000000 : ℚ)
   oldCenter := (1874247085260263 / 5000000000000000 : ℚ)
-  newCoefficients := coefficients_340
-  oldLo := (749 / 2000 : ℚ)
   oldHi := (3 / 8 : ℚ)
   oldPieces := [piece_915]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3725 : Cell := {
+def cell_3725 : Cell := { cellDefaults with
   domain := ⟨(3551 / 32000 : ℚ), (111 / 1000 : ℚ)⟩
-  branch := .right
-  r := (10811935707349 / 10000000000000 : ℚ)
-  w := (48620153547261 / 50000000000000 : ℚ)
   center := (7103 / 64000 : ℚ)
   supportValue := (3749827489281817 / 10000000000000000 : ℚ)
   supportSlope := (533570916732673 / 125000000000000 : ℚ)
   oldCenter := (3749827489281817 / 10000000000000000 : ℚ)
-  newCoefficients := coefficients_340
-  oldLo := (749 / 2000 : ℚ)
   oldHi := (751 / 2000 : ℚ)
   oldPieces := [piece_915, piece_916, piece_917]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3726 : Cell := {
+def cell_3726 : Cell := { cellDefaults with
   domain := ⟨(111 / 1000 : ℚ), (3553 / 32000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (1421 / 12800 : ℚ)
@@ -512,18 +335,12 @@ def cell_3726 : Cell := {
   supportSlope := (2134190921299073 / 500000000000000 : ℚ)
   oldCenter := (468659017504991 / 1250000000000000 : ℚ)
   newCoefficients := coefficients_341
-  oldLo := (749 / 2000 : ℚ)
   oldHi := (3 / 8 : ℚ)
   oldPieces := [piece_915]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3727 : Cell := {
+def cell_3727 : Cell := { cellDefaults with
   domain := ⟨(3553 / 32000 : ℚ), (1777 / 16000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7107 / 64000 : ℚ)
@@ -531,18 +348,12 @@ def cell_3727 : Cell := {
   supportSlope := (4266670698909181 / 1000000000000000 : ℚ)
   oldCenter := (1875302509629089 / 5000000000000000 : ℚ)
   newCoefficients := coefficients_341
-  oldLo := (749 / 2000 : ℚ)
   oldHi := (751 / 2000 : ℚ)
   oldPieces := [piece_915, piece_916, piece_917]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3728 : Cell := {
+def cell_3728 : Cell := { cellDefaults with
   domain := ⟨(1777 / 16000 : ℚ), (711 / 6400 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7109 / 64000 : ℚ)
@@ -553,15 +364,10 @@ def cell_3728 : Cell := {
   oldLo := (3750279329608939 / 10000000000000000 : ℚ)
   oldHi := (751 / 2000 : ℚ)
   oldPieces := [piece_917]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3729 : Cell := {
+def cell_3729 : Cell := { cellDefaults with
   domain := ⟨(711 / 6400 : ℚ), (889 / 8000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7111 / 64000 : ℚ)
@@ -572,15 +378,10 @@ def cell_3729 : Cell := {
   oldLo := (3750279329608939 / 10000000000000000 : ℚ)
   oldHi := (751 / 2000 : ℚ)
   oldPieces := [piece_917]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3730 : Cell := {
+def cell_3730 : Cell := { cellDefaults with
   domain := ⟨(889 / 8000 : ℚ), (3557 / 32000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7113 / 64000 : ℚ)
@@ -591,15 +392,10 @@ def cell_3730 : Cell := {
   oldLo := (3750279329608939 / 10000000000000000 : ℚ)
   oldHi := (47 / 125 : ℚ)
   oldPieces := [piece_917, piece_918]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3731 : Cell := {
+def cell_3731 : Cell := { cellDefaults with
   domain := ⟨(3557 / 32000 : ℚ), (1779 / 16000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (1423 / 12800 : ℚ)
@@ -610,15 +406,10 @@ def cell_3731 : Cell := {
   oldLo := (751 / 2000 : ℚ)
   oldHi := (47 / 125 : ℚ)
   oldPieces := [piece_918]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3732 : Cell := {
+def cell_3732 : Cell := { cellDefaults with
   domain := ⟨(1779 / 16000 : ℚ), (3559 / 32000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7117 / 64000 : ℚ)
@@ -629,15 +420,10 @@ def cell_3732 : Cell := {
   oldLo := (751 / 2000 : ℚ)
   oldHi := (47 / 125 : ℚ)
   oldPieces := [piece_918]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3733 : Cell := {
+def cell_3733 : Cell := { cellDefaults with
   domain := ⟨(3559 / 32000 : ℚ), (89 / 800 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7119 / 64000 : ℚ)
@@ -648,15 +434,10 @@ def cell_3733 : Cell := {
   oldLo := (751 / 2000 : ℚ)
   oldHi := (47 / 125 : ℚ)
   oldPieces := [piece_918]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3734 : Cell := {
+def cell_3734 : Cell := { cellDefaults with
   domain := ⟨(89 / 800 : ℚ), (3561 / 32000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7121 / 64000 : ℚ)
@@ -667,15 +448,10 @@ def cell_3734 : Cell := {
   oldLo := (751 / 2000 : ℚ)
   oldHi := (753 / 2000 : ℚ)
   oldPieces := [piece_918, piece_919]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3735 : Cell := {
+def cell_3735 : Cell := { cellDefaults with
   domain := ⟨(3561 / 32000 : ℚ), (1781 / 16000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7123 / 64000 : ℚ)
@@ -686,15 +462,10 @@ def cell_3735 : Cell := {
   oldLo := (47 / 125 : ℚ)
   oldHi := (753 / 2000 : ℚ)
   oldPieces := [piece_919]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3736 : Cell := {
+def cell_3736 : Cell := { cellDefaults with
   domain := ⟨(1781 / 16000 : ℚ), (3563 / 32000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (57 / 512 : ℚ)
@@ -705,15 +476,10 @@ def cell_3736 : Cell := {
   oldLo := (47 / 125 : ℚ)
   oldHi := (753 / 2000 : ℚ)
   oldPieces := [piece_919]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3737 : Cell := {
+def cell_3737 : Cell := { cellDefaults with
   domain := ⟨(3563 / 32000 : ℚ), (891 / 8000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7127 / 64000 : ℚ)
@@ -724,15 +490,10 @@ def cell_3737 : Cell := {
   oldLo := (47 / 125 : ℚ)
   oldHi := (753 / 2000 : ℚ)
   oldPieces := [piece_919]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3738 : Cell := {
+def cell_3738 : Cell := { cellDefaults with
   domain := ⟨(891 / 8000 : ℚ), (713 / 6400 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7129 / 64000 : ℚ)
@@ -743,15 +504,10 @@ def cell_3738 : Cell := {
   oldLo := (47 / 125 : ℚ)
   oldHi := (377 / 1000 : ℚ)
   oldPieces := [piece_919, piece_920]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3739 : Cell := {
+def cell_3739 : Cell := { cellDefaults with
   domain := ⟨(713 / 6400 : ℚ), (1783 / 16000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7131 / 64000 : ℚ)
@@ -762,15 +518,10 @@ def cell_3739 : Cell := {
   oldLo := (753 / 2000 : ℚ)
   oldHi := (377 / 1000 : ℚ)
   oldPieces := [piece_920]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3740 : Cell := {
+def cell_3740 : Cell := { cellDefaults with
   domain := ⟨(1783 / 16000 : ℚ), (3567 / 32000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (7133 / 64000 : ℚ)
@@ -781,15 +532,10 @@ def cell_3740 : Cell := {
   oldLo := (753 / 2000 : ℚ)
   oldHi := (377 / 1000 : ℚ)
   oldPieces := [piece_920]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3741 : Cell := {
+def cell_3741 : Cell := { cellDefaults with
   domain := ⟨(3567 / 32000 : ℚ), (223 / 2000 : ℚ)⟩
-  branch := .right
   r := (2699688083471 / 2500000000000 : ℚ)
   w := (24324832548979 / 25000000000000 : ℚ)
   center := (1427 / 12800 : ℚ)
@@ -800,15 +546,10 @@ def cell_3741 : Cell := {
   oldLo := (753 / 2000 : ℚ)
   oldHi := (377 / 1000 : ℚ)
   oldPieces := [piece_920]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3742 : Cell := {
+def cell_3742 : Cell := { cellDefaults with
   domain := ⟨(223 / 2000 : ℚ), (3569 / 32000 : ℚ)⟩
-  branch := .right
   r := (10785599436167 / 10000000000000 : ℚ)
   w := (48678451751841 / 50000000000000 : ℚ)
   center := (7137 / 64000 : ℚ)
@@ -819,15 +560,10 @@ def cell_3742 : Cell := {
   oldLo := (753 / 2000 : ℚ)
   oldHi := (377 / 1000 : ℚ)
   oldPieces := [piece_920]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3743 : Cell := {
+def cell_3743 : Cell := { cellDefaults with
   domain := ⟨(3569 / 32000 : ℚ), (357 / 3200 : ℚ)⟩
-  branch := .right
   r := (10785599436167 / 10000000000000 : ℚ)
   w := (48678451751841 / 50000000000000 : ℚ)
   center := (7139 / 64000 : ℚ)
@@ -838,15 +574,10 @@ def cell_3743 : Cell := {
   oldLo := (753 / 2000 : ℚ)
   oldHi := (151 / 400 : ℚ)
   oldPieces := [piece_920, piece_921]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3744 : Cell := {
+def cell_3744 : Cell := { cellDefaults with
   domain := ⟨(357 / 3200 : ℚ), (3571 / 32000 : ℚ)⟩
-  branch := .right
   r := (10785599436167 / 10000000000000 : ℚ)
   w := (48678451751841 / 50000000000000 : ℚ)
   center := (7141 / 64000 : ℚ)
@@ -857,15 +588,10 @@ def cell_3744 : Cell := {
   oldLo := (377 / 1000 : ℚ)
   oldHi := (151 / 400 : ℚ)
   oldPieces := [piece_921]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3745 : Cell := {
+def cell_3745 : Cell := { cellDefaults with
   domain := ⟨(3571 / 32000 : ℚ), (893 / 8000 : ℚ)⟩
-  branch := .right
   r := (10785599436167 / 10000000000000 : ℚ)
   w := (48678451751841 / 50000000000000 : ℚ)
   center := (7143 / 64000 : ℚ)
@@ -876,15 +602,10 @@ def cell_3745 : Cell := {
   oldLo := (377 / 1000 : ℚ)
   oldHi := (151 / 400 : ℚ)
   oldPieces := [piece_921]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3746 : Cell := {
+def cell_3746 : Cell := { cellDefaults with
   domain := ⟨(893 / 8000 : ℚ), (3573 / 32000 : ℚ)⟩
-  branch := .right
   r := (10785599436167 / 10000000000000 : ℚ)
   w := (48678451751841 / 50000000000000 : ℚ)
   center := (1429 / 12800 : ℚ)
@@ -895,15 +616,10 @@ def cell_3746 : Cell := {
   oldLo := (377 / 1000 : ℚ)
   oldHi := (151 / 400 : ℚ)
   oldPieces := [piece_921]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3747 : Cell := {
+def cell_3747 : Cell := { cellDefaults with
   domain := ⟨(3573 / 32000 : ℚ), (1787 / 16000 : ℚ)⟩
-  branch := .right
   r := (10785599436167 / 10000000000000 : ℚ)
   w := (48678451751841 / 50000000000000 : ℚ)
   center := (7147 / 64000 : ℚ)
@@ -914,15 +630,10 @@ def cell_3747 : Cell := {
   oldLo := (377 / 1000 : ℚ)
   oldHi := (189 / 500 : ℚ)
   oldPieces := [piece_921, piece_922]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3748 : Cell := {
+def cell_3748 : Cell := { cellDefaults with
   domain := ⟨(1787 / 16000 : ℚ), (143 / 1280 : ℚ)⟩
-  branch := .right
   r := (10785599436167 / 10000000000000 : ℚ)
   w := (48678451751841 / 50000000000000 : ℚ)
   center := (7149 / 64000 : ℚ)
@@ -933,15 +644,10 @@ def cell_3748 : Cell := {
   oldLo := (151 / 400 : ℚ)
   oldHi := (189 / 500 : ℚ)
   oldPieces := [piece_922]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
-def cell_3749 : Cell := {
+def cell_3749 : Cell := { cellDefaults with
   domain := ⟨(143 / 1280 : ℚ), (447 / 4000 : ℚ)⟩
-  branch := .right
   r := (10785599436167 / 10000000000000 : ℚ)
   w := (48678451751841 / 50000000000000 : ℚ)
   center := (7151 / 64000 : ℚ)
@@ -952,10 +658,6 @@ def cell_3749 : Cell := {
   oldLo := (151 / 400 : ℚ)
   oldHi := (189 / 500 : ℚ)
   oldPieces := [piece_922]
-  ne := 20
-  nl := 16
-  nq := 32
-  centered := true
 }
 
 theorem check_3700 : SourceCertificateFamily.RightNormalized.check cell_3700 = true := by

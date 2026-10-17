@@ -26,3 +26,9 @@ The `SourceCertificates/`, `SourceCertificateGroups/`,
 connections to those laws. Their proofs use the analytic library in
 [Analysis](../Analysis/README.md) and the foundational
 [Ramsey library](../Ramsey/README.md).
+
+Each source-certificate chunk specifies its repeated cell parameters once in
+`cellDefaults`; individual cells override only differing fields. The old-piece
+lists remain explicit for the membership proofs. This representation preserves
+all 14,355 original cells field for field, including their rational values and
+precision settings; it changes neither the certificate tests nor their conclusions.
