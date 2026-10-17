@@ -1,8 +1,7 @@
 # Source bound and retained-set descent
 
 This directory supplies the source bound used by the improved construction,
-including its analytic interfaces and finite verification. All 447 modules
-are in the final theorem's import closure.
+including its analytic interfaces and finite verification.
 
 ## Attribution
 
@@ -29,11 +28,9 @@ connections to those laws. Their proofs use the analytic library in
 
 Each source-certificate chunk specifies its repeated cell parameters once in
 `cellDefaults`; individual cells override only differing fields. The old-piece
-lists remain explicit for the membership proofs. This representation preserves
-all 14,355 original cells field for field, including their rational values and
-precision settings; it changes neither the certificate tests nor their conclusions.
-The linking proofs live beside their cells in `SourceCertificates/`, eliminating
-288 separate link modules. Their original declaration namespaces remain stable.
+lists are explicit inputs to the membership proofs. Each cell specifies exact
+rational values and precision settings for the certificate tests.
+The linking proofs live beside their cells in `SourceCertificates/`.
 Each link applies `Linked.of_piece` from
 [SourceCertificateLink.lean](SourceCertificateLink.lean): matching coefficients,
 interval containment and membership of the old pieces imply the required link.
