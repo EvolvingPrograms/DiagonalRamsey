@@ -34,9 +34,11 @@ source/root construction. The proof is an improvement within this framework.
 
 **Proof.** Put
 
-$$z=\frac{625145177}{500000000},\qquad
-\gamma=z+10^{-9}=\frac{250058071}{200000000},\qquad
-b=\frac{69827131}{20000000}=3.49135655.$$
+$$\begin{aligned}
+z&=\frac{625145177}{500000000},\\
+\gamma&=z+10^{-9}=\frac{250058071}{200000000},\\
+b&=\frac{69827131}{20000000}=3.49135655.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -68,7 +70,8 @@ $N\ge Ce^{zk}$ vertices with red edge density at least $1/2$ contains a
 monochromatic $K_k$, whenever $k\ge k_0$.
 
 **1. [Potential and admissible bounds](S1_Definitions/README.md).**
-For disjoint vertex sets $X,Y$, write $g_y=|N_R(y)\cap X|/|X|$ and use
+For disjoint nonempty vertex sets $X,Y$, write
+$g_y=|N_R(y)\cap X|/|X|$ and $a_+=\max(a,0)$. For $\beta,r>0$, use
 
 $$\Phi_c(X,Y)=|X|^w|Y|
 \left(\frac1{|Y|}\sum_{y\in Y}(g_y-c)_+^{\beta r}\right)^{1/\beta}.$$
@@ -101,12 +104,16 @@ clique-forcing bounds under a density hypothesis.
 **2. [Consequences of maximality](S2_MaximalConfigurations/README.md).**
 For positive column excesses, normalize $(g_y-c)^{\beta r}$ to a probability
 measure $\nu$. For a blue-neighbourhood restriction of fraction $0<q<1$,
-let $Z$ denote the relative change in excess red density and write
-$P(t)=\max(t,0)$. Blue-move failure and maximality of the complementary
+let $Z$ denote the relative change in excess red density.
+Blue-move failure and maximality of the complementary
 restriction give, respectively,
 
-$$\underset{\nu}{\mathbb{E}}\left[P(1+Z)^{\beta r}\right]\le(\mu/q)^{\beta w},\qquad
-\underset{\nu}{\mathbb{E}}\left[P(1-qZ/(1-q))^{\beta r}\right]\le(1-q)^{-\beta w}.$$
+$$\begin{aligned}
+\mathbb{E}_{\nu}\left[(1+Z)_+^{\beta r}\right]
+&\le\left(\frac{\mu}{q}\right)^{\beta w},\\
+\mathbb{E}_{\nu}\left[\left(1-\frac{q}{1-q}Z\right)_+^{\beta r}\right]
+&\le(1-q)^{-\beta w}.
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -148,8 +155,11 @@ A density cap excludes a degenerate cell mass; boundedness and compactness
 give limiting exponential constraints. After the density transfer of
 Section 4, these take the form
 
-$$pe^{\beta A}+(1-p)e^{\beta C}\le U(q),\qquad
-pe^{-\beta tA}+(1-p)e^{-\beta tC}\le V(q),\qquad A\ge A_0(q),$$
+$$\begin{aligned}
+A_0(q)&\le A,\\
+pe^{\beta A}+(1-p)e^{\beta C}&\le U(q),\\
+pe^{-\beta tA}+(1-p)e^{-\beta tC}&\le V(q),
+\end{aligned}$$
 
 <details>
 <summary>Lean comparison</summary>
@@ -171,13 +181,14 @@ where $t=q/(1-q)$, $U(q)=(\mu/q)^{\beta w}$ and
 $V(q)=(1-q)^{-\beta w}$.
 
 **4. [Scalar optimization](S4_ScalarOptimization/README.md).**
-For each feasible retained fraction $q\in F_p$, maximize
-$M_p(q)=pA+(1-p)C$ subject to these constraints. The optimizer either
+For each feasible retained fraction $q\in F_p$, let $M_p(q)$ be the maximum
+of $pA+(1-p)C$ subject to these constraints. The optimizer either
 has $A=C=\log U(q)/\beta$, or has $A=A_0(q)$ with the positive
 exponential constraint saturated. Concavity and affine majorants give
 an explicitly integrable envelope
 
-$$E(u)\ge qM_p(q)+wq(1+\log u)\quad(q\in F_p).$$
+$$qM_p(q)+wq(1+\log u)\le E(u)
+\qquad(q\in F_p,\ 0<u\le1).$$
 
 <details>
 <summary>Lean comparison</summary>
