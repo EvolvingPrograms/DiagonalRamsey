@@ -54,6 +54,11 @@ used to stop a route is available on proper subgraphs without circularity.
 not disposable compiler-cache files. Numbered modules split checking work into
 independently compilable units.
 
+Inherited controls are organized by their weight $w$ in
+`InheritedCertificates/Weight*.lean`. They share $\beta=999/1000$; each
+parameter family supplies its tangent data and the local inequalities required
+by the common envelope soundness theorem.
+
 ## Equations specifying the data
 
 [ArithmeticData.lean](ArithmeticData.lean) specifies uniform samples by
