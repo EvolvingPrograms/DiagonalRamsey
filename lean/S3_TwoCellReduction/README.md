@@ -1,5 +1,12 @@
 # 3. Two-cell reduction
 
+**Sources.** This section develops the two-moment reduction used here from
+the weighted finite-row machinery of
+[Zhao–Booth-Clibborn–Schwahn](../Support/Published/README.md) and the complementary
+moment in Section 2. Jensen's inequality, compactness and exponential limits
+use Mathlib. The power-limit lemmas also have counterparts in the inherited
+development, identified in [L3_PowerLimits.lean](L3_PowerLimits.lean).
+
 We reduce the finite weighted row to two conditional means, then pass to
 the exponential constraints of section 4. The density cap must precede
 compactness: it supplies the positive mass of the second cell.

@@ -1,5 +1,12 @@
 # 8. The Ramsey bound
 
+**Sources.** The construction in Section 7 is converted to a Ramsey-number
+bound using [Lu–Wang's colour-symmetry interface](../Support/LuWang/README.md)
+and the [RamseyLean definitions](../Support/Ramsey/README.md).
+Prefactor absorption is a standard asymptotic argument. The rational
+exponential comparison certifies this proof's chosen base using Mathlib's
+exponential estimates.
+
 The dense profile of section 7 gives the diagonal bound by colour symmetry
 and a strict exponent gap.
 

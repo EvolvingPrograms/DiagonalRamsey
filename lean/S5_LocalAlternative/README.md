@@ -1,5 +1,12 @@
 # 5. The local red–blue alternative
 
+**Sources.** We assemble the two-moment bounds from Sections 3–4 using the
+ordered-drift and maximal-configuration machinery of
+[Zhao–Booth-Clibborn–Schwahn](../Support/Published/README.md).
+The graph argument follows their sharp-envelope proof with the complementary
+moment retained; [L3_GraphAlternative.lean](L3_GraphAlternative.lean) identifies
+the inherited proof interface.
+
 Section 4 supplies feasible degrees $F_p$ and their optimal means $M_p$.
 We relate finite rows uniformly to these limiting quantities, then combine
 the approximation with the ordering inequality, then discharge its hypotheses

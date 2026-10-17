@@ -1,5 +1,11 @@
 # 1. Definitions
 
+**Sources.** Weighted configurations and their potential are the definitions
+of [Zhao–Booth-Clibborn–Schwahn](../Support/Published/README.md).
+Ramsey numbers and graph semantics come from [RamseyLean](../Support/Ramsey/README.md).
+The admissibility interfaces and two-moment feasible set below organize the
+construction used in this proof.
+
 Let $R(k,\ell)$ denote the least order forcing a red $K_k$ or a blue
 $K_\ell$ in every red–blue colouring of a complete graph. The
 [final theorem](../S8_RamseyBound/L4_MainTheorem.lean) is

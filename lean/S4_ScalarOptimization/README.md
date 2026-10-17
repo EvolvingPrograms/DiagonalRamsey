@@ -1,5 +1,12 @@
 # 4. Scalar optimization
 
+**Sources.** This section gives our two-constraint feasibility and envelope
+analysis. It retains the scalar parameters and blue-moment framework of
+[Zhao–Booth-Clibborn–Schwahn](../Support/Published/README.md), including their
+threshold monotonicity lemma used in density transfer. The complementary
+constraint comes from Section 2. General convexity, calculus and integration
+results are supplied by Mathlib.
+
 We determine the largest logarithmic mean compatible with the two moment
 bounds from section 3. The complementary constraint removes infeasible
 degrees; wherever a degree survives, the blue optimizer remains optimal.
