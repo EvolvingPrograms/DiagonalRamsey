@@ -1,9 +1,9 @@
 import S7_ParameterChoice.Source.Joint.EnvelopeData
 import Mathlib.Order.Monotone.Basic
 
-/-! Candidate local geometry interface for an ordered concave polygon.
-This file is not imported by the certificate bank. The arithmetic check is
-linear in the number of degree segments; global support follows by induction. -/
+/-! Local geometry for an ordered concave polygon. Adjacent slope and continuity
+checks imply global support by induction. The certificate bank uses this law
+instead of checking every degree/integration-cell pair numerically. -/
 
 set_option autoImplicit false
 

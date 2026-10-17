@@ -45,7 +45,7 @@ The initial version contained **1,937 Lean modules**, all in the final theorem's
 import closure. Import reachability does not establish that every datum is
 mathematically necessary: the assembly currently proves the entire bank.
 
-| Family | Modules | Purpose |
+| Original family | Original modules | Purpose |
 |---|---:|---|
 | `InheritedCertificates/` | 825 | Numerical validity of inherited controls |
 | `RemainingRoutes/` | 686 | Remaining route constructions |
@@ -79,14 +79,34 @@ $$-wq_i u+(m_i+w)q_i+c_i.$$
 
 The constructor reverses the degree cells, clips at the integration cutoff
 and discards empty intervals. All 825 inherited controls' degree and integration
-tables are reproduced by these formulas. Their existing numerical soundness
-checks remain in place.
+tables are reproduced by these formulas.
 
-This first reduction replaces 6,347 progression lists and 15,786 height entries,
-and removes explicit envelope tables. Including the three shared constructors,
-Lean source fell from 61,760,836 to 50,629,839 bytes and from 251,142 to 207,775
-lines. Module count is 1,940; this is a reduction in repeated data, not yet in
-the number of certificate modules.
+### Local slopes imply global support
+
+[EnvelopeGeometry.lean](EnvelopeGeometry.lean) proves the common concavity
+argument. Write the polygon vertices as $(q_i,h_i)$, with ordered abscissae
+and nonincreasing segment slopes $m_i$. For a tilt $t$,
+
+$$ (h_{i+1}+tq_{i+1})-(h_i+tq_i)
+   =(m_i+t)(q_{i+1}-q_i). $$
+
+If $m_{k-1}+t\ge0\ge m_k+t$ (omitting the missing inequality at an endpoint),
+these increments are nonnegative before $k$ and nonpositive afterward. Hence
+
+$$ h_j+tq_j\le h_k+tq_k\qquad\text{for every }j. $$
+
+[EnvelopeCheck.lean](EnvelopeCheck.lean) applies this law at both endpoints of
+each integration cell. All 825 controls now derive their **3,136,976 corner
+inequalities** from ordering, continuity and adjacent slope brackets. Pivot
+selection still searches the finite vertex list; the costly global comparisons
+are supplied by the theorem. The resulting statement is the same
+`ControlCertificate.GeometryChecks` required by the original soundness proof.
+
+The equation constructors replace 6,347 progression lists, 15,786 height
+entries and the explicit envelope tables. Batching independent declarations
+reduces 825 control modules to 104 and 675 route modules to 85, preserving their
+individual checks and theorem names. With the shared helpers, the directory
+now contains **631 Lean modules**, down from **1,937**.
 
 ## What would genuinely simplify this
 

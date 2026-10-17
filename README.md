@@ -226,6 +226,7 @@ root construction yield the dense profile at exponent $z$ stated above.
 This section supplies the finite numerical witnesses and their assembly.
 Uniform profile samples are specified by affine equations; inherited envelope
 partitions are generated from tangent intersections and slope changeovers.
+Concavity derives their global support inequalities from adjacent slope brackets.
 
 **8. [The Ramsey bound](S8_RamseyBound/README.md).**
 One colour has density at least $1/2$. Apply the dense profile to

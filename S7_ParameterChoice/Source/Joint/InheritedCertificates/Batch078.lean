@@ -1,3 +1,4 @@
+import S7_ParameterChoice.Source.Joint.EnvelopeCheck
 import S7_ParameterChoice.Source.Joint.EnvelopeData
 import S7_ParameterChoice.Source.Joint.ControlPrecision
 import S7_ParameterChoice.Source.Joint.FastControlDomain
@@ -137,7 +138,8 @@ theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := 
   · exact row31
   · exact row32
 #print axioms check2
-theorem check3 : ControlCertificate.GeometryChecks data := by decide +kernel
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true := by decide +kernel
 #print axioms check4
@@ -282,7 +284,8 @@ theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := 
   · exact row31
   · exact row32
 #print axioms check2
-theorem check3 : ControlCertificate.GeometryChecks data := by decide +kernel
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true := by decide +kernel
 #print axioms check4
@@ -427,7 +430,8 @@ theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := 
   · exact row31
   · exact row32
 #print axioms check2
-theorem check3 : ControlCertificate.GeometryChecks data := by decide +kernel
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true := by decide +kernel
 #print axioms check4
@@ -524,7 +528,8 @@ theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := 
   · exact row15
   · exact row16
 #print axioms check2
-theorem check3 : ControlCertificate.GeometryChecks data := by decide +kernel
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true := by decide +kernel
 #print axioms check4
@@ -621,7 +626,8 @@ theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := 
   · exact row15
   · exact row16
 #print axioms check2
-theorem check3 : ControlCertificate.GeometryChecks data := by decide +kernel
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true := by decide +kernel
 #print axioms check4
@@ -718,7 +724,8 @@ theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := 
   · exact row15
   · exact row16
 #print axioms check2
-theorem check3 : ControlCertificate.GeometryChecks data := by decide +kernel
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true := by decide +kernel
 #print axioms check4
@@ -791,7 +798,8 @@ theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := 
   · exact row7
   · exact row8
 #print axioms check2
-theorem check3 : ControlCertificate.GeometryChecks data := by decide +kernel
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true := by decide +kernel
 #print axioms check4
@@ -864,7 +872,8 @@ theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := 
   · exact row7
   · exact row8
 #print axioms check2
-theorem check3 : ControlCertificate.GeometryChecks data := by decide +kernel
+theorem check3 : ControlCertificate.GeometryChecks data :=
+  DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true := by decide +kernel
 #print axioms check4
