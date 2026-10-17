@@ -63,79 +63,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
-theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
-theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
-theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
-theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
-theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
-theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
-theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
-theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
-theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
-theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
-theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
-theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
-theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
-theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
-theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
-theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
-  · exact row17
-  · exact row18
-  · exact row19
-  · exact row20
-  · exact row21
-  · exact row22
-  · exact row23
-  · exact row24
-  · exact row25
-  · exact row26
-  · exact row27
-  · exact row28
-  · exact row29
-  · exact row30
-  · exact row31
-  · exact row32
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -192,47 +126,13 @@ def data : ControlCertificate.Data where
   degrees := degrees
   cells := cells
 
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -289,47 +189,13 @@ def data : ControlCertificate.Data where
   degrees := degrees
   cells := cells
 
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -386,47 +252,13 @@ def data : ControlCertificate.Data where
   degrees := degrees
   cells := cells
 
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -483,47 +315,13 @@ def data : ControlCertificate.Data where
   degrees := degrees
   cells := cells
 
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -580,47 +378,13 @@ def data : ControlCertificate.Data where
   degrees := degrees
   cells := cells
 
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -677,47 +441,13 @@ def data : ControlCertificate.Data where
   degrees := degrees
   cells := cells
 
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -774,47 +504,13 @@ def data : ControlCertificate.Data where
   degrees := degrees
   cells := cells
 
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -872,47 +568,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -970,47 +632,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1068,47 +696,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1182,79 +776,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
-theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
-theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
-theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
-theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
-theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
-theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
-theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
-theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
-theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
-theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
-theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
-theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
-theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
-theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
-theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
-theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
-  · exact row17
-  · exact row18
-  · exact row19
-  · exact row20
-  · exact row21
-  · exact row22
-  · exact row23
-  · exact row24
-  · exact row25
-  · exact row26
-  · exact row27
-  · exact row28
-  · exact row29
-  · exact row30
-  · exact row31
-  · exact row32
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1312,47 +840,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1410,47 +904,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1508,47 +968,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1606,47 +1032,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1704,47 +1096,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1802,47 +1160,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1900,47 +1224,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -1998,47 +1288,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -2096,47 +1352,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -2194,47 +1416,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -2292,47 +1480,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -2390,47 +1544,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -2488,47 +1608,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -2602,79 +1688,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
-theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
-theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
-theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
-theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
-theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
-theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
-theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
-theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
-theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
-theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
-theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
-theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
-theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
-theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
-theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
-theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
-  · exact row17
-  · exact row18
-  · exact row19
-  · exact row20
-  · exact row21
-  · exact row22
-  · exact row23
-  · exact row24
-  · exact row25
-  · exact row26
-  · exact row27
-  · exact row28
-  · exact row29
-  · exact row30
-  · exact row31
-  · exact row32
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -2732,47 +1752,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -2830,47 +1816,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -2928,47 +1880,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3026,47 +1944,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3124,47 +2008,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3222,47 +2072,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3320,47 +2136,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3418,47 +2200,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3516,47 +2264,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3614,47 +2328,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3704,31 +2384,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3786,47 +2448,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3876,31 +2504,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -3958,47 +2568,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4048,31 +2624,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4130,47 +2688,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4244,79 +2768,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
-theorem row17 : JointControlDomain.rowCheck data (data.tangents.get ⟨17, by decide⟩) = true := by decide +kernel
-theorem row18 : JointControlDomain.rowCheck data (data.tangents.get ⟨18, by decide⟩) = true := by decide +kernel
-theorem row19 : JointControlDomain.rowCheck data (data.tangents.get ⟨19, by decide⟩) = true := by decide +kernel
-theorem row20 : JointControlDomain.rowCheck data (data.tangents.get ⟨20, by decide⟩) = true := by decide +kernel
-theorem row21 : JointControlDomain.rowCheck data (data.tangents.get ⟨21, by decide⟩) = true := by decide +kernel
-theorem row22 : JointControlDomain.rowCheck data (data.tangents.get ⟨22, by decide⟩) = true := by decide +kernel
-theorem row23 : JointControlDomain.rowCheck data (data.tangents.get ⟨23, by decide⟩) = true := by decide +kernel
-theorem row24 : JointControlDomain.rowCheck data (data.tangents.get ⟨24, by decide⟩) = true := by decide +kernel
-theorem row25 : JointControlDomain.rowCheck data (data.tangents.get ⟨25, by decide⟩) = true := by decide +kernel
-theorem row26 : JointControlDomain.rowCheck data (data.tangents.get ⟨26, by decide⟩) = true := by decide +kernel
-theorem row27 : JointControlDomain.rowCheck data (data.tangents.get ⟨27, by decide⟩) = true := by decide +kernel
-theorem row28 : JointControlDomain.rowCheck data (data.tangents.get ⟨28, by decide⟩) = true := by decide +kernel
-theorem row29 : JointControlDomain.rowCheck data (data.tangents.get ⟨29, by decide⟩) = true := by decide +kernel
-theorem row30 : JointControlDomain.rowCheck data (data.tangents.get ⟨30, by decide⟩) = true := by decide +kernel
-theorem row31 : JointControlDomain.rowCheck data (data.tangents.get ⟨31, by decide⟩) = true := by decide +kernel
-theorem row32 : JointControlDomain.rowCheck data (data.tangents.get ⟨32, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
-  · exact row17
-  · exact row18
-  · exact row19
-  · exact row20
-  · exact row21
-  · exact row22
-  · exact row23
-  · exact row24
-  · exact row25
-  · exact row26
-  · exact row27
-  · exact row28
-  · exact row29
-  · exact row30
-  · exact row31
-  · exact row32
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4366,31 +2824,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4448,47 +2888,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4538,31 +2944,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4620,47 +3008,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4718,47 +3072,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4808,31 +3128,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4890,47 +3192,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -4988,47 +3256,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5078,31 +3312,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5152,31 +3368,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5234,47 +3432,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5324,31 +3488,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5406,47 +3552,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5504,47 +3616,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5594,31 +3672,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5668,31 +3728,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5742,31 +3784,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5816,31 +3840,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5898,47 +3904,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -5988,31 +3960,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6062,31 +4016,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6136,31 +4072,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6210,31 +4128,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6292,47 +4192,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6382,31 +4248,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6456,31 +4304,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6538,47 +4368,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6628,31 +4424,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6702,31 +4480,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6784,47 +4544,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6874,31 +4600,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -6948,31 +4656,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7030,47 +4720,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7120,31 +4776,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7194,31 +4832,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7268,31 +4888,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7342,31 +4944,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7416,31 +5000,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7498,47 +5064,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7588,31 +5120,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7662,31 +5176,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7736,31 +5232,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7810,31 +5288,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7884,31 +5344,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -7958,31 +5400,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8032,31 +5456,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8106,31 +5512,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8180,31 +5568,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8254,31 +5624,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8328,31 +5680,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8402,31 +5736,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8476,31 +5792,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8550,31 +5848,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8624,31 +5904,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8698,31 +5960,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8772,31 +6016,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8846,31 +6072,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8920,31 +6128,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -8994,31 +6184,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9068,31 +6240,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9142,31 +6296,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9216,31 +6352,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9290,31 +6408,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9364,31 +6464,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9438,31 +6520,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9520,47 +6584,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9610,31 +6640,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9684,31 +6696,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9758,31 +6752,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9832,31 +6808,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -9914,47 +6872,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
@@ -10012,47 +6936,13 @@ def witness : ControlCertificate.Data where
   cells := cells
 
 select_control_data data from witness
-theorem row0 : JointControlDomain.rowCheck data (data.tangents.get ⟨0, by decide⟩) = true := by decide +kernel
-theorem row1 : JointControlDomain.rowCheck data (data.tangents.get ⟨1, by decide⟩) = true := by decide +kernel
-theorem row2 : JointControlDomain.rowCheck data (data.tangents.get ⟨2, by decide⟩) = true := by decide +kernel
-theorem row3 : JointControlDomain.rowCheck data (data.tangents.get ⟨3, by decide⟩) = true := by decide +kernel
-theorem row4 : JointControlDomain.rowCheck data (data.tangents.get ⟨4, by decide⟩) = true := by decide +kernel
-theorem row5 : JointControlDomain.rowCheck data (data.tangents.get ⟨5, by decide⟩) = true := by decide +kernel
-theorem row6 : JointControlDomain.rowCheck data (data.tangents.get ⟨6, by decide⟩) = true := by decide +kernel
-theorem row7 : JointControlDomain.rowCheck data (data.tangents.get ⟨7, by decide⟩) = true := by decide +kernel
-theorem row8 : JointControlDomain.rowCheck data (data.tangents.get ⟨8, by decide⟩) = true := by decide +kernel
-theorem row9 : JointControlDomain.rowCheck data (data.tangents.get ⟨9, by decide⟩) = true := by decide +kernel
-theorem row10 : JointControlDomain.rowCheck data (data.tangents.get ⟨10, by decide⟩) = true := by decide +kernel
-theorem row11 : JointControlDomain.rowCheck data (data.tangents.get ⟨11, by decide⟩) = true := by decide +kernel
-theorem row12 : JointControlDomain.rowCheck data (data.tangents.get ⟨12, by decide⟩) = true := by decide +kernel
-theorem row13 : JointControlDomain.rowCheck data (data.tangents.get ⟨13, by decide⟩) = true := by decide +kernel
-theorem row14 : JointControlDomain.rowCheck data (data.tangents.get ⟨14, by decide⟩) = true := by decide +kernel
-theorem row15 : JointControlDomain.rowCheck data (data.tangents.get ⟨15, by decide⟩) = true := by decide +kernel
-theorem row16 : JointControlDomain.rowCheck data (data.tangents.get ⟨16, by decide⟩) = true := by decide +kernel
 theorem check0 : ControlCertificate.parameters data := by decide +kernel
 theorem check1 : 0 < data.tangents.length := by decide +kernel
 theorem check2 : data.tangents.all (JointControlDomain.rowCheck data) = true := by
   apply List.all_eq_true.mpr
   rw [List.forall_mem_iff_get]
   intro i
-  fin_cases i
-  · exact row0
-  · exact row1
-  · exact row2
-  · exact row3
-  · exact row4
-  · exact row5
-  · exact row6
-  · exact row7
-  · exact row8
-  · exact row9
-  · exact row10
-  · exact row11
-  · exact row12
-  · exact row13
-  · exact row14
-  · exact row15
-  · exact row16
+  fin_cases i <;> decide +kernel
 #print axioms check2
 theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
