@@ -1,22 +1,17 @@
 import S7_ParameterChoice.Source.Joint.RawCoverageLaw
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group6
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group26
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group36
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group47
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group55
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group64
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group70
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group74
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group80
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group100
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group142
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group144
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group146
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group150
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group151
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group152
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group153
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group336
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch000
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch003
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch004
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch005
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch006
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch008
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch009
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch010
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch012
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch017
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch018
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch019
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch042
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

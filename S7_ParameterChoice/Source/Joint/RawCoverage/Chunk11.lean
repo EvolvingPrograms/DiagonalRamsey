@@ -1,16 +1,13 @@
 import S7_ParameterChoice.Source.Joint.RawCoverageLaw
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group0
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group1
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group7
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group16
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group48
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group57
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group71
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group75
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group158
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group167
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group168
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group170
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch000
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch002
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch006
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch007
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch008
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch009
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch019
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch020
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch021
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

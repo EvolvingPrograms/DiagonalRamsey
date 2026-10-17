@@ -1,8 +1,7 @@
 import S7_ParameterChoice.Source.Joint.RawCoverageLaw
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group64
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group74
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group80
-import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group87
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch008
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch009
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Batch010
 
 set_option autoImplicit false
 set_option maxRecDepth 100000
