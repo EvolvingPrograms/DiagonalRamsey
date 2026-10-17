@@ -1,7 +1,7 @@
 # Source bound and retained-set descent
 
 This directory supplies the source bound used by the improved construction,
-including its analytic interfaces and finite verification. All 735 modules
+including its analytic interfaces and finite verification. All 447 modules
 are in the final theorem's import closure.
 
 ## Attribution
@@ -21,7 +21,7 @@ See their [MIT notice](../../NOTICE.md#inherited-license-notices) and
 
 The top-level modules state and assemble source, geometry and descent laws.
 The `SourceCertificates/`, `SourceCertificateGroups/`,
-`SourceCertificateFamily/`, `SourceCertificateLinks/` and
+`SourceCertificateFamily/` and
 `SourceGeometryCertificates/` directories contain finite instances and their
 connections to those laws. Their proofs use the analytic library in
 [Analysis](../Analysis/README.md) and the foundational
@@ -32,3 +32,5 @@ Each source-certificate chunk specifies its repeated cell parameters once in
 lists remain explicit for the membership proofs. This representation preserves
 all 14,355 original cells field for field, including their rational values and
 precision settings; it changes neither the certificate tests nor their conclusions.
+The linking proofs live beside their cells in `SourceCertificates/`, eliminating
+288 separate link modules. Their original declaration namespaces remain stable.
