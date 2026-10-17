@@ -4,6 +4,21 @@
 
 $$R(k,k)\le 3.49135655^k.$$
 
+<details>
+<summary>Lean comparison</summary>
+
+Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
+
+[`eventual_diagonal_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L4_MainTheorem.lean#L32)
+
+```lean
+theorem eventual_diagonal_bound :
+    ∃ K : ℕ, ∀ k : ℕ, K ≤ k →
+      (RamseyBasics.ramseyNumber k k : ℝ) ≤ (3.49135655 : ℝ) ^ k
+```
+
+</details>
+
 This refines the method of Zhipu Zhao, William Booth-Clibborn and Casper
 Schwahn, *A $(3.49\ldots)^k$ bound for diagonal Ramsey numbers*
 ([paper and Lean code](https://github.com/w2ll2am/diagonal-ramsey/tree/c2875f33a9d5c89f71c68f51b5767550570b5603)).
@@ -23,6 +38,31 @@ $$z=\frac{625145177}{500000000},\qquad
 \gamma=z+10^{-9}=\frac{250058071}{200000000},\qquad
 b=\frac{69827131}{20000000}=3.49135655.$$
 
+<details>
+<summary>Lean comparison</summary>
+
+Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
+
+[`rawExponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L28)
+
+```lean
+def rawExponent : ℚ := 625145177 / 500000000
+```
+
+[`exponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L29)
+
+```lean
+def exponent : ℚ := 250058071 / 200000000
+```
+
+[`base`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L30)
+
+```lean
+def base : ℚ := 69827131 / 20000000
+```
+
+</details>
+
 We construct constants $C\ge1$ and $k_0$ such that every graph on
 $N\ge Ce^{zk}$ vertices with red edge density at least $1/2$ contains a
 monochromatic $K_k$, whenever $k\ge k_0$.
@@ -32,6 +72,27 @@ monochromatic $K_k$, whenever $k\ge k_0$.
 
    $$\Phi_c(X,Y)=|X|^w|Y|
    \left(\frac1{|Y|}\sum_{y\in Y}(g_y-c)_+^{\beta r}\right)^{1/\beta}.$$
+
+   <details>
+   <summary>Lean comparison</summary>
+
+   Inherited definitions, with `s = β * r`. The displayed exponent `1 / β` is the algebraic simplification of the nested positive powers in these definitions.
+
+   [`momentNorm`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L58)
+
+   ```lean
+   noncomputable def momentNorm (G : SimpleGraph V) (X Y : Finset V) (c s : ℝ) : ℝ :=
+     ((∑ y ∈ Y, (max (colDensity G X y - c) 0) ^ s) / (Y.card : ℝ)) ^ (1 / s)
+   ```
+
+   [`potential`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean#L63)
+
+   ```lean
+   noncomputable def potential (G : SimpleGraph V) (X Y : Finset V) (c w r s : ℝ) : ℝ :=
+     (X.card : ℝ) ^ w * (Y.card : ℝ) * (momentNorm G X Y c s) ^ r
+   ```
+
+   </details>
 
    Maximize over restrictions of either set. Source bounds have the form
    $R(k,\ell)\le C_s e^{A_s k+B_s\ell}$; dense profiles record
@@ -47,6 +108,37 @@ monochromatic $K_k$, whenever $k\ge k_0$.
    $$\underset{\nu}{\mathbb{E}}\left[P(1+Z)^{\beta r}\right]\le(\mu/q)^{\beta w},\qquad
    \underset{\nu}{\mathbb{E}}\left[P(1-qZ/(1-q))^{\beta r}\right]\le(1-q)^{-\beta w}.$$
 
+   <details>
+   <summary>Lean comparison</summary>
+
+   The first declaration gives the strict blue bound, which implies the displayed non-strict inequality. The second gives the complementary bound. Local graph variables and notation are defined in the linked files.
+
+   [`blue_lt`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/Support/Published/Lemmas/DiagRamsey_SE_GraphRows.lean#L110)
+
+   ```lean
+   lemma blue_lt {μ w β : ℝ} (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (hμ0 : 0 < μ)
+       (i : V) (hq0 : 0 < graphFrac B X i)
+       (hblue : SharpBlueFailure G B X Y c μ w β s i) :
+       ∑ y ∈ Y, nuW G X Y c s y * (max (1 + ZR G B X c i y) 0) ^ s < certU μ w β (graphFrac B X i)
+   ```
+
+   [`complementary_row_moment`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S2_MaximalConfigurations/L2_ComplementaryMoment.lean#L47)
+
+   ```lean
+   theorem complementary_row_moment
+       {V : Type*} [Fintype V] [DecidableEq V]
+       (G B : SimpleGraph V) (X Y : Finset V) (c w r β : ℝ)
+       (hX : X.Nonempty) (hY : Y.Nonempty) (hr : 0 < r) (hβ : 0 < β)
+       (hpos : ∀ y ∈ Y, c < colDensity G X y)
+       (hmax : RowColMaximal G X Y c w r (β * r))
+       (i : V) (hq : 0 < graphFrac B X i ∧ graphFrac B X i < 1) :
+       ∑ y ∈ Y, nuW G X Y c (β * r) y *
+         (max (1 - graphFrac B X i / (1 - graphFrac B X i) * ZR G B X c i y) 0) ^
+           (β * r) ≤ (1 - graphFrac B X i) ^ (-β * w)
+   ```
+
+   </details>
+
    Maximality controls exceptional rows; ordering rows by retained fraction
    bounds accumulated drift.
 
@@ -59,6 +151,22 @@ monochromatic $K_k$, whenever $k\ge k_0$.
    $$pe^{\beta A}+(1-p)e^{\beta C}\le U(q),\qquad
    pe^{-\beta tA}+(1-p)e^{-\beta tC}\le V(q),\qquad A\ge A_0(q),$$
 
+   <details>
+   <summary>Lean comparison</summary>
+
+   The displayed constraints are exactly `Complement.Feasible` with the stated budgets and threshold. Section 3 proves their limiting derivation; Section 4 proves density transfer.
+
+   [`Feasible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S1_Definitions/L3_MomentConstraints.lean#L16)
+
+   ```lean
+   def Feasible (p β t U V A₀ A C : ℝ) : Prop :=
+     A₀ ≤ A ∧
+     p * Real.exp (β * A) + (1 - p) * Real.exp (β * C) ≤ U ∧
+     p * Real.exp (-β * t * A) + (1 - p) * Real.exp (-β * t * C) ≤ V
+   ```
+
+   </details>
+
    where $t=q/(1-q)$, $U(q)=(\mu/q)^{\beta w}$ and
    $V(q)=(1-q)^{-\beta w}$.
 
@@ -70,6 +178,25 @@ monochromatic $K_k$, whenever $k\ge k_0$.
    an explicitly integrable envelope
 
    $$E(u)\ge qM_p(q)+wq(1+\log u)\quad(q\in F_p).$$
+
+   <details>
+   <summary>Lean comparison</summary>
+
+   The displayed majorization is one field of this definition; it also requires regularity, a nonempty feasible set, and a negative integral.
+
+   [`ComplementEnvelope`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S4_ScalarOptimization/L1_FeasiblePairs.lean#L27)
+
+   ```lean
+   def ComplementEnvelope (p μ w β x : ℝ) : Prop :=
+     (complementDegrees p μ w β x).Nonempty ∧
+     ∃ E : ℝ → ℝ, ContinuousOn E (Set.Ioc 0 1) ∧ MonotoneOn E (Set.Ioc 0 1) ∧
+       IntervalIntegrable E MeasureTheory.volume 0 1 ∧
+       (∀ u ∈ Set.Ioc 0 1, ∀ q ∈ complementDegrees p μ w β x,
+         q * certM p μ w β x q + w * q * (1 + Real.log u) ≤ E u) ∧
+       (∫ u in (0 : ℝ)..1, E u) < 0
+   ```
+
+   </details>
 
 5. **[The local red–blue alternative](S5_LocalAlternative/README.md).**
    The chosen envelope satisfies $\int_0^1E(u)\,du<0$.
@@ -96,11 +223,50 @@ monochromatic $K_k$, whenever $k\ge k_0$.
 
    $$R(k,k)\le\lceil(C+2)e^{zk}\rceil\le e^{\gamma k}$$
 
+   <details>
+   <summary>Lean comparison</summary>
+
+   These statements implement the displayed chain: the dense-profile theorem supplies the Ramsey bound, and the ceiling lemma absorbs the prefactor.
+
+   [`eventual_exponent_of_dense_profile`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L2_ComplementSymmetry.lean#L19)
+
+   ```lean
+   theorem eventual_exponent_of_dense_profile
+       {z γ : ℝ} (hz : 0 ≤ z) (hgap : z < γ)
+       (hprofile : DenseProfile z) :
+       ∀ᶠ k : ℕ in Filter.atTop,
+         (RamseyBasics.ramseyNumber k k : ℝ) ≤ Real.exp (γ * k)
+   ```
+
+   [`eventually_ceiling_exp_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L1_AsymptoticAbsorption.lean#L15)
+
+   ```lean
+   theorem eventually_ceiling_exp_le {C z γ : ℝ}
+       (hC : 1 ≤ C) (hz : 0 ≤ z) (hgap : z < γ) :
+       ∀ᶠ k : ℕ in Filter.atTop,
+         (⌈C * Real.exp (z * (k : ℝ))⌉₊ : ℝ) ≤ Real.exp (γ * k)
+   ```
+
+   </details>
+
    for sufficiently large $k$. With $u=\gamma/2$, exact rational arithmetic gives
 
    $$e^\gamma\le
    \left(\sum_{j=0}^{13}\frac{u^j}{j!}
    +\frac{15u^{14}}{14\cdot14!}\right)^2<b.$$
+
+   <details>
+   <summary>Lean comparison</summary>
+
+   The Taylor-polynomial estimate is inside this proof: `Real.exp_bound'` is applied with `n := 14` at half the exponent, then the result is squared. The declaration states the resulting strict bound.
+
+   [`exponent_gap`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S8_RamseyBound/L3_BaseComparison.lean#L16)
+
+   ```lean
+   theorem exponent_gap : Real.exp (exponent : ℝ) < (base : ℝ)
+   ```
+
+   </details>
 
    Thus $R(k,k)\le b^k$. $\square$
 
