@@ -1,26 +1,4 @@
-import Support.Controls.ControlBank.K_10_12_0Certificate
-import Support.Controls.ControlBank.K_11_12_0Certificate
-import Support.Controls.ControlBank.K_12_12_0Certificate
-import Support.Controls.ControlBank.K_13_12_0Certificate
-import Support.Controls.ControlBank.K_14_12_0Certificate
-import Support.Controls.ControlBank.K_22_12_0Certificate
-import Support.Controls.ControlBank.K_23_12_0Certificate
-import Support.Controls.ControlBank.K_27_12_0Certificate
-import Support.Controls.ControlBank.K_30_12_0Certificate
-import Support.Controls.ControlBank.K_31_12_0Certificate
-import Support.Controls.ControlBank.K_35_12_0Certificate
-import Support.Controls.ControlBank.K_38_12_0Certificate
-import Support.Controls.ControlBank.K_39_12_0Certificate
-import Support.Controls.ControlBank.K_3_12_0Certificate
-import Support.Controls.ControlBank.K_42_12_0Certificate
-import Support.Controls.ControlBank.K_44_12_0Certificate
-import Support.Controls.ControlBank.K_45_12_0Certificate
-import Support.Controls.ControlBank.K_47_12_0Certificate
-import Support.Controls.ControlBank.K_48_12_0Certificate
-import Support.Controls.ControlBank.K_4_12_0Certificate
-import Support.Controls.ControlBank.K_52_9_4Certificate
-import Support.Controls.ControlBank.K_5_12_0Certificate
-import Support.Controls.ControlBank.K_8_12_0Certificate
+import Support.Controls.ControlBank
 import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
 import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAligned
 

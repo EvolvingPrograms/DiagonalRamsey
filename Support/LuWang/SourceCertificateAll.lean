@@ -1,21 +1,6 @@
-import Support.LuWang.SourceCertificateGroups.Group00
-import Support.LuWang.SourceCertificateGroups.Group01
-import Support.LuWang.SourceCertificateGroups.Group02
-import Support.LuWang.SourceCertificateGroups.Group03
-import Support.LuWang.SourceCertificateGroups.Group04
-import Support.LuWang.SourceCertificateGroups.Group05
-import Support.LuWang.SourceCertificateGroups.Group06
-import Support.LuWang.SourceCertificateGroups.Group07
-import Support.LuWang.SourceCertificateGroups.Group08
-import Support.LuWang.SourceCertificateGroups.Group09
-import Support.LuWang.SourceCertificateGroups.Group10
-import Support.LuWang.SourceCertificateGroups.Group11
-import Support.LuWang.SourceCertificateGroups.Group12
-import Support.LuWang.SourceCertificateGroups.Group13
-import Support.LuWang.SourceCertificateGroups.Group14
-import Support.LuWang.SourceCertificateGroups.Group15
-import Support.LuWang.SourceCertificateGroups.Group16
-import Support.LuWang.SourceCertificateGroups.Group17
+import Support.LuWang.SourceCertificates.Small
+import Support.LuWang.SourceCertificates.Transitions
+import Support.LuWang.SourceCertificates.Left
 import Support.LuWang.SourceCertificateAssembly
 
 set_option maxRecDepth 100000

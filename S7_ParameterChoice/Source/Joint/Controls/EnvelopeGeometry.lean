@@ -1,4 +1,4 @@
-import S7_ParameterChoice.Source.Joint.Controls.EnvelopeData
+import Support.Controls.EnvelopeData
 import Mathlib.Order.Monotone.Basic
 
 /-! Local geometry for an ordered concave polygon. Adjacent slope and continuity

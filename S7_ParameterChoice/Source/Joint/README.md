@@ -66,7 +66,7 @@ $q_i=a+ih$. [RoundedData.lean](Foundations/RoundedData.lean) specifies fixed-pre
 heights by $y_i=\lfloor(ai+b)/d\rfloor/s$. Rational normalization gives
 exact fraction encodings.
 
-[EnvelopeData.lean](Controls/EnvelopeData.lean) generates both control partitions from
+[EnvelopeData.lean](../../../Support/Controls/EnvelopeData.lean) generates both control partitions from
 the tangent lines $m_iq+c_i$. Their intersections give degree boundaries
 
 $$q_i=\frac{c_{i+1}-c_i}{m_i-m_{i+1}}.$$

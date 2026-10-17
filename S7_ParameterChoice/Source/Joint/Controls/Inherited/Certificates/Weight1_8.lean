@@ -1,7 +1,7 @@
 import S7_ParameterChoice.Source.Joint.Controls.ControlPrecision
 import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
 import S7_ParameterChoice.Source.Joint.Controls.EnvelopeCheck
-import S7_ParameterChoice.Source.Joint.Controls.EnvelopeData
+import Support.Controls.EnvelopeData
 import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
 import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControls
 
@@ -47,8 +47,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(299890885947/500000000000 : ℚ), (-663969023/10000000000 : ℚ), (15955638907/500000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-665368011/10000000000 : ℚ), (6399040367/200000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def data : ControlCertificate.Data where
   p := (237499/1000000 : ℚ)
   x := (141392496627/1000000000000 : ℚ)
@@ -74,7 +74,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -158,8 +158,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(349970146113/500000000000 : ℚ), (-18638209/312500000 : ℚ), (8584771287/250000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-18650891/312500000 : ℚ), (34367491601/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def data : ControlCertificate.Data where
   p := (237499/1000000 : ℚ)
   x := (4634226051/40000000000 : ℚ)
@@ -185,7 +185,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -237,8 +237,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(119956473239/200000000000 : ℚ), (-664846789/10000000000 : ℚ), (6394255889/200000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-333121947/5000000000 : ℚ), (32055090491/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def data : ControlCertificate.Data where
   p := (249999/1000000 : ℚ)
   x := (150849743033/1000000000000 : ℚ)
@@ -264,7 +264,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -348,8 +348,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(699940466831/1000000000000 : ℚ), (-298534563/5000000000 : ℚ), (17194038253/500000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-597474357/10000000000 : ℚ), (8604110373/250000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def data : ControlCertificate.Data where
   p := (249999/1000000 : ℚ)
   x := (124268085333/1000000000000 : ℚ)
@@ -375,7 +375,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -459,8 +459,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(119989147181/200000000000 : ℚ), (-667206677/10000000000 : ℚ), (3212674219/100000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-333777601/5000000000 : ℚ), (8036913181/250000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (262499/1000000 : ℚ)
   x := (40106752639/250000000000 : ℚ)
@@ -487,7 +487,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -571,8 +571,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(119989181061/200000000000 : ℚ), (-133631743/2000000000 : ℚ), (16096973323/500000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-167126673/2500000000 : ℚ), (3221482433/100000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (274999/1000000 : ℚ)
   x := (42521143497/250000000000 : ℚ)
@@ -599,7 +599,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -683,8 +683,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(699940842981/1000000000000 : ℚ), (-74887649/1250000000 : ℚ), (34548004183/1000000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-119900973/2000000000 : ℚ), (34576260119/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (274999/1000000 : ℚ)
   x := (141502632487/1000000000000 : ℚ)
@@ -711,7 +711,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -795,8 +795,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(599946083169/1000000000000 : ℚ), (-334605989/5000000000 : ℚ), (2016831077/62500000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-669559349/10000000000 : ℚ), (8072534637/250000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (287499/1000000 : ℚ)
   x := (179839580241/1000000000000 : ℚ)
@@ -823,7 +823,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -875,8 +875,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(549798032341/1000000000000 : ℚ), (-349467041/5000000000 : ℚ), (1527695783/50000000000 : ℚ), 1⟩,
     ⟨(11/20 : ℚ), (-700245979/10000000000 : ℚ), (30626056711/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (299999/1000000 : ℚ)
   x := (202758919979/1000000000000 : ℚ)
@@ -903,7 +903,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -987,8 +987,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(699941265691/1000000000000 : ℚ), (-300636187/5000000000 : ℚ), (3472165521/100000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-601674297/10000000000 : ℚ), (34749788651/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (299999/1000000 : ℚ)
   x := (39804236067/250000000000 : ℚ)
@@ -1015,7 +1015,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -1067,8 +1067,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(8590605631/15625000000 : ℚ), (-699874691/10000000000 : ℚ), (15309184431/500000000000 : ℚ), 1⟩,
     ⟨(11/20 : ℚ), (-350592211/5000000000 : ℚ), (767259773/25000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (312499/1000000 : ℚ)
   x := (213042814983/1000000000000 : ℚ)
@@ -1095,7 +1095,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -1179,8 +1179,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(23997858863/40000000000 : ℚ), (-671100599/10000000000 : ℚ), (32406167231/1000000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-671446747/10000000000 : ℚ), (16213467607/500000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (312499/1000000 : ℚ)
   x := (199604306309/1000000000000 : ℚ)
@@ -1207,7 +1207,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -1291,8 +1291,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(699941496687/1000000000000 : ℚ), (-602217667/10000000000 : ℚ), (34797936721/1000000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-602618711/10000000000 : ℚ), (278608069/8000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (312499/1000000 : ℚ)
   x := (33646911237/200000000000 : ℚ)
@@ -1319,7 +1319,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -1371,8 +1371,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(599786773537/1000000000000 : ℚ), (-20958559/312500000 : ℚ), (3238897547/100000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-336028377/5000000000 : ℚ), (6494386533/200000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (324999/1000000 : ℚ)
   x := (52399107301/250000000000 : ℚ)
@@ -1399,7 +1399,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -1483,8 +1483,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(699941739147/1000000000000 : ℚ), (-150782819/2500000000 : ℚ), (34872141607/1000000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-301765709/5000000000 : ℚ), (17450075199/500000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (324999/1000000 : ℚ)
   x := (11084865401/62500000000 : ℚ)
@@ -1511,7 +1511,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -1595,8 +1595,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(599946892081/1000000000000 : ℚ), (-673262531/10000000000 : ℚ), (8141349201/250000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-67360727/1000000000 : ℚ), (32586080241/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (337499/1000000 : ℚ)
   x := (6866213709/31250000000 : ℚ)
@@ -1623,7 +1623,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -1707,8 +1707,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(139988396477/200000000000 : ℚ), (-151146289/2500000000 : ℚ), (17495252271/500000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-604984177/10000000000 : ℚ), (17509217413/500000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (337499/1000000 : ℚ)
   x := (18661658301/100000000000 : ℚ)
@@ -1735,7 +1735,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -1787,8 +1787,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(43984089/80000000 : ℚ), (-703147511/10000000000 : ℚ), (30846391727/1000000000000 : ℚ), 1⟩,
     ⟨(11/20 : ℚ), (-704449669/10000000000 : ℚ), (30917997433/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (349999/1000000 : ℚ)
   x := (244350754039/1000000000000 : ℚ)
@@ -1815,7 +1815,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -1899,8 +1899,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(23997884591/40000000000 : ℚ), (-337197941/5000000000 : ℚ), (16324825639/500000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-674739863/10000000000 : ℚ), (32670289251/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (349999/1000000 : ℚ)
   x := (229899444369/1000000000000 : ℚ)
@@ -1927,7 +1927,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2011,8 +2011,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(27997689597/40000000000 : ℚ), (-605825697/10000000000 : ℚ), (8773010029/250000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-606223637/10000000000 : ℚ), (17559947359/500000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (349999/1000000 : ℚ)
   x := (97983224863/500000000000 : ℚ)
@@ -2039,7 +2039,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2091,8 +2091,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(799761465541/1000000000000 : ℚ), (-103686933/2000000000 : ℚ), (4426140009/125000000000 : ℚ), 1⟩,
     ⟨(4/5 : ℚ), (-10408573/200000000 : ℚ), (35568615013/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (4/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (4/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (349999/1000000 : ℚ)
   x := (151896403239/1000000000000 : ℚ)
@@ -2119,7 +2119,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (4/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (4/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2171,8 +2171,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(549801978827/1000000000000 : ℚ), (-175990461/2500000000 : ℚ), (15452281529/500000000000 : ℚ), 1⟩,
     ⟨(11/20 : ℚ), (-705261611/10000000000 : ℚ), (30976037367/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (362499/1000000 : ℚ)
   x := (254911234767/1000000000000 : ℚ)
@@ -2199,7 +2199,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2251,8 +2251,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(599789450213/1000000000000 : ℚ), (-1078411/16000000 : ℚ), (32636738621/1000000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-337690363/5000000000 : ℚ), (16359577631/500000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (362499/1000000 : ℚ)
   x := (6003278241/25000000000 : ℚ)
@@ -2279,7 +2279,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2363,8 +2363,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(699942513133/1000000000000 : ℚ), (-606769999/10000000000 : ℚ), (1373829/39062500 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-303583463/5000000000 : ℚ), (549965721/15625000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (362499/1000000 : ℚ)
   x := (5134987213/25000000000 : ℚ)
@@ -2391,7 +2391,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2475,8 +2475,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(799940647859/1000000000000 : ℚ), (-130410397/2500000000 : ℚ), (35680385589/1000000000000 : ℚ), 1⟩,
     ⟨(4/5 : ℚ), (-522137959/10000000000 : ℚ), (35720093729/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (4/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (4/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (362499/1000000 : ℚ)
   x := (32029627473/200000000000 : ℚ)
@@ -2503,7 +2503,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (4/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (4/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2555,8 +2555,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(519811020599/1000000000000 : ℚ), (-180506843/2500000000 : ℚ), (7453803589/250000000000 : ℚ), 1⟩,
     ⟨(13/25 : ℚ), (-7232869/100000000 : ℚ), (7470174471/250000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (374999/1000000 : ℚ)
   x := (68487472787/250000000000 : ℚ)
@@ -2583,7 +2583,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2635,8 +2635,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(68725354531/125000000000 : ℚ), (-705401981/10000000000 : ℚ), (6201232699/200000000000 : ℚ), 1⟩,
     ⟨(11/20 : ℚ), (-14133971/200000000 : ℚ), (31077462027/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (374999/1000000 : ℚ)
   x := (66392642863/250000000000 : ℚ)
@@ -2663,7 +2663,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2747,8 +2747,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(599947590253/1000000000000 : ℚ), (-676437453/10000000000 : ℚ), (1640162601/50000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-169194977/2500000000 : ℚ), (2051487401/62500000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (374999/1000000 : ℚ)
   x := (62620042539/250000000000 : ℚ)
@@ -2775,7 +2775,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2859,8 +2859,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(699942790751/1000000000000 : ℚ), (-608032089/10000000000 : ℚ), (7054819813/200000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-304213931/5000000000 : ℚ), (2206362631/62500000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (374999/1000000 : ℚ)
   x := (107474974673/500000000000 : ℚ)
@@ -2887,7 +2887,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -2939,8 +2939,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(51981187737/100000000000 : ℚ), (-144633139/2000000000 : ℚ), (29893673737/1000000000000 : ℚ), 1⟩,
     ⟨(13/25 : ℚ), (-724422469/10000000000 : ℚ), (7489753539/250000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (387499/1000000 : ℚ)
   x := (284819456047/1000000000000 : ℚ)
@@ -2967,7 +2967,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3019,8 +3019,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(549803770429/1000000000000 : ℚ), (-141230867/2000000000 : ℚ), (31061110453/1000000000000 : ℚ), 1⟩,
     ⟨(11/20 : ℚ), (-176862099/2500000000 : ℚ), (31132271157/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (387499/1000000 : ℚ)
   x := (276259438549/1000000000000 : ℚ)
@@ -3047,7 +3047,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3099,8 +3099,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(599791410753/1000000000000 : ℚ), (-676213119/10000000000 : ℚ), (6560648333/200000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-338790233/5000000000 : ℚ), (3288526823/100000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (387499/1000000 : ℚ)
   x := (65217691819/250000000000 : ℚ)
@@ -3127,7 +3127,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3211,8 +3211,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(699943080311/1000000000000 : ℚ), (-304598103/5000000000 : ℚ), (35370626701/1000000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-609590823/10000000000 : ℚ), (17699124387/500000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (387499/1000000 : ℚ)
   x := (224591506939/1000000000000 : ℚ)
@@ -3239,7 +3239,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3323,8 +3323,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(159988256531/200000000000 : ℚ), (-131002519/2500000000 : ℚ), (35891647687/1000000000000 : ℚ), 1⟩,
     ⟨(4/5 : ℚ), (-524502899/10000000000 : ℚ), (17965536043/500000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (4/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (4/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (387499/1000000 : ℚ)
   x := (176968129623/1000000000000 : ℚ)
@@ -3351,7 +3351,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (4/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (4/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3403,8 +3403,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(249909189787/500000000000 : ℚ), (-14708199/200000000 : ℚ), (14576875781/500000000000 : ℚ), 1⟩,
     ⟨(1/2 : ℚ), (-368320639/5000000000 : ℚ), (14607653371/500000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (1/2 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (1/2 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (399999/1000000 : ℚ)
   x := (75327659237/250000000000 : ℚ)
@@ -3431,7 +3431,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3483,8 +3483,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(259906386429/500000000000 : ℚ), (-724171423/10000000000 : ℚ), (5992780607/200000000000 : ℚ), 1⟩,
     ⟨(13/25 : ℚ), (-1450851/20000000 : ℚ), (1876818957/62500000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (399999/1000000 : ℚ)
   x := (14787067097/50000000000 : ℚ)
@@ -3511,7 +3511,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3563,8 +3563,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(137451175033/250000000000 : ℚ), (-35373393/500000000 : ℚ), (31155012499/1000000000000 : ℚ), 1⟩,
     ⟨(11/20 : ℚ), (-708758679/10000000000 : ℚ), (31225994959/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (399999/1000000 : ℚ)
   x := (57408395769/200000000000 : ℚ)
@@ -3591,7 +3591,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3675,8 +3675,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(599948096549/1000000000000 : ℚ), (-169680281/2500000000 : ℚ), (16488189877/500000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-679061877/10000000000 : ℚ), (32996824011/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (399999/1000000 : ℚ)
   x := (424020373/1562500000 : ℚ)
@@ -3703,7 +3703,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3787,8 +3787,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(349971687757/500000000000 : ℚ), (-122121907/2000000000 : ℚ), (35487671399/1000000000000 : ℚ), 1⟩,
     ⟨(7/10 : ℚ), (-611002879/10000000000 : ℚ), (7103040873/200000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (7/10 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (7/10 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (399999/1000000 : ℚ)
   x := (117172050453/500000000000 : ℚ)
@@ -3815,7 +3815,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (7/10 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3867,8 +3867,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(499819273427/1000000000000 : ℚ), (-184082929/2500000000 : ℚ), (5843463777/200000000000 : ℚ), 1⟩,
     ⟨(1/2 : ℚ), (-147512093/2000000000 : ℚ), (1463937261/50000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (1/2 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (1/2 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (412499/1000000 : ℚ)
   x := (12495215451/40000000000 : ℚ)
@@ -3895,7 +3895,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -3947,8 +3947,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(519813668677/1000000000000 : ℚ), (-145131277/2000000000 : ℚ), (30066162183/1000000000000 : ℚ), 1⟩,
     ⟨(13/25 : ℚ), (-726907143/10000000000 : ℚ), (30131189951/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (412499/1000000 : ℚ)
   x := (306746010383/1000000000000 : ℚ)
@@ -3975,7 +3975,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4027,8 +4027,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(274902834519/500000000000 : ℚ), (-708678081/10000000000 : ℚ), (7810575637/250000000000 : ℚ), 1⟩,
     ⟨(11/20 : ℚ), (-709965679/10000000000 : ℚ), (31313107889/1000000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (412499/1000000 : ℚ)
   x := (148941152833/500000000000 : ℚ)
@@ -4055,7 +4055,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4139,8 +4139,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(299974178631/500000000000 : ℚ), (-68019439/1000000000 : ℚ), (1323510601/40000000000 : ℚ), 1⟩,
     ⟨(3/5 : ℚ), (-136106831/2000000000 : ℚ), (827703751/25000000000 : ℚ), 1⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (412499/1000000 : ℚ)
   x := (281947559001/1000000000000 : ℚ)
@@ -4167,7 +4167,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4219,8 +4219,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(119956480203/250000000000 : ℚ), (-187034707/2500000000 : ℚ), (28426545933/1000000000000 : ℚ), 2⟩,
     ⟨(12/25 : ℚ), (-93668007/1250000000 : ℚ), (3560548297/125000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (12/25 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (12/25 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (424999/1000000 : ℚ)
   x := (82264349689/250000000000 : ℚ)
@@ -4247,7 +4247,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (12/25 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (12/25 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4299,8 +4299,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(499820170551/1000000000000 : ℚ), (-737684133/10000000000 : ℚ), (3663613857/125000000000 : ℚ), 2⟩,
     ⟨(1/2 : ℚ), (-738909743/10000000000 : ℚ), (29370180309/1000000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (1/2 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (1/2 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (424999/1000000 : ℚ)
   x := (323525843123/1000000000000 : ℚ)
@@ -4327,7 +4327,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4379,8 +4379,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(519814606059/1000000000000 : ℚ), (-363488137/5000000000 : ℚ), (30158025493/1000000000000 : ℚ), 2⟩,
     ⟨(13/25 : ℚ), (-182055951/2500000000 : ℚ), (3777860689/125000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (424999/1000000 : ℚ)
   x := (317799647457/1000000000000 : ℚ)
@@ -4407,7 +4407,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4459,8 +4459,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(549806678903/1000000000000 : ℚ), (-709765769/10000000000 : ℚ), (1957603499/62500000000 : ℚ), 2⟩,
     ⟨(11/20 : ℚ), (-177762547/2500000000 : ℚ), (6278457319/200000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (424999/1000000 : ℚ)
   x := (19298640563/62500000000 : ℚ)
@@ -4487,7 +4487,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4539,8 +4539,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(149948646753/250000000000 : ℚ), (-339972497/5000000000 : ℚ), (16543576511/500000000000 : ℚ), 2⟩,
     ⟨(3/5 : ℚ), (-42581331/625000000 : ℚ), (4146064651/125000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (3/5 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (3/5 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (424999/1000000 : ℚ)
   x := (292552673833/1000000000000 : ℚ)
@@ -4567,7 +4567,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (3/5 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4619,8 +4619,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(89967146273/200000000000 : ℚ), (-382077617/5000000000 : ℚ), (13547944379/500000000000 : ℚ), 2⟩,
     ⟨(9/20 : ℚ), (-765330077/10000000000 : ℚ), (6787186761/250000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (9/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (9/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (437499/1000000 : ℚ)
   x := (69677767621/200000000000 : ℚ)
@@ -4647,7 +4647,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (9/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (9/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4699,8 +4699,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(469829749641/1000000000000 : ℚ), (-754305051/10000000000 : ℚ), (1402099053/50000000000 : ℚ), 2⟩,
     ⟨(47/100 : ℚ), (-755497899/10000000000 : ℚ), (28098034763/1000000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (47/100 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (47/100 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (437499/1000000 : ℚ)
   x := (68611974499/200000000000 : ℚ)
@@ -4727,7 +4727,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (47/100 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (47/100 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4779,8 +4779,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(9596536507/20000000000 : ℚ), (-749221253/10000000000 : ℚ), (14249689633/500000000000 : ℚ), 2⟩,
     ⟨(12/25 : ℚ), (-750423657/10000000000 : ℚ), (28557084251/1000000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (12/25 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (12/25 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (437499/1000000 : ℚ)
   x := (340325588023/1000000000000 : ℚ)
@@ -4807,7 +4807,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (12/25 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (12/25 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4859,8 +4859,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(19992844419/40000000000 : ℚ), (-738838303/10000000000 : ℚ), (29388297511/1000000000000 : ℚ), 2⟩,
     ⟨(1/2 : ℚ), (-370030449/5000000000 : ℚ), (5889883261/200000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (1/2 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (1/2 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (437499/1000000 : ℚ)
   x := (41839337923/125000000000 : ℚ)
@@ -4887,7 +4887,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (1/2 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -4939,8 +4939,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(259907793127/500000000000 : ℚ), (-364060761/5000000000 : ℚ), (3023886133/100000000000 : ℚ), 2⟩,
     ⟨(13/25 : ℚ), (-4558537/62500000 : ℚ), (30303558507/1000000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (13/25 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (13/25 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (437499/1000000 : ℚ)
   x := (10278147397/31250000000 : ℚ)
@@ -4967,7 +4967,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (13/25 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -5051,8 +5051,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(549951914907/1000000000000 : ℚ), (-712328391/10000000000 : ℚ), (31489524619/1000000000000 : ℚ), 2⟩,
     ⟨(11/20 : ℚ), (-356324213/5000000000 : ℚ), (15753562907/500000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (11/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (11/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (437499/1000000 : ℚ)
   x := (319763887131/1000000000000 : ℚ)
@@ -5079,7 +5079,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (11/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -5131,8 +5131,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(449836597253/1000000000000 : ℚ), (-765358773/10000000000 : ℚ), (27173288733/1000000000000 : ℚ), 2⟩,
     ⟨(9/20 : ℚ), (-766530727/10000000000 : ℚ), (272260171/10000000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (9/20 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (9/20 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (449999/1000000 : ℚ)
   x := (89956267459/250000000000 : ℚ)
@@ -5159,7 +5159,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (9/20 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (9/20 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5
@@ -5211,8 +5211,8 @@ def tangents : List ControlCertificate.Tangent := [
     ⟨(479827773213/1000000000000 : ℚ), (-150016823/2000000000 : ℚ), (14279537101/500000000000 : ℚ), 2⟩,
     ⟨(12/25 : ℚ), (-751283837/10000000000 : ℚ), (1788540659/62500000000 : ℚ), 2⟩]
 
-def degrees : List Cell := DiagonalRamsey.JointEnvelopeData.degreeCells (12/25 : ℚ) tangents
-def cells : List Cell := DiagonalRamsey.JointEnvelopeData.integralCells (1/8 : ℚ) 32 degrees
+def degrees : List Cell := RamseyAnalytic.EnvelopeData.degreeCells (12/25 : ℚ) tangents
+def cells : List Cell := RamseyAnalytic.EnvelopeData.integralCells (1/8 : ℚ) 32 degrees
 def witness : ControlCertificate.Data where
   p := (449999/1000000 : ℚ)
   x := (87908138197/250000000000 : ℚ)
@@ -5239,7 +5239,7 @@ theorem check3 : ControlCertificate.GeometryChecks data :=
   DiagonalRamsey.JointEnvelopeCheck.geometryChecks_of_local data (by decide +kernel)
 #print axioms check3
 theorem check4 : data.degrees.all (fun d => data.tangents.any (fun t => decide (d.slope=t.m ∧ d.intercept=t.c))) = true :=
-  DiagonalRamsey.JointEnvelopeData.degreeCells_matches (12/25 : ℚ) tangents
+  RamseyAnalytic.EnvelopeData.degreeCells_matches (12/25 : ℚ) tangents
 #print axioms check4
 theorem check5 : JointControlExpressions.integralCheck data = true := by decide +kernel
 #print axioms check5

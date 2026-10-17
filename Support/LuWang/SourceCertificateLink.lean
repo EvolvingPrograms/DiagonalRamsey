@@ -26,6 +26,14 @@ theorem Linked.of_piece {c : Cell} {pieces : List SupportingPiece}
     (hold : c.oldPieces ⊆ pieces) : Linked c pieces :=
   ⟨p, hp, hcoeff, hlo, hhi, hold⟩
 
+/-- Shared certificate-link proof: check containment in the kernel and supply
+membership witnesses for the old supporting pieces. -/
+macro "link_source " cell:ident " with " piece:term " using " hp:term ", " old:term : tactic =>
+  `(tactic| {
+    apply Linked.of_piece $piece $hp rfl (by decide +kernel) (by decide +kernel)
+    simp only [$cell, List.cons_subset, List.nil_subset, and_true]
+    exact $old })
+
 theorem Linked.sound {c : Cell} {pieces : List SupportingPiece} {F D : ℝ → ℝ}
     (hlink : Linked c pieces) (hcheck : c.check = true) (hformulas : PieceFormulas F D pieces)
     {t : ℝ} (ht : 0 < t) (hdom : c.domain.Contains t) (hD : 0 < D t)

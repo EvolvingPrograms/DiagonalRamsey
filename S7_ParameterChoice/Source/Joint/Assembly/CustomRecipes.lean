@@ -1,7 +1,6 @@
 import S7_ParameterChoice.Source.Joint.Assembly.Recipes
 import Support.Controls.PublishedControlBridge
-import Support.Controls.ControlBank.K_4_12_0Certificate
-import Support.Controls.ControlBank.K_52_9_4Certificate
+import Support.Controls.ControlBank
 import Support.Controls.Candidate533Certificate
 import Support.Controls.Candidate540Certificate
 import Support.Controls.Candidate599Certificate
