@@ -115,3 +115,8 @@ including each donor, retained weight and breakpoint pair. Arithmetic
 progressions specify the route knots, and concatenated constant runs use
 `List.replicate` to specify density lists. The route checks apply to the
 expanded sequences.
+
+[Partitions.lean](RemainingRoutes/Partitions.lean) specifies knots, densities
+and donor calls. [Rows.lean](RemainingRoutes/Rows.lean) combines these with the
+terminal controls and margins. [Certificates.lean](RemainingRoutes/Certificates.lean)
+checks the rows and packages them as valid runs for the source induction.
