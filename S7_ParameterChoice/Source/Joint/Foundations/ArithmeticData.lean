@@ -19,4 +19,17 @@ def progression (start step : ℚ) (count : ℕ) : List FQ :=
     let q := start + (i : ℚ) * step
     ⟨q.num, q.den - 1⟩
 
+/-- **Cumulative integration.** Starting at `p`, integrate each constant density
+over its knot interval. Normalize each stored value to a reduced fraction. -/
+def integralPrefixesFrom : ℚ → List FQ → List FQ → List FQ
+  | p, u :: v :: us, d :: ds =>
+      ⟨p.num, p.den - 1⟩ ::
+        integralPrefixesFrom (p + d.toQ * (v.toQ - u.toQ)) (v :: us) ds
+  | p, _, _ => [⟨p.num, p.den - 1⟩]
+
+/-- The integral is zero at the first knot; subsequent values are cumulative
+cell areas, `P_(j+1) = P_j + d_j * (u_(j+1) - u_j)`. -/
+def integralPrefixes (us ds : List FQ) : List FQ :=
+  integralPrefixesFrom 0 us ds
+
 end DiagonalRamsey.JointGeometry.FQ

@@ -116,6 +116,17 @@ progressions specify the route knots, and concatenated constant runs use
 `List.replicate` to specify density lists. The route checks apply to the
 expanded sequences.
 
+For knots $u_0,\ldots,u_n$ and constant cell densities $d_0,\ldots,d_{n-1}$,
+the integral values are determined by
+
+$$P_0=0,\qquad P_{j+1}=P_j+d_j(u_{j+1}-u_j).$$
+
+`FQ.integralPrefixes` in [ArithmeticData.lean](Foundations/ArithmeticData.lean)
+constructs this sequence using exact rational arithmetic. On cell $j$,
+the integral is $P_j+d_j(x-u_j)$, as proved by `IntegralPrefixes.eval` in
+[FastIntegral.lean](Routes/FastIntegral.lean). Cached and remaining routes
+use this construction for their prefix values.
+
 [Partitions.lean](Routes/Remaining/Partitions.lean) specifies knots, densities
 and donor calls. [Rows.lean](Routes/Remaining/Rows.lean) combines these with the
 terminal controls and margins. [Certificates.lean](Routes/Remaining/Certificates.lean)
