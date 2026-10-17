@@ -17,14 +17,102 @@ w=\frac{104160447497}{250000000000},\quad
 \beta=\frac{9999999}{10^7},\quad
 x=\frac{337503}{10^6},\quad \xi=x-\frac4{10^{11}}.$$
 
+<details>
+<summary>Lean comparison</summary>
+
+Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
+
+[`p`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L15)
+
+```lean
+def p : ℚ := 499999999 / 1000000000
+```
+
+[`μ`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L16)
+
+```lean
+def μ : ℚ := 405108059767 / 1000000000000
+```
+
+[`w`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L17)
+
+```lean
+def w : ℚ := 104160447497 / 250000000000
+```
+
+[`β`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L18)
+
+```lean
+def β : ℚ := 9999999 / 10000000
+```
+
+[`x`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L19)
+
+```lean
+def x : ℚ := 337503 / 1000000
+```
+
+[`ξ`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L20)
+
+```lean
+def ξ : ℚ := x - 4 / 100000000000
+```
+
+</details>
+
 The chosen source coefficients and final exponents are
 
 $$A_s=\frac{1086180879838687}{10^{15}},\qquad
 B_s=\frac{11640399543290787172985714354555752537}
 {36367644171000000000000000000000000000},$$
+
+<details>
+<summary>Lean comparison</summary>
+
+Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
+
+[`sourceA`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L23)
+
+```lean
+def sourceA : ℚ := 1086180879838687 / 1000000000000000
+```
+
+[`sourceB`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L24)
+
+```lean
+def sourceB : ℚ :=
+  11640399543290787172985714354555752537 / 36367644171000000000000000000000000000
+```
+
+</details>
 $$z=\frac{625145177}{500000000},\qquad
 \gamma=\frac{250058071}{200000000}=z+10^{-9},\qquad
 b=\frac{69827131}{20000000}=3.49135655.$$
+
+<details>
+<summary>Lean comparison</summary>
+
+Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
+
+[`rawExponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L28)
+
+```lean
+def rawExponent : ℚ := 625145177 / 500000000
+```
+
+[`exponent`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L29)
+
+```lean
+def exponent : ℚ := 250058071 / 200000000
+```
+
+[`base`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L1_Parameters.lean#L30)
+
+```lean
+def base : ℚ := 69827131 / 20000000
+```
+
+</details>
 
 Lean: [L1_Parameters.lean](L1_Parameters.lean).
 
@@ -36,6 +124,27 @@ The chosen parameters satisfy $\operatorname{ComplementEnvelope}(p,\mu,w,\beta,x
 
 $$\mathcal F(a)>\frac{1769}{10^8}>0,\qquad
 \mathcal F(\mu)<-\frac{47763}{10^6}<0.$$
+
+<details>
+<summary>Lean comparison</summary>
+
+Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
+
+[`entropy_gap_at_cutoff`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L2_Control.lean#L96)
+
+```lean
+theorem entropy_gap_at_cutoff :
+    (1769 : ℝ) / 100000000 < entropyGap p μ w β x degreeCutoff
+```
+
+[`entropy_gap_at_endpoint`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L2_Control.lean#L108)
+
+```lean
+theorem entropy_gap_at_endpoint :
+    entropyGap p μ w β x μ < -(47763 : ℝ) / 1000000
+```
+
+</details>
 
 The cutoff law places every feasible degree in $(a,\mu]$ and makes $\mu$
 feasible. Set $q_i=a+i(\mu-a)/192$ and $m_i=(q_i+q_{i+1})/2$.
@@ -49,16 +158,77 @@ $h_0,\ldots,h_{192}$ satisfy
 
 $$T_i(q_i)\le h_i,\qquad T_i(q_{i+1})\le h_{i+1}.$$
 
+<details>
+<summary>Lean comparison</summary>
+
+The last two conjuncts are the endpoint inequalities. `tangent.eval` is identified with the explicit support line by the expression identities in `Control/Expressions.lean`.
+
+[`cell_inputs`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Control/Envelope.lean#L93)
+
+```lean
+theorem cell_inputs (i : Fin cells) :
+    (midpoint i : ℝ) ∈ positiveBudget p μ w β x ∧
+    Real.log (p : ℝ) ≤ budgetGap p μ w β x (midpoint i) / midpoint i ∧
+    (tangent (midpoint i) (knot i.castSucc)).eval 0 ≤ (height i.castSucc : ℝ) ∧
+    (tangent (midpoint i) (knot i.succ)).eval 0 ≤ (height i.succ : ℝ)
+```
+
+</details>
+
 Since $H\le T_i$, interpolation bounds $H$ throughout each cell. Thus,
 for every feasible $q$ and every real $v$,
 
 $$wqv+H(q)\le\max_{0\le i\le192}(wq_i v+h_i).$$
+
+<details>
+<summary>Lean comparison</summary>
+
+The cell lemma bounds the objective by the two adjacent endpoint lines; `objective_coverage` selects a covering cell and places its lines below the hinge majorant. The displayed maximum over all knots is the intermediate finite-envelope formulation.
+
+[`cell_objective_le_max`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Control/Cell.lean#L50)
+
+```lean
+theorem cell_objective_le_max {l r m hL hR : ℚ} (hlr : l < r)
+    (hm : (m : ℝ) ∈ positiveBudget p μ w β x)
+    (hbinding : Real.log (p : ℝ) ≤ budgetGap p μ w β x m / m)
+    (hleft : (tangent m l).eval 0 ≤ (hL : ℝ))
+    (hright : (tangent m r).eval 0 ≤ (hR : ℝ))
+    {q : ℝ} (hq : q ∈ positiveBudget p μ w β x) (hinterval : q ∈ Set.Icc (l : ℝ) r)
+    (v : ℝ) :
+    (w : ℝ) * q * v + (q * certM p μ w β x q + (w : ℝ) * q) ≤
+      max ((w : ℝ) * l * v + hL) ((w : ℝ) * r * v + hR)
+```
+
+[`objective_coverage`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Control/Envelope.lean#L114)
+
+```lean
+theorem objective_coverage : ∀ u ∈ Set.Ioc (0 : ℝ) 1, ∀ q ∈ complementDegrees p μ w β x,
+    q * certM p μ w β x q + (w : ℝ) * q * (1 + Real.log u) ≤
+      affineHingeMajorant first rest (Real.log u)
+```
+
+</details>
 
 Put $a_i=wq_i$ and $r_i=(h_i-h_{i+1})/(a_{i+1}-a_i)$. The slopes strictly
 increase. The hinge integral law and the exact bound
 
 $$h_{192}-a_{192}+\sum_{i=0}^{191}(a_{i+1}-a_i)e^{r_i}
 <-\frac{15}{10^8}$$
+
+<details>
+<summary>Lean comparison</summary>
+
+Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
+
+[`integral_sum_lt`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Control/Integral.lean#L98)
+
+```lean
+theorem integral_sum_lt :
+    (height (Fin.last cells) : ℝ) - slope (Fin.last cells) +
+      ∑ i : Fin cells, (gap i : ℝ) * Real.exp (crossing i : ℝ) < -(15 : ℝ) / 100000000
+```
+
+</details>
 
 give a negative integral majorant, hence the complementary envelope.
 The logarithmic and exponential enclosures include proved semantic identities
@@ -77,6 +247,27 @@ satisfies the hypotheses of section 6. In particular,
 $$\exists C\ge1\;\forall k,\ell\ge1:\qquad
 R(k,\ell)\le C e^{A_s k+B_s\ell}.$$
 
+<details>
+<summary>Lean comparison</summary>
+
+Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
+
+[`source_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/L3_Source.lean#L10)
+
+```lean
+theorem source_bound : SourceAdmissible (sourceA : ℝ) (sourceB : ℝ)
+```
+
+[`SourceAdmissible`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S1_Definitions/L2_AdmissibleBounds.lean#L16)
+
+```lean
+def SourceAdmissible (A B : ℝ) : Prop :=
+  ∃ C : ℝ, 1 ≤ C ∧ ∀ k l : ℕ, 0 < k → 0 < l →
+    (RamseyBasics.ramseyNumber k l : ℝ) ≤ C * Real.exp (A * k + B * l)
+```
+
+</details>
+
 **Proof.** Supply the four inputs to joint induction.
 
 **Baseline.** The proved Lu–Wang finite source supplies, for every
@@ -92,17 +283,87 @@ or complementary-profile witness has cost at most
 
 $$A_i+B_it-\eta_0(1+t),\qquad \eta_0=\frac1{2\cdot10^{12}}.$$
 
+<details>
+<summary>Lean comparison</summary>
+
+The common reserve is `HullCells.reserve = 1 / 2000000000000`. The declaration records the baseline-or-profile witness for each source line.
+
+[`pointwise_source_cover`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/JointFamily.lean#L416)
+
+```lean
+theorem pointwise_source_cover (i : SourceIndex) {t : ℝ} (ht : 0 < t) :
+    PointwiseSource.Bound profile (symmetricProfile luWangSource 1) t
+      (A i + B i * t - (HullCells.reserve : ℝ) * (1 + t))
+```
+
+</details>
+
 For the chosen source, 81 profile-pair runs and two baseline tails give
 the stronger reserve $10^{-9}$. The tails are
 
 $$0<t\le\frac{80}{353},\qquad
 t\ge\frac{58673404100}{12245974793}.$$
 
+<details>
+<summary>Lean comparison</summary>
+
+Declaration excerpts; hypotheses and local notation are as in the linked source. Proof bodies are omitted.
+
+[`leftEnd`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Tails.lean#L19)
+
+```lean
+def leftEnd : ℚ := 80 / 353
+```
+
+[`rightStart`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Tails.lean#L20)
+
+```lean
+def rightStart : ℚ := 58673404100 / 12245974793
+```
+
+[`left_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Tails.lean#L48)
+
+```lean
+theorem left_bound {t : ℝ} (ht : 0 < t) (hle : t ≤ (leftEnd : ℝ)) :
+    symmetricProfile luWangSource 1 t ≤
+      (sourceA : ℝ) + (sourceB : ℝ) * t - (reserve : ℝ) * (1 + t)
+```
+
+[`right_bound`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Tails.lean#L64)
+
+```lean
+theorem right_bound {t : ℝ} (ht : 0 < t) (hle : (rightStart : ℝ) ≤ t) :
+    symmetricProfile luWangSource 1 t ≤
+      (sourceA : ℝ) + (sourceB : ℝ) * t - (reserve : ℝ) * (1 + t)
+```
+
+</details>
+
 For inherited sources, use 130 hull lines $L_j(t)=a_j+b_jt$.
 Decreasing slopes and increasing adjacent crossings $s_j$ imply
 
 $$L_j(t)-L_{j+1}(t)=(b_j-b_{j+1})(t-s_j),\qquad
 L_{\sigma(t)}(t)=\min_jL_j(t).$$
+
+<details>
+<summary>Lean comparison</summary>
+
+Equality at the crossing and affine linearity give the displayed difference formula. `selected_le` states that the selected line is below every line, hence realizes the finite minimum.
+
+[`crossing_values`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Hull.lean#L440)
+
+```lean
+theorem crossing_values (j : Fin 129) :
+    line j.castSucc (crossing j) = line j.succ (crossing j)
+```
+
+[`selected_le`](https://github.com/EvolvingPrograms/DiagonalRamsey/blob/main/lean/S7_ParameterChoice/Source/Hull.lean#L480)
+
+```lean
+theorem selected_le (t : ℝ) : ∀ j : Fin 130, line (selector t) t ≤ line j t
+```
+
+</details>
 
 Baseline tangent bounds and paired-profile intervals cover the selected line.
 Each inherited source dominates a convex combination of two hull lines, hence
