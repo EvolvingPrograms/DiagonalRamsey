@@ -56,6 +56,12 @@ structure CallF (ι : Type) where
   z : FQ
   bp : List FQ
 
+/-- **Uniform donor along a partition.** Use the same child and retained weight
+on each adjacent pair of knots. -/
+def CallF.adjacent {ι : Type} (child : ι) (weight : FQ) (knots : List FQ) :
+    List (CallF ι) :=
+  (knots.zip knots.tail).map fun pair => ⟨child, weight, [pair.1, pair.2]⟩
+
 def CallF.toD {ι : Type} (c : CallF ι) : CallD ι := ⟨c.ch, c.z.toQ, mapQ c.bp⟩
 
 structure RouteF (ι : Type) (nCtl m : ℕ) where

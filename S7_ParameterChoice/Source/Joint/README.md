@@ -108,6 +108,20 @@ reduces 825 control modules to 104 and 675 route modules to 85, preserving their
 individual checks and theorem names. With the shared helpers, the directory
 now contains **631 Lean modules**, down from **1,937**.
 
+### Routes along a partition
+
+For a fixed donor $P$ and retained weight $z$, the calls on a knot sequence
+$q_0,\ldots,q_n$ are
+
+$$\operatorname{calls}(P,z;q)
+  =\bigl[(P,z,[q_i,q_{i+1}])\bigr]_{i=0}^{n-1}.$$
+
+`CallF.adjacent` in [FastRoute.lean](FastRoute.lean) implements this equation.
+Concatenating uniform runs specifies 5,130 formerly explicit call lists in
+`RemainingRoutes/`; 193 constant density lists use `List.replicate`.
+The expansion preserves each original donor, weight and breakpoint pair,
+removing about 11.2 MB of repeated source without changing the route checks.
+
 ## What would genuinely simplify this
 
 The largest opportunity is to prove a **smaller closed bank** sufficient for
