@@ -19,14 +19,11 @@ theorem eventual_diagonal_bound :
 
 </details>
 
-This refines the method of Zhipu Zhao, William Booth-Clibborn and Casper
-Schwahn, A $(3.49\ldots)^k$ bound for diagonal Ramsey numbers
-([paper and Lean code](https://github.com/w2ll2am/diagonal-ramsey/tree/c2875f33a9d5c89f71c68f51b5767550570b5603)).
+This refines the method of Zhao, Booth-Clibborn and Schwahn.[^1]
 We reuse their weighted potential, maximality machinery, finite-host closure
 and source/profile framework (paper sections 3–5), as well as inherited
-profile and control data. Their construction builds on Zhipeng Lu and Sichen
-Wang, *Retained-Set Descent for Diagonal Ramsey Numbers*
-([2026](https://arxiv.org/abs/2609.14525)), whose finite source bound we use.
+profile and control data. Their construction builds on Lu and Wang's
+retained-set descent,[^2] whose finite source bound we use.
 
 The refinement below retains the complementary-neighbourhood moment constraint,
 derives its scalar feasibility and envelope laws, and supplies a retuned
@@ -294,3 +291,18 @@ Thus $R(k,k)\le b^k$. $\square$
 The [independent challenge](../challenges/Comparison/Challenge.lean) states the
 bound directly for finite graphs. Comparator checks its proved solution with
 permitted axioms `propext`, `Classical.choice` and `Quot.sound`.
+
+## References
+
+[^1]: Zhipu Zhao, William Booth-Clibborn and Casper Schwahn,
+    A $(3.49\ldots)^k$ bound for diagonal Ramsey numbers (2026).
+    [Paper](https://github.com/w2ll2am/diagonal-ramsey/blob/c2875f33a9d5c89f71c68f51b5767550570b5603/preprint/main.pdf)
+    · [Lean code](https://github.com/w2ll2am/diagonal-ramsey/tree/c2875f33a9d5c89f71c68f51b5767550570b5603).
+
+[^2]: Zhipeng Lu and Sichen Wang,
+    *Retained-Set Descent for Diagonal Ramsey Numbers* (2026).
+    [arXiv:2609.14525](https://arxiv.org/abs/2609.14525)
+    · [Lean code](https://github.com/sichen-wang/diagonal-ramsey-numbers).
+
+See [sources and attribution](../NOTICE.md) for the foundational formalizations
+and inherited libraries, and the section READMEs for specific uses.

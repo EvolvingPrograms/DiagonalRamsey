@@ -10,7 +10,7 @@ The source tree follows the mathematical argument. Required inherited lemmas
 and finite data are collected in [Support](lean/Support/README.md).
 
 This refines Zhao–Booth-Clibborn–Schwahn's weighted-potential and profile-bank
-method, building on Lu–Wang retained-set descent. See [attribution](NOTICE.md).
+method,[^1] building on Lu–Wang retained-set descent.[^2]
 
 ## Verification
 
@@ -38,3 +38,18 @@ The [Verify workflow](https://github.com/EvolvingPrograms/DiagonalRamsey/actions
 and Comparator check. Its `fresh` option discards project build
 artifacts while retaining the trusted Mathlib dependency cache. Subsequent runs
 can restore this repository's own cache.
+
+## References
+
+[^1]: Zhipu Zhao, William Booth-Clibborn and Casper Schwahn,
+    A $(3.49\ldots)^k$ bound for diagonal Ramsey numbers (2026).
+    [Paper](https://github.com/w2ll2am/diagonal-ramsey/blob/c2875f33a9d5c89f71c68f51b5767550570b5603/preprint/main.pdf)
+    · [Lean code](https://github.com/w2ll2am/diagonal-ramsey/tree/c2875f33a9d5c89f71c68f51b5767550570b5603).
+
+[^2]: Zhipeng Lu and Sichen Wang,
+    *Retained-Set Descent for Diagonal Ramsey Numbers* (2026).
+    [arXiv:2609.14525](https://arxiv.org/abs/2609.14525)
+    · [Lean code](https://github.com/sichen-wang/diagonal-ramsey-numbers).
+
+See [sources and attribution](NOTICE.md) for the foundational formalizations
+and inherited libraries.
