@@ -124,6 +124,9 @@ removing about 11.2 MB of repeated source without changing the route checks.
 The route partitions themselves use another 7,821 arithmetic progression
 expressions in place of 144,213 explicit knot entries. Every normalized fraction
 is preserved; this removes a further 1.71 MB.
+Another 2,297 lists are specified by concatenated constant runs, using
+`List.replicate` rather than repeating the density at every step. This removes
+3.84 MB while preserving the expanded sequence and all route checks.
 
 ## What would genuinely simplify this
 
