@@ -1,0 +1,19 @@
+{
+  "challenge_module": "Comparison.Challenge",
+  "solution_module": "Comparison.Solution",
+  "theorem_names": [
+    "RamseySpecification.diagonal_bound"
+  ],
+  "specification_sha256": {
+    "verification/Comparison/Challenge.lean": "e82aa361482e7e9e7e1c176f78854ba85a59bc1dc5fdaac5b0493de8042f1bb9",
+    "verification/Comparison/Definitions.lean": "6075f9797271ade6e46fed09fd1c3408690d1d4cbc15ad197bc55c6d2c861bf4",
+    "verification/Comparison/Solution.lean": "b37b41cd7513a86a73f6d78535236fc3758c89daabfb7342402bff177199782d"
+  },
+  "tools": {
+    "comparator": "07bc4ea40f2266dcb861820a2ec1fa3244ed307f",
+    "lean4export": "4e7915201d3f9f04470d9eae002fa695f7cdc589",
+    "lean4checker": "b7398199245524275543dec6113229c9bb4902e5",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "toolchain": "leanprover/lean4:v4.32.1"
+  }
+}

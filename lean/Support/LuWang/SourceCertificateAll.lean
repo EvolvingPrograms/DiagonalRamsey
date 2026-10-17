@@ -1,0 +1,42 @@
+import Support.LuWang.SourceCertificateGroups.Group00
+import Support.LuWang.SourceCertificateGroups.Group01
+import Support.LuWang.SourceCertificateGroups.Group02
+import Support.LuWang.SourceCertificateGroups.Group03
+import Support.LuWang.SourceCertificateGroups.Group04
+import Support.LuWang.SourceCertificateGroups.Group05
+import Support.LuWang.SourceCertificateGroups.Group06
+import Support.LuWang.SourceCertificateGroups.Group07
+import Support.LuWang.SourceCertificateGroups.Group08
+import Support.LuWang.SourceCertificateGroups.Group09
+import Support.LuWang.SourceCertificateGroups.Group10
+import Support.LuWang.SourceCertificateGroups.Group11
+import Support.LuWang.SourceCertificateGroups.Group12
+import Support.LuWang.SourceCertificateGroups.Group13
+import Support.LuWang.SourceCertificateGroups.Group14
+import Support.LuWang.SourceCertificateGroups.Group15
+import Support.LuWang.SourceCertificateGroups.Group16
+import Support.LuWang.SourceCertificateGroups.Group17
+import Support.LuWang.SourceCertificateAssembly
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+
+namespace LuWang.SourceCertificateAll
+open SourceCertificate
+open AnalyticBounds.ExpressionCertificate
+
+noncomputable def cells : List Cell := LuWang.SourceCertificateGroups.Group00.cells ++ (LuWang.SourceCertificateGroups.Group01.cells ++ (LuWang.SourceCertificateGroups.Group02.cells ++ (LuWang.SourceCertificateGroups.Group03.cells ++ (LuWang.SourceCertificateGroups.Group04.cells ++ (LuWang.SourceCertificateGroups.Group05.cells ++ (LuWang.SourceCertificateGroups.Group06.cells ++ (LuWang.SourceCertificateGroups.Group07.cells ++ (LuWang.SourceCertificateGroups.Group08.cells ++ (LuWang.SourceCertificateGroups.Group09.cells ++ (LuWang.SourceCertificateGroups.Group10.cells ++ (LuWang.SourceCertificateGroups.Group11.cells ++ (LuWang.SourceCertificateGroups.Group12.cells ++ (LuWang.SourceCertificateGroups.Group13.cells ++ (LuWang.SourceCertificateGroups.Group14.cells ++ (LuWang.SourceCertificateGroups.Group15.cells ++ (LuWang.SourceCertificateGroups.Group16.cells ++ (LuWang.SourceCertificateGroups.Group17.cells)))))))))))))))))
+
+theorem all_certified : ∀ c ∈ cells, SourceCertificateFamily.Certified c := by
+  simp only [cells,List.forall_mem_append]
+  exact ⟨(fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group00.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group01.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group02.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group03.all_checked c hc)), LuWang.SourceCertificateGroups.Group04.all_certified, LuWang.SourceCertificateGroups.Group05.all_certified, LuWang.SourceCertificateGroups.Group06.all_certified, LuWang.SourceCertificateGroups.Group07.all_certified, LuWang.SourceCertificateGroups.Group08.all_certified, (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group09.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group10.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group11.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group12.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group13.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group14.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group15.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group16.all_checked c hc)), (fun c hc => SourceCertificateFamily.of_checked (LuWang.SourceCertificateGroups.Group17.all_checked c hc))⟩
+
+theorem all_linked : ∀ c ∈ cells, Linked c CurrentSourceData.pieces := by
+  simp only [cells,List.forall_mem_append]
+  exact ⟨LuWang.SourceCertificateGroups.Group00.all_linked, LuWang.SourceCertificateGroups.Group01.all_linked, LuWang.SourceCertificateGroups.Group02.all_linked, LuWang.SourceCertificateGroups.Group03.all_linked, LuWang.SourceCertificateGroups.Group04.all_linked, LuWang.SourceCertificateGroups.Group05.all_linked, LuWang.SourceCertificateGroups.Group06.all_linked, LuWang.SourceCertificateGroups.Group07.all_linked, LuWang.SourceCertificateGroups.Group08.all_linked, LuWang.SourceCertificateGroups.Group09.all_linked, LuWang.SourceCertificateGroups.Group10.all_linked, LuWang.SourceCertificateGroups.Group11.all_linked, LuWang.SourceCertificateGroups.Group12.all_linked, LuWang.SourceCertificateGroups.Group13.all_linked, LuWang.SourceCertificateGroups.Group14.all_linked, LuWang.SourceCertificateGroups.Group15.all_linked, LuWang.SourceCertificateGroups.Group16.all_linked, LuWang.SourceCertificateGroups.Group17.all_linked⟩
+
+theorem all_covered : covers (0 / 1 : ℚ) (1 / 1 : ℚ) (cells.map Cell.domain) = true := by
+  simpa only [cells,List.map_append] using covers_append _ _ LuWang.SourceCertificateGroups.Group00.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group01.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group02.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group03.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group04.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group05.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group06.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group07.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group08.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group09.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group10.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group11.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group12.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group13.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group14.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group15.all_covered (covers_append _ _ LuWang.SourceCertificateGroups.Group16.all_covered (LuWang.SourceCertificateGroups.Group17.all_covered)))))))))))))))))
+
+#print axioms all_covered
+end LuWang.SourceCertificateAll

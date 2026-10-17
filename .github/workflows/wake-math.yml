@@ -1,0 +1,57 @@
+name: Wake shared Math
+on:
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      deadline:
+        description: GCP scheduled shutdown timestamp
+        value: ${{ jobs.wake.outputs.deadline }}
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      deadline: ${{ steps.start.outputs.deadline }}
+    steps:
+      - id: auth
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093
+        with:
+          workload_identity_provider: ${{ vars.MATH_WIF_PROVIDER }}
+          service_account: ${{ vars.MATH_POWER_ACCOUNT }}
+          token_format: access_token
+          create_credentials_file: false
+      - id: start
+        env:
+          GCP_ACCESS_TOKEN: ${{ steps.auth.outputs.access_token }}
+        run: |
+          python3 - <<'PY'
+          """Start the shared VM if stopped; never interrupt a running machine."""
+          import datetime, json, os, time, urllib.request
+          base='https://compute.googleapis.com/compute/v1/projects/research-420207/zones/us-central1-c/instances/math'
+          headers={'Authorization':'Bearer '+os.environ['GCP_ACCESS_TOKEN']}
+          def call(method='GET',suffix=''):
+              request=urllib.request.Request(base+suffix,headers=headers,method=method,
+                                             data=b'{}' if method=='POST' else None)
+              with urllib.request.urlopen(request,timeout=60) as response:return json.load(response)
+          started=False
+          for attempt in range(90):
+              vm=call();status=vm['status'];print('math:',status,flush=True)
+              if status=='RUNNING':break
+              if status=='TERMINATED' and not started:
+                  call('POST','/start');started=True
+              elif status not in {'TERMINATED','PROVISIONING','STAGING','STOPPING'}:
+                  raise SystemExit('Unexpected VM state; refusing to reset it: '+status)
+              time.sleep(5)
+          else:raise SystemExit('VM did not become RUNNING within startup window')
+          deadline=vm.get('terminationTimestamp')
+          if not deadline:
+              seconds=int(vm['scheduling']['maxRunDuration']['seconds'])
+              start=datetime.datetime.fromisoformat(vm['lastStartTimestamp'].replace('Z','+00:00'))
+              deadline=(start+datetime.timedelta(seconds=seconds)).isoformat()
+          print('Scheduled stop:',deadline)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as output:output.write('deadline='+deadline+'\n')
+          print('VM is running. GitHub will queue the downstream job until the runner is available.')
+          PY

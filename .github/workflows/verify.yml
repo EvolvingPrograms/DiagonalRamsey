@@ -1,0 +1,96 @@
+name: Verify diagonal Ramsey bound
+run-name: Ramsey 3.49135655 — ${{ inputs.fresh && 'fresh build' || 'cached build' }}
+on:
+  workflow_dispatch:
+    inputs:
+      fresh:
+        description: Rebuild every project module (Mathlib cache is allowed)
+        type: boolean
+        default: false
+      jobs:
+        description: Concurrent modules; 0 selects CPUs / 4, subject to memory
+        type: string
+        default: '0'
+permissions:
+  contents: read
+concurrency:
+  group: diagonal-ramsey-verification
+  cancel-in-progress: false
+jobs:
+  wake:
+    permissions:
+      contents: read
+      id-token: write
+    uses: ./.github/workflows/wake-math.yml
+  verify:
+    needs: wake
+    runs-on: [self-hosted, Linux, X64, math]
+    timeout-minutes: 450
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          clean: false
+          persist-credentials: false
+      - name: Fresh project build
+        if: inputs.fresh
+        run: |
+          rm -rf .lake/build .verification .lake/build-progress
+      - name: Restore project cache
+        if: ${{ !inputs.fresh }}
+        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25
+        with:
+          path: |
+            .lake
+            .verification/tools
+          key: diagonal-ramsey-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean') }}-${{ github.run_id }}
+          restore-keys: |
+            diagonal-ramsey-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean') }}-
+      - name: Set up pinned Lean and Mathlib
+        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: true
+      - name: Check sources and specification
+        run: python3 scripts/check_sources.py
+      - name: Prepare pinned comparison tools
+        run: python3 -u scripts/comparator.py --setup-only
+      - name: Build proof with memory-aware parallelism
+        shell: bash
+        env:
+          JOBS: ${{ inputs.jobs }}
+        run: |
+          set -o pipefail
+          mkdir -p .lake/build-progress
+          limits=$(python3 scripts/prepare_cgroups.py)
+          python3 -u scripts/build_lean_parallel.py --jobs "$JOBS" --memory-aware \
+            --cgroup-root "$limits" --max-seconds 19800 \
+            --summary-log .lake/build-progress/build.log \
+            S8_RamseyBound.L4_MainTheorem | tee .lake/build-progress/build.log
+      - name: Literal theorem and axiom audit
+        run: python3 scripts/audit.py
+      - name: Independent statement and kernel comparison
+        shell: bash
+        run: |
+          set -o pipefail
+          python3 -u scripts/comparator.py 2>&1 | tee .verification/comparator.log
+      - name: Upload logs and verification receipts
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: diagonal-ramsey-${{ github.run_id }}
+          path: |
+            .lake/build-progress/
+            .verification/*.json
+            .verification/*.log
+      - name: Save partial or complete cache
+        if: always()
+        uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25
+        with:
+          path: |
+            .lake
+            .verification/tools
+          key: diagonal-ramsey-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean') }}-${{ github.run_id }}

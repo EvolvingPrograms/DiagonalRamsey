@@ -1,0 +1,1118 @@
+import Support.LuWang.SourceCertificateFamily.Domain
+import Support.LuWang.CurrentSourceData
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+set_option Elab.async false
+
+namespace LuWang.SourceCertificates.Chunk0132
+open SourceCertificate CurrentSourceData
+
+def cell_6600 : Cell := {
+  domain := ⟨(861 / 4000 : ℚ), (689 / 3200 : ℚ)⟩
+  branch := .right
+  r := (21711636856037 / 25000000000000 : ℚ)
+  w := (5121780382437 / 5000000000000 : ℚ)
+  center := (6889 / 32000 : ℚ)
+  supportValue := (8195138330448359 / 10000000000000000 : ℚ)
+  supportSlope := (355936832452719 / 62500000000000 : ℚ)
+  oldCenter := (8195138330448359 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_568
+  oldLo := (40950000000000003 / 50000000000000000 : ℚ)
+  oldHi := (41000000000000003 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1885, piece_1886]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6601 : Cell := {
+  domain := ⟨(689 / 3200 : ℚ), (1723 / 8000 : ℚ)⟩
+  branch := .right
+  r := (21711636856037 / 25000000000000 : ℚ)
+  w := (5121780382437 / 5000000000000 : ℚ)
+  center := (6891 / 32000 : ℚ)
+  supportValue := (512418629284391 / 625000000000000 : ℚ)
+  supportSlope := (11393231739432963 / 2000000000000000 : ℚ)
+  oldCenter := (512418629284391 / 625000000000000 : ℚ)
+  newCoefficients := coefficients_568
+  oldLo := (81950000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82050000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1886, piece_1887]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6602 : Cell := {
+  domain := ⟨(1723 / 8000 : ℚ), (3447 / 16000 : ℚ)⟩
+  branch := .right
+  r := (21711636856037 / 25000000000000 : ℚ)
+  w := (5121780382437 / 5000000000000 : ℚ)
+  center := (6893 / 32000 : ℚ)
+  supportValue := (128160293570261 / 156250000000000 : ℚ)
+  supportSlope := (5697873530907671 / 1000000000000000 : ℚ)
+  oldCenter := (128160293570261 / 156250000000000 : ℚ)
+  newCoefficients := coefficients_568
+  oldLo := (41000000000000003 / 50000000000000000 : ℚ)
+  oldHi := (82050000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1887]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6603 : Cell := {
+  domain := ⟨(3447 / 16000 : ℚ), (431 / 2000 : ℚ)⟩
+  branch := .right
+  r := (21711636856037 / 25000000000000 : ℚ)
+  w := (5121780382437 / 5000000000000 : ℚ)
+  center := (1379 / 6400 : ℚ)
+  supportValue := (820582052302509 / 1000000000000000 : ℚ)
+  supportSlope := (9118907661761 / 1600000000000 : ℚ)
+  oldCenter := (820582052302509 / 1000000000000000 : ℚ)
+  newCoefficients := coefficients_568
+  oldLo := (41000000000000003 / 50000000000000000 : ℚ)
+  oldHi := (41050000000000003 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1887, piece_1888]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6604 : Cell := {
+  domain := ⟨(431 / 2000 : ℚ), (3449 / 16000 : ℚ)⟩
+  branch := .right
+  r := (86769543838649 / 100000000000000 : ℚ)
+  w := (512316727599 / 500000000000 : ℚ)
+  center := (6897 / 32000 : ℚ)
+  supportValue := (820426385686317 / 1000000000000000 : ℚ)
+  supportSlope := (711994140695893 / 125000000000000 : ℚ)
+  oldCenter := (820426385686317 / 1000000000000000 : ℚ)
+  newCoefficients := coefficients_569
+  oldLo := (41000000000000003 / 50000000000000000 : ℚ)
+  oldHi := (41050000000000003 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1887, piece_1888]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6605 : Cell := {
+  domain := ⟨(3449 / 16000 : ℚ), (69 / 320 : ℚ)⟩
+  branch := .right
+  r := (86769543838649 / 100000000000000 : ℚ)
+  w := (512316727599 / 500000000000 : ℚ)
+  center := (6899 / 32000 : ℚ)
+  supportValue := (8207824163703021 / 10000000000000000 : ℚ)
+  supportSlope := (5697427877153771 / 1000000000000000 : ℚ)
+  oldCenter := (8207824163703021 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_569
+  oldLo := (82050000000000001 / 100000000000000000 : ℚ)
+  oldHi := (41050000000000003 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1888]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6606 : Cell := {
+  domain := ⟨(69 / 320 : ℚ), (3451 / 16000 : ℚ)⟩
+  branch := .right
+  r := (86769543838649 / 100000000000000 : ℚ)
+  w := (512316727599 / 500000000000 : ℚ)
+  center := (6901 / 32000 : ℚ)
+  supportValue := (4105692742785157 / 5000000000000000 : ℚ)
+  supportSlope := (5698656496136323 / 1000000000000000 : ℚ)
+  oldCenter := (4105692742785157 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_569
+  oldLo := (82050000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82150000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1888, piece_1889]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6607 : Cell := {
+  domain := ⟨(3451 / 16000 : ℚ), (863 / 4000 : ℚ)⟩
+  branch := .right
+  r := (86769543838649 / 100000000000000 : ℚ)
+  w := (512316727599 / 500000000000 : ℚ)
+  center := (6903 / 32000 : ℚ)
+  supportValue := (328597912391291 / 400000000000000 : ℚ)
+  supportSlope := (28501399821747597 / 5000000000000000 : ℚ)
+  oldCenter := (328597912391291 / 400000000000000 : ℚ)
+  newCoefficients := coefficients_569
+  oldLo := (41050000000000003 / 50000000000000000 : ℚ)
+  oldHi := (41100000000000003 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1889, piece_1890]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6608 : Cell := {
+  domain := ⟨(863 / 4000 : ℚ), (3453 / 16000 : ℚ)⟩
+  branch := .right
+  r := (86769543838649 / 100000000000000 : ℚ)
+  w := (512316727599 / 500000000000 : ℚ)
+  center := (1381 / 6400 : ℚ)
+  supportValue := (4109255410616557 / 5000000000000000 : ℚ)
+  supportSlope := (11403803758252451 / 2000000000000000 : ℚ)
+  oldCenter := (4109255410616557 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_569
+  oldLo := (82150000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82250000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1890, piece_1891]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6609 : Cell := {
+  domain := ⟨(3453 / 16000 : ℚ), (1727 / 8000 : ℚ)⟩
+  branch := .right
+  r := (86769543838649 / 100000000000000 : ℚ)
+  w := (512316727599 / 500000000000 : ℚ)
+  center := (6907 / 32000 : ℚ)
+  supportValue := (8222074846986539 / 10000000000000000 : ℚ)
+  supportSlope := (570309439143557 / 100000000000000 : ℚ)
+  oldCenter := (8222074846986539 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_569
+  oldLo := (41100000000000003 / 50000000000000000 : ℚ)
+  oldHi := (82250000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1891]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6610 : Cell := {
+  domain := ⟨(1727 / 8000 : ℚ), (691 / 3200 : ℚ)⟩
+  branch := .right
+  r := (86769543838649 / 100000000000000 : ℚ)
+  w := (512316727599 / 500000000000 : ℚ)
+  center := (6909 / 32000 : ℚ)
+  supportValue := (2056409971518027 / 2500000000000000 : ℚ)
+  supportSlope := (356537846874283 / 62500000000000 : ℚ)
+  oldCenter := (2056409971518027 / 2500000000000000 : ℚ)
+  newCoefficients := coefficients_569
+  oldLo := (41100000000000003 / 50000000000000000 : ℚ)
+  oldHi := (41150000000000003 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1891, piece_1892]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6611 : Cell := {
+  domain := ⟨(691 / 3200 : ℚ), (27 / 125 : ℚ)⟩
+  branch := .right
+  r := (86769543838649 / 100000000000000 : ℚ)
+  w := (512316727599 / 500000000000 : ℚ)
+  center := (6911 / 32000 : ℚ)
+  supportValue := (164584115043531 / 200000000000000 : ℚ)
+  supportSlope := (5706225990822489 / 1000000000000000 : ℚ)
+  oldCenter := (164584115043531 / 200000000000000 : ℚ)
+  newCoefficients := coefficients_569
+  oldLo := (82250000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82350000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1892, piece_1893, piece_1894]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6612 : Cell := {
+  domain := ⟨(27 / 125 : ℚ), (3457 / 16000 : ℚ)⟩
+  branch := .right
+  r := (1083658827393 / 1250000000000 : ℚ)
+  w := (10249106650149 / 10000000000000 : ℚ)
+  center := (6913 / 32000 : ℚ)
+  supportValue := (8227639775707349 / 10000000000000000 : ℚ)
+  supportSlope := (1140528296672727 / 200000000000000 : ℚ)
+  oldCenter := (8227639775707349 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_570
+  oldLo := (82250000000000001 / 100000000000000000 : ℚ)
+  oldHi := (41150000000000003 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1892]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6613 : Cell := {
+  domain := ⟨(3457 / 16000 : ℚ), (1729 / 8000 : ℚ)⟩
+  branch := .right
+  r := (1083658827393 / 1250000000000 : ℚ)
+  w := (10249106650149 / 10000000000000 : ℚ)
+  center := (1383 / 6400 : ℚ)
+  supportValue := (8231204398460077 / 10000000000000000 : ℚ)
+  supportSlope := (5703938280703369 / 1000000000000000 : ℚ)
+  oldCenter := (8231204398460077 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_570
+  oldLo := (82250000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82350000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1892, piece_1893, piece_1894]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6614 : Cell := {
+  domain := ⟨(1729 / 8000 : ℚ), (3459 / 16000 : ℚ)⟩
+  branch := .right
+  r := (1083658827393 / 1250000000000 : ℚ)
+  w := (10249106650149 / 10000000000000 : ℚ)
+  center := (6917 / 32000 : ℚ)
+  supportValue := (4117384989590187 / 5000000000000000 : ℚ)
+  supportSlope := (5705557860883559 / 1000000000000000 : ℚ)
+  oldCenter := (4117384989590187 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_570
+  oldLo := (8230167597765363 / 10000000000000000 : ℚ)
+  oldHi := (82400000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1894, piece_1895]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6615 : Cell := {
+  domain := ⟨(3459 / 16000 : ℚ), (173 / 800 : ℚ)⟩
+  branch := .right
+  r := (1083658827393 / 1250000000000 : ℚ)
+  w := (10249106650149 / 10000000000000 : ℚ)
+  center := (6919 / 32000 : ℚ)
+  supportValue := (64362002265827 / 78125000000000 : ℚ)
+  supportSlope := (5707176148348481 / 1000000000000000 : ℚ)
+  oldCenter := (64362002265827 / 78125000000000 : ℚ)
+  newCoefficients := coefficients_570
+  oldLo := (82350000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82450000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1895, piece_1896]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6616 : Cell := {
+  domain := ⟨(173 / 800 : ℚ), (3461 / 16000 : ℚ)⟩
+  branch := .right
+  r := (1083658827393 / 1250000000000 : ℚ)
+  w := (10249106650149 / 10000000000000 : ℚ)
+  center := (6921 / 32000 : ℚ)
+  supportValue := (515118975806433 / 625000000000000 : ℚ)
+  supportSlope := (2854152747026717 / 500000000000000 : ℚ)
+  oldCenter := (515118975806433 / 625000000000000 : ℚ)
+  newCoefficients := coefficients_570
+  oldLo := (82400000000000007 / 100000000000000000 : ℚ)
+  oldHi := (82450000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1896]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6617 : Cell := {
+  domain := ⟨(3461 / 16000 : ℚ), (1731 / 8000 : ℚ)⟩
+  branch := .right
+  r := (1083658827393 / 1250000000000 : ℚ)
+  w := (10249106650149 / 10000000000000 : ℚ)
+  center := (6923 / 32000 : ℚ)
+  supportValue := (515341996679197 / 625000000000000 : ℚ)
+  supportSlope := (2854939243302823 / 500000000000000 : ℚ)
+  oldCenter := (515341996679197 / 625000000000000 : ℚ)
+  newCoefficients := coefficients_570
+  oldLo := (82400000000000007 / 100000000000000000 : ℚ)
+  oldHi := (82500000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1896, piece_1897]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6618 : Cell := {
+  domain := ⟨(1731 / 8000 : ℚ), (3463 / 16000 : ℚ)⟩
+  branch := .right
+  r := (1083658827393 / 1250000000000 : ℚ)
+  w := (10249106650149 / 10000000000000 : ℚ)
+  center := (277 / 1280 : ℚ)
+  supportValue := (1031130133615509 / 1250000000000000 : ℚ)
+  supportSlope := (2855747836580491 / 500000000000000 : ℚ)
+  oldCenter := (1031130133615509 / 1250000000000000 : ℚ)
+  newCoefficients := coefficients_570
+  oldLo := (82450000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82550000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1897, piece_1898]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6619 : Cell := {
+  domain := ⟨(3463 / 16000 : ℚ), (433 / 2000 : ℚ)⟩
+  branch := .right
+  r := (1083658827393 / 1250000000000 : ℚ)
+  w := (10249106650149 / 10000000000000 : ℚ)
+  center := (6927 / 32000 : ℚ)
+  supportValue := (8252611091832601 / 10000000000000000 : ℚ)
+  supportSlope := (11425777033174711 / 2000000000000000 : ℚ)
+  oldCenter := (8252611091832601 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_570
+  oldLo := (82500000000000007 / 100000000000000000 : ℚ)
+  oldHi := (82550000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1898]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6620 : Cell := {
+  domain := ⟨(433 / 2000 : ℚ), (693 / 3200 : ℚ)⟩
+  branch := .right
+  r := (43308018924073 / 50000000000000 : ℚ)
+  w := (10251877436003 / 10000000000000 : ℚ)
+  center := (6929 / 32000 : ℚ)
+  supportValue := (51568978276383 / 62500000000000 : ℚ)
+  supportSlope := (57092079062393 / 10000000000000 : ℚ)
+  oldCenter := (51568978276383 / 62500000000000 : ℚ)
+  newCoefficients := coefficients_571
+  oldLo := (82450000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82550000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1897, piece_1898]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6621 : Cell := {
+  domain := ⟨(693 / 3200 : ℚ), (1733 / 8000 : ℚ)⟩
+  branch := .right
+  r := (43308018924073 / 50000000000000 : ℚ)
+  w := (10251877436003 / 10000000000000 : ℚ)
+  center := (6931 / 32000 : ℚ)
+  supportValue := (4127302678941163 / 5000000000000000 : ℚ)
+  supportSlope := (571082381178023 / 100000000000000 : ℚ)
+  oldCenter := (4127302678941163 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_571
+  oldLo := (82500000000000007 / 100000000000000000 : ℚ)
+  oldHi := (82600000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1898, piece_1899]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6622 : Cell := {
+  domain := ⟨(1733 / 8000 : ℚ), (3467 / 16000 : ℚ)⟩
+  branch := .right
+  r := (43308018924073 / 50000000000000 : ℚ)
+  w := (10251877436003 / 10000000000000 : ℚ)
+  center := (6933 / 32000 : ℚ)
+  supportValue := (2064543740129843 / 2500000000000000 : ℚ)
+  supportSlope := (357026525975801 / 62500000000000 : ℚ)
+  oldCenter := (2064543740129843 / 2500000000000000 : ℚ)
+  newCoefficients := coefficients_571
+  oldLo := (82550000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82600000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1899]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6623 : Cell := {
+  domain := ⟨(3467 / 16000 : ℚ), (867 / 4000 : ℚ)⟩
+  branch := .right
+  r := (43308018924073 / 50000000000000 : ℚ)
+  w := (10251877436003 / 10000000000000 : ℚ)
+  center := (1387 / 6400 : ℚ)
+  supportValue := (4130872786371431 / 5000000000000000 : ℚ)
+  supportSlope := (5713523651522223 / 1000000000000000 : ℚ)
+  oldCenter := (4130872786371431 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_571
+  oldLo := (82550000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82650000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1899, piece_1900]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6624 : Cell := {
+  domain := ⟨(867 / 4000 : ℚ), (3469 / 16000 : ℚ)⟩
+  branch := .right
+  r := (43308018924073 / 50000000000000 : ℚ)
+  w := (10251877436003 / 10000000000000 : ℚ)
+  center := (6937 / 32000 : ℚ)
+  supportValue := (8265317193607249 / 10000000000000000 : ℚ)
+  supportSlope := (5715138426301891 / 1000000000000000 : ℚ)
+  oldCenter := (8265317193607249 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_571
+  oldLo := (82600000000000007 / 100000000000000000 : ℚ)
+  oldHi := (82700000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1900, piece_1901]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6625 : Cell := {
+  domain := ⟨(3469 / 16000 : ℚ), (347 / 1600 : ℚ)⟩
+  branch := .right
+  r := (43308018924073 / 50000000000000 : ℚ)
+  w := (10251877436003 / 10000000000000 : ℚ)
+  center := (6939 / 32000 : ℚ)
+  supportValue := (8268889567038461 / 10000000000000000 : ℚ)
+  supportSlope := (5716751680473919 / 1000000000000000 : ℚ)
+  oldCenter := (8268889567038461 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_571
+  oldLo := (82650000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82750000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1901, piece_1902]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6626 : Cell := {
+  domain := ⟨(347 / 1600 : ℚ), (3471 / 16000 : ℚ)⟩
+  branch := .right
+  r := (43308018924073 / 50000000000000 : ℚ)
+  w := (10251877436003 / 10000000000000 : ℚ)
+  center := (6941 / 32000 : ℚ)
+  supportValue := (4136231437753121 / 5000000000000000 : ℚ)
+  supportSlope := (178690265695447 / 31250000000000 : ℚ)
+  oldCenter := (4136231437753121 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_571
+  oldLo := (82700000000000007 / 100000000000000000 : ℚ)
+  oldHi := (82750000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1902]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6627 : Cell := {
+  domain := ⟨(3471 / 16000 : ℚ), (217 / 1000 : ℚ)⟩
+  branch := .right
+  r := (43308018924073 / 50000000000000 : ℚ)
+  w := (10251877436003 / 10000000000000 : ℚ)
+  center := (6943 / 32000 : ℚ)
+  supportValue := (8276037191898491 / 10000000000000000 : ℚ)
+  supportSlope := (1143890355659849 / 200000000000000 : ℚ)
+  oldCenter := (8276037191898491 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_571
+  oldLo := (82700000000000007 / 100000000000000000 : ℚ)
+  oldHi := (82800000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1902, piece_1903]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6628 : Cell := {
+  domain := ⟨(217 / 1000 : ℚ), (3473 / 16000 : ℚ)⟩
+  branch := .right
+  r := (21634883398391 / 25000000000000 : ℚ)
+  w := (5127323213677 / 5000000000000 : ℚ)
+  center := (1389 / 6400 : ℚ)
+  supportValue := (8274453259138669 / 10000000000000000 : ℚ)
+  supportSlope := (571607440755173 / 100000000000000 : ℚ)
+  oldCenter := (8274453259138669 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_572
+  oldLo := (82700000000000007 / 100000000000000000 : ℚ)
+  oldHi := (82800000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1902, piece_1903]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6629 : Cell := {
+  domain := ⟨(3473 / 16000 : ℚ), (1737 / 8000 : ℚ)⟩
+  branch := .right
+  r := (21634883398391 / 25000000000000 : ℚ)
+  w := (5127323213677 / 5000000000000 : ℚ)
+  center := (6947 / 32000 : ℚ)
+  supportValue := (8278026143951881 / 10000000000000000 : ℚ)
+  supportSlope := (714702142608381 / 125000000000000 : ℚ)
+  oldCenter := (8278026143951881 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_572
+  oldLo := (82750000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82800000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1903]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6630 : Cell := {
+  domain := ⟨(1737 / 8000 : ℚ), (139 / 640 : ℚ)⟩
+  branch := .right
+  r := (21634883398391 / 25000000000000 : ℚ)
+  w := (5127323213677 / 5000000000000 : ℚ)
+  center := (6949 / 32000 : ℚ)
+  supportValue := (8281600035870119 / 10000000000000000 : ℚ)
+  supportSlope := (1429693016122613 / 250000000000000 : ℚ)
+  oldCenter := (8281600035870119 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_572
+  oldLo := (82750000000000001 / 100000000000000000 : ℚ)
+  oldHi := (82850000000000001 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1903, piece_1904]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6631 : Cell := {
+  domain := ⟨(139 / 640 : ℚ), (869 / 4000 : ℚ)⟩
+  branch := .right
+  r := (21634883398391 / 25000000000000 : ℚ)
+  w := (5127323213677 / 5000000000000 : ℚ)
+  center := (6951 / 32000 : ℚ)
+  supportValue := (8285174934014253 / 10000000000000000 : ℚ)
+  supportSlope := (5720383870162493 / 1000000000000000 : ℚ)
+  oldCenter := (8285174934014253 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_572
+  oldLo := (82800000000000007 / 100000000000000000 : ℚ)
+  oldHi := (82900000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1904, piece_1905, piece_1906]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6632 : Cell := {
+  domain := ⟨(869 / 4000 : ℚ), (3477 / 16000 : ℚ)⟩
+  branch := .right
+  r := (21634883398391 / 25000000000000 : ℚ)
+  w := (5127323213677 / 5000000000000 : ℚ)
+  center := (6953 / 32000 : ℚ)
+  supportValue := (8288750553821623 / 10000000000000000 : ℚ)
+  supportSlope := (1430498547803527 / 250000000000000 : ℚ)
+  oldCenter := (8288750553821623 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_572
+  oldLo := (2071368715083799 / 2500000000000000 : ℚ)
+  oldHi := (41475000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1906, piece_1907]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6633 : Cell := {
+  domain := ⟨(3477 / 16000 : ℚ), (1739 / 8000 : ℚ)⟩
+  branch := .right
+  r := (21634883398391 / 25000000000000 : ℚ)
+  w := (5127323213677 / 5000000000000 : ℚ)
+  center := (1391 / 6400 : ℚ)
+  supportValue := (4146163569638041 / 5000000000000000 : ℚ)
+  supportSlope := (5723280048854917 / 1000000000000000 : ℚ)
+  oldCenter := (4146163569638041 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_572
+  oldLo := (82900000000000007 / 100000000000000000 : ℚ)
+  oldHi := (41475000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1907]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6634 : Cell := {
+  domain := ⟨(1739 / 8000 : ℚ), (3479 / 16000 : ℚ)⟩
+  branch := .right
+  r := (21634883398391 / 25000000000000 : ℚ)
+  w := (5127323213677 / 5000000000000 : ℚ)
+  center := (6957 / 32000 : ℚ)
+  supportValue := (8295904729955771 / 10000000000000000 : ℚ)
+  supportSlope := (5724691304680007 / 1000000000000000 : ℚ)
+  oldCenter := (8295904729955771 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_572
+  oldLo := (82900000000000007 / 100000000000000000 : ℚ)
+  oldHi := (83000000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1907, piece_1908]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6635 : Cell := {
+  domain := ⟨(3479 / 16000 : ℚ), (87 / 400 : ℚ)⟩
+  branch := .right
+  r := (21634883398391 / 25000000000000 : ℚ)
+  w := (5127323213677 / 5000000000000 : ℚ)
+  center := (6959 / 32000 : ℚ)
+  supportValue := (8299483207916313 / 10000000000000000 : ℚ)
+  supportSlope := (1431574768167021 / 250000000000000 : ℚ)
+  oldCenter := (8299483207916313 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_572
+  oldLo := (41475000000000001 / 50000000000000000 : ℚ)
+  oldHi := (41525000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1908, piece_1909]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6636 : Cell := {
+  domain := ⟨(87 / 400 : ℚ), (3481 / 16000 : ℚ)⟩
+  branch := .right
+  r := (17292639495837 / 20000000000000 : ℚ)
+  w := (10257413973237 / 10000000000000 : ℚ)
+  center := (6961 / 32000 : ℚ)
+  supportValue := (1659578074155947 / 2000000000000000 : ℚ)
+  supportSlope := (715350191875519 / 125000000000000 : ℚ)
+  oldCenter := (1659578074155947 / 2000000000000000 : ℚ)
+  newCoefficients := coefficients_573
+  oldLo := (41475000000000001 / 50000000000000000 : ℚ)
+  oldHi := (83000000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1908]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6637 : Cell := {
+  domain := ⟨(3481 / 16000 : ℚ), (1741 / 8000 : ℚ)⟩
+  branch := .right
+  r := (17292639495837 / 20000000000000 : ℚ)
+  w := (10257413973237 / 10000000000000 : ℚ)
+  center := (6963 / 32000 : ℚ)
+  supportValue := (2075366883376501 / 2500000000000000 : ℚ)
+  supportSlope := (5724005927561393 / 1000000000000000 : ℚ)
+  oldCenter := (2075366883376501 / 2500000000000000 : ℚ)
+  newCoefficients := coefficients_573
+  oldLo := (41475000000000001 / 50000000000000000 : ℚ)
+  oldHi := (41525000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1908, piece_1909]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6638 : Cell := {
+  domain := ⟨(1741 / 8000 : ℚ), (3483 / 16000 : ℚ)⟩
+  branch := .right
+  r := (17292639495837 / 20000000000000 : ℚ)
+  w := (10257413973237 / 10000000000000 : ℚ)
+  center := (1393 / 6400 : ℚ)
+  supportValue := (4152522849843717 / 5000000000000000 : ℚ)
+  supportSlope := (5725612464241081 / 1000000000000000 : ℚ)
+  oldCenter := (4152522849843717 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_573
+  oldLo := (83000000000000007 / 100000000000000000 : ℚ)
+  oldHi := (83100000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1909, piece_1910]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6639 : Cell := {
+  domain := ⟨(3483 / 16000 : ℚ), (871 / 4000 : ℚ)⟩
+  branch := .right
+  r := (17292639495837 / 20000000000000 : ℚ)
+  w := (10257413973237 / 10000000000000 : ℚ)
+  center := (6967 / 32000 : ℚ)
+  supportValue := (4154312278732693 / 5000000000000000 : ℚ)
+  supportSlope := (458177403290847 / 80000000000000 : ℚ)
+  oldCenter := (4154312278732693 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_573
+  oldLo := (41525000000000001 / 50000000000000000 : ℚ)
+  oldHi := (41575000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1910, piece_1911]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6640 : Cell := {
+  domain := ⟨(871 / 4000 : ℚ), (697 / 3200 : ℚ)⟩
+  branch := .right
+  r := (17292639495837 / 20000000000000 : ℚ)
+  w := (10257413973237 / 10000000000000 : ℚ)
+  center := (6969 / 32000 : ℚ)
+  supportValue := (103902555100557 / 125000000000000 : ℚ)
+  supportSlope := (1432114593503453 / 250000000000000 : ℚ)
+  oldCenter := (103902555100557 / 125000000000000 : ℚ)
+  newCoefficients := coefficients_573
+  oldLo := (83100000000000007 / 100000000000000000 : ℚ)
+  oldHi := (41575000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1911]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6641 : Cell := {
+  domain := ⟨(697 / 3200 : ℚ), (1743 / 8000 : ℚ)⟩
+  branch := .right
+  r := (17292639495837 / 20000000000000 : ℚ)
+  w := (10257413973237 / 10000000000000 : ℚ)
+  center := (6971 / 32000 : ℚ)
+  supportValue := (1039473157681463 / 1250000000000000 : ℚ)
+  supportSlope := (28649562592315547 / 5000000000000000 : ℚ)
+  oldCenter := (1039473157681463 / 1250000000000000 : ℚ)
+  newCoefficients := coefficients_573
+  oldLo := (83100000000000007 / 100000000000000000 : ℚ)
+  oldHi := (83200000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1911, piece_1912]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6642 : Cell := {
+  domain := ⟨(1743 / 8000 : ℚ), (3487 / 16000 : ℚ)⟩
+  branch := .right
+  r := (17292639495837 / 20000000000000 : ℚ)
+  w := (10257413973237 / 10000000000000 : ℚ)
+  center := (6973 / 32000 : ℚ)
+  supportValue := (4159683487229301 / 5000000000000000 : ℚ)
+  supportSlope := (1432879121707753 / 250000000000000 : ℚ)
+  oldCenter := (4159683487229301 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_573
+  oldLo := (41575000000000001 / 50000000000000000 : ℚ)
+  oldHi := (41625000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1912, piece_1913]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6643 : Cell := {
+  domain := ⟨(3487 / 16000 : ℚ), (109 / 500 : ℚ)⟩
+  branch := .right
+  r := (17292639495837 / 20000000000000 : ℚ)
+  w := (10257413973237 / 10000000000000 : ℚ)
+  center := (279 / 1280 : ℚ)
+  supportValue := (1040368689022697 / 1250000000000000 : ℚ)
+  supportSlope := (179157081861947 / 31250000000000 : ℚ)
+  oldCenter := (1040368689022697 / 1250000000000000 : ℚ)
+  newCoefficients := coefficients_573
+  oldLo := (83200000000000007 / 100000000000000000 : ℚ)
+  oldHi := (41625000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1913]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6644 : Cell := {
+  domain := ⟨(109 / 500 : ℚ), (3489 / 16000 : ℚ)⟩
+  branch := .right
+  r := (86387025472753 / 100000000000000 : ℚ)
+  w := (10260181140683 / 10000000000000 : ℚ)
+  center := (6977 / 32000 : ℚ)
+  supportValue := (2080337064956273 / 2500000000000000 : ℚ)
+  supportSlope := (2864611264956629 / 500000000000000 : ℚ)
+  oldCenter := (2080337064956273 / 2500000000000000 : ℚ)
+  newCoefficients := coefficients_574
+  oldLo := (41575000000000001 / 50000000000000000 : ℚ)
+  oldHi := (41625000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1912, piece_1913]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6645 : Cell := {
+  domain := ⟨(3489 / 16000 : ℚ), (349 / 1600 : ℚ)⟩
+  branch := .right
+  r := (86387025472753 / 100000000000000 : ℚ)
+  w := (10260181140683 / 10000000000000 : ℚ)
+  center := (6979 / 32000 : ℚ)
+  supportValue := (1664985933632703 / 2000000000000000 : ℚ)
+  supportSlope := (5730825215227497 / 1000000000000000 : ℚ)
+  oldCenter := (1664985933632703 / 2000000000000000 : ℚ)
+  newCoefficients := coefficients_574
+  oldLo := (83200000000000007 / 100000000000000000 : ℚ)
+  oldHi := (83300000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1913, piece_1914]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6646 : Cell := {
+  domain := ⟨(349 / 1600 : ℚ), (3491 / 16000 : ℚ)⟩
+  branch := .right
+  r := (86387025472753 / 100000000000000 : ℚ)
+  w := (10260181140683 / 10000000000000 : ℚ)
+  center := (6981 / 32000 : ℚ)
+  supportValue := (8328511773484403 / 10000000000000000 : ℚ)
+  supportSlope := (286621320502789 / 50000000000000 : ℚ)
+  oldCenter := (8328511773484403 / 10000000000000000 : ℚ)
+  newCoefficients := coefficients_574
+  oldLo := (41625000000000001 / 50000000000000000 : ℚ)
+  oldHi := (41675000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1914, piece_1915]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6647 : Cell := {
+  domain := ⟨(3491 / 16000 : ℚ), (873 / 4000 : ℚ)⟩
+  branch := .right
+  r := (86387025472753 / 100000000000000 : ℚ)
+  w := (10260181140683 / 10000000000000 : ℚ)
+  center := (6983 / 32000 : ℚ)
+  supportValue := (4166047440061323 / 5000000000000000 : ℚ)
+  supportSlope := (1146725537438087 / 200000000000000 : ℚ)
+  oldCenter := (4166047440061323 / 5000000000000000 : ℚ)
+  newCoefficients := coefficients_574
+  oldLo := (83300000000000007 / 100000000000000000 : ℚ)
+  oldHi := (41675000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1915]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6648 : Cell := {
+  domain := ⟨(873 / 4000 : ℚ), (3493 / 16000 : ℚ)⟩
+  branch := .right
+  r := (86387025472753 / 100000000000000 : ℚ)
+  w := (10260181140683 / 10000000000000 : ℚ)
+  center := (1397 / 6400 : ℚ)
+  supportValue := (1667135797442561 / 2000000000000000 : ℚ)
+  supportSlope := (5735119247793463 / 1000000000000000 : ℚ)
+  oldCenter := (1667135797442561 / 2000000000000000 : ℚ)
+  newCoefficients := coefficients_574
+  oldLo := (83300000000000007 / 100000000000000000 : ℚ)
+  oldHi := (83400000000000007 / 100000000000000000 : ℚ)
+  oldPieces := [piece_1915, piece_1916]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+def cell_6649 : Cell := {
+  domain := ⟨(3493 / 16000 : ℚ), (1747 / 8000 : ℚ)⟩
+  branch := .right
+  r := (86387025472753 / 100000000000000 : ℚ)
+  w := (10260181140683 / 10000000000000 : ℚ)
+  center := (6987 / 32000 : ℚ)
+  supportValue := (833926392962347 / 1000000000000000 : ℚ)
+  supportSlope := (5736719387485323 / 1000000000000000 : ℚ)
+  oldCenter := (833926392962347 / 1000000000000000 : ℚ)
+  newCoefficients := coefficients_574
+  oldLo := (41675000000000001 / 50000000000000000 : ℚ)
+  oldHi := (41725000000000001 / 50000000000000000 : ℚ)
+  oldPieces := [piece_1916, piece_1917, piece_1918]
+  ne := 20
+  nl := 16
+  nq := 32
+  centered := true
+}
+
+theorem check_6600 : SourceCertificateFamily.RightNormalized.check cell_6600 = true := by
+  decide +kernel
+
+theorem check_6601 : SourceCertificateFamily.RightNormalized.check cell_6601 = true := by
+  decide +kernel
+
+theorem check_6602 : SourceCertificateFamily.RightNormalized.check cell_6602 = true := by
+  decide +kernel
+
+theorem check_6603 : SourceCertificateFamily.RightNormalized.check cell_6603 = true := by
+  decide +kernel
+
+theorem check_6604 : SourceCertificateFamily.RightNormalized.check cell_6604 = true := by
+  decide +kernel
+
+theorem check_6605 : SourceCertificateFamily.RightNormalized.check cell_6605 = true := by
+  decide +kernel
+
+theorem check_6606 : SourceCertificateFamily.RightNormalized.check cell_6606 = true := by
+  decide +kernel
+
+theorem check_6607 : SourceCertificateFamily.RightNormalized.check cell_6607 = true := by
+  decide +kernel
+
+theorem check_6608 : SourceCertificateFamily.RightNormalized.check cell_6608 = true := by
+  decide +kernel
+
+theorem check_6609 : SourceCertificateFamily.RightNormalized.check cell_6609 = true := by
+  decide +kernel
+
+theorem check_6610 : SourceCertificateFamily.RightNormalized.check cell_6610 = true := by
+  decide +kernel
+
+theorem check_6611 : SourceCertificateFamily.RightNormalized.check cell_6611 = true := by
+  decide +kernel
+
+theorem check_6612 : SourceCertificateFamily.RightNormalized.check cell_6612 = true := by
+  decide +kernel
+
+theorem check_6613 : SourceCertificateFamily.RightNormalized.check cell_6613 = true := by
+  decide +kernel
+
+theorem check_6614 : SourceCertificateFamily.RightNormalized.check cell_6614 = true := by
+  decide +kernel
+
+theorem check_6615 : SourceCertificateFamily.RightNormalized.check cell_6615 = true := by
+  decide +kernel
+
+theorem check_6616 : SourceCertificateFamily.RightNormalized.check cell_6616 = true := by
+  decide +kernel
+
+theorem check_6617 : SourceCertificateFamily.RightNormalized.check cell_6617 = true := by
+  decide +kernel
+
+theorem check_6618 : SourceCertificateFamily.RightNormalized.check cell_6618 = true := by
+  decide +kernel
+
+theorem check_6619 : SourceCertificateFamily.RightNormalized.check cell_6619 = true := by
+  decide +kernel
+
+theorem check_6620 : SourceCertificateFamily.RightNormalized.check cell_6620 = true := by
+  decide +kernel
+
+theorem check_6621 : SourceCertificateFamily.RightNormalized.check cell_6621 = true := by
+  decide +kernel
+
+theorem check_6622 : SourceCertificateFamily.RightNormalized.check cell_6622 = true := by
+  decide +kernel
+
+theorem check_6623 : SourceCertificateFamily.RightNormalized.check cell_6623 = true := by
+  decide +kernel
+
+theorem check_6624 : SourceCertificateFamily.RightNormalized.check cell_6624 = true := by
+  decide +kernel
+
+theorem check_6625 : SourceCertificateFamily.RightNormalized.check cell_6625 = true := by
+  decide +kernel
+
+theorem check_6626 : SourceCertificateFamily.RightNormalized.check cell_6626 = true := by
+  decide +kernel
+
+theorem check_6627 : SourceCertificateFamily.RightNormalized.check cell_6627 = true := by
+  decide +kernel
+
+theorem check_6628 : SourceCertificateFamily.RightNormalized.check cell_6628 = true := by
+  decide +kernel
+
+theorem check_6629 : SourceCertificateFamily.RightNormalized.check cell_6629 = true := by
+  decide +kernel
+
+theorem check_6630 : SourceCertificateFamily.RightNormalized.check cell_6630 = true := by
+  decide +kernel
+
+theorem check_6631 : SourceCertificateFamily.RightNormalized.check cell_6631 = true := by
+  decide +kernel
+
+theorem check_6632 : SourceCertificateFamily.RightNormalized.check cell_6632 = true := by
+  decide +kernel
+
+theorem check_6633 : SourceCertificateFamily.RightNormalized.check cell_6633 = true := by
+  decide +kernel
+
+theorem check_6634 : SourceCertificateFamily.RightNormalized.check cell_6634 = true := by
+  decide +kernel
+
+theorem check_6635 : SourceCertificateFamily.RightNormalized.check cell_6635 = true := by
+  decide +kernel
+
+theorem check_6636 : SourceCertificateFamily.RightNormalized.check cell_6636 = true := by
+  decide +kernel
+
+theorem check_6637 : SourceCertificateFamily.RightNormalized.check cell_6637 = true := by
+  decide +kernel
+
+theorem check_6638 : SourceCertificateFamily.RightNormalized.check cell_6638 = true := by
+  decide +kernel
+
+theorem check_6639 : SourceCertificateFamily.RightNormalized.check cell_6639 = true := by
+  decide +kernel
+
+theorem check_6640 : SourceCertificateFamily.RightNormalized.check cell_6640 = true := by
+  decide +kernel
+
+theorem check_6641 : SourceCertificateFamily.RightNormalized.check cell_6641 = true := by
+  decide +kernel
+
+theorem check_6642 : SourceCertificateFamily.RightNormalized.check cell_6642 = true := by
+  decide +kernel
+
+theorem check_6643 : SourceCertificateFamily.RightNormalized.check cell_6643 = true := by
+  decide +kernel
+
+theorem check_6644 : SourceCertificateFamily.RightNormalized.check cell_6644 = true := by
+  decide +kernel
+
+theorem check_6645 : SourceCertificateFamily.RightNormalized.check cell_6645 = true := by
+  decide +kernel
+
+theorem check_6646 : SourceCertificateFamily.RightNormalized.check cell_6646 = true := by
+  decide +kernel
+
+theorem check_6647 : SourceCertificateFamily.RightNormalized.check cell_6647 = true := by
+  decide +kernel
+
+theorem check_6648 : SourceCertificateFamily.RightNormalized.check cell_6648 = true := by
+  decide +kernel
+
+theorem check_6649 : SourceCertificateFamily.RightNormalized.check cell_6649 = true := by
+  decide +kernel
+
+def cells : List Cell := [cell_6600, cell_6601, cell_6602, cell_6603, cell_6604, cell_6605, cell_6606, cell_6607, cell_6608, cell_6609, cell_6610, cell_6611, cell_6612, cell_6613, cell_6614, cell_6615, cell_6616, cell_6617, cell_6618, cell_6619, cell_6620, cell_6621, cell_6622, cell_6623, cell_6624, cell_6625, cell_6626, cell_6627, cell_6628, cell_6629, cell_6630, cell_6631, cell_6632, cell_6633, cell_6634, cell_6635, cell_6636, cell_6637, cell_6638, cell_6639, cell_6640, cell_6641, cell_6642, cell_6643, cell_6644, cell_6645, cell_6646, cell_6647, cell_6648, cell_6649]
+
+theorem all_certified : ∀ c ∈ cells, SourceCertificateFamily.Certified c := by
+  simp only [cells, List.forall_mem_cons]
+  exact ⟨SourceCertificateFamily.of_right_checked check_6600, SourceCertificateFamily.of_right_checked check_6601, SourceCertificateFamily.of_right_checked check_6602, SourceCertificateFamily.of_right_checked check_6603, SourceCertificateFamily.of_right_checked check_6604, SourceCertificateFamily.of_right_checked check_6605, SourceCertificateFamily.of_right_checked check_6606, SourceCertificateFamily.of_right_checked check_6607, SourceCertificateFamily.of_right_checked check_6608, SourceCertificateFamily.of_right_checked check_6609, SourceCertificateFamily.of_right_checked check_6610, SourceCertificateFamily.of_right_checked check_6611, SourceCertificateFamily.of_right_checked check_6612, SourceCertificateFamily.of_right_checked check_6613, SourceCertificateFamily.of_right_checked check_6614, SourceCertificateFamily.of_right_checked check_6615, SourceCertificateFamily.of_right_checked check_6616, SourceCertificateFamily.of_right_checked check_6617, SourceCertificateFamily.of_right_checked check_6618, SourceCertificateFamily.of_right_checked check_6619, SourceCertificateFamily.of_right_checked check_6620, SourceCertificateFamily.of_right_checked check_6621, SourceCertificateFamily.of_right_checked check_6622, SourceCertificateFamily.of_right_checked check_6623, SourceCertificateFamily.of_right_checked check_6624, SourceCertificateFamily.of_right_checked check_6625, SourceCertificateFamily.of_right_checked check_6626, SourceCertificateFamily.of_right_checked check_6627, SourceCertificateFamily.of_right_checked check_6628, SourceCertificateFamily.of_right_checked check_6629, SourceCertificateFamily.of_right_checked check_6630, SourceCertificateFamily.of_right_checked check_6631, SourceCertificateFamily.of_right_checked check_6632, SourceCertificateFamily.of_right_checked check_6633, SourceCertificateFamily.of_right_checked check_6634, SourceCertificateFamily.of_right_checked check_6635, SourceCertificateFamily.of_right_checked check_6636, SourceCertificateFamily.of_right_checked check_6637, SourceCertificateFamily.of_right_checked check_6638, SourceCertificateFamily.of_right_checked check_6639, SourceCertificateFamily.of_right_checked check_6640, SourceCertificateFamily.of_right_checked check_6641, SourceCertificateFamily.of_right_checked check_6642, SourceCertificateFamily.of_right_checked check_6643, SourceCertificateFamily.of_right_checked check_6644, SourceCertificateFamily.of_right_checked check_6645, SourceCertificateFamily.of_right_checked check_6646, SourceCertificateFamily.of_right_checked check_6647, SourceCertificateFamily.of_right_checked check_6648, SourceCertificateFamily.of_right_checked check_6649, by simp⟩
+
+#print axioms all_certified
+end LuWang.SourceCertificates.Chunk0132

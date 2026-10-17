@@ -1,0 +1,134 @@
+import S7_ParameterChoice.Source.Joint.RawCoverageLaw
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group3
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group10
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group18
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group31
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group151
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group152
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group153
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group154
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group155
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group157
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group158
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group159
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group161
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group162
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group164
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group165
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group166
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group167
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group168
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group169
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group170
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group171
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group173
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group177
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group179
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group180
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group183
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group190
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group194
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group197
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group469
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group473
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group477
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group481
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group485
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group489
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group493
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group498
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group503
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group508
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group513
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group518
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group522
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group526
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group530
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group535
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group540
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group545
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group549
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group553
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group557
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group561
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group565
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group570
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group575
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group580
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group585
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group590
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group595
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group600
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group605
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group610
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group615
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group620
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group625
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group629
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group632
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group635
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group638
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group641
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group644
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group646
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group648
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group650
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group652
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group654
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group656
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group658
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group660
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group662
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group664
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group666
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group668
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group669
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group670
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group671
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group672
+import S7_ParameterChoice.Source.Joint.RemainingRoutes.Group673
+
+set_option autoImplicit false
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+
+namespace DiagonalRamsey.JointRawSelector
+
+def coverageRows19 : List CoverageRow := [
+  (608, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows18 JointRemainingRoutes.length18 JointRemainingRoutes.checked18 16, .leaf 733]),
+  (609, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows3 JointRemainingRoutes.length3 JointRemainingRoutes.checked3 4]),
+  (610, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows3 JointRemainingRoutes.length3 JointRemainingRoutes.checked3 5, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows3 JointRemainingRoutes.length3 JointRemainingRoutes.checked3 6, .leaf 734]),
+  (611, [.leaf 735, .leaf 736]),
+  (612, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows18 JointRemainingRoutes.length18 JointRemainingRoutes.checked18 17]),
+  (613, [.leaf 737, .leaf 738]),
+  (614, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows3 JointRemainingRoutes.length3 JointRemainingRoutes.checked3 7, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows10 JointRemainingRoutes.length10 JointRemainingRoutes.checked10 15]),
+  (615, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows10 JointRemainingRoutes.length10 JointRemainingRoutes.checked10 16, .leaf 739]),
+  (616, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows3 JointRemainingRoutes.length3 JointRemainingRoutes.checked3 8, .leaf 740]),
+  (617, [.leaf 741]),
+  (618, [.leaf 742]),
+  (619, [.leaf 743]),
+  (620, [.leaf 744]),
+  (621, [.leaf 745]),
+  (622, [.leaf 746]),
+  (623, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows3 JointRemainingRoutes.length3 JointRemainingRoutes.checked3 9, .leaf 747]),
+  (624, [.leaf 748]),
+  (625, [.leaf 749, .leaf 750]),
+  (626, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows18 JointRemainingRoutes.length18 JointRemainingRoutes.checked18 18]),
+  (627, [.leaf 751]),
+  (628, [.leaf 752]),
+  (629, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows31 JointRemainingRoutes.length31 JointRemainingRoutes.checked31 1, .leaf 753]),
+  (630, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows164 JointRemainingRoutes.length164 JointRemainingRoutes.checked164 3, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows165 JointRemainingRoutes.length165 JointRemainingRoutes.checked165 3, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows166 JointRemainingRoutes.length166 JointRemainingRoutes.checked166 3]),
+  (631, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows167 JointRemainingRoutes.length167 JointRemainingRoutes.checked167 4, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows168 JointRemainingRoutes.length168 JointRemainingRoutes.checked168 4, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows169 JointRemainingRoutes.length169 JointRemainingRoutes.checked169 4, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows170 JointRemainingRoutes.length170 JointRemainingRoutes.checked170 2]),
+  (632, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows171 JointRemainingRoutes.length171 JointRemainingRoutes.checked171 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows173 JointRemainingRoutes.length173 JointRemainingRoutes.checked173 1]),
+  (633, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows177 JointRemainingRoutes.length177 JointRemainingRoutes.checked177 4, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows179 JointRemainingRoutes.length179 JointRemainingRoutes.checked179 1, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows180 JointRemainingRoutes.length180 JointRemainingRoutes.checked180 3]),
+  (634, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows183 JointRemainingRoutes.length183 JointRemainingRoutes.checked183 0]),
+  (635, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows190 JointRemainingRoutes.length190 JointRemainingRoutes.checked190 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows194 JointRemainingRoutes.length194 JointRemainingRoutes.checked194 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows197 JointRemainingRoutes.length197 JointRemainingRoutes.checked197 2]),
+  (636, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows469 JointRemainingRoutes.length469 JointRemainingRoutes.checked469 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows473 JointRemainingRoutes.length473 JointRemainingRoutes.checked473 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows477 JointRemainingRoutes.length477 JointRemainingRoutes.checked477 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows481 JointRemainingRoutes.length481 JointRemainingRoutes.checked481 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows485 JointRemainingRoutes.length485 JointRemainingRoutes.checked485 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows489 JointRemainingRoutes.length489 JointRemainingRoutes.checked489 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows493 JointRemainingRoutes.length493 JointRemainingRoutes.checked493 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows498 JointRemainingRoutes.length498 JointRemainingRoutes.checked498 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows503 JointRemainingRoutes.length503 JointRemainingRoutes.checked503 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows508 JointRemainingRoutes.length508 JointRemainingRoutes.checked508 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows513 JointRemainingRoutes.length513 JointRemainingRoutes.checked513 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows518 JointRemainingRoutes.length518 JointRemainingRoutes.checked518 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows522 JointRemainingRoutes.length522 JointRemainingRoutes.checked522 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows526 JointRemainingRoutes.length526 JointRemainingRoutes.checked526 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows530 JointRemainingRoutes.length530 JointRemainingRoutes.checked530 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows535 JointRemainingRoutes.length535 JointRemainingRoutes.checked535 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows540 JointRemainingRoutes.length540 JointRemainingRoutes.checked540 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows545 JointRemainingRoutes.length545 JointRemainingRoutes.checked545 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows549 JointRemainingRoutes.length549 JointRemainingRoutes.checked549 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows553 JointRemainingRoutes.length553 JointRemainingRoutes.checked553 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows557 JointRemainingRoutes.length557 JointRemainingRoutes.checked557 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows561 JointRemainingRoutes.length561 JointRemainingRoutes.checked561 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows565 JointRemainingRoutes.length565 JointRemainingRoutes.checked565 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows570 JointRemainingRoutes.length570 JointRemainingRoutes.checked570 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows575 JointRemainingRoutes.length575 JointRemainingRoutes.checked575 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows580 JointRemainingRoutes.length580 JointRemainingRoutes.checked580 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows585 JointRemainingRoutes.length585 JointRemainingRoutes.checked585 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows590 JointRemainingRoutes.length590 JointRemainingRoutes.checked590 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows595 JointRemainingRoutes.length595 JointRemainingRoutes.checked595 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows600 JointRemainingRoutes.length600 JointRemainingRoutes.checked600 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows605 JointRemainingRoutes.length605 JointRemainingRoutes.checked605 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows610 JointRemainingRoutes.length610 JointRemainingRoutes.checked610 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows615 JointRemainingRoutes.length615 JointRemainingRoutes.checked615 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows620 JointRemainingRoutes.length620 JointRemainingRoutes.checked620 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows625 JointRemainingRoutes.length625 JointRemainingRoutes.checked625 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows629 JointRemainingRoutes.length629 JointRemainingRoutes.checked629 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows632 JointRemainingRoutes.length632 JointRemainingRoutes.checked632 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows635 JointRemainingRoutes.length635 JointRemainingRoutes.checked635 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows638 JointRemainingRoutes.length638 JointRemainingRoutes.checked638 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows641 JointRemainingRoutes.length641 JointRemainingRoutes.checked641 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows644 JointRemainingRoutes.length644 JointRemainingRoutes.checked644 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows646 JointRemainingRoutes.length646 JointRemainingRoutes.checked646 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows648 JointRemainingRoutes.length648 JointRemainingRoutes.checked648 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows650 JointRemainingRoutes.length650 JointRemainingRoutes.checked650 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows652 JointRemainingRoutes.length652 JointRemainingRoutes.checked652 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows654 JointRemainingRoutes.length654 JointRemainingRoutes.checked654 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows656 JointRemainingRoutes.length656 JointRemainingRoutes.checked656 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows658 JointRemainingRoutes.length658 JointRemainingRoutes.checked658 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows660 JointRemainingRoutes.length660 JointRemainingRoutes.checked660 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows662 JointRemainingRoutes.length662 JointRemainingRoutes.checked662 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows664 JointRemainingRoutes.length664 JointRemainingRoutes.checked664 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows666 JointRemainingRoutes.length666 JointRemainingRoutes.checked666 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows668 JointRemainingRoutes.length668 JointRemainingRoutes.checked668 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows669 JointRemainingRoutes.length669 JointRemainingRoutes.checked669 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows670 JointRemainingRoutes.length670 JointRemainingRoutes.checked670 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows671 JointRemainingRoutes.length671 JointRemainingRoutes.checked671 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows672 JointRemainingRoutes.length672 JointRemainingRoutes.checked672 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows673 JointRemainingRoutes.length673 JointRemainingRoutes.checked673 0]),
+  (637, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows151 JointRemainingRoutes.length151 JointRemainingRoutes.checked151 9, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows152 JointRemainingRoutes.length152 JointRemainingRoutes.checked152 3, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows152 JointRemainingRoutes.length152 JointRemainingRoutes.checked152 11, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows153 JointRemainingRoutes.length153 JointRemainingRoutes.checked153 8, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows154 JointRemainingRoutes.length154 JointRemainingRoutes.checked154 7, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows155 JointRemainingRoutes.length155 JointRemainingRoutes.checked155 3]),
+  (638, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows157 JointRemainingRoutes.length157 JointRemainingRoutes.checked157 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows157 JointRemainingRoutes.length157 JointRemainingRoutes.checked157 9]),
+  (639, [routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows158 JointRemainingRoutes.length158 JointRemainingRoutes.checked158 5, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows159 JointRemainingRoutes.length159 JointRemainingRoutes.checked159 0, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows159 JointRemainingRoutes.length159 JointRemainingRoutes.checked159 5, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows159 JointRemainingRoutes.length159 JointRemainingRoutes.checked159 8, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows161 JointRemainingRoutes.length161 JointRemainingRoutes.checked161 2, routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows162 JointRemainingRoutes.length162 JointRemainingRoutes.checked162 6])]
+
+theorem coverageChecked19 : coverageRows19.all CoverageRow.check = true := by decide +kernel
+
+#print axioms coverageChecked19
+end DiagonalRamsey.JointRawSelector
