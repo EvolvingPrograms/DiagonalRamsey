@@ -43,6 +43,7 @@ used to stop a route is available on proper subgraphs without circularity.
 
 | Family | Purpose |
 |---|---|
+| [Profiles/Raw.lean](Profiles/Raw.lean), [Profiles/Closed.lean](Profiles/Closed.lean) | Inherited raw and closed profile data |
 | `InheritedCertificates/` | Numerical validity of inherited controls |
 | `RemainingRoutes/` | Route constructions |
 | [CachedRouteChecks/](CachedRouteChecks/) | Prefix, cell, linear and zip route checks |
