@@ -134,20 +134,45 @@ theorem _root_.DiagonalRamsey.JointGeometry.RouteF.cellsZipCell_imp {ι : Type} 
   rw [adjacentPairs_length] at hj
   omega
 
-def _root_.DiagonalRamsey.JointGeometry.RouteF.checkCell {ι : Type} {nCtl m : ℕ} (ctl : Fin nCtl → CtrlF)
+def _root_.DiagonalRamsey.JointGeometry.RouteF.checkCellCore {ι : Type} {nCtl m : ℕ} (ctl : Fin nCtl → CtrlF)
     (A B : Fin m → FQ) (pd : ι → ProfF) (_i0 : ι) (P : ProfF)
     (R : RouteF ι nCtl m) (ps : List FQ) : Bool :=
   let w := (ctl R.t.c).w
   let θ := R.us.getD 0 zero
-  integralPrefixesCheck R.us R.ds ps && FQ.eq (ps.headD zero) zero &&
-    R.t.check ctl A && lt (ctl R.t.c).p P.p && decide (R.us.length = R.ds.length + 1) &&
+  R.t.check ctl A && lt (ctl R.t.c).p P.p && decide (R.us.length = R.ds.length + 1) &&
     decide (0 < R.ds.length) && sortedF R.us && lt zero θ && lt zero R.g0 && le θ R.lo &&
     le R.hi (R.us.getD R.ds.length zero) && lt zero R.hm && lt zero R.margin &&
     R.cellsZipCell pd ps && bpOkF R.bp R.lo R.hi &&
     gLePrefix R ps P (add R.margin R.g0) zero one R.bp &&
     gLePrefix R ps P (add R.margin (div (add R.t.aU (mul (mul w θ) R.t.bU)) (add one w)))
       (div (add (B R.t.σ) R.t.ys) (add one w)) (div w (add one w)) R.bp
+def _root_.DiagonalRamsey.JointGeometry.RouteF.checkCell {ι : Type} {n m : ℕ}
+    (ctl : Fin n → CtrlF) (A B : Fin m → FQ) (pd : ι → ProfF) (i0 : ι)
+    (P : ProfF) (R : RouteF ι n m) (ps : List FQ) : Bool :=
+  integralPrefixesCheck R.us R.ds ps && FQ.eq (ps.headD zero) zero &&
+    R.checkCellCore ctl A B pd i0 P ps
 
+/-- Generated prefixes satisfy the recurrence by construction. Only the
+remaining geometric and arithmetic conditions need numerical checks. -/
+def _root_.DiagonalRamsey.JointGeometry.RouteF.checkGenerated {ι : Type} {n m : ℕ}
+    (ctl : Fin n → CtrlF) (A B : Fin m → FQ) (pd : ι → ProfF) (i0 : ι)
+    (P : ProfF) (R : RouteF ι n m) : Bool :=
+  R.checkCellCore ctl A B pd i0 P (FQ.integralPrefixes R.us R.ds)
+
+theorem _root_.DiagonalRamsey.JointGeometry.RouteF.checkGenerated_imp {ι : Type} {n m : ℕ}
+    (ctl : Fin n → CtrlF) (A B : Fin m → FQ) (pd : ι → ProfF) (i0 : ι)
+    (P : ProfF) (R : RouteF ι n m)
+    (h : R.checkGenerated ctl A B pd i0 P = true) :
+    R.checkCell ctl A B pd i0 P (FQ.integralPrefixes R.us R.ds) = true := by
+  have hlen : R.us.length = R.ds.length + 1 := by
+    simp only [RouteF.checkGenerated, RouteF.checkCellCore,
+      Bool.and_eq_true, decide_eq_true_eq] at h
+    tauto
+  have hz : FQ.eq ((FQ.integralPrefixes R.us R.ds).headD zero) zero = true := by
+    rw [FQ.integralPrefixes, FQ.integralPrefixesFrom_head]
+    decide
+  exact Bool.and_eq_true_iff.mpr
+    ⟨Bool.and_eq_true_iff.mpr ⟨integralPrefixesCheck_generated _ _ hlen, hz⟩, h⟩
 
 /-- The local knot-exclusion proof supplies the unchanged enclosing checker. -/
 theorem _root_.DiagonalRamsey.JointGeometry.RouteF.checkCell_imp {ι : Type} {n m : ℕ}
@@ -155,7 +180,7 @@ theorem _root_.DiagonalRamsey.JointGeometry.RouteF.checkCell_imp {ι : Type} {n 
     (P : ProfF) (R : RouteF ι n m) (ps : List FQ)
     (h : R.checkCell ctl A B pd i0 P ps = true) :
     R.checkZip ctl A B pd i0 P ps = true := by
-  simp only [RouteF.checkCell, Bool.and_eq_true] at h
+  simp only [RouteF.checkCell, RouteF.checkCellCore, Bool.and_eq_true] at h
   have hs : sortedF R.us = true := by tauto
   have hc : R.cellsZipCell pd ps = true := by tauto
   have hc' := R.cellsZipCell_imp pd i0 ps hs hc

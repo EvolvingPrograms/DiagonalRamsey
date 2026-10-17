@@ -134,6 +134,8 @@ the integral is $P_j+d_j(x-u_j)$, as proved by `IntegralPrefixes.eval` in
 use this construction for their prefix values.
 The theorem `integralPrefixesCheck_generated` proves that these values pass
 the recurrence checker whenever there is one more knot than cell density.
+Remaining routes use `RouteF.checkGenerated`: this theorem supplies prefix
+validity, while the numerical checker verifies the other route conditions.
 
 [Partitions.lean](Routes/Remaining/Partitions.lean) specifies knots, densities
 and donor calls. [Rows.lean](Routes/Remaining/Rows.lean) combines these with the

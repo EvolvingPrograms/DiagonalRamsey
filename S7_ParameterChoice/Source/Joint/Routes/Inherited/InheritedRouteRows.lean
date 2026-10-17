@@ -12,7 +12,6 @@ open DiagRamsey DiagRamsey.V5 JointGeometry JointFamily JointRecipes JointCached
 structure Row where
   controlIndex : ℕ
   indexed : FastEntry
-  prefixes : PrefixData
 
 /-- **Partition route with standard precision.** The local control slot is zero;
 height precision is `10⁻¹²` and the strict margin is `1 / 400000000`.
@@ -28,14 +27,13 @@ def Row.ofPartition (control : ℕ) (raw : RawIndex) (piece : ℕ)
           { t := terminal, us := knots, ds := densities, calls := calls
             g0 := height, hm := ⟨1, 999999999999⟩, margin := ⟨1, 399999999⟩
             lo := lo, hi := hi, bp := breakpoints }
-        expIds := expIds }
-    prefixes := ⟨FQ.integralPrefixes knots densities⟩ }
+        expIds := expIds } }
 
 def Row.entry (r : Row) : Entry :=
   ⟨JointInheritedControls.control r.controlIndex, r.indexed⟩
 
 def Row.check (table : List ExpPair) (r : Row) : Bool :=
-  r.entry.check table r.prefixes
+  r.entry.checkGenerated table
 
 /-- A checked row reference preserves its proof while exposing only the exact
 original raw profile and knot-piece indices to the finite partition checker. -/
@@ -59,11 +57,13 @@ theorem Run.pieceOK {table : List ExpPair} (r : Run table)
     (j : Fin (nRP r.rawIndex)) (hj : j.val = r.start) :
     ∃ K, PieceOK raw closed A B (raw r.rawIndex)
       (rpLo r.rawIndex j) (rpHi r.rawIndex j) K := by
-  have hb := r.row.entry.bounds_checked table r.row.prefixes r.checked
+  let ps : PrefixData := ⟨FQ.integralPrefixes r.row.indexed.recipe.us r.row.indexed.recipe.ds⟩
+  have hcheck := r.row.entry.checkGenerated_imp table r.checked
+  have hb := r.row.entry.bounds_checked table ps hcheck
   have he : r.row.indexed.toEntry.pieceIndex hb = j := by
     apply Fin.ext
     exact hj.symm
-  obtain ⟨K, hK⟩ := r.row.entry.pieceOK table r.row.prefixes ht r.checked
+  obtain ⟨K, hK⟩ := r.row.entry.pieceOK table ps ht hcheck
     (hc r.row.controlIndex)
   exact ⟨K, he ▸ hK⟩
 

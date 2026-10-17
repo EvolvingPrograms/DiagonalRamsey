@@ -21,6 +21,19 @@ def Entry.check (table : List ExpPair) (e : Entry) (ps : PrefixData) : Bool :=
     fastDatum (.inl 0) (fastDatum (.inl e.indexed.rawIndex)) ps.values &&
       e.indexed.toEntry.boundsCheck && e.indexed.expMatchesZip table
 
+/-- Check the route using prefixes constructed from its partition. -/
+def Entry.checkGenerated (table : List ExpPair) (e : Entry) : Bool :=
+  e.indexed.recipe.checkGenerated (fun _ => e.control)
+    (fun i => FQ.ofRat (sourceAq i)) (fun i => FQ.ofRat (sourceBq i))
+    fastDatum (.inl 0) (fastDatum (.inl e.indexed.rawIndex)) &&
+      e.indexed.toEntry.boundsCheck && e.indexed.expMatchesZip table
+
+theorem Entry.checkGenerated_imp (table : List ExpPair) (e : Entry)
+    (h : e.checkGenerated table = true) :
+    e.check table ⟨FQ.integralPrefixes e.indexed.recipe.us e.indexed.recipe.ds⟩ = true := by
+  simp only [Entry.checkGenerated, Entry.check, Bool.and_eq_true] at h ⊢
+  exact ⟨⟨e.indexed.recipe.checkGenerated_imp _ _ _ _ _ _ h.1.1, h.1.2⟩, h.2⟩
+
 /-- The numerical check supplies geometry for the exact separately named control. -/
 theorem Entry.geometry_checked (table : List ExpPair) (e : Entry) (ps : PrefixData)
     (ht : table.all ExpPair.check = true) (h : e.check table ps = true) :
