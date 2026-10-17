@@ -12,6 +12,27 @@ namespace LuWang.SourceCertificateFamily.Piece317
 open SourceCertificate
 open AnalyticBounds ExpressionCertificate IntervalExpr PolynomialExpr ProfileExpr ShapeCertificate
 open CurrentSourceData FixedPointInterval Set
+
+-- Expose only endpoint literals to numeric tactics; the shared source nodes
+-- and Hermite coefficient constructor remain implementation details.
+private theorem piece_317_data : piece_317 =
+    ⟨(10000000000000001 / 100000000000000000 : ℚ), (10050000000000001 / 100000000000000000 : ℚ), coefficients_317⟩ := rfl
+
+private theorem piece_824_data : piece_824 =
+    ⟨(16625000000000001 / 50000000000000000 : ℚ), (16650000000000001 / 50000000000000000 : ℚ), coefficients_824⟩ := rfl
+
+private theorem piece_825_data : piece_825 =
+    ⟨(16650000000000001 / 50000000000000000 : ℚ), (16675000000000001 / 50000000000000000 : ℚ), coefficients_825⟩ := rfl
+
+private theorem piece_826_data : piece_826 =
+    ⟨(16675000000000001 / 50000000000000000 : ℚ), (16700000000000001 / 50000000000000000 : ℚ), coefficients_826⟩ := rfl
+
+private theorem piece_827_data : piece_827 =
+    ⟨(16700000000000001 / 50000000000000000 : ℚ), (16725000000000001 / 50000000000000000 : ℚ), coefficients_827⟩ := rfl
+
+private theorem piece_828_data : piece_828 =
+    ⟨(16725000000000001 / 50000000000000000 : ℚ), (16750000000000001 / 50000000000000000 : ℚ), coefficients_828⟩ := rfl
+
 abbrev seedR : ℚ := 11095362597341/10000000000000
 abbrev seedW : ℚ := 1911287819757/2000000000000
 abbrev seedCenter : ℚ := 10017968750000001/100000000000000000
@@ -93,7 +114,7 @@ theorem window_from_piece {t : ℝ}
  (i : Fin 5) (hp : tauReal t ∈ Icc ((familyPiece i).lo : ℝ) ((familyPiece i).hi : ℝ)) :
  (familyWindow i).Contains t := by
  have htWide : t ∈ Icc (9/100:ℝ) (11/100) := by
-   norm_num [piece_317] at ht ⊢
+   norm_num [piece_317_data] at ht ⊢
    constructor <;> linarith [ht.1, ht.2]
  rcases window_geometry i with ⟨hlo,hhi,hleft,hright⟩
  have hloWide : ((familyWindow i).lo : ℝ) ∈ Icc (9/100:ℝ) (11/100) := by
@@ -106,7 +127,7 @@ theorem window_from_piece {t : ℝ}
  · rcases hleft with hi | hbound
    · have hi0 : i = 0 := Fin.ext hi
      subst i
-     norm_num [familyWindow,windows,piece_317] at ht ⊢
+     norm_num [familyWindow,windows,piece_317_data] at ht ⊢
      linarith [ht.1]
    · have hb : tauReal ((familyWindow i).lo : ℝ) < ((familyPiece i).lo : ℝ) := by
        rw [← cast_qTau]
@@ -117,7 +138,7 @@ theorem window_from_piece {t : ℝ}
  · rcases hright with hi | hbound
    · have hi4 : i = 4 := Fin.ext hi
      subst i
-     norm_num [familyWindow,windows,piece_317] at ht ⊢
+     norm_num [familyWindow,windows,piece_317_data] at ht ⊢
      linarith [ht.2]
    · have hb : ((familyPiece i).hi : ℝ) < tauReal ((familyWindow i).hi : ℝ) := by
        rw [← cast_qTau]
@@ -131,14 +152,14 @@ theorem tau_old_piece {t : ℝ}
  (ht : t ∈ Icc (piece_317.lo : ℝ) (piece_317.hi : ℝ)) :
  ∃ i : Fin 5, tauReal t ∈ Icc ((familyPiece i).lo : ℝ) ((familyPiece i).hi : ℝ) := by
  have htWide : t ∈ Icc (9/100:ℝ) (11/100) := by
-   norm_num [piece_317] at ht ⊢
+   norm_num [piece_317_data] at ht ⊢
    constructor <;> linarith [ht.1, ht.2]
- have hlo := tau_strictMono.monotoneOn (show (piece_317.lo : ℝ) ∈ Icc (9/100:ℝ) (11/100) by norm_num [piece_317]) htWide ht.1
- have hhi := tau_strictMono.monotoneOn htWide (show (piece_317.hi : ℝ) ∈ Icc (9/100:ℝ) (11/100) by norm_num [piece_317]) ht.2
+ have hlo := tau_strictMono.monotoneOn (show (piece_317.lo : ℝ) ∈ Icc (9/100:ℝ) (11/100) by norm_num [piece_317_data]) htWide ht.1
+ have hhi := tau_strictMono.monotoneOn htWide (show (piece_317.hi : ℝ) ∈ Icc (9/100:ℝ) (11/100) by norm_num [piece_317_data]) ht.2
  have hbounds : tauReal t ∈ Icc (piece_824.lo : ℝ) (piece_828.hi : ℝ) := by
    constructor
-   · exact (by norm_num [piece_824,piece_317,tauReal] : (piece_824.lo : ℝ) ≤ tauReal (piece_317.lo : ℝ)).trans hlo
-   · exact hhi.trans (by norm_num [piece_828,piece_317,tauReal] : tauReal (piece_317.hi : ℝ) ≤ (piece_828.hi : ℝ))
+   · exact (by norm_num [piece_824_data,piece_317_data,tauReal] : (piece_824.lo : ℝ) ≤ tauReal (piece_317.lo : ℝ)).trans hlo
+   · exact hhi.trans (by norm_num [piece_828_data,piece_317_data,tauReal] : tauReal (piece_317.hi : ℝ) ≤ (piece_828.hi : ℝ))
  have hc : covers piece_824.lo piece_828.hi (allPieces.map fun p => (⟨p.lo,p.hi⟩ : Domain)) = true := by decide +kernel
  have hn : (allPieces.map fun p => (⟨p.lo,p.hi⟩ : Domain)) ≠ [] := by decide
  obtain ⟨d,hd,hdt⟩ := covers_closed_sound _ hn hc hbounds
@@ -152,14 +173,14 @@ theorem tau_old_piece {t : ℝ}
 theorem family_control {t : ℝ}
  (ht : t ∈ Icc (piece_317.lo : ℝ) (piece_317.hi : ℝ)) :
  SourceControlAt CurrentSourceGeometry.F CurrentSourceGeometry.D t := by
- have ht0 : 0 < t := by norm_num [piece_317] at ht; linarith [ht.1]
- have ht1 : t ≤ 1 := by norm_num [piece_317] at ht; linarith [ht.2]
+ have ht0 : 0 < t := by norm_num [piece_317_data] at ht; linarith [ht.1]
+ have ht1 : t ≤ 1 := by norm_num [piece_317_data] at ht; linarith [ht.2]
  obtain ⟨i,hp⟩ := tau_old_piece ht
  have hdom := window_from_piece ht i hp
  have hlo : (0:ℝ) < (familyPiece i).lo := by
-   fin_cases i <;> norm_num [familyPiece,allPieces,piece_824,piece_825,piece_826,piece_827,piece_828]
+   fin_cases i <;> norm_num [familyPiece,allPieces,piece_824_data,piece_825_data,piece_826_data,piece_827_data,piece_828_data]
  have hhi : ((familyPiece i).hi : ℝ) ≤ 1 := by
-   fin_cases i <;> norm_num [familyPiece,allPieces,piece_824,piece_825,piece_826,piece_827,piece_828]
+   fin_cases i <;> norm_num [familyPiece,allPieces,piece_824_data,piece_825_data,piece_826_data,piece_827_data,piece_828_data]
  have hτ0 : 0 < tauReal t := hlo.trans_le hp.1
  have hτ1 : tauReal t ≤ 1 := hp.2.trans hhi
  have hnew := CurrentSourceGeometry.indexedPiece_formulas ⟨317,by decide⟩
@@ -186,7 +207,7 @@ theorem family_control {t : ℝ}
  · norm_num only [eval_ratExpr,seedR,seedW]
    constructor
    · positivity
-   · norm_num [piece_317] at ht
+   · norm_num [piece_317_data] at ht
      linarith [ht.2]
  · exact hsupported
  · exact hc.1
