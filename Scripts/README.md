@@ -33,6 +33,19 @@ can restore this repository's own cache.
 
 The Lu–Wang source checks are grouped by region in
 `Support/LuWang/SourceCertificates/{Small,Transitions,Left}.lean`.
+The expensive left-region checks live in 12 independent modules under
+`Support/LuWang/SourceCertificates/Left/Batch*.lean`, each containing 12 original
+chunks. `Left.lean` imports those batches and assembles the group certificates.
+This gives the build scheduler independent work without restoring a file per
+chunk. Keep these batches independent of one another so Lake can compile them
+concurrently and cache their results separately.
+The chunk checks retain `Elab.async false`: a representative 50-cell check with
+Lean 4.32.1 and `-j4` took 164 seconds with it disabled versus 165 seconds enabled,
+while peak memory increased from 4.0 GiB to 6.9 GiB. Parallelism here comes from
+compiling the independent batch modules.
+A full runner validation of the 12 batches finished in approximately 34 minutes;
+the `Left.lean` assembly then took 2.1 seconds. The combined certificate bank,
+source admissibility theorem, and their axiom audits also passed.
 `Support/LuWang/SourceGeometryChecks.lean` contains the bounded geometry checks;
 `Support/Controls/ControlBank.lean` contains the inherited control witnesses.
 The old chunk namespaces remain available inside these modules. Scoped sections
