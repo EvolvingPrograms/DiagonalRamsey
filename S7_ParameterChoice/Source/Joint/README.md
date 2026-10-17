@@ -110,6 +110,12 @@ $$\operatorname{calls}(P,z;q)
   =\bigl[(P,z,[q_i,q_{i+1}])\bigr]_{i=0}^{n-1}.$$
 
 `CallF.adjacent` in [FastRoute.lean](Routes/FastRoute.lean) implements this equation.
+For varying donors and weights, `CallF.onPartition` uses the same rule:
+
+$$\operatorname{calls}(q,[(P_i,z_i)]_i)
+  =\bigl[(P_i,z_i,[q_i,q_{i+1}])\bigr]_i.$$
+
+Thus call intervals are determined by the route partition itself.
 Concatenating uniform runs specifies the cached and remaining route call lists,
 including each donor, retained weight and breakpoint pair. Arithmetic
 progressions specify the route knots, and concatenated constant runs use

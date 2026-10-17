@@ -62,6 +62,13 @@ def CallF.adjacent {ι : Type} (child : ι) (weight : FQ) (knots : List FQ) :
     List (CallF ι) :=
   (knots.zip knots.tail).map fun pair => ⟨child, weight, [pair.1, pair.2]⟩
 
+/-- **Calls along a partition.** Each donor and retained weight is assigned
+the corresponding consecutive knot pair. -/
+def CallF.onPartition {ι : Type} (knots : List FQ) (donors : List (ι × FQ)) :
+    List (CallF ι) :=
+  (donors.zip (knots.zip knots.tail)).map fun (donor, interval) =>
+    ⟨donor.1, donor.2, [interval.1, interval.2]⟩
+
 def CallF.toD {ι : Type} (c : CallF ι) : CallD ι := ⟨c.ch, c.z.toQ, mapQ c.bp⟩
 
 structure RouteF (ι : Type) (nCtl m : ℕ) where
