@@ -1,15 +1,14 @@
 # Supporting library
 
-Only modules required by the proof and its source-admissibility corollary are
-included. These are the inherited lemmas and explicit finite witnesses behind
-the eight mathematical sections.
+Every Lean module in this directory is imported transitively by the final
+theorem. This library combines inherited mathematics with our control certificates.
 
-| Directory | Role |
-| --- | --- |
-| Ramsey | Ramsey definitions, elementary bounds and graph operations |
-| LuWang | Uniform source bound and its finite verification |
-| Analysis | Rational interval arithmetic and analytic checking laws |
-| Published | Weighted-potential, closure and profile-bank lemmas |
-| Controls | Certified control functions used by the finite construction |
+| Directory | Modules | Role and source |
+| --- | ---: | --- |
+| Ramsey | 16 | Definitions, bounds and graph operations from [RamseyLean](https://github.com/snorin239/RamseyLean), formalizing Gupta–Ndiaye–Norin–Wei |
+| LuWang | 735 | Lu–Wang source bound and finite verification, with our adaptations |
+| Analysis | 18 | Lu–Wang interval arithmetic and analytic checking laws, with our proof-maintenance edits |
+| Published | 52 | Zhao–Booth-Clibborn–Schwahn weighted-potential, closure and profile-bank lemmas |
+| Controls | 89 | Our certified control functions for the improved construction |
 
-See [source attribution](../../NOTICE.md) and the pinned provenance manifest.
+See [source attribution and licenses](../../NOTICE.md).

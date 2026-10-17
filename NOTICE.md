@@ -11,9 +11,15 @@
   The source baseline and retained-set machinery descend from their development,
   including the pinned research fork `cc16f1b2cbd5524eb4b2171d7197a5ce2e84dfb4`.
   Their MIT notice is retained in `licenses/LuWang.txt`.
+  `lean/Support/Analysis/` contains their interval arithmetic and analytic
+  checking library with our maintenance edits; `lean/Support/LuWang/` contains
+  the adapted source-bound verification.
 - **RamseyLean**, the foundational Ramsey formalization used by Lu–Wang,
   research-fork revision `f26c9675e0c07cec0e3454a4b11b8422f2bb5bb4`.
   Its required definitions and lemmas appear in `lean/Support/Ramsey/`.
+  [RamseyLean](https://github.com/snorin239/RamseyLean) formalizes the work of
+  **Parth Gupta, Ndiamé Ndiaye, Sergey Norin and Louis Wei**,
+  *Optimizing the CGMS upper bound on Ramsey numbers*.
 - **Mathlib and Lean** supply the general mathematics and kernel.
   Their pinned dependencies retain their upstream licenses.
 
