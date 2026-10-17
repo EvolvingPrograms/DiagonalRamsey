@@ -295,7 +295,7 @@ permitted axioms `propext`, `Classical.choice` and `Quot.sound`.
 ## References
 
 [^1]: Zhipu Zhao, William Booth-Clibborn and Casper Schwahn,
-    A $(3.49\ldots)^k$ bound for diagonal Ramsey numbers (2026).
+    A (3.49…)ᵏ bound for diagonal Ramsey numbers (2026).
     [Paper](https://github.com/w2ll2am/diagonal-ramsey/blob/c2875f33a9d5c89f71c68f51b5767550570b5603/preprint/main.pdf)
     · [Lean code](https://github.com/w2ll2am/diagonal-ramsey/tree/c2875f33a9d5c89f71c68f51b5767550570b5603).
 
