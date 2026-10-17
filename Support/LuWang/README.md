@@ -34,3 +34,8 @@ all 14,355 original cells field for field, including their rational values and
 precision settings; it changes neither the certificate tests nor their conclusions.
 The linking proofs live beside their cells in `SourceCertificates/`, eliminating
 288 separate link modules. Their original declaration namespaces remain stable.
+Each link applies `Linked.of_piece` from
+[SourceCertificateLink.lean](SourceCertificateLink.lean): matching coefficients,
+interval containment and membership of the old pieces imply the required link.
+The list-subset law combines the individual membership proofs without a
+generated case split.

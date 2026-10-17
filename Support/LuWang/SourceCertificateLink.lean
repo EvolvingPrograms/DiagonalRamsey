@@ -17,6 +17,15 @@ def Linked (c : Cell) (pieces : List SupportingPiece) : Prop :=
   ∃ p ∈ pieces, c.newCoefficients = p.coefficients ∧
     p.lo ≤ c.domain.lo ∧ c.domain.hi ≤ p.hi ∧ c.oldPieces ⊆ pieces
 
+/-- **Linking a cell.** One source piece contains the cell and supplies its
+coefficients; every old supporting piece belongs to the same source bank. -/
+theorem Linked.of_piece {c : Cell} {pieces : List SupportingPiece}
+    (p : SupportingPiece) (hp : p ∈ pieces)
+    (hcoeff : c.newCoefficients = p.coefficients)
+    (hlo : p.lo ≤ c.domain.lo) (hhi : c.domain.hi ≤ p.hi)
+    (hold : c.oldPieces ⊆ pieces) : Linked c pieces :=
+  ⟨p, hp, hcoeff, hlo, hhi, hold⟩
+
 theorem Linked.sound {c : Cell} {pieces : List SupportingPiece} {F D : ℝ → ℝ}
     (hlink : Linked c pieces) (hcheck : c.check = true) (hformulas : PieceFormulas F D pieces)
     {t : ℝ} (ht : 0 < t) (hdom : c.domain.Contains t) (hD : 0 < D t)

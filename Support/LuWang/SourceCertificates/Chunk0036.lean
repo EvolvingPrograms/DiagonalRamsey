@@ -828,465 +828,254 @@ open SourceCertificate CurrentSourceData SourceCertificates.Chunk0036
 open AnalyticBounds.ExpressionCertificate
 
 theorem linked_1800 : Linked cell_1800 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1800,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_432_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1800, List.cons_subset, List.nil_subset, and_true]
+  exact piece_432_mem
 
 theorem linked_1801 : Linked cell_1801 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1801,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_432_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1801, List.cons_subset, List.nil_subset, and_true]
+  exact piece_432_mem
 
 theorem linked_1802 : Linked cell_1802 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1802,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_432_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1802, List.cons_subset, List.nil_subset, and_true]
+  exact piece_432_mem
 
 theorem linked_1803 : Linked cell_1803 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1803,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_432_mem
-    · exact piece_433_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1803, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_432_mem, piece_433_mem⟩
 
 theorem linked_1804 : Linked cell_1804 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1804,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_433_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1804, List.cons_subset, List.nil_subset, and_true]
+  exact piece_433_mem
 
 theorem linked_1805 : Linked cell_1805 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1805,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_433_mem
-    · exact piece_434_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1805, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_433_mem, piece_434_mem⟩
 
 theorem linked_1806 : Linked cell_1806 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1806,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_434_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1806, List.cons_subset, List.nil_subset, and_true]
+  exact piece_434_mem
 
 theorem linked_1807 : Linked cell_1807 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1807,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_434_mem
-    · exact piece_435_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1807, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_434_mem, piece_435_mem⟩
 
 theorem linked_1808 : Linked cell_1808 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1808,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_435_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1808, List.cons_subset, List.nil_subset, and_true]
+  exact piece_435_mem
 
 theorem linked_1809 : Linked cell_1809 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1809,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_435_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1809, List.cons_subset, List.nil_subset, and_true]
+  exact piece_435_mem
 
 theorem linked_1810 : Linked cell_1810 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1810,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_435_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1810, List.cons_subset, List.nil_subset, and_true]
+  exact piece_435_mem
 
 theorem linked_1811 : Linked cell_1811 pieces := by
-  refine ⟨piece_208,piece_208_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1811,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_435_mem
+  apply Linked.of_piece piece_208 piece_208_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1811, List.cons_subset, List.nil_subset, and_true]
+  exact piece_435_mem
 
 theorem linked_1812 : Linked cell_1812 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1812,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_435_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1812, List.cons_subset, List.nil_subset, and_true]
+  exact piece_435_mem
 
 theorem linked_1813 : Linked cell_1813 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1813,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_435_mem
-    · exact piece_436_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1813, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_435_mem, piece_436_mem⟩
 
 theorem linked_1814 : Linked cell_1814 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1814,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_436_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1814, List.cons_subset, List.nil_subset, and_true]
+  exact piece_436_mem
 
 theorem linked_1815 : Linked cell_1815 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1815,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_436_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1815, List.cons_subset, List.nil_subset, and_true]
+  exact piece_436_mem
 
 theorem linked_1816 : Linked cell_1816 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1816,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_436_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1816, List.cons_subset, List.nil_subset, and_true]
+  exact piece_436_mem
 
 theorem linked_1817 : Linked cell_1817 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1817,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_436_mem
-    · exact piece_437_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1817, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_436_mem, piece_437_mem⟩
 
 theorem linked_1818 : Linked cell_1818 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1818,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_437_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1818, List.cons_subset, List.nil_subset, and_true]
+  exact piece_437_mem
 
 theorem linked_1819 : Linked cell_1819 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1819,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_437_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1819, List.cons_subset, List.nil_subset, and_true]
+  exact piece_437_mem
 
 theorem linked_1820 : Linked cell_1820 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1820,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_437_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1820, List.cons_subset, List.nil_subset, and_true]
+  exact piece_437_mem
 
 theorem linked_1821 : Linked cell_1821 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1821,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_437_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1821, List.cons_subset, List.nil_subset, and_true]
+  exact piece_437_mem
 
 theorem linked_1822 : Linked cell_1822 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1822,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_437_mem
-    · exact piece_438_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1822, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_437_mem, piece_438_mem⟩
 
 theorem linked_1823 : Linked cell_1823 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1823,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_438_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1823, List.cons_subset, List.nil_subset, and_true]
+  exact piece_438_mem
 
 theorem linked_1824 : Linked cell_1824 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1824,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_438_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1824, List.cons_subset, List.nil_subset, and_true]
+  exact piece_438_mem
 
 theorem linked_1825 : Linked cell_1825 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1825,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_438_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1825, List.cons_subset, List.nil_subset, and_true]
+  exact piece_438_mem
 
 theorem linked_1826 : Linked cell_1826 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1826,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_438_mem
-    · exact piece_439_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1826, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_438_mem, piece_439_mem⟩
 
 theorem linked_1827 : Linked cell_1827 pieces := by
-  refine ⟨piece_209,piece_209_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1827,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_439_mem
+  apply Linked.of_piece piece_209 piece_209_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1827, List.cons_subset, List.nil_subset, and_true]
+  exact piece_439_mem
 
 theorem linked_1828 : Linked cell_1828 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1828,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_439_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1828, List.cons_subset, List.nil_subset, and_true]
+  exact piece_439_mem
 
 theorem linked_1829 : Linked cell_1829 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1829,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_439_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1829, List.cons_subset, List.nil_subset, and_true]
+  exact piece_439_mem
 
 theorem linked_1830 : Linked cell_1830 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1830,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_439_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1830, List.cons_subset, List.nil_subset, and_true]
+  exact piece_439_mem
 
 theorem linked_1831 : Linked cell_1831 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1831,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_439_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1831, List.cons_subset, List.nil_subset, and_true]
+  exact piece_439_mem
 
 theorem linked_1832 : Linked cell_1832 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1832,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_439_mem
-    · exact piece_440_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1832, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_439_mem, piece_440_mem⟩
 
 theorem linked_1833 : Linked cell_1833 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1833,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_440_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1833, List.cons_subset, List.nil_subset, and_true]
+  exact piece_440_mem
 
 theorem linked_1834 : Linked cell_1834 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1834,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_440_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1834, List.cons_subset, List.nil_subset, and_true]
+  exact piece_440_mem
 
 theorem linked_1835 : Linked cell_1835 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1835,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_440_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1835, List.cons_subset, List.nil_subset, and_true]
+  exact piece_440_mem
 
 theorem linked_1836 : Linked cell_1836 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1836,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_440_mem
-    · exact piece_441_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1836, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_440_mem, piece_441_mem⟩
 
 theorem linked_1837 : Linked cell_1837 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1837,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_441_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1837, List.cons_subset, List.nil_subset, and_true]
+  exact piece_441_mem
 
 theorem linked_1838 : Linked cell_1838 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1838,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_441_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1838, List.cons_subset, List.nil_subset, and_true]
+  exact piece_441_mem
 
 theorem linked_1839 : Linked cell_1839 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1839,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_441_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1839, List.cons_subset, List.nil_subset, and_true]
+  exact piece_441_mem
 
 theorem linked_1840 : Linked cell_1840 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1840,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_441_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1840, List.cons_subset, List.nil_subset, and_true]
+  exact piece_441_mem
 
 theorem linked_1841 : Linked cell_1841 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1841,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_441_mem
-    · exact piece_442_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1841, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_441_mem, piece_442_mem⟩
 
 theorem linked_1842 : Linked cell_1842 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1842,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_442_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1842, List.cons_subset, List.nil_subset, and_true]
+  exact piece_442_mem
 
 theorem linked_1843 : Linked cell_1843 pieces := by
-  refine ⟨piece_210,piece_210_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1843,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_442_mem
+  apply Linked.of_piece piece_210 piece_210_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1843, List.cons_subset, List.nil_subset, and_true]
+  exact piece_442_mem
 
 theorem linked_1844 : Linked cell_1844 pieces := by
-  refine ⟨piece_211,piece_211_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1844,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_442_mem
+  apply Linked.of_piece piece_211 piece_211_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1844, List.cons_subset, List.nil_subset, and_true]
+  exact piece_442_mem
 
 theorem linked_1845 : Linked cell_1845 pieces := by
-  refine ⟨piece_211,piece_211_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1845,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_442_mem
+  apply Linked.of_piece piece_211 piece_211_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1845, List.cons_subset, List.nil_subset, and_true]
+  exact piece_442_mem
 
 theorem linked_1846 : Linked cell_1846 pieces := by
-  refine ⟨piece_211,piece_211_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1846,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl | rfl
-    · exact piece_442_mem
-    · exact piece_443_mem
+  apply Linked.of_piece piece_211 piece_211_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1846, List.cons_subset, List.nil_subset, and_true]
+  exact ⟨piece_442_mem, piece_443_mem⟩
 
 theorem linked_1847 : Linked cell_1847 pieces := by
-  refine ⟨piece_211,piece_211_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1847,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_443_mem
+  apply Linked.of_piece piece_211 piece_211_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1847, List.cons_subset, List.nil_subset, and_true]
+  exact piece_443_mem
 
 theorem linked_1848 : Linked cell_1848 pieces := by
-  refine ⟨piece_211,piece_211_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1848,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_443_mem
+  apply Linked.of_piece piece_211 piece_211_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1848, List.cons_subset, List.nil_subset, and_true]
+  exact piece_443_mem
 
 theorem linked_1849 : Linked cell_1849 pieces := by
-  refine ⟨piece_211,piece_211_mem,rfl,?_,?_,?_⟩
-  · decide +kernel
-  · decide +kernel
-  · intro p hp
-    simp only [cell_1849,List.mem_cons,List.not_mem_nil,or_false] at hp
-    rcases hp with rfl
-    exact piece_443_mem
+  apply Linked.of_piece piece_211 piece_211_mem rfl (by decide +kernel) (by decide +kernel)
+  simp only [cell_1849, List.cons_subset, List.nil_subset, and_true]
+  exact piece_443_mem
 
 theorem all_linked : ∀ c ∈ SourceCertificates.Chunk0036.cells, Linked c pieces := by
   simp only [SourceCertificates.Chunk0036.cells,List.forall_mem_cons]
