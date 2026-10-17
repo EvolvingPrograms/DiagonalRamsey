@@ -45,7 +45,7 @@ used to stop a route is available on proper subgraphs without circularity.
 |---|---|
 | `InheritedCertificates/` | Numerical validity of inherited controls |
 | `RemainingRoutes/` | Route constructions |
-| `CachedRouteFastChecks*` | Shared route checks |
+| [CachedRouteChecks/](CachedRouteChecks/) | Prefix, cell, linear and zip route checks |
 | `LeafChecks*`, `LeafTerminals*` | Leaf geometry and terminal inequalities |
 | `RawCoverage/` | Coverage of raw-profile intervals |
 | `AlignedChecks*`, `LocalChecks*`, `ComplementaryBatch*` | Closed-profile transfer checks |
