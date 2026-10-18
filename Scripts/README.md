@@ -56,3 +56,14 @@ by both Support and S7 Joint. `CurrentSourceData.lean` stores endpoint jets and
 computes their cubic Hermite coefficients. Its lists use named blocks of 64
 entries to keep elaboration within Lean's default thread stack. The certificate
 checks still use `decide +kernel`, including endpoint identities and shape checks.
+
+S7 Joint's `Leaves/Checks.lean` imports ten independent check batches, each
+covering five entry groups. `Leaves/TerminalChecks.lean` similarly imports ten
+batches, with four terminal groups distributed round-robin per batch. Their kernel checks use `Elab.async false` to bound
+the number of pending proof computations; Lake supplies parallelism between
+batches. `Routes/Remaining/Partitions.lean` imports twelve independent call-data
+batches backed by shared constants in `Partitions/Data.lean`. Call definitions are
+distributed round-robin so the more expensive later groups do not accumulate in
+one batch. These preserve the existing declaration names and compact
+progression/replication representations while avoiding one large serial
+compilation step.
