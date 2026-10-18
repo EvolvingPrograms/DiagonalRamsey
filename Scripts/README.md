@@ -67,3 +67,10 @@ distributed round-robin so the more expensive later groups do not accumulate in
 one batch. These preserve the existing declaration names and compact
 progression/replication representations while avoiding one large serial
 compilation step.
+
+`Routes/Remaining/Certificates.lean` imports sixteen batches of checked row
+groups, distributed round-robin. `Assembly/RawCoverage/Rows.lean` imports eight
+batches of coverage checks; each keeps its required private route helpers and
+imports their certificate batches. Both use `Elab.async false` to bound pending
+kernel reductions. The final assemblies reuse these checked results; the
+original proof bodies and axiom audits are retained.
