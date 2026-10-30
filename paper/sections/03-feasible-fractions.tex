@@ -2,10 +2,10 @@
 \label{sec:feasible-fractions}
 
 Fix $0<p,\mu,\beta<1$, $w>0$, and $0<x<\min\{p,(1-\mu)^w\}$.
-The two moments constrain a failed row through just two numbers: its
-mean change on the red cell and its mean change on the remaining columns.
-We first pass these constraints to a limit, then optimize the limiting
-mean. Finally, we return to finite rows and obtain a useful move.
+For a row at which both tests fail, conditional Jensen reduces the
+moment inequalities to constraints on the two conditional means of $Z$.
+We determine their limiting feasible set and maximum weighted mean,
+then deduce the local alternative.
 
 \subsection{The two-cell limit}
 
@@ -51,7 +51,7 @@ $r[(U(q)/m)^{1/(\beta r)}-1]$. Comparing these two convergent bounds gives
 \leanfile{S3_TwoCellReduction/L4_DensityGap.lean\#L123}{L4_DensityGap.lean}}
 No convergence of $a$ has been assumed.
 
-We next show that the second cell cannot disappear in the limit.
+We next show that the limiting mass of the second cell is positive.
 Taking logarithms in the last inequality and comparing $q_0$ with $\mu$
 gives the density gap of~\cite[Proposition~3.5, Step~6]{ZBS}:
 \[
@@ -63,8 +63,9 @@ gives the density gap of~\cite[Proposition~3.5, Step~6]{ZBS}:
 The comparison uses $\log d\le0$, $q_0\le\mu$, and the logarithmic
 Jensen inequality
 $\log(1-\mu)\le\log(1-q_0)+q_0\log(q_0/\mu)/(1-q_0)$.
-Thus $d<1$, so both cell masses stay bounded away from zero.
-The two moments now give bounds in both directions:
+Thus $d<1$. Since also $d\ge p>0$, both cell masses are bounded away
+from zero for all sufficiently late terms of the sequence.
+The two moment inequalities bound each scaled conditional mean above and below:
 \[
  -\frac r t\left[\left(\frac{V(q)}m\right)^{1/(\beta r)}-1\right]
  \le a\le
@@ -88,14 +89,13 @@ writing $q=q_0$ and $t=q/(1-q)$,
 \leanfile{S3_TwoCellReduction/L5_LimitingConstraints.lean\#L135}{L5_LimitingConstraints.lean}}
 Call such a pair \emph{feasible at density $d$ and fraction $q$}.
 For $0<d\le1$, let $F_d$ be the set of $q\in(0,\mu]$ admitting a
-feasible pair. The density gap precedes compactness: it is what permits
-us to bound the second conditional mean.
+feasible pair.
 
 \subsection{The optimizer}
 
 Write $B_q=\beta^{-1}\log U(q)=w\log(\mu/q)$.
 The complementary constraint changes the set $F_p$, but leaves the
-blue-moment optimizer unchanged wherever feasibility survives.
+blue-moment optimizer unchanged for every $q\in F_p$.
 
 \begin{lemma}\label{lem:optimizer}
 For $q\in F_p$, the maximum of $pA+(1-p)C$ is
@@ -119,14 +119,14 @@ It also satisfies the complementary constraint, since $B_q\ge0$ and
 $e^{-\beta tB_q}\le1\le V(q)$.
 
 Suppose instead that $A_p(q)>B_q$, and start with any feasible pair.
-Its positive second atom gives $p e^{\beta A_p(q)}<U(q)$.
+Since $(1-p)e^{\beta C}>0$, we have $p e^{\beta A_p(q)}<U(q)$.
 Increase $e^{\beta C}$ until the blue moment equals $U(q)$.
 This increases the logarithmic objective and decreases the
-complementary moment. Now contract both exponential atoms linearly
+complementary moment. Now contract $e^{\beta A}$ and $e^{\beta C}$ linearly
 toward their weighted mean $U(q)$ until the first reaches
 $e^{\beta A_p(q)}>U(q)$. Convexity of $z\mapsto z^{-t}$ again decreases
 the complementary moment; concavity of $\log z$ increases the objective.
-The resulting first coordinate is $A_p(q)$ and the second is forced by
+The resulting first coordinate is $A_p(q)$ and the second is determined by
 the blue equality. This proves the second branch and its attainment.
 If this canonical pair fails the complementary bound, no feasible pair exists.
 
@@ -164,35 +164,34 @@ $0<a<\mu$ and $\mathcal F(a)>0>\mathcal F(\mu)$, then
 $\mu\in F_p\subset(a,\mu]$.
 \end{lemma}
 \begin{proof}
-Normalize the complementary atoms to
+Set
 $z_1=e^{-\beta tA}/V(q)$ and $z_2=e^{-\beta tC}/V(q)$.
 Since $p e^{-\beta tA_p(q)}/V(q)=\theta$, their constraints become
 $z_1\le\theta/p<1$ and $pz_1+(1-p)z_2\le1$.
-Increase $z_2$ until equality holds, then contract both atoms toward
+Increase $z_2$ until equality holds, then contract both coordinates toward
 the mean $1$ until $z_1=\theta/p$. Because $z^{-1/t}$ is decreasing
 and convex, these operations minimize the blue moment among all pairs
 satisfying the complementary constraint and the threshold.
-The minimizing atoms are $\theta/p$ and $(1-\theta)/(1-p)$.
+The minimizing coordinates are $\theta/p$ and $(1-\theta)/(1-p)$.
 Their blue moment is $V(q)^{-1/t}Z_\theta(q)$.
 Taking logarithms of its comparison with $U(q)$, and multiplying by
 $q>0$, gives exactly $\mathcal F(q)\le0$.
 
 For convexity, $\log Z_\theta(q)$ is a convex log-sum-exp evaluated at
 $1/q$; its positive perspective $q\log Z_\theta(q)$ is convex.
-The remaining term is convex binary entropy, up to an affine term.
+The remaining term is a positive multiple of
+$q\log q+(1-q)\log(1-q)$, plus an affine term, and is also convex.
 If a feasible $q\le a$ existed, convexity between $q$ and $\mu$ would
 give $\mathcal F(a)\le0$, a contradiction. The sign at $\mu$ proves
 nonemptiness.
-The equivalence and cutoff are
-\leanfile{S4_ScalarOptimization/L7_EntropyFeasibility.lean\#L242}{L7_EntropyFeasibility.lean}
-and \leanfile{S4_ScalarOptimization/L8_ConvexDegreeCutoff.lean\#L172}{L8_ConvexDegreeCutoff.lean}.
 \end{proof}
+\leannote{the feasibility equivalence in
+\leanfile{S4_ScalarOptimization/L7_EntropyFeasibility.lean\#L242}{L7_EntropyFeasibility.lean}
+and the cutoff in \leanfile{S4_ScalarOptimization/L8_ConvexDegreeCutoff.lean\#L172}{L8_ConvexDegreeCutoff.lean}}
 
-\subsection{Uniform approximation and a useful move}
+\subsection{Uniform approximation and the local alternative}
 
-The limiting argument must control every sufficiently large moment
-parameter, uniformly over the underlying finite graph. The following
-form supplies precisely that control.
+The next lemma gives a uniform finite approximation to the limiting bound.
 
 \begin{lemma}\label{lem:finite-approximation}
 For every $\delta,\varepsilon>0$, there exist
@@ -214,7 +213,7 @@ $m,\pi\to d\in[p,1]$. The density gap and moment bounds above give
 $d<1$ and convergent scaled means. Their limiting pair is feasible
 at $d$, so Lemma~\ref{lem:optimizer} gives $q_0\in F_p$ and bounds the
 limiting objective by $q_0M_p(q_0)$. Taking $q'=q_0$ contradicts the
-fixed $\varepsilon$ failure for all sufficiently late terms.
+assumed failure of the conclusion for all sufficiently late terms.
 \end{proof}
 
 \begin{proposition}[Local alternative]\label{prop:local-alternative}
@@ -229,10 +228,10 @@ nondecreasing and integrable, with
 \leanfile{S4_ScalarOptimization/L1_FeasiblePairs.lean\#L31}{L1_FeasiblePairs.lean}}
 There exist $\eta,\tau,\zeta>0$ and $R>\max\{w,1/\beta\}$ such that,
 for every $r\ge R$, every maximal positive-potential configuration with
-$|c-p|\le\eta$ has the following property. If $X_g\subseteq X$,
-$|X\setminus X_g|\le\zeta|X|$ and $q_i\le\mu+\tau$ for $i\in X_g$,
+$|c-p|\le\eta$ has the following property. If $X_0\subseteq X$,
+$|X\setminus X_0|\le\zeta|X|$ and $q_i\le\mu+\tau$ for $i\in X_0$,
 then either a blue test succeeds at some $i\in X$ with $q_i>0$, or a
-shifted-red test succeeds at some $i\in X_g$.
+shifted-red test succeeds at some $i\in X_0$.
 \end{proposition}
 \begin{proof}
 Suppose all the indicated tests fail. The small-degree exclusion
@@ -244,11 +243,11 @@ degree exclusion. The concentration bounds
 of~\cite[Proposition~3.5, Step~2]{ZBS} ensure that, on all but
 $\varphi|X|$ rows, $q_i\ge\delta$,
 $m_i,\pi_i\ge p-\eta_0$, and $|m_i-\pi_i|\le\eta_0$.
-Here the exceptional rows include $X\setminus X_g$; the configuration
+Here the exceptional rows include $X\setminus X_0$; the configuration
 tolerances are chosen small and $r$ large. Taking $\tau\le\eta_0$
 also gives $q_i\le\mu+\eta_0$ on the remaining rows. Thus
 \eqref{eq:finite-cells} and Lemma~\ref{lem:finite-approximation} provide
-a nearby feasible fraction $q'_i$ for each of these good rows.
+a nearby feasible fraction $q'_i$ for each remaining row.
 
 Put $N=|X|$ and $P_i=q_i\mathbb E_\nu Z_i$, taking $P_i=0$ when
 $q_i=0$. The identity $rP_i=q_i(m_i a_i+(1-m_i)b_i)$ identifies
@@ -264,18 +263,17 @@ give the lower bound
 \leannote{\texttt{ordered\_envelope\_contradiction},
 \leanfile{S5_LocalAlternative/L2_OrderedEnvelope.lean\#L61}{L2_OrderedEnvelope.lean},
 using the inherited \texttt{lower\_sum}}
-For a good row, integrate \eqref{eq:negative-envelope} with its nearby
+For each nonexceptional row, integrate \eqref{eq:negative-envelope} with its nearby
 feasible fraction $q'_i$ over that row's cell. Replacing $q'_i$ by
-$q_i$ costs at most $\varepsilon/N+
+$q_i$ introduces an error of at most $\varepsilon/N+
 w\varepsilon\int_{i/N}^{(i+1)/N}(1-\log u)\,du$, since
-$|L'(u)|\le1-\log u$. Summing over good rows costs at most
-$\varepsilon(1+2w)$ in total. This integrates the cell meeting zero
-without evaluating the logarithm at its endpoint.
+$|L'(u)|\le1-\log u$. The total error over these rows is at most
+$\varepsilon(1+2w)$, including the cell with left endpoint zero.
 
 For the exceptional cells, let their union be $\mathcal B$, of measure
 at most $\varphi$, and fix $q_*\in F_p$. Compare with the majorant
 at $q_*$ and use the blue-failure bound $rP_i\le w$. The total
-additional cost of these cells is at most
+additional error from these cells is at most
 $(w+|q_*M_p(q_*)|)\varphi+w\int_{\mathcal B}(1-\log u)\,du$.
 It tends to zero with $\varphi$, uniformly in $N$, by integrability.
 Consequently,
@@ -284,14 +282,13 @@ Consequently,
  +(w+|q_*M_p(q_*)|)\varphi
  +w\int_{\mathcal B}(1-\log u)\,du.
 \]
-\leannote{the good-row and exceptional-row estimates in
+\leannote{the estimates for nonexceptional and exceptional rows in
 \leanfile{S5_LocalAlternative/L2_OrderedEnvelope.lean\#L122}{L2_OrderedEnvelope.lean};
 the integrals are its increments of \texttt{JF}}
 Choose $\varepsilon,\varphi$ small compared with $-\int_0^1E$,
 then choose the configuration tolerances small and $r$ large.
 The upper bound for $T$ is strictly negative and bounded away from
 zero, contradicting its lower bound.
-The resulting graph statement, with all tolerances uniform in the
-finite graphs $G,B$, is
-\leanfile{S5_LocalAlternative/L3_GraphAlternative.lean\#L283}{L3_GraphAlternative.lean}.
 \end{proof}
+\leannote{the local alternative,
+\leanfile{S5_LocalAlternative/L3_GraphAlternative.lean\#L283}{L3_GraphAlternative.lean}}

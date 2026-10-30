@@ -23,7 +23,7 @@ column maximality gives $g_y>c$ for every $y\in Y$
  \nu_y=\frac{(g_y-c)^s}{S}.
 \]
 \leannote{\texttt{nuW}, \leanfile{Support/Published/Lemmas/DiagRamsey_SE_Graph.lean\#L19}{DiagRamsey_SE_Graph.lean};
-positivity removes the clipping in \texttt{colMomentSum}}
+positive column excesses make the positive parts in \texttt{colMomentSum} redundant}
 
 Let $B$ be an auxiliary graph on the rows; in the Ramsey application
 $B=G^c$. Fix $i\in X$, and put
@@ -71,7 +71,7 @@ then expand \texttt{potential}}
 Maximality bounds this ratio by one.
 \end{proof}
 
-The red test singles out the \emph{red cell}
+For the red test, define the \emph{red cell}
 $Y_i=N_G(i)\cap Y$. Write $\pi=|Y_i|/|Y|$ for its ordinary mass and
 $m=\nu(Y_i)$ for its weighted mass. The shifted-red failure condition
 of~\cite[Section~3.2]{ZBS} is, for a parameter $x>0$,
@@ -85,9 +85,9 @@ For $\pi>0$ this says exactly
 $\Phi_c(D_i,Y_i)<x\Phi_c(X,Y)$.
 At $q=0$, its undivided form is $m<x^\beta\pi^{1-\beta}$.
 When $B=G^c$, the full complement $D_i$ contains the pivot $i$ as well
-as its red neighbours. Removing the pivot and lowering the shift pays
-for this one-vertex difference, as in~\cite[Lemma~4.5]{ZBS}.
-Under the finite-host hypotheses, successful tests therefore give
-actual clique-extending moves. The additional information in
+as its red neighbours. After deleting $i$, the shift adjustment
+in~\cite[Lemma~4.5]{ZBS} gives the required potential bound on
+$D_i\setminus\{i\}$. Under the finite-host hypotheses, a successful
+test therefore extends a red or blue clique. The additional information in
 \eqref{eq:two-moments} is the bound on the complementary moment over
 \emph{all} columns, alongside its red-cell bound~\eqref{eq:red-failure}.

@@ -90,8 +90,8 @@ The draft has four developed subsections: the two-cell limit; the optimizer;
 the convex feasibility test; and uniform approximation and the local alternative.
 Preserve their arguments rather than returning to the compressed first draft.
 
-- [x] Derive the limiting two-cell constraints. Explain why the first-cell
-  density gap precedes compactness and why both scaled means are bounded.
+- [x] Derive the limiting two-cell constraints. Establish that both limiting
+  cell masses are positive before extracting convergent scaled means.
 - [x] Define the feasible fractions and give their exact optimizer. Prove
   density transfer and the binding/nonbinding alternatives by convex averaging.
 - [x] State entropy feasibility, convexity, and the positive cutoff with their
@@ -148,6 +148,10 @@ numerical threshold for the eventual theorem.
 
 ## Final review
 
+- [x] Replace cost metaphors and unspecified labels with explicit inequalities,
+  error bounds, and row conditions; correct the sign convention for binary entropy.
+- [x] End each proof with its mathematical conclusion and proof square; put
+  concluding Lean source notes after the proof environment.
 - [ ] Every new assertion has a proof or a finite certificate whose soundness
   and domain coverage are justified.
 - [x] Every borrowed theorem, method, dataset, and formal library is credited;
@@ -159,6 +163,32 @@ numerical threshold for the eventual theorem.
   revision before complete formal verification is claimed.
 - [ ] The complete PDF is at most six pages, including references, with
   readable mathematics, resolved citations, and no layout defects.
+
+### Compression review, 30 October 2026
+
+The first draft is complete. The following are proposed cuts for the next
+section-by-section pass; the language review has not made these structural cuts.
+Retain the proof of the complementary moment, preservation of the optimizer,
+the feasibility test, and the justification of the new envelope certificate.
+
+- [ ] Section 4: retain the source/profile definitions, route output and its
+  hypotheses, and one paragraph on simultaneous induction. Cite ZBS Section 4.3
+  for closure with our local alternative substituted, and Definition 5.4,
+  Lemma 5.8 and Theorem 5.7 for the inherited construction. Omit the repeated
+  blue-book, balanced-cut and rounding arguments. The published theorem's old
+  local criterion is not literally the new criterion; state the substitution.
+- [ ] Section 5: replace the printed terminal-source fractions, auxiliary
+  margins, profile/run counts and tiny root interval by links to our exact
+  certificate. Keep the main control parameters, cutoff, negative integral,
+  dense exponent and final base. These numerical data belong to this refinement,
+  so cite our certificate rather than attributing them to the earlier paper.
+- [ ] Section 5: replace the displayed Taylor polynomial by the certified
+  inequality between the exponential and the final base, retaining its Lean link.
+- [ ] Sections 3.1 and 3.4: shorten the inherited density-gap calculation and
+  the concentration/drift preliminaries using ZBS Proposition 3.5, Steps 2--6.
+  Preserve the positive cell-mass argument, uniform finite approximation,
+  integration at zero and control of exceptional rows; those justify use of
+  the new feasible set.
 
 ## TeX structure and prose model
 

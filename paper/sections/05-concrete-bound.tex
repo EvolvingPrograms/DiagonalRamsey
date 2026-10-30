@@ -34,11 +34,11 @@ Set $a=2681/10000$. Rational interval bounds give
 \leannote{\texttt{entropy\_gap\_at\_cutoff} and \texttt{entropy\_gap\_at\_endpoint},
 \leanfile{S7_ParameterChoice/L2_Control.lean\#L100}{L2_Control.lean}}
 Lemma~\ref{lem:feasibility-cutoff} therefore gives
-$\mu\in F_p\subset(a,\mu]$. The certificate must cover this whole
-interval, rather than just a collection of sampled fractions.
+$\mu\in F_p\subset(a,\mu]$. We certify the envelope on the entire
+interval $[a,\mu]$.
 
 Write $H(q)=qM_p(q)+wq$. Its global upper supports follow from
-concavity on the positive-budget domain
+concavity on the domain
 $D=\{q\in(0,1):p e^{\beta A_p(q)}<U(q)\}$.
 Here is the reason for that concavity. Set
 $G_0(q)=q\log p+\beta q(A_p(q)-B_q)$,
@@ -50,8 +50,9 @@ $\bar f(z)=f(\max\{z,\log p\})$. Then
 \]
 \leannote{\texttt{certM\_entropy\_identity},
 \leanfile{S4_ScalarOptimization/L13_EnvelopeConcavity.lean\#L102}{L13_EnvelopeConcavity.lean}}
-The function $G_0$ is convex: its nonlinear part is $\beta w$ times
-binary entropy. Thus $D=\{G_0<0\}\cap(0,1)$ is convex.
+The function $G_0$ is convex: after subtracting an affine function,
+it equals $\beta w[q\log q+(1-q)\log(1-q)]$.
+Thus $D=\{G_0<0\}\cap(0,1)$ is convex.
 On $(-\infty,0)$, $\bar f$ is concave and nonincreasing; this follows
 from $f'(z)=(p-e^z)/(1-e^z)$ and $f''(z)<0$.
 The perspective $q\bar f(G_0(q)/q)$ is consequently concave:
@@ -63,7 +64,8 @@ The explicit support slopes are in
 
 Divide $[a,\mu]$ into $192$ equal cells, with endpoints
 $q_i=a+i(\mu-a)/192$ and midpoints $m_i=(q_i+q_{i+1})/2$.
-Checked endpoint budget signs place all of $[a,\mu]$ in $D$.
+The certified inequalities $G_0(a)<0$ and $G_0(\mu)<0$, together
+with convexity, place all of $[a,\mu]$ in $D$.
 At each midpoint take the explicit upper support $T_i$ of $H$.
 The certificate supplies rational heights $h_0,\ldots,h_{192}$ with
 \[
@@ -113,9 +115,9 @@ We reassemble the inherited profile data of~\cite{ZBS} into a supporting
 family of $1469$ direct profiles, including five custom profiles,
 $947$ combined profiles, and $2716$ source lines.
 Their certificates cover every profile domain and every positive source
-ratio. The source witnesses have uniform reserve
+ratio. The source witnesses have uniform margin
 $1/(2\cdot10^{12})$; the selected source $(A_s,B_s)$ has the stronger
-reserve $10^{-9}$, using $81$ profile-pair runs and two baseline tails.
+margin $10^{-9}$, using $81$ profile-pair runs and two baseline tails.
 The baseline is Lu--Wang's uniform estimate~\cite[Lemma~B.1]{LW}.
 The family and coverage proofs are recorded in
 \href{\leanrepo/S7_ParameterChoice/Source/Joint/README.md}{the joint-family documentation};
@@ -137,7 +139,7 @@ The root data are
 \leanfile{S7_ParameterChoice/L4_Routes.lean\#L31}{L4_Routes.lean}}
 The old profiles embed unchanged into the enlarged family. Their
 proper-subhost implications remain valid with the additional induction
-hypotheses, and the five new pieces satisfy the same interface.
+hypotheses, and the five new pieces satisfy the required inequalities.
 The simultaneous induction of Section~\ref{sec:global-construction}
 therefore supplies the root assertion. At ratio $1$, it gives a
 constant $C\ge1$ such that every sufficiently large target $k$ and

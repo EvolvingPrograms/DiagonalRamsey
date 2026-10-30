@@ -16,7 +16,8 @@ works for all positive integers $k,\ell$ in
 \leanfile{S1_Definitions/L2_AdmissibleBounds.lean\#L20}{L2_AdmissibleBounds.lean}}
 A \emph{profile} $P=(p_P,I_P,L_P)$ retains a density hypothesis.
 Here $0<p_P<1$, $I_P\subset(0,\infty)$ is a compact interval, and
-$L_P$ is positive on $I_P$. Write $\rho=\ell/k$ for the target ratio.
+$L_P$ is positive on $I_P$. Write $\rho=\ell/k$ for the target ratio
+and $d_R(G)$ for the red edge density.
 The profile asserts, uniformly in $k,\ell$ and the graph $G$,
 \begin{equation}\label{eq:profile}
  d_R(G)\ge p_P,\quad \rho\in I_P,\quad
@@ -43,8 +44,10 @@ Set $a_\gamma=-\log\xi$, $b_\gamma=-\log y_0$ and
 $c_\gamma=-\log\nu$. These are positive. At this stage the terminal
 source is a proposed bound, to be proved together with the profiles.
 
-The finite-host closure theorem~\cite[Theorem~4.2]{ZBS} requires the
-source only on proper subsets of the current host: for every $a\ge1$,
+The proof of the finite-host closure theorem~\cite[Theorem~4.2 and
+Section~4.3]{ZBS} applies with Proposition~\ref{prop:local-alternative}
+in place of its local alternative. It requires the source only on
+proper subsets of the current host: for every $a\ge1$,
 a proper subset of size at least $C e^{A_\sigma a+B_\sigma\ell}$
 must contain a red $K_a$ or a blue $K_\ell$.
 Under this premise, there is $L_0$ depending only on the control such
@@ -61,12 +64,13 @@ red cross-density at least $p_\gamma$,
 \end{equation}
 \leannote{\texttt{finite\_host\_closure},
 \leanfile{S6_GlobalConstruction/L3_RouteComposition.lean\#L34}{L3_RouteComposition.lean}}
-The proof chooses the moment parameter once, seeds the potential at a
+The proof fixes the moment parameter and initializes the potential at a
 shift just below $p_\gamma$, and repeatedly applies maximal restriction
 and the local alternative. A successful test reduces a clique target.
 The case of many large blue neighbourhoods is handled by a blue book
-of logarithmic size. The strict gaps in $\xi,y_0,\nu$ absorb the seed,
-book, and rounding losses. The stopping rule is invoked only on proper
+of logarithmic size. The strict inequalities for $\xi,y_0,\nu$ ensure
+the required bounds despite the initial restriction, blue-book construction,
+and integer rounding. The stopping rule is invoked only on proper
 subhosts. Thus the proof of~\cite[Section~4.3]{ZBS} applies with our local
 alternative; the closure induction originates in~\cite[Lemma~A.1]{LW}.
 
@@ -96,8 +100,9 @@ On $[u_j,u_{j+1}]$, call a child $P_j$ whose domain contains that cell,
 with $L_j(\rho)<g(\rho)$ and $d_j>-\log(1-p_j)$.
 If a retained graph has density at least $p_j$, the child gives the
 desired clique. Otherwise a vertex has a blue neighbourhood of size
-at least $(1-p_j)(|Z|-1)$. The slope inequality pays for restricting
-to this neighbourhood and extending the blue clique by one vertex.
+at least $(1-p_j)(|Z|-1)$. Since $e^{-d_j}<1-p_j$, this is at least
+$e^{-d_j}|Z|$ for sufficiently large $|Z|$. The neighbourhood therefore
+satisfies the size bound for the blue target reduced by one.
 Bounded corrections at the knots account for integer targets.
 
 The route output is
@@ -109,8 +114,9 @@ The route output is
 \end{equation}
 \leannote{\texttt{RoutePiece.value},
 \leanfile{Support/Published/Definitions/Def_DiagRamsey_JointBank.lean\#L72}{Def_DiagRamsey_JointBank.lean}}
-The first term pays for entering the route; the second pays for closure
-at its terminal ratio $\theta$. A profile of density strictly greater
+The first term enforces the size condition at the start of the route;
+the second enforces the closure condition at its terminal ratio $\theta$.
+A profile of density strictly greater
 than $p_\gamma$ and height exceeding $V_\gamma$ by a fixed positive
 margin is therefore valid on its covered interval. The margin absorbs
 the initial restriction and the bounded knot corrections.
@@ -126,12 +132,16 @@ is resolved by induction on host order, as in~\cite[Theorem~5.7]{ZBS}.
 Take finite families of proposed positive source pairs and profiles.
 Call profiles obtained from leaves, retained routes, and proper-subhost
 complementary pairs \emph{direct}. Call those obtained from direct
-profiles by density transfer, colour exchange, and the prescribed
-ratio-monotonicity rules \emph{combined}. Each profile domain must be
-covered by valid pieces, with the required output margins.
+profiles by density transfer, complementary profile pairs, and monotonicity
+in the blue clique target \emph{combined}. The proper-subhost complementary
+pairs and target-monotonicity rules extend the list
+in~\cite[Definitions~5.4--5.5]{ZBS}; their precise hypotheses are in
+\leanfile{Support/Published/Definitions/Def_DiagRamsey_JointBank.lean\#L78}{Def_DiagRamsey_JointBank.lean}.
+Each profile domain must be covered by valid pieces, with the required
+output margins.
 
 Let $F(\rho)$ be the symmetric Lu--Wang baseline exponent, whose
-uniform source estimate permits arbitrarily small slack in
+uniform source estimate permits an arbitrarily small positive error proportional to
 $k+\ell$~\cite[Lemma~B.1]{LW}. For each proposed source $(A,B)$,
 choose $\epsilon>0$. At every $\rho>0$, require either a baseline
 witness or two profiles with $p_R+p_B\le1$, valid at $\rho$ and
