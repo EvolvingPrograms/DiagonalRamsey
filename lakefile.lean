@@ -6,7 +6,7 @@ package diagonalRamsey where
   weakLeanArgs := #["-j4"]
 
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4" @ "520045ab14e26149ee970e2e617ca04b09bde5d6"
+  "https://github.com/leanprover-community/mathlib4" @ "v4.35.0"
 
 lean_lib Proof where
   roots := #[`S1_Definitions, `S2_MaximalConfigurations, `S3_TwoCellReduction,

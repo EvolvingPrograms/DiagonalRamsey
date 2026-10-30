@@ -7,7 +7,12 @@
 - [Solution](Comparison/Solution.lean) proves that same statement from the
   main theorem, without importing the challenge.
 
-[Comparator configuration](comparator.json) pins the tools, statement hashes,
-and theorem name. Run `python3 Scripts/comparator.py` after building the proof
-on Linux. Comparator checks agreement with the independent statement and
-permits only `propext`, `Classical.choice`, and `Quot.sound`.
+[Comparator configuration](../comparator.json) specifies the modules, theorem
+name, and permitted axioms. [Statement hashes](specification-sha256.json) are
+checked by `python3 Scripts/check_sources.py`.
+
+Run `lake comparator` from the project root on Linux with `bubblewrap`
+installed. Lean 4.35 supplies Comparator, the exporter, and the kernel checker;
+no standalone Comparator, Landrun, Go build, or systemd wrapper is needed.
+Comparator checks agreement with the independent statement and permits only
+`propext`, `Classical.choice`, and `Quot.sound`. Keep its default sandbox enabled.

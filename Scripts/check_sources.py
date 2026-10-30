@@ -33,10 +33,19 @@ def main():
             raise RuntimeError('Unapproved proof syntax: '+str(path))
         if any(name.startswith('Comparison.') for name in parse_source(path)[1]):
             raise RuntimeError('Production imports Comparator specification')
-    policy=json.loads((ROOT/'Challenges/comparator.json').read_text())
-    for name,expected in policy['specification_sha256'].items():
+    hashes=json.loads((ROOT/'Challenges/specification-sha256.json').read_text())
+    for name,expected in hashes.items():
         if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=expected:
             raise RuntimeError('Changed specification: '+name)
+    config=json.loads((ROOT/'comparator.json').read_text())
+    expected_config={
+        'challenge_module': 'Comparison.Challenge',
+        'solution_module': 'Comparison.Solution',
+        'theorem_names': ['RamseySpecification.diagonal_bound'],
+        'permitted_axioms': ['propext', 'Classical.choice', 'Quot.sound'],
+    }
+    if config != expected_config:
+        raise RuntimeError('Unexpected Comparator policy')
     definitions=ROOT/'Challenges/Comparison/Definitions.lean'
     assert all(i.startswith('Mathlib.') for i in parse_source(definitions)[1])
     challenge=code_only((ROOT/'Challenges/Comparison/Challenge.lean').read_text())

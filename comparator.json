@@ -1,0 +1,12 @@
+{
+  "challenge_module": "Comparison.Challenge",
+  "solution_module": "Comparison.Solution",
+  "theorem_names": [
+    "RamseySpecification.diagonal_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ]
+}

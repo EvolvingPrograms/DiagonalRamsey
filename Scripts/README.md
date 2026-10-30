@@ -15,18 +15,29 @@ python3 Scripts/build_lean_parallel.py --jobs 0 S8_RamseyBound.L4_MainTheorem
 The scheduler distinguishes concurrent modules from Lean threads per module
 (four). Linux CI adds memory admission control and per-module memory limits.
 Logs and progress are saved under `.lake/build-progress/`;
-Comparator results are saved under `.verification/`.
+Comparator logs are saved under `.verification/` in CI.
 
-On Linux, `python3 Scripts/comparator.py` additionally checks the result against
-an [independent specification](../Challenges/Comparison/Challenge.lean) using
-pinned Lean Comparator, exporter and Landrun tools. Its one `sorry` belongs only
-to the challenge statement; production proof modules cannot import it.
+The project uses Lean and Mathlib 4.35.0. On Linux with `bubblewrap` installed,
+run `lake comparator` to check the result against an
+[independent specification](../Challenges/Comparison/Challenge.lean).
+Comparator and its exporter are bundled with the selected Lean toolchain;
+the [root configuration](../comparator.json) supplies the comparison policy.
+The one `sorry` belongs only to the challenge statement; production proof
+modules cannot import it.
 Only `propext`, `Classical.choice` and `Quot.sound` are permitted.
 
 The [Verify workflow](https://github.com/EvolvingPrograms/DiagonalRamsey/actions/workflows/verify.yml) performs the build
 and Comparator check. Its `fresh` option discards project build
 artifacts while retaining the trusted Mathlib dependency cache. Subsequent runs
-can restore this repository's own cache.
+can restore this repository's own cache for the same toolchain and dependency
+manifest. The migration requires rebuilding project artifacts from Lean 4.32.1.
+The built-in sandbox replaces Landrun and the previous systemd wrapper; do not
+use `--inadvisably-no-sandbox` for a verification result.
+CI installs `bubblewrap` with noninteractive `sudo apt-get` if it is missing,
+then checks that the unprivileged runner can create a network-isolated sandbox
+before starting the proof build. Provision the package beforehand if the runner
+does not permit package installation; namespace restrictions must also allow
+Bubblewrap to run.
 
 
 ## Certificate layout
