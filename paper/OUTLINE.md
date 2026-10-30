@@ -1,11 +1,11 @@
 # Reproducing and refining a diagonal Ramsey bound — short paper plan
 
-**Length: 5–6 pages total, including the abstract and references.**
+**Initial length aim: 5–6 pages total, including the abstract and references.**
 Use ordinary 11-point mathematical typesetting and one-inch margins.
 Meet the limit through the choice of content, not smaller type or tighter spacing.
-The user has allowed the draft to run over this initial length aim. Do not
-compress sections to fit a page allocation while drafting. Develop the complete
-arguments first; length is not the current editing priority.
+The user has allowed the draft to run over this initial length aim.
+The first draft is complete. Compress inherited arguments and auxiliary
+numerical details by citation while retaining the new mathematical arguments.
 
 Write and review one section at a time. The primary writer writes every section.
 Agents may check literature and citation coverage. Checkboxes track drafting and
@@ -113,7 +113,7 @@ the logarithm at the singular endpoint.
 **Source:** [S6](../S6_GlobalConstruction/README.md).
 
 - [x] Define admissible sources and density profiles with uniform constants.
-- [x] State the finite-host closure result and leaf/route output used here.
+- [x] Identify the closure result and state the leaf/route output used here.
   Explain which premise the improved local criterion supplies; cite the
   inherited closure and route proofs.
 - [x] Explain the simultaneous induction: raw profiles, closed profiles,
@@ -125,7 +125,7 @@ the logarithm at the singular endpoint.
 Explain the induction mechanism in the paper without repeating its inherited
 proof in full.
 
-## 5. The concrete bound
+## 5. Proof of the diagonal bound
 
 **Draft:** [05-concrete-bound.tex](sections/05-concrete-bound.tex).
 **Sources:** [S7](../S7_ParameterChoice/README.md), [S8](../S8_RamseyBound/README.md).
@@ -152,6 +152,16 @@ numerical threshold for the eventual theorem.
   error bounds, and row conditions; correct the sign convention for binary entropy.
 - [x] End each proof with its mathematical conclusion and proof square; put
   concluding Lean source notes after the proof environment.
+- [x] Obtain two parallel Sol medium reviews of the local arguments and global
+  construction, and vet their findings against the sources. Correct the shifted-red
+  citation to ZBS Section 3.3, equation (3), and state explicitly the extension
+  of the optimizer formula to the certificate's larger domain.
+- [x] Vet a second parallel review for mathematical clarity. Make the profile
+  height inequalities, control-dependent weight, integral domain and concavity
+  composition explicit; distinguish column cells from integration intervals.
+  Use “Maximizing the weighted mean” and “A clique bound at density 1/2” as
+  headings, state the joint construction and density bound as propositions,
+  and label the final argument as the proof of Theorem 1.1.
 - [ ] Every new assertion has a proof or a finite certificate whose soundness
   and domain coverage are justified.
 - [x] Every borrowed theorem, method, dataset, and formal library is credited;
@@ -166,25 +176,25 @@ numerical threshold for the eventual theorem.
 
 ### Compression review, 30 October 2026
 
-The first draft is complete. The following are proposed cuts for the next
-section-by-section pass; the language review has not made these structural cuts.
-Retain the proof of the complementary moment, preservation of the optimizer,
-the feasibility test, and the justification of the new envelope certificate.
+The compression pass reduces the PDF from 11 pages to 9 without changing
+type size or margins. It retains the proof of the complementary moment,
+preservation of the optimizer, the feasibility test, and the justification
+of the new envelope certificate.
 
-- [ ] Section 4: retain the source/profile definitions, route output and its
+- [x] Section 4: retain the source/profile definitions, route output and its
   hypotheses, and one paragraph on simultaneous induction. Cite ZBS Section 4.3
   for closure with our local alternative substituted, and Definition 5.4,
   Lemma 5.8 and Theorem 5.7 for the inherited construction. Omit the repeated
   blue-book, balanced-cut and rounding arguments. The published theorem's old
   local criterion is not literally the new criterion; state the substitution.
-- [ ] Section 5: replace the printed terminal-source fractions, auxiliary
+- [x] Section 5: replace the printed terminal-source fractions, auxiliary
   margins, profile/run counts and tiny root interval by links to our exact
   certificate. Keep the main control parameters, cutoff, negative integral,
   dense exponent and final base. These numerical data belong to this refinement,
   so cite our certificate rather than attributing them to the earlier paper.
-- [ ] Section 5: replace the displayed Taylor polynomial by the certified
+- [x] Section 5: replace the displayed Taylor polynomial by the certified
   inequality between the exponential and the final base, retaining its Lean link.
-- [ ] Sections 3.1 and 3.4: shorten the inherited density-gap calculation and
+- [x] Sections 3.1 and 3.4: shorten the inherited density-gap calculation and
   the concentration/drift preliminaries using ZBS Proposition 3.5, Steps 2--6.
   Preserve the positive cell-mass argument, uniform finite approximation,
   integration at zero and control of exceptional rows; those justify use of

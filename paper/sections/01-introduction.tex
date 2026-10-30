@@ -3,9 +3,8 @@
 
 We reproduce the weighted-potential method of Zhao, Booth-Clibborn and
 Schwahn~\cite{ZBS} and obtain a small improvement to their diagonal
-Ramsey bound. The principal contribution is the reproduction of their
-method; the refinement lowers the exponential base from $3.4986238$
-to $3.49135655$.
+Ramsey bound, lowering the exponential base from $3.4986238$ to
+$3.49135655$.
 
 Let $R(k,\ell)$ be the least $N$ such that every red--blue colouring of
 $K_N$ contains a red $K_k$ or a blue $K_\ell$.
@@ -29,16 +28,17 @@ construction of Zhao--Booth-Clibborn--Schwahn~\cite[Theorem~1.1]{ZBS}.
 Our refinement retains an additional consequence of maximality. A
 blue-neighbourhood restriction and its full complement satisfy two
 moment inequalities. Retaining the complementary inequality excludes
-some retained fractions, while preserving the previous optimizer at
-every fraction that remains feasible. We certify a negative integral envelope for
-this smaller feasible set and retune the source/profile construction.
+some retained fractions, while preserving the optimizer under the blue-moment
+constraint at every fraction that remains feasible. For this smaller feasible
+set, we certify an envelope with negative integral and choose new parameters
+in the source and profile construction.
 
-We reuse the potential, concentration, ordered drift, finite-host closure,
-and source/profile framework of~\cite[Sections~3--5]{ZBS}, together with
+We reuse the potential, concentration estimates, ordered-drift inequality,
+finite-host closure, and framework for source and profile bounds
+of~\cite[Sections~3--5]{ZBS}, together with
 their supporting data and the uniform source bound of
-Lu--Wang~\cite[Lemma~B.1]{LW}. A retuned construction yields a dense
-diagonal exponent $z=625145177/500000000$. Colour symmetry and the strict
-inequality $e^{z+10^{-9}}<3.49135655$ give Theorem~\ref{thm:main}.
+Lu--Wang~\cite[Lemma~B.1]{LW}. Applying the resulting bound to a colour
+of density at least $1/2$ gives Theorem~\ref{thm:main}.
 The finite certificate data and corresponding Lean proofs are in the
 \href{https://github.com/EvolvingPrograms/DiagonalRamsey}{accompanying repository}.
 We do not give a numerical starting threshold for $k$.
