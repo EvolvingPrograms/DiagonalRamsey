@@ -81,6 +81,7 @@ lemma closed_piece_ok (raw : Fin nR → BankProfile) (hraw : ∀ i, (raw i).Vali
       (redPairs G Finset.univ : ℝ))
     (hs : C * Real.exp (k * Q.L ((b : ℝ) / k)) ≤ ((Finset.univ : Finset V).card : ℝ)) :
     HasRedClique G Finset.univ k ∨ HasBlueClique G Finset.univ b := by
+  have _ := hraw
   have hkpos : (0 : ℝ) < k := by exact_mod_cast hk0
   have hbpos : (0 : ℝ) < b := by exact_mod_cast hb0
   have hC0 : 0 ≤ C := by linarith

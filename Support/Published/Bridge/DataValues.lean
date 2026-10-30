@@ -1,5 +1,9 @@
 module
 
+-- Kernel computation of decimal strings requires the representation bodies.
+import all Init.Data.Repr
+import all Init.Data.Int.Repr
+
 public import Support.LuWang.CurrentSourceData
 public import Support.Published.Definitions.Def_DiagRamsey_LuWangSource
 public import Support.Published.Bridge.KernelRfl

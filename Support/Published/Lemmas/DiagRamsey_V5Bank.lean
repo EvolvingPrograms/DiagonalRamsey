@@ -608,7 +608,7 @@ lemma RouteD.valid_of_check {ι : Type} {nCtl m : ℕ} (ctl : Fin nCtl → CtrlD
     have hc := hcells j (List.mem_range.mpr j.2)
     simp only [RouteD.cellCheck, Bool.and_eq_true, decide_eq_true_eq] at hc
     obtain ⟨⟨⟨⟨⟨⟨hlo, hhi'⟩, hz0⟩, hez⟩, hz1⟩, hbc⟩, hge⟩ := hc
-    simp only [RouteD.toPiece, hprof, ProfD.toBP, Fin.val_succ, Fin.val_castSucc]
+    simp only [RouteD.toPiece, hprof, ProfD.toBP]
     refine ⟨by exact_mod_cast hlo, by exact_mod_cast hhi', ?_, fun s h1 h2 => ?_⟩
     · have hz0' : (0 : ℝ) < (R.calls.getD (↑j) ⟨i0, 0, []⟩).z := by exact_mod_cast hz0
       have h1 := le_log_of_expLeB hz0 hez

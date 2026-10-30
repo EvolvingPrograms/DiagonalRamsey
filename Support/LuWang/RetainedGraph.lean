@@ -66,7 +66,7 @@ theorem exists_blue_subset_of_sparse {V : Type*} [Fintype V] [DecidableEq V]
   classical
   let f := finsetEmbedding X
   let H := G.comap f
-  letI : Nonempty (Fin X.card) := Fin.pos_iff_nonempty.mp hX.card_pos
+  let : Nonempty (Fin X.card) := Fin.pos_iff_nonempty.mp hX.card_pos
   obtain ⟨i, hi⟩ := exists_compl_degree_gt_of_redGraphDensity_lt H
     (q := 1 - q) (by simpa [H] using hd)
   let X' := (Hᶜ.neighborFinset i).map f

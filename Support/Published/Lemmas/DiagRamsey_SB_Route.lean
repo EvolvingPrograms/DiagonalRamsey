@@ -22,14 +22,14 @@ namespace DiagRamsey
 open Finset Classical
 
 /-- Relative validity under an abstract host premise `Pm` (`RelValid A B` is the case `Pm = Prem A B`). -/
-def RelValidP (Pm : ∀ (C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Prop) (p lo hi : ℝ) (L : ℝ → ℝ) : Prop :=
+def RelValidP (Pm : ∀ (_C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Prop) (p lo hi : ℝ) (L : ℝ → ℝ) : Prop :=
   ∃ D : ℝ, 1 ≤ D ∧ ∃ K : ℕ, ∀ C : ℝ, 1 ≤ C → ∀ (V : Type) [Fintype V] [DecidableEq V], Pm C V →
     ∀ (G : SimpleGraph V) (W : Finset V) (k : ℕ) (r : ℝ), K ≤ k → lo ≤ r → r ≤ hi →
       p * ((W.card : ℝ) * ((W.card : ℝ) - 1)) ≤ (redPairs G W : ℝ) →
       D * C * Real.exp (k * L r) ≤ (W.card : ℝ) → HasRedClique G W k ∨ HasBlueClique G W ⌊r * k⌋₊
 
 /-- Validity at integer pairs `(k, t)` on proper sub-hosts `W ≠ univ` (what a route needs of its children). -/
-def RelValidPr (Pm : ∀ (C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Prop) (p lo hi : ℝ) (L : ℝ → ℝ) : Prop :=
+def RelValidPr (Pm : ∀ (_C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Prop) (p lo hi : ℝ) (L : ℝ → ℝ) : Prop :=
   ∃ D : ℝ, 1 ≤ D ∧ ∃ K : ℕ, ∀ C : ℝ, 1 ≤ C → ∀ (V : Type) [Fintype V] [DecidableEq V], Pm C V →
     ∀ (G : SimpleGraph V) (W : Finset V) (k t : ℕ), W ≠ Finset.univ → K ≤ k → 0 < k → 0 < t →
       lo ≤ (t : ℝ) / k → (t : ℝ) / k ≤ hi →
@@ -38,7 +38,7 @@ def RelValidPr (Pm : ∀ (C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Prop)
 
 set_option maxHeartbeats 4000000 in
 theorem route_relValidP {m n : ℕ} {A B : Fin m → ℝ} (hA : ∀ i, 0 < A i) (hB : ∀ i, 0 < B i)
-    (Pm : ∀ (C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Prop)
+    (Pm : ∀ (_C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Prop)
     (hPm : ∀ (C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Pm C V → Prem A B C V)
     (R : RouteNode n m) (hγ : R.γ.Valid A B) (hpγ : R.γ.p < R.p) (hp1 : R.p < 1) (hM : 0 < R.M) (hθ : 0 < R.θ)
     (hmono : StrictMono R.u) (hg0 : 0 < R.g₀) (hε : 0 < R.ε)
@@ -346,7 +346,7 @@ theorem route_relValidP {m n : ℕ} {A B : Fin m → ℝ} (hA : ∀ i, 0 < A i) 
 theorem relValid_iff {m : ℕ} (A B : Fin m → ℝ) (p lo hi : ℝ) (L : ℝ → ℝ) :
     RelValid A B p lo hi L ↔ RelValidP (fun C V _ _ => Prem A B C V) p lo hi L := Iff.rfl
 
-theorem relValidPr_of_relValidP {Pm : ∀ (C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Prop} {p lo hi : ℝ}
+theorem relValidPr_of_relValidP {Pm : ∀ (_C : ℝ) (V : Type) [Fintype V] [DecidableEq V], Prop} {p lo hi : ℝ}
     {L : ℝ → ℝ} (h : RelValidP Pm p lo hi L) : RelValidPr Pm p lo hi L := by
   obtain ⟨D, hD, K, hK⟩ := h
   refine ⟨D, hD, K, fun C hC V _ _ hV G W k t _ hk hk0 _ h1 h2 h3 h4 => ?_⟩

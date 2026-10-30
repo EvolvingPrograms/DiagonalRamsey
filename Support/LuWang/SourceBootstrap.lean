@@ -61,9 +61,9 @@ theorem ramsey_threshold_bootstrap
       have hc : SourceCore K ρ k ell := ⟨hell, hle, hK, hr⟩
       obtain ⟨hell2, hmargin, hstep⟩ := hcore k ell hc
       have hNpos : 0 < N := by exact_mod_cast (hpos k ell hk hell).trans_le hN
-      letI : Nonempty (Fin N) := Fin.pos_iff_nonempty.mp hNpos
+      let : Nonempty (Fin N) := Fin.pos_iff_nonempty.mp hNpos
       intro G
-      letI : DecidableRel G.Adj := Classical.decRel _
+      let : DecidableRel G.Adj := Classical.decRel _
       have hprior : ProperHostBounds G T := by
         intro a b ha hb Z hproper hZ
         have hZlt : #Z < N := by
