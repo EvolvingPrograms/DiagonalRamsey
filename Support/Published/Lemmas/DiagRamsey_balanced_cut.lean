@@ -175,7 +175,7 @@ theorem density_balanced_cut {V : Type*} [Fintype V] [DecidableEq V] (G : Simple
       rw [hZmap] at hu hv
       obtain ⟨i, -, rfl⟩ := mem_map.mp hu
       obtain ⟨j, -, rfl⟩ := mem_map.mp hv
-      exact ⟨(i, j), ⟨fun h => huv (congrArg f h), hadj⟩, rfl, rfl⟩
+      exact ⟨(i, j), ⟨fun h => huv (congrArg f h), hadj⟩, rfl⟩
   have hRcard : (R.card : ℝ) = ((Z.offDiag.filter (fun e : V × V => G.Adj e.1 e.2)).card : ℝ) := by
     rw [← hRmap, card_map]
   have hR : ∀ e ∈ R, e.1 ≠ e.2 := by
@@ -207,7 +207,7 @@ theorem density_balanced_cut {V : Type*} [Fintype V] [DecidableEq V] (G : Simple
         Function.Embedding.coeFn_mk, Prod.mk.injEq]
       constructor
       · rintro ⟨⟨⟨i, hi, rfl⟩, ⟨j, hj, rfl⟩⟩, hadj⟩
-        exact ⟨(i, j), ⟨⟨hi, hj⟩, fun h => hj ((show i = j from h) ▸ hi), hadj⟩, rfl, rfl⟩
+        exact ⟨(i, j), ⟨⟨hi, hj⟩, fun h => hj ((show i = j from h) ▸ hi), hadj⟩, rfl⟩
       · rintro ⟨⟨i, j⟩, ⟨⟨hi, hj⟩, -, hadj⟩, rfl, rfl⟩
         exact ⟨⟨⟨i, hi, rfl⟩, ⟨j, hj, rfl⟩⟩, hadj⟩
     rw [hcr, card_map]; exact hX3

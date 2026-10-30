@@ -104,7 +104,7 @@ lemma choose_mul_pow_le {j m b : ℕ} (hb : 1 ≤ b) :
         Nat.descFactorial_eq_prod_range]
     have key : m.descFactorial b * (j - b) ^ b ≤ j.descFactorial b * m ^ b := by
       rw [← h1, ← h2]
-      apply Finset.prod_le_prod (fun _ _ => Nat.zero_le _)
+      apply Finset.prod_le_prod
       intro i hi
       rw [Finset.mem_range] at hi
       calc (m - i) * (j - b) ≤ m * (j - i) := Nat.mul_le_mul (Nat.sub_le m i) (by omega)

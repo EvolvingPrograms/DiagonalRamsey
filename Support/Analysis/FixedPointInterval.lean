@@ -594,7 +594,7 @@ theorem Contains.logError {I : Interval} {z : ℝ} (hz : I.Contains z)
       (FixedPointInterval.add (point scale)
         (FixedPointInterval.neg (FixedPointInterval.pow I 2))).Contains
         (1 - z ^ 2) := by
-    convert hone.add (Contains.pow hz 2).neg using 1; ring
+    convert hone.add (Contains.pow hz 2).neg using 1
   have hInv := Contains.inv hdenContains hden
   have hNum := hz.abs.pow (2 * n + 1)
   have h := Contains.mulNonneg hNum hInv hnum hinv
@@ -693,7 +693,7 @@ theorem contains_logError {I : Interval} {z : ℝ} (hz : I.Contains z)
   have hone : (point scale).Contains (1 : ℝ) := by
     simpa [value, scale] using Interval.contains_point scale
   have hdenContains : (add (point scale) (neg (pow I 2))).Contains (1 - z ^ 2) := by
-    convert hone.add (Interval.Contains.pow hz 2).neg using 1; ring
+    convert hone.add (Interval.Contains.pow hz 2).neg using 1
   have hInv := Interval.Contains.inv hdenContains hden
   have hNum := hz.abs.pow (2 * n + 1)
   have h := Interval.Contains.mulNonneg hNum hInv hnum hinv

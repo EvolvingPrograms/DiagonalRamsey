@@ -78,7 +78,7 @@ theorem uniformRamseyLogError_nonneg (F : ℝ → ℝ) (k : ℕ) :
             F ((ℓ : ℝ) / (k : ℝ)) * (k : ℝ))
       else 0)
     hzero
-  simpa using h
+  simpa only [Nat.lt_irrefl, if_false] using h
 
 theorem log_deficit_le_uniformRamseyLogError (F : ℝ → ℝ)
     {k ℓ : ℕ} (hℓ : 0 < ℓ) (hℓk : ℓ ≤ k) :
@@ -90,7 +90,7 @@ theorem log_deficit_le_uniformRamseyLogError (F : ℝ → ℝ)
     simp only [Finset.mem_range]
     omega
   exact (le_max_right 0 _).trans (by
-    simpa [hℓ] using
+    simpa only [if_pos hℓ] using
       (Finset.le_sup'
         (s := Finset.range (k + 1))
         (f := fun j =>
