@@ -1,5 +1,9 @@
-import Mathlib.Combinatorics.SimpleGraph.Basic
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Basic
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+
+@[expose] public section
 
 /-!
 Finite quantities of the nested moment potential (diagonal Ramsey project).

@@ -1,5 +1,9 @@
-import Support.LuWang.PiecewiseSourceRegularity
-import Support.LuWang.SupportDualityBasic
+module
+
+public import Support.LuWang.PiecewiseSourceRegularity
+public import Support.LuWang.SupportDualityBasic
+
+@[expose] public section
 
 set_option autoImplicit false
 

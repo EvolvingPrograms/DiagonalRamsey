@@ -1,5 +1,9 @@
-import Support.Published.Lemmas.DiagRamsey_PLCheck
-import Support.Controls.ProfileAssembly
+module
+
+public import Support.Published.Lemmas.DiagRamsey_PLCheck
+public import Support.Controls.ProfileAssembly
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.PLProfileBridge

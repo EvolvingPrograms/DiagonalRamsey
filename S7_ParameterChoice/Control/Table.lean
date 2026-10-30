@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Control.Cell
+module
+
+public import S7_ParameterChoice.Control.Cell
+
+@[expose] public section
 
 /-!
 # Proposed uniform control table

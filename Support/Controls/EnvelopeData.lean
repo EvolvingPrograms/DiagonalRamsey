@@ -1,4 +1,8 @@
-import Support.Controls.ControlCertificate
+module
+
+public import Support.Controls.ControlCertificate
+
+@[expose] public section
 
 /-!
 # Envelope tables from tangent equations
@@ -18,7 +22,7 @@ namespace RamseyAnalytic.EnvelopeData
 
 open RamseyAnalytic.ControlCertificate RamseyAnalytic.ControlGeometry
 
-private def degreeCellsFrom (μ lo : ℚ) : List Tangent → List Cell
+def degreeCellsFrom (μ lo : ℚ) : List Tangent → List Cell
   | [] => []
   | t :: ts =>
     let hi := match ts with
@@ -53,7 +57,7 @@ theorem degreeCells_matches (μ : ℚ) (ts : List Tangent) :
   apply List.any_eq_true.mpr
   exact ⟨t, ht, by simp only [hm, hc, and_self, decide_true]⟩
 
-private def integralCellsFrom (w cutoff lo : ℚ) : List Cell → List Cell
+def integralCellsFrom (w cutoff lo : ℚ) : List Cell → List Cell
   | [] => []
   | d :: ds =>
     let hi := min cutoff ((d.slope + w) / w)

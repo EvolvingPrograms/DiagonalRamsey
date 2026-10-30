@@ -1,7 +1,11 @@
-import Support.LuWang.RouteSyntax
-import Support.LuWang.CompactDepth
-import Support.LuWang.OrderIteration
-import Mathlib.Tactic
+module
+
+public import Support.LuWang.RouteSyntax
+public import Support.LuWang.CompactDepth
+public import Support.LuWang.OrderIteration
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! The actual real-valued operator of Section 5. Its competitors are source
 leaves and finite geometrical routes with strict oracle calls on closed cells.

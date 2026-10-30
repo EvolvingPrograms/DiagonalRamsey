@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Order.Fin.Basic
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Mathlib.Order.Fin.Basic
+
+@[expose] public section
 
 /-!
 # Piecewise-affine inequalities from finitely many points (P0.6 infrastructure)
@@ -66,7 +70,7 @@ lemma nonneg_of_breakpoints {n : ℕ} (bp : Fin (n + 1) → ℝ) (hmono : Strict
       have := ih (fun i => bp i.castSucc) (hmono.comp Fin.strictMono_castSucc)
         (fun i r h1 h2 => haff i.castSucc r h1 h2) (fun i => hpts _) (by simpa using h0) hr
       exact this
-    · push_neg at hr
+    · push Not at hr
       exact nonneg_segment (hmono (Fin.castSucc_lt_succ (i := Fin.last n))) hr.le hn
         (haff (Fin.last n) r hr.le hn) (hpts _) (hpts _)
 
@@ -181,9 +185,9 @@ lemma plEval_refl_affine {N n : ℕ} (x y : Fin (N + 1) → ℝ) (hx : StrictMon
       apply AffineBetween.smul
       split_ifs <;> (intro k t _ _; ring)
   have := haff 0 r (by simpa using h1) (by simpa using h2)
-  simp only [Fin.castSucc_zero, Fin.succ_zero_eq_one, Fin.isValue, if_pos, one_ne_zero, if_false] at this
+  simp only [Fin.castSucc_zero, Fin.succ_zero_eq_one, Fin.isValue, ite_eq_left, one_ne_zero, ite_false] at this
   simp only
   rw [hexp r h1 h2, hexp _ le_rfl hab.le, hexp _ hab.le le_rfl]
-  convert this using 2 <;> simp
+  convert this using 2
 
 end DiagRamsey.PL

@@ -1,4 +1,8 @@
-import Support.LuWang.SourceCertificateSound
+module
+
+public import Support.LuWang.SourceCertificateSound
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -43,7 +47,7 @@ theorem Cell.checked_support {c : Cell} (hc : c.check = true) (hb : c.branch ≠
   have hn := c.checked_nonempty hc
   simp only [Cell.check, Bool.and_eq_true] at hc
   have h := hc.1.1.2
-  simp only [if_neg hb, Bool.and_eq_true, decide_eq_true_eq] at h
+  simp only [ite_eq_right hb, Bool.and_eq_true, decide_eq_true_eq] at h
   rcases h with ⟨⟨⟨⟨hs, hl⟩, hu⟩, hrange⟩, hcover⟩
   have hs' := checkPositive_sound _ hdom hs
   have hl' := checkNonnegative_sound _ hdom hl
@@ -127,7 +131,7 @@ theorem Cell.sound_middle {c : Cell} (hc : c.check = true) (hb : c.branch = .mid
   have hpiece := c.checked_piece hc hp
   simp only [Cell.pieceCheck,Bool.and_eq_true] at hpiece
   have hsides := hpiece.2
-  simp only [hb,if_true,Bool.and_eq_true,decide_eq_true_eq] at hsides
+  simp only [hb,ite_true,Bool.and_eq_true,decide_eq_true_eq] at hsides
   have hpos : (0 : ℝ) < 1 := by norm_num
   obtain ⟨hF,hD⟩ := hold p hp 1
     ⟨by exact_mod_cast hsides.2.1,by exact_mod_cast hsides.2.2⟩ hpos

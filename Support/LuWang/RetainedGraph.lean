@@ -1,5 +1,9 @@
-import Support.LuWang.CandidateSource
-import Support.LuWang.RouteSyntax
+module
+
+public import Support.LuWang.CandidateSource
+public import Support.LuWang.RouteSyntax
+
+@[expose] public section
 
 set_option autoImplicit false
 

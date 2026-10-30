@@ -1,9 +1,13 @@
-import Mathlib.Analysis.Convex.Function
-import Mathlib.Data.Real.Basic
-import Mathlib.Analysis.Convex.SpecificFunctions.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Linarith
+module
+
+public import Mathlib.Analysis.Convex.Function
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Analysis.Convex.SpecificFunctions.Basic
+public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Linarith
+
+@[expose] public section
 
 /-!
 # 4.2 Convex averaging

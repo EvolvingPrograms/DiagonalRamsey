@@ -1,4 +1,8 @@
-import Support.LuWang.WeightedGrowth
+module
+
+public import Support.LuWang.WeightedGrowth
+
+@[expose] public section
 
 set_option autoImplicit false
 

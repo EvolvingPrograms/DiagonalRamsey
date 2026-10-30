@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Exact cancellation at the origin in the source criterion.
 The identities below hold for arbitrary polynomial values and derivatives;

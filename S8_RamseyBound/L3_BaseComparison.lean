@@ -1,5 +1,9 @@
-import S7_ParameterChoice.L1_Parameters
-import Mathlib.Analysis.Complex.Exponential
+module
+
+public import S7_ParameterChoice.L1_Parameters
+public import Mathlib.Analysis.Complex.Exponential
+
+@[expose] public section
 
 /-!
 # 8.3 The literal base comparison

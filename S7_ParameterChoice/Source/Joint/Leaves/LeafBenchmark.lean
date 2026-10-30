@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
-import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+public import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
+
+@[expose] public section
 
 /-! Largest grouped leaf run: unchanged terminal data from the original
 `rp1431_0` through `rp1431_82`; analytic control soundness remains explicit.

@@ -1,6 +1,10 @@
-import Support.Ramsey.Coloring
-import Mathlib.Data.Fintype.EquivFin
-import Mathlib.Order.Nat
+module
+
+public import Support.Ramsey.Coloring
+public import Mathlib.Data.Fintype.EquivFin
+public import Mathlib.Order.Nat
+
+@[expose] public section
 
 /-!
 # Two-color Ramsey numbers

@@ -1,6 +1,10 @@
-import Support.Analysis.IntervalNormalizedDerivative
-import Support.Analysis.ShapeCertificate
-import Support.Analysis.IntervalCover
+module
+
+public import Support.Analysis.IntervalNormalizedDerivative
+public import Support.Analysis.ShapeCertificate
+public import Support.Analysis.IntervalCover
+
+@[expose] public section
 
 /-! Rational domains prevent outward rounding from moving a witness knot.
 The dyadic enclosure is used only for bounds, while coverage and witness

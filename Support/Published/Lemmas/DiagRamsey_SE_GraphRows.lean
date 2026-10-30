@@ -1,11 +1,15 @@
-import Mathlib
-import Support.Published.Lemmas.DiagRamsey_SE_Graph
+module
+
+public import Mathlib
+public import Support.Published.Lemmas.DiagRamsey_SE_Graph
+
+@[expose] public section
 
 open Classical
 
 namespace DiagRamsey.SE
 
-variable {V : Type*} [Fintype V] [DecidableEq V]
+variable {V : Type*}
 
 lemma ub_scalar {μ w q r E : ℝ} (hq0 : 0 < q) (hμ0 : 0 < μ) (hμ1 : μ < 1) (hw : 0 < w)
     (hr : 2 * w ≤ r) (hE : E ≤ TF μ w q r - 1) : r * (q * E) ≤ w := by
@@ -98,13 +102,13 @@ lemma nu_split (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (i :
 
 lemma mr_nonneg (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (i : V) :
     0 ≤ mr G X Y c s i :=
-  Finset.sum_nonneg fun y hy => nu_nonneg G X Y c s hY hpos (Finset.mem_filter.1 hy).1
+  Finset.sum_nonneg fun _ hy => nu_nonneg G X Y c s hY hpos (Finset.mem_filter.1 hy).1
 
 lemma mr_le_one (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (i : V) :
     mr G X Y c s i ≤ 1 := by
   have := nu_split G X Y c s hY hpos i
   have : 0 ≤ ∑ y ∈ Y.filter (fun y => ¬ G.Adj i y), nuW G X Y c s y :=
-    Finset.sum_nonneg fun y hy => nu_nonneg G X Y c s hY hpos (Finset.mem_filter.1 hy).1
+    Finset.sum_nonneg fun _ hy => nu_nonneg G X Y c s hY hpos (Finset.mem_filter.1 hy).1
   linarith
 
 lemma blue_lt {μ w β : ℝ} (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (hμ0 : 0 < μ)

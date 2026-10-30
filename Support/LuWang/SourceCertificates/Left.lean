@@ -1,15 +1,19 @@
-import Support.LuWang.SourceCertificates.Left.Batch00
-import Support.LuWang.SourceCertificates.Left.Batch01
-import Support.LuWang.SourceCertificates.Left.Batch02
-import Support.LuWang.SourceCertificates.Left.Batch03
-import Support.LuWang.SourceCertificates.Left.Batch04
-import Support.LuWang.SourceCertificates.Left.Batch05
-import Support.LuWang.SourceCertificates.Left.Batch06
-import Support.LuWang.SourceCertificates.Left.Batch07
-import Support.LuWang.SourceCertificates.Left.Batch08
-import Support.LuWang.SourceCertificates.Left.Batch09
-import Support.LuWang.SourceCertificates.Left.Batch10
-import Support.LuWang.SourceCertificates.Left.Batch11
+module
+
+public import Support.LuWang.SourceCertificates.Left.Batch00
+public import Support.LuWang.SourceCertificates.Left.Batch01
+public import Support.LuWang.SourceCertificates.Left.Batch02
+public import Support.LuWang.SourceCertificates.Left.Batch03
+public import Support.LuWang.SourceCertificates.Left.Batch04
+public import Support.LuWang.SourceCertificates.Left.Batch05
+public import Support.LuWang.SourceCertificates.Left.Batch06
+public import Support.LuWang.SourceCertificates.Left.Batch07
+public import Support.LuWang.SourceCertificates.Left.Batch08
+public import Support.LuWang.SourceCertificates.Left.Batch09
+public import Support.LuWang.SourceCertificates.Left.Batch10
+public import Support.LuWang.SourceCertificates.Left.Batch11
+
+@[expose] public section
 
 /-! Assemble independently checked batches without changing the source-bank interface. -/
 

@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAligned
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAligned
+
+@[expose] public section
 
 set_option autoImplicit false
 

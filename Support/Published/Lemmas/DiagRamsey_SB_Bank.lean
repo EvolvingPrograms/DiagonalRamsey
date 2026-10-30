@@ -1,6 +1,10 @@
-import Support.Published.Lemmas.DiagRamsey_SB_Route
-import Support.Published.Lemmas.DiagRamsey_closure_basic
-import Support.Published.Definitions.Def_DiagRamsey_LuWangSource
+module
+
+public import Support.Published.Lemmas.DiagRamsey_SB_Route
+public import Support.Published.Lemmas.DiagRamsey_closure_basic
+public import Support.Published.Definitions.Def_DiagRamsey_LuWangSource
+
+@[expose] public section
 
 /-!
 # Source banks: every node is relatively valid; helpers for the host-order induction

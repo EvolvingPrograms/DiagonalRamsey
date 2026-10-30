@@ -1,6 +1,10 @@
-import Support.LuWang.CurrentSourceData
-import Support.Published.Definitions.Def_DiagRamsey_LuWangSource
-import Support.Published.Bridge.KernelRfl
+module
+
+public import Support.LuWang.CurrentSourceData
+public import Support.Published.Definitions.Def_DiagRamsey_LuWangSource
+public import Support.Published.Bridge.KernelRfl
+
+@[expose] public section
 
 set_option maxRecDepth 100000
 

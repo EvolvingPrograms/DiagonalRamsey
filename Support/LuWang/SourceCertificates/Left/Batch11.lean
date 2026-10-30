@@ -1,7 +1,11 @@
-import Support.LuWang.CurrentSourceMembership
-import Support.LuWang.SourceCertificateLink
-import Support.LuWang.CurrentSourceData
-import Support.LuWang.SourceCertificateAssembly
+module
+
+public import Support.LuWang.CurrentSourceMembership
+public import Support.LuWang.SourceCertificateLink
+public import Support.LuWang.CurrentSourceData
+public import Support.LuWang.SourceCertificateAssembly
+
+@[expose] public section
 
 /-! Independent left-certificate batch: original chunks 0276–0287. -/
 

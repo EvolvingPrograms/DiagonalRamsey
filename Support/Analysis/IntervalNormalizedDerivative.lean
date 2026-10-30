@@ -1,5 +1,9 @@
-import Support.Analysis.IntervalDerivative
-import Support.Analysis.OriginDerivatives
+module
+
+public import Support.Analysis.IntervalDerivative
+public import Support.Analysis.OriginDerivatives
+
+@[expose] public section
 
 /-! The normalized nodes also admit exact differentiation away from zero.
 The finite derivative-domain check explicitly rejects a cell containing zero

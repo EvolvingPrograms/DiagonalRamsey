@@ -1,5 +1,9 @@
-import Support.Controls.EnvelopeData
-import Mathlib.Order.Monotone.Basic
+module
+
+public import Support.Controls.EnvelopeData
+public import Mathlib.Order.Monotone.Basic
+
+@[expose] public section
 
 /-! Local geometry for an ordered concave polygon. Adjacent slope and continuity
 checks imply global support by induction. The certificate bank uses this law

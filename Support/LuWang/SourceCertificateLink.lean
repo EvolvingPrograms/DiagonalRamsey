@@ -1,5 +1,9 @@
-import Support.LuWang.SourceCertificateComplete
-import Support.LuWang.SourceCriterion
+module
+
+public import Support.LuWang.SourceCertificateComplete
+public import Support.LuWang.SourceCriterion
+
+@[expose] public section
 
 set_option autoImplicit false
 

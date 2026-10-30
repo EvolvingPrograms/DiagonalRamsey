@@ -1,7 +1,11 @@
-import Support.LuWang.WeightedSlack
-import Support.LuWang.WeightedFinite
-import Support.LuWang.WeightedLocalTest
-import Support.LuWang.DensitySchedule
+module
+
+public import Support.LuWang.WeightedSlack
+public import Support.LuWang.WeightedFinite
+public import Support.LuWang.WeightedLocalTest
+public import Support.LuWang.DensitySchedule
+
+@[expose] public section
 
 /-! A graph-independent auxiliary growth rate. We use the already verified
 logarithmic spine schedule with a smaller growth rate; the precise spine

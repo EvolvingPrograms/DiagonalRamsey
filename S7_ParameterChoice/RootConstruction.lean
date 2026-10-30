@@ -1,5 +1,9 @@
-import S7_ParameterChoice.L4_Routes
-import S7_ParameterChoice.RootExtension
+module
+
+public import S7_ParameterChoice.L4_Routes
+public import S7_ParameterChoice.RootExtension
+
+@[expose] public section
 
 /-! Joint host-order induction for the inherited family and the five exact new
 raw profiles. Inherited proper-host pieces and the actual baseline remain

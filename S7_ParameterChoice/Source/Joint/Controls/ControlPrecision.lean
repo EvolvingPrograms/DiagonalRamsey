@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
+module
+
+public import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
+
+@[expose] public section
 
 /-! Native computation selects a data literal only. Every numerical assertion
 about the resulting data is subsequently checked by the kernel. -/

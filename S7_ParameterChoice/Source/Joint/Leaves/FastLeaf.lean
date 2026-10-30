@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Transfers.FastClosed
-import S7_ParameterChoice.Source.Joint.Assembly.Recipes
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.FastClosed
+public import S7_ParameterChoice.Source.Joint.Assembly.Recipes
+
+@[expose] public section
 
 /-! Narrow, attributed reuse of the terminal and leaf checker in
 `Lemmas.DiagRamsey_V5Fast`, by turibius-of-mogrovejo. A terminal check is

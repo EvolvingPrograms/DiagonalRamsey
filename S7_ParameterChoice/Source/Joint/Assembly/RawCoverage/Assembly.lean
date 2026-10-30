@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows
+module
+
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

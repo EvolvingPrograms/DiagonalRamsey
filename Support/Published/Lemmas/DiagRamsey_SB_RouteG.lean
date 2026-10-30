@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Support.Published.Definitions.Def_DiagRamsey_SourceBank
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Support.Published.Definitions.Def_DiagRamsey_SourceBank
+
+@[expose] public section
 
 /-!
 # Source banks: the route profile `g` and its discrete height
@@ -68,7 +72,7 @@ lemma jump_of_le (hmono : StrictMono R.u) {s : ℝ} (hs : s ≤ R.θ) : R.jump s
   apply Finset.sum_eq_zero
   intro j _
   have h1 : R.θ ≤ R.u j.castSucc := hmono.monotone (Fin.zero_le _)
-  rw [if_neg (by linarith)]
+  rw [ite_eq_right (by linarith)]
 
 lemma jump_mono_term (j : Fin R.M) {s t : ℝ} (h : s ≤ t) (hd : 0 < R.d j) :
     (if R.u j.castSucc < s then R.d j else 0) ≤ (if R.u j.castSucc < t then R.d j else 0) := by
@@ -101,9 +105,9 @@ lemma step (hd : ∀ j, 0 < R.d j) (j : Fin R.M) {s₀ s₁ κ : ℝ} (hκ : 0 <
       (f := fun i => (if R.u i.castSucc < s₁ then R.d i else 0) - (if R.u i.castSucc < s₀ then R.d i else 0))
       (fun i _ => by have := R.jump_mono_term i h01 (hd i); linarith) (Finset.mem_univ j)
     simpa using hle
-  rw [if_pos hj1] at hjmp
+  rw [ite_eq_left hj1] at hjmp
   by_cases h0 : R.u j.castSucc < s₀
-  · rw [if_pos h0] at hjmp
+  · rw [ite_eq_left h0] at hjmp
     have hc : R.clamp j s₁ - R.clamp j s₀ = 1 / κ := by
       unfold clamp
       rw [min_eq_left hj2, min_eq_left (h01.trans hj2), max_eq_right (by linarith),
@@ -112,7 +116,7 @@ lemma step (hd : ∀ j, 0 < R.d j) (j : Fin R.M) {s₀ s₁ κ : ℝ} (hκ : 0 <
     rw [hc] at hg
     have : κ * (R.d j * (1 / κ)) = R.d j := by field_simp
     nlinarith
-  · rw [if_neg h0] at hjmp
+  · rw [ite_eq_right h0] at hjmp
     have hc : 0 ≤ R.clamp j s₁ - R.clamp j s₀ := by linarith [R.clamp_mono j h01]
     have := mul_nonneg (hd j).le hc
     nlinarith
@@ -120,6 +124,7 @@ lemma step (hd : ∀ j, 0 < R.d j) (j : Fin R.M) {s₀ s₁ κ : ℝ} (hκ : 0 <
 /-- Every `s ∈ (θ, ω]` lies in a cell. -/
 lemma exists_cell (hmono : StrictMono R.u) {s : ℝ} (h1 : R.θ < s) (h2 : s ≤ R.ω) :
     ∃ j : Fin R.M, R.u j.castSucc < s ∧ s ≤ R.u j.succ := by
+  have _ := hmono
   -- the least knot index `i` with `s ≤ u i`
   have hex : ∃ i : ℕ, ∃ hi : i < R.M + 1, s ≤ R.u ⟨i, hi⟩ := ⟨R.M, Nat.lt_succ_self _, h2⟩
   classical
@@ -134,7 +139,7 @@ lemma exists_cell (hmono : StrictMono R.u) {s : ℝ} (h1 : R.θ < s) (h2 : s ≤
   have hjM : j < R.M := by omega
   refine ⟨⟨j, hjM⟩, ?_, ?_⟩
   · by_contra hc
-    push_neg at hc
+    push Not at hc
     have := Nat.find_min hex (show j < i by omega)
     exact this ⟨by omega, by simpa [Fin.castSucc] using hc⟩
   · have : (⟨j, hjM⟩ : Fin R.M).succ = ⟨i, hi⟩ := by ext; simp [hj]

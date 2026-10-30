@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Support.Published.Definitions.Def_DiagRamsey_Cert
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Support.Published.Definitions.Def_DiagRamsey_Cert
+
+@[expose] public section
 
 /-!
 # Source banks with retained routes (data)

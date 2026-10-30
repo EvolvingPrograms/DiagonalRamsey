@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Routes.RoutePrefixAdapter
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.RoutePrefixAdapter
+
+@[expose] public section
 
 /-! Sequential list checks and their indexed interpretation. -/
 set_option autoImplicit false

@@ -1,5 +1,9 @@
-import Support.Controls.ChildComparison
-import Support.Published.Lemmas.DiagRamsey_SB_Leaf
+module
+
+public import Support.Controls.ChildComparison
+public import Support.Published.Lemmas.DiagRamsey_SB_Leaf
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.ProfileAssembly

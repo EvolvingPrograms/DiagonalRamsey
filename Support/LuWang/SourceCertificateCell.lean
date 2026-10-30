@@ -1,5 +1,9 @@
-import Support.LuWang.SourceCertificateExpr
-import Support.Analysis.SlackExpr
+module
+
+public import Support.LuWang.SourceCertificateExpr
+public import Support.Analysis.SlackExpr
+
+@[expose] public section
 
 /-! Finite, explicit witnesses. A successful Boolean check gives inequalities
 on every real point of a closed cell, via ExpressionCertificate. The source

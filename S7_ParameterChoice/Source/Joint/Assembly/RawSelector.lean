@@ -1,7 +1,11 @@
-import S7_ParameterChoice.Source.Joint.Leaves.LeafAssembly
-import S7_ParameterChoice.Source.Joint.Routes.Cached.Assembly
-import S7_ParameterChoice.Source.Joint.Assembly.CustomRecipes
-import S7_ParameterChoice.Source.Joint.Routes.Inherited.InheritedRouteRows
+module
+
+public import S7_ParameterChoice.Source.Joint.Leaves.LeafAssembly
+public import S7_ParameterChoice.Source.Joint.Routes.Cached.Assembly
+public import S7_ParameterChoice.Source.Joint.Assembly.CustomRecipes
+public import S7_ParameterChoice.Source.Joint.Routes.Inherited.InheritedRouteRows
+
+@[expose] public section
 
 /-! Finite proper-host runs for the whole original raw family. Numerical
 certificates and actual controls are inputs; the partition is checked at the

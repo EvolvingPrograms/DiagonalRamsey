@@ -1,4 +1,8 @@
-import Support.LuWang.ConditionalOperations
+module
+
+public import Support.LuWang.ConditionalOperations
+
+@[expose] public section
 
 set_option autoImplicit false
 

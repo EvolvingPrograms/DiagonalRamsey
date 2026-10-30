@@ -1,6 +1,10 @@
-import Support.LuWang.RouteSyntax
-import Mathlib.Order.Monotone.Union
-import Mathlib.Tactic
+module
+
+public import Support.LuWang.RouteSyntax
+public import Mathlib.Order.Monotone.Union
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 

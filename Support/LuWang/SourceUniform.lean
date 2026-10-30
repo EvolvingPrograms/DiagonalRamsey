@@ -1,5 +1,9 @@
-import Support.LuWang.SourceControls
-import Support.LuWang.CandidateSourceDensity
+module
+
+public import Support.LuWang.SourceControls
+public import Support.LuWang.CandidateSourceDensity
+
+@[expose] public section
 
 /-! A finite cover selects one positive density margin and one clique-size
 threshold before the prefactor and host. The stopping assumption is obtained

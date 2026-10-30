@@ -1,4 +1,8 @@
-import Mathlib.Combinatorics.SimpleGraph.Clique
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Clique
+
+@[expose] public section
 
 /-!
 Basic definitions for the diagonal Ramsey project.

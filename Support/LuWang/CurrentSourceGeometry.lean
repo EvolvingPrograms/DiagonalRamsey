@@ -1,5 +1,9 @@
-import Support.LuWang.CurrentSourceGeometryChecked
-import Support.LuWang.PiecewiseSourceShape
+module
+
+public import Support.LuWang.CurrentSourceGeometryChecked
+public import Support.LuWang.PiecewiseSourceShape
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

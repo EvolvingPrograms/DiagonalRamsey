@@ -1,5 +1,9 @@
-import Support.Analysis.OriginFunctions
-import Support.Analysis.Descent
+module
+
+public import Support.Analysis.OriginFunctions
+public import Support.Analysis.Descent
+
+@[expose] public section
 
 /-!
 # Exact cancellation of the logarithms at the origin

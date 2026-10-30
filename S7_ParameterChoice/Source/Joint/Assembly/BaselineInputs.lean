@@ -1,6 +1,10 @@
-import S6_GlobalConstruction.L2_JointInduction
-import S7_ParameterChoice.Source.Joint.Assembly.ClosedCoverage
-import Support.Published.Bridge.Source
+module
+
+public import S6_GlobalConstruction.L2_JointInduction
+public import S7_ParameterChoice.Source.Joint.Assembly.ClosedCoverage
+public import Support.Published.Bridge.Source
+
+@[expose] public section
 
 /-! The actual Lu–Wang baseline and the complete raw-piece family are the
 remaining inputs. All geometry, closed recipes, source covers, and the eight

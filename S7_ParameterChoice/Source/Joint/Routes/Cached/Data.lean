@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
-import S7_ParameterChoice.Source.Joint.Routes.RouteFastAdapter
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+public import S7_ParameterChoice.Source.Joint.Routes.RouteFastAdapter
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

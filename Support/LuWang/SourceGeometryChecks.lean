@@ -1,4 +1,8 @@
-import Support.LuWang.CurrentSourceGeometryData
+module
+
+public import Support.LuWang.CurrentSourceGeometryData
+
+@[expose] public section
 
 section
 section

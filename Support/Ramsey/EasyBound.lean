@@ -1,7 +1,11 @@
-import Support.Ramsey.Candidate
-import Mathlib.Algebra.Order.Floor.Semiring
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Tactic
+module
+
+public import Support.Ramsey.Candidate
+public import Mathlib.Algebra.Order.Floor.Semiring
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # The elementary Ramsey bound
@@ -996,7 +1000,7 @@ private theorem ramseyBound_easy_aux {p : ℝ}
         have hqpos : 0 < 1 - p := sub_pos.mpr hp₁
         have hqOne : 1 - p < 1 := by linarith
         have haqOne : a * (1 - p) < 1 :=
-          mul_lt_one_of_nonneg_of_lt_one_right haOne.le hqpos.le hqOne
+          (mul_le_mul_of_nonneg_right haOne.le hqpos.le).trans_lt (by simpa using hqOne)
         have hCeq : C = a * (1 - p) * B := by
           dsimp [C, a, s, B]
           simpa [Nat.sub_add_cancel hℓ] using

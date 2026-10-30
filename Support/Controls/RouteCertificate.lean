@@ -1,7 +1,11 @@
-import Support.Controls.StoredRouteHeights
-import Support.Controls.ProfileAssembly
-import Support.Controls.RetainedControl
-import Support.Published.Lemmas.DiagRamsey_SB_Route
+module
+
+public import Support.Controls.StoredRouteHeights
+public import Support.Controls.ProfileAssembly
+public import Support.Controls.RetainedControl
+public import Support.Published.Lemmas.DiagRamsey_SB_Route
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.RouteCertificate

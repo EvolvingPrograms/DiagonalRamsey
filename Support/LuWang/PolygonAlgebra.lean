@@ -1,6 +1,10 @@
-import Support.LuWang.RouteAlgebra
-import Mathlib.Analysis.Convex.Jensen
-import Mathlib.Tactic
+module
+
+public import Support.LuWang.RouteAlgebra
+public import Mathlib.Analysis.Convex.Jensen
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Reduction from polygon knots to all endpoint ratios. -/
 

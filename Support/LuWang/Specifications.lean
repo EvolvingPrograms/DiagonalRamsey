@@ -1,5 +1,9 @@
-import Support.Ramsey.Descent
-import Mathlib.Analysis.Convex.Function
+module
+
+public import Support.Ramsey.Descent
+public import Mathlib.Analysis.Convex.Function
+
+@[expose] public section
 
 /-! Literal target predicates for the current manuscript.
 

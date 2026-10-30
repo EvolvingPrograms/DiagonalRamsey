@@ -1,18 +1,22 @@
-import S7_ParameterChoice.Source.Joint.Controls.ControlHardTransport
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight4_1
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight1_8
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight1_4
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight3_8
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight9_20
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight1_2
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight11_20
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight3_5
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight7_10
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight4_5
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight1_1
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight3_2
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight2_1
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControlsCached
+module
+
+public import S7_ParameterChoice.Source.Joint.Controls.ControlHardTransport
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight4_1
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight1_8
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight1_4
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight3_8
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight9_20
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight1_2
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight11_20
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight3_5
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight7_10
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight4_5
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight1_1
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight3_2
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.Certificates.Weight2_1
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControlsCached
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

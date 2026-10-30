@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Exact algebra in Section 6.1.  Here `bA` denotes the source intercept
 at a fixed positive slope A. All domain and strictness premises are explicit. -/

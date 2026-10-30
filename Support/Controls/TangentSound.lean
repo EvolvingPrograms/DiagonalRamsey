@@ -1,5 +1,9 @@
-import Support.Controls.TangentExpressions
-import Support.Controls.Foundations
+module
+
+public import Support.Controls.TangentExpressions
+public import Support.Controls.Foundations
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.TangentExpressions

@@ -1,7 +1,11 @@
-import Support.Ramsey.Candidate
-import Support.Ramsey.Analysis.Binomial
-import Mathlib.Combinatorics.Enumerative.DoubleCounting
-import Mathlib.Tactic
+module
+
+public import Support.Ramsey.Candidate
+public import Support.Ramsey.Analysis.Binomial
+public import Mathlib.Combinatorics.Enumerative.DoubleCounting
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Blue books

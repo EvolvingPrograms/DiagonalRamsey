@@ -1,5 +1,9 @@
-import S5_LocalAlternative.L1_FiniteApproximation
-import Support.Published.Lemmas.DiagRamsey_SE_Assembly
+module
+
+public import S5_LocalAlternative.L1_FiniteApproximation
+public import Support.Published.Lemmas.DiagRamsey_SE_Assembly
+
+@[expose] public section
 
 /-!
 # 5.2 The ordered envelope
@@ -133,11 +137,11 @@ theorem ordered_envelope_contradiction {p μ w β x : ℝ}
     have hbase : 0 ≤ ε / N + w * ε * ΔJ k := by positivity
     by_cases hkG : k ∈ Gd
     · have hkS : k ∉ S := fun h => (Finset.mem_sdiff.mp h).2 hkG
-      rw [if_neg hkS, add_zero]
+      rw [ite_eq_right hkS, add_zero]
       obtain ⟨q', hq', hnear, hobj⟩ := hgood k hkG
       exact cost_vs_near hN' hw.le hnear hLJ (hlow q' hq') hobj
     · have hkS : k ∈ S := Finset.mem_sdiff.mpr ⟨hk, hkG⟩
-      rw [if_pos hkS]
+      rw [ite_eq_left hkS]
       have h := cost_vs_q0 hN' hw.le (hq k hk') hq0b (le_refl C0)
         hLJ (hlow q0 hq0) (hupper k hk')
       linarith

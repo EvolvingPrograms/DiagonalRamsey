@@ -1,5 +1,9 @@
-import Mathlib.Algebra.Polynomial.Eval.Defs
-import Mathlib.Tactic
+module
+
+public import Mathlib.Algebra.Polynomial.Eval.Defs
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Exact literals from certificate/data/profiles.json.
 SHA256: a2f1f6076065ad560b3253dae57193669a098c95fe65b9b5296f1413f8bc352e

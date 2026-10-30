@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Foundations.Geometry
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.Geometry
+
+@[expose] public section
 
 /-!
 # Arithmetic profile data

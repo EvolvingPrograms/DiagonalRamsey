@@ -1,8 +1,12 @@
+module
+
 -- Generic laws used by all sharp-control tangent certificates.
-import Mathlib.Analysis.Convex.Deriv
-import Mathlib.Analysis.SpecialFunctions.ExpDeriv
-import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
-import Mathlib.Tactic
+public import Mathlib.Analysis.Convex.Deriv
+public import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+public import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

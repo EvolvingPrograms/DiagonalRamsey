@@ -1,5 +1,9 @@
-import Support.LuWang.Specifications
-import Mathlib.Tactic
+module
+
+public import Support.LuWang.Specifications
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 

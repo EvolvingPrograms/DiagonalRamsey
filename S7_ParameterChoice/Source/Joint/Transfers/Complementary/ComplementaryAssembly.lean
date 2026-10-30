@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Complementary.ComplementaryChecks
-import S7_ParameterChoice.Source.Joint.Transfers.Complementary.Checks
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Complementary.ComplementaryChecks
+public import S7_ParameterChoice.Source.Joint.Transfers.Complementary.Checks
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

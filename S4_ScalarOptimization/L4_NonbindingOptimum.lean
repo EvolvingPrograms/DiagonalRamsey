@@ -1,5 +1,9 @@
-import S4_ScalarOptimization.L1_FeasiblePairs
-import S4_ScalarOptimization.L2_ConvexAveraging
+module
+
+public import S4_ScalarOptimization.L1_FeasiblePairs
+public import S4_ScalarOptimization.L2_ConvexAveraging
+
+@[expose] public section
 
 /-!
 # 4.4 The nonbinding optimum

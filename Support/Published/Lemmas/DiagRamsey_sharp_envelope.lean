@@ -1,9 +1,13 @@
-import Mathlib
-import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
-import Support.Published.Definitions.Def_DiagRamsey_Cert
-import Support.Published.Lemmas.DiagRamsey_SE_Assembly
-import Support.Published.Lemmas.DiagRamsey_SE_Drift
-import Support.Published.Lemmas.DiagRamsey_SE_Conc
+module
+
+public import Mathlib
+public import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+public import Support.Published.Definitions.Def_DiagRamsey_Cert
+public import Support.Published.Lemmas.DiagRamsey_SE_Assembly
+public import Support.Published.Lemmas.DiagRamsey_SE_Drift
+public import Support.Published.Lemmas.DiagRamsey_SE_Conc
+
+@[expose] public section
 
 /-! Proof of the positive-weight sharp envelope (`positive_weight_sharp_envelope_proof`), from the
 real-variable assembly `SE.assembly` and the finite graph-side lemmas (`SE.drift`, `SE.row_RB`,
@@ -32,6 +36,7 @@ theorem positive_weight_sharp_envelope_proof (p μ w β x : ℝ)
             graphFrac B X i ≤ μ + τ ∧
             SharpRedFailure G B X Y c w β (β * r) x i) →
           False := by
+  have _ := hxμ
   obtain ⟨δ', hδ', hδp, hμδ, φ0, hφ0, R1, hasm⟩ :=
     SE.assembly hp0 hp1 hμ0 hμ1 hw hβ0 hβ1 hx0 hxp hF hcert
   obtain ⟨t, ht⟩ : ∃ t : ℝ, t = δ' / 8 := ⟨_, rfl⟩
@@ -163,17 +168,14 @@ theorem positive_weight_sharp_envelope_proof (p μ w β x : ℝ)
     (fun k => SE.mr G X Y c (β * r) (idx k)) (fun k => rowDensity G (idx k) Y) Gd
     (by rw [hGd]; exact Finset.filter_subset _ _) hcount ?_ ?_ ?_ ?_
   · intro k _
-    beta_reduce
     exact ⟨by unfold graphFrac graphNbhd; exact SE.frac_nonneg X _,
       by unfold graphFrac graphNbhd; exact SE.frac_le_one X _⟩
-  · beta_reduce
-    have e1 := hsumF (fun i => graphFrac B X i * (SE.Vr G X Y c (β * r) i - 1))
+  · have e1 := hsumF (fun i => graphFrac B X i * (SE.Vr G X Y c (β * r) i - 1))
     have e2 := hsumF (fun i => graphFrac B X i * SE.Er G B X Y c (β * r) i)
     beta_reduce at e1 e2
     have hst := SE.stationarity G B X Y c (β * r) hY hpos
     rw [← e2, hst, e1]; exact hdrift
   · intro k hk
-    beta_reduce
     have hi := hmem k hk
     rcases (show 0 ≤ graphFrac B X (idx k) by
       unfold graphFrac graphNbhd; exact SE.frac_nonneg X _).eq_or_lt with h0 | h0
@@ -181,7 +183,6 @@ theorem positive_weight_sharp_envelope_proof (p μ w β x : ℝ)
     · exact SE.ub_scalar h0 hμ0 hμ1 hw h2wr
         (SE.row_E_le G B X Y c hY hpos hμ0 hβ0 hr0 hs1 (idx k) h0 (hblue _ hi h0))
   · intro k hk
-    beta_reduce
     rw [hGd, Finset.mem_filter, Finset.mem_range] at hk
     obtain ⟨hkN, hkG⟩ := hk
     rw [hGood, Finset.mem_filter] at hkG

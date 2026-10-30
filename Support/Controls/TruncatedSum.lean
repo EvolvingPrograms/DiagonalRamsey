@@ -1,5 +1,9 @@
-import Support.Controls.TangentSound
-import Support.Controls.ControlGeometry
+module
+
+public import Support.Controls.TangentSound
+public import Support.Controls.ControlGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

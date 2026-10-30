@@ -1,4 +1,8 @@
-import Support.LuWang.WeightedProfile
+module
+
+public import Support.LuWang.WeightedProfile
+
+@[expose] public section
 
 /-! A simultaneous strict parameter choice before the host, its prefactor,
 and the changing clique targets are introduced. -/

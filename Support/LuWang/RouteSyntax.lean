@@ -1,6 +1,10 @@
-import Support.LuWang.Specifications
-import Mathlib.Topology.Semicontinuity.Basic
-import Mathlib.Tactic
+module
+
+public import Support.LuWang.Specifications
+public import Mathlib.Topology.Semicontinuity.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Finite, closed-call route data used by both graph soundness and closure.
 All functions below are real-valued; the domain of the operator is the actual

@@ -1,7 +1,11 @@
-import S7_ParameterChoice.Source.HullCover
-import S7_ParameterChoice.Source.Cells
-import Support.Controls.Candidate600Prefix
-import Support.Controls.Candidate6330Prefix
+module
+
+public import S7_ParameterChoice.Source.HullCover
+public import S7_ParameterChoice.Source.Cells
+public import Support.Controls.Candidate600Prefix
+public import Support.Controls.Candidate6330Prefix
+
+@[expose] public section
 
 set_option autoImplicit false
 

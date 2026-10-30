@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.HullTangent
-import S7_ParameterChoice.Source.HullCells
+module
+
+public import S7_ParameterChoice.Source.HullTangent
+public import S7_ParameterChoice.Source.HullCells
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

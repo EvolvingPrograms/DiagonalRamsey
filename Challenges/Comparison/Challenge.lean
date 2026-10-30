@@ -1,4 +1,8 @@
-import Comparison.Definitions
+module
+
+public import Comparison.Definitions
+
+@[expose] public section
 
 namespace RamseySpecification
 

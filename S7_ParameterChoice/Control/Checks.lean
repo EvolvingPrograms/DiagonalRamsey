@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Control.Table
+module
+
+public import S7_ParameterChoice.Control.Table
+
+@[expose] public section
 
 /-!
 # Checked control cells

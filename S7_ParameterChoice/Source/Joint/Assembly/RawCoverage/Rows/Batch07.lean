@@ -1,20 +1,24 @@
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverageLaw
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch00
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch01
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch02
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch03
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch04
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch05
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch06
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch07
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch08
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch09
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch10
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch11
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch12
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch13
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch14
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch15
+module
+
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverageLaw
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch00
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch01
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch02
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch03
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch04
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch05
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch06
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch07
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch08
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch09
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch10
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch11
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch12
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch13
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch14
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Certificates.Batch15
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 0
@@ -25,364 +29,364 @@ set_option Elab.async false
 
 namespace DiagonalRamsey.JointRawSelector
 
-private def route0 : Fin 32 → Run :=
+def route0 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows0 JointRemainingRoutes.length0 JointRemainingRoutes.checked0
 
-private def route1 : Fin 32 → Run :=
+def route1 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows1 JointRemainingRoutes.length1 JointRemainingRoutes.checked1
 
-private def route2 : Fin 32 → Run :=
+def route2 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows2 JointRemainingRoutes.length2 JointRemainingRoutes.checked2
 
-private def route3 : Fin 32 → Run :=
+def route3 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows3 JointRemainingRoutes.length3 JointRemainingRoutes.checked3
 
-private def route4 : Fin 32 → Run :=
+def route4 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows4 JointRemainingRoutes.length4 JointRemainingRoutes.checked4
 
-private def route5 : Fin 32 → Run :=
+def route5 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows5 JointRemainingRoutes.length5 JointRemainingRoutes.checked5
 
-private def route6 : Fin 32 → Run :=
+def route6 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows6 JointRemainingRoutes.length6 JointRemainingRoutes.checked6
 
-private def route8 : Fin 32 → Run :=
+def route8 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows8 JointRemainingRoutes.length8 JointRemainingRoutes.checked8
 
-private def route11 : Fin 32 → Run :=
+def route11 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows11 JointRemainingRoutes.length11 JointRemainingRoutes.checked11
 
-private def route13 : Fin 32 → Run :=
+def route13 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows13 JointRemainingRoutes.length13 JointRemainingRoutes.checked13
 
-private def route14 : Fin 32 → Run :=
+def route14 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows14 JointRemainingRoutes.length14 JointRemainingRoutes.checked14
 
-private def route15 : Fin 32 → Run :=
+def route15 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows15 JointRemainingRoutes.length15 JointRemainingRoutes.checked15
 
-private def route17 : Fin 32 → Run :=
+def route17 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows17 JointRemainingRoutes.length17 JointRemainingRoutes.checked17
 
-private def route20 : Fin 32 → Run :=
+def route20 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows20 JointRemainingRoutes.length20 JointRemainingRoutes.checked20
 
-private def route23 : Fin 32 → Run :=
+def route23 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows23 JointRemainingRoutes.length23 JointRemainingRoutes.checked23
 
-private def route25 : Fin 32 → Run :=
+def route25 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows25 JointRemainingRoutes.length25 JointRemainingRoutes.checked25
 
-private def route27 : Fin 32 → Run :=
+def route27 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows27 JointRemainingRoutes.length27 JointRemainingRoutes.checked27
 
-private def route30 : Fin 32 → Run :=
+def route30 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows30 JointRemainingRoutes.length30 JointRemainingRoutes.checked30
 
-private def route31 : Fin 32 → Run :=
+def route31 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows31 JointRemainingRoutes.length31 JointRemainingRoutes.checked31
 
-private def route33 : Fin 32 → Run :=
+def route33 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows33 JointRemainingRoutes.length33 JointRemainingRoutes.checked33
 
-private def route35 : Fin 32 → Run :=
+def route35 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows35 JointRemainingRoutes.length35 JointRemainingRoutes.checked35
 
-private def route36 : Fin 32 → Run :=
+def route36 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows36 JointRemainingRoutes.length36 JointRemainingRoutes.checked36
 
-private def route39 : Fin 32 → Run :=
+def route39 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows39 JointRemainingRoutes.length39 JointRemainingRoutes.checked39
 
-private def route40 : Fin 32 → Run :=
+def route40 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows40 JointRemainingRoutes.length40 JointRemainingRoutes.checked40
 
-private def route41 : Fin 32 → Run :=
+def route41 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows41 JointRemainingRoutes.length41 JointRemainingRoutes.checked41
 
-private def route43 : Fin 32 → Run :=
+def route43 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows43 JointRemainingRoutes.length43 JointRemainingRoutes.checked43
 
-private def route46 : Fin 32 → Run :=
+def route46 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows46 JointRemainingRoutes.length46 JointRemainingRoutes.checked46
 
-private def route47 : Fin 32 → Run :=
+def route47 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows47 JointRemainingRoutes.length47 JointRemainingRoutes.checked47
 
-private def route48 : Fin 32 → Run :=
+def route48 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows48 JointRemainingRoutes.length48 JointRemainingRoutes.checked48
 
-private def route49 : Fin 32 → Run :=
+def route49 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows49 JointRemainingRoutes.length49 JointRemainingRoutes.checked49
 
-private def route51 : Fin 32 → Run :=
+def route51 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows51 JointRemainingRoutes.length51 JointRemainingRoutes.checked51
 
-private def route53 : Fin 32 → Run :=
+def route53 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows53 JointRemainingRoutes.length53 JointRemainingRoutes.checked53
 
-private def route54 : Fin 32 → Run :=
+def route54 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows54 JointRemainingRoutes.length54 JointRemainingRoutes.checked54
 
-private def route55 : Fin 32 → Run :=
+def route55 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows55 JointRemainingRoutes.length55 JointRemainingRoutes.checked55
 
-private def route56 : Fin 32 → Run :=
+def route56 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows56 JointRemainingRoutes.length56 JointRemainingRoutes.checked56
 
-private def route58 : Fin 32 → Run :=
+def route58 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows58 JointRemainingRoutes.length58 JointRemainingRoutes.checked58
 
-private def route60 : Fin 32 → Run :=
+def route60 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows60 JointRemainingRoutes.length60 JointRemainingRoutes.checked60
 
-private def route61 : Fin 32 → Run :=
+def route61 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows61 JointRemainingRoutes.length61 JointRemainingRoutes.checked61
 
-private def route62 : Fin 32 → Run :=
+def route62 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows62 JointRemainingRoutes.length62 JointRemainingRoutes.checked62
 
-private def route63 : Fin 32 → Run :=
+def route63 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows63 JointRemainingRoutes.length63 JointRemainingRoutes.checked63
 
-private def route64 : Fin 32 → Run :=
+def route64 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows64 JointRemainingRoutes.length64 JointRemainingRoutes.checked64
 
-private def route65 : Fin 32 → Run :=
+def route65 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows65 JointRemainingRoutes.length65 JointRemainingRoutes.checked65
 
-private def route67 : Fin 32 → Run :=
+def route67 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows67 JointRemainingRoutes.length67 JointRemainingRoutes.checked67
 
-private def route68 : Fin 32 → Run :=
+def route68 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows68 JointRemainingRoutes.length68 JointRemainingRoutes.checked68
 
-private def route69 : Fin 32 → Run :=
+def route69 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows69 JointRemainingRoutes.length69 JointRemainingRoutes.checked69
 
-private def route70 : Fin 32 → Run :=
+def route70 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows70 JointRemainingRoutes.length70 JointRemainingRoutes.checked70
 
-private def route73 : Fin 32 → Run :=
+def route73 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows73 JointRemainingRoutes.length73 JointRemainingRoutes.checked73
 
-private def route74 : Fin 32 → Run :=
+def route74 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows74 JointRemainingRoutes.length74 JointRemainingRoutes.checked74
 
-private def route78 : Fin 32 → Run :=
+def route78 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows78 JointRemainingRoutes.length78 JointRemainingRoutes.checked78
 
-private def route79 : Fin 32 → Run :=
+def route79 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows79 JointRemainingRoutes.length79 JointRemainingRoutes.checked79
 
-private def route80 : Fin 32 → Run :=
+def route80 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows80 JointRemainingRoutes.length80 JointRemainingRoutes.checked80
 
-private def route82 : Fin 32 → Run :=
+def route82 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows82 JointRemainingRoutes.length82 JointRemainingRoutes.checked82
 
-private def route85 : Fin 32 → Run :=
+def route85 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows85 JointRemainingRoutes.length85 JointRemainingRoutes.checked85
 
-private def route86 : Fin 32 → Run :=
+def route86 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows86 JointRemainingRoutes.length86 JointRemainingRoutes.checked86
 
-private def route87 : Fin 32 → Run :=
+def route87 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows87 JointRemainingRoutes.length87 JointRemainingRoutes.checked87
 
-private def route90 : Fin 32 → Run :=
+def route90 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows90 JointRemainingRoutes.length90 JointRemainingRoutes.checked90
 
-private def route92 : Fin 32 → Run :=
+def route92 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows92 JointRemainingRoutes.length92 JointRemainingRoutes.checked92
 
-private def route93 : Fin 32 → Run :=
+def route93 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows93 JointRemainingRoutes.length93 JointRemainingRoutes.checked93
 
-private def route94 : Fin 32 → Run :=
+def route94 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows94 JointRemainingRoutes.length94 JointRemainingRoutes.checked94
 
-private def route96 : Fin 32 → Run :=
+def route96 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows96 JointRemainingRoutes.length96 JointRemainingRoutes.checked96
 
-private def route98 : Fin 32 → Run :=
+def route98 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows98 JointRemainingRoutes.length98 JointRemainingRoutes.checked98
 
-private def route99 : Fin 32 → Run :=
+def route99 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows99 JointRemainingRoutes.length99 JointRemainingRoutes.checked99
 
-private def route100 : Fin 32 → Run :=
+def route100 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows100 JointRemainingRoutes.length100 JointRemainingRoutes.checked100
 
-private def route101 : Fin 32 → Run :=
+def route101 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows101 JointRemainingRoutes.length101 JointRemainingRoutes.checked101
 
-private def route103 : Fin 32 → Run :=
+def route103 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows103 JointRemainingRoutes.length103 JointRemainingRoutes.checked103
 
-private def route104 : Fin 32 → Run :=
+def route104 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows104 JointRemainingRoutes.length104 JointRemainingRoutes.checked104
 
-private def route106 : Fin 32 → Run :=
+def route106 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows106 JointRemainingRoutes.length106 JointRemainingRoutes.checked106
 
-private def route107 : Fin 32 → Run :=
+def route107 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows107 JointRemainingRoutes.length107 JointRemainingRoutes.checked107
 
-private def route111 : Fin 32 → Run :=
+def route111 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows111 JointRemainingRoutes.length111 JointRemainingRoutes.checked111
 
-private def route112 : Fin 32 → Run :=
+def route112 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows112 JointRemainingRoutes.length112 JointRemainingRoutes.checked112
 
-private def route113 : Fin 32 → Run :=
+def route113 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows113 JointRemainingRoutes.length113 JointRemainingRoutes.checked113
 
-private def route114 : Fin 32 → Run :=
+def route114 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows114 JointRemainingRoutes.length114 JointRemainingRoutes.checked114
 
-private def route116 : Fin 32 → Run :=
+def route116 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows116 JointRemainingRoutes.length116 JointRemainingRoutes.checked116
 
-private def route118 : Fin 32 → Run :=
+def route118 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows118 JointRemainingRoutes.length118 JointRemainingRoutes.checked118
 
-private def route119 : Fin 32 → Run :=
+def route119 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows119 JointRemainingRoutes.length119 JointRemainingRoutes.checked119
 
-private def route120 : Fin 32 → Run :=
+def route120 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows120 JointRemainingRoutes.length120 JointRemainingRoutes.checked120
 
-private def route121 : Fin 32 → Run :=
+def route121 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows121 JointRemainingRoutes.length121 JointRemainingRoutes.checked121
 
-private def route122 : Fin 32 → Run :=
+def route122 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows122 JointRemainingRoutes.length122 JointRemainingRoutes.checked122
 
-private def route123 : Fin 32 → Run :=
+def route123 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows123 JointRemainingRoutes.length123 JointRemainingRoutes.checked123
 
-private def route124 : Fin 32 → Run :=
+def route124 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows124 JointRemainingRoutes.length124 JointRemainingRoutes.checked124
 
-private def route126 : Fin 32 → Run :=
+def route126 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows126 JointRemainingRoutes.length126 JointRemainingRoutes.checked126
 
-private def route127 : Fin 32 → Run :=
+def route127 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows127 JointRemainingRoutes.length127 JointRemainingRoutes.checked127
 
-private def route129 : Fin 32 → Run :=
+def route129 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows129 JointRemainingRoutes.length129 JointRemainingRoutes.checked129
 
-private def route130 : Fin 32 → Run :=
+def route130 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows130 JointRemainingRoutes.length130 JointRemainingRoutes.checked130
 
-private def route131 : Fin 32 → Run :=
+def route131 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows131 JointRemainingRoutes.length131 JointRemainingRoutes.checked131
 
-private def route134 : Fin 32 → Run :=
+def route134 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows134 JointRemainingRoutes.length134 JointRemainingRoutes.checked134
 
-private def route135 : Fin 32 → Run :=
+def route135 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows135 JointRemainingRoutes.length135 JointRemainingRoutes.checked135
 
-private def route138 : Fin 32 → Run :=
+def route138 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows138 JointRemainingRoutes.length138 JointRemainingRoutes.checked138
 
-private def route139 : Fin 32 → Run :=
+def route139 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows139 JointRemainingRoutes.length139 JointRemainingRoutes.checked139
 
-private def route140 : Fin 32 → Run :=
+def route140 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows140 JointRemainingRoutes.length140 JointRemainingRoutes.checked140
 
-private def route141 : Fin 32 → Run :=
+def route141 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows141 JointRemainingRoutes.length141 JointRemainingRoutes.checked141
 
-private def route142 : Fin 32 → Run :=
+def route142 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows142 JointRemainingRoutes.length142 JointRemainingRoutes.checked142
 
-private def route143 : Fin 32 → Run :=
+def route143 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows143 JointRemainingRoutes.length143 JointRemainingRoutes.checked143
 
-private def route144 : Fin 32 → Run :=
+def route144 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows144 JointRemainingRoutes.length144 JointRemainingRoutes.checked144
 
-private def route145 : Fin 32 → Run :=
+def route145 : Fin 32 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows145 JointRemainingRoutes.length145 JointRemainingRoutes.checked145
 
-private def route146 : Fin 31 → Run :=
+def route146 : Fin 31 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows146 JointRemainingRoutes.length146 JointRemainingRoutes.checked146
 
-private def route147 : Fin 27 → Run :=
+def route147 : Fin 27 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows147 JointRemainingRoutes.length147 JointRemainingRoutes.checked147
 
-private def route148 : Fin 24 → Run :=
+def route148 : Fin 24 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows148 JointRemainingRoutes.length148 JointRemainingRoutes.checked148
 
-private def route149 : Fin 20 → Run :=
+def route149 : Fin 20 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows149 JointRemainingRoutes.length149 JointRemainingRoutes.checked149
 
-private def route150 : Fin 17 → Run :=
+def route150 : Fin 17 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows150 JointRemainingRoutes.length150 JointRemainingRoutes.checked150
 
-private def route156 : Fin 11 → Run :=
+def route156 : Fin 11 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows156 JointRemainingRoutes.length156 JointRemainingRoutes.checked156
 
-private def route157 : Fin 11 → Run :=
+def route157 : Fin 11 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows157 JointRemainingRoutes.length157 JointRemainingRoutes.checked157
 
-private def route168 : Fin 6 → Run :=
+def route168 : Fin 6 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows168 JointRemainingRoutes.length168 JointRemainingRoutes.checked168
 
-private def route169 : Fin 6 → Run :=
+def route169 : Fin 6 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows169 JointRemainingRoutes.length169 JointRemainingRoutes.checked169
 
-private def route171 : Fin 5 → Run :=
+def route171 : Fin 5 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows171 JointRemainingRoutes.length171 JointRemainingRoutes.checked171
 
-private def route173 : Fin 5 → Run :=
+def route173 : Fin 5 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows173 JointRemainingRoutes.length173 JointRemainingRoutes.checked173
 
-private def route175 : Fin 5 → Run :=
+def route175 : Fin 5 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows175 JointRemainingRoutes.length175 JointRemainingRoutes.checked175
 
-private def route178 : Fin 4 → Run :=
+def route178 : Fin 4 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows178 JointRemainingRoutes.length178 JointRemainingRoutes.checked178
 
-private def route179 : Fin 4 → Run :=
+def route179 : Fin 4 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows179 JointRemainingRoutes.length179 JointRemainingRoutes.checked179
 
-private def route181 : Fin 4 → Run :=
+def route181 : Fin 4 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows181 JointRemainingRoutes.length181 JointRemainingRoutes.checked181
 
-private def route183 : Fin 4 → Run :=
+def route183 : Fin 4 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows183 JointRemainingRoutes.length183 JointRemainingRoutes.checked183
 
-private def route184 : Fin 4 → Run :=
+def route184 : Fin 4 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows184 JointRemainingRoutes.length184 JointRemainingRoutes.checked184
 
-private def route187 : Fin 3 → Run :=
+def route187 : Fin 3 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows187 JointRemainingRoutes.length187 JointRemainingRoutes.checked187
 
-private def route190 : Fin 3 → Run :=
+def route190 : Fin 3 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows190 JointRemainingRoutes.length190 JointRemainingRoutes.checked190
 
-private def route194 : Fin 3 → Run :=
+def route194 : Fin 3 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows194 JointRemainingRoutes.length194 JointRemainingRoutes.checked194
 
-private def route198 : Fin 3 → Run :=
+def route198 : Fin 3 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows198 JointRemainingRoutes.length198 JointRemainingRoutes.checked198
 
-private def route202 : Fin 3 → Run :=
+def route202 : Fin 3 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows202 JointRemainingRoutes.length202 JointRemainingRoutes.checked202
 
-private def route204 : Fin 3 → Run :=
+def route204 : Fin 3 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows204 JointRemainingRoutes.length204 JointRemainingRoutes.checked204
 
-private def route210 : Fin 2 → Run :=
+def route210 : Fin 2 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows210 JointRemainingRoutes.length210 JointRemainingRoutes.checked210
 
-private def route213 : Fin 2 → Run :=
+def route213 : Fin 2 → Run :=
   routeGroup JointRemainingRoutes.expTable_checked JointRemainingRoutes.rows213 JointRemainingRoutes.length213 JointRemainingRoutes.checked213
 
 def coverageRows7 : List CoverageRow := [

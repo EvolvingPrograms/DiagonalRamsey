@@ -1,5 +1,9 @@
-import Support.Published.Lemmas.DiagRamsey_SE_Graph
-import Support.Published.Lemmas.DiagRamsey_SE_Drift
+module
+
+public import Support.Published.Lemmas.DiagRamsey_SE_Graph
+public import Support.Published.Lemmas.DiagRamsey_SE_Drift
+
+@[expose] public section
 
 /-!
 # 2.4 Ordered rows

@@ -1,4 +1,8 @@
-import Support.Published.Lemmas.DiagRamsey_PL
+module
+
+public import Support.Published.Lemmas.DiagRamsey_PL
+
+@[expose] public section
 
 /-!
 # Kernel-checkable piecewise-affine inequalities (P0.6)
@@ -35,7 +39,7 @@ lemma evalR_cast : ∀ (xs ys : List ℚ) (r : ℚ), evalR xs ys (r : ℝ) = (ev
   | [], y0 :: _, r => by simp [evalR, evalQ]
   | [_], y0 :: _, r => by simp [evalR, evalQ]
   | _ :: _ :: _, [y0], r => by simp [evalR, evalQ]
-  | xs, [], r => by cases xs <;> simp [evalR, evalQ] <;> (rename_i a l; cases l <;> simp [evalR, evalQ])
+  | xs, [], r => by cases xs <;> simp [evalR, evalQ]
 
 /-- `bp` is strictly increasing. -/
 def sortedQ : List ℚ → Bool
@@ -72,7 +76,7 @@ lemma nonneg_of_list (h : ℝ → ℝ) : ∀ (bp : List ℚ), sortedQ bp = true 
       by_cases hr : r ≤ (y : ℝ)
       · have hxy : (x : ℝ) < y := by exact_mod_cast hs.1
         exact nonneg_segment hxy h1 hr (haff.1 r h1 hr) (hpts x (by simp)) (hpts y (by simp))
-      · push_neg at hr
+      · push Not at hr
         refine nonneg_of_list h (y :: rest) hs.2 haff.2 (fun z hz => hpts z (List.mem_cons_of_mem _ hz)) y
           (by simp) b (by simpa using hb) r hr.le h2
 

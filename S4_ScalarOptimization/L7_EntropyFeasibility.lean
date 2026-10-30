@@ -1,5 +1,9 @@
-import S4_ScalarOptimization.L2_ConvexAveraging
-import S4_ScalarOptimization.L1_FeasiblePairs
+module
+
+public import S4_ScalarOptimization.L2_ConvexAveraging
+public import S4_ScalarOptimization.L1_FeasiblePairs
+
+@[expose] public section
 
 /-!
 # 4.7 Entropy feasibility

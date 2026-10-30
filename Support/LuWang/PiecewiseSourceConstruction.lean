@@ -1,4 +1,8 @@
-import Support.LuWang.PiecewiseSourceRegularity
+module
+
+public import Support.LuWang.PiecewiseSourceRegularity
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -67,7 +71,7 @@ noncomputable def selected (P : SourcePolynomialPartition) (t : ℝ) : Fin P.cel
 
 theorem selected_mem (P : SourcePolynomialPartition) {t : ℝ} (ht : t ∈ Icc (0 : ℝ) 1) :
     t ∈ P.cell (P.selected t) := by
-  simp only [selected, dif_pos ht]
+  simp only [selected, dite_eq_left ht]
   exact Classical.choose_spec (P.exists_cell ht)
 
 noncomputable def value (P : SourcePolynomialPartition) (t : ℝ) : ℝ :=

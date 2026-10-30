@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
+module
+
+public import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
+
+@[expose] public section
 
 /-! Narrow reuse of the exact integer-fraction route checker and soundness
 proofs from `Lemmas.DiagRamsey_V5Fast`, by turibius-of-mogrovejo. -/

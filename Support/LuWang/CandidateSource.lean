@@ -1,4 +1,8 @@
-import Support.LuWang.CandidateSourceDensity
+module
+
+public import Support.LuWang.CandidateSourceDensity
+
+@[expose] public section
 
 set_option autoImplicit false
 

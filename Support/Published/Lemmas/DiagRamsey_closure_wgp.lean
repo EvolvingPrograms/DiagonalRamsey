@@ -1,9 +1,13 @@
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Analysis.Convex.SpecificFunctions.Basic
-import Mathlib.Analysis.MeanInequalities
-import Mathlib.Analysis.MeanInequalitiesPow
-import Support.Published.Definitions.Def_DiagRamsey_NestedMoment
-import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Mathlib.Analysis.Convex.SpecificFunctions.Basic
+public import Mathlib.Analysis.MeanInequalities
+public import Mathlib.Analysis.MeanInequalitiesPow
+public import Support.Published.Definitions.Def_DiagRamsey_NestedMoment
+public import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+
+@[expose] public section
 
 /-! Verbatim copy of the proof in `Solutions/Sol_DiagRamsey_weighted_good_pages.lean` (verified, no sorryAx),
 moved to the namespace `DiagRamsey.ClosureEnv` and renamed `cl_weighted_good_pages`, so that it can be imported
@@ -93,7 +97,7 @@ lemma wgp_col_singleton {V : Type*} (G : SimpleGraph V) [DecidableRel G.Adj]
   set S := ∑ y ∈ Y, (max (redDens G X y - c) 0) ^ s with hSdef
   have hSm : S = Y.card * m := by
     rw [hmdef, clippedMoment]; field_simp
-    first | rfl | exact hSdef
+    rfl
   have key : θ * m ≤ z ^ s := by
     by_cases hM : Y.card = 1
     · obtain ⟨a, ha⟩ := Finset.card_eq_one.mp hM
@@ -161,7 +165,7 @@ lemma wgp_col_singleton {V : Type*} (G : SimpleGraph V) [DecidableRel G.Adj]
 
 section WeightedGoodPages
 
-variable {V : Type*} [Fintype V] [DecidableEq V]
+variable {V : Type*}
 
 /-- The weighted potential agrees with `nestedPot` (classical decidability). -/
 lemma wgp_pot_eq (G : SimpleGraph V) (X A : Finset V) (c w r s : ℝ) :
@@ -197,7 +201,7 @@ lemma wgp_col_lower (G : SimpleGraph V) (X Y : Finset V) (c w r s : ℝ) (hs : 0
     (hcol : ∀ Y' : Finset V, Y' ⊆ Y → Y'.Nonempty →
       potential G X Y' c w r s ≤ potential G X Y c w r s) :
     ∀ y ∈ Y, (1 - s / r) ^ (1 / s) * momentNorm G X Y c s ≤ colDensity G X y - c := by
-  letI : DecidableRel G.Adj := fun a b => Classical.propDecidable (G.Adj a b)
+  let : DecidableRel G.Adj := fun a b => Classical.propDecidable (G.Adj a b)
   have hr : 0 < r := lt_trans hs hsr
   have hm0 : 0 ≤ clippedMoment G X Y c s := by
     unfold clippedMoment
@@ -342,6 +346,7 @@ theorem cl_weighted_good_pages {V : Type*} [Fintype V] [DecidableEq V] (G : Simp
       (w / (r - w) + 1 - (1 - β) ^ (1 / (β * r))) *
           (momentNorm G X Y c (β * r) / (momentNorm G X Y c (β * r) + ε)) ≤
         w / (r - w) + 1 - (1 - β) ^ (1 / (β * r)) := by
+  have _ := hXY
   have hr0 : 0 < r := lt_trans hw hr
   have hsr : β * r < r := by nlinarith
   have hs0 : 0 < β * r := by linarith

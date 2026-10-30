@@ -1,6 +1,10 @@
-import Support.Controls.ControlBank
-import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
-import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAligned
+module
+
+public import Support.Controls.ControlBank
+public import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
+public import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAligned
+
+@[expose] public section
 
 set_option autoImplicit false
 

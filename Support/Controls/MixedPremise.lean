@@ -1,5 +1,9 @@
-import Support.Published.Lemmas.DiagRamsey_SB_Route
-import Support.Controls.SourceInterpolation
+module
+
+public import Support.Published.Lemmas.DiagRamsey_SB_Route
+public import Support.Controls.SourceInterpolation
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

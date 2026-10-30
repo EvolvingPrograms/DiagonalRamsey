@@ -1,4 +1,8 @@
-import Support.Controls.RouteData
+module
+
+public import Support.Controls.RouteData
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

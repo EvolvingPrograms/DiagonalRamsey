@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Convex.Function
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.FieldSimp
+module
+
+public import Mathlib.Analysis.Convex.Function
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Tactic.FieldSimp
+
+@[expose] public section
 
 /-!
 # 4.11 Concave decreasing perspectives

@@ -1,5 +1,9 @@
-import Support.Controls.PLProfileBridge
-import Support.Controls.LeafMajorant
+module
+
+public import Support.Controls.PLProfileBridge
+public import Support.Controls.LeafMajorant
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.ExactPLProfileBridge

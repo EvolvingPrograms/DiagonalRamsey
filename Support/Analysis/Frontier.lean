@@ -1,5 +1,9 @@
-import Support.Analysis.Profiles
-import Mathlib.Topology.Order.IntermediateValue
+module
+
+public import Support.Analysis.Profiles
+public import Mathlib.Topology.Order.IntermediateValue
+
+@[expose] public section
 
 /-!
 # From certified polynomial shape to the supporting Ramsey frontier

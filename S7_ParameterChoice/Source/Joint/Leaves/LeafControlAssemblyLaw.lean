@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Leaves.LeafAssembly
+module
+
+public import S7_ParameterChoice.Source.Joint.Leaves.LeafAssembly
+
+@[expose] public section
 
 set_option autoImplicit false
 

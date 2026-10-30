@@ -1,5 +1,9 @@
-import Support.LuWang.RetainedGeometry
-import Support.LuWang.RetainedGraph
+module
+
+public import Support.LuWang.RetainedGeometry
+public import Support.LuWang.RetainedGraph
+
+@[expose] public section
 
 set_option autoImplicit false
 

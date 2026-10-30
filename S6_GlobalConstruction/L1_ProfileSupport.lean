@@ -1,7 +1,11 @@
-import S1_Definitions.L2_AdmissibleBounds
-import S4_ScalarOptimization.L6_OptimalEnvelope
-import Support.Published.Definitions.Def_DiagRamsey_SourceBank
-import Support.Published.Definitions.Def_DiagRamsey_JointBank
+module
+
+public import S1_Definitions.L2_AdmissibleBounds
+public import S4_ScalarOptimization.L6_OptimalEnvelope
+public import Support.Published.Definitions.Def_DiagRamsey_SourceBank
+public import Support.Published.Definitions.Def_DiagRamsey_JointBank
+
+@[expose] public section
 
 /-!
 # 6.1 Profile support

@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Assembly.Recipes
-import S6_GlobalConstruction.L3_RouteComposition
+module
+
+public import S7_ParameterChoice.Source.Joint.Assembly.Recipes
+public import S6_GlobalConstruction.L3_RouteComposition
+
+@[expose] public section
 
 /-! Numerical route geometry with a complementary envelope. These proofs reuse
 DiagRamsey_V5Bank's terminal bounds and route interpolation, replacing its scalar

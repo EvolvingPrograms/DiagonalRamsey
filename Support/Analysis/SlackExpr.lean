@@ -1,5 +1,9 @@
-import Support.Analysis.ProfileExpr
-import Support.Analysis.SupportDescent
+module
+
+public import Support.Analysis.ProfileExpr
+public import Support.Analysis.SupportDescent
+
+@[expose] public section
 
 /-! Exact computational graphs for explicit supporting-point certificates. -/
 set_option autoImplicit false

@@ -1,5 +1,9 @@
-import Support.Analysis.ShapeCertificate
-import Support.Analysis.IntervalExpr
+module
+
+public import Support.Analysis.ShapeCertificate
+public import Support.Analysis.IntervalExpr
+
+@[expose] public section
 
 /-! Exact polynomial translation into interval expressions. Translation uses
 the complete Horner shift, not a truncated Taylor approximation. -/

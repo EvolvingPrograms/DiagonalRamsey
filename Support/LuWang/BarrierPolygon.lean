@@ -1,5 +1,9 @@
-import Support.LuWang.ClosureOperator
-import Support.LuWang.BarrierCrossing
+module
+
+public import Support.LuWang.ClosureOperator
+public import Support.LuWang.BarrierCrossing
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -27,12 +31,12 @@ structure BarrierPolygon where
 namespace BarrierPolygon
 
 noncomputable def leftIndex (P : BarrierPolygon) (s : Ratio) : Fin P.cells :=
-  (exists_left_cell P.knot (by simpa [P.first] using s.property.1)
+  (exists_left_cell P.knot (b := s.val) (by simpa [P.first] using s.property.1)
     (by simpa [P.last] using s.property.2)).choose
 
 theorem leftIndex_spec (P : BarrierPolygon) (s : Ratio) :
     P.knot (P.leftIndex s).castSucc < s.val ∧ s.val ≤ P.knot (P.leftIndex s).succ :=
-  (exists_left_cell P.knot (by simpa [P.first] using s.property.1)
+  (exists_left_cell P.knot (b := s.val) (by simpa [P.first] using s.property.1)
     (by simpa [P.last] using s.property.2)).choose_spec
 
 noncomputable def threshold (P : BarrierPolygon) (s : Ratio) : ℝ :=
@@ -81,7 +85,7 @@ theorem profile_le_leaf (P : BarrierPolygon) {F : ℝ → ℝ}
   · have ht := hb s s.val s.property.1.le le_rfl p.val w mu x y p.property.1 hp hc
     have hw : 0 < 1 + w := by linarith [hc.1]
     change (if p.val ≤ P.threshold s then P.value s.val else 0) ≤ _
-    rw [if_pos hp]
+    rw [ite_eq_left hp]
     apply (le_div_iff₀ hw).2
     nlinarith
   · simpa [profile, hp] using (leafExponent_pos hc s.property.1).le
@@ -130,7 +134,11 @@ theorem route_below_at_stop (P : BarrierPolygon) {lam : ℝ}
   have hcallb := hcall i b ⟨hileft.le, hiright⟩
   have hcallb' : (if R.density i ≤ 1 - Real.exp (-P.slope j)
       then P.value b else 0) < R.height b := by
-    simpa [profile, threshold, j, br] using hcallb
+    have hs : (⟨b, R.cell_mem_ratio hlam i ⟨hileft.le, hiright⟩⟩ : Ratio) = br :=
+      Subtype.ext rfl
+    change P.profile ⟨R.density i, R.density_mem i⟩ _ < R.height b at hcallb
+    rw [hs] at hcallb
+    exact hcallb
   have hnegative := refined_cell_backward_gap hab (R.density_mem i).2
     (show R.height b - R.height a = R.slope i * (b - a) by rw [hga, hgb]; ring)
     (show P.value b - P.value a = P.slope j * (b - a) by rw [hfa, hfb]; ring)
@@ -158,7 +166,7 @@ theorem profile_le_route (P : BarrierPolygon) {F : ℝ → ℝ}
     P.profile p s ≤ z := by
   by_cases hp : p.val ≤ P.threshold s
   · change (if p.val ≤ P.threshold s then P.value s.val else 0) ≤ z
-    rw [if_pos hp]
+    rw [ite_eq_left hp]
     by_contra h
     have hz : z < P.value s.val := lt_of_not_ge h
     have hstop := P.route_below_at_stop R.toRouteGeometry s.property.2 hcall

@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Routes.FastRouteZip
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.FastRouteZip
+
+@[expose] public section
 
 /-! Adjacent sorted cells exclude every global knot from their interiors. -/
 set_option autoImplicit false

@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Routes.RouteFastAdapter
-import S7_ParameterChoice.Source.Joint.Routes.FastIntegral
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.RouteFastAdapter
+public import S7_ParameterChoice.Source.Joint.Routes.FastIntegral
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace DiagonalRamsey.JointCachedRoutes

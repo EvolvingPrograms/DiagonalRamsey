@@ -1,6 +1,10 @@
-import Support.Ramsey.Coloring
-import Mathlib.Combinatorics.SimpleGraph.Density
-import Mathlib.Data.Real.Basic
+module
+
+public import Support.Ramsey.Coloring
+public import Mathlib.Combinatorics.SimpleGraph.Density
+public import Mathlib.Basic.Real.Basic
+
+@[expose] public section
 
 /-!
 # Counting red edges

@@ -1,8 +1,12 @@
-import Support.Ramsey.EasyBound
-import Support.Ramsey.Asymptotics.Uniform
-import Mathlib.Topology.Constructions
-import Mathlib.Topology.Order.DenselyOrdered
-import Mathlib.Tactic
+module
+
+public import Support.Ramsey.EasyBound
+public import Support.Ramsey.Asymptotics.Uniform
+public import Mathlib.Topology.Constructions
+public import Mathlib.Topology.Order.DenselyOrdered
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # The asymptotic Ramsey region

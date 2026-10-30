@@ -1,5 +1,9 @@
-import Support.LuWang.WeightedMoment
-import Support.LuWang.WeightedSplit
+module
+
+public import Support.LuWang.WeightedMoment
+public import Support.LuWang.WeightedSplit
+
+@[expose] public section
 
 /-! The finite induction and child-side obligations for the weighted lemma.
 Numerical schedule hypotheses are not discharged in this file. -/

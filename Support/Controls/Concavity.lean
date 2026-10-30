@@ -1,5 +1,9 @@
-import Support.Controls.Foundations
-import Support.Controls.Logarithmic
+module
+
+public import Support.Controls.Foundations
+public import Support.Controls.Logarithmic
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic
@@ -75,7 +79,7 @@ theorem sharpM_normalized {p β A B : ℝ} (hp : 0 < p) (hp1 : p < 1)
         ring
       rw [he]
       ring
-    simp only [sharpM, if_neg hAB, if_neg hd]
+    simp only [sharpM, ite_eq_right hAB, ite_eq_right hd]
     rw [hexp, Real.log_div (mul_ne_zero (Real.exp_ne_zero _) (ne_of_gt hinner))
       (ne_of_gt (sub_pos.mpr hp1)), Real.log_mul (Real.exp_ne_zero _) (ne_of_gt hinner),
       Real.log_exp]

@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.Partitions.Data
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.Partitions.Data
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 0

@@ -1,7 +1,11 @@
-import Support.Analysis.IntervalExpr
-import Mathlib.Analysis.Calculus.MeanValue
-import Mathlib.Analysis.SpecialFunctions.ExpDeriv
-import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+module
+
+public import Support.Analysis.IntervalExpr
+public import Mathlib.Analysis.Calculus.MeanValue
+public import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+public import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+
+@[expose] public section
 
 /-! Exact automatic differentiation for expressions without normalized quotient
 nodes. The origin is handled separately by the normalized enclosure formulas.

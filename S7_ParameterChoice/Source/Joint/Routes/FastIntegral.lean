@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Routes.FastRoute
-import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.FastRoute
+public import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+
+@[expose] public section
 
 /-! Linear prefix certificates for the clamped piecewise linear integral. -/
 set_option autoImplicit false

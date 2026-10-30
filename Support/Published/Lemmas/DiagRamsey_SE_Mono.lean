@@ -1,5 +1,9 @@
-import Mathlib
-import Support.Published.Definitions.Def_DiagRamsey_Cert
+module
+
+public import Mathlib
+public import Support.Published.Definitions.Def_DiagRamsey_Cert
+
+@[expose] public section
 
 open Filter Topology
 
@@ -166,7 +170,7 @@ theorem Md_le_certM {μ w β x p d q : ℝ} (hβ : 0 < β) (hx : 0 < x) (hp : 0 
   have hq1 : q < 1 := lt_of_le_of_lt hqμ hμ1
   by_cases hp' : certA p w x q ≤ certB μ w q
   · refine ⟨⟨hq0, hqμ, Or.inl hp'⟩, ?_⟩
-    unfold certM; rw [if_pos hp']
+    unfold certM; rw [ite_eq_left hp']
     exact Md_le_certB hβ (lt_of_lt_of_le hp hpd) hd1 hfeas
   · have hBA : certB μ w q < certA p w x q := lt_of_not_ge hp'
     have hAe := certA_mono (w := w) (x := x) (q := q) hp hpd hq0 hq1 hx
@@ -176,7 +180,7 @@ theorem Md_le_certM {μ w β x p d q : ℝ} (hβ : 0 < β) (hx : 0 < x) (hp : 0 
           (Real.exp_pos _).le (by linarith)
       linarith
     refine ⟨⟨hq0, hqμ, Or.inr ⟨hBA, hpf⟩⟩, ?_⟩
-    unfold certM; rw [if_neg hp']
+    unfold certM; rw [ite_eq_right hp']
     exact Md_antitone hβ hx hq0 hq1 hp hpd hd1 hfeas hBA
 
 end DiagRamsey.SE

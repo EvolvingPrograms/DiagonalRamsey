@@ -1,4 +1,8 @@
-import Support.Controls.Concavity
+module
+
+public import Support.Controls.Concavity
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

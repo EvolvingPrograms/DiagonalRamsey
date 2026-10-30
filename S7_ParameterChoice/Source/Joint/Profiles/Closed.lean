@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Foundations.RoundedData
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.RoundedData
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

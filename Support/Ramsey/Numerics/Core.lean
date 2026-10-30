@@ -1,6 +1,10 @@
-import Support.Ramsey.Frontier
-import Mathlib.Analysis.Complex.ExponentialBounds
-import Mathlib.Tactic
+module
+
+public import Support.Ramsey.Frontier
+public import Mathlib.Analysis.Complex.ExponentialBounds
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Analytic core of the numerical optimization

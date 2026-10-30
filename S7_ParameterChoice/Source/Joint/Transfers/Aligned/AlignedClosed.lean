@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Assembly.ClosedRecipes
+module
+
+public import S7_ParameterChoice.Source.Joint.Assembly.ClosedRecipes
+
+@[expose] public section
 
 set_option autoImplicit false
 

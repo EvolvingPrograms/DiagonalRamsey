@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedClosed
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedClosed
+
+@[expose] public section
 
 set_option autoImplicit false
 

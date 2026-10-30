@@ -1,6 +1,10 @@
-import S5_LocalAlternative.L2_OrderedEnvelope
-import S2_MaximalConfigurations.L3_Concentration
-import S2_MaximalConfigurations.L4_RowOrdering
+module
+
+public import S5_LocalAlternative.L2_OrderedEnvelope
+public import S2_MaximalConfigurations.L3_Concentration
+public import S2_MaximalConfigurations.L4_RowOrdering
+
+@[expose] public section
 
 /-!
 # 5.3 The graph alternative

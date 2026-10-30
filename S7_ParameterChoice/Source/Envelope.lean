@@ -1,4 +1,8 @@
-import Support.Controls.PointwiseSource
+module
+
+public import Support.Controls.PointwiseSource
+
+@[expose] public section
 
 set_option autoImplicit false
 

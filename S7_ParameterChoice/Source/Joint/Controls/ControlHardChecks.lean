@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Controls.ControlHardData
-import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
+module
+
+public import S7_ParameterChoice.Source.Joint.Controls.ControlHardData
+public import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
+
+@[expose] public section
 set_option autoImplicit false
 set_option Elab.async false
 set_option maxRecDepth 100000

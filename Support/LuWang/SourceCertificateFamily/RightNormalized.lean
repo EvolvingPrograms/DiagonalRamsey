@@ -1,5 +1,9 @@
-import Support.LuWang.SourceCertificateFamily.Normalized
-import Support.LuWang.SourceCertificateLink
+module
+
+public import Support.LuWang.SourceCertificateFamily.Normalized
+public import Support.LuWang.SourceCertificateLink
+
+@[expose] public section
 set_option autoImplicit false
 namespace LuWang.SourceCertificateFamily.RightNormalized
 open LuWang SourceCertificate

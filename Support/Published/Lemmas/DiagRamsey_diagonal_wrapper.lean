@@ -1,10 +1,14 @@
-import Mathlib.Analysis.SpecialFunctions.Exp
-import Mathlib.Order.Filter.AtTopBot.Basic
-import Mathlib.Algebra.Order.Floor.Semiring
-import Mathlib.Combinatorics.SimpleGraph.Maps
-import Mathlib.Data.Fintype.EquivFin
-import Support.Published.Definitions.Def_DiagRamsey_Basic
-import Support.Published.Solutions.Sol_DiagRamsey_majority_colour_balanced_cut
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Exp
+public import Mathlib.Order.Filter.AtTopBot.Basic
+public import Mathlib.Algebra.Order.Floor.Semiring
+public import Mathlib.Combinatorics.SimpleGraph.Maps
+public import Mathlib.Data.Fintype.EquivFin
+public import Support.Published.Definitions.Def_DiagRamsey_Basic
+public import Support.Published.Solutions.Sol_DiagRamsey_majority_colour_balanced_cut
+
+@[expose] public section
 
 /-!
 # Diagonal wrapper (shared)

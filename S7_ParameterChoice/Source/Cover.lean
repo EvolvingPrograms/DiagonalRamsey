@@ -1,4 +1,8 @@
-import Support.Controls.PLSourcePairBridge
+module
+
+public import Support.Controls.PLSourcePairBridge
+
+@[expose] public section
 
 /-!
 # Finite source covers

@@ -1,10 +1,14 @@
-import Support.Ramsey.BookInduction
-import Support.Ramsey.Asymptotics.Uniform
-import Mathlib.Analysis.Calculus.Deriv.MeanValue
-import Mathlib.Analysis.Real.Sqrt
-import Mathlib.Analysis.SpecificLimits.Basic
-import Mathlib.Topology.Compactness.Compact
-import Mathlib.Topology.UniformSpace.HeineCantor
+module
+
+public import Support.Ramsey.BookInduction
+public import Support.Ramsey.Asymptotics.Uniform
+public import Mathlib.Analysis.Calculus.Deriv.MeanValue
+public import Mathlib.Analysis.Real.Sqrt
+public import Mathlib.Analysis.SpecificLimits.Basic
+public import Mathlib.Topology.Compactness.Compact
+public import Mathlib.Topology.UniformSpace.HeineCantor
+
+@[expose] public section
 
 /-!
 # Descent from a dense coloring
@@ -959,7 +963,7 @@ theorem uniformRamseyExpBound_of_descent
           have hNreal : 0 < (N : ℝ) :=
             (Real.exp_pos _).trans_le horderDense
           have hNpos : 0 < N := by exact_mod_cast hNreal
-          letI : Nonempty (Fin N) := Fin.pos_iff_nonempty.mp hNpos
+          let : Nonempty (Fin N) := Fin.pos_iff_nonempty.mp hNpos
           intro G
           by_cases hredDensity :
               1 - Real.exp (-D r + δ) ≤ redGraphDensity G

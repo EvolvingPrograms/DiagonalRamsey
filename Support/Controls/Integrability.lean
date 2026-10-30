@@ -1,5 +1,9 @@
-import Support.Controls.Envelope
-import Mathlib.Topology.MetricSpace.Lipschitz
+module
+
+public import Support.Controls.Envelope
+public import Mathlib.Topology.MetricSpace.Lipschitz
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

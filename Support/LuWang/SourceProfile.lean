@@ -1,5 +1,9 @@
-import Support.LuWang.SourceBootstrap
-import Mathlib.Analysis.Convex.Deriv
+module
+
+public import Support.LuWang.SourceBootstrap
+public import Mathlib.Analysis.Convex.Deriv
+
+@[expose] public section
 
 /-! The symmetric source threshold and the exact decrement in the blue
 clique target. Derivatives are taken within (0,1], including at 1. -/

@@ -1,9 +1,13 @@
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Combinatorics.SimpleGraph.Clique
-import Mathlib.Combinatorics.SimpleGraph.Finite
-import Support.Published.Definitions.Def_DiagRamsey_Basic
-import Support.Published.Definitions.Def_DiagRamsey_LuWangSource
-import Support.Published.Definitions.Def_DiagRamsey_SourceBank
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Mathlib.Combinatorics.SimpleGraph.Clique
+public import Mathlib.Combinatorics.SimpleGraph.Finite
+public import Support.Published.Definitions.Def_DiagRamsey_Basic
+public import Support.Published.Definitions.Def_DiagRamsey_LuWangSource
+public import Support.Published.Definitions.Def_DiagRamsey_SourceBank
+
+@[expose] public section
 
 /-!
 # Integer-target RAW / CLOSED / SOURCE banks (data)

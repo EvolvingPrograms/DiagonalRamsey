@@ -1,5 +1,9 @@
-import Support.Controls.RangeReduction
-import Support.Controls.Derivative
+module
+
+public import Support.Controls.RangeReduction
+public import Support.Controls.Derivative
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.ParametricTangents

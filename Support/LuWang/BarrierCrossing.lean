@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Backward propagation on the common refinement of route and polygon knots.
 This finite argument avoids a last-zero construction or an almost-everywhere
@@ -27,7 +31,7 @@ theorem call_density_forces_slope {q d slope G F : ℝ}
   have hqbig : 1 - Real.exp (-d) < q := by
     by_contra h
     have hqle := le_of_not_gt h
-    rw [if_pos hqle] at hcall
+    rw [ite_eq_left hqle] at hcall
     linarith
   have hlog : Real.log (1 - q) < -d :=
     (Real.log_lt_iff_lt_exp (sub_pos.mpr hq)).2 (by linarith)

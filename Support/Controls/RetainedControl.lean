@@ -1,5 +1,9 @@
-import Support.Published.Definitions.Def_DiagRamsey_SourceBank
-import Support.Controls.ParametricTangents
+module
+
+public import Support.Published.Definitions.Def_DiagRamsey_SourceBank
+public import Support.Controls.ParametricTangents
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.RetainedControl

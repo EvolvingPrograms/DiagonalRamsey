@@ -1,4 +1,8 @@
-import Support.Published.Definitions.Def_DiagRamsey_JointBank
+module
+
+public import Support.Published.Definitions.Def_DiagRamsey_JointBank
+
+@[expose] public section
 
 /-!
 # Integer-target banks, v2 piece condition

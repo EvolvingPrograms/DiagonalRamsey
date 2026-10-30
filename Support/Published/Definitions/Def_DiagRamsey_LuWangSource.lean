@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Analysis.SpecialFunctions.Exp
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Analysis.SpecialFunctions.Exp
+
+@[expose] public section
 
 /-!
 The Lu--Wang source function (Zhipeng Lu and Sichen Wang, arXiv:2609.14525), transcribed from their data file

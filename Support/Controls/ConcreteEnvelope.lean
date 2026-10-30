@@ -1,6 +1,10 @@
-import Support.Controls.TangentTable
-import Support.Controls.GeometrySound
-import Support.Controls.Integrability
+module
+
+public import Support.Controls.TangentTable
+public import Support.Controls.GeometrySound
+public import Support.Controls.Integrability
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.TangentExpressions

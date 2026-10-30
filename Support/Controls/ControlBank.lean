@@ -1,4 +1,8 @@
-import Support.Controls.EnvelopeData
+module
+
+public import Support.Controls.EnvelopeData
+
+@[expose] public section
 
 section
 set_option autoImplicit false

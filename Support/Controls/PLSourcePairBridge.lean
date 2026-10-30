@@ -1,6 +1,10 @@
-import Support.Controls.PLSourceMajorant
-import Support.Controls.PointwiseSource
-import Support.Controls.GeometrySound
+module
+
+public import Support.Controls.PLSourceMajorant
+public import Support.Controls.PointwiseSource
+public import Support.Controls.GeometrySound
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.PLSourcePairBridge

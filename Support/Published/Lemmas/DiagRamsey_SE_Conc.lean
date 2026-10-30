@@ -1,12 +1,16 @@
-import Mathlib
-import Support.Published.Lemmas.DiagRamsey_SE_GraphRows
-import Support.Published.Lemmas.DiagRamsey_closure_wgp
+module
+
+public import Mathlib
+public import Support.Published.Lemmas.DiagRamsey_SE_GraphRows
+public import Support.Published.Lemmas.DiagRamsey_closure_wgp
+
+@[expose] public section
 
 open Classical
 
 namespace DiagRamsey.SE
 
-variable {V : Type*} [Fintype V] [DecidableEq V]
+variable {V : Type*}
 
 lemma markov_card {ι : Type*} (A : Finset ι) (D : ι → ℝ) (hD : ∀ i ∈ A, 0 ≤ D i) (t : ℝ)
     (ht : 0 < t) : ((A.filter (fun i => t < D i)).card : ℝ) ≤ (∑ i ∈ A, D i) / t := by
@@ -217,7 +221,7 @@ lemma rho_bound (hY : Y.Nonempty) (hpos : ∀ y ∈ Y, c < colDensity G X y) (H 
   · have : |1 - H / uC G X c y| ≤ ε + (1 / θ - 1) + 1 := by
       rw [abs_le]; constructor <;> linarith
     nlinarith
-  · push_neg at ht
+  · push Not at ht
     have hlo : 1 - ε ≤ H / uC G X c y := by
       rw [le_div_iff₀ hu]
       rcases le_total ε 1 with h | h

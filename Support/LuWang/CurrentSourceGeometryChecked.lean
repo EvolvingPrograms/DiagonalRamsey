@@ -1,4 +1,8 @@
-import Support.LuWang.SourceGeometryChecks
+module
+
+public import Support.LuWang.SourceGeometryChecks
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

@@ -1,6 +1,10 @@
-import S4_ScalarOptimization.L9_AffineEnvelope
-import Mathlib.Data.List.OfFn
-import Mathlib.Data.List.ChainOfFn
+module
+
+public import S4_ScalarOptimization.L9_AffineEnvelope
+public import Mathlib.Data.List.OfFn
+public import Mathlib.Data.List.ChainOfFn
+
+@[expose] public section
 
 /-!
 # Indexed affine families

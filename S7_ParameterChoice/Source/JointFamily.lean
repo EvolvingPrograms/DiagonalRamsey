@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.Joint.Profiles.Validity
-import S7_ParameterChoice.Source.Joint.Profiles.Append
-import S7_ParameterChoice.Source.AdditionalSources
+module
+
+public import S7_ParameterChoice.Source.Joint.Profiles.Validity
+public import S7_ParameterChoice.Source.Joint.Profiles.Append
+public import S7_ParameterChoice.Source.AdditionalSources
+
+@[expose] public section
 
 /-! The joint family contains inherited recipes and their exact support
 embeddings. These definitions and geometric proofs assert no Ramsey bounds. -/

@@ -1,8 +1,12 @@
-import S7_ParameterChoice.Control.Checks
-import S7_ParameterChoice.Control.Integral
-import S7_ParameterChoice.Control.FirstCell
-import S7_ParameterChoice.Control.IndexedHinge
-import S4_ScalarOptimization.L10_HingeControl
+module
+
+public import S7_ParameterChoice.Control.Checks
+public import S7_ParameterChoice.Control.Integral
+public import S7_ParameterChoice.Control.FirstCell
+public import S7_ParameterChoice.Control.IndexedHinge
+public import S4_ScalarOptimization.L10_HingeControl
+
+@[expose] public section
 
 /-!
 # Chosen complementary envelope

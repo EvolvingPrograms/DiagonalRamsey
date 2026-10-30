@@ -1,4 +1,8 @@
-import Support.LuWang.WeightedConcreteAlgebra
+module
+
+public import Support.LuWang.WeightedConcreteAlgebra
+
+@[expose] public section
 
 set_option autoImplicit false
 

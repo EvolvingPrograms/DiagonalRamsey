@@ -1,6 +1,10 @@
-import S7_ParameterChoice.L5_Root
-import S8_RamseyBound.L2_ComplementSymmetry
-import S8_RamseyBound.L3_BaseComparison
+module
+
+public import S7_ParameterChoice.L5_Root
+public import S8_RamseyBound.L2_ComplementSymmetry
+public import S8_RamseyBound.L3_BaseComparison
+
+@[expose] public section
 
 /-!
 # 8.4 The target Ramsey bound

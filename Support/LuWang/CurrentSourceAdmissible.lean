@@ -1,6 +1,10 @@
-import Support.LuWang.SourceCertificateAll
-import Support.LuWang.CurrentSourceGeometry
-import Support.LuWang.SourceCertificateFamily.Assembly
+module
+
+public import Support.LuWang.SourceCertificateAll
+public import Support.LuWang.CurrentSourceGeometry
+public import Support.LuWang.SourceCertificateFamily.Assembly
+
+@[expose] public section
 
 /-! The current, fixed 2279-piece source, with all real analysis and every
 finite closed-cell witness discharged by kernel-checked proofs. -/

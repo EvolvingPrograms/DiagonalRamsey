@@ -1,4 +1,8 @@
-import Mathlib.Combinatorics.SimpleGraph.Basic
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Basic
+
+@[expose] public section
 
 /-!
 # RamseyBasics

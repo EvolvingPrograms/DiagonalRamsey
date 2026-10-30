@@ -1,4 +1,8 @@
-import Support.LuWang.CurrentSourceData
+module
+
+public import Support.LuWang.CurrentSourceData
+
+@[expose] public section
 
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

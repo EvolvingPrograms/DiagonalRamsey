@@ -1,4 +1,8 @@
-import Mathlib.Data.Rat.Defs
+module
+
+public import Mathlib.Data.Rat.Defs
+
+@[expose] public section
 
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

@@ -1,5 +1,9 @@
-import Support.LuWang.SourceCertificateCell
-import Support.LuWang.SupportDualityBasic
+module
+
+public import Support.LuWang.SourceCertificateCell
+public import Support.LuWang.SupportDualityBasic
+
+@[expose] public section
 
 /-! Translation from checked expressions to the exact source criterion.
 The supporting pair is a mathematical support of the actual global source;

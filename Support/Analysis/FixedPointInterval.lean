@@ -1,8 +1,12 @@
+module
+
 /- Adapted from snorin239/RamseyBasics commit 90e87da214701dd6eb3d56a2c7121839d8269d14
    Analysis/FixedPointInterval.lean. Changes: namespace, explicit upstream
    CertifiedNumerics qualification, and dyadic scale 2^224. -/
-import Support.Ramsey.Analysis.NormalizedFunctions
-import Mathlib.Tactic
+public import Support.Ramsey.Analysis.NormalizedFunctions
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 

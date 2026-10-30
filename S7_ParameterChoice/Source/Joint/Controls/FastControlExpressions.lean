@@ -1,4 +1,8 @@
-import Support.Controls.ControlCertificate
+module
+
+public import Support.Controls.ControlCertificate
+
+@[expose] public section
 
 set_option autoImplicit false
 

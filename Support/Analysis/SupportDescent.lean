@@ -1,5 +1,9 @@
-import Support.Analysis.Descent
-import Support.Analysis.Frontier
+module
+
+public import Support.Analysis.Descent
+public import Support.Analysis.Frontier
+
+@[expose] public section
 
 /-! A certificate may choose a different admissible supporting point on every
 closed cell. Only the specified witness M must be continuous. All pointwise
@@ -54,7 +58,7 @@ theorem uniformRamseyExpBound_of_pointwise_slack
       (descentX (profileSlope P) M r, Y r) ∈ RamseyBasics.asymptoticRegion ∧
       RamseyBasics.denseCaseExponent (descentX (profileSlope P) M r) (M r) (Y r) r <
         profile P r := by
-    simpa only [Y, dif_pos hr] using Classical.choose_spec (hcertificate r hr)
+    simpa only [Y, dite_eq_left hr] using Classical.choose_spec (hcertificate r hr)
   apply RamseyBasics.uniformRamseyExpBound_of_descent
     (F := profile P) (D := profileSlope P) (M := M)
     (X := descentX (profileSlope P) M) (Y := Y)

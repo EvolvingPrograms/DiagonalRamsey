@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.ExponentialData
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.ExponentialData
+
+@[expose] public section
 set_option autoImplicit false
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000

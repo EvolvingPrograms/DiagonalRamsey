@@ -1,4 +1,8 @@
-import Support.Controls.GeometrySound
+module
+
+public import Support.Controls.GeometrySound
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.ParametricEnvelope

@@ -1,5 +1,9 @@
-import Support.Published.Lemmas.DiagRamsey_JB_Core
-import Support.Published.Definitions.Def_DiagRamsey_JointBank2
+module
+
+public import Support.Published.Lemmas.DiagRamsey_JB_Core
+public import Support.Published.Definitions.Def_DiagRamsey_JointBank2
+
+@[expose] public section
 
 /-!
 # Joint banks: RAW pieces on the whole host (Lemmas 1–2 of the NL proof)
@@ -167,7 +171,7 @@ lemma raw_compl_ok (hraw : ∀ i, (raw i).Valid) (hclosed : ∀ i, (closed i).Va
     rcases hres with h | h
     · exact Or.inl (ClosureEnv.hasRed_mono h hsub)
     · exact Or.inr (ClosureEnv.hasBlue_mono h hsub)
-  · push_neg at hred
+  · push Not at hred
     have hcompl := redPairs_add_compl G Z
     have hblue : (prof PB).p * ((Z.card : ℝ) * ((Z.card : ℝ) - 1)) ≤ (redPairs Gᶜ Z : ℝ) := by nlinarith
     have hkb : (k : ℝ) / b = 1 / r := by rw [hr]; field_simp

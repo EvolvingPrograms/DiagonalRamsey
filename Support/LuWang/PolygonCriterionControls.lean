@@ -1,6 +1,10 @@
-import Support.LuWang.Terminal
-import Support.LuWang.BarrierPolygon
-import Support.LuWang.PolygonAlgebra
+module
+
+public import Support.LuWang.Terminal
+public import Support.LuWang.BarrierPolygon
+public import Support.LuWang.PolygonAlgebra
+
+@[expose] public section
 
 /-! Exact logarithmic terminal controls and the scalar obstruction.
 The obstruction uses the actual source support condition, evaluated at

@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedIndex
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedIndex
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

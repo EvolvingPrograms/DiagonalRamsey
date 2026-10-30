@@ -1,4 +1,8 @@
-import Support.Analysis.FixedPointInterval
+module
+
+public import Support.Analysis.FixedPointInterval
+
+@[expose] public section
 
 /-! Kernel-checked finite coverage of a positive parameter interval.
 The row list may have overlaps. An endpoint gap makes the Boolean check fail.

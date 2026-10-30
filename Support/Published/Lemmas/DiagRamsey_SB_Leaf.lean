@@ -1,12 +1,16 @@
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Support.Published.Definitions.Def_DiagRamsey_Basic
-import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
-import Support.Published.Definitions.Def_DiagRamsey_Cert
-import Support.Published.Definitions.Def_DiagRamsey_SourceBank
-import Support.Published.Solutions.Sol_DiagRamsey_positive_weight_finite_host_closure
-import Support.Published.Solutions.Sol_DiagRamsey_weighted_host_lower_bound
-import Support.Published.Lemmas.DiagRamsey_balanced_cut
-import Support.Published.Lemmas.DiagRamsey_diagonal_wrapper
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Support.Published.Definitions.Def_DiagRamsey_Basic
+public import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+public import Support.Published.Definitions.Def_DiagRamsey_Cert
+public import Support.Published.Definitions.Def_DiagRamsey_SourceBank
+public import Support.Published.Solutions.Sol_DiagRamsey_positive_weight_finite_host_closure
+public import Support.Published.Solutions.Sol_DiagRamsey_weighted_host_lower_bound
+public import Support.Published.Lemmas.DiagRamsey_balanced_cut
+public import Support.Published.Lemmas.DiagRamsey_diagonal_wrapper
+
+@[expose] public section
 
 /-!
 # Source banks: the proper-host premise, relative validity, leaf nodes
@@ -107,7 +111,7 @@ theorem leaf_relValid {m : ℕ} {A B : Fin m → ℝ} (hA : ∀ i, 0 < A i) (hB 
   set ℓ := ⌊r * k⌋₊ with hℓdef
   have hℓ1 : (L₀ : ℝ) + 1 ≤ r * k := by nlinarith [show (0 : ℝ) ≤ k by positivity]
   have hℓL : L₀ ≤ ℓ := by
-    rw [hℓdef]; apply Nat.le_floor; push_cast; linarith
+    rw [hℓdef]; apply Nat.le_floor; linarith
   have hℓ0 : 0 < ℓ := by
     rw [hℓdef]; apply Nat.floor_pos.mpr; linarith
   have hℓr : (ℓ : ℝ) ≤ r * k := Nat.floor_le (by positivity)

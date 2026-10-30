@@ -1,7 +1,11 @@
-import Support.LuWang.CurrentSourceMembership
-import Support.LuWang.SourceCertificateLink
-import Support.LuWang.CurrentSourceData
-import Support.LuWang.SourceCertificateAssembly
+module
+
+public import Support.LuWang.CurrentSourceMembership
+public import Support.LuWang.SourceCertificateLink
+public import Support.LuWang.CurrentSourceData
+public import Support.LuWang.SourceCertificateAssembly
+
+@[expose] public section
 
 /-! Independent left-certificate batch: original chunks 0156–0167. -/
 
@@ -13,7 +17,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0156
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(7323437500000001 / 25000000000000000 : ℚ), (7325000000000001 / 25000000000000000 : ℚ)⟩
   branch := .left
   r := (40702043126159 / 50000000000000 : ℚ)
@@ -1028,7 +1032,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0157
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(7401562500000001 / 25000000000000000 : ℚ), (7403125000000001 / 25000000000000000 : ℚ)⟩
   branch := .left
   r := (80953264719477 / 100000000000000 : ℚ)
@@ -2043,7 +2047,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0158
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(7479687500000001 / 25000000000000000 : ℚ), (7481250000000001 / 25000000000000000 : ℚ)⟩
   branch := .left
   r := (10071466718731 / 12500000000000 : ℚ)
@@ -3058,7 +3062,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0159
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(6046250000000001 / 20000000000000000 : ℚ), (6047500000000001 / 20000000000000000 : ℚ)⟩
   branch := .left
   r := (80194592147407 / 100000000000000 : ℚ)
@@ -4073,7 +4077,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0160
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(6108750000000001 / 20000000000000000 : ℚ), (6110000000000001 / 20000000000000000 : ℚ)⟩
   branch := .left
   r := (79821726781409 / 100000000000000 : ℚ)
@@ -5088,7 +5092,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0161
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(30857960893854747 / 100000000000000000 : ℚ), (15432960893854747 / 50000000000000000 : ℚ)⟩
   branch := .left
   r := (79391982211097 / 100000000000000 : ℚ)
@@ -6103,7 +6107,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0162
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(4987 / 16000 : ℚ), (1247 / 4000 : ℚ)⟩
   branch := .left
   r := (2462112438053 / 3125000000000 : ℚ)
@@ -7116,7 +7120,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0163
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(1259 / 4000 : ℚ), (5037 / 16000 : ℚ)⟩
   branch := .left
   r := (983350426949 / 1250000000000 : ℚ)
@@ -8131,7 +8135,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0164
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(2543 / 8000 : ℚ), (5087 / 16000 : ℚ)⟩
   branch := .left
   r := (9766908889901 / 12500000000000 : ℚ)
@@ -9144,7 +9148,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0165
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(32093750000000001 / 100000000000000000 : ℚ), (32100000000000001 / 100000000000000000 : ℚ)⟩
   branch := .left
   r := (9744946178973 / 12500000000000 : ℚ)
@@ -10159,7 +10163,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0166
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(32406250000000001 / 100000000000000000 : ℚ), (32412500000000001 / 100000000000000000 : ℚ)⟩
   branch := .left
   r := (77495526923889 / 100000000000000 : ℚ)
@@ -11172,7 +11176,7 @@ set_option Elab.async false
 namespace LuWang.SourceCertificates.Chunk0167
 open SourceCertificate CurrentSourceData
 
-private def cellDefaults : Cell := {
+def cellDefaults : Cell := {
   domain := ⟨(32712500000000001 / 100000000000000000 : ℚ), (32718750000000001 / 100000000000000000 : ℚ)⟩
   branch := .left
   r := (77208760598707 / 100000000000000 : ℚ)

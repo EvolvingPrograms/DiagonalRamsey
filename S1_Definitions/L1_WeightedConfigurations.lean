@@ -1,4 +1,8 @@
-import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+module
+
+public import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+
+@[expose] public section
 
 /-!
 # 1.1 Weighted configurations

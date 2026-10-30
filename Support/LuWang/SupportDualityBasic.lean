@@ -1,5 +1,9 @@
-import Support.LuWang.PolygonCriterionControls
-import Mathlib.Analysis.Convex.Deriv
+module
+
+public import Support.LuWang.PolygonCriterionControls
+public import Mathlib.Analysis.Convex.Deriv
+
+@[expose] public section
 
 /-! Source supports for arbitrary C1 concave profiles, including the
 one-sided derivative at 1. These lemmas concern the actual supportRegion,

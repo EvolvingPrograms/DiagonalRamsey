@@ -1,5 +1,9 @@
-import Support.LuWang.CurrentSourceData
-import Support.LuWang.PiecewiseSourceRational
+module
+
+public import Support.LuWang.CurrentSourceData
+public import Support.LuWang.PiecewiseSourceRational
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

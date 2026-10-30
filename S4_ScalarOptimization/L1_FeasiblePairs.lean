@@ -1,5 +1,9 @@
-import S1_Definitions.L3_MomentConstraints
-import Support.Published.Definitions.Def_DiagRamsey_Cert
+module
+
+public import S1_Definitions.L3_MomentConstraints
+public import Support.Published.Definitions.Def_DiagRamsey_Cert
+
+@[expose] public section
 
 /-!
 # 4.1 The scalar optimization problem

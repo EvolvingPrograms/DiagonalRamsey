@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAligned
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAligned
+
+@[expose] public section
 
 /-! Exact local donor windows. Generated from the hashed historical bank
 by `757.closed-compression.py`; no Ramsey admissibility is asserted. -/

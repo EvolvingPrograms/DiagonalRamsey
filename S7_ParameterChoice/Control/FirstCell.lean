@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Control.Expressions
+module
+
+public import S7_ParameterChoice.Control.Expressions
+
+@[expose] public section
 
 /-!
 # First-cell interval checkpoint

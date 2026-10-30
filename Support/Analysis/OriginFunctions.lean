@@ -1,6 +1,10 @@
-import Support.Analysis.Frontier
-import Support.Ramsey.Analysis.NormalizedFunctions
-import Mathlib.Analysis.Calculus.Deriv.Slope
+module
+
+public import Support.Analysis.Frontier
+public import Support.Ramsey.Analysis.NormalizedFunctions
+public import Mathlib.Analysis.Calculus.Deriv.Slope
+
+@[expose] public section
 
 /-!
 # Removable quotients and nonsingular functions at the origin

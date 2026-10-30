@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.HullProfiles
-import S7_ParameterChoice.Source.Hull
-import S7_ParameterChoice.Source.Cover
+module
+
+public import S7_ParameterChoice.Source.HullProfiles
+public import S7_ParameterChoice.Source.Hull
+public import S7_ParameterChoice.Source.Cover
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

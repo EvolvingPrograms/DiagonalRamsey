@@ -18,7 +18,9 @@ def source(name):
 
 def parse_source(path):
     data = path.read_bytes()
-    imports = re.findall(r'^import\s+([\w.]+)', data.decode(), re.M)
+    imports = re.findall(
+        r'^(?:public\s+)?(?:meta\s+)?import\s+(?:all\s+)?([\w.]+)',
+        data.decode(), re.M)
     return hashlib.sha256(data).hexdigest(), imports, None
 
 class up:

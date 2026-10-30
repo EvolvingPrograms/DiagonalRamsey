@@ -1,6 +1,10 @@
-import Support.Ramsey.Numerics.Core
-import Mathlib.Analysis.Calculus.Deriv.Polynomial
-import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
+module
+
+public import Support.Ramsey.Numerics.Core
+public import Mathlib.Analysis.Calculus.Deriv.Polynomial
+public import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
+
+@[expose] public section
 
 /-!
 # Polynomial-exponential Ramsey profiles

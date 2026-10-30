@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
+module
+
+public import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
+
+@[expose] public section
 
 /-! Exact inherited controls, retaining the original seven rational fields.
 Analytic CertOK proofs are separate from these data definitions. -/

@@ -1,5 +1,9 @@
-import Support.Controls.ControlGeometry
-import Support.Controls.Envelope
+module
+
+public import Support.Controls.ControlGeometry
+public import Support.Controls.Envelope
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.ControlGeometry

@@ -1,5 +1,9 @@
-import Support.LuWang.PiecewiseSourceConstruction
-import Support.Analysis.PolynomialExpr
+module
+
+public import Support.LuWang.PiecewiseSourceConstruction
+public import Support.Analysis.PolynomialExpr
+
+@[expose] public section
 
 set_option autoImplicit false
 

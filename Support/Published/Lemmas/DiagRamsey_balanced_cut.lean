@@ -1,12 +1,16 @@
-import Mathlib.Data.Fintype.Prod
-import Mathlib.Data.Fintype.Perm
-import Mathlib.Data.Fintype.Fin
-import Mathlib.Algebra.Order.BigOperators.Group.Finset
-import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Data.Real.Basic
-import Mathlib.Algebra.Order.Field.Basic
-import Mathlib.Combinatorics.SimpleGraph.Basic
+module
+
+public import Mathlib.Data.Fintype.Prod
+public import Mathlib.Data.Fintype.Perm
+public import Mathlib.Data.Fintype.Fin
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+public import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Algebra.Order.Field.Basic
+public import Mathlib.Combinatorics.SimpleGraph.Basic
+
+@[expose] public section
 
 /-! Density-averaging balanced cut (shared: majority cut for 1.263, density cut for 1.26031).
 The permutation-averaging lemmas `MajorityCut.*` were factored out of `Sol_DiagRamsey_majority_colour_balanced_cut`, which imports this module. -/
@@ -166,8 +170,7 @@ theorem density_balanced_cut {V : Type*} [Fintype V] [DecidableEq V] (G : Simple
   set R : Finset (Fin N × Fin N) := univ.filter (fun e => e.1 ≠ e.2 ∧ G.Adj (f e.1) (f e.2)) with hRdef
   have hRmap : R.map ff = Z.offDiag.filter (fun e : V × V => G.Adj e.1 e.2) := by
     ext ⟨u, v⟩
-    simp only [hRdef, mem_map, mem_filter, mem_univ, true_and, mem_offDiag, ff, Function.Embedding.coeFn_mk,
-      Prod.mk.injEq]
+    simp only [hRdef, mem_map, mem_filter, mem_univ, true_and, mem_offDiag, ff]
     constructor
     · rintro ⟨⟨i, j⟩, ⟨hij, hadj⟩, rfl, rfl⟩
       exact ⟨⟨hfZ i, hfZ j, fun h => hij (f.injective h)⟩, hadj⟩
@@ -203,8 +206,7 @@ theorem density_balanced_cut {V : Type*} [Fintype V] [DecidableEq V] (G : Simple
     have hcr : ((X.map f) ×ˢ (Xᶜ.map f)).filter (fun e : V × V => G.Adj e.1 e.2) =
         ((X ×ˢ Xᶜ).filter (fun e => e ∈ R)).map ff := by
       ext ⟨u, v⟩
-      simp only [mem_filter, mem_product, mem_map, mem_compl, hRdef, mem_univ, true_and, ff,
-        Function.Embedding.coeFn_mk, Prod.mk.injEq]
+      simp only [mem_filter, mem_product, mem_map, mem_compl, hRdef, mem_univ, true_and, ff]
       constructor
       · rintro ⟨⟨⟨i, hi, rfl⟩, ⟨j, hj, rfl⟩⟩, hadj⟩
         exact ⟨(i, j), ⟨⟨hi, hj⟩, fun h => hj ((show i = j from h) ▸ hi), hadj⟩, rfl⟩

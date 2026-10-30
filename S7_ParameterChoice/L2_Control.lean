@@ -1,6 +1,10 @@
-import S7_ParameterChoice.L1_Parameters
-import S4_ScalarOptimization.L8_ConvexDegreeCutoff
-import Support.Analysis.IntervalExpr
+module
+
+public import S7_ParameterChoice.L1_Parameters
+public import S4_ScalarOptimization.L8_ConvexDegreeCutoff
+public import Support.Analysis.IntervalExpr
+
+@[expose] public section
 
 /-!
 # 7.2 Complementary degree cutoff
@@ -19,17 +23,17 @@ namespace ControlExpr
 
 open AnalyticBounds.IntervalExpr AnalyticBounds.FixedPointInterval
 
-private def rat (r : ℚ) : Expr := .rat r.num r.den
-private def sub (a b : Expr) : Expr := .add a (.neg b)
-private def div (a b : Expr) : Expr := .mul a (.inv b)
-private def log (a : Expr) : Expr := .log 32 a
+def rat (r : ℚ) : Expr := .rat r.num r.den
+def sub (a b : Expr) : Expr := .add a (.neg b)
+def div (a b : Expr) : Expr := .mul a (.inv b)
+def log (a : Expr) : Expr := .log 32 a
 
 /-- Halving keeps each Taylor argument in `[-1, 1]`. -/
-private def exp (a : Expr) : Expr :=
+def exp (a : Expr) : Expr :=
   let half := Expr.exp 32 (.mul (rat (1 / 2)) a)
   .mul half half
 
-private def mass : Expr :=
+def mass : Expr :=
   .mul (rat p) (exp (.mul (rat β) (log (div (rat x) (rat p)))))
 
 /-- A direct expression translation of the entropy test, not a new estimate. -/

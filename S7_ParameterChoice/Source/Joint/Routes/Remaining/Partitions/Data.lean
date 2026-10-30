@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
-import S7_ParameterChoice.Source.Joint.Routes.Inherited.InheritedRouteRows
-import S7_ParameterChoice.Source.Joint.Routes.Remaining.ExponentialBounds
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+public import S7_ParameterChoice.Source.Joint.Routes.Inherited.InheritedRouteRows
+public import S7_ParameterChoice.Source.Joint.Routes.Remaining.ExponentialBounds
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 0

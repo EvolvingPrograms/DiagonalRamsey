@@ -1,5 +1,9 @@
-import Support.Controls.Concavity
-import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+module
+
+public import Support.Controls.Concavity
+public import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

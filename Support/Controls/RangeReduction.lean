@@ -1,4 +1,8 @@
-import Support.Controls.TangentSound
+module
+
+public import Support.Controls.TangentSound
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.RangeReduction

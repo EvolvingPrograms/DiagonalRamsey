@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Leaves.LeafData
+module
+
+public import S7_ParameterChoice.Source.Joint.Leaves.LeafData
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 0

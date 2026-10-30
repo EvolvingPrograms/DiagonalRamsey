@@ -1,9 +1,13 @@
-import Support.Ramsey.Ramsey
-import Mathlib.Analysis.Asymptotics.Lemmas
-import Mathlib.Analysis.SpecialFunctions.Exp
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
-import Mathlib.Algebra.Order.Floor.Semiring
-import Mathlib.Data.Finset.Lattice.Fold
+module
+
+public import Support.Ramsey.Ramsey
+public import Mathlib.Analysis.Asymptotics.Lemmas
+public import Mathlib.Analysis.SpecialFunctions.Exp
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+public import Mathlib.Algebra.Order.Floor.Semiring
+public import Mathlib.Data.Finset.Lattice.Fold
+
+@[expose] public section
 
 /-!
 # Explicit uniform asymptotic Ramsey bounds
@@ -78,7 +82,7 @@ theorem uniformRamseyLogError_nonneg (F : ℝ → ℝ) (k : ℕ) :
             F ((ℓ : ℝ) / (k : ℝ)) * (k : ℝ))
       else 0)
     hzero
-  simpa only [Nat.lt_irrefl, if_false] using h
+  simpa only [Nat.lt_irrefl, ite_false] using h
 
 theorem log_deficit_le_uniformRamseyLogError (F : ℝ → ℝ)
     {k ℓ : ℕ} (hℓ : 0 < ℓ) (hℓk : ℓ ≤ k) :
@@ -90,7 +94,7 @@ theorem log_deficit_le_uniformRamseyLogError (F : ℝ → ℝ)
     simp only [Finset.mem_range]
     omega
   exact (le_max_right 0 _).trans (by
-    simpa only [if_pos hℓ] using
+    simpa only [ite_eq_left hℓ] using
       (Finset.le_sup'
         (s := Finset.range (k + 1))
         (f := fun j =>
@@ -152,7 +156,7 @@ theorem sublinearError_uniformRamseyLogError {F : ℝ → ℝ}
     apply Finset.sup'_le
     intro ℓ hℓmem
     by_cases hℓ : 0 < ℓ
-    · simp only [if_pos hℓ]
+    · simp only [ite_eq_left hℓ]
       have hℓk : ℓ ≤ k := by
         simp only [Finset.mem_range] at hℓmem
         omega
@@ -164,7 +168,7 @@ theorem sublinearError_uniformRamseyLogError {F : ℝ → ℝ}
         (Real.log_le_iff_le_exp hRpos).2 (hbound ℓ hℓ hℓk)
       rw [add_mul] at hlog
       exact max_le (mul_nonneg hε.le (by positivity)) (by linarith)
-    · simp only [if_neg hℓ]
+    · simp only [ite_eq_right hℓ]
       exact mul_nonneg hε.le (by positivity)
   simpa [ramseyLinearScale, Real.norm_eq_abs,
     abs_of_nonneg (uniformRamseyLogError_nonneg F k),

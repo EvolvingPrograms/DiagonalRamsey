@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
-import Support.Controls.ControlCertificate
+module
+
+public import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
+public import Support.Controls.ControlCertificate
+
+@[expose] public section
 
 set_option autoImplicit false
 

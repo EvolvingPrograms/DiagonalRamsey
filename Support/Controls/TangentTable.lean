@@ -1,6 +1,10 @@
-import Support.Controls.TangentDomain
+module
 
-import Support.Controls.ControlGeometry
+public import Support.Controls.TangentDomain
+
+public import Support.Controls.ControlGeometry
+
+@[expose] public section
 
 set_option maxRecDepth 100000
 

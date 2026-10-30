@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Routes.FastRouteNoKnot
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.FastRouteNoKnot
+
+@[expose] public section
 
 /-! Sequential exponential-table matching preserves the exact checked inputs. -/
 set_option autoImplicit false

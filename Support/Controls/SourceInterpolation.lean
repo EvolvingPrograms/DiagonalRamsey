@@ -1,5 +1,9 @@
-import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
-import Mathlib.Tactic
+module
+
+public import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

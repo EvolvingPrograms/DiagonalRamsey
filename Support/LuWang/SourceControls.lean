@@ -1,4 +1,8 @@
-import Support.LuWang.SourceProfile
+module
+
+public import Support.LuWang.SourceProfile
+
+@[expose] public section
 
 /-! Strict local controls selected from a boundary supporting pair.
 All choices depend on the source and its error allowance, before the

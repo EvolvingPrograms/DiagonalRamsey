@@ -1,5 +1,9 @@
-import Mathlib.Combinatorics.SimpleGraph.Clique
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Clique
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+
+@[expose] public section
 
 /-!
 Weighted finite hosts and the nested column-moment potential (diagonal Ramsey project).

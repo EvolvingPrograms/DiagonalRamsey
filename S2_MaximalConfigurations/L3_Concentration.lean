@@ -1,4 +1,8 @@
-import Support.Published.Lemmas.DiagRamsey_SE_Conc
+module
+
+public import Support.Published.Lemmas.DiagRamsey_SE_Conc
+
+@[expose] public section
 
 /-!
 # 2.3 Concentration in a maximal configuration

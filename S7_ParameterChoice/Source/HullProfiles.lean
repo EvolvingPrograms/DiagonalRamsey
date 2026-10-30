@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Validity
+module
+
+public import S7_ParameterChoice.Source.Validity
+
+@[expose] public section
 
 /-!
 The hull witnesses reuse the original source profiles and require only 81

@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedRuns
-import S7_ParameterChoice.Source.Joint.Transfers.Aligned.Checks
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedRuns
+public import S7_ParameterChoice.Source.Joint.Transfers.Aligned.Checks
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

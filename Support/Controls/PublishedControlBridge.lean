@@ -1,5 +1,9 @@
-import Support.Controls.ControlCertificate
-import Support.Published.Lemmas.DiagRamsey_V5Bank
+module
+
+public import Support.Controls.ControlCertificate
+public import Support.Published.Lemmas.DiagRamsey_V5Bank
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.PublishedControlBridge

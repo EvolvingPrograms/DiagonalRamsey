@@ -1,7 +1,11 @@
-import Support.LuWang.SourceCertificates.Small
-import Support.LuWang.SourceCertificates.Transitions
-import Support.LuWang.SourceCertificates.Left
-import Support.LuWang.SourceCertificateAssembly
+module
+
+public import Support.LuWang.SourceCertificates.Small
+public import Support.LuWang.SourceCertificates.Transitions
+public import Support.LuWang.SourceCertificates.Left
+public import Support.LuWang.SourceCertificateAssembly
+
+@[expose] public section
 
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

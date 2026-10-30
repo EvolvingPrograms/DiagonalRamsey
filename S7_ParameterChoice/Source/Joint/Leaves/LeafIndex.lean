@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
-import S7_ParameterChoice.Source.Joint.Leaves.LeafData
-import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAligned
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+public import S7_ParameterChoice.Source.Joint.Leaves.LeafData
+public import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAligned
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

@@ -1,5 +1,9 @@
-import Support.Published.Lemmas.DiagRamsey_SB_RouteG
-import Support.Controls.Envelope
+module
+
+public import Support.Published.Lemmas.DiagRamsey_SB_RouteG
+public import Support.Controls.Envelope
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic
@@ -17,7 +21,7 @@ theorem route_clamp_difference {n m : ℕ} (R : RouteNode n m)
     have hu := hmono.monotone hle
     have hus := hu.trans hs.1
     simp only [RouteNode.clamp, min_eq_right hus, min_eq_right hu,
-      if_neg (ne_of_lt hij), sub_self]
+      ite_eq_right (ne_of_lt hij), sub_self]
   · subst i
     have hu : R.u j.castSucc ≤ R.u j.succ := hmono.monotone (by
       change j.val ≤ j.val+1
@@ -35,7 +39,7 @@ theorem route_clamp_difference {n m : ℕ} (R : RouteNode n m)
     have h₂ : min (R.u j.castSucc) (R.u i.succ)-R.u i.castSucc ≤ 0 :=
       sub_nonpos.mpr ((min_le_left _ _).trans hstart)
     simp only [RouteNode.clamp, max_eq_left h₁, max_eq_left h₂,
-      if_neg (ne_of_gt hij), sub_self]
+      ite_eq_right (ne_of_gt hij), sub_self]
 
 theorem route_affine_on_cell {n m : ℕ} (R : RouteNode n m)
     (hmono : StrictMono R.u) (j : Fin R.M) {s : ℝ}

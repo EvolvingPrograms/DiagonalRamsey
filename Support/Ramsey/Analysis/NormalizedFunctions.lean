@@ -1,5 +1,9 @@
-import Support.Ramsey.Analysis.CertifiedNumerics
-import Mathlib.Tactic
+module
+
+public import Support.Ramsey.Analysis.CertifiedNumerics
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Normalized elementary functions for numerical certificates
@@ -77,10 +81,10 @@ private theorem logOnePlusRatioPoly_mem {u lo hi : ℝ} {n : ℕ}
     intro i hiMem
     rw [neg_one_pow_eq_ite]
     by_cases he : Even i
-    · simp only [he, if_true, one_mul]
+    · simp only [he, ite_true, one_mul]
       gcongr
       exact hu.1
-    · simp only [he, if_false, neg_mul]
+    · simp only [he, ite_false, neg_mul]
       simpa only [one_mul, neg_div] using neg_le_neg (div_le_div_of_nonneg_right
         (c := (i : ℝ) + 1) (pow_le_pow_left₀ hu0 hu.2 i) (by positivity))
   · unfold logOnePlusRatioPolyUpper logOnePlusRatioPoly
@@ -88,10 +92,10 @@ private theorem logOnePlusRatioPoly_mem {u lo hi : ℝ} {n : ℕ}
     intro i hiMem
     rw [neg_one_pow_eq_ite]
     by_cases he : Even i
-    · simp only [he, if_true, one_mul]
+    · simp only [he, ite_true, one_mul]
       gcongr
       exact hu.2
-    · simp only [he, if_false, neg_mul]
+    · simp only [he, ite_false, neg_mul]
       simpa only [one_mul, neg_div] using neg_le_neg (div_le_div_of_nonneg_right
         (c := (i : ℝ) + 1) (pow_le_pow_left₀ hlo hu.1 i) (by positivity))
 
@@ -176,7 +180,7 @@ theorem negLogOneSubRatio_taylor_mem {u : ℝ}
           ring
     have heq : -Real.log (1 - u) / u - negLogOneSubRatioPoly n u =
         (-Real.log (1 - u) - u * negLogOneSubRatioPoly n u) / u := by field_simp [hu']
-    rw [negLogOneSubRatio, if_neg hu', heq, abs_div, abs_of_pos hu, div_le_iff₀ hu]
+    rw [negLogOneSubRatio, ite_eq_right hu', heq, abs_div, abs_of_pos hu, div_le_iff₀ hu]
     simpa [mul_comm] using h'
 
 /-- Uniform enclosure of `negLogOneSubRatio u` on a nonnegative interval below
@@ -298,7 +302,7 @@ theorem oneSubExpNegRatio_taylor_mem {v : ℝ} (hv : 0 ≤ v) {n : ℕ}
         -(Real.exp (-v) - (1 - v * oneSubExpNegRatioPoly n v)) / v := by
       field_simp [hvne]
       ring
-    rw [oneSubExpNegRatio, if_neg hvne, heq, abs_div, abs_neg,
+    rw [oneSubExpNegRatio, ite_eq_right hvne, heq, abs_div, abs_neg,
       abs_of_pos hvpos, div_le_iff₀ hvpos]
     unfold oneSubExpNegRatioError
     calc
@@ -319,10 +323,10 @@ private theorem oneSubExpNegRatioPoly_mem {v lo hi : ℝ} {n : ℕ}
     intro i hiMem
     rw [neg_one_pow_eq_ite]
     by_cases he : Even i
-    · simp only [he, if_true, one_mul]
+    · simp only [he, ite_true, one_mul]
       gcongr
       exact hv.1
-    · simp only [he, if_false, neg_mul]
+    · simp only [he, ite_false, neg_mul]
       simpa only [one_mul, neg_div] using neg_le_neg (div_le_div_of_nonneg_right
         (c := ((i + 1).factorial : ℝ)) (pow_le_pow_left₀ hv0 hv.2 i) (by positivity))
   · unfold oneSubExpNegRatioPolyUpper oneSubExpNegRatioPoly
@@ -330,10 +334,10 @@ private theorem oneSubExpNegRatioPoly_mem {v lo hi : ℝ} {n : ℕ}
     intro i hiMem
     rw [neg_one_pow_eq_ite]
     by_cases he : Even i
-    · simp only [he, if_true, one_mul]
+    · simp only [he, ite_true, one_mul]
       gcongr
       exact hv.2
-    · simp only [he, if_false, neg_mul]
+    · simp only [he, ite_false, neg_mul]
       simpa only [one_mul, neg_div] using neg_le_neg (div_le_div_of_nonneg_right
         (c := ((i + 1).factorial : ℝ)) (pow_le_pow_left₀ hlo hv.1 i) (by positivity))
 

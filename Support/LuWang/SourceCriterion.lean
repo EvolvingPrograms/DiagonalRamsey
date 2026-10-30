@@ -1,5 +1,9 @@
-import Support.LuWang.SourceUniform
-import Support.LuWang.WeightedCandidate
+module
+
+public import Support.LuWang.SourceUniform
+public import Support.LuWang.WeightedCandidate
+
+@[expose] public section
 
 /-! The full self-supporting source criterion. The derivative at 1 is
 one-sided, expressed by HasDerivWithinAt on (0,1]. No Ramsey admissibility

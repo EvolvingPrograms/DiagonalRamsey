@@ -1,4 +1,8 @@
-import Support.Controls.RouteOutput
+module
+
+public import Support.Controls.RouteOutput
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

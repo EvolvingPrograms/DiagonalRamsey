@@ -1,4 +1,8 @@
-import Support.LuWang.WeightedInduction
+module
+
+public import Support.LuWang.WeightedInduction
+
+@[expose] public section
 
 /-! The common-blue-neighborhood branch with the full weight w. -/
 

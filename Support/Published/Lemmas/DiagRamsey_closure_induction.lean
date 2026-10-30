@@ -1,4 +1,8 @@
-import Support.Published.Lemmas.DiagRamsey_closure_local
+module
+
+public import Support.Published.Lemmas.DiagRamsey_closure_local
+
+@[expose] public section
 
 /-! The strengthened induction (I_n) of `proofs/DiagRamsey_positive_weight_finite_host_closure.md` §4, with all
 constants as parameters and their required properties as hypotheses. `lam`, `yy` are the proof's `λ`, `y`. -/
@@ -127,7 +131,7 @@ lemma book_step (G : SimpleGraph V) (C w lam yy μ p δ r β θ cap D : ℝ) (�
   by_cases htb : t ≤ b
   · obtain ⟨U, hUS, hU⟩ := isNClique_sub hS htb
     exact Or.inr (Or.inl ⟨U, hUS.trans hSX, hU⟩)
-  push_neg at htb
+  push Not at htb
   have hTX : T ⊆ X := hTP.trans (Finset.filter_subset _ _)
   have hθb : 0 < θ ^ b * (X.card : ℝ) / 2 := by positivity
   have hTne : T.Nonempty := by
@@ -427,7 +431,7 @@ theorem closure_induction (G : SimpleGraph V)
     rcases hstop k (by omega) Y' hne hthr with h | h
     · exact Or.inl (hasRed_mono h Finset.subset_union_right)
     · exact Or.inr (Or.inr h)
-  push_neg at hstopY
+  push Not at hstopY
   have hN := size_lemma C w lam yy μ xhat yhat a X'.card Y'.card ℓ k t hC hw hlam hyy hμ0 hxh0 hyh0 hN0 hM0
     hax hay haμ (hT'.trans hPle) hstopY
   rw [hkt] at hN
@@ -438,7 +442,7 @@ theorem closure_induction (G : SimpleGraph V)
   · exact book_step G C w lam yy μ p δ r β θ cap D ℓ n k t (b n) (m n) hw hβ0 hβ1 hwr hs1 hμ0 hθ0 hθcap
       hcap1 hδ0 hC0 hlam hyy hDr hD4 hb1 hbm hbmh hh (hbook n hn) hkt hk ht X' Y' hX' hY' hXY' hH hmax
       (hT'.trans hPle) h4 h2m hbk ih
-  · push_neg at hbk
+  · push Not at hbk
     exact local_case G p μ w β x η τ ζ R C lam yy cap δ r ℓ n k t (m n) hloc hw hβ0 hβ1 hx0 hμ0 hlam hlamx
       hyy hC0 hRr hwr hcap0 hcapτ hδ0 hδη hδp hkt hk2 ht2 X' Y' hX' hY' hXY' hH hmax hT'
       (hb1.trans hbm) hRam hNreq hbk ih

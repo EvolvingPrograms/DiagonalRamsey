@@ -1,6 +1,10 @@
-import Support.Published.Lemmas.DiagRamsey_PLCheck
-import Support.Published.Definitions.Def_DiagRamsey_JointBank2
-import Support.Published.Solutions.SharpCert.Exp
+module
+
+public import Support.Published.Lemmas.DiagRamsey_PLCheck
+public import Support.Published.Definitions.Def_DiagRamsey_JointBank2
+public import Support.Published.Solutions.SharpCert.Exp
+
+@[expose] public section
 
 /-!
 # v5 banks in Lean (P0.6): profiles, CLOSED pieces, SOURCE pair cells

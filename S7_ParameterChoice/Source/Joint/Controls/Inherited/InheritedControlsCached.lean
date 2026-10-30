@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControls
-import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
-import Support.Controls.ControlBank
+module
+
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControls
+public import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
+public import Support.Controls.ControlBank
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

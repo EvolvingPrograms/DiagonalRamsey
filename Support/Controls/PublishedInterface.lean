@@ -1,5 +1,9 @@
-import Support.Published.Definitions.Def_DiagRamsey_Cert
-import Support.Controls.NegativeIntegral
+module
+
+public import Support.Published.Definitions.Def_DiagRamsey_Cert
+public import Support.Controls.NegativeIntegral
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

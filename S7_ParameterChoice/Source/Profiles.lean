@@ -1,4 +1,8 @@
-import Support.Published.Lemmas.DiagRamsey_V5Bank
+module
+
+public import Support.Published.Lemmas.DiagRamsey_V5Bank
+
+@[expose] public section
 
 /-!
 # Explicit source profiles

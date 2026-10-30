@@ -1,9 +1,13 @@
-import S7_ParameterChoice.Source.Joint.Controls.ControlPrecision
-import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
-import S7_ParameterChoice.Source.Joint.Controls.EnvelopeCheck
-import Support.Controls.EnvelopeData
-import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControls
+module
+
+public import S7_ParameterChoice.Source.Joint.Controls.ControlPrecision
+public import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
+public import S7_ParameterChoice.Source.Joint.Controls.EnvelopeCheck
+public import Support.Controls.EnvelopeData
+public import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControls
+
+@[expose] public section
 
 set_option Elab.async false
 set_option autoImplicit false

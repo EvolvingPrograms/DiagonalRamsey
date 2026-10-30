@@ -1,4 +1,8 @@
-import Support.Controls.MixedPremise
+module
+
+public import Support.Controls.MixedPremise
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

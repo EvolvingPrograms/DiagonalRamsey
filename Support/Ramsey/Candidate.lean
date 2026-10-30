@@ -1,5 +1,9 @@
-import Support.Ramsey.Counting
-import Support.Ramsey.Ramsey
+module
+
+public import Support.Ramsey.Counting
+public import Support.Ramsey.Ramsey
+
+@[expose] public section
 
 /-!
 # Candidates and goodness

@@ -1,6 +1,10 @@
-import S7_ParameterChoice.L1_Parameters
-import Support.Controls.GroundedTails
-import Support.Published.Bridge.Source
+module
+
+public import S7_ParameterChoice.L1_Parameters
+public import Support.Controls.GroundedTails
+public import Support.Published.Bridge.Source
+
+@[expose] public section
 
 /-!
 # Grounded tails for the chosen source

@@ -1,7 +1,11 @@
-import Support.Published.Lemmas.DiagRamsey_JB_Transfer
-import Support.Published.Lemmas.DiagRamsey_SB_Route
-import Support.Published.Lemmas.DiagRamsey_SB_Bank
-import Support.Published.Lemmas.DiagRamsey_closure_basic
+module
+
+public import Support.Published.Lemmas.DiagRamsey_JB_Transfer
+public import Support.Published.Lemmas.DiagRamsey_SB_Route
+public import Support.Published.Lemmas.DiagRamsey_SB_Bank
+public import Support.Published.Lemmas.DiagRamsey_closure_basic
+
+@[expose] public section
 
 /-!
 # Joint banks: assertions on sub-hosts, the minimal-host premise, grounding, RAW pieces

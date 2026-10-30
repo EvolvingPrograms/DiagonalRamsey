@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.Joint.Routes.Inherited.InheritedRoute
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControls
-import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.Inherited.InheritedRoute
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControls
+public import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+
+@[expose] public section
 
 /-! Finite rows and checked group references for the remaining inherited routes.
 The arithmetic and analytic control premises are kept separate. -/

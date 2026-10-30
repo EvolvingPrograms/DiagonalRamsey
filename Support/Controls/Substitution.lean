@@ -1,5 +1,9 @@
-import Support.Controls.Integrability
-import Mathlib.MeasureTheory.Function.JacobianOneDim
+module
+
+public import Support.Controls.Integrability
+public import Mathlib.MeasureTheory.Function.JacobianOneDim
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

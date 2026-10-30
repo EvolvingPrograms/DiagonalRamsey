@@ -1,6 +1,10 @@
-import Support.Analysis.Profiles
-import Support.Analysis.ProfileData
-import Support.Analysis.FixedPointInterval
+module
+
+public import Support.Analysis.Profiles
+public import Support.Analysis.ProfileData
+public import Support.Analysis.FixedPointInterval
+
+@[expose] public section
 
 /-! Exact polynomial shape certificates. The sufficient polynomial condition
 `1 - t * Q(t) > 0` is stronger than the manuscript's shape condition; it

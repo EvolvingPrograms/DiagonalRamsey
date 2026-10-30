@@ -1,6 +1,10 @@
-import Mathlib.Topology.Semicontinuity.Basic
-import Mathlib.Topology.Compactness.Compact
-import Mathlib.Tactic
+module
+
+public import Mathlib.Topology.Semicontinuity.Basic
+public import Mathlib.Topology.Compactness.Compact
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! The uniform finite-depth step in the closure proof. -/
 

@@ -1,5 +1,9 @@
-import S2_MaximalConfigurations.L1_BlueMoment
-import S2_MaximalConfigurations.L2_ComplementaryMoment
+module
+
+public import S2_MaximalConfigurations.L1_BlueMoment
+public import S2_MaximalConfigurations.L2_ComplementaryMoment
+
+@[expose] public section
 
 /-!
 # 3.1 Conditional Jensen

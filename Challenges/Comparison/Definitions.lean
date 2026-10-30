@@ -1,5 +1,9 @@
-import Mathlib.Combinatorics.SimpleGraph.Clique
-import Mathlib.Data.Real.Basic
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Clique
+public import Mathlib.Basic.Real.Basic
+
+@[expose] public section
 
 /-! Independent specification: a graph is the red colour and its complement
 is blue. This file imports only Mathlib, never the Ramsey proof. -/

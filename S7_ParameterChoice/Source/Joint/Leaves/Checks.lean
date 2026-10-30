@@ -1,10 +1,14 @@
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch00
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch01
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch02
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch03
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch04
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch05
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch06
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch07
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch08
-import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch09
+module
+
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch00
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch01
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch02
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch03
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch04
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch05
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch06
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch07
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch08
+public import S7_ParameterChoice.Source.Joint.Leaves.Checks.Batch09
+
+@[expose] public section

@@ -1,6 +1,10 @@
-import S3_TwoCellReduction.L1_ConditionalJensen
-import S3_TwoCellReduction.L2_FiniteBounds
-import S3_TwoCellReduction.L3_PowerLimits
+module
+
+public import S3_TwoCellReduction.L1_ConditionalJensen
+public import S3_TwoCellReduction.L2_FiniteBounds
+public import S3_TwoCellReduction.L3_PowerLimits
+
+@[expose] public section
 
 /-!
 # 3.4 Excluding unit cell mass

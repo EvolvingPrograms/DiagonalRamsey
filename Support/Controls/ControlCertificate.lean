@@ -1,7 +1,11 @@
-import Support.Controls.Precision
-import Support.Controls.ParametricIntegral
-import Support.Controls.ControlPower
-import Support.Controls.TruncatedSum
+module
+
+public import Support.Controls.Precision
+public import Support.Controls.ParametricIntegral
+public import Support.Controls.ControlPower
+public import Support.Controls.TruncatedSum
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.ControlCertificate

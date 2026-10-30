@@ -1,4 +1,8 @@
-import Support.Published.Lemmas.DiagRamsey_JB_Raw
+module
+
+public import Support.Published.Lemmas.DiagRamsey_JB_Raw
+
+@[expose] public section
 
 /-!
 # Joint banks: CLOSED pieces on the same host (Lemma 3 of the NL proof)
@@ -58,7 +62,7 @@ lemma density_split (G : SimpleGraph V) (W : Finset V) {p q : ℝ} (hpq : p + q 
     (hW : 0 ≤ (W.card : ℝ) * ((W.card : ℝ) - 1))
     (h : ¬ p * ((W.card : ℝ) * ((W.card : ℝ) - 1)) ≤ (redPairs G W : ℝ)) :
     q * ((W.card : ℝ) * ((W.card : ℝ) - 1)) ≤ (redPairs Gᶜ W : ℝ) := by
-  push_neg at h
+  push Not at h
   have := redPairs_add_compl G W
   nlinarith
 

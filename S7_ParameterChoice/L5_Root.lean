@@ -1,6 +1,10 @@
-import S7_ParameterChoice.RootConstruction
-import S7_ParameterChoice.Source.Baseline
-import S7_ParameterChoice.Source.Joint.Assembly.RawAssembly
+module
+
+public import S7_ParameterChoice.RootConstruction
+public import S7_ParameterChoice.Source.Baseline
+public import S7_ParameterChoice.Source.Joint.Assembly.RawAssembly
+
+@[expose] public section
 
 /-! The exact four child constructions and twelve-call root are instantiated
 with the actual baseline and complete original raw family. -/

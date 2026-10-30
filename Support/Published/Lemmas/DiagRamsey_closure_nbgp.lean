@@ -1,9 +1,13 @@
-import Mathlib.Combinatorics.SimpleGraph.Maps
-import Mathlib.Algebra.Order.Chebyshev
-import Mathlib.Data.Nat.Choose.Basic
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Support.Published.Definitions.Def_DiagRamsey_Basic
-import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Maps
+public import Mathlib.Algebra.Order.Chebyshev
+public import Mathlib.Data.Nat.Choose.Basic
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Support.Published.Definitions.Def_DiagRamsey_Basic
+public import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+
+@[expose] public section
 
 /-! Verbatim copy of the proof in `Solutions/Sol_DiagRamsey_nested_book_good_pages.lean` (verified, no sorryAx),
 moved to the namespace `DiagRamsey.ClosureEnv` and renamed `cl_nested_book_good_pages`. -/
@@ -123,6 +127,8 @@ theorem cl_nested_book_good_pages {V : Type*} [Fintype V] [DecidableEq V] (G : S
       ∃ S T : Finset V, S ⊆ X ∧ T ⊆ P ∧ Disjoint S T ∧ Gᶜ.IsNClique b S ∧
         (∀ u ∈ S, ∀ v ∈ T, Gᶜ.Adj u v) ∧ θ ^ b * (X.card : ℝ) / 2 ≤ (T.card : ℝ) := by
   classical
+  have _ := hθτ
+  have _ := hτ
   have hN : (0 : ℝ) < X.card := by exact_mod_cast hX.card_pos
   have hWX : X.filter (fun v => τ * (X.card : ℝ) ≤ ((blueNbhd G X v).card : ℝ)) ⊆ X :=
     Finset.filter_subset _ _

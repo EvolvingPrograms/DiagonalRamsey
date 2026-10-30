@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Complex.Exponential
-import Mathlib.Data.Rat.Floor
-import Mathlib.Analysis.SpecialFunctions.Log.Basic
+module
+
+public import Mathlib.Analysis.Complex.Exponential
+public import Mathlib.Data.Rat.Floor
+public import Mathlib.Analysis.SpecialFunctions.Log.Basic
+
+@[expose] public section
 
 /-!
 # Kernel-checkable rational bounds for `Real.exp`

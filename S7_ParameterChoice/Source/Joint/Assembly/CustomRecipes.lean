@@ -1,9 +1,13 @@
-import S7_ParameterChoice.Source.Joint.Assembly.Recipes
-import Support.Controls.PublishedControlBridge
-import Support.Controls.ControlBank
-import Support.Controls.Candidate533Certificate
-import Support.Controls.Candidate540Certificate
-import Support.Controls.Candidate599Certificate
+module
+
+public import S7_ParameterChoice.Source.Joint.Assembly.Recipes
+public import Support.Controls.PublishedControlBridge
+public import Support.Controls.ControlBank
+public import Support.Controls.Candidate533Certificate
+public import Support.Controls.Candidate540Certificate
+public import Support.Controls.Candidate599Certificate
+
+@[expose] public section
 
 /-! Five custom routes over the exact joint family. The arithmetic is generated
 by `757.custom-recipes.py`; analytic control soundness is reused separately.

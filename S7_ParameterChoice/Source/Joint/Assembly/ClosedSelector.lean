@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedAssembly
-import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAssembly
-import S7_ParameterChoice.Source.Joint.Transfers.Complementary.ComplementaryAssembly
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedAssembly
+public import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAssembly
+public import S7_ParameterChoice.Source.Joint.Transfers.Complementary.ComplementaryAssembly
+
+@[expose] public section
 
 set_option autoImplicit false
 

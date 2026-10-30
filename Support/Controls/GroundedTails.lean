@@ -1,8 +1,12 @@
-import Support.LuWang.CurrentSourceGeometry
-import Support.LuWang.SupportDualityBasic
-import Support.Analysis.ProfileExpr
-import Support.Controls.TangentSound
-import Support.Controls.Envelope
+module
+
+public import Support.LuWang.CurrentSourceGeometry
+public import Support.LuWang.SupportDualityBasic
+public import Support.Analysis.ProfileExpr
+public import Support.Controls.TangentSound
+public import Support.Controls.Envelope
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

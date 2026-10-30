@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Foundations.Geometry
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.Geometry
+
+@[expose] public section
 
 /-! Two additional historical curves used by the fully traversed custom-600
 recipe. Original TD declarations are unchanged; existing indices are retained. -/

@@ -1,6 +1,10 @@
-import Support.Controls.RetainedControl
-import Support.Controls.SourceGeometry
-import Support.Published.Lemmas.DiagRamsey_SB_Leaf
+module
+
+public import Support.Controls.RetainedControl
+public import Support.Controls.SourceGeometry
+public import Support.Published.Lemmas.DiagRamsey_SB_Leaf
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.LeafMajorant

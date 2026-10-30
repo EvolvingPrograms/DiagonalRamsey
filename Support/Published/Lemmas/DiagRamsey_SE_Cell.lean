@@ -1,6 +1,10 @@
-import Mathlib
-import Support.Published.Lemmas.DiagRamsey_SE_Mono
-import Support.Published.Lemmas.DiagRamsey_SE_Calc
+module
+
+public import Mathlib
+public import Support.Published.Lemmas.DiagRamsey_SE_Mono
+public import Support.Published.Lemmas.DiagRamsey_SE_Calc
+
+@[expose] public section
 
 open MeasureTheory
 

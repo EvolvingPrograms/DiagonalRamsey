@@ -1,6 +1,10 @@
-import S4_ScalarOptimization.L8_ConvexDegreeCutoff
-import S4_ScalarOptimization.L11_ConcavePerspective
-import S4_ScalarOptimization.L12_ClippedEntropy
+module
+
+public import S4_ScalarOptimization.L8_ConvexDegreeCutoff
+public import S4_ScalarOptimization.L11_ConcavePerspective
+public import S4_ScalarOptimization.L12_ClippedEntropy
+
+@[expose] public section
 
 /-!
 # 4.13 Envelope concavity

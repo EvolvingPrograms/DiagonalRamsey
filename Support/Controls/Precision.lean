@@ -1,4 +1,8 @@
-import Support.Controls.ParametricTangents
+module
+
+public import Support.Controls.ParametricTangents
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.Precision

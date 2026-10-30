@@ -1,4 +1,8 @@
-import Support.Ramsey.Descent
+module
+
+public import Support.Ramsey.Descent
+
+@[expose] public section
 
 /-!
 # 1.2 Admissible bounds

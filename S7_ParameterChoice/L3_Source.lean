@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.Baseline
-import S7_ParameterChoice.Source.Joint.Assembly.RawAssembly
-import S7_ParameterChoice.Source.Joint.Assembly.BaselineInputs
+module
+
+public import S7_ParameterChoice.Source.Baseline
+public import S7_ParameterChoice.Source.Joint.Assembly.RawAssembly
+public import S7_ParameterChoice.Source.Joint.Assembly.BaselineInputs
+
+@[expose] public section
 
 /-! The exact chosen source follows from the actual Lu–Wang baseline,
 all original proper-host pieces and the checked joint source covers. -/

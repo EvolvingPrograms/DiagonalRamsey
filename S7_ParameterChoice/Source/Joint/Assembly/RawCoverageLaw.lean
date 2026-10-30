@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Assembly.RawSelector
+module
+
+public import S7_ParameterChoice.Source.Joint.Assembly.RawSelector
+
+@[expose] public section
 
 set_option autoImplicit false
 

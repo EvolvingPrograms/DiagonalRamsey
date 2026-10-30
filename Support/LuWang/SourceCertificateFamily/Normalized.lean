@@ -1,5 +1,9 @@
-import Support.LuWang.SourceCertificateSound
-import Support.LuWang.SourceCertificateFamily.NestedEnclosure
+module
+
+public import Support.LuWang.SourceCertificateSound
+public import Support.LuWang.SourceCertificateFamily.NestedEnclosure
+
+@[expose] public section
 set_option autoImplicit false
 namespace LuWang.SourceCertificateFamily
 open LuWang SourceCertificate

@@ -1,4 +1,8 @@
-import Support.LuWang.WeightedParameters
+module
+
+public import Support.LuWang.WeightedParameters
+
+@[expose] public section
 
 /-! The two-term profile and the strict scalar gap, with real weight w. -/
 

@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAlignedChecks
-import S7_ParameterChoice.Source.Joint.Transfers.Local.Checks
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Local.LocalAlignedChecks
+public import S7_ParameterChoice.Source.Joint.Transfers.Local.Checks
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

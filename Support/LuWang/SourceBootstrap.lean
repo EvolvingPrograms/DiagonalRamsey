@@ -1,4 +1,8 @@
-import Support.LuWang.Specifications
+module
+
+public import Support.LuWang.Specifications
+
+@[expose] public section
 
 /-! The smallest-host argument for a self-supporting source.
 

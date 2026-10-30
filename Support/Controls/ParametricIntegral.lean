@@ -1,5 +1,9 @@
-import Support.Controls.ParametricEnvelope
-import Support.Controls.PublishedInterface
+module
+
+public import Support.Controls.ParametricEnvelope
+public import Support.Controls.PublishedInterface
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.ParametricIntegral

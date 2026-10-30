@@ -1,10 +1,14 @@
+module
+
 -- Concrete logarithmic and entropy laws for variable control parameters.
-import Mathlib.Analysis.Convex.SpecificFunctions.Basic
-import Mathlib.Analysis.SpecialFunctions.Log.Deriv
-import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
-import Mathlib.Analysis.SpecialFunctions.ExpDeriv
-import Mathlib.Analysis.Calculus.Deriv.MeanValue
-import Mathlib.Tactic
+public import Mathlib.Analysis.Convex.SpecificFunctions.Basic
+public import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+public import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
+public import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+public import Mathlib.Analysis.Calculus.Deriv.MeanValue
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

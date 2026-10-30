@@ -1,9 +1,18 @@
-import Batteries.Data.String.Lemmas
-import Std.Data.String.ToInt
-import Std.Data.String.ToNat
-import Mathlib.Data.Rat.Defs
-import Mathlib.Data.Rat.Lemmas
-import Support.Published.Definitions.Def_DiagRamsey_LuWangSource
+module
+
+public import Batteries.Data.String.Lemmas
+import all Batteries.Data.String.Lemmas
+public import Std.Data.String.ToInt
+import all Std.Data.String.ToInt
+public import Std.Data.String.ToNat
+import all Std.Data.String.ToNat
+import all Init.Data.Repr
+import all Init.Data.Int.Repr
+public import Mathlib.Data.Rat.Defs
+public import Mathlib.Data.Rat.Lemmas
+public import Support.Published.Definitions.Def_DiagRamsey_LuWangSource
+
+@[expose] public section
 
 /-! Reading the project's data strings: `parseRat (q.num.repr ++ "/" ++ q.den.repr) = q`. -/
 
@@ -49,7 +58,7 @@ theorem splitOnAux_slash (l m r : List Char) (acc : List String) :
         utf8Len_cons, utf8Len_nil, List.append_nil, Nat.add_zero] at this
       simp only [Nat.zero_add, Nat.add_assoc] at this ⊢
       rw [this]
-      simp [List.splitOnPPrepend_cons_eq_if]
+      simp [List.splitOnPPrepend_cons_eq_ite]
     · have hc : (c == '/') = false := by simpa using h
       simp only [hc, Bool.false_eq_true, ↓reduceIte]
       have hu : (⟨utf8Len l + utf8Len m⟩ : Pos.Raw).unoffsetBy 0 = ⟨utf8Len l + utf8Len m⟩ := by
@@ -59,14 +68,14 @@ theorem splitOnAux_slash (l m r : List Char) (acc : List String) :
       simp only [List.append_assoc, List.cons_append, List.nil_append, utf8Len_append,
         utf8Len_cons, utf8Len_nil, Nat.zero_add, Nat.add_assoc] at this ⊢
       rw [this]
-      simp [List.splitOnPPrepend_cons_eq_if, hc]
+      simp [List.splitOnPPrepend_cons_eq_ite, hc]
 termination_by r.length
 
 theorem splitOn_slash (x y : List Char) (hx : '/' ∉ x) (hy : '/' ∉ y) :
     (ofList (x ++ '/' :: y)).splitOn "/" = [ofList x, ofList y] := by
   have h := splitOnAux_slash [] [] (x ++ '/' :: y) []
   simp only [List.nil_append, utf8Len_nil, Nat.add_zero] at h
-  rw [String.splitOn, if_neg (by decide +kernel)]
+  rw [String.splitOn, ite_eq_right (by decide +kernel)]
   refine h.trans ?_
   simp only [List.reverse_nil, List.nil_append, List.splitOnPPrepend_nil_right]
   rw [List.splitOnP_append_cons_of_forall_mem (fun z hz => by simp only [beq_eq_false_iff_ne, ne_eq]; rintro rfl; exact hx hz) '/' (by simp),
@@ -80,7 +89,7 @@ theorem not_slash_toDigits (n : ℕ) : '/' ∉ Nat.toDigits 10 n := by
   revert this; decide
 
 theorem not_slash_nat (n : ℕ) : '/' ∉ (Nat.repr n).toList := by
-  simpa [Nat.repr] using not_slash_toDigits n
+  simpa [Nat.repr_eq_ofList_toDigits] using not_slash_toDigits n
 
 theorem not_slash_int (a : ℤ) : '/' ∉ a.repr.toList := by
   cases a with

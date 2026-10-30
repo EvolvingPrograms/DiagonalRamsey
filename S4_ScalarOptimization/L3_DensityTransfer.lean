@@ -1,6 +1,10 @@
-import S4_ScalarOptimization.L1_FeasiblePairs
-import S4_ScalarOptimization.L2_ConvexAveraging
-import Support.Published.Lemmas.DiagRamsey_SE_Mono
+module
+
+public import S4_ScalarOptimization.L1_FeasiblePairs
+public import S4_ScalarOptimization.L2_ConvexAveraging
+public import Support.Published.Lemmas.DiagRamsey_SE_Mono
+
+@[expose] public section
 
 /-!
 # 4.3 Transfer in density

@@ -1,7 +1,11 @@
-import Mathlib
-import Support.Published.Definitions.Def_DiagRamsey_Cert
-import Support.Published.Lemmas.DiagRamsey_SE_Limits
-import Support.Published.Lemmas.DiagRamsey_SE_Mono
+module
+
+public import Mathlib
+public import Support.Published.Definitions.Def_DiagRamsey_Cert
+public import Support.Published.Lemmas.DiagRamsey_SE_Limits
+public import Support.Published.Lemmas.DiagRamsey_SE_Mono
+
+@[expose] public section
 
 open Filter Topology
 
@@ -138,7 +142,7 @@ theorem prl {p μ w β x : ℝ} (hp0 : 0 < p) (hμ1 : μ < 1) (hμ0 : 0 < μ)
   · have hAp : certA p w x qs ≤ certB μ w qs :=
       le_trans (certA_mono hp0 hd_ge hqs0 hqs1 hx0) hcase
     have hF : qs ∈ certFeasible p μ w β x := ⟨hqs0, hqs_le, Or.inl hAp⟩
-    have hMv : certM p μ w β x qs = certB μ w qs := by unfold certM; rw [if_pos hAp]
+    have hMv : certM p μ w β x qs = certB μ w qs := by unfold certM; rw [ite_eq_left hAp]
     have hev2 : ∀ᶠ n in atTop, q (φ n) * (r (φ n) * (TF μ w (q (φ n)) (r (φ n)) - 1)) <
         qs * certB μ w qs + ε :=
       (hQ.mul hT).eventually (gt_mem_nhds (lt_add_of_pos_right _ hε))

@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.HullGrounded
-import S7_ParameterChoice.Source.Domination
+module
+
+public import S7_ParameterChoice.Source.HullGrounded
+public import S7_ParameterChoice.Source.Domination
+
+@[expose] public section
 
 set_option autoImplicit false
 

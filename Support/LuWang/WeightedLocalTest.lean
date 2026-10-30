@@ -1,4 +1,8 @@
-import Support.LuWang.WeightedInduction
+module
+
+public import Support.LuWang.WeightedInduction
+
+@[expose] public section
 
 /-! From the scalar gap to the unnormalized local test in the finite graph
 induction. This includes zero-size and negative-density children. -/

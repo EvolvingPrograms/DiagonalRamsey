@@ -1,7 +1,11 @@
-import Mathlib.Analysis.SpecialFunctions.Log.Deriv
-import Mathlib.Analysis.Convex.Deriv
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Log.Deriv
+public import Mathlib.Analysis.Convex.Deriv
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 # 4.12 Clipped entropy
@@ -48,7 +52,7 @@ theorem hasDerivAt_deriv_entropyLog (p : ℝ) {z : ℝ} (hz : z < 0) :
     ((hasDerivAt_const z (1 : ℝ)).sub (Real.hasDerivAt_exp z)) hden.ne'
   have hd' : HasDerivAt (fun y => (p - Real.exp y) / (1 - Real.exp y))
       (-(1 - p) * Real.exp z / (1 - Real.exp z) ^ 2) z := by
-    convert hd using 1 <;> try rfl
+    convert hd using 1
     change -(1 - p) * Real.exp z / (1 - Real.exp z) ^ 2 =
       ((0 - Real.exp z) * (1 - Real.exp z) - (p - Real.exp z) * (0 - Real.exp z)) /
         (1 - Real.exp z) ^ 2

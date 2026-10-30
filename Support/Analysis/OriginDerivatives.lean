@@ -1,4 +1,8 @@
-import Support.Analysis.OriginFunctions
+module
+
+public import Support.Analysis.OriginFunctions
+
+@[expose] public section
 
 /-! Exact scalar derivatives for the three normalized expression nodes.
 These statements are for positive inputs; the origin is handled by the

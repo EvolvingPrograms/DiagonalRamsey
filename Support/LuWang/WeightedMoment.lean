@@ -1,5 +1,9 @@
-import Support.Ramsey.BookInduction
-import Mathlib.Tactic
+module
+
+public import Support.Ramsey.BookInduction
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Weighted density moments and hereditary row regularization.
 The parameter w is an arbitrary real number; it is not specialized to 1. -/

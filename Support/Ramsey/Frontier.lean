@@ -1,6 +1,10 @@
-import Support.Ramsey.AsymptoticRegion
-import Mathlib.Analysis.Convex.Deriv
-import Mathlib.Tactic
+module
+
+public import Support.Ramsey.AsymptoticRegion
+public import Mathlib.Analysis.Convex.Deriv
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # The concave Ramsey frontier
@@ -73,20 +77,20 @@ theorem frontierA_mul_frontierB_one (F D : ℝ → ℝ) :
 theorem frontierY_eq_middle {F D : ℝ → ℝ} {x : ℝ}
     (hAx : frontierA D 1 ≤ x) (hxB : x ≤ frontierB F D 1) :
     frontierY F D x = Real.exp (-F 1) / x := by
-  rw [frontierY, if_neg (not_lt.mpr hAx), if_pos hxB]
+  rw [frontierY, ite_eq_right (not_lt.mpr hAx), ite_eq_left hxB]
 
 private theorem frontierAParameter_spec {D : ℝ → ℝ} {x : ℝ}
     (h : ∃ t ∈ Ioc (0 : ℝ) 1, frontierA D t = x) :
     frontierAParameter D x ∈ Ioc (0 : ℝ) 1 ∧
       frontierA D (frontierAParameter D x) = x := by
-  rw [frontierAParameter, dif_pos h]
+  rw [frontierAParameter, dite_eq_left h]
   exact Classical.choose_spec h
 
 private theorem frontierBParameter_spec {F D : ℝ → ℝ} {x : ℝ}
     (h : ∃ t ∈ Ioc (0 : ℝ) 1, frontierB F D t = x) :
     frontierBParameter F D x ∈ Ioc (0 : ℝ) 1 ∧
       frontierB F D (frontierBParameter F D x) = x := by
-  rw [frontierBParameter, dif_pos h]
+  rw [frontierBParameter, dite_eq_left h]
   exact Classical.choose_spec h
 
 /-- Expose the parameter equation chosen by the left branch.  This relational
@@ -271,7 +275,7 @@ theorem frontier_mem_asymptoticRegion
   · have hspec := frontierAParameter_spec (hAonto x ⟨hx.1, hleft⟩)
     rcases frontier_pair_mem_asymptoticRegion hF hconcave.concaveOn hderiv hDpos
         hBunit hAB hspec.1 with ⟨_, hB, hmem, _⟩
-    rw [frontierY, if_pos hleft]
+    rw [frontierY, ite_eq_left hleft]
     exact ⟨hB, by simpa [hspec.2] using hmem⟩
   by_cases hmiddle : x ≤ frontierB F D 1
   · have hAone : frontierA D 1 ∈ Ioo (0 : ℝ) 1 := by
@@ -285,7 +289,7 @@ theorem frontier_mem_asymptoticRegion
   · have hspec := frontierBParameter_spec (hBonto x ⟨lt_of_not_ge hmiddle, hx.2⟩)
     rcases frontier_pair_mem_asymptoticRegion hF hconcave.concaveOn hderiv hDpos
         hBunit hAB hspec.1 with ⟨hA, _, _, hmem⟩
-    rw [frontierY, if_neg hleft, if_neg hmiddle]
+    rw [frontierY, ite_eq_right hleft, ite_eq_right hmiddle]
     exact ⟨hA, by simpa [hspec.2] using hmem⟩
 
 end RamseyBasics

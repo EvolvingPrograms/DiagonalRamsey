@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.JointFamily
-import Support.Published.Lemmas.DiagRamsey_JB_Raw
-import Support.Controls.Candidate600PL
+module
+
+public import S7_ParameterChoice.Source.JointFamily
+public import Support.Published.Lemmas.DiagRamsey_JB_Raw
+public import Support.Controls.Candidate600PL
+
+@[expose] public section
 
 /-!
 Consecutive-interval and raw-checker soundness laws below are narrow reuse

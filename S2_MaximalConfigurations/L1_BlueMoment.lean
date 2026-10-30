@@ -1,5 +1,9 @@
-import S1_Definitions.L1_WeightedConfigurations
-import Support.Published.Lemmas.DiagRamsey_SE_GraphRows
+module
+
+public import S1_Definitions.L1_WeightedConfigurations
+public import Support.Published.Lemmas.DiagRamsey_SE_GraphRows
+
+@[expose] public section
 
 /-!
 # 2.1 Blue failure

@@ -1,6 +1,10 @@
-import Support.Published.Definitions.Def_DiagRamsey_SourceBank
-import Support.Controls.PublishedInterface
-import Support.Controls.TangentSound
+module
+
+public import Support.Published.Definitions.Def_DiagRamsey_SourceBank
+public import Support.Controls.PublishedInterface
+public import Support.Controls.TangentSound
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

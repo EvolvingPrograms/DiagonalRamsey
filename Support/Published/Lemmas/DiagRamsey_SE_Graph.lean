@@ -1,12 +1,16 @@
-import Mathlib
-import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
-import Support.Published.Lemmas.DiagRamsey_SE_Row
+module
+
+public import Mathlib
+public import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+public import Support.Published.Lemmas.DiagRamsey_SE_Row
+
+@[expose] public section
 
 open Classical
 
 namespace DiagRamsey.SE
 
-variable {V : Type*} [Fintype V] [DecidableEq V]
+variable {V : Type*}
 
 noncomputable def hR (G : SimpleGraph V) (i y : V) : ℝ := if G.Adj i y then 1 else 0
 

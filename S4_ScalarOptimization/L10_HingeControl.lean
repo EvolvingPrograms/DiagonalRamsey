@@ -1,5 +1,9 @@
-import S4_ScalarOptimization.L1_FeasiblePairs
-import S4_ScalarOptimization.L9_AffineEnvelope
+module
+
+public import S4_ScalarOptimization.L1_FeasiblePairs
+public import S4_ScalarOptimization.L9_AffineEnvelope
+
+@[expose] public section
 
 /-!
 # 4.10 Hinge control

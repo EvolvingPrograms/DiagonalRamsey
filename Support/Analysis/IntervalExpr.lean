@@ -1,4 +1,8 @@
-import Support.Analysis.FixedPointInterval
+module
+
+public import Support.Analysis.FixedPointInterval
+
+@[expose] public section
 
 /-! A computable expression checker whose acceptance implies a real enclosure.
 The generated inputs are untrusted; `bound_sound` is the semantic connection.

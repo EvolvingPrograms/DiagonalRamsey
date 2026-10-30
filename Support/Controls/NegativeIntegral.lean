@@ -1,6 +1,10 @@
-import Support.Controls.TailCutoff
-import Support.Controls.TruncatedSum
-import Support.Controls.Substitution
+module
+
+public import Support.Controls.TailCutoff
+public import Support.Controls.TruncatedSum
+public import Support.Controls.Substitution
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

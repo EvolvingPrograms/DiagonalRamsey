@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControlsSound
-import S7_ParameterChoice.Source.Joint.Leaves.LeafControlAssemblyLaw
+module
+
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControlsSound
+public import S7_ParameterChoice.Source.Joint.Leaves.LeafControlAssemblyLaw
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

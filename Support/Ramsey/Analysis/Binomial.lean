@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Pochhammer
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Pochhammer
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-!
 # Generalized real binomial coefficients

@@ -1,5 +1,9 @@
-import Support.Ramsey.BookInduction
-import Mathlib.Tactic
+module
+
+public import Support.Ramsey.BookInduction
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Finite graph selection used in the weighted candidate proof.
 These results hold for every real weight because selection does not use it. -/

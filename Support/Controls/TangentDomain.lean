@@ -1,4 +1,8 @@
-import Support.Controls.TangentBridge
+module
+
+public import Support.Controls.TangentBridge
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.TangentExpressions

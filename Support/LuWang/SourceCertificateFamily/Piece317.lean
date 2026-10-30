@@ -1,6 +1,10 @@
-import Support.LuWang.SourceCertificateFamily.Normalized
-import Support.LuWang.CurrentSourceGeometry
-import Support.LuWang.SourceCertificateComplete
+module
+
+public import Support.LuWang.SourceCertificateFamily.Normalized
+public import Support.LuWang.CurrentSourceGeometry
+public import Support.LuWang.SourceCertificateComplete
+
+@[expose] public section
 
 /-! A single quadratic support law certifies the unchanged source polynomial
 317 over its whole cell. Five piece windows replace the 39 original affine

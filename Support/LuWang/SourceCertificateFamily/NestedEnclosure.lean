@@ -1,4 +1,8 @@
-import Support.Analysis.ExpressionCertificate
+module
+
+public import Support.Analysis.ExpressionCertificate
+
+@[expose] public section
 
 /-! Extends the upstream (MIT) centeredWith_sound mean-value proof by allowing
 an independently certified derivative interval, including a nested enclosure. -/

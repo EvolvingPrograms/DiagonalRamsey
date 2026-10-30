@@ -1,5 +1,9 @@
-import Support.Controls.Candidate600Prefix
-import Support.Controls.ExactPLProfileBridge
+module
+
+public import Support.Controls.Candidate600Prefix
+public import Support.Controls.ExactPLProfileBridge
+
+@[expose] public section
 set_option autoImplicit false
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

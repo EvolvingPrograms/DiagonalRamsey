@@ -1,10 +1,14 @@
-import Support.Published.Lemmas.DiagRamsey_balanced_cut
-import Mathlib.Data.Fintype.Prod
-import Mathlib.Data.Fintype.Perm
-import Mathlib.Data.Fintype.Fin
-import Mathlib.Algebra.Order.BigOperators.Group.Finset
-import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
-import Mathlib.Algebra.BigOperators.Ring.Finset
+module
+
+public import Support.Published.Lemmas.DiagRamsey_balanced_cut
+public import Mathlib.Data.Fintype.Prod
+public import Mathlib.Data.Fintype.Perm
+public import Mathlib.Data.Fintype.Fin
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+public import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+
+@[expose] public section
 
 namespace DiagRamsey
 
@@ -19,6 +23,7 @@ theorem majority_colour_balanced_cut (N : ℕ) (hN : 2 ≤ N) (c : Fin N → Fin
           2 * (Finset.univ.filter (fun e : Fin N × Fin N => e.1 ≠ e.2 ∧ c e.1 e.2 = b)).card ∧
       ∃ X : Finset (Fin N), N ≤ 3 * X.card ∧ N ≤ 3 * Xᶜ.card ∧
         X.card * Xᶜ.card ≤ 2 * ((X ×ˢ Xᶜ).filter (fun e : Fin N × Fin N => c e.1 e.2 = b)).card := by
+  have _ := hc
   set D : Finset (Fin N × Fin N) := univ.filter (fun e => e.1 ≠ e.2) with hD
   have hDcard : D.card = N * (N - 1) := by
     have : D = (univ : Finset (Fin N)).offDiag := by

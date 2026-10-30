@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Controls.EnvelopeGeometry
+module
+
+public import S7_ParameterChoice.Source.Joint.Controls.EnvelopeGeometry
+
+@[expose] public section
 
 /-! Local replacement for the quadratic envelope corner checker. Pivot discovery
 scans vertex lines using equality, then checks only the two neighboring slopes.
@@ -11,7 +15,7 @@ namespace DiagonalRamsey.JointEnvelopeCheck
 open RamseyAnalytic RamseyAnalytic.ControlGeometry
 open JointEnvelopeGeometry
 
-private def zeroCell : Cell := ⟨0, 0, 0, 0⟩
+def zeroCell : Cell := ⟨0, 0, 0, 0⟩
 
 def degreeAt (D : ControlCertificate.Data) (i : ℕ) : Cell :=
   D.degrees.getD i zeroCell

@@ -1,5 +1,9 @@
-import S4_ScalarOptimization.L7_EntropyFeasibility
-import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
+module
+
+public import S4_ScalarOptimization.L7_EntropyFeasibility
+public import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
+
+@[expose] public section
 
 /-!
 # 4.8 Convex degree cutoff
@@ -36,7 +40,7 @@ theorem convex_log_two_exp {θ u v : ℝ} (hθ : 0 < θ ∧ θ < 1) :
     rw [hN θ u x hθ.1, hN θ u y hθ.1,
       hN (1 - θ) v x (sub_pos.mpr hθ.2),
       hN (1 - θ) v y (sub_pos.mpr hθ.2)] at h
-    convert h using 1 <;> try rfl
+    convert h using 1
     symm
     calc
       _ = a * (S x / S x) + b * (S y / S y) := by dsimp [S]; ring
@@ -128,7 +132,7 @@ theorem convex_entropyGap {p μ w β x : ℝ} (hp : 0 < p ∧ p < 1)
   have hpart' := hpart.subset (fun _ h => h.1) (convex_Ioo 0 1)
   have hent := convex_binary_entropy hμ
   have hsum := hpart'.add (hent.smul (mul_nonneg hβ.le hw))
-  convert hsum using 1 <;> try rfl
+  convert hsum using 1
   funext q
   simp only [entropyGap, Pi.add_apply, smul_eq_mul, mul_one_div]
 

@@ -1,5 +1,9 @@
-import Support.LuWang.WeightedConcrete
-import Support.LuWang.Specifications
+module
+
+public import Support.LuWang.WeightedConcrete
+public import Support.LuWang.Specifications
+
+@[expose] public section
 
 /-! The literal finite-host weighted candidate statement from the manuscript.
 The proof's auxiliary logarithmic spine schedule may exceed the displayed

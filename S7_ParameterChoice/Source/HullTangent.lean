@@ -1,6 +1,10 @@
-import Support.Analysis.ProfileExpr
-import Support.Ramsey.Frontier
-import Support.Published.Bridge.Source
+module
+
+public import Support.Analysis.ProfileExpr
+public import Support.Ramsey.Frontier
+public import Support.Published.Bridge.Source
+
+@[expose] public section
 
 /-!
 Narrow analytic reuse from `Bridge/Tangent.lean` and `Bridge/TangentLines.lean`.

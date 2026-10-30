@@ -1,6 +1,10 @@
-import S6_GlobalConstruction.L1_ProfileSupport
-import Support.Controls.PointwiseSource
-import Support.Published.Lemmas.DiagRamsey_JB_Closed
+module
+
+public import S6_GlobalConstruction.L1_ProfileSupport
+public import Support.Controls.PointwiseSource
+public import Support.Published.Lemmas.DiagRamsey_JB_Closed
+
+@[expose] public section
 
 /-!
 # 6.2 Joint induction on the host order

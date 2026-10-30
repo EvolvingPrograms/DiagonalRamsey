@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Geometry
+module
+
+public import S7_ParameterChoice.Source.Geometry
+
+@[expose] public section
 
 /-!
 # Source-cell validity

@@ -1,4 +1,8 @@
-import Support.Analysis.IntervalExpr
+module
+
+public import Support.Analysis.IntervalExpr
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.TangentExpressions

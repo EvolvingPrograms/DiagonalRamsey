@@ -1,9 +1,13 @@
-import S6_GlobalConstruction.L1_ProfileSupport
-import S6_GlobalConstruction.L2_JointInduction
-import S5_LocalAlternative.L3_GraphAlternative
-import Support.Published.Lemmas.DiagRamsey_closure_of_envelope
-import Support.Published.Lemmas.DiagRamsey_SB_Leaf
-import Support.Published.Lemmas.DiagRamsey_SB_Route
+module
+
+public import S6_GlobalConstruction.L1_ProfileSupport
+public import S6_GlobalConstruction.L2_JointInduction
+public import S5_LocalAlternative.L3_GraphAlternative
+public import Support.Published.Lemmas.DiagRamsey_closure_of_envelope
+public import Support.Published.Lemmas.DiagRamsey_SB_Leaf
+public import Support.Published.Lemmas.DiagRamsey_SB_Route
+
+@[expose] public section
 
 /-!
 # 6.3 Composition of retained restrictions

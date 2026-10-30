@@ -1,4 +1,8 @@
-import Support.Published.Lemmas.DiagRamsey_closure_basic
+module
+
+public import Support.Published.Lemmas.DiagRamsey_closure_basic
+
+@[expose] public section
 
 /-! The finite local consequence of the sharp envelope (Lemma 1 of
 `proofs/DiagRamsey_positive_weight_finite_host_closure.md`), with the envelope's local conclusion as a hypothesis. -/
@@ -249,7 +253,7 @@ lemma red_failure (G : SimpleGraph V) (X Y : Finset V) (c Δ cap w β r x : ℝ)
         ((graphNbhd Gᶜ X i).card : ℝ) * colDensity G (graphNbhd Gᶜ X i) y +
         ((redNbhd G X i).card : ℝ) * colDensity G (redNbhd G X i) y := by
       rw [card_mul_colDensity, card_mul_colDensity, card_mul_colDensity,
-        sum_split G X i hiX, if_pos hadj]
+        sum_split G X i hiX, ite_eq_left hadj]
     have hz := red_pointwise _ _ _ _ _ _ _ _ c Δ hN0 hpart hBc haN hcount hRΔ
     have hm : max ((1 - graphFrac Gᶜ X i) * (colDensity G X y - c) -
         graphFrac Gᶜ X i * (colDensity G (graphNbhd Gᶜ X i) y - colDensity G X y)) 0 ≤

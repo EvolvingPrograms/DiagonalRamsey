@@ -1,4 +1,8 @@
-import Support.Controls.RouteAffine
+module
+
+public import Support.Controls.RouteAffine
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic

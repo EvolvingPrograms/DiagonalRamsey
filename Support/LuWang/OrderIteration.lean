@@ -1,5 +1,9 @@
-import Mathlib.Order.FixedPoints
-import Mathlib.Tactic
+module
+
+public import Mathlib.Order.FixedPoints
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! The order-theoretic comparisons used in the closure theorem.
 The separate compact-depth theorem supplies a route's common finite stage.

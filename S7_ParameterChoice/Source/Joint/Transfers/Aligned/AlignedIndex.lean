@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedClosed
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedClosed
+
+@[expose] public section
 
 /-! Exact donor indices for the 654 aligned inherited closed profiles.
 Generated from the hashed historical bank by `757.closed-compression.py`. -/

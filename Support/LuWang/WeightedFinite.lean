@@ -1,4 +1,8 @@
-import Support.LuWang.WeightedSchedule
+module
+
+public import Support.LuWang.WeightedSchedule
+
+@[expose] public section
 
 /-! The full finite graph induction for arbitrary positive real weight.
 All graph steps are proved. The remaining numerical schedule hypotheses

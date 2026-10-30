@@ -1,5 +1,9 @@
-import Support.Controls.TangentSound
-import Support.Controls.Derivative
+module
+
+public import Support.Controls.TangentSound
+public import Support.Controls.Derivative
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.TangentExpressions

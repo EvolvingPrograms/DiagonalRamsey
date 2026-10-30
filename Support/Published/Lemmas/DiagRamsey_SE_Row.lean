@@ -1,5 +1,9 @@
-import Mathlib
-import Support.Published.Lemmas.DiagRamsey_SE_PRL
+module
+
+public import Mathlib
+public import Support.Published.Lemmas.DiagRamsey_SE_PRL
+
+@[expose] public section
 
 open Filter Topology
 

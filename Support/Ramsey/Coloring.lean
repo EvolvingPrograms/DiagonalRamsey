@@ -1,6 +1,10 @@
-import Support.Ramsey.Basic
-import Mathlib.Combinatorics.SimpleGraph.Clique
-import Mathlib.Combinatorics.SimpleGraph.Finite
+module
+
+public import Support.Ramsey.Basic
+public import Mathlib.Combinatorics.SimpleGraph.Clique
+public import Mathlib.Combinatorics.SimpleGraph.Finite
+
+@[expose] public section
 
 /-!
 # Red-blue colorings

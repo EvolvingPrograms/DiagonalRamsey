@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Routes.Cached.Data
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.Cached.Data
+
+@[expose] public section
 set_option autoImplicit false
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000

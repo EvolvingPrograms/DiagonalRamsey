@@ -1,4 +1,8 @@
-import Support.Published.Lemmas.DiagRamsey_PLCheck
+module
+
+public import Support.Published.Lemmas.DiagRamsey_PLCheck
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.PLSourceMajorant

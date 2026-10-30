@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Profiles.Index
+module
+
+public import S7_ParameterChoice.Source.Joint.Profiles.Index
+
+@[expose] public section
 
 /-! Bounded fast checks certify only PL geometric validity. No source or
 profile Ramsey admissibility is assumed by these rational calculations. -/

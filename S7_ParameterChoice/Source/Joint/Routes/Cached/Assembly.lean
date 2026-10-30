@@ -1,10 +1,14 @@
-import S7_ParameterChoice.Source.Joint.Routes.Cached.Data
-import S7_ParameterChoice.Source.Joint.Routes.RouteFastAdapter
-import S7_ParameterChoice.Source.Joint.Routes.Cached.Checks.Prefix
-import S7_ParameterChoice.Source.Joint.Routes.Cached.Checks.Zip
-import S7_ParameterChoice.Source.Joint.Routes.Cached.Checks.Cells
-import S7_ParameterChoice.Source.Joint.Routes.Cached.Checks.Linear
-import S7_ParameterChoice.Source.Joint.Routes.Cached.Exps
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.Cached.Data
+public import S7_ParameterChoice.Source.Joint.Routes.RouteFastAdapter
+public import S7_ParameterChoice.Source.Joint.Routes.Cached.Checks.Prefix
+public import S7_ParameterChoice.Source.Joint.Routes.Cached.Checks.Zip
+public import S7_ParameterChoice.Source.Joint.Routes.Cached.Checks.Cells
+public import S7_ParameterChoice.Source.Joint.Routes.Cached.Checks.Linear
+public import S7_ParameterChoice.Source.Joint.Routes.Cached.Exps
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option Elab.async false

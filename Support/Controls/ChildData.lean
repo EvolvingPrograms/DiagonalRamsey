@@ -1,5 +1,9 @@
-import Support.Controls.RouteHeight
-import Support.Controls.GeometrySound
+module
+
+public import Support.Controls.RouteHeight
+public import Support.Controls.GeometrySound
+
+@[expose] public section
 set_option autoImplicit false
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

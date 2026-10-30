@@ -1,5 +1,9 @@
-import S7_ParameterChoice.L2_Control
-import S4_ScalarOptimization.L13_EnvelopeConcavity
+module
+
+public import S7_ParameterChoice.L2_Control
+public import S4_ScalarOptimization.L13_EnvelopeConcavity
+
+@[expose] public section
 
 /-!
 # Exact control expressions

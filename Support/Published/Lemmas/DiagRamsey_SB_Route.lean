@@ -1,6 +1,10 @@
-import Support.Published.Lemmas.DiagRamsey_SB_Leaf
-import Support.Published.Lemmas.DiagRamsey_SB_RouteG
-import Support.Published.Lemmas.DiagRamsey_retained_route
+module
+
+public import Support.Published.Lemmas.DiagRamsey_SB_Leaf
+public import Support.Published.Lemmas.DiagRamsey_SB_RouteG
+public import Support.Published.Lemmas.DiagRamsey_retained_route
+
+@[expose] public section
 
 /-!
 # Source banks: retained-route nodes are relatively valid

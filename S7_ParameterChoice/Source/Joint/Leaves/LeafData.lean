@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
+module
+
+public import S7_ParameterChoice.Source.Joint.Leaves.FastLeaf
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000
@@ -1921,7 +1925,7 @@ theorem datum_eq (i : Fin 1464) : rawDatum (familyIndex i) = (fastProfile i).toD
   split_ifs with h
   · rw [JointFamily.rawDatum, dif_pos h]
   · simp only [JointFamily.rawDatum]
-    rw [dif_neg (by omega), if_neg (by omega), if_neg (by omega), dif_pos (by omega)]
+    rw [dif_neg (by omega), ite_eq_right (by omega), ite_eq_right (by omega), dif_pos (by omega)]
     congr 2
 
 end DiagonalRamsey.JointLeaf

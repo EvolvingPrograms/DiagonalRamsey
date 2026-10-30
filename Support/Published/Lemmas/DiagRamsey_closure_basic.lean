@@ -1,11 +1,15 @@
-import Mathlib.Analysis.SpecialFunctions.Pow.Real
-import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
-import Mathlib.Analysis.MeanInequalitiesPow
-import Mathlib.Data.Nat.Choose.Bounds
-import Support.Published.Definitions.Def_DiagRamsey_Basic
-import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
-import Support.Published.Lemmas.DiagRamsey_closure_nbgp
-import Support.Published.Lemmas.DiagRamsey_closure_wgp
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Pow.Real
+public import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
+public import Mathlib.Analysis.MeanInequalitiesPow
+public import Mathlib.Data.Nat.Choose.Bounds
+public import Support.Published.Definitions.Def_DiagRamsey_Basic
+public import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+public import Support.Published.Lemmas.DiagRamsey_closure_nbgp
+public import Support.Published.Lemmas.DiagRamsey_closure_wgp
+
+@[expose] public section
 
 /-! Elementary facts used by the finite-host closure: potential bookkeeping, a maximal sub-pair, the
 Erdős–Szekeres bound for `ramseyNumber`, clique gluing, and the `(log n)^2 = o(n)` growth bounds. -/

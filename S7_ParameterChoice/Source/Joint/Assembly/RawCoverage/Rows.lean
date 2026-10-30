@@ -1,8 +1,12 @@
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch00
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch01
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch02
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch03
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch04
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch05
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch06
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch07
+module
+
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch00
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch01
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch02
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch03
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch04
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch05
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch06
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Rows.Batch07
+
+@[expose] public section

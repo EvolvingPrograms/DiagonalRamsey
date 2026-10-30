@@ -1,6 +1,10 @@
-import S1_Definitions.L2_AdmissibleBounds
-import S8_RamseyBound.L1_AsymptoticAbsorption
-import Support.LuWang.DiagonalConditional
+module
+
+public import S1_Definitions.L2_AdmissibleBounds
+public import S8_RamseyBound.L1_AsymptoticAbsorption
+public import Support.LuWang.DiagonalConditional
+
+@[expose] public section
 
 /-!
 # 8.2 Complement symmetry

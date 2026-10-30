@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Foundations.Geometry
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.Geometry
+
+@[expose] public section
 
 /-! Narrow reuse of the closed checker in `Lemmas.DiagRamsey_V5Fast`,
 by turibius-of-mogrovejo. Integer cross-products replace normalized rational

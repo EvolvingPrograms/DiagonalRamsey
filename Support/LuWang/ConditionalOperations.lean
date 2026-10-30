@@ -1,4 +1,8 @@
-import Support.LuWang.RetainedRule
+module
+
+public import Support.LuWang.RetainedRule
+
+@[expose] public section
 
 set_option autoImplicit false
 

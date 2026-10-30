@@ -1,7 +1,11 @@
-import S7_ParameterChoice.Source.Joint.Routes.Cached.Data
-import S7_ParameterChoice.Source.Joint.Routes.RoutePrefixAdapter
-import S7_ParameterChoice.Source.Joint.Routes.FastRouteNoKnot
-import S7_ParameterChoice.Source.Joint.Routes.FastRouteZip
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.Cached.Data
+public import S7_ParameterChoice.Source.Joint.Routes.RoutePrefixAdapter
+public import S7_ParameterChoice.Source.Joint.Routes.FastRouteNoKnot
+public import S7_ParameterChoice.Source.Joint.Routes.FastRouteZip
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000

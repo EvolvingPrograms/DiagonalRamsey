@@ -1,4 +1,10 @@
-import Mathlib.Data.Rat.Defs
+module
+
+import all Init.Data.Repr
+import all Init.Data.Int.Repr
+public import Mathlib.Data.Rat.Defs
+
+@[expose] public section
 
 /-! Canonical `"num/den"` rendering of rationals, a `List Char` form of it that the kernel can
 compare cheaply against string literals, and the `kernel_rfl` tactic.

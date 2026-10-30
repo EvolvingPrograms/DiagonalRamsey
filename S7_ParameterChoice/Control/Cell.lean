@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Control.Expressions
-import S4_ScalarOptimization.L9_AffineEnvelope
+module
+
+public import S7_ParameterChoice.Control.Expressions
+public import S4_ScalarOptimization.L9_AffineEnvelope
+
+@[expose] public section
 
 /-!
 # One uniform control cell

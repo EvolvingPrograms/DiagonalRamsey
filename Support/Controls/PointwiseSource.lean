@@ -1,5 +1,9 @@
-import Support.Controls.SourceBasis
-import Support.Published.Definitions.Def_DiagRamsey_JointBank
+module
+
+public import Support.Controls.SourceBasis
+public import Support.Published.Definitions.Def_DiagRamsey_JointBank
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.PointwiseSource

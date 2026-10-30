@@ -1,6 +1,10 @@
-import Support.LuWang.PiecewiseSourceAnalysis
-import Support.LuWang.PolygonTailsGeometry
-import Mathlib.Analysis.Convex.Deriv
+module
+
+public import Support.LuWang.PiecewiseSourceAnalysis
+public import Support.LuWang.PolygonTailsGeometry
+public import Mathlib.Analysis.Convex.Deriv
+
+@[expose] public section
 
 set_option autoImplicit false
 

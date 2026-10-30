@@ -1,5 +1,9 @@
-import Support.Published.Lemmas.DiagRamsey_closure_induction
-import Support.Published.Definitions.Def_DiagRamsey_Cert
+module
+
+public import Support.Published.Lemmas.DiagRamsey_closure_induction
+public import Support.Published.Definitions.Def_DiagRamsey_Cert
+
+@[expose] public section
 
 /-! `positive_weight_finite_host_closure_of_envelope`: the closure theorem
 (`Theorems/Thm_DiagRamsey_positive_weight_finite_host_closure.lean`) with the exact proposition of

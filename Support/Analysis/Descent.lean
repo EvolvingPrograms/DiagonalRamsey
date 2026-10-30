@@ -1,6 +1,10 @@
-import Support.Ramsey.Descent
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Ring
+module
+
+public import Support.Ramsey.Descent
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 /-!
 # The manuscript's normalized-slack descent interface

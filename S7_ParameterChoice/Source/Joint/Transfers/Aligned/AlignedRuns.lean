@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedClosed
+module
+
+public import S7_ParameterChoice.Source.Joint.Transfers.Aligned.AlignedClosed
+
+@[expose] public section
 
 /-! Eight representative aligned donor runs. Generated reproducibly by
 `757.closed-compression.py`; source IDs and index association are audited

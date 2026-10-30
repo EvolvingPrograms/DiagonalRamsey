@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Assembly
-import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControlsSound
-import S7_ParameterChoice.Source.Joint.Leaves.LeafControlsSound
+module
+
+public import S7_ParameterChoice.Source.Joint.Assembly.RawCoverage.Assembly
+public import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControlsSound
+public import S7_ParameterChoice.Source.Joint.Leaves.LeafControlsSound
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace DiagonalRamsey.JointRawAssembly

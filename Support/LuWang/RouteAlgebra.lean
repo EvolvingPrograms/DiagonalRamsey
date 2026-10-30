@@ -1,4 +1,8 @@
-import Mathlib.Tactic
+module
+
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Exact height elimination and uniform reuse gaps, Section 4.2. -/
 

@@ -1,4 +1,8 @@
-import Support.Controls.RouteCellOutput
+module
+
+public import Support.Controls.RouteCellOutput
+
+@[expose] public section
 set_option autoImplicit false
 set_option maxRecDepth 100000
 set_option maxHeartbeats 0

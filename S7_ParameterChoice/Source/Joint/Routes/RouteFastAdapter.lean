@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Routes.RouteIndexed
-import S7_ParameterChoice.Source.Joint.Routes.FastRoute
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.RouteIndexed
+public import S7_ParameterChoice.Source.Joint.Routes.FastRoute
+
+@[expose] public section
 
 set_option autoImplicit false
 

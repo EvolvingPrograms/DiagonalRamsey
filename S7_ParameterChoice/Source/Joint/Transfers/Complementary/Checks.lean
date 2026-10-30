@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
-import S7_ParameterChoice.Source.Joint.Transfers.Complementary.ComplementaryIndex
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+public import S7_ParameterChoice.Source.Joint.Transfers.Complementary.ComplementaryIndex
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 0

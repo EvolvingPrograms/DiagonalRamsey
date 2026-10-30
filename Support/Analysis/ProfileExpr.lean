@@ -1,5 +1,9 @@
-import Support.Analysis.PolynomialExpr
-import Support.Analysis.Origin
+module
+
+public import Support.Analysis.PolynomialExpr
+public import Support.Analysis.Origin
+
+@[expose] public section
 
 /-! Computable profile expressions with exact real semantics. The polynomial
 center and Taylor orders influence interval evaluation only, never the real

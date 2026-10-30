@@ -1,4 +1,8 @@
-import Support.LuWang.PolygonCriterionControls
+module
+
+public import Support.LuWang.PolygonCriterionControls
+
+@[expose] public section
 
 set_option autoImplicit false
 

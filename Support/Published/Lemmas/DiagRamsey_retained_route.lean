@@ -1,10 +1,14 @@
-import Mathlib.Combinatorics.SimpleGraph.Clique
-import Mathlib.Algebra.Order.BigOperators.Group.Finset
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Data.Real.Basic
-import Mathlib.Algebra.Order.Field.Basic
-import Mathlib.Tactic.Linarith
-import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Clique
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.Algebra.Order.Field.Basic
+public import Mathlib.Tactic.Linarith
+public import Support.Published.Definitions.Def_DiagRamsey_WeightedHost
+
+@[expose] public section
 
 /-!
 # Retained routes (shared combinatorial core)
@@ -27,6 +31,7 @@ open Finset Classical
 
 variable {V : Type*} [Fintype V] [DecidableEq V]
 
+omit [Fintype V] [DecidableEq V] in
 lemma card_filter_product_eq_sum (G : SimpleGraph V) (X Y : Finset V) :
     ((X ×ˢ Y).filter (fun e : V × V => G.Adj e.1 e.2)).card = ∑ v ∈ X, (Y.filter (fun y => G.Adj v y)).card := by
   rw [card_filter, sum_product]
@@ -34,6 +39,7 @@ lemma card_filter_product_eq_sum (G : SimpleGraph V) (X Y : Finset V) :
   intro v _
   rw [card_filter]
 
+omit [Fintype V] [DecidableEq V] in
 /-- Retained rows. -/
 lemma retained_rows (G : SimpleGraph V) (X₀ Y : Finset V) (p π : ℝ) (hπ1 : π < 1) (hY : Y.Nonempty)
     (hcross : p * ((X₀.card : ℝ) * (Y.card : ℝ)) ≤
@@ -43,6 +49,7 @@ lemma retained_rows (G : SimpleGraph V) (X₀ Y : Finset V) (p π : ℝ) (hπ1 :
       ∀ Z ⊆ X₀.filter (fun v => π * (Y.card : ℝ) ≤ ((Y.filter (fun y => G.Adj v y)).card : ℝ)),
         π * ((Z.card : ℝ) * (Y.card : ℝ)) ≤
           (((Z ×ˢ Y).filter (fun e : V × V => G.Adj e.1 e.2)).card : ℝ) := by
+  have _ := hπ1
   set P : V → Prop := fun v => π * (Y.card : ℝ) ≤ ((Y.filter (fun y => G.Adj v y)).card : ℝ) with hP
   set X := X₀.filter P with hX
   set deg : V → ℝ := fun v => ((Y.filter (fun y => G.Adj v y)).card : ℝ) with hdeg
@@ -73,11 +80,13 @@ lemma retained_rows (G : SimpleGraph V) (X₀ Y : Finset V) (p π : ℝ) (hπ1 :
     have := (mem_filter.mp (hZ hv)).2
     linarith
 
+omit [Fintype V] in
 /-- Blue pivot: a set of ordered red-pair density `< q` has a vertex with a large blue neighbourhood. -/
 lemma exists_blue_pivot (G : SimpleGraph V) (Z : Finset V) (q : ℝ) (hZ : Z.Nonempty)
     (hlow : ((Z.offDiag.filter (fun e : V × V => G.Adj e.1 e.2)).card : ℝ) <
       q * ((Z.card : ℝ) * ((Z.card : ℝ) - 1))) :
     ∃ v ∈ Z, (1 - q) * ((Z.card : ℝ) - 1) < ((Z.filter (fun u => u ≠ v ∧ ¬ G.Adj v u)).card : ℝ) := by
+  have _ := hZ
   have hoff : Z.offDiag.filter (fun e : V × V => G.Adj e.1 e.2) = (Z ×ˢ Z).filter (fun e : V × V => G.Adj e.1 e.2) := by
     ext ⟨u, v⟩
     simp only [mem_filter, mem_offDiag, mem_product]
@@ -87,7 +96,7 @@ lemma exists_blue_pivot (G : SimpleGraph V) (Z : Finset V) (q : ℝ) (hZ : Z.Non
   rw [hoff, card_filter_product_eq_sum] at hlow
   push_cast at hlow
   by_contra hcon
-  push_neg at hcon
+  push Not at hcon
   have hdeg : ∀ v ∈ Z, ((Z.filter (fun u => G.Adj v u)).card : ℝ) + ((Z.filter (fun u => u ≠ v ∧ ¬ G.Adj v u)).card : ℝ)
       = (Z.card : ℝ) - 1 := by
     intro v hv
@@ -121,6 +130,7 @@ lemma exists_blue_pivot (G : SimpleGraph V) (Z : Finset V) (q : ℝ) (hZ : Z.Non
 def RouteGood (G : SimpleGraph V) (Z Y : Finset V) (k ℓ t : ℕ) : Prop :=
   HasRedClique G (Z ∪ Y) k ∨ HasBlueClique G Z t ∨ HasBlueClique G Y ℓ
 
+omit [Fintype V] in
 /-- Retained-route induction on the blue target `t`. -/
 theorem retained_route_induction (G : SimpleGraph V) (X Y : Finset V) (k ℓ n₀ T : ℕ) (M q : ℕ → ℝ)
     (hM : ∀ t, 0 < M t)
@@ -141,13 +151,13 @@ theorem retained_route_induction (G : SimpleGraph V) (X Y : Finset V) (k ℓ n�
       rw [← card_pos]; have := hM (t + 1); exact_mod_cast (show (0 : ℝ) < Z.card by linarith)
     by_cases ht : t + 1 ≤ n₀
     · exact hbase (t + 1) (Nat.succ_pos t) ht Z hZX hZne hZ
-    push_neg at ht
+    push Not at ht
     by_cases hd : q (t + 1) * ((Z.card : ℝ) * ((Z.card : ℝ) - 1)) ≤
         ((Z.offDiag.filter (fun e : V × V => G.Adj e.1 e.2)).card : ℝ)
     · rcases hleaf (t + 1) ht hT Z hZX hZ hd with ⟨S, hS, h⟩ | h
       · exact Or.inl ⟨S, hS.trans subset_union_left, h⟩
       · exact Or.inr (Or.inl h)
-    push_neg at hd
+    push Not at hd
     obtain ⟨v, hv, hbig⟩ := exists_blue_pivot G Z (q (t + 1)) hZne hd
     set B := Z.filter (fun u => u ≠ v ∧ ¬ G.Adj v u) with hB
     have hBZ : B ⊆ Z := filter_subset _ _

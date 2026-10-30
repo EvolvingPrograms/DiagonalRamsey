@@ -1,5 +1,9 @@
-import Support.Published.Lemmas.DiagRamsey_closure_of_envelope
-import Support.Published.Lemmas.DiagRamsey_sharp_envelope
+module
+
+public import Support.Published.Lemmas.DiagRamsey_closure_of_envelope
+public import Support.Published.Lemmas.DiagRamsey_sharp_envelope
+
+@[expose] public section
 
 /-! The closure theorem: `positive_weight_finite_host_closure_of_envelope` applied to the verified sharp envelope
 `positive_weight_sharp_envelope_proof` (`Lemmas/DiagRamsey_sharp_envelope.lean`). Axioms:

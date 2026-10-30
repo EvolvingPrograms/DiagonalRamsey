@@ -1,5 +1,9 @@
-import Support.LuWang.WeightedBook
-import Support.LuWang.GraphSelection
+module
+
+public import Support.LuWang.WeightedBook
+public import Support.LuWang.GraphSelection
+
+@[expose] public section
 
 /-! An explicit numerical interface for the finite weighted induction.
 The interface is independent of the host. Its existence with one uniform

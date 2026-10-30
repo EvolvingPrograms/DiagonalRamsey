@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Envelope
+module
+
+public import S7_ParameterChoice.Source.Envelope
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000
@@ -442,7 +446,7 @@ theorem crossing_values (j : Fin 129) :
   unfold line
   exact_mod_cast (checked.1 j).2.2
 
-private def UpperCondition (t : ℝ) (k : ℕ) : Prop :=
+def UpperCondition (t : ℝ) (k : ℕ) : Prop :=
   k < 130 ∧ ∀ j : Fin 129, k ≤ j.val → t ≤ (crossing j : ℝ)
 
 private theorem upperCondition_exists (t : ℝ) : ∃ k, UpperCondition t k := by

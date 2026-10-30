@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Profiles
+module
+
+public import S7_ParameterChoice.Source.Profiles
+
+@[expose] public section
 
 /-!
 # Geometric validity of the source profiles

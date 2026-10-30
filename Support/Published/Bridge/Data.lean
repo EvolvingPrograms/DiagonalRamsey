@@ -1,8 +1,12 @@
-import Support.LuWang.CurrentSourceGeometryData
-import Support.Published.Bridge.ParseRat
-import Support.Published.Bridge.DataKnots
-import Support.Published.Bridge.DataValues
-import Support.Published.Bridge.DataDerivs
+module
+
+public import Support.LuWang.CurrentSourceGeometryData
+public import Support.Published.Bridge.ParseRat
+public import Support.Published.Bridge.DataKnots
+public import Support.Published.Bridge.DataValues
+public import Support.Published.Bridge.DataDerivs
+
+@[expose] public section
 
 /-! The project's string data (`luWangKnotData`, `luWangValueData`, `luWangDerivData`) is, entry by entry,
 the decimal rendering of Lu--Wang's rational data `LuWang.CurrentSourceData.{knots,values,derivatives}`.
@@ -35,7 +39,7 @@ theorem coefficients_length : ∀ i : Fin 2279, (rationalData.coefficients i).le
     simpa using congrArg List.length pieces_lengths
   have hi : i.val < LuWang.CurrentSourceData.pieces.length := by rw [hlen]; exact i.isLt
   have h := congrArg (fun l => l[i.val]?) pieces_lengths
-  simp only [List.getElem?_map, List.getElem?_replicate, i.isLt, if_true,
+  simp only [List.getElem?_map, List.getElem?_replicate, i.isLt, ite_true,
     List.getElem?_eq_getElem hi, Option.map_some, Option.some.injEq] at h
   simp only [rationalData, List.getElem?_eq_getElem hi, Option.getD_some]
   exact h

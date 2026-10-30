@@ -1,6 +1,10 @@
-import S1_Definitions.L3_MomentConstraints
-import S3_TwoCellReduction.L4_DensityGap
-import Mathlib.Topology.Sequences
+module
+
+public import S1_Definitions.L3_MomentConstraints
+public import S3_TwoCellReduction.L4_DensityGap
+public import Mathlib.Topology.Sequences
+
+@[expose] public section
 
 /-!
 # 3.5 Limiting constraints

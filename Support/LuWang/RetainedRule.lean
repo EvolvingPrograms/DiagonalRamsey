@@ -1,4 +1,8 @@
-import Support.LuWang.RetainedCalls
+module
+
+public import Support.LuWang.RetainedCalls
+
+@[expose] public section
 
 set_option autoImplicit false
 

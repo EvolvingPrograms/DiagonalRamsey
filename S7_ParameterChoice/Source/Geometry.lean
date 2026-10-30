@@ -1,6 +1,10 @@
-import S7_ParameterChoice.Source.Profiles
-import S7_ParameterChoice.Source.Cover
-import S7_ParameterChoice.Source.Tails
+module
+
+public import S7_ParameterChoice.Source.Profiles
+public import S7_ParameterChoice.Source.Cover
+public import S7_ParameterChoice.Source.Tails
+
+@[expose] public section
 
 /-!
 # Finite interior source geometry

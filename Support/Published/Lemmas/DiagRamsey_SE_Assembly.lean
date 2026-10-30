@@ -1,8 +1,12 @@
-import Mathlib
-import Support.Published.Lemmas.DiagRamsey_SE_PRL
-import Support.Published.Lemmas.DiagRamsey_SE_Excl
-import Support.Published.Lemmas.DiagRamsey_SE_Calc
-import Support.Published.Lemmas.DiagRamsey_SE_Cell
+module
+
+public import Mathlib
+public import Support.Published.Lemmas.DiagRamsey_SE_PRL
+public import Support.Published.Lemmas.DiagRamsey_SE_Excl
+public import Support.Published.Lemmas.DiagRamsey_SE_Calc
+public import Support.Published.Lemmas.DiagRamsey_SE_Cell
+
+@[expose] public section
 
 open MeasureTheory
 
@@ -19,6 +23,7 @@ lemma cell_mem {N k : ℕ} (hN : 0 < N) (hk : k < N) :
 lemma sum_dJ_le {N : ℕ} (hN : 0 < N) (S : Finset ℕ) (hS : S ⊆ Finset.range N) (a : ℝ) :
     ∑ k ∈ S, (JF (((k:ℝ) + 1) / N) - JF ((k:ℝ) / N)) ≤
       (2 + a) * ((S.card:ℝ) / N) + Real.exp (-a - 1) := by
+  have _ := hS
   have hN' : (0:ℝ) < N := by exact_mod_cast hN
   have hanti : Antitone (fun k : ℕ => JF (((k:ℝ) + 1) / N) - JF ((k:ℝ) / N)) := by
     apply antitone_nat_of_succ_le
@@ -217,15 +222,15 @@ theorem assembly {p μ w β x : ℝ} (hp0 : 0 < p) (hp1 : p < 1) (hμ0 : 0 < μ)
     have hbase : 0 ≤ ε / N + w * ε * ΔJ k := by positivity
     by_cases hkG : k ∈ Gd
     · have hk3 : k ∉ S3 := fun h => (Finset.mem_sdiff.1 h).2 hkG
-      rw [if_neg hk3, add_zero]
+      rw [ite_eq_right hk3, add_zero]
       by_cases hk2 : r * Ps k ≤ -K
       · have hkS2 : k ∈ S2 := Finset.mem_filter.2 ⟨hkG, hk2⟩
-        rw [if_pos hkS2]
+        rw [ite_eq_left hkS2]
         have := cost_vs_q0 hN' hw.le (hq k hk') hq0b (le_refl C0) hLJ (hlowq q0 hq0F) hk2
         have e : (-K + C0) / N = (-K + C0) / N := rfl
         linarith
       · have hkS2 : k ∉ S2 := fun h => hk2 (Finset.mem_filter.1 h).2
-        rw [if_neg hkS2, add_zero]
+        rw [ite_eq_right hkS2, add_zero]
         obtain ⟨g1, g2, g3, g4, g5, g6, g7, g8⟩ := hgood k hkG
         have hqpos : 0 < qs k := by
           rcases (hq k hk').1.lt_or_eq with h | h
@@ -246,7 +251,7 @@ theorem assembly {p μ w β x : ℝ} (hp0 : 0 < p) (hp1 : p < 1) (hμ0 : 0 < μ)
           exact absurd hK' hk2
     · have hk3 : k ∈ S3 := Finset.mem_sdiff.2 ⟨hk, hkG⟩
       have hk2 : k ∉ S2 := fun h => hkG (Finset.mem_filter.1 h).1
-      rw [if_pos hk3, if_neg hk2, zero_add]
+      rw [ite_eq_left hk3, ite_eq_right hk2, zero_add]
       have := cost_vs_q0 hN' hw.le (hq k hk') hq0b (le_refl C0) hLJ (hlowq q0 hq0F) (hub k hk')
       linarith
   have hsum := Finset.sum_le_sum hbound

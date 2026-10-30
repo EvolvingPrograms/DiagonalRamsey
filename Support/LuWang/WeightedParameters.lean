@@ -1,4 +1,8 @@
-import Support.Ramsey.BookInduction
+module
+
+public import Support.Ramsey.BookInduction
+
+@[expose] public section
 
 /-! The first parameter choice in the weighted candidate lemma. -/
 

@@ -1,5 +1,9 @@
-import Comparison.Definitions
-import S8_RamseyBound.L4_MainTheorem
+module
+
+public import Comparison.Definitions
+public import S8_RamseyBound.L4_MainTheorem
+
+@[expose] public section
 
 namespace RamseySpecification
 

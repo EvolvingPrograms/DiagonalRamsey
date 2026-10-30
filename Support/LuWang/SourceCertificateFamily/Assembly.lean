@@ -1,6 +1,10 @@
-import Support.LuWang.SourceCertificateFamily.Domain
-import Support.LuWang.SourceCertificateFamily.Piece317
-import Support.LuWang.SourceCertificateLink
+module
+
+public import Support.LuWang.SourceCertificateFamily.Domain
+public import Support.LuWang.SourceCertificateFamily.Piece317
+public import Support.LuWang.SourceCertificateLink
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace LuWang.SourceCertificateFamily

@@ -1,7 +1,11 @@
-import S4_ScalarOptimization.L3_DensityTransfer
-import S4_ScalarOptimization.L4_NonbindingOptimum
-import S4_ScalarOptimization.L5_BindingOptimum
-import Support.Controls.ParametricIntegral
+module
+
+public import S4_ScalarOptimization.L3_DensityTransfer
+public import S4_ScalarOptimization.L4_NonbindingOptimum
+public import S4_ScalarOptimization.L5_BindingOptimum
+public import Support.Controls.ParametricIntegral
+
+@[expose] public section
 
 /-!
 # 4.6 The optimal scalar envelope
@@ -29,7 +33,7 @@ theorem feasible_objective_le_certM {p μ w β x q A C : ℝ}
     rw [Real.log_exp]
     field_simp
   by_cases hb : certA p w x q ≤ certB μ w q
-  · rw [certM, if_pos hb]
+  · rw [certM, ite_eq_left hb]
     have hmean := Complement.mean_le_blue ⟨hp.1.le, hp.2.le⟩ hβ hU h.2.1
     rwa [hlogU] at hmean
   · have hforced : Real.log (certU μ w β q) / β < certA p w x q := by
@@ -41,7 +45,7 @@ theorem feasible_objective_le_certM {p μ w β x q A C : ℝ}
     have hblue : p * Real.exp (β * certA p w x q) < certU μ w β q :=
       (mul_le_mul_of_nonneg_left
         (Real.exp_le_exp.mpr (mul_le_mul_of_nonneg_left h.1 hβ.le)) hp.1.le).trans_lt hactual
-    rw [certM, if_neg hb]
+    rw [certM, ite_eq_right hb]
     exact Complement.objective_le_boundary hp hβ hU hforced hblue h
 
 /-- **Density transfer.** A feasible pair at density `d ≥ p` supplies a
@@ -105,7 +109,7 @@ theorem optimal_envelope_attained {p μ w β x q : ℝ}
         (show certA p w x q ≤ Real.log (certU μ w β q) / β by rwa [hlogU]) hcomp
       rw [hlogU] at hconstant
       refine ⟨certB μ w q, certB μ w q, hconstant, ?_⟩
-      rw [certM, if_pos hb]
+      rw [certM, ite_eq_left hb]
       ring
     · have hforced : Real.log (certU μ w β q) / β < certA p w x q := by
         rw [hlogU]
@@ -129,7 +133,7 @@ theorem optimal_envelope_attained {p μ w β x q : ℝ}
             -(q / (1 - q)) * Real.log y := by field_simp
         rw [hexponent]
         exact hboundary
-      · rw [certM, if_neg hb]
+      · rw [certM, ite_eq_right hb]
         dsimp [y]
         ring
   obtain ⟨A', C', hpair, heq⟩ := hopt

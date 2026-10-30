@@ -1,8 +1,12 @@
-import Support.LuWang.Specifications
-import Mathlib.Analysis.Calculus.Deriv.Polynomial
-import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
-import Mathlib.Analysis.SpecialFunctions.ExpDeriv
-import Mathlib.Tactic
+module
+
+public import Support.LuWang.Specifications
+public import Mathlib.Analysis.Calculus.Deriv.Polynomial
+public import Mathlib.Analysis.SpecialFunctions.Log.NegMulLog
+public import Mathlib.Analysis.SpecialFunctions.ExpDeriv
+public import Mathlib.Tactic
+
+@[expose] public section
 
 /-! Analytic identities for an arbitrary polynomial correction. All
 polynomial coefficients remain exact; the numerical checker only needs

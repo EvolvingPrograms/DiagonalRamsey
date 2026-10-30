@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Routes.FastRouteExpZip
+module
+
+public import S7_ParameterChoice.Source.Joint.Routes.FastRouteExpZip
+
+@[expose] public section
 
 /-! Route geometry is independent of whether its analytic control has already
 been recovered. A separate exact control can therefore use the checked linear

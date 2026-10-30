@@ -1,5 +1,9 @@
-import Support.Controls.RouteCertificate
-import Support.Controls.RouteMajorant
+module
+
+public import Support.Controls.RouteCertificate
+public import Support.Controls.RouteMajorant
+
+@[expose] public section
 
 set_option autoImplicit false
 namespace RamseyAnalytic.RouteCellOutput

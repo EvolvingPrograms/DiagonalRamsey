@@ -1,8 +1,12 @@
-import Mathlib.Combinatorics.SimpleGraph.Clique
-import Mathlib.Combinatorics.SimpleGraph.DegreeSum
-import Mathlib.Data.Nat.Choose.Cast
-import Support.Published.Lemmas.DiagRamsey_SB_Leaf
-import Support.Published.Definitions.Def_DiagRamsey_JointBank
+module
+
+public import Mathlib.Combinatorics.SimpleGraph.Clique
+public import Mathlib.Combinatorics.SimpleGraph.DegreeSum
+public import Mathlib.Data.Nat.Choose.Cast
+public import Support.Published.Lemmas.DiagRamsey_SB_Leaf
+public import Support.Published.Definitions.Def_DiagRamsey_JointBank
+
+@[expose] public section
 
 /-!
 # Joint banks: transfer between a sub-host `Z ⊆ V` and the host `↥Z`, and between edge and pair densities
@@ -19,7 +23,7 @@ namespace DiagRamsey
 open Finset Classical
 
 section transfer
-variable {V : Type} [Fintype V] [DecidableEq V]
+variable {V : Type}
 
 /-- The induced graph on `↥Z`. -/
 def induced (G : SimpleGraph V) (Z : Finset V) : SimpleGraph Z := G.comap (Function.Embedding.subtype _)

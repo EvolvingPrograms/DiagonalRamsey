@@ -1,4 +1,8 @@
-import S7_ParameterChoice.Source.Joint.Foundations.Geometry
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.Geometry
+
+@[expose] public section
 
 /-! Exact fixed-scale affine samples. Integer division retains the rounding in
 historical profile data; rational normalization retains its fraction encoding. -/

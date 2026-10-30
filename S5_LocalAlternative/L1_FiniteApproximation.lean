@@ -1,5 +1,9 @@
-import S3_TwoCellReduction.L5_LimitingConstraints
-import S4_ScalarOptimization.L6_OptimalEnvelope
+module
+
+public import S3_TwoCellReduction.L5_LimitingConstraints
+public import S4_ScalarOptimization.L6_OptimalEnvelope
+
+@[expose] public section
 
 /-!
 # 5.1 Uniform finite-row approximation

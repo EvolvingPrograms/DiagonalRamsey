@@ -1,6 +1,10 @@
-import Support.Analysis.ProfileExpr
-import Support.Analysis.ExpressionCertificate
-import Support.LuWang.SourceIdentities
+module
+
+public import Support.Analysis.ProfileExpr
+public import Support.Analysis.ExpressionCertificate
+public import Support.LuWang.SourceIdentities
+
+@[expose] public section
 
 /-! Weighted source certificate expressions. Every computational expression
 has an exact real interpretation; interval evaluation is only a way to prove

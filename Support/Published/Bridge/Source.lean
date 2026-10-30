@@ -1,5 +1,9 @@
-import Support.LuWang.CurrentSourceGeometry
-import Support.Published.Bridge.Data
+module
+
+public import Support.LuWang.CurrentSourceGeometry
+public import Support.Published.Bridge.Data
+
+@[expose] public section
 
 /-! `DiagRamsey.luWangSource = LuWang.CurrentSourceGeometry.F` on `[0,1]`.
 

@@ -1,4 +1,8 @@
-import Support.LuWang.PolygonCriterionGeometry
+module
+
+public import Support.LuWang.PolygonCriterionGeometry
+
+@[expose] public section
 
 /-! The finite polygon criterion. The hypotheses are exactly the source and
 entropy bounds at the positive knots and the scalar test for each positive

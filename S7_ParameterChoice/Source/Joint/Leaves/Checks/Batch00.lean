@@ -1,5 +1,9 @@
-import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
-import S7_ParameterChoice.Source.Joint.Leaves.LeafIndex
+module
+
+public import S7_ParameterChoice.Source.Joint.Foundations.ArithmeticData
+public import S7_ParameterChoice.Source.Joint.Leaves.LeafIndex
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 0

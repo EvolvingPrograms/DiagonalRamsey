@@ -1,10 +1,14 @@
-import Support.Ramsey.AsymptoticRegion
-import Support.Ramsey.BlueBook
-import Mathlib.Analysis.Calculus.Deriv.MeanValue
-import Mathlib.Analysis.SpecialFunctions.Log.RpowTendsto
-import Mathlib.Analysis.SpecialFunctions.Complex.LogBounds
-import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
-import Mathlib.Data.Nat.Choose.Bounds
+module
+
+public import Support.Ramsey.AsymptoticRegion
+public import Support.Ramsey.BlueBook
+public import Mathlib.Analysis.Calculus.Deriv.MeanValue
+public import Mathlib.Analysis.SpecialFunctions.Log.RpowTendsto
+public import Mathlib.Analysis.SpecialFunctions.Complex.LogBounds
+public import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
+public import Mathlib.Data.Nat.Choose.Bounds
+
+@[expose] public section
 
 /-!
 # The book induction

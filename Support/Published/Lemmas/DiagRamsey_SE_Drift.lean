@@ -1,5 +1,9 @@
-import Mathlib
-import Support.Published.Lemmas.DiagRamsey_SE_Calc
+module
+
+public import Mathlib
+public import Support.Published.Lemmas.DiagRamsey_SE_Calc
+
+@[expose] public section
 
 namespace DiagRamsey.SE
 
@@ -26,7 +30,7 @@ theorem sorted_enum {V : Type*} (X : Finset V) (hX : X.Nonempty) (q : V → ℝ)
     exact σ.injective (e0.injective this)
   set idx : ℕ → V := fun k => if h : k < N then g ⟨k, h⟩ else g ⟨0, hNpos⟩ with hidx
   have hidxj : ∀ j : Fin N, idx j = g j := by
-    intro j; simp only [hidx, dif_pos j.isLt, Fin.eta]
+    intro j; simp only [hidx, dite_eq_left j.isLt, Fin.eta]
   refine ⟨idx, ?_, ?_, ?_, ?_⟩
   · intro k hk
     have := hidxj ⟨k, hk⟩

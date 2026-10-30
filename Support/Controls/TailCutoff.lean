@@ -1,4 +1,8 @@
-import Support.Controls.ConcreteEnvelope
+module
+
+public import Support.Controls.ConcreteEnvelope
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxRecDepth 100000
