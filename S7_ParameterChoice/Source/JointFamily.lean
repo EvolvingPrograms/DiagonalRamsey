@@ -382,7 +382,7 @@ theorem historical_coefficients (i : Fin 2713) :
     sourceAq (historicalIndex i) = (SourceDomination.source i).A ∧
     sourceBq (historicalIndex i) = (SourceDomination.source i).B := by
   dsimp only [sourceAq, sourceBq, historicalIndex]
-  constructor <;> rw [dite_eq_left i.isLt]
+  constructor <;> rw [dite_eq_left i.isLt] <;> rfl
 
 theorem additional_coefficients :
     sourceAq 2713 = AdditionalSources.A546 ∧ sourceBq 2713 = AdditionalSources.B546 ∧
