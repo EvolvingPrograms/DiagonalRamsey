@@ -56,10 +56,12 @@ compiling the independent batch modules.
 A full runner validation of the 12 batches finished in approximately 34 minutes;
 the `Left.lean` assembly then took 2.1 seconds. The combined certificate bank,
 source admissibility theorem, and their axiom audits also passed.
-`Support/LuWang/SourceGeometryChecks.lean` contains the bounded geometry checks;
+`Support/LuWang/SourceGeometryChecks.lean` re-exports 72 independent modules in
+`SourceGeometryChecks/Chunk*.lean`, covering all 2,279 source intervals. Each
+module retains its original theorem name, proof, and scoped options. The scheduler
+can compile them concurrently and cache completed chunks independently; keep
+them dependent only on the shared geometry data, not on one another.
 `Support/Controls/ControlBank.lean` contains the inherited control witnesses.
-The old chunk namespaces remain available inside these modules. Scoped sections
-keep their local options and open declarations independent.
 
 `Support/Controls/EnvelopeData.lean` supplies the tangent-derived partitions used
 by both Support and S7 Joint. `CurrentSourceData.lean` stores endpoint jets and
