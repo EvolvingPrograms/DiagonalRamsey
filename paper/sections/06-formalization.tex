@@ -1,0 +1,38 @@
+\section{Formalization and certificates}
+\label{sec:formalization}
+
+The development uses Lean~\cite{Lean} and Mathlib~\cite{Mathlib}
+4.35.0, RamseyLean's definitions and foundational lemmas~\cite{RamseyLean,GNNW},
+the proof code and data of~\cite{ZBS}, and Lu--Wang's source and
+analytic checks~\cite{LW}, including interval arithmetic originating
+in RamseyLean. The \href{\leanrepo/NOTICE.md}{attribution record}
+identifies inherited revisions and licenses;
+\href{\leanrepo/Scripts/README.md}{reproduction instructions} describe
+the build, axiom audit and built-in \texttt{lake comparator} check
+against a separate finite-graph specification. The comparison permits only
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+
+The following links give entry points into the pinned source revision.
+The section READMEs provide more detailed guides.
+
+\begin{itemize}
+\item \emph{Complementary moments and the two-cell limit:}
+\leanfile{S2_MaximalConfigurations/L2_ComplementaryMoment.lean}{the complementary moment bound},
+\leanfile{S3_TwoCellReduction/L1_ConditionalJensen.lean}{conditional Jensen}, and
+\leanfile{S3_TwoCellReduction/L5_LimitingConstraints.lean}{the limiting constraints}.
+\item \emph{Scalar optimization and the local alternative:}
+\leanfile{S4_ScalarOptimization/README.md}{the optimizer, density transfer, and feasibility test};
+\leanfile{S5_LocalAlternative/README.md}{finite approximation and ordered drift}.
+\item \emph{Sources and profiles:}
+\leanfile{S6_GlobalConstruction/README.md}{joint induction and route composition};
+\leanfile{S7_ParameterChoice/Source/Joint/README.md}{the source family and coverage certificates}.
+\item \emph{Numerical certificates:}
+\leanfile{S7_ParameterChoice/L1_Parameters.lean}{the exact parameters},
+\leanfile{S7_ParameterChoice/Control/Table.lean}{the envelope heights},
+\leanfile{S7_ParameterChoice/Control/Envelope.lean}{the support inequalities}, and
+\leanfile{S7_ParameterChoice/Control/Integral.lean}{the negative integral bound}.
+\item \emph{The diagonal bound:}
+\leanfile{S7_ParameterChoice/L4_Routes.lean}{the child and root routes},
+\leanfile{S7_ParameterChoice/L5_Root.lean}{the dense root profile}, and
+\leanfile{S8_RamseyBound/README.md}{the asymptotic absorption and final theorem}.
+\end{itemize}

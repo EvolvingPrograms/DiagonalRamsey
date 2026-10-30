@@ -16,16 +16,15 @@ cell is empty. Conditional Jensen applied to the convex functions
 $(1+z)_+^s$ and $(1-tz)_+^s$, where $t=q/(1-q)$ and $s=\beta r\ge1$,
 gives
 \begin{equation}\label{eq:finite-cells}
+ \begin{gathered}
  \begin{aligned}
  m(1+a/r)_+^s+(1-m)(1+b/r)_+^s&\le U(q),\\
- m(1-ta/r)_+^s+(1-m)(1-tb/r)_+^s&\le V(q),\\
- a&>\frac r t\left[1-
+ m(1-ta/r)_+^s+(1-m)(1-tb/r)_+^s&\le V(q),
+ \end{aligned}\\[1ex]
+ a>\frac r t\left[1-
        \left(\frac{x^\beta\pi^{1-\beta}V(q)}m\right)^{1/s}\right].
- \end{aligned}
+ \end{gathered}
 \end{equation}
-\leannote{\texttt{graph\_row\_cell\_moments},
-\leanfile{S3_TwoCellReduction/L1_ConditionalJensen.lean\#L165}{L1_ConditionalJensen.lean};
-the last bound expands \texttt{LF}}
 The last inequality follows by taking the positive $s$th root in
 the red-cell Jensen bound; it requires only $m>0$.
 
@@ -35,8 +34,6 @@ The lower threshold for $a$ tends to
 \[
  A_d(q_0)=\frac{1-q_0}{q_0}\log\frac{d(1-q_0)^w}{x}.
 \]
-\leannote{\texttt{tendsto\_red\_threshold},
-\leanfile{S3_TwoCellReduction/L4_DensityGap.lean\#L150}{L4_DensityGap.lean}}
 Indeed, for a positive quantity $K$ tending to $K_0>0$,
 $r(1-K^{1/(\beta r)})\to-\log K_0/\beta$.
 The first blue-cell moment bounds $a$ above by
@@ -44,8 +41,6 @@ $r[(U(q)/m)^{1/(\beta r)}-1]$. Comparing with the convergent lower
 threshold gives $d e^{\beta A_d(q_0)}\le U(q_0)$ without assuming
 convergence of $a$. Since $x<(1-\mu)^w$, the density-gap argument
 of~\cite[Proposition~3.5, Step~6]{ZBS} implies $d<1$.
-See \texttt{first\_cell\_limit} and \texttt{density\_log\_gap} in
-\leanfile{S3_TwoCellReduction/L4_DensityGap.lean\#L49}{L4_DensityGap.lean}.
 Both cell masses are therefore bounded away from zero eventually.
 The moment inequalities give
 \[
@@ -53,8 +48,6 @@ The moment inequalities give
  \le a\le
  r\left[\left(\frac{U(q)}m\right)^{1/(\beta r)}-1\right].
 \]
-\leannote{\texttt{scaled\_mean\_bounds},
-\leanfile{S3_TwoCellReduction/L2_FiniteBounds.lean\#L32}{L2_FiniteBounds.lean}}
 The same bounds hold for $b$ with $m$ replaced by $1-m$.
 All four endpoints remain bounded. We may therefore extract a common
 subsequence along which $a\to A$ and $b\to C$.
@@ -67,8 +60,6 @@ writing $q=q_0$ and $t=q/(1-q)$,
  d e^{-\beta tA}+(1-d)e^{-\beta tC}&\le V(q).
  \end{aligned}
 \end{equation}
-\leannote{\texttt{exists\_feasible\_subsequence\_of\_row\_moments},
-\leanfile{S3_TwoCellReduction/L5_LimitingConstraints.lean\#L135}{L5_LimitingConstraints.lean}}
 Call such a pair \emph{feasible at density $d$ and fraction $q$}.
 For $0<d\le1$, let $F_d$ be the set of $q\in(0,\mu]$ admitting a
 feasible pair.
@@ -89,8 +80,6 @@ For $q\in F_p$, the maximum of $pA+(1-p)C$ is
  \log\dfrac{U(q)-p e^{\beta A_p(q)}}{1-p},& A_p(q)>B_q.
  \end{cases}
 \end{equation}
-\leannote{\texttt{optimal\_envelope\_attained},
-\leanfile{S4_ScalarOptimization/L6_OptimalEnvelope.lean\#L76}{L6_OptimalEnvelope.lean}}
 Moreover, if $p\le d\le1$ and $(A,C)$ is feasible at density $d$,
 then $q\in F_p$ and $dA+(1-d)C\le M_p(q)$.
 \end{lemma}
@@ -116,8 +105,6 @@ To remove the unknown limiting density $d$, keep $A$ and define $C'$ by
 \[
  e^{\beta C'}=\frac{(d-p)e^{\beta A}+(1-d)e^{\beta C}}{1-p}.
 \]
-\leannote{\texttt{feasible\_mass\_transfer},
-\leanfile{S4_ScalarOptimization/L3_DensityTransfer.lean\#L25}{L3_DensityTransfer.lean}}
 This moves mass $d-p$ from the first cell into the second and preserves
 the blue moment. Jensen for $z^{-t}$ shows that the complementary moment
 does not increase. Jensen for $\log z$ gives
@@ -136,8 +123,6 @@ Put $\theta=p(x/p)^\beta\in(0,p)$ and define
        +\beta w\bigl[(1-q)\log(1-q)+q\log(q/\mu)\bigr].
  \end{aligned}
 \end{equation}
-\leannote{\texttt{entropyGap},
-\leanfile{S4_ScalarOptimization/L7_EntropyFeasibility.lean\#L80}{L7_EntropyFeasibility.lean}}
 
 \begin{lemma}\label{lem:feasibility-cutoff}
 For $0<q\le\mu$, we have $q\in F_p$ if and only if $\mathcal F(q)\le0$.
@@ -167,9 +152,6 @@ If a feasible $q\le a$ existed, convexity between $q$ and $\mu$ would
 give $\mathcal F(a)\le0$, a contradiction. The sign at $\mu$ proves
 nonemptiness.
 \end{proof}
-\leannote{the feasibility equivalence in
-\leanfile{S4_ScalarOptimization/L7_EntropyFeasibility.lean\#L242}{L7_EntropyFeasibility.lean}
-and the cutoff in \leanfile{S4_ScalarOptimization/L8_ConvexDegreeCutoff.lean\#L172}{L8_ConvexDegreeCutoff.lean}}
 
 \subsection{Uniform approximation and the local alternative}
 
@@ -185,8 +167,6 @@ $|m-\pi|\le\eta$, then some $q'\in F_p$ satisfies
  |q'-q|\le\varepsilon,\qquad
  q\bigl(ma+(1-m)b\bigr)\le q'M_p(q')+\varepsilon.
 \]
-\leannote{\texttt{finite\_row\_approximation},
-\leanfile{S5_LocalAlternative/L1_FiniteApproximation.lean\#L25}{L1_FiniteApproximation.lean}}
 \end{lemma}
 \begin{proof}
 Otherwise choose counterexamples with $r\to\infty$ and $\eta\to0$.
@@ -206,8 +186,6 @@ nondecreasing and integrable, with
  \quad(q\in F_p,\ 0<u\le1),\qquad
  \int_0^1E(u)\,du<0.
 \end{equation}
-\leannote{\texttt{ComplementEnvelope},
-\leanfile{S4_ScalarOptimization/L1_FeasiblePairs.lean\#L31}{L1_FeasiblePairs.lean}}
 There exist $\eta,\tau,\zeta>0$ and $R>\max\{w,1/\beta\}$ such that,
 for every $r\ge R$, every maximal positive-potential configuration with
 $|c-p|\le\eta$ has the following property. If $X_0\subseteq X$,
@@ -221,7 +199,7 @@ estimates of~\cite[Proposition~3.5, Steps~2 and~5]{ZBS}, using $x<p$,
 give a fixed $\delta>0$ with the following property. For any sufficiently
 small $\varepsilon,\varphi>0$, choose the configuration tolerances small
 and $r$ large; all but $\varphi|X|$ rows then lie in $X_0$ and satisfy
-Lemma~\ref{lem:finite-approximation}'s hypotheses. Each row outside this
+the hypotheses of Lemma~\ref{lem:finite-approximation}. Each row outside this
 exceptional set therefore has $q'_i\in F_p$ with $|q'_i-q_i|\le\varepsilon$
 and $q_i(m_i a_i+(1-m_i)b_i)\le q'_iM_p(q'_i)+\varepsilon$.
 
@@ -236,9 +214,6 @@ give the lower bound
  T:=\sum_{i=0}^{N-1}\left(\frac{rP_i}{N}+wq_i\Delta L_i\right)
  \ge-\frac{4w^2}{r}\qquad(r\ge2w).
 \]
-\leannote{\texttt{ordered\_envelope\_contradiction},
-\leanfile{S5_LocalAlternative/L2_OrderedEnvelope.lean\#L61}{L2_OrderedEnvelope.lean},
-using the inherited \texttt{lower\_sum}}
 For each nonexceptional row $i$, integrate \eqref{eq:negative-envelope}
 with $q'_i$ over $[i/N,(i+1)/N]$. Since $|L'(u)|\le1-\log u$, the total
 approximation error is at most $\varepsilon(1+2w)$, including the
@@ -251,14 +226,9 @@ gives
  +(w+|q_*M_p(q_*)|)\varphi
  +w\int_{\mathcal B}(1-\log u)\,du.
 \]
-\leannote{the estimates for nonexceptional and exceptional rows in
-\leanfile{S5_LocalAlternative/L2_OrderedEnvelope.lean\#L122}{L2_OrderedEnvelope.lean};
-the integrals are its increments of \texttt{JF}}
 The last two terms tend to zero with $\varphi$, uniformly in $N$,
 by integrability of $1-\log u$. Choose $\varepsilon,\varphi$ small,
 then the configuration tolerances small and $r$ large. The resulting
 fixed negative upper bound contradicts $T\ge-4w^2/r$ for sufficiently
 large $r$.
 \end{proof}
-\leannote{the local alternative,
-\leanfile{S5_LocalAlternative/L3_GraphAlternative.lean\#L283}{L3_GraphAlternative.lean}}

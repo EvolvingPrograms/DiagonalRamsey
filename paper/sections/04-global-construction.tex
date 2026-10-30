@@ -15,11 +15,7 @@ edge density, its assertion is
  \quad\Longrightarrow\quad
  G\text{ contains a red }K_k\text{ or a blue }K_\ell,
 \end{equation}
-\leannote{\texttt{BankProfile.Assert},
-\leanfile{Support/Published/Definitions/Def_DiagRamsey_JointBank.lean\#L46}{Def_DiagRamsey_JointBank.lean}}
-with $C$ uniform in the targets and graph. The source definition is
-\texttt{SourceAdmissible} in
-\leanfile{S1_Definitions/L2_AdmissibleBounds.lean\#L20}{L2_AdmissibleBounds.lean}.
+with $C$ uniform in the targets and graph.
 
 A \emph{control} $\gamma$ consists of parameters satisfying
 Proposition~\ref{prop:local-alternative}, a proposed terminal source
@@ -27,8 +23,6 @@ $(A_\sigma,B_\sigma)$, and
 $0<\xi<\min\{x,e^{-A_\sigma}\}$, $0<y_0<e^{-B_\sigma}$,
 $0<\nu<\mu$. Put $a_\gamma=-\log\xi$, $b_\gamma=-\log y_0$ and
 $c_\gamma=-\log\nu$.
-See \texttt{ComplementControlValid} in
-\leanfile{S6_GlobalConstruction/L1_ProfileSupport.lean\#L26}{L1_ProfileSupport.lean}.
 The proof of~\cite[Theorem~4.2, Section~4.3]{ZBS} applies with our local
 alternative substituted. It uses the terminal source only on proper
 subsets of the current host. We use this closure result and the leaf
@@ -49,26 +43,19 @@ Writing $w=w_\gamma$ for the control's weight, the leaf and route height bounds 
  w\bigl(\theta c_\gamma+g(\rho)-g_0\bigr)}{1+w}\right\}.
  \end{aligned}
 \end{equation}
-\leannote{\texttt{leafLine},
-\leanfile{Support/Published/Definitions/Def_DiagRamsey_SourceBank.lean\#L52}{Def_DiagRamsey_SourceBank.lean};
-\texttt{RoutePiece.value},
-\leanfile{Support/Published/Definitions/Def_DiagRamsey_JointBank.lean\#L72}{Def_DiagRamsey_JointBank.lean}}
 To establish a profile $P$ on an interval $J$, require
 $L_P\ge L_\gamma+\epsilon$ for a leaf or
 $L_P\ge V_\gamma+\epsilon$ for a route throughout $J$, for some
 $\epsilon>0$. Also require $p_P\ge p_\gamma$ for a leaf and
 $p_P>p_\gamma$ for a route, with $J\subseteq[\theta,\omega]$ in the latter case.
-Each child profile is
-applied on a proper subhost. The corresponding implications are proved in
-\leanfile{S6_GlobalConstruction/L3_RouteComposition.lean\#L34}{L3_RouteComposition.lean}.
+Each child profile is applied on a proper subhost.
 
 Take finite families of proposed sources and profiles. Profiles built
 from leaves, routes and proper-subhost complementary pairs are
 \emph{direct}; those deduced from direct profiles by density transfer,
 complementary pairs and monotonicity in the blue target are \emph{combined}.
 Proper-subhost complementary pairs and target-monotonicity extend the rules
-of~\cite[Definitions~5.4--5.5]{ZBS}; their hypotheses are in
-\leanfile{Support/Published/Definitions/Def_DiagRamsey_JointBank.lean\#L78}{Def_DiagRamsey_JointBank.lean}.
+of~\cite[Definitions~5.4--5.5]{ZBS}.
 Every profile domain must have a finite cover by valid pieces.
 For each proposed source $(A,B)$, require some $\epsilon>0$ such that,
 at every $\rho>0$, either the symmetric Lu--Wang baseline $F$ or a
@@ -79,8 +66,6 @@ pair of profiles with $p_R+p_B\le1$ satisfies
  \max\{L_R(\rho),\rho L_B(1/\rho)\}
  \le A+B\rho-\epsilon(1+\rho).
 \]
-\leannote{\texttt{SourceCell.Valid},
-\leanfile{Support/Published/Definitions/Def_DiagRamsey_JointBank.lean\#L128}{Def_DiagRamsey_JointBank.lean}}
 The profiles must be defined at the indicated ratios. Lu--Wang's
 baseline is uniform over all positive target pairs, with arbitrarily
 small positive error proportional to $k+\ell$~\cite[Lemma~B.1]{LW}.
@@ -99,5 +84,3 @@ supplies every assertion on proper subhosts; prove the direct profiles,
 then the combined profiles, then the sources at order $N$.
 Strong induction on $N$ proves all the assertions.
 \end{proof}
-\leannote{\texttt{joint\_profiles\_of\_pieces},
-\leanfile{S6_GlobalConstruction/L2_JointInduction.lean\#L28}{L2_JointInduction.lean}}

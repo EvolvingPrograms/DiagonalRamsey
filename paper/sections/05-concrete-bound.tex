@@ -12,9 +12,8 @@ The local certificate uses the exact parameters
  \xi&=x-\frac4{10^{11}}.
  \end{aligned}
 \]
-\leannote{\leanfile{S7_ParameterChoice/L1_Parameters.lean\#L19}{L1_Parameters.lean}}
-The same file specifies the terminal source. The remaining terminal
-parameters and route data are in the linked certificates below.
+The terminal source parameters, envelope heights, and route data are
+recorded in the certificates linked in Section~\ref{sec:formalization}.
 
 \subsection{Certifying the local envelope}
 
@@ -22,8 +21,6 @@ Set $a=2681/10000$. Rational interval bounds give
 \[
  \mathcal F(a)>0>\mathcal F(\mu).
 \]
-\leannote{\texttt{entropy\_gap\_at\_cutoff} and \texttt{entropy\_gap\_at\_endpoint},
-\leanfile{S7_ParameterChoice/L2_Control.lean\#L100}{L2_Control.lean}}
 Thus $\mu\in F_p\subset(a,\mu]$ by Lemma~\ref{lem:feasibility-cutoff}.
 
 Extend $M_p$ by \eqref{eq:optimizer} to
@@ -36,8 +33,6 @@ $\bar f(z)=f(\max\{z,\log p\})$. Then
  H(q)=qB_q+wq+
  \frac q\beta\left[\bar f\left(\frac{G_0(q)}q\right)-f(\log p)\right].
 \]
-\leannote{\texttt{certM\_entropy\_identity},
-\leanfile{S4_ScalarOptimization/L13_EnvelopeConcavity.lean\#L102}{L13_EnvelopeConcavity.lean}}
 The function $G_0$ is convex, since it is
 $\beta w[q\log q+(1-q)\log(1-q)]$ plus an affine function;
 hence $D$ is an interval. Since $f'(z)=(p-e^z)/(1-e^z)$ and
@@ -46,8 +41,6 @@ The perspective $(q,z)\mapsto q\bar f(z/q)$ is concave for
 $q>0$, $z<0$, and nonincreasing in $z$. Since $G_0$ is convex,
 $q\bar f(G_0(q)/q)$ is concave on $D$.
 Together with concavity of $qB_q=wq\log(\mu/q)$, this proves concavity of $H$.
-Its explicit support slopes are in
-\leanfile{S4_ScalarOptimization/L13_EnvelopeConcavity.lean\#L351}{L13_EnvelopeConcavity.lean}.
 
 The certified endpoint inequalities $G_0(a),G_0(\mu)<0$ give
 $[a,\mu]\subset D$. Divide this interval into $192$ equal cells
@@ -57,9 +50,6 @@ $T_i$ of $H$. Rational heights $h_0,\ldots,h_{192}$ certify
  H(q)\le T_i(q)\quad(q\in D),\qquad
  T_i(q_i)\le h_i,\qquad T_i(q_{i+1})\le h_{i+1}.
 \]
-\leannote{\texttt{cell\_inputs},
-\leanfile{S7_ParameterChoice/Control/Envelope.lean\#L97}{Envelope.lean},
-and the heights in \leanfile{S7_ParameterChoice/Control/Table.lean\#L26}{Table.lean}}
 Affine interpolation then bounds $H(q)+wqv$ throughout each cell by
 the maximum of its two certified endpoint values, for every real $v$.
 
@@ -70,8 +60,6 @@ $r_i=(h_i-h_{i+1})/\Delta_i$. The logarithmic hinge
  \sum_{i=0}^{191}\Delta_i(\log u-r_i)_+
  \qquad(0<u\le1)
 \]
-\leannote{\texttt{affineHingeMajorant\_dominates},
-\leanfile{S4_ScalarOptimization/L9_AffineEnvelope.lean\#L130}{L9_AffineEnvelope.lean}}
 dominates every line $a_i\log u+h_i$: telescope the successive line
 differences and replace each difference by its positive part.
 It is continuous, nondecreasing, and integrable. Integrating a single
@@ -82,13 +70,9 @@ for $r\le0$. Telescoping again, the checked exponential sum yields
  \le h_{192}-a_{192}+\sum_{i=0}^{191}\Delta_i e^{r_i}
  <-\frac{15}{10^8}.
 \end{equation}
-\leannote{\texttt{integral\_sum\_lt},
-\leanfile{S7_ParameterChoice/Control/Integral.lean\#L102}{Integral.lean};
-the integration law is in \leanfile{S4_ScalarOptimization/L9_AffineEnvelope.lean\#L183}{L9_AffineEnvelope.lean}}
 Thus $E$ satisfies the hypotheses of Proposition~\ref{prop:local-alternative}.
 The exact interval calculations also verify the real-function identities
-and the domains of logarithms and inverses. See
-\leanfile{S7_ParameterChoice/Control/Envelope.lean\#L152}{Envelope.lean}.
+and the domains of logarithms and inverses.
 
 \subsection{A clique bound at density \texorpdfstring{$1/2$}{1/2}}
 
@@ -100,8 +84,6 @@ There is a constant $C\ge1$ such that, for all sufficiently large $k$,
  \quad\Longrightarrow\quad
  G\text{ contains a red or blue }K_k.
 \]
-\leannote{\texttt{dense\_root\_profile\_unconditional},
-\leanfile{S7_ParameterChoice/L5_Root.lean\#L14}{L5_Root.lean}}
 \end{proposition}
 \begin{proof}
 
@@ -109,14 +91,8 @@ We reassemble the profile data of~\cite{ZBS}, using Lu--Wang's uniform
 baseline~\cite[Lemma~B.1]{LW}. The certificates check the profile
 inequalities throughout their domains and the source comparisons for
 every target ratio $\rho>0$, with the required strict margins.
-The exact data and coverage
-proofs are in the
-\href{\leanrepo/S7_ParameterChoice/Source/Joint/README.md}{joint-family documentation};
-the terminal source bound is
-\leanfile{S7_ParameterChoice/L3_Source.lean\#L14}{L3_Source.lean}.
-
-The four new child profiles and root satisfy the route conditions; see
-\leanfile{S7_ParameterChoice/L4_Routes.lean\#L31}{L4_Routes.lean}.
+The certified family includes four new child profiles and a root,
+all satisfying the route conditions.
 The root has density $1/2$, a ratio interval containing $1$, and constant
 height $z$. Proposition~\ref{prop:joint-construction}, applied to the
 enlarged family, establishes its assertion at ratio $1$.
@@ -129,24 +105,9 @@ for all sufficiently large $k$,
 \[
  R(k,k)\le\left\lceil(C+2)e^{zk}\right\rceil\le e^{\gamma k}.
 \]
-\leannote{\texttt{eventual\_exponent\_of\_dense\_profile},
-\leanfile{S8_RamseyBound/L2_ComplementSymmetry.lean\#L23}{L2_ComplementSymmetry.lean}}
 The exact exponential comparison is
 \[
  e^\gamma<3.49135655.
 \]
-\leannote{\texttt{exponent\_gap},
-\leanfile{S8_RamseyBound/L3_BaseComparison.lean\#L20}{L3_BaseComparison.lean}}
 Hence $R(k,k)\le3.49135655^k$ for all sufficiently large $k$.
 \end{proof}
-
-The development uses Lean~\cite{Lean} and Mathlib~\cite{Mathlib}
-4.35.0, RamseyLean's definitions and foundational lemmas~\cite{RamseyLean,GNNW},
-the proof code and data of~\cite{ZBS}, and Lu--Wang's source and
-analytic checks~\cite{LW}, including interval arithmetic originating
-in RamseyLean. The \href{\leanrepo/NOTICE.md}{attribution record}
-identifies inherited revisions and licenses;
-\href{\leanrepo/Scripts/README.md}{reproduction instructions} describe
-the build, axiom audit and built-in \texttt{lake comparator} check
-against a separate finite-graph specification. The comparison permits only
-\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
