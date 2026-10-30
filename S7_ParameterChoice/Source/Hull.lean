@@ -449,7 +449,7 @@ theorem crossing_values (j : Fin 129) :
 def UpperCondition (t : ℝ) (k : ℕ) : Prop :=
   k < 130 ∧ ∀ j : Fin 129, k ≤ j.val → t ≤ (crossing j : ℝ)
 
-private theorem upperCondition_exists (t : ℝ) : ∃ k, UpperCondition t k := by
+theorem upperCondition_exists (t : ℝ) : ∃ k, UpperCondition t k := by
   refine ⟨129, by norm_num, ?_⟩
   intro j hj
   omega

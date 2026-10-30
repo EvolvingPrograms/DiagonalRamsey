@@ -23,11 +23,12 @@ namespace DiagRamsey
 open Finset Classical
 
 section transfer
-variable {V : Type}
+variable {V : Type} [Fintype V] [DecidableEq V]
 
 /-- The induced graph on `↥Z`. -/
 def induced (G : SimpleGraph V) (Z : Finset V) : SimpleGraph Z := G.comap (Function.Embedding.subtype _)
 
+omit [Fintype V] [DecidableEq V] in
 lemma card_univ_coe (Z : Finset V) : (Finset.univ : Finset Z).card = Z.card := by
   simp
 
@@ -49,6 +50,7 @@ lemma redPairs_induced (G : SimpleGraph V) (Z : Finset V) :
       Function.Embedding.coe_subtype]
     exact ⟨fun hxy => h.1.2.2 (congrArg Subtype.val hxy), h.2⟩
 
+omit [Fintype V] [DecidableEq V] in
 lemma red_of_induced {G : SimpleGraph V} {Z : Finset V} {k : ℕ}
     (h : HasRedClique (induced G Z) Finset.univ k) : HasRedClique G Z k := by
   obtain ⟨S, -, hS⟩ := h
@@ -64,6 +66,7 @@ lemma red_of_induced {G : SimpleGraph V} {Z : Finset V} {k : ℕ}
     have := hS.isClique (Finset.mem_coe.mpr hx') (Finset.mem_coe.mpr hy') hne
     simpa [induced] using this
 
+omit [Fintype V] [DecidableEq V] in
 lemma induced_compl (G : SimpleGraph V) (Z : Finset V) : (induced G Z)ᶜ = induced Gᶜ Z := by
   ext x y
   simp only [induced, SimpleGraph.compl_adj, SimpleGraph.comap_adj, Function.Embedding.coe_subtype]
@@ -71,6 +74,7 @@ lemma induced_compl (G : SimpleGraph V) (Z : Finset V) : (induced G Z)ᶜ = indu
   · rintro ⟨h1, h2⟩; exact ⟨fun h => h1 (Subtype.ext h), h2⟩
   · rintro ⟨h1, h2⟩; exact ⟨fun h => h1 (congrArg Subtype.val h), h2⟩
 
+omit [Fintype V] [DecidableEq V] in
 lemma blue_of_induced {G : SimpleGraph V} {Z : Finset V} {b : ℕ}
     (h : HasBlueClique (induced G Z) Finset.univ b) : HasBlueClique G Z b := by
   obtain ⟨S, -, hS⟩ := h
