@@ -1,0 +1,189 @@
+\section{The concrete bound}
+\label{sec:concrete-bound}
+
+The local certificate uses the exact parameters
+\[
+ \begin{aligned}
+ p&=\frac{499999999}{10^9},&
+ \mu&=\frac{405108059767}{10^{12}},&
+ w&=\frac{104160447497}{250000000000},\\
+ \beta&=\frac{9999999}{10^7},&
+ x&=\frac{337503}{10^6},&
+ \xi&=x-\frac4{10^{11}}.
+ \end{aligned}
+\]
+\leannote{\leanfile{S7_ParameterChoice/L1_Parameters.lean\#L19}{L1_Parameters.lean}}
+The selected terminal source is
+\[
+ A_s=\frac{1086180879838687}{10^{15}},\qquad
+ B_s=\frac{11640399543290787172985714354555752537}
+ {36367644171000000000000000000000000000}.
+\]
+\leannote{\texttt{sourceA} and \texttt{sourceB},
+\leanfile{S7_ParameterChoice/L1_Parameters.lean\#L27}{L1_Parameters.lean}}
+All remaining terminal parameters, knots, slopes, and profile heights
+are specified exactly in the linked certificate files.
+
+\subsection{Certifying the local envelope}
+
+Set $a=2681/10000$. Rational interval bounds give
+\[
+ \mathcal F(a)>\frac{1769}{10^8}>0,
+ \qquad \mathcal F(\mu)<-\frac{47763}{10^6}<0.
+\]
+\leannote{\texttt{entropy\_gap\_at\_cutoff} and \texttt{entropy\_gap\_at\_endpoint},
+\leanfile{S7_ParameterChoice/L2_Control.lean\#L100}{L2_Control.lean}}
+Lemma~\ref{lem:feasibility-cutoff} therefore gives
+$\mu\in F_p\subset(a,\mu]$. The certificate must cover this whole
+interval, rather than just a collection of sampled fractions.
+
+Write $H(q)=qM_p(q)+wq$. Its global upper supports follow from
+concavity on the positive-budget domain
+$D=\{q\in(0,1):p e^{\beta A_p(q)}<U(q)\}$.
+Here is the reason for that concavity. Set
+$G_0(q)=q\log p+\beta q(A_p(q)-B_q)$,
+$f(z)=pz+(1-p)\log(1-e^z)$, and
+$\bar f(z)=f(\max\{z,\log p\})$. Then
+\[
+ H(q)=qB_q+wq+
+ \frac q\beta\left[\bar f\left(\frac{G_0(q)}q\right)-f(\log p)\right].
+\]
+\leannote{\texttt{certM\_entropy\_identity},
+\leanfile{S4_ScalarOptimization/L13_EnvelopeConcavity.lean\#L102}{L13_EnvelopeConcavity.lean}}
+The function $G_0$ is convex: its nonlinear part is $\beta w$ times
+binary entropy. Thus $D=\{G_0<0\}\cap(0,1)$ is convex.
+On $(-\infty,0)$, $\bar f$ is concave and nonincreasing; this follows
+from $f'(z)=(p-e^z)/(1-e^z)$ and $f''(z)<0$.
+The perspective $q\bar f(G_0(q)/q)$ is consequently concave:
+normalize the convex-combination weights by their weighted mean,
+then use monotonicity and concavity of $\bar f$.
+The remaining term $qB_q=wq\log(\mu/q)$ is concave as well.
+The explicit support slopes are in
+\leanfile{S4_ScalarOptimization/L13_EnvelopeConcavity.lean\#L351}{L13_EnvelopeConcavity.lean}.
+
+Divide $[a,\mu]$ into $192$ equal cells, with endpoints
+$q_i=a+i(\mu-a)/192$ and midpoints $m_i=(q_i+q_{i+1})/2$.
+Checked endpoint budget signs place all of $[a,\mu]$ in $D$.
+At each midpoint take the explicit upper support $T_i$ of $H$.
+The certificate supplies rational heights $h_0,\ldots,h_{192}$ with
+\[
+ H(q)\le T_i(q)\quad(q\in D),\qquad
+ T_i(q_i)\le h_i,\qquad T_i(q_{i+1})\le h_{i+1}.
+\]
+\leannote{\texttt{cell\_inputs},
+\leanfile{S7_ParameterChoice/Control/Envelope.lean\#L97}{Envelope.lean},
+and the heights in \leanfile{S7_ParameterChoice/Control/Table.lean\#L26}{Table.lean}}
+Since $T_i$ is affine, its endpoint bounds extend throughout the cell.
+Adding the affine function $wqv$ then bounds $H(q)+wqv$ by the maximum
+of the two endpoint values. This proves coverage for every feasible
+$q$ and every real $v$.
+
+Put $a_i=wq_i$, $\Delta_i=a_{i+1}-a_i>0$, and
+$r_i=(h_i-h_{i+1})/\Delta_i$. The logarithmic hinge
+\[
+ E(u)=a_0\log u+h_0+
+ \sum_{i=0}^{191}\Delta_i(\log u-r_i)_+
+ \qquad(0<u\le1)
+\]
+\leannote{\texttt{affineHingeMajorant\_dominates},
+\leanfile{S4_ScalarOptimization/L9_AffineEnvelope.lean\#L130}{L9_AffineEnvelope.lean}}
+dominates every line $a_i\log u+h_i$: telescope the successive line
+differences and replace each difference by its positive part.
+It is continuous, nondecreasing, and integrable. Integrating a single
+hinge gives $\int_0^1(\log u-r)_+\,du\le e^r-r-1$, with equality
+for $r\le0$. Telescoping again, the checked exponential sum yields
+\begin{equation}\label{eq:certified-integral}
+ \int_0^1E(u)\,du
+ \le h_{192}-a_{192}+\sum_{i=0}^{191}\Delta_i e^{r_i}
+ <-\frac{15}{10^8}.
+\end{equation}
+\leannote{\texttt{integral\_sum\_lt},
+\leanfile{S7_ParameterChoice/Control/Integral.lean\#L102}{Integral.lean};
+the integration law is in \leanfile{S4_ScalarOptimization/L9_AffineEnvelope.lean\#L183}{L9_AffineEnvelope.lean}}
+This proves the negative-envelope premise of
+Proposition~\ref{prop:local-alternative}.
+The interval calculations include proofs that the rational expressions
+represent the stated real functions and that every logarithm and inverse
+is evaluated in its valid domain. The complete assembly is
+\leanfile{S7_ParameterChoice/Control/Envelope.lean\#L152}{Envelope.lean}.
+
+\subsection{The joint family and the root}
+
+We reassemble the inherited profile data of~\cite{ZBS} into a supporting
+family of $1469$ direct profiles, including five custom profiles,
+$947$ combined profiles, and $2716$ source lines.
+Their certificates cover every profile domain and every positive source
+ratio. The source witnesses have uniform reserve
+$1/(2\cdot10^{12})$; the selected source $(A_s,B_s)$ has the stronger
+reserve $10^{-9}$, using $81$ profile-pair runs and two baseline tails.
+The baseline is Lu--Wang's uniform estimate~\cite[Lemma~B.1]{LW}.
+The family and coverage proofs are recorded in
+\href{\leanrepo/S7_ParameterChoice/Source/Joint/README.md}{the joint-family documentation};
+their source conclusion is
+\leanfile{S7_ParameterChoice/L3_Source.lean\#L14}{L3_Source.lean}.
+
+Append four further child profiles and one root. Each new child calls
+seven existing profiles. The root makes twelve calls: eight to existing
+profiles and four to the new children. Exact route checks establish
+the ordered partitions, child-domain inclusions, slope inequalities,
+terminal inequalities, and positive output margins.
+The root data are
+\[
+ p_{\mathrm{root}}=\frac12,\qquad
+ I_{\mathrm{root}}=[1-10^{-10},1+10^{-10}],\qquad
+ L_{\mathrm{root}}(\rho)=z:=\frac{625145177}{500000000}.
+\]
+\leannote{\texttt{rootDatum} and the route certificates,
+\leanfile{S7_ParameterChoice/L4_Routes.lean\#L31}{L4_Routes.lean}}
+The old profiles embed unchanged into the enlarged family. Their
+proper-subhost implications remain valid with the additional induction
+hypotheses, and the five new pieces satisfy the same interface.
+The simultaneous induction of Section~\ref{sec:global-construction}
+therefore supplies the root assertion. At ratio $1$, it gives a
+constant $C\ge1$ such that every sufficiently large target $k$ and
+every graph of density at least $1/2$ on at least $Ce^{zk}$ vertices
+contains a monochromatic $K_k$.
+See \texttt{dense\_root\_profile\_unconditional} in
+\leanfile{S7_ParameterChoice/L5_Root.lean\#L14}{L5_Root.lean}.
+
+\subsection{From the dense profile to the Ramsey number}
+
+Take a complete graph on $N=\lceil(C+2)e^{zk}\rceil$ vertices.
+One colour has density at least $1/2$, so the root assertion gives a
+monochromatic $K_k$. Set $\gamma=z+10^{-9}=250058071/200000000$.
+Since $\gamma>z$, the prefactor and integer rounding are absorbed
+for all sufficiently large $k$:
+\[
+ R(k,k)\le\left\lceil(C+2)e^{zk}\right\rceil\le e^{\gamma k}.
+\]
+\leannote{\texttt{eventual\_exponent\_of\_dense\_profile},
+\leanfile{S8_RamseyBound/L2_ComplementSymmetry.lean\#L23}{L2_ComplementSymmetry.lean}}
+For the literal base, put $u=\gamma/2\in(0,1)$. The Taylor remainder
+bound at order $14$ and exact rational arithmetic give
+\[
+ e^\gamma\le
+ \left(\sum_{j=0}^{13}\frac{u^j}{j!}
+       +\frac{15u^{14}}{14\cdot14!}\right)^2
+ <\frac{69827131}{20000000}=3.49135655.
+\]
+\leannote{\texttt{exponent\_gap},
+\leanfile{S8_RamseyBound/L3_BaseComparison.lean\#L20}{L3_BaseComparison.lean}}
+Raising this comparison to the $k$th power proves
+Theorem~\ref{thm:main}.
+
+The linked development uses Lean~\cite{Lean} and
+Mathlib~\cite{Mathlib}, both at version~4.35.0.
+Its Ramsey definitions and foundational lemmas come from
+RamseyLean~\cite{RamseyLean}, which formalizes~\cite{GNNW}.
+We reuse the weighted-potential and profile-bank proof code and data
+of~\cite{ZBS}, and the source-bound verification and analytic checking
+library of~\cite{LW}; the latter includes interval-arithmetic code
+originating in RamseyLean.
+Exact inherited revisions and license notices are in the
+\href{\leanrepo/NOTICE.md}{repository attribution record}.
+The
+\href{\leanrepo/Scripts/README.md}{reproduction instructions} describe
+the source checks, project build, axiom audit, and built-in
+\texttt{lake comparator} check against a separate finite-graph
+specification. The comparison policy permits only
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.

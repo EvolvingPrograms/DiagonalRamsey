@@ -1,0 +1,93 @@
+\section{Complementary moments}
+\label{sec:complementary-moments}
+
+Represent the red edges by a graph $G$; the blue graph is $G^c$.
+A \emph{configuration} is a pair of disjoint nonempty vertex sets
+$(X,Y)$, whose elements we call rows and columns. Write
+$g_y=|N_G(y)\cap X|/|X|$ and $a_+=\max\{a,0\}$.
+Fix $w>0$, $0<\beta<1$, $r>w$, and $s=\beta r\ge1$.
+For a real shift $c$, the potential of~\cite[Section~3.1]{ZBS} is
+\begin{equation}\label{eq:potential}
+ \Phi_c(X,Y)=|X|^w|Y|
+ \left(\frac1{|Y|}\sum_{y\in Y}(g_y-c)_+^s\right)^{1/\beta}.
+\end{equation}
+\leannote{\texttt{momentNorm} and \texttt{potential} with $s=\beta r$,
+\leanfile{Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean\#L62}{Def_DiagRamsey_WeightedHost.lean}}
+Call the pair \emph{maximal} if no nonempty restriction of either set
+increases this potential. Any positive-potential pair has a maximal restriction
+with at least its potential, by finite maximization. For such a pair,
+column maximality gives $g_y>c$ for every $y\in Y$
+\cite[Lemma~3.1]{ZBS}. We obtain a probability measure on the columns by setting
+\[
+ S=\sum_{y\in Y}(g_y-c)^s,\qquad
+ \nu_y=\frac{(g_y-c)^s}{S}.
+\]
+\leannote{\texttt{nuW}, \leanfile{Support/Published/Lemmas/DiagRamsey_SE_Graph.lean\#L19}{DiagRamsey_SE_Graph.lean};
+positivity removes the clipping in \texttt{colMomentSum}}
+
+Let $B$ be an auxiliary graph on the rows; in the Ramsey application
+$B=G^c$. Fix $i\in X$, and put
+$A_i=N_B(i)\cap X$ and $D_i=X\setminus A_i$.
+Call $q=|A_i|/|X|$ the \emph{retained fraction}.
+For $q>0$, write
+\[
+ b_y=\frac{|N_G(y)\cap A_i|}{|A_i|},\qquad
+ Z_y=\frac{b_y-g_y}{g_y-c},\qquad t=\frac q{1-q}.
+\]
+\leannote{\texttt{ZR}, \leanfile{Support/Published/Lemmas/DiagRamsey_SE_Graph.lean\#L22}{DiagRamsey_SE_Graph.lean};
+$b_y$ is \texttt{colDensity} on $A_i$}
+Here $q<1$, since $i\in D_i$. A blue test fails when
+$\Phi_c(A_i,Y)<\mu^w\Phi_c(X,Y)$, where $0<\mu<1$. Put
+\[
+ U(q)=\left(\frac\mu q\right)^{\beta w},\qquad
+ V(q)=(1-q)^{-\beta w}.
+\]
+\leannote{\texttt{certU}, \leanfile{Support/Published/Definitions/Def_DiagRamsey_Cert.lean\#L38}{Def_DiagRamsey_Cert.lean};
+$V$ is the bound in \leanfile{S2_MaximalConfigurations/L2_ComplementaryMoment.lean\#L51}{L2_ComplementaryMoment.lean}}
+
+\begin{lemma}\label{lem:two-moments}
+At a maximal pair with positive potential, if $0<q<1$ and the blue
+test fails, then
+\begin{equation}\label{eq:two-moments}
+ \mathbb E_\nu(1+Z)_+^s\le U(q),\qquad
+ \mathbb E_\nu(1-tZ)_+^s\le V(q).
+\end{equation}
+\leannote{\texttt{blue\_lt}, \leanfile{Support/Published/Lemmas/DiagRamsey_SE_GraphRows.lean\#L114}{DiagRamsey_SE_GraphRows.lean};
+\texttt{complementary\_row\_moment}, \leanfile{S2_MaximalConfigurations/L2_ComplementaryMoment.lean\#L51}{L2_ComplementaryMoment.lean}}
+\end{lemma}
+\begin{proof}
+The first expectation is the ratio of the column-moment sums on $A_i$
+and $X$. The blue failure inequality therefore gives the first bound.
+For the second, let $b'_y$ be the red density from $y$ into $D_i$.
+The identity $g_y=qb_y+(1-q)b'_y$ gives
+\[
+ \frac{b'_y-c}{g_y-c}=1-tZ_y,\qquad
+ \frac{\Phi_c(D_i,Y)}{\Phi_c(X,Y)}
+   =(1-q)^w\bigl(\mathbb E_\nu(1-tZ)_+^s\bigr)^{1/\beta}.
+\]
+\leannote{the local identities \texttt{hcolumn} and \texttt{hsum} in
+\leanfile{S2_MaximalConfigurations/L2_ComplementaryMoment.lean\#L81}{L2_ComplementaryMoment.lean},
+then expand \texttt{potential}}
+Maximality bounds this ratio by one.
+\end{proof}
+
+The red test singles out the \emph{red cell}
+$Y_i=N_G(i)\cap Y$. Write $\pi=|Y_i|/|Y|$ for its ordinary mass and
+$m=\nu(Y_i)$ for its weighted mass. The shifted-red failure condition
+of~\cite[Section~3.2]{ZBS} is, for a parameter $x>0$,
+\begin{equation}\label{eq:red-failure}
+ \mathbb E_\nu\bigl[\mathbf1_{Y_i}(1-tZ)_+^s\bigr]
+   <x^\beta\pi^{1-\beta}V(q).
+\end{equation}
+\leannote{\texttt{SharpRedFailure} divided by $(1-q)^s S$,
+\leanfile{Support/Published/Definitions/Def_DiagRamsey_WeightedHost.lean\#L89}{Def_DiagRamsey_WeightedHost.lean}}
+For $\pi>0$ this says exactly
+$\Phi_c(D_i,Y_i)<x\Phi_c(X,Y)$.
+At $q=0$, its undivided form is $m<x^\beta\pi^{1-\beta}$.
+When $B=G^c$, the full complement $D_i$ contains the pivot $i$ as well
+as its red neighbours. Removing the pivot and lowering the shift pays
+for this one-vertex difference, as in~\cite[Lemma~4.5]{ZBS}.
+Under the finite-host hypotheses, successful tests therefore give
+actual clique-extending moves. The additional information in
+\eqref{eq:two-moments} is the bound on the complementary moment over
+\emph{all} columns, alongside its red-cell bound~\eqref{eq:red-failure}.

@@ -1,0 +1,44 @@
+\section{Introduction}
+\label{sec:introduction}
+
+We reproduce the weighted-potential method of Zhao, Booth-Clibborn and
+Schwahn~\cite{ZBS} and obtain a small improvement to their diagonal
+Ramsey bound. The principal contribution is the reproduction of their
+method; the refinement lowers the exponential base from $3.4986238$
+to $3.49135655$.
+
+Let $R(k,\ell)$ be the least $N$ such that every red--blue colouring of
+$K_N$ contains a red $K_k$ or a blue $K_\ell$.
+
+\begin{theorem}\label{thm:main}
+For all sufficiently large integers $k$,
+\[
+ R(k,k)\le 3.49135655^k.
+\]
+\leannote{\texttt{eventual\_diagonal\_bound},
+\leanfile{S8_RamseyBound/L4_MainTheorem.lean\#L36}{L4_MainTheorem.lean}}
+\end{theorem}
+
+The classical bound $R(k,k)<4^k$ is due to Erd\H{o}s and
+Szekeres~\cite{ES}. Campos, Griffiths, Morris and Sahasrabudhe first
+reduced the exponential base~\cite{CGMS}; subsequent developments include
+the optimization of Gupta, Ndiaye, Norin and Wei~\cite{GNNW}, the
+retained-set descent of Lu and Wang~\cite{LW}, and the weighted-potential
+construction of Zhao--Booth-Clibborn--Schwahn~\cite[Theorem~1.1]{ZBS}.
+
+Our refinement retains an additional consequence of maximality. A
+blue-neighbourhood restriction and its full complement satisfy two
+moment inequalities. Retaining the complementary inequality excludes
+some retained fractions, while preserving the previous optimizer at
+every surviving fraction. We certify a negative integral envelope for
+this smaller feasible set and retune the source/profile construction.
+
+We reuse the potential, concentration, ordered drift, finite-host closure,
+and source/profile framework of~\cite[Sections~3--5]{ZBS}, together with
+their supporting data and the uniform source bound of
+Lu--Wang~\cite[Lemma~B.1]{LW}. A retuned construction yields a dense
+diagonal exponent $z=625145177/500000000$. Colour symmetry and the strict
+inequality $e^{z+10^{-9}}<3.49135655$ give Theorem~\ref{thm:main}.
+The finite certificate data and corresponding Lean proofs are in the
+\href{https://github.com/EvolvingPrograms/DiagonalRamsey}{accompanying repository}.
+We do not give a numerical starting threshold for $k$.

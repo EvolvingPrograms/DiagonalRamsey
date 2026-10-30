@@ -1,0 +1,297 @@
+\section{Feasible fractions and the local alternative}
+\label{sec:feasible-fractions}
+
+Fix $0<p,\mu,\beta<1$, $w>0$, and $0<x<\min\{p,(1-\mu)^w\}$.
+The two moments constrain a failed row through just two numbers: its
+mean change on the red cell and its mean change on the remaining columns.
+We first pass these constraints to a limit, then optimize the limiting
+mean. Finally, we return to finite rows and obtain a useful move.
+
+\subsection{The two-cell limit}
+
+Suppose a row has $0<q<1$, $m,\pi>0$, and both tests fail.
+Set $a=r\mathbb E_\nu(Z\mid Y_i)$ and
+$b=r\mathbb E_\nu(Z\mid Y\setminus Y_i)$, taking $b=0$ when the second
+cell is empty. Conditional Jensen applied to the convex functions
+$(1+z)_+^s$ and $(1-tz)_+^s$, where $t=q/(1-q)$ and $s=\beta r\ge1$,
+gives
+\begin{equation}\label{eq:finite-cells}
+ \begin{aligned}
+ m(1+a/r)_+^s+(1-m)(1+b/r)_+^s&\le U(q),\\
+ m(1-ta/r)_+^s+(1-m)(1-tb/r)_+^s&\le V(q),\\
+ a&>\frac r t\left[1-
+       \left(\frac{x^\beta\pi^{1-\beta}V(q)}m\right)^{1/s}\right].
+ \end{aligned}
+\end{equation}
+\leannote{\texttt{graph\_row\_cell\_moments},
+\leanfile{S3_TwoCellReduction/L1_ConditionalJensen.lean\#L165}{L1_ConditionalJensen.lean};
+the last bound expands \texttt{LF}}
+For the last inequality, apply Jensen on the red cell in
+\eqref{eq:red-failure}, take the positive $s$th root, and rearrange.
+This argument requires only $m>0$; it does not assume that the other
+cell has positive mass.
+
+Consider a sequence satisfying \eqref{eq:finite-cells}, with
+$r\to\infty$, $q\to q_0\in(0,\mu]$ and $m,\pi\to d\in[p,1]$.
+The lower threshold for $a$ tends to
+\[
+ A_d(q_0)=\frac{1-q_0}{q_0}\log\frac{d(1-q_0)^w}{x}.
+\]
+\leannote{\texttt{tendsto\_red\_threshold},
+\leanfile{S3_TwoCellReduction/L4_DensityGap.lean\#L150}{L4_DensityGap.lean}}
+Indeed, for a positive quantity $K$ tending to $K_0>0$,
+$r(1-K^{1/(\beta r)})\to-\log K_0/\beta$.
+The first blue-cell moment also bounds $a$ above by
+$r[(U(q)/m)^{1/(\beta r)}-1]$. Comparing these two convergent bounds gives
+\[
+ A_d(q_0)\le\frac1\beta\log\frac{U(q_0)}d,
+ \qquad\text{hence}\qquad d e^{\beta A_d(q_0)}\le U(q_0).
+\]
+\leannote{\texttt{first\_cell\_limit},
+\leanfile{S3_TwoCellReduction/L4_DensityGap.lean\#L123}{L4_DensityGap.lean}}
+No convergence of $a$ has been assumed.
+
+We next show that the second cell cannot disappear in the limit.
+Taking logarithms in the last inequality and comparing $q_0$ with $\mu$
+gives the density gap of~\cite[Proposition~3.5, Step~6]{ZBS}:
+\[
+ \left(1+\frac{\mu}{\beta(1-\mu)}\right)\log d
+ \le\log x-w\log(1-\mu)<0.
+\]
+\leannote{\texttt{density\_log\_gap},
+\leanfile{S3_TwoCellReduction/L4_DensityGap.lean\#L49}{L4_DensityGap.lean}}
+The comparison uses $\log d\le0$, $q_0\le\mu$, and the logarithmic
+Jensen inequality
+$\log(1-\mu)\le\log(1-q_0)+q_0\log(q_0/\mu)/(1-q_0)$.
+Thus $d<1$, so both cell masses stay bounded away from zero.
+The two moments now give bounds in both directions:
+\[
+ -\frac r t\left[\left(\frac{V(q)}m\right)^{1/(\beta r)}-1\right]
+ \le a\le
+ r\left[\left(\frac{U(q)}m\right)^{1/(\beta r)}-1\right].
+\]
+\leannote{\texttt{scaled\_mean\_bounds},
+\leanfile{S3_TwoCellReduction/L2_FiniteBounds.lean\#L32}{L2_FiniteBounds.lean}}
+The same bounds hold for $b$ with $m$ replaced by $1-m$.
+All four endpoints remain bounded. We may therefore extract a common
+subsequence along which $a\to A$ and $b\to C$.
+Passing to the exponential limits in \eqref{eq:finite-cells} yields,
+writing $q=q_0$ and $t=q/(1-q)$,
+\begin{equation}\label{eq:feasible-pair}
+ \begin{aligned}
+ A&\ge A_d(q),\\
+ d e^{\beta A}+(1-d)e^{\beta C}&\le U(q),\\
+ d e^{-\beta tA}+(1-d)e^{-\beta tC}&\le V(q).
+ \end{aligned}
+\end{equation}
+\leannote{\texttt{exists\_feasible\_subsequence\_of\_row\_moments},
+\leanfile{S3_TwoCellReduction/L5_LimitingConstraints.lean\#L135}{L5_LimitingConstraints.lean}}
+Call such a pair \emph{feasible at density $d$ and fraction $q$}.
+For $0<d\le1$, let $F_d$ be the set of $q\in(0,\mu]$ admitting a
+feasible pair. The density gap precedes compactness: it is what permits
+us to bound the second conditional mean.
+
+\subsection{The optimizer}
+
+Write $B_q=\beta^{-1}\log U(q)=w\log(\mu/q)$.
+The complementary constraint changes the set $F_p$, but leaves the
+blue-moment optimizer unchanged wherever feasibility survives.
+
+\begin{lemma}\label{lem:optimizer}
+For $q\in F_p$, the maximum of $pA+(1-p)C$ is
+\begin{equation}\label{eq:optimizer}
+ M_p(q)=
+ \begin{cases}
+ B_q,& A_p(q)\le B_q,\\[1mm]
+ pA_p(q)+\dfrac{1-p}{\beta}
+ \log\dfrac{U(q)-p e^{\beta A_p(q)}}{1-p},& A_p(q)>B_q.
+ \end{cases}
+\end{equation}
+\leannote{\texttt{optimal\_envelope\_attained},
+\leanfile{S4_ScalarOptimization/L6_OptimalEnvelope.lean\#L76}{L6_OptimalEnvelope.lean}}
+Moreover, if $p\le d\le1$ and $(A,C)$ is feasible at density $d$,
+then $q\in F_p$ and $dA+(1-d)C\le M_p(q)$.
+\end{lemma}
+\begin{proof}
+Jensen gives $e^{\beta(pA+(1-p)C)}\le U(q)$, so the mean is at most
+$B_q$. If $A_p(q)\le B_q$, the pair $(B_q,B_q)$ attains this bound.
+It also satisfies the complementary constraint, since $B_q\ge0$ and
+$e^{-\beta tB_q}\le1\le V(q)$.
+
+Suppose instead that $A_p(q)>B_q$, and start with any feasible pair.
+Its positive second atom gives $p e^{\beta A_p(q)}<U(q)$.
+Increase $e^{\beta C}$ until the blue moment equals $U(q)$.
+This increases the logarithmic objective and decreases the
+complementary moment. Now contract both exponential atoms linearly
+toward their weighted mean $U(q)$ until the first reaches
+$e^{\beta A_p(q)}>U(q)$. Convexity of $z\mapsto z^{-t}$ again decreases
+the complementary moment; concavity of $\log z$ increases the objective.
+The resulting first coordinate is $A_p(q)$ and the second is forced by
+the blue equality. This proves the second branch and its attainment.
+If this canonical pair fails the complementary bound, no feasible pair exists.
+
+To remove the unknown limiting density $d$, keep $A$ and define $C'$ by
+\[
+ e^{\beta C'}=\frac{(d-p)e^{\beta A}+(1-d)e^{\beta C}}{1-p}.
+\]
+\leannote{\texttt{feasible\_mass\_transfer},
+\leanfile{S4_ScalarOptimization/L3_DensityTransfer.lean\#L25}{L3_DensityTransfer.lean}}
+This moves mass $d-p$ from the first cell into the second and preserves
+the blue moment. Jensen for $z^{-t}$ shows that the complementary moment
+does not increase. Jensen for $\log z$ gives
+$dA+(1-d)C\le pA+(1-p)C'$. Finally, $A_d(q)\ge A_p(q)$, so the new pair
+is feasible at density $p$ and the preceding optimization applies.
+\end{proof}
+
+\subsection{A convex test for feasibility}
+
+Put $\theta=p(x/p)^\beta\in(0,p)$ and define
+\begin{equation}\label{eq:entropy-test}
+ \begin{aligned}
+ Z_\theta(q)&=\theta(p/\theta)^{1/q}
+       +(1-\theta)((1-p)/(1-\theta))^{1/q},\\
+ \mathcal F(q)&=q\log Z_\theta(q)
+       +\beta w\bigl[(1-q)\log(1-q)+q\log(q/\mu)\bigr].
+ \end{aligned}
+\end{equation}
+\leannote{\texttt{entropyGap},
+\leanfile{S4_ScalarOptimization/L7_EntropyFeasibility.lean\#L80}{L7_EntropyFeasibility.lean}}
+
+\begin{lemma}\label{lem:feasibility-cutoff}
+For $0<q\le\mu$, we have $q\in F_p$ if and only if $\mathcal F(q)\le0$.
+The function $\mathcal F$ is convex on $(0,1)$. Consequently, if
+$0<a<\mu$ and $\mathcal F(a)>0>\mathcal F(\mu)$, then
+$\mu\in F_p\subset(a,\mu]$.
+\end{lemma}
+\begin{proof}
+Normalize the complementary atoms to
+$z_1=e^{-\beta tA}/V(q)$ and $z_2=e^{-\beta tC}/V(q)$.
+Since $p e^{-\beta tA_p(q)}/V(q)=\theta$, their constraints become
+$z_1\le\theta/p<1$ and $pz_1+(1-p)z_2\le1$.
+Increase $z_2$ until equality holds, then contract both atoms toward
+the mean $1$ until $z_1=\theta/p$. Because $z^{-1/t}$ is decreasing
+and convex, these operations minimize the blue moment among all pairs
+satisfying the complementary constraint and the threshold.
+The minimizing atoms are $\theta/p$ and $(1-\theta)/(1-p)$.
+Their blue moment is $V(q)^{-1/t}Z_\theta(q)$.
+Taking logarithms of its comparison with $U(q)$, and multiplying by
+$q>0$, gives exactly $\mathcal F(q)\le0$.
+
+For convexity, $\log Z_\theta(q)$ is a convex log-sum-exp evaluated at
+$1/q$; its positive perspective $q\log Z_\theta(q)$ is convex.
+The remaining term is convex binary entropy, up to an affine term.
+If a feasible $q\le a$ existed, convexity between $q$ and $\mu$ would
+give $\mathcal F(a)\le0$, a contradiction. The sign at $\mu$ proves
+nonemptiness.
+The equivalence and cutoff are
+\leanfile{S4_ScalarOptimization/L7_EntropyFeasibility.lean\#L242}{L7_EntropyFeasibility.lean}
+and \leanfile{S4_ScalarOptimization/L8_ConvexDegreeCutoff.lean\#L172}{L8_ConvexDegreeCutoff.lean}.
+\end{proof}
+
+\subsection{Uniform approximation and a useful move}
+
+The limiting argument must control every sufficiently large moment
+parameter, uniformly over the underlying finite graph. The following
+form supplies precisely that control.
+
+\begin{lemma}\label{lem:finite-approximation}
+For every $\delta,\varepsilon>0$, there exist
+$0<\eta<\min\{p/2,1-\mu\}$ and $R>1/\beta$ such
+that, if $r\ge R$, the bounds \eqref{eq:finite-cells} hold,
+$\delta\le q\le\mu+\eta$, $m,\pi\in[p-\eta,1]$, and
+$|m-\pi|\le\eta$, then some $q'\in F_p$ satisfies
+\[
+ |q'-q|\le\varepsilon,\qquad
+ q\bigl(ma+(1-m)b\bigr)\le q'M_p(q')+\varepsilon.
+\]
+\leannote{\texttt{finite\_row\_approximation},
+\leanfile{S5_LocalAlternative/L1_FiniteApproximation.lean\#L25}{L1_FiniteApproximation.lean}}
+\end{lemma}
+\begin{proof}
+Otherwise choose counterexamples with $r\to\infty$ and $\eta\to0$.
+After passing to a subsequence, $q\to q_0\in[\delta,\mu]$ and
+$m,\pi\to d\in[p,1]$. The density gap and moment bounds above give
+$d<1$ and convergent scaled means. Their limiting pair is feasible
+at $d$, so Lemma~\ref{lem:optimizer} gives $q_0\in F_p$ and bounds the
+limiting objective by $q_0M_p(q_0)$. Taking $q'=q_0$ contradicts the
+fixed $\varepsilon$ failure for all sufficiently late terms.
+\end{proof}
+
+\begin{proposition}[Local alternative]\label{prop:local-alternative}
+Suppose $F_p\ne\varnothing$ and $E:(0,1]\to\mathbb R$ is continuous,
+nondecreasing and integrable, with
+\begin{equation}\label{eq:negative-envelope}
+ qM_p(q)+wq(1+\log u)\le E(u)
+ \quad(q\in F_p,\ 0<u\le1),\qquad
+ \int_0^1E(u)\,du<0.
+\end{equation}
+\leannote{\texttt{ComplementEnvelope},
+\leanfile{S4_ScalarOptimization/L1_FeasiblePairs.lean\#L31}{L1_FeasiblePairs.lean}}
+There exist $\eta,\tau,\zeta>0$ and $R>\max\{w,1/\beta\}$ such that,
+for every $r\ge R$, every maximal positive-potential configuration with
+$|c-p|\le\eta$ has the following property. If $X_g\subseteq X$,
+$|X\setminus X_g|\le\zeta|X|$ and $q_i\le\mu+\tau$ for $i\in X_g$,
+then either a blue test succeeds at some $i\in X$ with $q_i>0$, or a
+shifted-red test succeeds at some $i\in X_g$.
+\end{proposition}
+\begin{proof}
+Suppose all the indicated tests fail. The small-degree exclusion
+of~\cite[Proposition~3.5, Step~5]{ZBS} supplies a fixed $\delta>0$;
+it uses $x<p$, including at $q=0$. Choose $\varepsilon,\varphi>0$,
+to be made small below. Let $\eta_0$ be the tolerance in
+Lemma~\ref{lem:finite-approximation}, reduced if necessary for the
+degree exclusion. The concentration bounds
+of~\cite[Proposition~3.5, Step~2]{ZBS} ensure that, on all but
+$\varphi|X|$ rows, $q_i\ge\delta$,
+$m_i,\pi_i\ge p-\eta_0$, and $|m_i-\pi_i|\le\eta_0$.
+Here the exceptional rows include $X\setminus X_g$; the configuration
+tolerances are chosen small and $r$ large. Taking $\tau\le\eta_0$
+also gives $q_i\le\mu+\eta_0$ on the remaining rows. Thus
+\eqref{eq:finite-cells} and Lemma~\ref{lem:finite-approximation} provide
+a nearby feasible fraction $q'_i$ for each of these good rows.
+
+Put $N=|X|$ and $P_i=q_i\mathbb E_\nu Z_i$, taking $P_i=0$ when
+$q_i=0$. The identity $rP_i=q_i(m_i a_i+(1-m_i)b_i)$ identifies
+the finite objective with the row contribution.
+Order the rows by increasing $q_i$, and let $\Delta L_i$ be the
+increment of $L(u)=u\log u$, with $L(0)=0$, on $[i/N,(i+1)/N]$.
+Stationarity and ordered drift~\cite[Proposition~3.5, Steps~3--4]{ZBS}
+give the lower bound
+\[
+ T:=\sum_{i=0}^{N-1}\left(\frac{rP_i}{N}+wq_i\Delta L_i\right)
+ \ge-\frac{4w^2}{r}\qquad(r\ge2w).
+\]
+\leannote{\texttt{ordered\_envelope\_contradiction},
+\leanfile{S5_LocalAlternative/L2_OrderedEnvelope.lean\#L61}{L2_OrderedEnvelope.lean},
+using the inherited \texttt{lower\_sum}}
+For a good row, integrate \eqref{eq:negative-envelope} with its nearby
+feasible fraction $q'_i$ over that row's cell. Replacing $q'_i$ by
+$q_i$ costs at most $\varepsilon/N+
+w\varepsilon\int_{i/N}^{(i+1)/N}(1-\log u)\,du$, since
+$|L'(u)|\le1-\log u$. Summing over good rows costs at most
+$\varepsilon(1+2w)$ in total. This integrates the cell meeting zero
+without evaluating the logarithm at its endpoint.
+
+For the exceptional cells, let their union be $\mathcal B$, of measure
+at most $\varphi$, and fix $q_*\in F_p$. Compare with the majorant
+at $q_*$ and use the blue-failure bound $rP_i\le w$. The total
+additional cost of these cells is at most
+$(w+|q_*M_p(q_*)|)\varphi+w\int_{\mathcal B}(1-\log u)\,du$.
+It tends to zero with $\varphi$, uniformly in $N$, by integrability.
+Consequently,
+\[
+ T\le\int_0^1E(u)\,du+\varepsilon(1+2w)
+ +(w+|q_*M_p(q_*)|)\varphi
+ +w\int_{\mathcal B}(1-\log u)\,du.
+\]
+\leannote{the good-row and exceptional-row estimates in
+\leanfile{S5_LocalAlternative/L2_OrderedEnvelope.lean\#L122}{L2_OrderedEnvelope.lean};
+the integrals are its increments of \texttt{JF}}
+Choose $\varepsilon,\varphi$ small compared with $-\int_0^1E$,
+then choose the configuration tolerances small and $r$ large.
+The upper bound for $T$ is strictly negative and bounded away from
+zero, contradicting its lower bound.
+The resulting graph statement, with all tolerances uniform in the
+finite graphs $G,B$, is
+\leanfile{S5_LocalAlternative/L3_GraphAlternative.lean\#L283}{L3_GraphAlternative.lean}.
+\end{proof}
