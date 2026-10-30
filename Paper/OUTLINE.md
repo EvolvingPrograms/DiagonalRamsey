@@ -233,7 +233,7 @@ Applying maximality to the complement gives the following bound.
 \end{proof}
 ```
 
-Build from `paper/`:
+Build from `Paper/`:
 
 ```sh
 latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
