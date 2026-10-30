@@ -33,9 +33,10 @@ can restore this repository's own cache for the same toolchain and dependency
 manifest. The migration requires rebuilding project artifacts from Lean 4.32.1.
 The built-in sandbox replaces Landrun and the previous systemd wrapper; do not
 use `--inadvisably-no-sandbox` for a verification result.
-CI installs Bubblewrap with `sudo apt-get update` and
-`sudo apt-get install -y bubblewrap`. The self-hosted runner needs
-noninteractive sudo permission for these package-management commands.
+Bubblewrap is a system dependency provisioned on the math runner. To set up
+a replacement runner, install it with `sudo apt-get update` and
+`sudo apt-get install -y bubblewrap`. CI does not install system packages or
+require sudo for this dependency.
 
 
 ## Certificate layout
