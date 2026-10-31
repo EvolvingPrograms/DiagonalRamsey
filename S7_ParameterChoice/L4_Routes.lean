@@ -126,13 +126,14 @@ theorem profile_eq (i : ProfileIndex) : profile i = (datum i).toBP := by
 def oldIndex (i : JointFamily.RawIndex) : RawIndex := ⟨i.val, by omega⟩
 
 theorem old_profile (i : JointFamily.RawIndex) : raw (oldIndex i) = JointFamily.raw i := by
-  simp only [raw, rawDatum, oldIndex, Fin.isLt, dif_pos, JointFamily.raw]
+  dsimp only [raw, rawDatum, oldIndex, JointFamily.raw]
+  rw [dite_eq_left i.isLt]
 
 def newIndex (i : Fin 5) : RawIndex := ⟨1469 + i.val, by omega⟩
 
 theorem new_datum (i : Fin 5) : rawDatum (newIndex i) = newDatum i := by
-  simp only [rawDatum, newIndex]
-  rw [dif_neg (by omega)]
+  dsimp only [rawDatum, newIndex]
+  rw [dite_eq_right (by omega)]
   congr 1
   apply Fin.ext
   simp

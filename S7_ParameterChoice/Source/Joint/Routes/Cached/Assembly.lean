@@ -27,35 +27,53 @@ theorem expTable_checked : expTable.all ExpPair.check = true := by
 
 #print axioms expTable_checked
 
-theorem all_fast_checked : entries.all (FastEntry.check expTable) = true := by
-  simp only [entries, List.all_append,
-    fastChecked0, fastChecked1, fastChecked2, fastChecked3, fastChecked4, fastChecked5,
-    fastChecked6, fastChecked7, fastChecked8, fastChecked9, fastChecked10, fastChecked11,
-    fastChecked12, fastChecked13, fastChecked14, fastChecked15, fastChecked16, fastChecked17,
-    fastChecked18, fastChecked19, fastChecked20, fastChecked21, fastChecked22, fastChecked23,
-    fastChecked24, fastChecked25, fastChecked26, fastChecked27, fastChecked28, fastChecked29,
-    fastChecked30, fastChecked31, fastChecked32, fastChecked33, fastChecked34, fastChecked35,
-    fastChecked36, fastChecked37, fastChecked38, fastChecked39, fastChecked40, fastChecked41,
-    fastChecked42, fastChecked43, fastChecked44, fastChecked45, fastChecked46, fastChecked47,
-    fastChecked48, fastChecked49, fastChecked50, fastChecked51, fastChecked52, fastChecked53,
-    fastChecked54, fastChecked55, fastChecked56, fastChecked57, fastChecked58, fastChecked59,
-    fastChecked60, fastChecked61, fastChecked62, fastChecked63, fastChecked64, fastChecked65,
-    fastChecked66, fastChecked67, fastChecked68, fastChecked69, fastChecked70, fastChecked71,
-    fastChecked72, fastChecked73, fastChecked74, fastChecked75, fastChecked76, fastChecked77,
-    fastChecked78, fastChecked79, fastChecked80, fastChecked81, fastChecked82, fastChecked83,
-    fastChecked84, fastChecked85, fastChecked86, fastChecked87, fastChecked88, fastChecked89,
-    fastChecked90, fastChecked91, fastChecked92, fastChecked93, fastChecked94, fastChecked95,
-    fastChecked96, fastChecked97, fastChecked98, fastChecked99, fastChecked100, fastChecked101,
-    fastChecked102, fastChecked103, fastChecked104, fastChecked105, fastChecked106, fastChecked107,
-    fastChecked108, fastChecked109, fastChecked110, fastChecked111, fastChecked112, fastChecked113,
-    fastChecked114, fastChecked115, fastChecked116, fastChecked117, fastChecked118, fastChecked119,
-    fastChecked120, fastChecked121, fastChecked122, fastChecked123, fastChecked124, fastChecked125,
-    fastChecked126, fastChecked127, fastChecked128, fastChecked129, fastChecked130, fastChecked131,
-    fastChecked132, fastChecked133, fastChecked134, fastChecked135, fastChecked136, fastChecked137,
-    fastChecked138, fastChecked139, fastChecked140, fastChecked141, fastChecked142, fastChecked143,
-    fastChecked144, fastChecked145, fastChecked146,
-    Bool.and_self]
+/-- Join checked blocks without simplifying their concrete numerical data. -/
+private theorem checked_append {xs ys : List FastEntry}
+    (hx : xs.all (FastEntry.check expTable) = true)
+    (hy : ys.all (FastEntry.check expTable) = true) :
+    (xs ++ ys).all (FastEntry.check expTable) = true := by
+  simp only [List.all_append, hx, hy, Bool.and_self]
 
+theorem all_fast_checked : entries.all (FastEntry.check expTable) = true := by
+  have h :=
+    checked_append fastChecked0 <| checked_append fastChecked1 <| checked_append fastChecked2 <| checked_append fastChecked3 <|
+    checked_append fastChecked4 <| checked_append fastChecked5 <| checked_append fastChecked6 <| checked_append fastChecked7 <|
+    checked_append fastChecked8 <| checked_append fastChecked9 <| checked_append fastChecked10 <| checked_append fastChecked11 <|
+    checked_append fastChecked12 <| checked_append fastChecked13 <| checked_append fastChecked14 <| checked_append fastChecked15 <|
+    checked_append fastChecked16 <| checked_append fastChecked17 <| checked_append fastChecked18 <| checked_append fastChecked19 <|
+    checked_append fastChecked20 <| checked_append fastChecked21 <| checked_append fastChecked22 <| checked_append fastChecked23 <|
+    checked_append fastChecked24 <| checked_append fastChecked25 <| checked_append fastChecked26 <| checked_append fastChecked27 <|
+    checked_append fastChecked28 <| checked_append fastChecked29 <| checked_append fastChecked30 <| checked_append fastChecked31 <|
+    checked_append fastChecked32 <| checked_append fastChecked33 <| checked_append fastChecked34 <| checked_append fastChecked35 <|
+    checked_append fastChecked36 <| checked_append fastChecked37 <| checked_append fastChecked38 <| checked_append fastChecked39 <|
+    checked_append fastChecked40 <| checked_append fastChecked41 <| checked_append fastChecked42 <| checked_append fastChecked43 <|
+    checked_append fastChecked44 <| checked_append fastChecked45 <| checked_append fastChecked46 <| checked_append fastChecked47 <|
+    checked_append fastChecked48 <| checked_append fastChecked49 <| checked_append fastChecked50 <| checked_append fastChecked51 <|
+    checked_append fastChecked52 <| checked_append fastChecked53 <| checked_append fastChecked54 <| checked_append fastChecked55 <|
+    checked_append fastChecked56 <| checked_append fastChecked57 <| checked_append fastChecked58 <| checked_append fastChecked59 <|
+    checked_append fastChecked60 <| checked_append fastChecked61 <| checked_append fastChecked62 <| checked_append fastChecked63 <|
+    checked_append fastChecked64 <| checked_append fastChecked65 <| checked_append fastChecked66 <| checked_append fastChecked67 <|
+    checked_append fastChecked68 <| checked_append fastChecked69 <| checked_append fastChecked70 <| checked_append fastChecked71 <|
+    checked_append fastChecked72 <| checked_append fastChecked73 <| checked_append fastChecked74 <| checked_append fastChecked75 <|
+    checked_append fastChecked76 <| checked_append fastChecked77 <| checked_append fastChecked78 <| checked_append fastChecked79 <|
+    checked_append fastChecked80 <| checked_append fastChecked81 <| checked_append fastChecked82 <| checked_append fastChecked83 <|
+    checked_append fastChecked84 <| checked_append fastChecked85 <| checked_append fastChecked86 <| checked_append fastChecked87 <|
+    checked_append fastChecked88 <| checked_append fastChecked89 <| checked_append fastChecked90 <| checked_append fastChecked91 <|
+    checked_append fastChecked92 <| checked_append fastChecked93 <| checked_append fastChecked94 <| checked_append fastChecked95 <|
+    checked_append fastChecked96 <| checked_append fastChecked97 <| checked_append fastChecked98 <| checked_append fastChecked99 <|
+    checked_append fastChecked100 <| checked_append fastChecked101 <| checked_append fastChecked102 <| checked_append fastChecked103 <|
+    checked_append fastChecked104 <| checked_append fastChecked105 <| checked_append fastChecked106 <| checked_append fastChecked107 <|
+    checked_append fastChecked108 <| checked_append fastChecked109 <| checked_append fastChecked110 <| checked_append fastChecked111 <|
+    checked_append fastChecked112 <| checked_append fastChecked113 <| checked_append fastChecked114 <| checked_append fastChecked115 <|
+    checked_append fastChecked116 <| checked_append fastChecked117 <| checked_append fastChecked118 <| checked_append fastChecked119 <|
+    checked_append fastChecked120 <| checked_append fastChecked121 <| checked_append fastChecked122 <| checked_append fastChecked123 <|
+    checked_append fastChecked124 <| checked_append fastChecked125 <| checked_append fastChecked126 <| checked_append fastChecked127 <|
+    checked_append fastChecked128 <| checked_append fastChecked129 <| checked_append fastChecked130 <| checked_append fastChecked131 <|
+    checked_append fastChecked132 <| checked_append fastChecked133 <| checked_append fastChecked134 <| checked_append fastChecked135 <|
+    checked_append fastChecked136 <| checked_append fastChecked137 <| checked_append fastChecked138 <| checked_append fastChecked139 <|
+    checked_append fastChecked140 <| checked_append fastChecked141 <| checked_append fastChecked142 <| checked_append fastChecked143 <|
+    checked_append fastChecked144 <| checked_append fastChecked145 <| fastChecked146
+  exact h
 
 #print axioms all_fast_checked
 

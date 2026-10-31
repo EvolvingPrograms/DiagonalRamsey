@@ -4,7 +4,9 @@ public import S7_ParameterChoice.Source.Joint.Controls.ControlPrecision
 public import S7_ParameterChoice.Source.Joint.Controls.ControlTransport
 public import S7_ParameterChoice.Source.Joint.Controls.EnvelopeCheck
 public import Support.Controls.EnvelopeData
+public meta import Support.Controls.EnvelopeData
 public import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
+public meta import S7_ParameterChoice.Source.Joint.Controls.FastControlDomain
 public import S7_ParameterChoice.Source.Joint.Controls.Inherited.InheritedControls
 
 @[expose] public section
