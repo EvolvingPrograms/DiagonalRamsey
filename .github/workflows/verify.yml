@@ -11,6 +11,10 @@ on:
         description: Concurrent modules; 0 selects CPUs / 4, subject to memory
         type: string
         default: '0'
+      comparator:
+        description: Run independent statement and kernel comparison after building
+        type: boolean
+        default: true
 permissions:
   contents: read
 concurrency:
@@ -68,6 +72,7 @@ jobs:
             --summary-log .lake/build-progress/build.log \
             S8_RamseyBound.L4_MainTheorem | tee .lake/build-progress/build.log
       - name: Independent statement and kernel comparison
+        if: inputs.comparator
         shell: bash
         run: |
           set -o pipefail
